@@ -1,4 +1,4 @@
-# openengine
+# OpenEngine
 Football match engine
 
 This should be the final attempt (of many) in creating an open source football match engine. The reason for so many previous attempts (you can see them by browsing this account) was more indecisiveness and starting over with a fresh approach rather than objective 'failure'. Also I have been too ambitious with the potential outcome. As of lately, I have decided to take it easy, without ever abandoning this project as a concept. 
