@@ -40,6 +40,28 @@ public class Environment {
         return this.clubNameIndex.get(name);
     }
 
+    public Club getClub(int rank) {
+
+        int index = rank - 1;
+
+        if (index < 0 || index > this.clubs.size() - 1) {
+            return null;
+        }
+
+        return this.clubs.get(index);
+    }
+
+    public Nation getNation(int rank) {
+
+        int index = rank - 1;
+
+        if (index < 0 || index > this.nations.size() - 1) {
+            return null;
+        }
+
+        return this.nations.get(index);
+    }
+
     public Environment() {}
 
     public Environment(String dataPath) {
