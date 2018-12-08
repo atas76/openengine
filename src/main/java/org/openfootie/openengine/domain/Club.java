@@ -1,6 +1,6 @@
 package org.openfootie.openengine.domain;
 
-public class Club {
+public class Club implements Team {
 
     private String name;
     private String nation;

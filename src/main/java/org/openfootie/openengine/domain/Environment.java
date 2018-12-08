@@ -8,10 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Environment {
 
@@ -24,6 +21,8 @@ public class Environment {
     private List<Club> clubs = new ArrayList<>();
 
     private List<SampleScore> scores = new ArrayList<>();
+    private List<SampleScore> neutralVenueScores = new ArrayList<>();
+    private List<SampleScore> homeAwayVenueScores = new ArrayList<>();
 
     private Map<String, Nation> nationNameIndex = new HashMap<>();
     private Map<String, Club> clubNameIndex = new HashMap<>();
@@ -37,6 +36,14 @@ public class Environment {
     }
 
     public List<SampleScore> getScores() { return this.scores; }
+
+    public List<SampleScore> getNeutralVenueScores() {
+        return neutralVenueScores;
+    }
+
+    public List<SampleScore> getHomeAwayVenueScores() {
+        return homeAwayVenueScores;
+    }
 
     public Nation getNation(String name) {
         return this.nationNameIndex.get(name);
@@ -81,6 +88,22 @@ public class Environment {
         return loadNations() && loadClubs() && loadScores();
     }
 
+    private static Random rnd = new Random();
+
+    public Fixture getRandomFixture(boolean international) {
+
+        List teams = international ? this.nations : this.clubs;
+
+        int homeTeamIndex = rnd.nextInt(teams.size());
+        int awayTeamIndex = rnd.nextInt(teams.size());
+
+        while (homeTeamIndex == awayTeamIndex) {
+            awayTeamIndex = rnd.nextInt(teams.size());
+        }
+
+        return new Fixture((Team) teams.get(homeTeamIndex), (Team) teams.get(awayTeamIndex), false);
+    }
+
     private static boolean transformFlag(String flag) throws InvalidFlagException {
         if ("*".equals(flag)) {
             return false;
@@ -114,7 +137,14 @@ public class Environment {
                                 Integer.parseInt(record.get(2)),
                                 Integer.parseInt(record.get(3)),
                                 transformFlag(record.get(4)));
+
                 this.scores.add(score);
+
+                if (score.isNeutral()) {
+                    this.neutralVenueScores.add(score);
+                } else {
+                    this.homeAwayVenueScores.add(score);
+                }
             }
 
         } catch (FileNotFoundException ex) {
