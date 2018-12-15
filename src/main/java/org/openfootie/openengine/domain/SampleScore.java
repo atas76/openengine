@@ -20,6 +20,13 @@ public class SampleScore {
         this.neutral = neutral;
     }
 
+    public String toString() {
+        return "Home strength: " + this.homeStrength + ", " +
+                "Away strength: " + this.awayStrength + ", " +
+                "Home score: " + this.homeScore + ", " +
+                "Away score: " + this.awayScore + ", " + "Neutral: " + this.neutral;
+    }
+
     public double getHomeStrength() {
         return homeStrength;
     }
@@ -44,16 +51,20 @@ public class SampleScore {
         return this.distance;
     }
 
-    private double leastSqrt(double x, double y) {
-        return Math.sqrt(Math.pow(x, 2) - Math.pow(y, 2));
+    private double squaredDistance(double a, double f) {
+        return Math.pow(a - f, 2);
+    }
+
+    private double hypotenuse(double sqrX, double sqrY) {
+        return Math.sqrt(sqrX + sqrY);
     }
 
     public void calculateDistance(double homeStrength, double awayStrength, boolean neutral) {
 
-        double homeDistance = leastSqrt(homeStrength, this.homeStrength);
-        double awayDistance = leastSqrt(awayStrength, this.awayStrength);
+        double homeSquaredDistance = squaredDistance(homeStrength, this.homeStrength);
+        double awaySquaredDistance = squaredDistance(awayStrength, this.awayStrength);
 
-        double totalDistance = leastSqrt(homeDistance, awayDistance);
+        double totalDistance = hypotenuse(homeSquaredDistance, awaySquaredDistance);
 
         if (neutral) {
             totalDistance = calculateNeutralDistance(homeStrength, awayStrength, totalDistance);
@@ -76,11 +87,11 @@ public class SampleScore {
 
     public void calculateSingleDistance(double strength, boolean neutral, boolean filterOnHome) {
 
-        double distance = leastSqrt(strength, filterOnHome ? this.homeStrength : this.awayStrength);
+        double distance = squaredDistance(strength, filterOnHome ? this.homeStrength : this.awayStrength);
 
         if (neutral) {
 
-            double reverseDistance = leastSqrt(strength, filterOnHome ? this.awayStrength : this.homeStrength);
+            double reverseDistance = squaredDistance(strength, filterOnHome ? this.awayStrength : this.homeStrength);
 
             if (reverseDistance < distance) {
                 distance = reverseDistance;
@@ -92,10 +103,10 @@ public class SampleScore {
 
     private double calculateNeutralDistance(double homeStrength, double awayStrength, double totalDistance) {
 
-        double homeToAwayDistance = leastSqrt(homeStrength, this.awayStrength);
-        double awayToHomeDistance = leastSqrt(awayStrength, this.homeStrength);
+        double homeToAwayDistance = squaredDistance(homeStrength, this.awayStrength);
+        double awayToHomeDistance = squaredDistance(awayStrength, this.homeStrength);
 
-        double reverseDistance = leastSqrt(homeToAwayDistance, awayToHomeDistance);
+        double reverseDistance = squaredDistance(homeToAwayDistance, awayToHomeDistance);
 
         if (reverseDistance < totalDistance) {
             totalDistance = reverseDistance;
