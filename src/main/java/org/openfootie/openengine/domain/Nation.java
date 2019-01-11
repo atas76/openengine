@@ -1,20 +1,15 @@
 package org.openfootie.openengine.domain;
 
-public class Nation implements Team {
+public class Nation {
 
     private String name;
-    private Double strength;
 
-    public Nation(String name, Double strength) {
+    public Nation(String name) {
         this.name = name;
-        this.strength = strength;
     }
 
     public String getName() {
         return name;
     }
 
-    public Double getStrength() {
-        return strength;
-    }
 }

@@ -26,21 +26,10 @@ public class EnvironmentTest {
 
         assertEquals(32, environment.getClubs().size());
         assertEquals(32, environment.getNations().size());
-        assertEquals(94, environment.getScores().size());
 
         assertEquals("England", environment.getClub("Chelsea").getNation());
-        assertEquals(2.9, environment.getClub("Chelsea").getStrength(), 0.01);
         assertEquals("Chelsea", environment.getClub(17).getName());
 
-        assertEquals(2.39, environment.getNation("Poland").getStrength(), 0.01);
         assertEquals("Poland", environment.getNation(18).getName());
-
-        SampleScore score = environment.getScores().get(89);
-
-        assertEquals(Math.log10(111), score.getHomeStrength(), 0.01);
-        assertEquals(Math.log10(444.75), score.getAwayStrength(), 0.01);
-        assertEquals(1, score.getHomeScore());
-        assertEquals(1, score.getAwayScore());
-        assertFalse(score.isNeutral());
     }
 }

@@ -85,23 +85,7 @@ public class Environment {
     }
 
     public boolean load() {
-        return loadNations() && loadClubs() && loadScores();
-    }
-
-    private static Random rnd = new Random();
-
-    public Fixture getRandomFixture(boolean international) {
-
-        List teams = international ? this.nations : this.clubs;
-
-        int homeTeamIndex = rnd.nextInt(teams.size());
-        int awayTeamIndex = rnd.nextInt(teams.size());
-
-        while (homeTeamIndex == awayTeamIndex) {
-            awayTeamIndex = rnd.nextInt(teams.size());
-        }
-
-        return new Fixture((Team) teams.get(homeTeamIndex), (Team) teams.get(awayTeamIndex), false);
+        return loadNations() && loadClubs();
     }
 
     private static boolean transformFlag(String flag) throws InvalidFlagException {
@@ -118,52 +102,6 @@ public class Environment {
         return Math.log10(input);
     }
 
-    private boolean loadScores() {
-
-        int counter = 0;
-
-        try {
-
-            Reader reader = new FileReader(scoresDataPath);
-
-            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
-
-            for (CSVRecord record : records) {
-                ++counter;
-                SampleScore score =
-                        new SampleScore(
-                                normalizeStrength(Double.parseDouble(record.get(0))),
-                                normalizeStrength(Double.parseDouble(record.get(1))),
-                                Integer.parseInt(record.get(2)),
-                                Integer.parseInt(record.get(3)),
-                                transformFlag(record.get(4)));
-
-                this.scores.add(score);
-
-                if (score.isNeutral()) {
-                    this.neutralVenueScores.add(score);
-                } else {
-                    this.homeAwayVenueScores.add(score);
-                }
-            }
-
-        } catch (FileNotFoundException ex) {
-            System.out.println("Cannot retrieve score samples data");
-            return false;
-        } catch (IOException ex) {
-            System.out.println("Error accessing score samples data");
-            return false;
-        } catch (NumberFormatException ex) {
-            System.out.println("Validation error: a value should have been a number. Line: " + counter);
-            return false;
-        } catch (InvalidFlagException ex) {
-            System.out.println("Validation error: invalid character to represent a flag: " + counter);
-            return false;
-        }
-        return true;
-
-    }
-
     private boolean loadClubs() {
 
         int counter = 0;
@@ -176,7 +114,7 @@ public class Environment {
 
             for (CSVRecord record : records) {
                 ++counter;
-                Club club = new Club(record.get(0), record.get(1), Double.parseDouble(record.get(2)));
+                Club club = new Club(record.get(0), record.get(1));
                 this.clubs.add(club);
                 this.clubNameIndex.put(club.getName(), club);
             }
@@ -205,7 +143,7 @@ public class Environment {
 
             for (CSVRecord record : records) {
                 ++counter;
-                Nation nation = new Nation(record.get(0), Double.parseDouble(record.get(1)));
+                Nation nation = new Nation(record.get(0));
                 this.nations.add(nation);
                 this.nationNameIndex.put(nation.getName(), nation);
             }
