@@ -11,5 +11,4 @@ public class Nation {
     public String getName() {
         return name;
     }
-
 }

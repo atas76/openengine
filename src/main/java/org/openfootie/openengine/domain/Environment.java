@@ -67,6 +67,10 @@ public class Environment {
         return loadNations() && loadClubs();
     }
 
+    private String extractClubFilename(String clubName) {
+        return clubName.toLowerCase().replace(' ', '_') + ".csv";
+    }
+
     private boolean loadClubs() {
 
         int counter = 0;
@@ -82,13 +86,24 @@ public class Environment {
                 Club club = new Club(record.get(0), record.get(1));
                 this.clubs.add(club);
                 this.clubNameIndex.put(club.getName(), club);
-            }
 
+                try {
+
+                    Iterable<CSVRecord> playerRecords =
+                            CSVFormat.EXCEL.parse(new FileReader(this.dataPath + "/" + extractClubFilename(club.getName())));
+
+                    for (CSVRecord playerRecord : playerRecords) {
+                        club.getSquad().getPlayers().add(new Player(playerRecord));
+                    }
+                } catch (FileNotFoundException ex) {
+                    continue; // No player data yet
+                }
+            }
         } catch (FileNotFoundException ex) {
-            System.out.println("Cannot retrieve nations data");
+            System.out.println("Cannot retrieve club data");
             return false;
         } catch (IOException ex) {
-            System.out.println("Error accessing nations data");
+            System.out.println("Error accessing club data");
             return false;
         } catch (NumberFormatException ex) {
             System.out.println("Validation error: nation strength must be a decimal number. Line: " + counter);

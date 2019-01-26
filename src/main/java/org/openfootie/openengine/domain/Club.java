@@ -4,6 +4,7 @@ public class Club {
 
     private String name;
     private String nation;
+    private Squad squad = new Squad();
 
     public Club(String name, String nation) {
         this.name = name;
@@ -16,5 +17,9 @@ public class Club {
 
     public String getNation() {
         return this.nation;
+    }
+
+    public Squad getSquad() {
+        return this.squad;
     }
 }
