@@ -30,13 +30,28 @@ public class EnvironmentTest {
         assertEquals("Poland", environment.getNation(18).getName());
 
         Club realMadrid = environment.getClub("Real Madrid");
+        Club barcelona = environment.getClub("FC Barcelona");
 
         assertEquals("Real Madrid", realMadrid.getName());
+        assertEquals("FC Barcelona", barcelona.getName());
+
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
+        assertEquals(24, barcelona.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
+        Squad barcelonaSquad = barcelona.getSquad();
 
         Player realPlayer1 = realMadridSquad.getPlayers().get(0);
+        Player barcaPlayer1 = barcelonaSquad.getPlayers().get(1);
+
+        assertEquals(1, barcaPlayer1.getShirtNumber());
+        assertEquals("Marc-André", barcaPlayer1.getFirstName());
+        assertEquals("ter Stegen", barcaPlayer1.getLastName());
+        assertEquals("Germany", barcaPlayer1.getNation());
+        assertEquals(26, barcaPlayer1.getAge());
+        assertEquals(Player.PositionX.Gk, barcaPlayer1.getPositionX().get(0));
+        assertEquals(0, barcaPlayer1.getPositionY().size());
+        assertEquals(85, barcaPlayer1.getAbility());
 
         assertEquals(1, realPlayer1.getShirtNumber());
         assertEquals("Keylor", realPlayer1.getFirstName());
@@ -144,7 +159,7 @@ public class EnvironmentTest {
         Player player12 = realMadridSquad.getPlayers().get(10);
 
         assertEquals(12, player12.getShirtNumber());
-        assertEquals(null, player12.getFirstName());
+        assertEquals("", player12.getFirstName());
         assertEquals("Marcelo", player12.getLastName());
         assertEquals("Brazil", player12.getNation());
         assertEquals(30, player12.getAge());

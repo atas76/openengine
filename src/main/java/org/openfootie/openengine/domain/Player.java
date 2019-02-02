@@ -23,20 +23,21 @@ public class Player {
     private int ability;
 
     public Player(CSVRecord playerRecord) {
-        this(playerRecord.get(0), playerRecord.get(1), playerRecord.get(2), playerRecord.get(3), playerRecord.get(4), playerRecord.get(5));
+        this(playerRecord.get(0),
+                playerRecord.get(1),
+                playerRecord.get(2),
+                playerRecord.get(3),
+                playerRecord.get(4),
+                playerRecord.get(5),
+                playerRecord.get(6));
     }
 
-    public Player(String shirtNumber, String name, String nation, String age, String position, String ability) {
+    public Player(String shirtNumber, String firstName, String lastName, String nation, String age, String position, String ability) {
 
         this.shirtNumber = Integer.valueOf(shirtNumber);
 
-        int surnameIndex = name.lastIndexOf(" ");
-        if (surnameIndex > 0) {
-            this.firstName = name.substring(0, surnameIndex);
-            this.lastName = name.substring(surnameIndex + 1);
-        } else {
-            this.lastName = name;
-        }
+        this.firstName = firstName;
+        this.lastName = lastName;
 
         this.nation = nation;
         this.age = Integer.valueOf(age);
