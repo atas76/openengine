@@ -31,18 +31,45 @@ public class EnvironmentTest {
 
         Club realMadrid = environment.getClub("Real Madrid");
         Club barcelona = environment.getClub("FC Barcelona");
+        Club atletico = environment.getClub("Atletico Madrid");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
+        assertEquals("Atletico Madrid", atletico.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
+        assertEquals(20, atletico.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();
+        Squad atleticoSquad = atletico.getSquad();
 
         Player realPlayer1 = realMadridSquad.getPlayers().get(0);
         Player barcaPlayer1 = barcelonaSquad.getPlayers().get(1);
+
+        Player atleticoPlayer1 = atleticoSquad.getPlayers().get(0);
+        Player atleticoPlayer10 = atleticoSquad.getPlayers().get(10);
+
+        assertEquals(10, atleticoPlayer10.getShirtNumber());
+        assertEquals("Ángel", atleticoPlayer10.getFirstName());
+        assertEquals("Correa", atleticoPlayer10.getLastName());
+        assertEquals("Argentina", atleticoPlayer10.getNation());
+        assertEquals(23, atleticoPlayer10.getAge());
+        assertEquals(Player.PositionX.F, atleticoPlayer10.getPositionX().get(0));
+        assertEquals(Player.PositionY.R, atleticoPlayer10.getPositionY().get(0));
+        assertEquals(Player.PositionY.L, atleticoPlayer10.getPositionY().get(1));
+        assertEquals(Player.PositionY.C, atleticoPlayer10.getPositionY().get(2));
+        assertEquals(70, atleticoPlayer10.getAbility());
+
+        assertEquals(1, atleticoPlayer1.getShirtNumber());
+        assertEquals("Antonio", atleticoPlayer1.getFirstName());
+        assertEquals("Adán", atleticoPlayer1.getLastName());
+        assertEquals("Spain", atleticoPlayer1.getNation());
+        assertEquals(31, atleticoPlayer1.getAge());
+        assertEquals(Player.PositionX.Gk, atleticoPlayer1.getPositionX().get(0));
+        assertEquals(0, atleticoPlayer1.getPositionY().size());
+        assertEquals(56, atleticoPlayer1.getAbility());
 
         assertEquals(1, barcaPlayer1.getShirtNumber());
         assertEquals("Marc-André", barcaPlayer1.getFirstName());
