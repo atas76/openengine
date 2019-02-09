@@ -32,24 +32,52 @@ public class EnvironmentTest {
         Club realMadrid = environment.getClub("Real Madrid");
         Club barcelona = environment.getClub("FC Barcelona");
         Club atletico = environment.getClub("Atletico Madrid");
+        Club bayern = environment.getClub("Bayern Munich");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
         assertEquals("Atletico Madrid", atletico.getName());
+        assertEquals("Bayern Munich", bayern.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
         assertEquals(20, atletico.getSquad().getPlayers().size());
+        assertEquals(22, bayern.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();
         Squad atleticoSquad = atletico.getSquad();
+        Squad bayernSquad = bayern.getSquad();
 
         Player realPlayer1 = realMadridSquad.getPlayers().get(0);
+
         Player barcaPlayer1 = barcelonaSquad.getPlayers().get(1);
 
         Player atleticoPlayer1 = atleticoSquad.getPlayers().get(0);
         Player atleticoPlayer10 = atleticoSquad.getPlayers().get(10);
+
+        Player bayernPlayer35 = bayernSquad.getPlayers().get(12);
+        Player bayernPlayer29 = bayernSquad.getPlayers().get(18);
+
+        assertEquals(29, bayernPlayer29.getShirtNumber());
+        assertEquals("Kingsley", bayernPlayer29.getFirstName());
+        assertEquals("Coman", bayernPlayer29.getLastName());
+        assertEquals("France", bayernPlayer29.getNation());
+        assertEquals(22, bayernPlayer29.getAge());
+        assertEquals(Player.PositionX.F, bayernPlayer29.getPositionX().get(0));
+        assertEquals(Player.PositionY.R, bayernPlayer29.getPositionY().get(0));
+        assertEquals(Player.PositionY.L, bayernPlayer29.getPositionY().get(1));
+        assertEquals(Player.PositionY.C, bayernPlayer29.getPositionY().get(2));
+        assertEquals(81, bayernPlayer29.getAbility());
+
+        assertEquals(35, bayernPlayer35.getShirtNumber());
+        assertEquals("Renato", bayernPlayer35.getFirstName());
+        assertEquals("Sanches", bayernPlayer35.getLastName());
+        assertEquals("Portugal", bayernPlayer35.getNation());
+        assertEquals(21, bayernPlayer35.getAge());
+        assertEquals(Player.PositionX.M, bayernPlayer35.getPositionX().get(0));
+        assertEquals(Player.PositionY.C, bayernPlayer35.getPositionY().get(0));
+        assertEquals(70, bayernPlayer35.getAbility());
 
         assertEquals(10, atleticoPlayer10.getShirtNumber());
         assertEquals("Ángel", atleticoPlayer10.getFirstName());
