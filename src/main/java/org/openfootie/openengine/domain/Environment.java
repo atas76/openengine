@@ -105,9 +105,8 @@ public class Environment {
         } catch (IOException ex) {
             System.out.println("Error accessing club data");
             return false;
-        } catch (NumberFormatException ex) {
-            System.out.println("Validation error: nation strength must be a decimal number. Line: " + counter);
         }
+
         return true;
     }
 
@@ -134,9 +133,8 @@ public class Environment {
         } catch (IOException ex) {
             System.out.println("Error accessing nations data");
             return false;
-        } catch (NumberFormatException ex) {
-            System.out.println("Validation error: nation strength must be a decimal number. Line: " + counter);
         }
+
         return true;
     }
 }
