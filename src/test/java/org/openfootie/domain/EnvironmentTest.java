@@ -33,16 +33,19 @@ public class EnvironmentTest {
         Club barcelona = environment.getClub("FC Barcelona");
         Club atletico = environment.getClub("Atletico Madrid");
         Club bayern = environment.getClub("Bayern Munich");
+        Club manCity = environment.getClub("Manchester City");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
         assertEquals("Atletico Madrid", atletico.getName());
         assertEquals("Bayern Munich", bayern.getName());
+        assertEquals("Manchester City", manCity.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
         assertEquals(20, atletico.getSquad().getPlayers().size());
         assertEquals(22, bayern.getSquad().getPlayers().size());
+        assertEquals(25, manCity.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();
