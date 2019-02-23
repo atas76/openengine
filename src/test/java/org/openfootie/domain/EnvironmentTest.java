@@ -36,6 +36,7 @@ public class EnvironmentTest {
         Club manCity = environment.getClub("Manchester City");
         Club juventus = environment.getClub("Juventus");
         Club liverpool = environment.getClub("Liverpool");
+        Club roma = environment.getClub("Roma");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
@@ -44,6 +45,7 @@ public class EnvironmentTest {
         assertEquals("Manchester City", manCity.getName());
         assertEquals("Juventus", juventus.getName());
         assertEquals("Liverpool", liverpool.getName());
+        assertEquals("Roma", roma.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
@@ -52,12 +54,14 @@ public class EnvironmentTest {
         assertEquals(25, manCity.getSquad().getPlayers().size());
         assertEquals(24, juventus.getSquad().getPlayers().size());
         assertEquals(25, liverpool.getSquad().getPlayers().size());
+        assertEquals(27, roma.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();
         Squad atleticoSquad = atletico.getSquad();
         Squad bayernSquad = bayern.getSquad();
         Squad juventusSquad = juventus.getSquad();
+        Squad romaSquad = roma.getSquad();
 
         Player realPlayer1 = realMadridSquad.getPlayers().get(0);
 
@@ -71,6 +75,17 @@ public class EnvironmentTest {
 
         Player juventusPlayer1 = juventusSquad.getPlayers().get(2);
         Player juventusPlayer16 = juventusSquad.getPlayers().get(13);
+
+        Player romaPlayer9 = romaSquad.getPlayers().get(26);
+
+        assertEquals(9, romaPlayer9.getShirtNumber());
+        assertEquals("Edin", romaPlayer9.getFirstName());
+        assertEquals("Džeko", romaPlayer9.getLastName());
+        assertEquals("Bosnia-Herzegovina", romaPlayer9.getNation());
+        assertEquals(32, romaPlayer9.getAge());
+        assertEquals(Player.PositionX.F, romaPlayer9.getPositionX().get(0));
+        assertEquals(Player.PositionY.C, romaPlayer9.getPositionY().get(0));
+        assertEquals(77, romaPlayer9.getAbility());
 
         assertEquals(1, juventusPlayer1.getShirtNumber());
         assertEquals("Szczęsny", juventusPlayer1.getLastName());
