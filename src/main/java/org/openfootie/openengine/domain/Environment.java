@@ -33,6 +33,10 @@ public class Environment {
         return this.clubNameIndex.get(name);
     }
 
+    public Nation getNation(String name) {
+        return this.nationNameIndex.get(name);
+    }
+
     public Club getClub(int rank) {
 
         int index = rank - 1;
@@ -73,8 +77,6 @@ public class Environment {
 
     private boolean loadClubs() {
 
-        int counter = 0;
-
         try {
 
             Reader reader = new FileReader(clubDataPath);
@@ -82,23 +84,13 @@ public class Environment {
             Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
 
             for (CSVRecord record : records) {
-                ++counter;
                 Club club = new Club(record.get(0), record.get(1));
                 this.clubs.add(club);
                 this.clubNameIndex.put(club.getName(), club);
 
-                try {
-
-                    Iterable<CSVRecord> playerRecords =
-                            CSVFormat.EXCEL.parse(new FileReader(this.dataPath + "/" + extractClubFilename(club.getName())));
-
-                    for (CSVRecord playerRecord : playerRecords) {
-                        club.getSquad().getPlayers().add(new Player(playerRecord));
-                    }
-                } catch (FileNotFoundException ex) {
-                    continue; // No player data yet
-                }
+                loadPlayers(club.getName(), club.getSquad());
             }
+
         } catch (FileNotFoundException ex) {
             System.out.println("Cannot retrieve club data");
             return false;
@@ -112,8 +104,6 @@ public class Environment {
 
     private boolean loadNations() {
 
-        int counter = 0;
-
         try {
 
             Reader reader = new FileReader(nationsDataPath);
@@ -121,10 +111,11 @@ public class Environment {
             Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(reader);
 
             for (CSVRecord record : records) {
-                ++counter;
                 Nation nation = new Nation(record.get(0));
                 this.nations.add(nation);
                 this.nationNameIndex.put(nation.getName(), nation);
+
+                loadPlayers(nation.getName(), nation.getSquad());
             }
 
         } catch (FileNotFoundException ex) {
@@ -136,5 +127,19 @@ public class Environment {
         }
 
         return true;
+    }
+
+    private void loadPlayers(String name, Squad squad) throws IOException {
+        try {
+            Iterable<CSVRecord> playerRecords =
+                    CSVFormat.EXCEL.parse(new FileReader(this.dataPath + "/" + extractClubFilename(name)));
+
+            for (CSVRecord playerRecord : playerRecords) {
+                squad.getPlayers().add(new Player(playerRecord));
+            }
+
+        } catch (FileNotFoundException ex) {
+            return;
+        }
     }
 }

@@ -1,8 +1,9 @@
 package org.openfootie.openengine.domain;
 
-public class Nation {
+public class Nation implements Team {
 
     private String name;
+    private Squad squad = new Squad();
 
     public Nation(String name) {
         this.name = name;
@@ -10,5 +11,9 @@ public class Nation {
 
     public String getName() {
         return name;
+    }
+
+    public Squad getSquad() {
+        return this.squad;
     }
 }
