@@ -41,6 +41,7 @@ public class EnvironmentTest {
         Nation brazil = environment.getNation("Brazil");
         Nation france = environment.getNation("France");
         Nation belgium = environment.getNation("Belgium");
+        Nation spain = environment.getNation("Spain");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
@@ -54,6 +55,7 @@ public class EnvironmentTest {
         assertEquals("Brazil", brazil.getName());
         assertEquals("France", france.getName());
         assertEquals("Belgium", belgium.getName());
+        assertEquals("Spain", spain.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
@@ -67,6 +69,7 @@ public class EnvironmentTest {
         assertEquals(23, brazil.getSquad().getPlayers().size());
         assertEquals(23, france.getSquad().getPlayers().size());
         assertEquals(23, belgium.getSquad().getPlayers().size());
+        assertEquals(23, spain.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();
@@ -205,7 +208,7 @@ public class EnvironmentTest {
         assertEquals("Nacho", player6.getFirstName());
         assertEquals("Fernández", player6.getLastName());
         assertEquals("Spain", player6.getNation());
-        assertEquals(28, player6.getAge());
+        assertEquals(29, player6.getAge());
         assertEquals(Player.PositionX.D, player6.getPositionX().get(0));
         assertEquals(Player.PositionY.C, player6.getPositionY().get(0));
         assertEquals(72, player6.getAbility());
@@ -238,7 +241,7 @@ public class EnvironmentTest {
         assertEquals("Marco", player20.getFirstName());
         assertEquals("Asensio", player20.getLastName());
         assertEquals("Spain", player20.getNation());
-        assertEquals(22, player20.getAge());
+        assertEquals(23, player20.getAge());
         assertEquals(Player.PositionX.M, player20.getPositionX().get(0));
         assertEquals(Player.PositionX.F, player20.getPositionX().get(1));
         assertEquals(Player.PositionY.R, player20.getPositionY().get(0));
