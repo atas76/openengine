@@ -42,6 +42,7 @@ public class EnvironmentTest {
         Nation france = environment.getNation("France");
         Nation belgium = environment.getNation("Belgium");
         Nation spain = environment.getNation("Spain");
+        Nation croatia = environment.getNation("Croatia");
 
         assertEquals("Real Madrid", realMadrid.getName());
         assertEquals("FC Barcelona", barcelona.getName());
@@ -51,11 +52,13 @@ public class EnvironmentTest {
         assertEquals("Juventus", juventus.getName());
         assertEquals("Liverpool", liverpool.getName());
         assertEquals("Roma", roma.getName());
+        assertEquals("Croatia", croatia.getName());
 
         assertEquals("Brazil", brazil.getName());
         assertEquals("France", france.getName());
         assertEquals("Belgium", belgium.getName());
         assertEquals("Spain", spain.getName());
+        assertEquals("Croatia", croatia.getName());
 
         assertEquals(28, realMadrid.getSquad().getPlayers().size());
         assertEquals(24, barcelona.getSquad().getPlayers().size());
@@ -70,6 +73,7 @@ public class EnvironmentTest {
         assertEquals(23, france.getSquad().getPlayers().size());
         assertEquals(23, belgium.getSquad().getPlayers().size());
         assertEquals(23, spain.getSquad().getPlayers().size());
+        assertEquals(23, croatia.getSquad().getPlayers().size());
 
         Squad realMadridSquad = realMadrid.getSquad();
         Squad barcelonaSquad = barcelona.getSquad();

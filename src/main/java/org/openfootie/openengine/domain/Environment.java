@@ -136,6 +136,7 @@ public class Environment {
 
             for (CSVRecord playerRecord : playerRecords) {
                 squad.getPlayers().add(new Player(playerRecord));
+                // System.out.println("Player added: " + squad.getPlayers().get(squad.getPlayers().size() - 1).getShirtNumber());
             }
 
         } catch (FileNotFoundException ex) {
