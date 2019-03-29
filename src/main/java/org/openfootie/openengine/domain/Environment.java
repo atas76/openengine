@@ -14,6 +14,7 @@ public class Environment {
     private String dataPath = "src/main/resources/data";
     private String nationsDataPath = dataPath + "/nations.csv";
     private String clubDataPath = dataPath + "/clubs.csv";
+    private String samplesPath = dataPath + "/samples";
 
     private List<Nation> nations = new ArrayList<>();
     private List<Club> clubs = new ArrayList<>();
@@ -69,6 +70,10 @@ public class Environment {
 
     public boolean load() {
         return loadNations() && loadClubs();
+    }
+
+    public String getSamplesPath() {
+        return this.samplesPath;
     }
 
     private String extractClubFilename(String clubName) {

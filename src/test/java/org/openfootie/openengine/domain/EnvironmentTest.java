@@ -1,7 +1,6 @@
-package org.openfootie.domain;
+package org.openfootie.openengine.domain;
 
 import org.junit.Test;
-import org.openfootie.openengine.domain.*;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
