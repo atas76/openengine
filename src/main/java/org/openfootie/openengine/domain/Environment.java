@@ -140,7 +140,7 @@ public class Environment {
                     CSVFormat.EXCEL.parse(new FileReader(this.dataPath + "/" + extractClubFilename(name)));
 
             for (CSVRecord playerRecord : playerRecords) {
-                squad.getPlayers().add(new Player(playerRecord));
+                squad.add(new Player(playerRecord));
                 // System.out.println("Player added: " + squad.getPlayers().get(squad.getPlayers().size() - 1).getShirtNumber());
             }
 

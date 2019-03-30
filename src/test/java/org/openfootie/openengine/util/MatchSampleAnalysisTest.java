@@ -2,7 +2,7 @@ package org.openfootie.openengine.util;
 
 import org.junit.Test;
 import org.openfootie.openengine.domain.Environment;
-import org.openfootie.openengine.util.analysis.MatchSampleReport;
+import org.openfootie.openengine.util.analysis.MatchReport;
 import org.openfootie.openengine.util.analysis.PlayerParticipation;
 
 import static junit.framework.TestCase.assertTrue;
@@ -23,7 +23,7 @@ public class MatchSampleAnalysisTest {
         // Test data are loaded successfully
         assertTrue(environment.load());
 
-        MatchSampleReport matchReport = new MatchSampleReport(TEST_SAMPLE_MATCH_FILE_PATH);
+        MatchReport matchReport = new MatchReport(TEST_SAMPLE_MATCH_FILE_PATH);
 
         assertEquals(28, matchReport.getMatchParticipation().size());
 

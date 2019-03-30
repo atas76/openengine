@@ -86,20 +86,20 @@ public class EnvironmentTest {
         Squad juventusSquad = juventus.getSquad();
         Squad romaSquad = roma.getSquad();
 
-        Player realPlayer1 = realMadridSquad.getPlayers().get(0);
+        Player realPlayer1 = realMadridSquad.getPlayerByNumber(1);
 
-        Player barcaPlayer1 = barcelonaSquad.getPlayers().get(1);
+        Player barcaPlayer1 = barcelonaSquad.getPlayerByNumber(1);
 
-        Player atleticoPlayer1 = atleticoSquad.getPlayers().get(0);
-        Player atleticoPlayer10 = atleticoSquad.getPlayers().get(10);
+        Player atleticoPlayer1 = atleticoSquad.getPlayerByNumber(1);
+        Player atleticoPlayer10 = atleticoSquad.getPlayerByNumber(10);
 
-        Player bayernPlayer35 = bayernSquad.getPlayers().get(12);
-        Player bayernPlayer29 = bayernSquad.getPlayers().get(18);
+        Player bayernPlayer35 = bayernSquad.getPlayerByNumber(35);
+        Player bayernPlayer29 = bayernSquad.getPlayerByNumber(29);
 
-        Player juventusPlayer1 = juventusSquad.getPlayers().get(2);
-        Player juventusPlayer16 = juventusSquad.getPlayers().get(13);
+        Player juventusPlayer1 = juventusSquad.getPlayerByNumber(1);
+        Player juventusPlayer16 = juventusSquad.getPlayerByNumber(16);
 
-        Player romaPlayer9 = romaSquad.getPlayers().get(26);
+        Player romaPlayer9 = romaSquad.getPlayerByNumber(9);
 
         assertEquals(9, romaPlayer9.getShirtNumber());
         assertEquals("Edin", romaPlayer9.getFirstName());
@@ -188,7 +188,7 @@ public class EnvironmentTest {
         assertEquals(0, realPlayer1.getPositionY().size());
         assertEquals(75, realPlayer1.getAbility());
 
-        Player realPlayer25 = realMadridSquad.getPlayers().get(1);
+        Player realPlayer25 = realMadridSquad.getPlayerByNumber(25);
 
         assertEquals(25, realPlayer25.getShirtNumber());
         assertEquals("Thibaut", realPlayer25.getFirstName());
@@ -199,7 +199,7 @@ public class EnvironmentTest {
         assertEquals(0, realPlayer25.getPositionY().size());
         assertEquals(85, realPlayer25.getAbility());
 
-        Player realPlayer36 = realMadridSquad.getPlayers().get(12);
+        Player realPlayer36 = realMadridSquad.getPlayerByNumber(36);
 
         assertEquals(36, realPlayer36.getShirtNumber());
         assertEquals("Alvaro", realPlayer36.getFirstName());
@@ -210,7 +210,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, realPlayer36.getPositionY().get(0));
         assertEquals(41, realPlayer36.getAbility());
 
-        Player player6 = realMadridSquad.getPlayers().get(8);
+        Player player6 = realMadridSquad.getPlayerByNumber(6);
 
         assertEquals(6, player6.getShirtNumber());
         assertEquals("Nacho", player6.getFirstName());
@@ -221,7 +221,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, player6.getPositionY().get(0));
         assertEquals(72, player6.getAbility());
 
-        Player player10 = realMadridSquad.getPlayers().get(17);
+        Player player10 = realMadridSquad.getPlayerByNumber(10);
 
         assertEquals(10, player10.getShirtNumber());
         assertEquals("Luka", player10.getFirstName());
@@ -232,7 +232,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, player10.getPositionY().get(0));
         assertEquals(83, player10.getAbility());
 
-        Player player2 = realMadridSquad.getPlayers().get(9);
+        Player player2 = realMadridSquad.getPlayerByNumber(2);
 
         assertEquals(2, player2.getShirtNumber());
         assertEquals("Daniel", player2.getFirstName());
@@ -243,7 +243,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.R, player2.getPositionY().get(0));
         assertEquals(80, player2.getAbility());
 
-        Player player20 = realMadridSquad.getPlayers().get(22);
+        Player player20 = realMadridSquad.getPlayerByNumber(20);
 
         assertEquals(20, player20.getShirtNumber());
         assertEquals("Marco", player20.getFirstName());
@@ -257,7 +257,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, player20.getPositionY().get(2));
         assertEquals(81, player20.getAbility());
 
-        Player player21 = realMadridSquad.getPlayers().get(24);
+        Player player21 = realMadridSquad.getPlayerByNumber(21);
 
         assertEquals(21, player21.getShirtNumber());
         assertEquals("Brahim", player21.getFirstName());
@@ -271,7 +271,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, player21.getPositionY().get(2));
         assertEquals(60, player21.getAbility());
 
-        Player player24 = realMadridSquad.getPlayers().get(15);
+        Player player24 = realMadridSquad.getPlayerByNumber(24);
 
         assertEquals(24, player24.getShirtNumber());
         assertEquals("Dani", player24.getFirstName());
@@ -282,7 +282,7 @@ public class EnvironmentTest {
         assertEquals(Player.PositionY.C, player24.getPositionY().get(0));
         assertEquals(72, player24.getAbility());
 
-        Player player12 = realMadridSquad.getPlayers().get(10);
+        Player player12 = realMadridSquad.getPlayerByNumber(12);
 
         assertEquals(12, player12.getShirtNumber());
         assertEquals("", player12.getFirstName());
