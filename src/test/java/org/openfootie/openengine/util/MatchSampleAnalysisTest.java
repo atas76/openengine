@@ -2,7 +2,8 @@ package org.openfootie.openengine.util;
 
 import org.junit.Test;
 import org.openfootie.openengine.domain.Environment;
-import org.openfootie.openengine.util.analysis.MatchSample;
+import org.openfootie.openengine.util.analysis.MatchSampleReport;
+import org.openfootie.openengine.util.analysis.PlayerParticipation;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -22,8 +23,18 @@ public class MatchSampleAnalysisTest {
         // Test data are loaded successfully
         assertTrue(environment.load());
 
-        MatchSample matchParticipation = new MatchSample(TEST_SAMPLE_MATCH_FILE_PATH);
+        MatchSampleReport matchReport = new MatchSampleReport(TEST_SAMPLE_MATCH_FILE_PATH);
 
-        assertEquals(28, matchParticipation.getMatchParticipation().size());
+        assertEquals(28, matchReport.getMatchParticipation().size());
+
+        PlayerParticipation partialParticipation = matchReport.getMatchParticipation().get(23);
+        PlayerParticipation fullParticipation = matchReport.getMatchParticipation().get(27);
+
+        assertEquals("Juventus", fullParticipation.getTeam());
+        assertEquals("F LC", fullParticipation.getPosition());
+        assertEquals(7, fullParticipation.getShirtNo());
+        assertEquals(90, fullParticipation.getMinutesPlayed());
+
+        assertEquals(6, partialParticipation.getMinutesPlayed());
     }
 }

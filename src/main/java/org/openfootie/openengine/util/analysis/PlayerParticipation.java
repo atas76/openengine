@@ -1,13 +1,13 @@
 package org.openfootie.openengine.util.analysis;
 
-public class ParticipationUnit {
+public class PlayerParticipation {
 
     private String team;
     private String position;
     private int shirtNo;
     private int minutesPlayed;
 
-    public ParticipationUnit(String team, String position, int shirtNo, int minutesPlayed) {
+    public PlayerParticipation(String team, String position, int shirtNo, int minutesPlayed) {
         this.team = team;
         this.position = position;
         this.shirtNo = shirtNo;

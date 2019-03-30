@@ -10,11 +10,11 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MatchSample {
+public class MatchSampleReport {
 
-    private List<ParticipationUnit> matchParticipation = new ArrayList<>();
+    private List<PlayerParticipation> matchParticipation = new ArrayList<>();
 
-    public MatchSample(String matchFile) {
+    public MatchSampleReport(String matchFile) {
         try {
 
             Reader reader = new FileReader(matchFile);
@@ -23,7 +23,7 @@ public class MatchSample {
 
             for (CSVRecord record : records) {
                 matchParticipation.add(
-                        new ParticipationUnit(
+                        new PlayerParticipation(
                                 record.get(0),
                                 record.get(1),
                                 Integer.parseInt(record.get(2)),
@@ -37,7 +37,7 @@ public class MatchSample {
         }
     }
 
-    public List<ParticipationUnit> getMatchParticipation() {
+    public List<PlayerParticipation> getMatchParticipation() {
         return this.matchParticipation;
     }
 }

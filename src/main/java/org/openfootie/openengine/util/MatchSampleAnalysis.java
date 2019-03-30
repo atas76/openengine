@@ -1,7 +1,7 @@
 package org.openfootie.openengine.util;
 
 import org.openfootie.openengine.domain.Environment;
-import org.openfootie.openengine.util.analysis.MatchSample;
+import org.openfootie.openengine.util.analysis.MatchSampleReport;
 
 public class MatchSampleAnalysis {
 
@@ -14,7 +14,7 @@ public class MatchSampleAnalysis {
             return;
         }
 
-        MatchSample matchParticipation =
-                new MatchSample(environment.getSamplesPath() + "/" + args[0]);
+        MatchSampleReport matchParticipation =
+                new MatchSampleReport(environment.getSamplesPath() + "/" + args[0]);
     }
 }
