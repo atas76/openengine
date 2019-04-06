@@ -55,8 +55,19 @@ public class MatchReport {
         return this.matchParticipation;
     }
 
-    // TODO untested
-    public List<Long> calculateParticipationRatings(Team team) {
+    /**
+     *
+     * Calculates a list of participation ratings per team for the current match report
+     *
+     * Each player placement in a specific tactical position for X minutes is defined as a 'participation', and it is
+     * the data unit in the match report sample. Each such participation corresponds to a 'rating' based on players'
+     * ability and 'minutes of participation', and it is aimed as a measure of a player's aggregate expected
+     * contribution playing in that particular tactical position for X minutes.
+     *
+     * @param team the team object retrieved from the environment
+     * @return a raw list of participation ratings
+     */
+    List<Long> calculateParticipationRatings(Team team) {
 
         List<Long> participationRatings = new ArrayList<>();
 

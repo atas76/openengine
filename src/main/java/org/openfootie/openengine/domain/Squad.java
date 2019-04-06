@@ -11,13 +11,19 @@ public class Squad {
 
     private Map<Integer, Player> playerNumbers = new HashMap<>();
 
-    public List<Player> getPlayers() {
-        return this.players;
+    public Squad() {}
+
+    public Squad(List<Player> players) {
+        players.forEach(this::add);
     }
 
-    public void add(Player player) {
+    void add(Player player) {
         this.players.add(player);
         playerNumbers.put(player.getShirtNumber(), player);
+    }
+
+    List<Player> getPlayers() {
+        return this.players;
     }
 
     public Player getPlayerByNumber(int shirtNumber) {

@@ -22,7 +22,7 @@ public class Player {
     private List<PositionY> positionY = new ArrayList<>();
     private int ability;
 
-    public Player(CSVRecord playerRecord) {
+    Player(CSVRecord playerRecord) {
         this(playerRecord.get(0),
                 playerRecord.get(1),
                 playerRecord.get(2),
@@ -32,7 +32,19 @@ public class Player {
                 playerRecord.get(6));
     }
 
-    public Player(String shirtNumber, String firstName, String lastName, String nation, String age, String position, String ability) {
+    /**
+     *
+     * Minimum viable constructor for utilizing a player as a pseudo-agent
+     *
+     * @param shirtNumber used for identified the player in the context of a squad
+     * @param ability used as a parameter for action outcomes
+     */
+    public Player(int shirtNumber, int ability) {
+        this.shirtNumber = shirtNumber;
+        this.ability = ability;
+    }
+
+    private Player(String shirtNumber, String firstName, String lastName, String nation, String age, String position, String ability) {
 
         this.shirtNumber = Integer.valueOf(shirtNumber);
 
@@ -91,7 +103,7 @@ public class Player {
         }
     }
 
-    public int getShirtNumber() {
+    int getShirtNumber() {
         return shirtNumber;
     }
 
@@ -99,7 +111,7 @@ public class Player {
         this.shirtNumber = shirtNumber;
     }
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
@@ -107,7 +119,7 @@ public class Player {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
@@ -115,7 +127,7 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public String getNation() {
+    String getNation() {
         return nation;
     }
 
@@ -123,7 +135,7 @@ public class Player {
         this.nation = nation;
     }
 
-    public int getAge() {
+    int getAge() {
         return age;
     }
 
@@ -131,7 +143,7 @@ public class Player {
         this.age = age;
     }
 
-    public List<PositionX> getPositionX() {
+    List<PositionX> getPositionX() {
         return positionX;
     }
 
@@ -139,7 +151,7 @@ public class Player {
         this.positionX = positionX;
     }
 
-    public List<PositionY> getPositionY() {
+    List<PositionY> getPositionY() {
         return positionY;
     }
 
