@@ -8,10 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MatchReport {
 
@@ -53,6 +50,14 @@ public class MatchReport {
 
     public List<PlayerParticipation> getMatchParticipation() {
         return this.matchParticipation;
+    }
+
+    public Set<String> getTeams() {
+        return this.teamParticipation.keySet();
+    }
+
+    public Long getFormationRating(Team team) {
+        return calculateParticipationRatings(team).stream().mapToLong(Long::longValue).sum();
     }
 
     /**

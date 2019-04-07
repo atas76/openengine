@@ -77,6 +77,16 @@ public class MatchReportTest {
     }
 
     @Test
+    public void calculateFormationRatingsTest() {
+
+        Long homeFormationRating = this.matchReport.getFormationRating(this.homeTeam);
+        Long awayFormationRating = this.matchReport.getFormationRating(this.awayTeam);
+
+        assertEquals(850, homeFormationRating.longValue());
+        assertEquals(870, awayFormationRating.longValue());
+    }
+
+    @Test
     public void calculateParticipationRatingsTest() {
 
         List<Long> homeParticipationRatings = this.matchReport.calculateParticipationRatings(this.homeTeam);
