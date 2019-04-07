@@ -83,5 +83,33 @@ public class MatchReportTest {
         List<Long> awayParticipationRatings = this.matchReport.calculateParticipationRatings(this.awayTeam);
 
         assertEquals(87, homeParticipationRatings.get(0).longValue());
+        assertEquals(68, homeParticipationRatings.get(1).longValue());
+        assertEquals(76, homeParticipationRatings.get(2).longValue());
+        assertEquals(78, homeParticipationRatings.get(3).longValue());
+        assertEquals(74, homeParticipationRatings.get(4).longValue());
+        assertEquals(80, homeParticipationRatings.get(5).longValue());
+        assertEquals(77, homeParticipationRatings.get(6).longValue());
+        assertEquals(53, homeParticipationRatings.get(7).longValue());
+        assertEquals(25, homeParticipationRatings.get(8).longValue());
+        assertEquals(59, homeParticipationRatings.get(9).longValue());
+        assertEquals(18, homeParticipationRatings.get(10).longValue());
+        assertEquals(86, homeParticipationRatings.get(11).longValue());
+        assertEquals(44, homeParticipationRatings.get(12).longValue());
+        assertEquals(25, homeParticipationRatings.get(13).longValue());
+
+        assertEquals(80, awayParticipationRatings.get(0).longValue());
+        assertEquals(71, awayParticipationRatings.get(1).longValue());
+        assertEquals(77, awayParticipationRatings.get(2).longValue());
+        assertEquals(80, awayParticipationRatings.get(3).longValue());
+        assertEquals(75, awayParticipationRatings.get(4).longValue());
+        assertEquals(73, awayParticipationRatings.get(5).longValue());
+        assertEquals(68, awayParticipationRatings.get(6).longValue());
+        assertEquals(14, awayParticipationRatings.get(7).longValue());
+        assertEquals(70, awayParticipationRatings.get(8).longValue());
+        assertEquals(5, awayParticipationRatings.get(9).longValue());
+        assertEquals(76, awayParticipationRatings.get(10).longValue());
+        assertEquals(9, awayParticipationRatings.get(11).longValue());
+        assertEquals(77, awayParticipationRatings.get(12).longValue());
+        assertEquals(95, awayParticipationRatings.get(13).longValue());
     }
 }
