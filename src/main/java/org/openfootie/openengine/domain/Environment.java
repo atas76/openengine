@@ -38,6 +38,17 @@ public class Environment {
         return this.nationNameIndex.get(name);
     }
 
+    public Team getTeam(String name) {
+
+        Club club = getClub(name);
+
+        if (club != null) {
+            return club;
+        } else {
+            return getNation(name);
+        }
+    }
+
     public Club getClub(int rank) {
 
         int index = rank - 1;
