@@ -3,15 +3,10 @@ package org.openfootie.openengine.util;
 import org.openfootie.openengine.domain.Environment;
 import org.openfootie.openengine.util.analysis.MatchReport;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MatchSampleAnalysis {
-
-    private Environment environment;
-    private MatchReport matchReport;
-
-    public MatchSampleAnalysis(Environment environment, MatchReport matchReport) {
-        this.environment = environment;
-        this.matchReport = matchReport;
-    }
 
     public static void main(String [] args) {
 
@@ -22,7 +17,13 @@ public class MatchSampleAnalysis {
             return;
         }
 
-        MatchReport matchReport =
-                new MatchReport(environment.getSamplesPath() + "/" + args[0]);
+        MatchReport matchReport = new MatchReport(environment.getSamplesPath() + "/" + args[0]);
+
+        Map<String, Long> formationRatings = new HashMap<>();
+
+        matchReport.getTeams().forEach(teamName ->
+                formationRatings.put(teamName, matchReport.getFormationRating(environment.getTeam(teamName))));
+
+        formationRatings.forEach((teamName, teamRating) -> System.out.println(teamName + ": " + teamRating));
     }
 }
