@@ -1,7 +1,6 @@
 package org.openfootie.openengine.gameplay;
 
 import org.openfootie.openengine.domain.Environment;
-import org.openfootie.openengine.domain.Nation;
 import org.openfootie.openengine.domain.TeamImpl;
 import org.openfootie.openengine.engine.Match;
 
@@ -20,6 +19,8 @@ public class FriendlyMatch {
 
         match.play();
 
+        System.out.println();
+        System.out.println("Final score");
         System.out.println(match.getScore());
     }
 }

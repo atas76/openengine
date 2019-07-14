@@ -1,6 +1,8 @@
 package org.openfootie.openengine.engine;
 
 import org.openfootie.openengine.domain.Team;
+import org.openfootie.openengine.engine.log.MatchLogRecord;
+import org.openfootie.openengine.engine.log.MatchLogger;
 
 import java.util.Random;
 
@@ -15,9 +17,6 @@ public class Match {
     private TeamStats awayTeamStats = new TeamStats();
 
     private final static int HT_STEP_DURATION = 96;
-
-    private int homeScore;
-    private int awayScore;
 
     private static Random rnd = new Random();
 
@@ -55,21 +54,27 @@ public class Match {
 
     public void play() {
 
+        MatchLogger matchLogger = new MatchLogger();
+
         State state = new State(D, coinToss());
 
         int currentStep = 0;
 
         while (currentStep < HT_STEP_DURATION) {
-            // System.out.println(state.getBall());
+
             Action action = decisionFM.getAction(state.getBall());
-            // System.out.println(action);
+
+            MatchLogRecord matchLogRecord = new MatchLogRecord(state.getPossession().getName(), state.getBall(), action);
+
             Outcome outcome = outcomeFM.getOutcome(action, state);
-            // System.out.println(outcome.getCoordinates());
             if (outcome.isGoal()) {
+                matchLogRecord.setGoalScored();
                 incrementScore(state.getPossession());
             }
+
             state = new State(outcome.getCoordinates(), outcome.isKeepPossession() ? state.getPossession() : toggle(state.getPossession()));
             ++currentStep;
+            matchLogger.info(matchLogRecord);
         }
     }
 
