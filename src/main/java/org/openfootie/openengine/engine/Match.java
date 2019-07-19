@@ -6,6 +6,7 @@ import org.openfootie.openengine.engine.log.MatchLogger;
 
 import java.util.Random;
 
+import static java.util.Objects.isNull;
 import static org.openfootie.openengine.engine.Coordinates.*;
 
 public class Match {
@@ -16,6 +17,8 @@ public class Match {
     private TeamStats homeTeamStats = new TeamStats();
     private TeamStats awayTeamStats = new TeamStats();
 
+    private Team halfTimeStarter;
+
     private final static int HT_STEP_DURATION = 96;
 
     private static Random rnd = new Random();
@@ -23,13 +26,23 @@ public class Match {
     private StateActionFrequencyMatrix decisionFM = new StateActionFrequencyMatrix();
     private ActionOutcomeFrequencyMatrix outcomeFM = new ActionOutcomeFrequencyMatrix();
 
+    private MatchLogger matchLogger = new MatchLogger();
+
     public Match(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
     }
 
-    private Team coinToss() {
-       return rnd.nextBoolean() ? this.homeTeam : this.awayTeam;
+    public MatchLogger getMatchLogger() {
+        return this.matchLogger;
+    }
+
+    private Team getHalfTimeStarter() {
+       if (isNull(this.halfTimeStarter)) {
+           return rnd.nextBoolean() ? this.homeTeam : this.awayTeam;
+       } else {
+           return this.halfTimeStarter;
+       }
     }
 
     private void incrementScore(Team team) {
@@ -52,11 +65,11 @@ public class Match {
         }
     }
 
-    public void play() {
+    public void playHalfTime() {
 
-        MatchLogger matchLogger = new MatchLogger();
+        State state = new State(D, getHalfTimeStarter());
 
-        State state = new State(D, coinToss());
+        this.halfTimeStarter = toggle(state.getPossession());
 
         int currentStep = 0;
 
@@ -74,7 +87,7 @@ public class Match {
 
             state = new State(outcome.getCoordinates(), outcome.isKeepPossession() ? state.getPossession() : toggle(state.getPossession()));
             ++currentStep;
-            matchLogger.info(matchLogRecord);
+            matchLogger.report(matchLogRecord);
         }
     }
 

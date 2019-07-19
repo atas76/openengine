@@ -3,7 +3,7 @@ package org.openfootie.openengine.engine.log;
 import org.openfootie.openengine.engine.Action;
 import org.openfootie.openengine.engine.Coordinates;
 
-public class MatchLogRecord {
+public class MatchLogRecord implements Reportable {
 
     private String teamName;
     private Coordinates ball;
@@ -18,6 +18,10 @@ public class MatchLogRecord {
 
     public void setGoalScored() {
         this.goalScored = true;
+    }
+
+    public String getMessage() {
+        return toString();
     }
 
     @Override
