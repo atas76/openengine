@@ -26,9 +26,10 @@ public class ActionOutcomeFrequencyMatrix {
     private final static ActionInstance HOLD_AW = new ActionInstance(Hold, Aw);
     private final static ActionInstance HOLD_A = new ActionInstance(Hold, A);
 
+    private final static ActionInstance LOW_C = new ActionInstance(Default, C);
+
     private final static ActionInstance DEFAULT_D_T = new ActionInstance(Default, D_T);
     private final static ActionInstance DEFAULT_A_T = new ActionInstance(Default, A_T);
-    private final static ActionInstance DEFAULT_C = new ActionInstance(Default, C);
     private final static ActionInstance DEFAULT_D_SP = new ActionInstance(Default, D_SP);
 
     private final static ActionInstance LONG_DG = new ActionInstance(Long, Dg);
@@ -46,6 +47,7 @@ public class ActionOutcomeFrequencyMatrix {
 
     private final static ActionInstance CROSS_AW = new ActionInstance(Cross, Aw);
     private final static ActionInstance CROSS_AP = new ActionInstance(Cross, Ap);
+    private final static ActionInstance CROSS_C  = new ActionInstance(Cross, C);
 
     private final static ActionInstance CROSS_PASS_AP = new ActionInstance(CrossPass, Ap);
     private final static ActionInstance CROSS_PASS_AW = new ActionInstance(CrossPass, Aw);
@@ -59,6 +61,7 @@ public class ActionOutcomeFrequencyMatrix {
 
     private final static ActionInstance SHOOT_A = new ActionInstance(Shoot, A);
     private final static ActionInstance SHOOT_AP = new ActionInstance(Shoot, Ap);
+    private final static ActionInstance SHOOT_AP_FTA = new ActionInstance(Shoot, ApFTA);
 
     public Outcome getOutcome(Action action, State state) {
 
@@ -80,9 +83,10 @@ public class ActionOutcomeFrequencyMatrix {
         data.put(HOLD_AW, new ArrayList<>());
         data.put(HOLD_A, new ArrayList<>());
 
+        data.put(LOW_C, new ArrayList<>());
+
         data.put(DEFAULT_D_T, new ArrayList<>());
         data.put(DEFAULT_A_T, new ArrayList<>());
-        data.put(DEFAULT_C, new ArrayList<>());
         data.put(DEFAULT_D_SP, new ArrayList<>());
 
         data.put(LONG_DG, new ArrayList<>());
@@ -100,6 +104,7 @@ public class ActionOutcomeFrequencyMatrix {
 
         data.put(CROSS_AW, new ArrayList<>());
         data.put(CROSS_AP, new ArrayList<>());
+        data.put(CROSS_C, new ArrayList<>());
 
         data.put(CROSS_PASS_AP, new ArrayList<>());
         data.put(CROSS_PASS_AW, new ArrayList<>());
@@ -113,6 +118,7 @@ public class ActionOutcomeFrequencyMatrix {
 
         data.put(SHOOT_A, new ArrayList<>());
         data.put(SHOOT_AP, new ArrayList<>());
+        data.put(SHOOT_AP_FTA, new ArrayList<>());
 
         data.get(HOLD_D_SP).addAll(Arrays.asList(
                 new ActionOutcomeWeight(D, true, 3),
@@ -175,7 +181,7 @@ public class ActionOutcomeFrequencyMatrix {
 
         data.get(CROSS_AW).addAll(Arrays.asList(
                 new ActionOutcomeWeight(A_T, true, 1),
-                new ActionOutcomeWeight(GK, true, 3),
+                new ActionOutcomeWeight(GK, false, 3),
                 new ActionOutcomeWeight(D, false, 1)
         ));
 
@@ -215,14 +221,28 @@ public class ActionOutcomeFrequencyMatrix {
                 new ActionOutcomeWeight(D, false, 3)
         ));
 
+        // Attempts at goal
+
         data.get(SHOOT_A).addAll(Arrays.asList(
-                new ShotOutcomeWeight(false, CATCH, 0.25, Dg, false, 2),
                 new ShotOutcomeWeight(false, BLOCK, 0, A_T, true, 1),
+                new ShotOutcomeWeight(false, BLOCK, 0, D, false, 1),
+                new ShotOutcomeWeight(false, GOAL_KICK_HIGH, 0, GK, false, 2),
                 new ShotOutcomeWeight(false, GOAL_KICK, 0.5, GK, false, 1),
                 new ShotOutcomeWeight(false, GOAL_KICK, 0, GK, false, 2),
-                new ShotOutcomeWeight(false, GOAL_KICK_HIGH, 0, GK, false, 2),
-                new ShotOutcomeWeight(false, SAVE, 0.5, Ap, true, 1),
-                new ShotOutcomeWeight(false, BLOCK, 0, D, false, 1)
+                new ShotOutcomeWeight(false, CATCH, 0.25, Dg, false, 2),
+                new ShotOutcomeWeight(false, SAVE, 0.5, Ap, true, 1)
+        ));
+
+        data.get(SHOOT_AP).addAll(Arrays.asList(
+                new ShotOutcomeWeight(false, GOAL_KICK, 0.5, GK, false, 1),
+                new ShotOutcomeWeight(false, CATCH, 0.25, Dg, false, 1),
+                new ShotOutcomeWeight(false, SAVE, 0.5, Dp, false, 1),
+                new ShotOutcomeWeight(false, POST, 0.75, Ap, true, 1),
+                new ShotOutcomeWeight(true, GOAL, 1, D, false, 2)
+        ));
+
+        data.get(SHOOT_AP_FTA).addAll(Arrays.asList(
+                new ShotOutcomeWeight(false, GOAL_KICK, 0.75, GK, false, 1)
         ));
 
         data.get(HOLD_DG).addAll(Arrays.asList(
@@ -261,24 +281,18 @@ public class ActionOutcomeFrequencyMatrix {
                 new ActionOutcomeWeight(Aw, true, 2)
         ));
 
-        data.get(SHOOT_AP).addAll(Arrays.asList(
-                new ShotOutcomeWeight(false, CATCH, 0.25, Dg, false, 1),
-                new ShotOutcomeWeight(false, SAVE, 0.5, Dp, false, 1),
-                new ShotOutcomeWeight(false, POST, 0.75, Ap, true, 1),
-                new ShotOutcomeWeight(true, GOAL, 1, D, false, 2),
-                new ShotOutcomeWeight(false, GOAL_KICK, 0.5, GK, false, 1),
-                new ShotOutcomeWeight(false, GOAL_KICK, 0.75, GK, false, 1)
-        ));
-
         data.get(MOVE_AW).addAll(Arrays.asList(
                 new ActionOutcomeWeight(Ap, true, 1),
                 new ActionOutcomeWeight(Aw, true, 1)
         ));
 
-        data.get(DEFAULT_C).addAll(Arrays.asList(
-                new ActionOutcomeWeight(A, true, 1),
-                new ActionOutcomeWeight(Ap, true, 1)
-        ));
+        data.get(LOW_C).addAll(
+                Arrays.asList(new ActionOutcomeWeight(ApFTA, true, 1))
+        );
+
+        data.get(CROSS_C).addAll(
+                Arrays.asList(new ActionOutcomeWeight(A, true, 1))
+        );
 
         data.get(LONG_A).addAll(Arrays.asList(
                 new ActionOutcomeWeight(Ap, true, 1)

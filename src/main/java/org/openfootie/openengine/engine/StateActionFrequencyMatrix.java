@@ -61,6 +61,8 @@ public class StateActionFrequencyMatrix {
         data.get(Ap).add(new ActionWeight(Dribble, 1));
         data.get(Ap).add(new ActionWeight(Cross, 2));
         data.get(Ap).add(new ActionWeight(CrossPass, 1));
+
+        data.get(ApFTA).add(new ActionWeight(Shoot, 1)); // First touch attempts: always 1 by definition
     }
 
     Action getAction(Coordinates coordinates) {
