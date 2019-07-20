@@ -237,11 +237,11 @@ public class ActionOutcomeFrequencyMatrix {
                 new ShotOutcomeWeight(false, GOAL_KICK, 0.5, GK, false, 1),
                 new ShotOutcomeWeight(false, CATCH, 0.25, Dg, false, 1),
                 new ShotOutcomeWeight(false, SAVE, 0.5, Dp, false, 1),
-                new ShotOutcomeWeight(false, POST, 0.75, Ap, true, 1),
                 new ShotOutcomeWeight(true, GOAL, 1, D, false, 2)
         ));
 
         data.get(SHOOT_AP_FTA).addAll(Arrays.asList(
+                new ShotOutcomeWeight(false, POST, 0.75, Ap, true, 1),
                 new ShotOutcomeWeight(false, GOAL_KICK, 0.75, GK, false, 1)
         ));
 
@@ -295,7 +295,7 @@ public class ActionOutcomeFrequencyMatrix {
         );
 
         data.get(LONG_A).addAll(Arrays.asList(
-                new ActionOutcomeWeight(Ap, true, 1)
+                new ActionOutcomeWeight(ApFTA, true, 1)
         ));
 
         data.get(MOVE_A).addAll(Arrays.asList(
