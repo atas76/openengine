@@ -15,8 +15,13 @@ public class ScannerTest {
     @Test
     public void testStatementScan() {
 
-        List<Token> tokens = Scanner.scan(statement);
+        List<String> tokens = new Scanner(statement).scan();
 
-        assertEquals(4, tokens.size());
+        assertEquals(8, tokens.size());
+        assertEquals("00", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("00", tokens.get(2));
+        assertEquals("L", tokens.get(3));
+        assertEquals(":", tokens.get(4));
     }
 }
