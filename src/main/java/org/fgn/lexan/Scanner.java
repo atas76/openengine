@@ -1,7 +1,10 @@
 package org.fgn.lexan;
 
+import org.fgn.lexan.exceptions.ScannerException;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Scanner {
 
@@ -12,7 +15,7 @@ public class Scanner {
         this.statement = statement;
     }
 
-    public List<String> scan() {
+    public List<String> scan() throws ScannerException {
 
         List<String> result = new ArrayList<>();
 
@@ -22,13 +25,16 @@ public class Scanner {
             char ch = statement.charAt(index);
 
             if (Character.isDigit(ch)) {
-                result.add(getTimeElement());
+                result.add(getNextToken(Character::isDigit));
                 continue;
             } else if (Character.isAlphabetic(ch)) {
-
+                result.add(getNextToken(Character::isAlphabetic));
+                continue;
             } else if (ch == ':') {
                 result.add(String.valueOf(ch));
             } else if (ch == '=') {
+                result.add(getNextToken("=>"));
+                continue;
             } else if (Character.isWhitespace(ch)) {
                 index++;
                 continue;
@@ -39,15 +45,31 @@ public class Scanner {
             index++;
         }
 
-        result.add("team");
-        result.add("instate");
-        result.add("=>");
-        result.add("outstate");
-
         return result;
     }
 
-    private String getTimeElement() {
+    private String getNextToken(String token) throws ScannerException {
+
+        int tokenIndex = 0;
+        int endTokenIndex = index + token.length();
+
+        while (index < endTokenIndex) {
+
+            char currentChar = statement.charAt(index);
+            char currentTokenChar = token.charAt(tokenIndex);
+
+            if (currentChar != currentTokenChar) {
+                throw new ScannerException(token);
+            }
+
+            tokenIndex++;
+            index++;
+        }
+
+        return token;
+    }
+
+    private String getNextToken(Predicate<Character> tokenInclusionPredicate) {
 
         StringBuilder result = new StringBuilder();
 
@@ -55,7 +77,7 @@ public class Scanner {
 
             char currentChar = statement.charAt(index);
 
-            if (Character.isDigit(currentChar)) {
+            if (tokenInclusionPredicate.test(currentChar)) {
                 result.append(currentChar);
                 index++;
             } else {

@@ -1,7 +1,7 @@
 package org.fgn;
 
 import org.fgn.lexan.Scanner;
-import org.fgn.lexan.Token;
+import org.fgn.lexan.exceptions.ScannerException;
 import org.junit.Test;
 
 import java.util.List;
@@ -10,10 +10,12 @@ import static org.junit.Assert.assertEquals;
 
 public class ScannerTest {
 
-    private String statement = "00:00 L: KO => DM";
+    // TODO Cover exception handling
 
     @Test
-    public void testStatementScan() {
+    public void testStatementScan() throws ScannerException {
+
+        String statement = "00:00 L: KO => DM";
 
         List<String> tokens = new Scanner(statement).scan();
 
@@ -23,5 +25,8 @@ public class ScannerTest {
         assertEquals("00", tokens.get(2));
         assertEquals("L", tokens.get(3));
         assertEquals(":", tokens.get(4));
+        assertEquals("KO", tokens.get(5));
+        assertEquals("=>", tokens.get(6));
+        assertEquals("DM", tokens.get(7));
     }
 }
