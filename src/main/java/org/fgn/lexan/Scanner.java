@@ -35,6 +35,9 @@ public class Scanner {
             } else if (ch == '=') {
                 result.add(getNextToken("=>"));
                 continue;
+            } else if (ch == '#') {
+                result.add(statement.substring(index + 1));
+                return result;
             } else if (Character.isWhitespace(ch)) {
                 index++;
                 continue;
