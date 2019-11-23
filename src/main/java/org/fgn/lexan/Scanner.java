@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 public class Scanner {
 
     private int index = 0;
-    private String statement;
+    private final String statement;
 
     public Scanner(String statement) {
         this.statement = statement;
@@ -19,10 +19,11 @@ public class Scanner {
 
         List<String> result = new ArrayList<>();
 
-        // TODO: improve
-        while (index < statement.length()) {
+        final char [] statementChars = statement.toCharArray();
 
-            char ch = statement.charAt(index);
+        while (index < statementChars.length) {
+
+            char ch = statementChars[index];
 
             if (Character.isDigit(ch)) {
                 result.add(getNextToken(Character::isDigit));
