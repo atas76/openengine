@@ -9,9 +9,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ScannerTest {
-
-    // TODO Cover exception handling
-
+    
     @Test
     public void testStatementScan() throws ScannerException {
 
@@ -28,5 +26,10 @@ public class ScannerTest {
         assertEquals("KO", tokens.get(5));
         assertEquals("=>", tokens.get(6));
         assertEquals("DM", tokens.get(7));
+    }
+
+    @Test(expected = ScannerException.class)
+    public void testStatementScanInvalidToken() throws ScannerException {
+       new Scanner("00:00 L: KO ==> DM").scan();
     }
 }
