@@ -114,6 +114,19 @@ public class ScannerTest {
 
     }
 
+    @Test
+    public void testReversalOperator() throws ScannerException {
+
+        String statement = "03:20 L: Mw->Long => !Dg";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(11, tokens.size());
+        assertEquals("=>", tokens.get(8));
+        assertEquals("!", tokens.get(9));
+        assertEquals("Dg", tokens.get(10));
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementScanInvalidToken() throws ScannerException {
        new Scanner("00:00 L: KO ==> DM").scan();
