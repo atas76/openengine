@@ -15,6 +15,8 @@ public class Scanner {
         this.statement = statement;
     }
 
+    // TODO: Optimize by recursive splitting
+
     public List<String> scan() throws ScannerException {
 
         List<String> result = new ArrayList<>();
@@ -33,6 +35,9 @@ public class Scanner {
                 continue;
             } else if (ch == ':') {
                 result.add(String.valueOf(ch));
+            } else if (ch == '-') {
+                result.add(getNextToken("->"));
+                continue;
             } else if (ch == '=') {
                 result.add(getNextToken("=>"));
                 continue;

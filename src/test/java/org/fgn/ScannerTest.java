@@ -52,7 +52,7 @@ public class ScannerTest {
     }
 
     @Test
-    public void testStatementScan() throws ScannerException {
+    public void testDefaultActionStatementScan() throws ScannerException {
 
         String statement = "00:00 L: KO => DM";
 
@@ -67,6 +67,27 @@ public class ScannerTest {
         assertEquals("KO", tokens.get(5));
         assertEquals("=>", tokens.get(6));
         assertEquals("DM", tokens.get(7));
+    }
+
+    @Test
+    public void testStatementScan() throws ScannerException {
+
+        String statement = "00:02 L: DM->Long => M";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(10, tokens.size());
+        assertEquals("00", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("02", tokens.get(2));
+        assertEquals("L", tokens.get(3));
+        assertEquals(":", tokens.get(4));
+        assertEquals("DM", tokens.get(5));
+        assertEquals("->", tokens.get(6));
+        assertEquals("Long", tokens.get(7));
+        assertEquals("=>", tokens.get(8));
+        assertEquals("M", tokens.get(9));
+
     }
 
     @Test(expected = ScannerException.class)
