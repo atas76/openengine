@@ -90,6 +90,30 @@ public class ScannerTest {
 
     }
 
+    @Test
+    public void testParameterisedState() throws ScannerException {
+
+        String statement = "00:20 L: Apc->BounceOff => H(Apc)";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(13,tokens.size());
+        assertEquals("00", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("20", tokens.get(2));
+        assertEquals("L", tokens.get(3));
+        assertEquals(":", tokens.get(4));
+        assertEquals("Apc", tokens.get(5));
+        assertEquals("->", tokens.get(6));
+        assertEquals("BounceOff", tokens.get(7));
+        assertEquals("=>", tokens.get(8));
+        assertEquals("H", tokens.get(9));
+        assertEquals("(", tokens.get(10));
+        assertEquals("Apc", tokens.get(11));
+        assertEquals(")", tokens.get(12));
+
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementScanInvalidToken() throws ScannerException {
        new Scanner("00:00 L: KO ==> DM").scan();
