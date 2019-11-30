@@ -127,6 +127,20 @@ public class ScannerTest {
         assertEquals("Dg", tokens.get(10));
     }
 
+    @Test
+    public void goalAttemptOperator() throws ScannerException {
+
+        String statement = "09:02 T: A->Shoot => G'(GKo)";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(14, tokens.size());
+
+        assertEquals("G", tokens.get(9));
+        assertEquals("'", tokens.get(10));
+        assertEquals("(", tokens.get(11));
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementScanInvalidToken() throws ScannerException {
        new Scanner("00:00 L: KO ==> DM").scan();
