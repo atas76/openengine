@@ -145,4 +145,14 @@ public class ScannerTest {
     public void testStatementScanInvalidToken() throws ScannerException {
        new Scanner("00:00 L: KO ==> DM").scan();
     }
-}
+
+    @Test(expected = ScannerException.class)
+    public void testStatementRandomToken() throws ScannerException {
+        new Scanner("---").scan();
+    }
+
+    @Test(expected = ScannerException.class)
+    public void testStatementUnsupportedToken() throws ScannerException {
+        new Scanner("00:18 R: DMw->Pass => *M(T)").scan();
+    }
+ }

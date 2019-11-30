@@ -48,7 +48,7 @@ public class Scanner {
                 index++;
                 continue;
             } else {
-                break;
+                throw new ScannerException(String.valueOf(ch));
             }
 
             index++;
