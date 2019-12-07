@@ -6,7 +6,7 @@ public class MatchTime {
 
     private int minutes;
     private int seconds;
-    private int totalSeconds;
+    private final int totalSeconds;
 
     public int getMinutes() {
         return minutes;
@@ -17,17 +17,19 @@ public class MatchTime {
     }
 
     public int getTotalSeconds() {
-        return totalSeconds;
+        return this.totalSeconds;
     }
 
     public MatchTime() {
         this.minutes = 0;
         this.seconds = 0;
+        this.totalSeconds = 0;
     }
 
     public MatchTime(int minutes, int seconds) {
         this.minutes = minutes;
         this.seconds = seconds;
+        this.totalSeconds = this.minutes * 60 + this.seconds;
     }
 
     @Override

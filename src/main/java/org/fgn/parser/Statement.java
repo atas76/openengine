@@ -7,4 +7,8 @@ public class Statement {
     public MatchTime getTime() {
         return this.time;
     }
+
+    public void setTime(MatchTime time) {
+        this.time = time;
+    }
 }
