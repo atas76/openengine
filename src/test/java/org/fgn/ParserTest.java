@@ -46,12 +46,23 @@ public class ParserTest {
     public void testInvalidTimeSeparator() throws ScannerException, ParserException {
 
         expectedEx.expect(ParserException.class);
-        expectedEx.expectMessage(": expected");
+        expectedEx.expectMessage("':' expected");
 
         // Most invalid separators are restricted by lexical analysis anyway, so cover the case for missing separator
         List<String> tokens = getTokens("12 38 T: D->Pass => DM");
 
        new Parser(tokens).parse();
+    }
+
+    @Test
+    public void testInvalidTeamSeparator() throws ScannerException,ParserException {
+
+        expectedEx.expect(ParserException.class);
+        expectedEx.expectMessage("':' expected");
+
+        List<String> tokens = getTokens("12:38 T D->Pass => DM");
+
+        new Parser(tokens).parse();
     }
 
     @Test

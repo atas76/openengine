@@ -13,6 +13,10 @@ public class Parser {
         this.tokens = tokens;
     }
 
+    private boolean confirmToken(int tokenIndex, String token) {
+        return token.equals(tokens.get(tokenIndex));
+    }
+
     public Statement parse() throws ParserException {
 
         Statement statement = new Statement();
@@ -22,7 +26,7 @@ public class Parser {
         String secondsToken = tokens.get(2);
 
         if (!Token.TIME_SEPARATOR.equals(timeSeparator)) {
-            throw new ParserException(Token.TIME_SEPARATOR + " expected");
+            throw new ParserException("'" + Token.TIME_SEPARATOR + "'" + " expected");
         }
 
         try {
@@ -34,6 +38,10 @@ public class Parser {
 
         } catch (NumberFormatException nfe) {
             throw new ParserException(ParserException.INVALID_TIME_FORMAT);
+        }
+
+        if (!confirmToken(4, ":")) {
+            throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
         }
 
         return statement;
