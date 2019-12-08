@@ -21,6 +21,25 @@ public class Parser {
 
         Statement statement = new Statement();
 
+        parseTime(statement);
+        parseTeam(statement);
+        checkTeamSeparator();
+
+        return statement;
+    }
+
+    private void parseTeam(Statement statement) {
+        statement.setTeam(tokens.get(3));
+    }
+
+    private void checkTeamSeparator() throws ParserException {
+        if (!confirmToken(4, ":")) {
+            throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
+        }
+    }
+
+    private void parseTime(Statement statement) throws ParserException {
+
         String minutesToken = tokens.get(0);
         String timeSeparator = tokens.get(1);
         String secondsToken = tokens.get(2);
@@ -39,11 +58,5 @@ public class Parser {
         } catch (NumberFormatException nfe) {
             throw new ParserException(ParserException.INVALID_TIME_FORMAT);
         }
-
-        if (!confirmToken(4, ":")) {
-            throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
-        }
-
-        return statement;
     }
 }

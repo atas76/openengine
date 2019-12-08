@@ -27,6 +27,7 @@ public class ParserTest {
         Statement parsedStatement = new Parser(tokens).parse();
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
     }
 
     @Test
@@ -37,6 +38,7 @@ public class ParserTest {
         Statement parsedStatement = new Parser(tokens).parse();
 
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
+        assertEquals("T", parsedStatement.getTeam());
     }
 
     @Rule
