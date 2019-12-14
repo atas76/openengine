@@ -29,6 +29,7 @@ public class ParserTest {
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
         assertEquals("KO", parsedStatement.getStateIn().toString());
+        assertEquals("DM", parsedStatement.getStateOut().toString());
     }
 
     @Test
@@ -41,10 +42,24 @@ public class ParserTest {
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
         assertEquals("D", parsedStatement.getStateIn().toString());
+        assertEquals("Pass", parsedStatement.getAction().toString());
+        assertEquals("DM", parsedStatement.getStateOut().toString());
     }
 
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
+
+    @Test
+    public void testSyntaxError() throws ScannerException, ParserException {
+
+        expectedEx.expect(ParserException.class);
+        expectedEx.expectMessage("Syntax error");
+
+        // Missing action operators
+        List<String> tokens = getTokens("12:38 T: D Pass DM");
+
+        new Parser(tokens).parse();
+    }
 
     @Test
     public void testInvalidTimeSeparator() throws ScannerException, ParserException {

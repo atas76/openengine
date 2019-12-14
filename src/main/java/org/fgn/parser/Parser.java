@@ -5,6 +5,8 @@ import org.fgn.parser.exceptions.ParserException;
 
 import java.util.List;
 
+import static org.fgn.lexan.Token.*;
+
 public class Parser {
 
     private List<String> tokens;
@@ -26,7 +28,31 @@ public class Parser {
         checkTeamSeparator();
         parseStateIn(statement);
 
+        String token = getNextToken(6);
+
+        switch (token) {
+            case ACTION_DELIMITER:
+                parseAction(statement);
+            case OUTCOME_DELIMITER:
+                parseStateOut(statement);
+                break;
+            default:
+                throw new ParserException("Syntax error: action or default outcome operator expected");
+        }
+
         return statement;
+    }
+
+    private void parseStateOut(Statement statement) {
+        statement.setStateOut(new State(tokens.get(tokens.size() - 1)));
+    }
+
+    private void parseAction(Statement statement) {
+        statement.setAction(new Action(tokens.get(7)));
+    }
+
+    private String getNextToken(int index) {
+        return this.tokens.get(index);
     }
 
     private void parseStateIn(Statement statement) {

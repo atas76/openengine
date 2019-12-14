@@ -5,6 +5,24 @@ public class Statement {
     private MatchTime time;
     private String team;
     private State stateIn;
+    private Action action;
+    private State stateOut;
+
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
+    }
+
+    public State getStateOut() {
+        return stateOut;
+    }
+
+    public void setStateOut(State stateOut) {
+        this.stateOut = stateOut;
+    }
 
     public State getStateIn() {
         return stateIn;
