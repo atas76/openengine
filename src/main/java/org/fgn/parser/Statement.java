@@ -4,6 +4,15 @@ public class Statement {
 
     private MatchTime time;
     private String team;
+    private State stateIn;
+
+    public State getStateIn() {
+        return stateIn;
+    }
+
+    public void setStateIn(State stateIn) {
+        this.stateIn = stateIn;
+    }
 
     public String getTeam() {
         return team;

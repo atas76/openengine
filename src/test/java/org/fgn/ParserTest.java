@@ -28,6 +28,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
+        assertEquals("KO", parsedStatement.getStateIn().toString());
     }
 
     @Test
@@ -39,6 +40,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
+        assertEquals("D", parsedStatement.getStateIn().toString());
     }
 
     @Rule

@@ -24,18 +24,23 @@ public class Parser {
         parseTime(statement);
         parseTeam(statement);
         checkTeamSeparator();
+        parseStateIn(statement);
 
         return statement;
     }
 
-    private void parseTeam(Statement statement) {
-        statement.setTeam(tokens.get(3));
+    private void parseStateIn(Statement statement) {
+        statement.setStateIn(new State(tokens.get(5)));
     }
 
     private void checkTeamSeparator() throws ParserException {
         if (!confirmToken(4, ":")) {
             throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
         }
+    }
+
+    private void parseTeam(Statement statement) {
+        statement.setTeam(tokens.get(3));
     }
 
     private void parseTime(Statement statement) throws ParserException {
