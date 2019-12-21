@@ -15,8 +15,8 @@ public class Parser {
         this.tokens = tokens;
     }
 
-    private boolean confirmToken(int tokenIndex, String token) {
-        return token.equals(tokens.get(tokenIndex));
+    private void confirmToken(int tokenIndex, String token) throws ParserException {
+        if (!(token.equals(tokens.get(tokenIndex)))) throw new ParserException("'" + token + "'" + " expected");
     }
 
     private int index = 0;
@@ -57,14 +57,21 @@ public class Parser {
         return this.tokens.get(index++);
     }
 
-    private void parseStateIn(Statement statement) {
+    private String lookaheadToken() {
+        return this.tokens.get(index);
+    }
+
+    private void parseStateIn(Statement statement) throws ParserException {
         statement.setStateIn(new State(tokens.get(index++)));
+        if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
+            statement.getStateIn().set(StateParameter.valueOf(tokens.get(++index)));
+            confirmToken(++index, CLOSE_PARENTHESIS);
+            index++;
+        }
     }
 
     private void checkTeamSeparator() throws ParserException {
-        if (!confirmToken(index++, ":")) {
-            throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
-        }
+        confirmToken(index++, ":");
     }
 
     private void parseTeam(Statement statement) {

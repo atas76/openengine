@@ -25,7 +25,6 @@ public class ParserTest {
         return new Parser(tokens).parse();
     }
 
-    /*
     @Test
     public void testParameterisedActionParsing() throws ScannerException, ParserException {
 
@@ -33,12 +32,11 @@ public class ParserTest {
 
         assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("Ap", parsedStatement.getStateIn().getSpace());
+        assertEquals("Ap", parsedStatement.getStateIn().getSpace().toString());
         assertEquals(true, parsedStatement.getStateIn().isSetPiece());
         assertEquals("Shoot", parsedStatement.getAction().toString());
         assertEquals("G", parsedStatement.getStateOut().toString());
     }
-    */
 
     @Test
     public void testRandomActionParsing() throws ScannerException, ParserException {
