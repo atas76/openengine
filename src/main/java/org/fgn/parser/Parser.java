@@ -62,9 +62,14 @@ public class Parser {
     }
 
     private void parseStateIn(Statement statement) throws ParserException {
-        statement.setStateIn(new State(tokens.get(index++)));
+        State state = new State(tokens.get(index++));
+        parseParameter(state);
+        statement.setStateIn(state);
+    }
+
+    private void parseParameter(State state) throws ParserException {
         if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            statement.getStateIn().set(StateParameter.valueOf(tokens.get(++index)));
+            state.set(StateParameter.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             index++;
         }
