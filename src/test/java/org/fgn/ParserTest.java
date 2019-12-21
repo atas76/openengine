@@ -18,31 +18,48 @@ public class ParserTest {
 
     private static final String DEFAULT_ACTION_STATEMENT = "00:00 L: KO => DM";
     private static final String RANDOM_ACTION_STATEMENT = "12:38 T: D->Pass => DM";
+    private static final String PARAMETERISED_ACTION_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
 
-    @Test
-    public void testDefaultActionParsing() throws ScannerException, ParserException {
-
-        List<String> tokens = getTokens(DEFAULT_ACTION_STATEMENT);
-
-        Statement parsedStatement = new Parser(tokens).parse();
-
-        assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
-        assertEquals("L", parsedStatement.getTeam());
-        assertEquals("KO", parsedStatement.getStateIn().toString());
-        assertEquals("DM", parsedStatement.getStateOut().toString());
+    private Statement parseStatemement(String statement) throws ScannerException, ParserException {
+        List<String> tokens = getTokens(statement);
+        return new Parser(tokens).parse();
     }
+
+    /*
+    @Test
+    public void testParameterisedActionParsing() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement(PARAMETERISED_ACTION_STATEMENT);
+
+        assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
+        assertEquals("Ap", parsedStatement.getStateIn().getSpace());
+        assertEquals(true, parsedStatement.getStateIn().isSetPiece());
+        assertEquals("Shoot", parsedStatement.getAction().toString());
+        assertEquals("G", parsedStatement.getStateOut().toString());
+    }
+    */
 
     @Test
     public void testRandomActionParsing() throws ScannerException, ParserException {
 
-        List<String> tokens = getTokens(RANDOM_ACTION_STATEMENT);
-
-        Statement parsedStatement = new Parser(tokens).parse();
+        Statement parsedStatement = parseStatemement(RANDOM_ACTION_STATEMENT);
 
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
         assertEquals("D", parsedStatement.getStateIn().toString());
         assertEquals("Pass", parsedStatement.getAction().toString());
+        assertEquals("DM", parsedStatement.getStateOut().toString());
+    }
+
+    @Test
+    public void testDefaultActionParsing() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement(DEFAULT_ACTION_STATEMENT);
+
+        assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
+        assertEquals("KO", parsedStatement.getStateIn().toString());
         assertEquals("DM", parsedStatement.getStateOut().toString());
     }
 
