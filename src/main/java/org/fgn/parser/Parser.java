@@ -19,6 +19,8 @@ public class Parser {
         return token.equals(tokens.get(tokenIndex));
     }
 
+    private int index = 0;
+
     public Statement parse() throws ParserException {
 
         Statement statement = new Statement();
@@ -28,7 +30,7 @@ public class Parser {
         checkTeamSeparator();
         parseStateIn(statement);
 
-        String token = getNextToken(6);
+        String token = getNextToken();
 
         switch (token) {
             case ACTION_DELIMITER:
@@ -48,32 +50,32 @@ public class Parser {
     }
 
     private void parseAction(Statement statement) {
-        statement.setAction(new Action(tokens.get(7)));
+        statement.setAction(new Action(tokens.get(index++)));
     }
 
-    private String getNextToken(int index) {
-        return this.tokens.get(index);
+    private String getNextToken() {
+        return this.tokens.get(index++);
     }
 
     private void parseStateIn(Statement statement) {
-        statement.setStateIn(new State(tokens.get(5)));
+        statement.setStateIn(new State(tokens.get(index++)));
     }
 
     private void checkTeamSeparator() throws ParserException {
-        if (!confirmToken(4, ":")) {
+        if (!confirmToken(index++, ":")) {
             throw new ParserException("'" + Token.TEAM_SEPARATOR + "'" + " expected");
         }
     }
 
     private void parseTeam(Statement statement) {
-        statement.setTeam(tokens.get(3));
+        statement.setTeam(tokens.get(index++));
     }
 
     private void parseTime(Statement statement) throws ParserException {
 
-        String minutesToken = tokens.get(0);
-        String timeSeparator = tokens.get(1);
-        String secondsToken = tokens.get(2);
+        String minutesToken = tokens.get(index++);
+        String timeSeparator = tokens.get(index++);
+        String secondsToken = tokens.get(index++);
 
         if (!Token.TIME_SEPARATOR.equals(timeSeparator)) {
             throw new ParserException("'" + Token.TIME_SEPARATOR + "'" + " expected");
