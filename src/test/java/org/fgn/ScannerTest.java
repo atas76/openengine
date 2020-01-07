@@ -35,7 +35,7 @@ public class ScannerTest {
 
         List<String> tokens = new Scanner(statement).scan();
 
-        assertEquals(9, tokens.size());
+        assertEquals(10, tokens.size());
         assertEquals("00", tokens.get(0));
         assertEquals(":", tokens.get(1));
         assertEquals("00", tokens.get(2));
@@ -44,7 +44,8 @@ public class ScannerTest {
         assertEquals("KO", tokens.get(5));
         assertEquals("=>", tokens.get(6));
         assertEquals("DM", tokens.get(7));
-        assertEquals(" My comments", tokens.get(8));
+        assertEquals("#", tokens.get(8));
+        assertEquals(" My comments", tokens.get(9));
     }
 
     @Test
@@ -54,8 +55,9 @@ public class ScannerTest {
 
         List<String> tokens = new Scanner(statement).scan();
 
-        assertEquals(1, tokens.size());
-        assertEquals(" My comments", tokens.get(0));
+        assertEquals(2, tokens.size());
+        assertEquals("#", tokens.get(0));
+        assertEquals(" My comments", tokens.get(1));
     }
 
     @Test
@@ -65,8 +67,9 @@ public class ScannerTest {
 
         List<String> tokens = new Scanner(statement).scan();
 
-        assertEquals(1, tokens.size());
-        assertEquals("", tokens.get(0));
+        assertEquals(2, tokens.size());
+        assertEquals("#", tokens.get(0));
+        assertEquals("", tokens.get(1));
     }
 
     @Test
