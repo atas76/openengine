@@ -17,7 +17,7 @@ public class MatchNotationParsing {
 
     private static final String FGN_ROOT = "src/main/resources/data/fgn";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ScannerException {
 
         String file = FGN_ROOT + "/" + args[0];
 
@@ -60,12 +60,21 @@ public class MatchNotationParsing {
                 System.out.println("Error message: " + ex.getMessage());
                 System.exit(2);
             } catch (Exception ex) {
-                System.out.println("Error in line " + lineCount);
-                System.out.println("Unknown error");
+                System.out.println("Unknown error in line " + lineCount);
+                printCurrentErrorState(currentLine, new Scanner(currentLine).scan());
                 System.exit(3);
             }
         }
 
         symbolTable.printReport();
+    }
+
+    private static void printCurrentErrorState(String currentLine, List<String> tokens) {
+        System.out.println("Current line: " + currentLine);
+        System.out.println("Token size: " + tokens.size());
+        System.out.println("Tokens");
+        for (String token: tokens) {
+            System.out.println(token);
+        }
     }
 }
