@@ -59,6 +59,10 @@ public class MatchNotationParsing {
                 System.out.println("Error in line " + lineCount);
                 System.out.println("Error message: " + ex.getMessage());
                 System.exit(2);
+            } catch (Exception ex) {
+                System.out.println("Error in line " + lineCount);
+                System.out.println("Unknown error");
+                System.exit(3);
             }
         }
 
