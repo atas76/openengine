@@ -25,6 +25,11 @@ public class Parser {
 
         Statement statement = new Statement();
 
+        if (COMMENT.equals(tokens.get(0))) {
+            statement.setComment(tokens.get(1));
+            return statement;
+        }
+
         parseTime(statement);
         parseTeam(statement);
         checkTeamSeparator();
@@ -35,8 +40,14 @@ public class Parser {
         switch (token) {
             case ACTION_DELIMITER:
                 parseAction(statement);
+                confirmToken(index++, OUTCOME_DELIMITER);
+                parseStateOut(statement);
+                break;
             case OUTCOME_DELIMITER:
                 parseStateOut(statement);
+                break;
+            case COMMENT:
+                statement.setComment(tokens.get(++index));
                 break;
             default:
                 throw new ParserException("Syntax error: action or default outcome operator expected");
@@ -46,7 +57,7 @@ public class Parser {
     }
 
     private void parseStateOut(Statement statement) {
-        statement.setStateOut(new State(tokens.get(tokens.size() - 1)));
+        statement.setStateOut(new State(tokens.get(index++)));
     }
 
     private void parseAction(Statement statement) {

@@ -7,6 +7,15 @@ public class Statement {
     private State stateIn;
     private Action action;
     private State stateOut;
+    private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
     public Action getAction() {
         return action;

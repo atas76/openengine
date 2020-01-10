@@ -26,6 +26,30 @@ public class ParserTest {
     }
 
     @Test
+    public void testCommentedStatement() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement("00:00 L: KO => DM # My comments");
+
+        assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
+        assertEquals("KO", parsedStatement.getStateIn().toString());
+        assertEquals("DM", parsedStatement.getStateOut().toString());
+    }
+
+    @Test
+    public void testCommentedOutStatement() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement("# My comments");
+        assertEquals(" My comments", parsedStatement.getComment());
+    }
+
+    @Test
+    public void testEmptyComments() throws ScannerException, ParserException {
+        Statement parsedStatement = parseStatemement("#");
+        assertEquals("", parsedStatement.getComment());
+    }
+
+    @Test
     public void testParameterisedActionParsing() throws ScannerException, ParserException {
 
         Statement parsedStatement = parseStatemement(PARAMETERISED_ACTION_STATEMENT);
