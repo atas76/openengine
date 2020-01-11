@@ -84,7 +84,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(PARAMETERISED_STATES_STATEMENT);
 
-        // TODO this line should fail after making this test pass
+        // TODO this line should fail after making this test pass: 00:20 L: Apc->BounceOff => H(Apc)
 
         assertEquals(new MatchTime(11,34), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
