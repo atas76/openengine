@@ -57,7 +57,15 @@ public class Parser {
     }
 
     private void parseStateOut(Statement statement) {
-        statement.setStateOut(new State(tokens.get(index++)));
+
+        boolean keepPossession = true;
+
+        if (NEGATION.equals(lookaheadToken())) {
+            keepPossession = false;
+            index++;
+        }
+
+        statement.setStateOut(new State(tokens.get(index++), keepPossession));
     }
 
     private void parseAction(Statement statement) {

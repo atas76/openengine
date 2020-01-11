@@ -13,6 +13,7 @@ import org.junit.rules.ExpectedException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class ParserTest {
 
@@ -23,6 +24,19 @@ public class ParserTest {
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
         return new Parser(tokens).parse();
+    }
+
+    @Test
+    public void testParsedStatement() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement("03:20 L: Mw->Long => !Dg");
+
+        assertEquals(new MatchTime(3, 20), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
+        assertEquals("Mw", parsedStatement.getStateIn().toString());
+        assertEquals("Long", parsedStatement.getAction().toString());
+        assertEquals("Dg", parsedStatement.getStateOut().toString());
+        assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
 
     @Test

@@ -7,4 +7,5 @@ public class Token {
     public static final String OPEN_PARENTHESIS = "(";
     public static final String CLOSE_PARENTHESIS = ")";
     public static final String COMMENT = "#";
+    public static final String NEGATION = "!";
 }

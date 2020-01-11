@@ -11,6 +11,27 @@ import static org.junit.Assert.assertEquals;
 public class ScannerTest {
 
     @Test
+    public void testNegationOperator() throws ScannerException {
+
+        String statement = "03:20 L: Mw->Long => !Dg";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(11, tokens.size());
+        assertEquals("03", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("20", tokens.get(2));
+        assertEquals("L", tokens.get(3));
+        assertEquals(":", tokens.get(4));
+        assertEquals("Mw", tokens.get(5));
+        assertEquals("->", tokens.get(6));
+        assertEquals("Long", tokens.get(7));
+        assertEquals("=>", tokens.get(8));
+        assertEquals("!", tokens.get(9));
+        assertEquals("Dg", tokens.get(10));
+    }
+
+    @Test
     public void testDefaultActionStatementScan() throws ScannerException {
 
         String statement = "00:00 L: KO => DM";
