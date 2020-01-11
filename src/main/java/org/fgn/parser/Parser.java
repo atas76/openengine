@@ -66,6 +66,8 @@ public class Parser {
         }
 
         statement.setStateOut(new State(tokens.get(index++), keepPossession));
+
+        // TODO Support parameterised out-states
     }
 
     private void parseAction(Statement statement) {

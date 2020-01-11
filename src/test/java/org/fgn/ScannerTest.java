@@ -115,6 +115,15 @@ public class ScannerTest {
     }
 
     @Test
+    public void testParameterisedStates() throws ScannerException {
+
+        String statement = "11:34 T: D(T) => F(Mw)";
+
+        List<String> tokens = new Scanner(statement).scan();
+        assertEquals(14, tokens.size());
+    }
+
+    @Test
     public void testParameterisedState() throws ScannerException {
 
         String statement = "00:20 L: Apc->BounceOff => H(Apc)";

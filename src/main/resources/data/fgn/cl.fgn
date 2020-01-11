@@ -20,9 +20,9 @@
 04:27 T: DM->Long => Aw
 04:34 T: Aw->Pass => C
 05:15 T: C->Cross => !Dp(HD)
-05:18 L: Dp(HD)-> !M
+#- 05:18 L: Dp(HD)-> !M
 05:22 T: M->Pass => D(g)
-05:28 T: D(g)->Pass => DMw
+#- 05:28 T: D(g)->Pass => DMw
 05:35 T: DMw->Pass => Dg
 05:37 T: Dg->Pass => D
 05:42 T: D->Pass => DMw
@@ -32,17 +32,17 @@
 05:59 L: A->Forward => Apw
 06:01 L: Apw->Hold => !Dp
 #--
-06:54 T: AM(T) => DMw
+#- 06:54 T: AM(T) => DMw
 06:59 T: DMw->Pass => DM
 07:16 T: DM->Forward => AM
 07:17 T: AM->High => !Dw
 07:21 L: Dw->Pass => Dg
 07:22 L: Dg->Long => !A(T)
-07:32 T: A(T) => M
+#- 07:32 T: A(T) => M
 07:39 T: M->Pass => Aw
 07:41 T: Aw->Pass => M
 07:45 T: M->Long => !D(T)
-08:13 L: D(T) => DM
+#- 08:13 L: D(T) => DM
 08:19 L: DM->Long => !DMw
 08:25 T: DMw->Move => Mw
 08:31 T: Mw->Pass => DMw
@@ -60,7 +60,7 @@
 09:33 L: Dg->Pass => D
 09:35 L: D->Long => C
 10:40 L: C->Cross => !Dg(FT)
-10:43 T: Dg(FT)->Clr => Dp
+#- 10:43 T: Dg(FT)->Clr => Dp
 10:43 T: Dp->Clr => !Dg
 11:05 L: Dg->HandPass => D
 11:08 L: D->Long => !D(T)

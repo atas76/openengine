@@ -2,6 +2,7 @@ package org.fgn;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
+import org.fgn.parser.Coordinates;
 import org.fgn.parser.MatchTime;
 import org.fgn.parser.Parser;
 import org.fgn.parser.Statement;
@@ -12,14 +13,14 @@ import org.junit.rules.ExpectedException;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class ParserTest {
 
     private static final String DEFAULT_ACTION_STATEMENT = "00:00 L: KO => DM";
     private static final String RANDOM_ACTION_STATEMENT = "12:38 T: D->Pass => DM";
-    private static final String PARAMETERISED_ACTION_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
+    private static final String PARAMETERISED_STATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
+    private static final String PARAMETERISED_STATES_STATEMENT = "11:34 T: D(T) => F(Mw)";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -64,16 +65,34 @@ public class ParserTest {
     }
 
     @Test
-    public void testParameterisedActionParsing() throws ScannerException, ParserException {
+    public void testParameterisedStateParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(PARAMETERISED_ACTION_STATEMENT);
+        Statement parsedStatement = parseStatemement(PARAMETERISED_STATE_STATEMENT);
 
         assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
         assertEquals("Ap", parsedStatement.getStateIn().getSpace().toString());
-        assertEquals(true, parsedStatement.getStateIn().isSetPiece());
+        assertTrue(parsedStatement.getStateIn().isSetPiece());
         assertEquals("Shoot", parsedStatement.getAction().toString());
         assertEquals("G", parsedStatement.getStateOut().toString());
+    }
+
+    @Test
+    public void testParameterisedStatesParsing() throws ScannerException, ParserException {
+
+        // "11:34 T: D(T) => F(Mw)"
+
+        Statement parsedStatement = parseStatemement(PARAMETERISED_STATES_STATEMENT);
+
+        // TODO this line should fail after making this test pass
+
+        assertEquals(new MatchTime(11,34), parsedStatement.getTime());
+        assertEquals("T", parsedStatement.getTeam());
+        assertEquals("D", parsedStatement.getStateIn().toString());
+        assertTrue(parsedStatement.getStateIn().isThrowIn());
+        assertNull(parsedStatement.getAction());
+        assertEquals("F", parsedStatement.getStateOut().toString());
+        assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpaceParameter());
     }
 
     @Test
