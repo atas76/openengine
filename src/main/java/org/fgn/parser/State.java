@@ -19,6 +19,10 @@ public class State extends DomainTerm {
         return this.spaceParameter;
     }
 
+    public void setSpaceParameter(Coordinates spaceParameter) {
+        this.spaceParameter = spaceParameter;
+    }
+
     void set(StateParameter parameter) {
         this.stateParameter = parameter;
     }

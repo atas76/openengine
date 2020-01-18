@@ -1,5 +1,5 @@
 package org.fgn.parser;
 
 public enum Coordinates {
-    Ap, Mw;
+    Ap, Apc, Mw;
 }

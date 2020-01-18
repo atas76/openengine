@@ -56,7 +56,7 @@ public class Parser {
         return statement;
     }
 
-    private void parseStateOut(Statement statement) {
+    private void parseStateOut(Statement statement) throws ParserException {
 
         boolean keepPossession = true;
 
@@ -65,9 +65,14 @@ public class Parser {
             index++;
         }
 
-        statement.setStateOut(new State(tokens.get(index++), keepPossession));
+        State state = new State(tokens.get(index++), keepPossession);
 
-        // TODO Support parameterised out-states
+        if (index < tokens.size() && OPEN_PARENTHESIS.equals(lookaheadToken())) {
+            state.setSpaceParameter(Coordinates.valueOf(tokens.get(++index)));
+            confirmToken(++this.index, CLOSE_PARENTHESIS);
+        }
+
+        statement.setStateOut(state);
     }
 
     private void parseAction(Statement statement) {

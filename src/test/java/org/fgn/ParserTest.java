@@ -77,10 +77,10 @@ public class ParserTest {
         assertEquals("G", parsedStatement.getStateOut().toString());
     }
 
+    // TODO write test for illegal statement ending
+
     @Test
     public void testParameterisedStatesParsing() throws ScannerException, ParserException {
-
-        // "11:34 T: D(T) => F(Mw)"
 
         Statement parsedStatement = parseStatemement(PARAMETERISED_STATES_STATEMENT);
 
@@ -93,6 +93,22 @@ public class ParserTest {
         assertNull(parsedStatement.getAction());
         assertEquals("F", parsedStatement.getStateOut().toString());
         assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpaceParameter());
+    }
+
+    @Test
+    public void testUnknownStates() throws ScannerException, ParserException {
+
+        // This is meant to be a dynamic String placeholder, to test patching while ontology is pending
+        final String UNKNOWN_STATES_STATEMENT = "00:20 L: Apc->BounceOff => H(Apc)";
+
+        Statement parsedStatement = parseStatemement(UNKNOWN_STATES_STATEMENT);
+
+        assertEquals(new MatchTime(0, 20), parsedStatement.getTime());
+        assertEquals("L", parsedStatement.getTeam());
+        assertEquals("Apc", parsedStatement.getStateIn().toString());
+        assertEquals("BounceOff", parsedStatement.getAction().toString());
+        assertEquals("H", parsedStatement.getStateOut().toString());
+        assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpaceParameter());
     }
 
     @Test
