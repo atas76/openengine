@@ -84,8 +84,6 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(PARAMETERISED_STATES_STATEMENT);
 
-        // TODO this line should fail after making this test pass: 00:20 L: Apc->BounceOff => H(Apc)
-
         assertEquals(new MatchTime(11,34), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
         assertEquals("D", parsedStatement.getStateIn().toString());
@@ -100,6 +98,7 @@ public class ParserTest {
 
         // This is meant to be a dynamic String placeholder, to test patching while ontology is pending
         final String UNKNOWN_STATES_STATEMENT = "00:20 L: Apc->BounceOff => H(Apc)";
+        // final String UNKNOWN_STATES_STATEMENT = "13:30 T: Aw->Long => A(T) \t#!Ap(HD)";
 
         Statement parsedStatement = parseStatemement(UNKNOWN_STATES_STATEMENT);
 
