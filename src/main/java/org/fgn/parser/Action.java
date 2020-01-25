@@ -1,8 +1,15 @@
 package org.fgn.parser;
 
-public class Action extends DomainTerm {
+public class Action {
+
+    private String description;
 
     public Action(String description) {
-        super(description);
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return this.description;
     }
 }

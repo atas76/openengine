@@ -1,34 +1,45 @@
 package org.fgn.parser;
 
-import static java.util.Objects.nonNull;
-import static org.fgn.parser.StateParameter.SP;
-import static org.fgn.parser.StateParameter.T;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
-public class State extends DomainTerm {
+import static java.util.Objects.nonNull;
+import static org.fgn.parser.StateContext.SP;
+import static org.fgn.parser.StateContext.T;
+
+public class State {
 
     private Coordinates space;
-    private Coordinates spaceParameter;
-    private StateParameter stateParameter;
+    private StateContext context = StateContext.FREE;
     private boolean keepPossession = true;
+
+    public State(String description, boolean keepPossession) {
+        this(description);
+        this.keepPossession = false;
+    }
+
+    public State(String description) {
+        defineStateContext(description);
+    }
 
     public Coordinates getSpace() {
         return this.space;
     }
 
-    public Coordinates getSpaceParameter() {
-        return this.spaceParameter;
+    public void setSpace(Coordinates space) {
+        this.space = space;
     }
 
-    public void setSpaceParameter(Coordinates spaceParameter) {
-        this.spaceParameter = spaceParameter;
+    void setContext(StateContext parameter) {
+        this.context = parameter;
     }
 
-    void set(StateParameter parameter) {
-        this.stateParameter = parameter;
+    public StateContext getContext() {
+        return this.context;
     }
 
     public boolean isSetPiece() {
-        return nonNull(stateParameter) && SP.equals(stateParameter);
+        return nonNull(context) && SP.equals(context);
     }
 
     public boolean isSamePossesion() {
@@ -36,20 +47,14 @@ public class State extends DomainTerm {
     }
 
     public boolean isThrowIn() {
-        return nonNull(stateParameter) && T.equals(stateParameter);
+        return nonNull(context) && T.equals(context);
     }
 
-    State(String description) {
-        this(description, true);
-    }
-
-    State(String description, boolean keepPossession) {
-        super(description);
-        this.keepPossession = keepPossession;
-        try {
-            this.space = Coordinates.valueOf(description);
-        } catch (IllegalArgumentException ex) {
-            // TODO Will be handled properly with defined ontology
+    void defineStateContext(String description) {
+        if (Arrays.asList(StateContext.values()).stream().map(Enum::toString).collect(Collectors.toList()).contains(description)) {
+            setContext(StateContext.valueOf(description));
+        } else {
+            setSpace(Coordinates.valueOf(description));
         }
     }
 }

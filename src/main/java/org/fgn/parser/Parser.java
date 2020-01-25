@@ -68,7 +68,7 @@ public class Parser {
         State state = new State(tokens.get(index++), keepPossession);
 
         if (index < tokens.size() && OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.setSpaceParameter(Coordinates.valueOf(tokens.get(++index)));
+            state.setSpace(Coordinates.valueOf(tokens.get(++index)));
             confirmToken(++this.index, CLOSE_PARENTHESIS);
         }
 
@@ -95,7 +95,7 @@ public class Parser {
 
     private void parseParameter(State state) throws ParserException {
         if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.set(StateParameter.valueOf(tokens.get(++index)));
+            state.setContext(StateContext.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             index++;
         }

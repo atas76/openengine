@@ -19,8 +19,8 @@ public class ParserTest {
 
     private static final String DEFAULT_ACTION_STATEMENT = "00:00 L: KO => DM";
     private static final String RANDOM_ACTION_STATEMENT = "12:38 T: D->Pass => DM";
-    private static final String PARAMETERISED_STATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
-    private static final String PARAMETERISED_STATES_STATEMENT = "11:34 T: D(T) => F(Mw)";
+    private static final String PARAMETERISED_INSTATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
+    private static final String PARAMETERISED_OUTSTATE_STATEMENT = "11:34 T: D(T) => F(Mw)";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -34,9 +34,9 @@ public class ParserTest {
 
         assertEquals(new MatchTime(3, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("Mw", parsedStatement.getStateIn().toString());
+        assertEquals("Mw", parsedStatement.getStateIn().getSpace().toString());
         assertEquals("Long", parsedStatement.getAction().toString());
-        assertEquals("Dg", parsedStatement.getStateOut().toString());
+        assertEquals("Dg", parsedStatement.getStateOut().getSpace().toString());
         assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
 
@@ -47,8 +47,8 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("KO", parsedStatement.getStateIn().toString());
-        assertEquals("DM", parsedStatement.getStateOut().toString());
+        assertEquals("KO", parsedStatement.getStateIn().getContext().toString());
+        assertEquals("DM", parsedStatement.getStateOut().getSpace().toString());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class ParserTest {
     @Test
     public void testParameterisedStateParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(PARAMETERISED_STATE_STATEMENT);
+        Statement parsedStatement = parseStatemement(PARAMETERISED_INSTATE_STATEMENT);
 
         assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -82,7 +82,7 @@ public class ParserTest {
     @Test
     public void testParameterisedStatesParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(PARAMETERISED_STATES_STATEMENT);
+        Statement parsedStatement = parseStatemement(PARAMETERISED_OUTSTATE_STATEMENT);
 
         assertEquals(new MatchTime(11,34), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
@@ -90,7 +90,7 @@ public class ParserTest {
         assertTrue(parsedStatement.getStateIn().isThrowIn());
         assertNull(parsedStatement.getAction());
         assertEquals("F", parsedStatement.getStateOut().toString());
-        assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpaceParameter());
+        assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpace());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class ParserTest {
         assertEquals("Apc", parsedStatement.getStateIn().toString());
         assertEquals("BounceOff", parsedStatement.getAction().toString());
         assertEquals("H", parsedStatement.getStateOut().toString());
-        assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpaceParameter());
+        assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpace());
     }
 
     @Test
