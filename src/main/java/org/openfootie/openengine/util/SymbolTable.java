@@ -56,13 +56,22 @@ public class SymbolTable {
         System.out.println("Number of out-states: " + this.stateOutTypes.size());
         System.out.println("Number of actions: " + this.actionTypes.size());
 
+        System.out.println();
+
         System.out.println("Supported in-states");
+        System.out.println("-------------------");
         this.stateInTypes.forEach(System.out::println);
 
+        System.out.println();
+
         System.out.println("Supported out-states");
+        System.out.println("--------------------");
         this.stateOutTypes.forEach(System.out::println);
 
+        System.out.println();
+
         System.out.println("Supported actions");
+        System.out.println("-----------------");
         this.actionTypes.forEach(System.out::println);
     }
 }
