@@ -2,10 +2,7 @@ package org.fgn;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.parser.Coordinates;
-import org.fgn.parser.MatchTime;
-import org.fgn.parser.Parser;
-import org.fgn.parser.Statement;
+import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,9 +31,9 @@ public class ParserTest {
 
         assertEquals(new MatchTime(3, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("Mw", parsedStatement.getStateIn().getSpace().toString());
+        assertEquals(Coordinates.Mw, parsedStatement.getStateIn().getSpace());
         assertEquals("Long", parsedStatement.getAction().toString());
-        assertEquals("Dg", parsedStatement.getStateOut().getSpace().toString());
+        assertEquals(Coordinates.Dg, parsedStatement.getStateOut().getSpace());
         assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
 
@@ -47,8 +44,8 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("KO", parsedStatement.getStateIn().getContext().toString());
-        assertEquals("DM", parsedStatement.getStateOut().getSpace().toString());
+        assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
 
     @Test
@@ -71,10 +68,10 @@ public class ParserTest {
 
         assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("Ap", parsedStatement.getStateIn().getSpace().toString());
+        assertEquals(Coordinates.Ap, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isSetPiece());
         assertEquals("Shoot", parsedStatement.getAction().toString());
-        assertEquals("G", parsedStatement.getStateOut().toString());
+        assertEquals(StateContext.G, parsedStatement.getStateOut().getContext());
     }
 
     // TODO write test for illegal statement ending
@@ -86,10 +83,11 @@ public class ParserTest {
 
         assertEquals(new MatchTime(11,34), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
-        assertEquals("D", parsedStatement.getStateIn().toString());
+        assertEquals(Coordinates.D, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isThrowIn());
+        assertEquals(StateContext.T, parsedStatement.getStateIn().getContext());
         assertNull(parsedStatement.getAction());
-        assertEquals("F", parsedStatement.getStateOut().toString());
+        assertEquals(StateContext.F, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpace());
     }
 
@@ -104,9 +102,9 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("Apc", parsedStatement.getStateIn().toString());
+        assertEquals(Coordinates.Apc, parsedStatement.getStateIn().getSpace());
         assertEquals("BounceOff", parsedStatement.getAction().toString());
-        assertEquals("H", parsedStatement.getStateOut().toString());
+        assertEquals(StateContext.H, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpace());
     }
 
@@ -117,9 +115,9 @@ public class ParserTest {
 
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
-        assertEquals("D", parsedStatement.getStateIn().toString());
+        assertEquals(Coordinates.D, parsedStatement.getStateIn().getSpace());
         assertEquals("Pass", parsedStatement.getAction().toString());
-        assertEquals("DM", parsedStatement.getStateOut().toString());
+        assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
 
     @Test
@@ -129,8 +127,8 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals("KO", parsedStatement.getStateIn().toString());
-        assertEquals("DM", parsedStatement.getStateOut().toString());
+        assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
 
     @Rule

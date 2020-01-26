@@ -13,6 +13,8 @@ public class State {
     private StateContext context = StateContext.FREE;
     private boolean keepPossession = true;
 
+    public State() {}
+
     public State(String description, boolean keepPossession) {
         this(description);
         this.keepPossession = false;
@@ -51,7 +53,7 @@ public class State {
     }
 
     void defineStateContext(String description) {
-        if (Arrays.asList(StateContext.values()).stream().map(Enum::toString).collect(Collectors.toList()).contains(description)) {
+        if (Arrays.stream(StateContext.values()).map(Enum::toString).collect(Collectors.toList()).contains(description)) {
             setContext(StateContext.valueOf(description));
         } else {
             setSpace(Coordinates.valueOf(description));
