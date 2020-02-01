@@ -18,6 +18,7 @@ public class ParserTest {
     private static final String RANDOM_ACTION_STATEMENT = "12:38 T: D->Pass => DM";
     private static final String PARAMETERISED_INSTATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
     private static final String PARAMETERISED_OUTSTATE_STATEMENT = "11:34 T: D(T) => F(Mw)";
+    private static final String GARBAGE_END_STATEMENT = "11:34 T: D(T) => F(Mw)))) Garbage)in (garbage out(";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -46,6 +47,7 @@ public class ParserTest {
         assertEquals("L", parsedStatement.getTeam());
         assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
+        assertEquals(" My comments", parsedStatement.getComment());
     }
 
     @Test
@@ -53,6 +55,12 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement("# My comments");
         assertEquals(" My comments", parsedStatement.getComment());
+    }
+
+    @Test
+    public void testSpecialCommentCharactersStatement() throws ScannerException, ParserException {
+        Statement parsedStatement = parseStatemement("#@");
+        assertEquals("@", parsedStatement.getComment());
     }
 
     @Test
@@ -74,8 +82,6 @@ public class ParserTest {
         assertEquals(StateContext.G, parsedStatement.getStateOut().getContext());
     }
 
-    // TODO write test for illegal statement ending
-
     @Test
     public void testParameterisedStatesParsing() throws ScannerException, ParserException {
 
@@ -89,6 +95,16 @@ public class ParserTest {
         assertNull(parsedStatement.getAction());
         assertEquals(StateContext.F, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpace());
+    }
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
+
+    @Test
+    public void testInvalidStatementEnd() throws ScannerException, ParserException {
+        expectedEx.expect(ParserException.class);
+        expectedEx.expectMessage("Unexpected end of statement");
+        parseStatemement(GARBAGE_END_STATEMENT);
     }
 
     @Test
@@ -130,9 +146,6 @@ public class ParserTest {
         assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
-
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
 
     @Test
     public void testSyntaxError() throws ScannerException, ParserException {

@@ -53,6 +53,14 @@ public class Parser {
                 throw new ParserException("Syntax error: action or default outcome operator expected");
         }
 
+        if (hasTokens()) {
+            if (COMMENT.equals(tokens.get(index))) {
+                statement.setComment(tokens.get(++index));
+            } else {
+                throw new ParserException("Unexpected end of statement");
+            }
+        }
+
         return statement;
     }
 
@@ -81,6 +89,10 @@ public class Parser {
 
     private String getNextToken() {
         return this.tokens.get(index++);
+    }
+
+    private boolean hasTokens() {
+        return this.index < this.tokens.size() - 1;
     }
 
     private String lookaheadToken() {
