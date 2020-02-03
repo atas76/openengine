@@ -4,6 +4,6 @@ public enum Coordinates {
     Dg,
     D,
     DM,
-    Mw,
+    M, Mw,
     Ap, Apc;
 }
