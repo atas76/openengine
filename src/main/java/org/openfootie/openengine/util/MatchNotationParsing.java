@@ -60,6 +60,7 @@ public class MatchNotationParsing {
                 System.out.println("Error message: " + ex.getMessage());
                 System.exit(2);
             } catch (Exception ex) {
+                ex.printStackTrace();
                 System.out.println("Unknown error in line " + lineCount);
                 printCurrentErrorState(currentLine, new Scanner(currentLine).scan());
                 System.exit(3);
