@@ -33,7 +33,7 @@ public class Parser {
         parseTime(statement);
         parseTeam(statement);
         checkTeamSeparator();
-        parseStateIn(statement);    // TODO Use a common parseStatement method
+        parseStateIn(statement);    // TODO Use a common parseStatement method: this had better be left for later
 
         String token = getNextToken();
 
@@ -62,6 +62,20 @@ public class Parser {
         }
 
         return statement;
+    }
+
+    private void parseStateIn(Statement statement) throws ParserException {
+        InState state = new InState(tokens.get(index++));
+        parseParameter(state);
+        statement.setStateIn(state);
+    }
+
+    private void parseParameter(State state) throws ParserException {
+        if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
+            state.setContext(StateContext.valueOf(tokens.get(++index)));
+            confirmToken(++index, CLOSE_PARENTHESIS);
+            index++;
+        }
     }
 
     private void parseStateOut(Statement statement) throws ParserException {
@@ -97,20 +111,6 @@ public class Parser {
 
     private String lookaheadToken() {
         return this.tokens.get(index);
-    }
-
-    private void parseStateIn(Statement statement) throws ParserException {
-        InState state = new InState(tokens.get(index++));
-        parseParameter(state);
-        statement.setStateIn(state);
-    }
-
-    private void parseParameter(State state) throws ParserException {
-        if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.setContext(StateContext.valueOf(tokens.get(++index)));
-            confirmToken(++index, CLOSE_PARENTHESIS);
-            index++;
-        }
     }
 
     private void checkTeamSeparator() throws ParserException {
