@@ -1,9 +1,11 @@
 package org.fgn.parser;
 
 public enum Coordinates {
-    Dg,
-    D,
-    DM,
+    Dg,Dp,
+    D,Dw,
+    DM,DMw,
     M, Mw,
-    Ap, Apc;
+    AM, AMw,
+    A,Aw,
+    Ap, Apc, Apw;
 }
