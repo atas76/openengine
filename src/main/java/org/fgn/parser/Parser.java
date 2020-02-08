@@ -90,6 +90,8 @@ public class Parser {
         State state = new State(tokens.get(index++), keepPossession);
 
         if (index < tokens.size() && OPEN_PARENTHESIS.equals(lookaheadToken())) {
+            // TODO candidate change
+            // state.defineStateContext(tokens.get(++index));
             state.setSpace(Coordinates.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
         }

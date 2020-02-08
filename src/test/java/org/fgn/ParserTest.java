@@ -19,10 +19,19 @@ public class ParserTest {
     private static final String PARAMETERISED_INSTATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
     private static final String PARAMETERISED_OUTSTATE_STATEMENT = "11:34 T: D(T) => F(Mw)";
     private static final String GARBAGE_END_STATEMENT = "11:34 T: D(T) => F(Mw)))) Garbage)in (garbage out(";
+    private static final String GOAL_ATTEMPT_STATEMENT = "09:02 T: A->Shoot => GKo";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
         return new Parser(tokens).parse();
+    }
+
+    @Test
+    public void testGoalAttempt() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement(GOAL_ATTEMPT_STATEMENT);
+
+        assertEquals(StateContext.GKo, parsedStatement.getStateOut().getContext());
     }
 
     @Test

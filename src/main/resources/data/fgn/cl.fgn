@@ -51,7 +51,7 @@
 08:50 T: Mw->Move => Aw
 08:56 T: Aw->Forward => Apc
 08:58 T: Apc->Dribble => A #!
-09:02 T: A->Shoot => G'(GKo)
+09:02 T: A->Shoot => GKo
 09:22 L: GK->Pass => Dw
 09:24 L: Dw->Pass => Dg
 09:26 L: Dg->Pass => D
