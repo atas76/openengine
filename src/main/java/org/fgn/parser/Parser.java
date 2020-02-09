@@ -94,6 +94,7 @@ public class Parser {
             // state.defineStateContext(tokens.get(++index));
             state.setSpace(Coordinates.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
+            if (hasTokens()) index++;
         }
 
         statement.setStateOut(state);
