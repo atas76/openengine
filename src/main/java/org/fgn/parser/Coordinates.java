@@ -5,7 +5,7 @@ package org.fgn.parser;
  */
 public enum Coordinates {
     GK, // pseudo-coordinate
-    Dg,Dp,
+    GD, Dg,Dp,
     D,Dw,
     DM,DMw,
     M, Mw,
