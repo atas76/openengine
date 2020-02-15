@@ -41,6 +41,9 @@ public class Scanner {
             } else if (ch == '=') {
                 result.add(getNextToken("=>"));
                 continue;
+            } else if (ch == '>') {
+                result.add(getNextToken(">>"));
+                continue;
             } else if (ch == '#') {
                 result.add(String.valueOf(ch));
                 result.add(statement.substring(index + 1));

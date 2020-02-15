@@ -3,7 +3,9 @@ package org.fgn.parser;
 import org.fgn.lexan.Token;
 import org.fgn.parser.exceptions.ParserException;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.fgn.lexan.Token.*;
 
@@ -20,6 +22,10 @@ public class Parser {
     }
 
     private int index = 0;
+
+    private boolean containsDescription(Enum [] enumValues, String description) {
+        return Arrays.stream(enumValues).map(Enum::toString).collect(Collectors.toList()).contains(description);
+    }
 
     public Statement parse() throws ParserException {
 
@@ -41,10 +47,18 @@ public class Parser {
             case ACTION_DELIMITER:
                 parseAction(statement);
                 confirmToken(index++, OUTCOME_DELIMITER);
-                parseStateOut(statement);
+                if (containsDescription(ActionOutcome.values(), lookaheadToken())) {
+                    statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
+                } else {
+                    parseStateOut(statement);
+                }
                 break;
             case OUTCOME_DELIMITER:
-                parseStateOut(statement);
+                if (containsDescription(ActionOutcome.values(), lookaheadToken())) {
+                    statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
+                } else {
+                    parseStateOut(statement);
+                }
                 break;
             case COMMENT:
                 statement.setComment(tokens.get(++index));
@@ -54,10 +68,16 @@ public class Parser {
         }
 
         if (hasTokens()) {
-            if (COMMENT.equals(tokens.get(index))) {
-                statement.setComment(tokens.get(++index));
-            } else {
-                throw new ParserException("Unexpected end of statement");
+            switch(tokens.get(index)) {
+                case COMMENT:
+                    statement.setComment(tokens.get(++index));
+                    break;
+                case OUTCOME_STATE_DELIMITER:
+                    ++index;
+                    parseStateOut(statement);
+                    break;
+                default:
+                    throw new ParserException("Unexpected end of statement");
             }
         }
 

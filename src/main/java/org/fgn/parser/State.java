@@ -52,8 +52,13 @@ public class State {
         return nonNull(context) && T.equals(context);
     }
 
+    private boolean containsDescription(Enum [] enumValues, String description) {
+        return Arrays.stream(enumValues).map(Enum::toString).collect(Collectors.toList()).contains(description);
+    }
+
     void defineStateContext(String description) {
-        if (Arrays.stream(StateContext.values()).map(Enum::toString).collect(Collectors.toList()).contains(description)) {
+        // if (Arrays.stream(StateContext.values()).map(Enum::toString).collect(Collectors.toList()).contains(description)) {
+        if (containsDescription(StateContext.values(), description)) {
             setContext(StateContext.valueOf(description));
         } else {
             setSpace(Coordinates.valueOf(description));

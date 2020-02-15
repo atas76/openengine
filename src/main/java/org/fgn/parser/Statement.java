@@ -8,6 +8,7 @@ public class Statement {
     private Action action;
     private State stateOut;
     private String comment;
+    private ActionOutcome actionOutcome;
 
     public String getComment() {
         return comment;
@@ -55,5 +56,13 @@ public class Statement {
 
     public void setTime(MatchTime time) {
         this.time = time;
+    }
+
+    public ActionOutcome getActionOutcome() {
+        return actionOutcome;
+    }
+
+    public void setActionOutcome(ActionOutcome actionOutcome) {
+        this.actionOutcome = actionOutcome;
     }
 }

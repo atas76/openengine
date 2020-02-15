@@ -11,6 +11,17 @@ import static org.junit.Assert.assertEquals;
 public class ScannerTest {
 
     @Test
+    public void testActionOutcome() throws ScannerException {
+
+        String statement = "27:42 R: Ap(FT)->Shoot => PST >> FT(Ap)";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(18, tokens.size());
+        assertEquals(">>", tokens.get(13));
+    }
+
+    @Test
     public void testNegationOperator() throws ScannerException {
 
         String statement = "03:20 L: Mw->Long => !Dg";
