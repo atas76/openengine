@@ -102,7 +102,7 @@
 16:17 T: D->Clr => !T(M)
 16:39 L: M(T) => M
 16:46 L: M->Move => A
-16:47 L: A->Shoot => GS(GK) # R2 chance
+16:47 L: A->Shoot => GK # R2 chance
 #--
 18:06 L: Dg->Pass => D
 18:09 L: D->Pass => DMw
@@ -387,7 +387,7 @@
 52:20 L: Awp->Pass => Mw
 52:22 L: Mw->Pass => M
 52:25 L: M->Move => A
-52:25 L: A->Shoot => GS
+52:25 L: A->Shoot => !GS
 52:35 T: Dg->HandPass => Dp
 52:39 T: Dp->Move => D
 52:41 T: D->Pass => DM
