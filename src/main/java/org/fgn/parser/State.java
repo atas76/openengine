@@ -15,13 +15,8 @@ public class State {
 
     public State() {}
 
-    public State(String description, boolean keepPossession) {
-        this(description);
-        this.keepPossession = false;
-    }
-
-    public State(String description) {
-        defineStateContext(description);
+    public State(boolean keepPossession) {
+        this.keepPossession = keepPossession;
     }
 
     public Coordinates getSpace() {
@@ -50,18 +45,5 @@ public class State {
 
     public boolean isThrowIn() {
         return nonNull(context) && T.equals(context);
-    }
-
-    private boolean containsDescription(Enum [] enumValues, String description) {
-        return Arrays.stream(enumValues).map(Enum::toString).collect(Collectors.toList()).contains(description);
-    }
-
-    void defineStateContext(String description) {
-        // if (Arrays.stream(StateContext.values()).map(Enum::toString).collect(Collectors.toList()).contains(description)) {
-        if (containsDescription(StateContext.values(), description)) {
-            setContext(StateContext.valueOf(description));
-        } else {
-            setSpace(Coordinates.valueOf(description));
-        }
     }
 }

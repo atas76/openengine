@@ -47,18 +47,10 @@ public class Parser {
             case ACTION_DELIMITER:
                 parseAction(statement);
                 confirmToken(index++, OUTCOME_DELIMITER);
-                if (containsDescription(ActionOutcome.values(), lookaheadToken())) {
-                    statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
-                } else {
-                    parseStateOut(statement);
-                }
+                evaluateCurrentToken(statement);
                 break;
             case OUTCOME_DELIMITER:
-                if (containsDescription(ActionOutcome.values(), lookaheadToken())) {
-                    statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
-                } else {
-                    parseStateOut(statement);
-                }
+                evaluateCurrentToken(statement);
                 break;
             case COMMENT:
                 statement.setComment(tokens.get(++index));
@@ -84,8 +76,25 @@ public class Parser {
         return statement;
     }
 
+    private void evaluateCurrentToken(Statement statement) throws ParserException {
+        if (containsDescription(ActionOutcome.values(), lookaheadToken())) {
+            statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
+        } else {
+            parseStateOut(statement);
+        }
+    }
+
     private void parseStateIn(Statement statement) throws ParserException {
-        InState state = new InState(tokens.get(index++));
+
+        State state = new State();
+        String description = tokens.get(index++);
+
+        if (containsDescription(InStateContext.values(), description)) {
+            state.setContext(StateContext.valueOf(description));
+        } else {
+            state.setSpace(Coordinates.valueOf(description));
+        }
+
         parseParameter(state);
         statement.setStateIn(state);
     }
@@ -98,6 +107,14 @@ public class Parser {
         }
     }
 
+    private void defineStateContext(State state, String description) {
+        if (containsDescription(StateContext.values(), description)) {
+            state.setContext(StateContext.valueOf(description));
+        } else {
+            state.setSpace(Coordinates.valueOf(description));
+        }
+    }
+
     private void parseStateOut(Statement statement) throws ParserException {
 
         boolean keepPossession = true;
@@ -107,11 +124,10 @@ public class Parser {
             index++;
         }
 
-        State state = new State(tokens.get(index++), keepPossession);
+        State state = new State(keepPossession);
+        defineStateContext(state, tokens.get(index++));
 
         if (index < tokens.size() && OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            // TODO candidate change
-            // state.defineStateContext(tokens.get(++index));
             state.setSpace(Coordinates.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             if (hasTokens()) index++;
