@@ -263,7 +263,7 @@
 37:39 L: D->Forward => DMw
 37:43 L: DMw->Move => Mw
 37:47 L: Mw->Move => A
-37:47 L: A->Shoot => GS(CK)
+37:47 L: A->Shoot => GS >> C
 38:27 L: CK->Cross => !HD(Dp)
 38:29 T: Dp(HD)->Clr => !FT(A)
 38:31 L: A(FT)->Shoot => GKo	# injury
@@ -387,7 +387,7 @@
 52:20 L: Awp->Pass => Mw
 52:22 L: Mw->Pass => M
 52:25 L: M->Move => A
-52:25 L: A->Shoot => !GS
+52:25 L: A->Shoot => !GS            #!!!
 52:35 T: Dg->HandPass => Dp
 52:39 T: Dp->Move => D
 52:41 T: D->Pass => DM
