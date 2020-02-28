@@ -191,7 +191,7 @@
 19:35 B: M->Dribble => !DM
 19:40 R: DM->Forward => Awp
 19:44 R: Awp->Move => Apc
-19:44 R: Apc->Shoot => !GS(Dp)
+19:44 R: Apc->Shoot => GS >> !Dp
 19:47 B: Dp->Clr => DM			# injury
 #--
 21:31 B: Dg->Long => DMw

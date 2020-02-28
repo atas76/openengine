@@ -5,9 +5,10 @@ public enum StateContext {
     FREE("Free play"),
     KO("Kick-off"),
     F("Foul"), H("Handball"), SP("Set Piece"), O("Offside"),
-    T("Throw In"), C("Corner kick"), GKo("Goal kick over the bar"),
+    T("Throw In"), C("Corner kick"),
+    GKo("Goal kick over the bar"), GK("Goal kick"),
     HD("Header"), FT("First touch"),
-    GS("Goalkeeper save"),
+    // GS("Goalkeeper save"),
     G("Goal");
 
     private String description;

@@ -20,8 +20,9 @@ public class ParserTest {
     private static final String PARAMETERISED_OUTSTATE_STATEMENT = "11:34 T: D(T) => F(Mw)";
     private static final String GARBAGE_END_STATEMENT = "11:34 T: D(T) => F(Mw)))) Garbage)in (garbage out(";
     private static final String GOAL_ATTEMPT_STATEMENT = "09:02 T: A->Shoot => GKo";
-    private static final String GOALKEEPER_SAVE = "16:47 L: A->Shoot => GS(GK) # comment";
+    private static final String SHOT_OFF_TARGET = "16:47 L: A->Shoot => GK # comment";
     private static final String ACTION_OUTCOME = "27:42 R: Ap(FT)->Shoot => PST >> FT(Ap)";
+    private static final String GS_ACTION_OUTCOME = "19:44 R: Apc->Shoot => GS >> !Dp";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -39,11 +40,21 @@ public class ParserTest {
     }
 
     @Test
+    public void testGoalSaveActionOutcome() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement(GS_ACTION_OUTCOME);
+
+        assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
+        assertEquals(Coordinates.Dp, parsedStatement.getStateOut().getSpace());
+        assertFalse(parsedStatement.getStateOut().isSamePossesion());
+    }
+
+    @Test
     public void testGoalkeeperSave() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(GOALKEEPER_SAVE);
+        Statement parsedStatement = parseStatemement(SHOT_OFF_TARGET);
 
-        assertEquals(StateContext.GS, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.GK, parsedStatement.getStateOut().getContext());
         assertEquals(" comment", parsedStatement.getComment());
     }
 
