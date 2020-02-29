@@ -102,7 +102,7 @@
 10:01 B: DM->Forward => M
 10:02 B: M->Forward => Aw
 10:04 B: Aw->LowCross => A
-10:07 B: A->Shoot => GK		# R2
+10:07 B: A->Shoot => !GK		# R2
 #--
 10:44 R: DM->Pass => D
 10:47 R: D->Pass => DMw
