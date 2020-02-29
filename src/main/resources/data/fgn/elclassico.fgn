@@ -294,7 +294,7 @@
 34:59 R: DM->Pass => Mw
 35:10 R: Mw->Pass => M
 35:15 R: M->Move => A
-35:15 R: A->Shoot => G'(Apw)
+35:15 R: A->Shoot => GS >> Apw
 35:20 R: Apw->Cross => !GK			# injury
 #--
 37:41 B: M->Pass => Aw
@@ -314,7 +314,7 @@
 39:49 B: Dg->Long => M
 40:01 B: M->Forward => A
 40:03 B: A->Move => Ap
-40:03 B: Ap->Shoot => G'(GK)		# R2
+40:03 B: Ap->Shoot => !GK		# R2
 #--
 40:35 R: D->Pass => Dg
 40:37 R: Dg->Long => !D
@@ -341,17 +341,17 @@
 42:26 B: D->Pass => DM
 42:31 B: DM->Pass => Mw
 42:34 B: Mw->Forward => Apw
-42:37 B: Apw->Cross => Ap(FT)
+42:37 B: Apw->Cross => FT(Ap)
 42:37 B: Ap(FT)->Shoot => !GK
 #--
 42:58 R: DM->Pass => DMw
 43:05 R: DMw->Pass => DM
 43:15 R: DM->Move => F(M)
 #--
-43:55 R: DM->Long => A(T)
+43:55 R: DM->Long => T(A)
 #--
 44:17 R: M->Pass => Mw
-44:21 R: Mw->High => A(T)
+44:21 R: Mw->High => T(A)
 #--
 44:40 B: A(T) => !DM
 44:51 R: DM->Long => Awp
@@ -364,8 +364,8 @@
 46:10 B: M(SP)->Long => M		#!
 46:29 B: M->Forward => Apc
 46:31 B: Apc->LowCross => C
-47:12 B: C->Cross => Ap(FT)
-47:15 B: Ap(FT)->Shoot => G'(GK) 	# R3
+47:12 B: CK->Cross => FT(Ap)
+47:15 B: Ap(FT)->Shoot => !GK 	# R3
 #-- HT
 45:00 B: KO => DM					# 51:25
 45:05 B: DM->Pass => DMw
@@ -388,7 +388,7 @@
 46:35 R: Mw->Move => A
 46:35 R: A->Forward => Apw
 46:36 R: Apw->LowCross => C
-47:05 R: C->Cross => !Dp(HD)
+47:05 R: CK->Cross => !HD(Dp)
 47:07 B: Dp(HD)->Clr => Dp
 47:12 B: Dp->Move => Dw
 47:15 B: Dw->Hold => !Awp
@@ -400,13 +400,13 @@
 47:42 R: Aw->Pass => Mw
 47:44 R: Mw->Long => Awp		# swap wings
 47:50 R: Awp->Move => A
-47:52 R: A->Shoot => G'(C)
-48:09 R: C->Pass => Awp
-48:10 R: Awp->Cross => !Dp(HD)
-48:11 B: Dp(HD)->Clr => A(T)
+47:52 R: A->Shoot => GS >> C
+48:09 R: CK->Pass => Awp
+48:10 R: Awp->Cross => !HD(Dp)
+48:11 B: Dp(HD)->Clr => T(A)
 48:20 R: A(T) => Mw
 48:24 R: Mw->Long => C
-48:45 R: C->Pass => A
+48:45 R: CK->Pass => A
 48:46 R: A->Forward => Apw
 48:47 R: Apw->Cross => !GK
 #--
@@ -425,7 +425,7 @@
 50:56 R: DM->Move => M
 51:07 R: M->Hold => !D
 51:09 B: D->Pass => Dg
-51:11 B: Dg->Long => !M(T)
+51:11 B: Dg->Long => !T(M)
 51:17 R: M(T) => Aw
 51:22 R: Aw->Move => Mw
 51:25 R: Mw->Long => !GK
@@ -433,24 +433,24 @@
 51:41 R: M->Forward => A
 51:45 R: A->Dribble => !D
 51:50 B: D->Dribble => F(DM)
-52:25 B: DM->Pass => D(g)
-52:26 B: D(g)->Pass => D
+52:25 B: DM->Pass => GD
+52:26 B: GD->Pass => D
 52:27 B: D->Move => DM
-52:33 B: DM->Pass => D(g)
-52:34 B: D(g)->Pass => D
+52:33 B: DM->Pass => GD
+52:34 B: GD->Pass => D
 52:38 B: D->Pass => Dg
 52:42 B: Dg->Long => !Mw
 52:47 R: Mw->Forward => M
 52:53 R: M->Forward => Awp
-52:54 R: Awp->Cross => Ap(HD)
-52:56 R: Ap(HD)->Shoot => G'(!D(HD))	#R3
+52:54 R: Awp->Cross => HD(Ap)
+52:56 R: Ap(HD)->Shoot => GS >> !HD(D)	#R3
 52:57 B: D(HD)->Clr => !Awp
-53:01 R: Awp->BounceOff -> C
-53:24 R: C->Cross => !Dp(HD)
-53:26 B: Dp(HD)->Clr => !A(FT)
-53:28 R: A(FT)->Shoot => G'(GKoo)
+53:01 R: Awp->BounceOff => C
+53:24 R: CK->Cross => !HD(Dp)
+53:26 B: Dp(HD)->Clr => !FT(A)
+53:28 R: A(FT)->Shoot => GS >> !GKoo
 #--
-53:46 B: Dp->Long => !M(T)
+53:46 B: Dp->Long => !T(M)
 53:57 R: M(T) => Mw
 54:01 R: Mw->Pass => DM
 54:08 R: DM->Pass => M
@@ -466,29 +466,29 @@
 55:04 B: DM->Pass => M
 55:11 B: M->Move => A
 55:11 B: A->Forward => Ap
-55:14 B: Ap->Shoot => G'(DMw)
+55:14 B: Ap->Shoot => GS >> !DMw
 #--
 55:20 R: D->Forward => !M
 55:28 B: M->Pass => A
 55:31 B: A->Hold => F(A)
-56:29 B: A(SP)->Shoot => G'(GKo)
+56:29 B: A(SP)->Shoot => !GKo
 56:52 R: GK->Long => !M
 57:06 B: M->Forward => !Dg
 #--
-57:15 R: DMw->Long => !D(g)
-57:19 B: D(g)->Pass => DM
+57:15 R: DMw->Long => !GD
+57:19 B: GD->Pass => DM
 57:27 B: DM->Move => M
 57:28 B: M->Pass => Mw
 57:31 B: Mw->Forward => !Dw
 57:39 R: Dw->BounceOff => !Apw
 57:44 B: Apw->Dribble => Apw
 57:45 B: Apw->Pass => C
-58:18 B: C->Cross => Ap(HD)
-58:20 B: Ap(HD)->Shoot => G'(!Dp)
+58:18 B: CK->Cross => HD(Ap)
+58:20 B: Ap(HD)->Shoot => GS >> !Dp
 58:23 R: Dp->Move => Dw
 #--
-58:27 R: DMw->Long => !DMw(FT)
-58:29 B: DMw(FT)->Clr => !DM(T)
+58:27 R: DMw->Long => !FT(DMw)
+58:29 B: DMw(FT)->Clr => !T(DM)
 #--
 58:57 R: DM->Pass => DMw
 59:00 R: DMw->Long => DM
@@ -514,7 +514,7 @@
 60:34 R: DM->High => Dw
 60:41 R: Dw->Forward => !Mw
 60:43 B: Mw->Pass => M
-60:55 B: M->Forward => !D(T)
+60:55 B: M->Forward => !T(D)
 #--
 61:56 R: Dw->Move => DMw
 62:00 R: DMw->Long => !O(D)
@@ -530,7 +530,7 @@
 62:37 R: Mw->Pass => Aw
 62:42 R: Aw->Dribble => Awp
 62:43 R: Awp->Cross => C
-63:11 R: C->Cross => !Dp(HD)
+63:11 R: CK->Cross => !HD(Dp)
 63:13 B: Dp(HD)->Clr => !A
 63:18 R: A->Move => Aw
 63:22 R: Aw->SwapWing => M
@@ -543,25 +543,25 @@
 63:50 B: DMw->Pass => D
 63:53 B: D->Move => Dw
 63:57 B: Dw->Long => !Dg
-64:05 R: Dg->Clr => !A(T)
+64:05 R: Dg->Clr => !T(A)
 64:18 B: A(T) => Aw
 64:24 B: Aw->Move => Mw
 64:24 B: Mw->LongBack => M
 64:37 B: M->Pass => A
 64:38 B: A->Forward => A
 64:44 B: A->Pass => Aw
-64:46 B: Aw->Hold => M(T)
+64:46 B: Aw->Hold => T(M)
 64:54 B: M(T) => M
 64:57 B: M->Pass => Mw
 65:00 B: Mw->Pass => M
 65:12 B: M->Pass => Mw
-65:14 B: Mw->Long => !Dp(HD)
+65:14 B: Mw->Long => !HD(Dp)
 65:16 R: Dp(HD)->Clr => F(D)
 65:29 R: D(SP)->Pass => DM
 65:34 R: DM->Pass => DMw
 65:38 R: DMw->Forward => Mw
 65:42 R: Mw->Long => Awp			# swap
-65:49 R: Awp->Cross => Ap(FT)
+65:49 R: Awp->Cross => FT(Ap)
 65:51 R: Ap(FT)->Shoot => !GK
 #--
 66:20 B: M->Forward => Aw
@@ -571,35 +571,36 @@
 66:31 R: Dw->Long => Mw
 66:36 R: Mw->Forward => A
 66:39 R: A->Move => Apw
-66:39 R: Apw->LowCross => Ap(FT)
-66:39 R: Ap(FT)->Shoot => G'(GKo)
+66:39 R: Apw->LowCross => FT(Ap)
+66:39 R: Ap(FT)->Shoot => !GKo
 #--
 67:07 B: Mw->Pass => DMw
 67:11 B: DMw->Pass => Mw
 67:12 B: Mw->Pass => M
 67:19 B: M->Move => A
-67:20 B: A->Forward => Ap(FT)
-67:21 B: Ap(FT)->Shoot => G'(C) # R3
-67:51 B: C->Cross => M
+67:20 B: A->Forward => FT(Ap)
+67:21 B: Ap(FT)->Shoot => GS >> C # R3
+67:51 B: CK->Cross => M
 67:58 B: M->Long => A
 68:07 B: A->Pass => !DM
 68:11 R: DM->Pass => !M
 68:21 B: M->Dribble => A
-68:22 B: A->Shoot => G'(D)
+68:22 B: A->Shoot => GS >> !D
 68:28 R: D->Long => M
-68:35 R: M->Hold => !DM(T)		# sub * 2
+68:35 R: M->Hold => !T(DM)		# sub * 2
+#--
 69:35 B: DM->SwapWing => Mw
 69:43 B: Mw->Move => M
 69:43 B: M->Forward => A
 69:49 B: A->Long => !DMw
 69:56 R: DMw->Pass => DM
-69:59 R: DM->Forward => A(T)
+69:59 R: DM->Forward => T(A)
 70:07 R: A(T) => Aw
 70:15 R: Aw->Pass => Mw
 70:18 R: Mw->Pass => M
 70:20 R: M->Pass => Aw
 70:24 R: Aw->Dribble => Apc
-70:25 R: Apc->Cross => !Dp(HD)
+70:25 R: Apc->Cross => !HD(Dp)
 70:26 B: Dp(HD)->Clr => D
 70:34 B: D->Forward => DM
 70:37 B: DM->Pass => DMw
@@ -614,7 +615,7 @@
 71:10 R: DM->Dribble => DM
 71:14 R: DM->Forward => Aw
 71:21 R: Aw->Move => Apw
-71:21 R: Apw->Shoot => G'	# R2
+71:21 R: Apw->Shoot => !GK	# R2
 #--
 71:35 B: DMw->Pass => DM
 71:44 B: DM->Pass => Mw
@@ -627,11 +628,11 @@
 73:37 R: DM->Pass => DMw
 73:38 R: DMw->Pass => Mw
 73:40 R: Mw->Forward => C
-74:06 R: C->Cross => !Dp(HD)
+74:06 R: CK->Cross => !HD(Dp)
 74:08 B: Dp(HD)->Clr => !A
 74:12 R: A->Move => Apc
-74:12 R: Apc->Cross => !Dp(HD)
-74:13 B: Dp(HD)->Clr => !A(T)
+74:12 R: Apc->Cross => !HD(Dp)
+74:13 B: Dp(HD)->Clr => !T(A)
 74:18 R: A(T) => Mw
 74:22 R: Mw->Pass => M
 74:27 R: M->Long => Ap
@@ -653,7 +654,7 @@
 76:07 R: Mw->Pass => M
 76:12 R: M->Pass => Mw			# swap
 76:16 R: Mw->Pass => DM
-76:22 R: DM->Forward => DM(T)
+76:22 R: DM->Forward => T(DM)
 76:29 R: DM(T) => DM
 76:36 R: DM->Move => M
 76:38 R: M->Forward => Awp
@@ -666,7 +667,7 @@
 78:31 B: Mw->Pass => DMw
 78:33 B: DMw->Pass => DM
 78:35 B: DM->Long => C
-79:09 B: C->Pass => Awp
+79:09 B: CK->Pass => Awp
 79:10 B: Awp->Pass => Mw
 79:16 B: Mw->Pass => Aw
 79:22 B: Aw->Move => Mw
@@ -675,13 +676,13 @@
 79:34 B: Aw->Pass => M
 79:34 B: M->Forward => Awp
 79:37 B: Awp->LowCross => Ap
-79:39 B: Ap->Shoot => G'(!Dp)	# R3
+79:39 B: Ap->Shoot => GS >> !Dp	# R3
 79:43 R: Dp->Move => F(D)
 #--
-80:11 R: Apw->Shoot => G'(GKo)
+80:11 R: Apw->Shoot => !GKo
 80:20 B: GK->Long => DM
 80:23 B: DM->Pass => Dw
-80:25 B: Dw->Pass => D(FT)
+80:25 B: Dw->Pass => FT(D)
 80:25 B: D(FT)->Forward => DM
 80:29 B: DM->Move => M
 80:32 B: M->Move => F(M)
@@ -694,9 +695,9 @@
 82:03 B: Mw->Dribble => Mw
 82:05 B: Mw->Move => M
 82:06 B: M->Move => A
-82:08 B: A->Shoot => G'(Ap(T))
+82:08 B: A->Shoot => GS >> T(Ap)
 #--
-82:38 R: Dw->Pass => !Ap(T)
+82:38 R: Dw->Pass => !T(Ap)
 82:45 B: Ap(T) => Awp
 82:49 B: Awp->Hold => F(Awp)
 83:21 B: Awp(SP)->Cross => !D
@@ -714,7 +715,7 @@
 84:17 B: D->Move => DM
 84:19 B: DM->Pass => DMw
 84:20 B: DMw->Pass => Mw
-84:22 B: Mw->Pass => !M(T)
+84:22 B: Mw->Pass => !T(M)
 #--
 84:31 R: DM->Pass => M
 84:35 R: M->Pass => DM
@@ -725,7 +726,7 @@
 84:50 R: Mw->Move => M
 84:53 R: M->Pass => A
 84:57 R: A->Pass => Awp
-84:58 R: Awp->LowCross => Ap(FT)
+84:58 R: Awp->LowCross => FT(Ap)
 84:59 R: Ap(FT)->Shoot => G
 #--
 86:17 B: M->Pass => Aw
@@ -737,8 +738,8 @@
 86:34 R: Apw->LowCross => Awp
 86:35 R: Apw->LowCross => !Dg
 86:43 B: Dg->Long => !F(Dp)
-87:28 R: D(g)(SP)->Long => !Dg
-87:39 B: Dg->HandPass => DMw
+87:28 R: GD(SP)->Long => !GD
+87:39 B: GD->HandPass => DMw
 87:48 B: DMw->Pass => DM
 87:57 B: DM->Pass => M
 87:59 B: M->Forward => !DM
@@ -746,7 +747,7 @@
 88:06 R: M->Forward => Awp
 88:12 R: Awp->Move => Apw
 88:14 R: Apw->Pass => Apc
-88:15 R: Apc->Cross => Ap(FT)
+88:15 R: Apc->Cross => FT(Ap)
 88:17 R: Ap(FT)->LowCross => !Dg
 #--
 88:28 B: DM->Pass => Mw
@@ -756,22 +757,22 @@
 88:39 R: DM->Forward => DM
 88:43 R: DM->Long => Aw
 88:49 R: Aw->Move => Apw
-88:51 R: Apw->Shoot => G'(Apw)
-88:56 R: Apw->LowCross => Ap(FT)
-88:57 R: Ap(FT)->Shoot => G'(GK)
+88:51 R: Apw->Shoot => GS >> Apw
+88:56 R: Apw->LowCross => FT(Ap)
+88:57 R: Ap(FT)->Shoot => !GK
 #--
 89:18 B: DM->Move => M
 89:30 B: M->Pass => Aw
 89:33 B: Aw->Pass => M
 89:35 B: M->Long => !Dg
-89:53 R: Dg->Long => !D(g)
-90:03 B: D(g)->Pass => DM
+89:53 R: Dg->Long => !GD
+90:03 B: GD->Pass => DM
 90:07 B: DM->Pass => Mw
 90:12 B: Mw->Pass => M
 90:15 B: M->Hold => DM
 90:19 B: DM->Pass => M
 90:23 B: M->Move => A
-90:23 B: A->Forward => Awp(FT)
+90:23 B: A->Forward => FT(Awp)
 90:25 B: Awp(FT)->Pass => !Dw
 90:33 R: Dw->Hold => F(Dw)
 #--
