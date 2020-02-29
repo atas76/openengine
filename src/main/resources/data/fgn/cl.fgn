@@ -628,7 +628,7 @@
 82:32 T: DM->Pass => M
 82:34 T: M->Pass => Aw
 82:36 T: Aw->Cross => F(Awp)			#!
-84:05 T: Awp(SP)->Shoot => GS(CK)
+84:05 T: Awp(SP)->Shoot => GS >> C
 84:37 T: CK->Cross => !O(Dp)
 #--
 85:20 T: Dg->Long => !Dg
@@ -660,7 +660,7 @@
 92:14 T: DMw->Long => M
 92:19 T: M->Forward => A
 92:23 T: A->Move => Apc
-92:23 T: Apc->Shoot => GS(CK)
+92:23 T: Apc->Shoot => GS >> C
 92:42 T: CK->Cross => !FT(Dp)
 92:44 L: Dp(FT)->Clr => !M
 92:49 T: M->Forward => A
