@@ -51,7 +51,7 @@
 08:50 T: Mw->Move => Aw
 08:56 T: Aw->Forward => Apc
 08:58 T: Apc->Dribble => A #!
-09:02 T: A->Shoot => GKo
+09:02 T: A->Shoot => !GKo
 09:22 L: GK->Pass => Dw
 09:24 L: Dw->Pass => Dg
 09:26 L: Dg->Pass => D
@@ -102,7 +102,7 @@
 16:17 T: D->Clr => !T(M)
 16:39 L: M(T) => M
 16:46 L: M->Move => A
-16:47 L: A->Shoot => GK # R2 chance
+16:47 L: A->Shoot => !GK # R2 chance
 #--
 18:06 L: Dg->Pass => D
 18:09 L: D->Pass => DMw
@@ -186,6 +186,7 @@
 #--
 28:18 L: DMw->Long => F(M)
 29:01 L: M(SP)->Long => !GK
+#--
 29:21 T: Dg->Pass => D
 29:23 T: D->Pass => Dg
 29:25 T: Dg->Pass => Dp
@@ -266,7 +267,7 @@
 37:47 L: A->Shoot => GS >> C
 38:27 L: CK->Cross => !HD(Dp)
 38:29 T: Dp(HD)->Clr => !FT(A)
-38:31 L: A(FT)->Shoot => GKo	# injury
+38:31 L: A(FT)->Shoot => !GKo	# injury
 40:12 T: GK->Long => !M #!HD
 40:21 L: M->Long => Awp
 40:32 L: Awp->Pass => Mw
@@ -313,7 +314,7 @@
 45:08 T: DM->Move => M
 45:11 T: M->Move => Mw
 45:15 T: Mw->Move => A
-45:18 T: A->Shoot => GKo
+45:18 T: A->Shoot => !GKo
 45:44 L: GK->Long => !DMw			#!
 45:58 T: DMw->Pass => D
 45:59 T: D->Pass => Dp
@@ -425,7 +426,7 @@
 56:54 L: Dg(FT)->Clr => !Apc
 56:55 T: Apc->Shoot => C		# block
 57:15 T: CK->Cross => HD(Ap)
-57:17 T: Ap(HD)->Shoot => GKo	# sub
+57:17 T: Ap(HD)->Shoot => !GKo	# sub
 #--
 58:04 L: Dg->Long => !T(M)
 #--
@@ -463,7 +464,7 @@
 62:44 L: M->Move => !GK
 #--
 63:01 T: Dw->Pass => Dg
-63:03 T: GK->Pass => Dp
+63:03 T: Dg->Pass => Dp
 63:09 T: Dp->Pass => Dw
 63:12 T: Dw->Dribble => Dw
 63:13 T: Dw->Forward => DMw
@@ -502,7 +503,7 @@
 67:59 L: DM->Move => Mw
 68:04 L: Mw->Dribble => A
 68:08 L: A->Forward => Ap
-68:09 L: Ap->Shoot => GK	# R2
+68:09 L: Ap->Shoot => !GK	# R2
 #--
 68:42 T: Dg->Pass => Dp
 68:53 T: Dp->Pass => D
@@ -597,7 +598,7 @@
 78:05 T: DMw->Forward => Mw
 78:13 T: Mw->Long => Awp
 78:18 T: Awp->Long => HD(Ap)
-78:20 T: Ap(HD)->Shoot => GKo
+78:20 T: Ap(HD)->Shoot => !GKo
 #--
 79:02 T: M->Move => !D
 79:04 L: D->Long => M
@@ -621,7 +622,7 @@
 81:46 T: Dp(HD)->Clr => !A
 81:49 L: A->High => !FT(D)
 81:51 T: D(FT)->Clr => !FT(A)		#!
-82:02 L: A(FT)->Shoot => GK
+82:02 L: A(FT)->Shoot => !GK
 #--
 82:11 T: DMw->Move => Mw
 82:21 T: Mw->Pass => DM
