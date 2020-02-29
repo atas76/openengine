@@ -24,6 +24,7 @@ public class ParserTest {
     private static final String ACTION_OUTCOME = "27:42 R: Ap(FT)->Shoot => PST >> FT(Ap)";
     private static final String GS_ACTION_OUTCOME = "19:44 R: Apc->Shoot => GS >> !Dp";
     private static final String GS_CORNER_KICK = "37:47 L: A->Shoot => GS >> C";
+    private static final String GS_CATCH = "52:25 L: A->Shoot => GS >> !Dg";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -60,12 +61,22 @@ public class ParserTest {
     }
 
     @Test
-    public void testGoalkeeperSave() throws ScannerException, ParserException {
+    public void testShotOffTarget() throws ScannerException, ParserException {
 
         Statement parsedStatement = parseStatemement(SHOT_OFF_TARGET);
 
         assertEquals(StateContext.GK, parsedStatement.getStateOut().getContext());
         assertEquals(" comment", parsedStatement.getComment());
+    }
+
+    @Test
+    public void testGoalSaveCatch() throws ScannerException, ParserException {
+
+        Statement parsedStatement = parseStatemement(GS_CATCH);
+
+        assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
+        assertEquals(Coordinates.Dg, parsedStatement.getStateOut().getSpace());
+        assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
 
     @Test
