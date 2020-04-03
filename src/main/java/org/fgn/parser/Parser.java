@@ -89,7 +89,7 @@ public class Parser {
         State state = new State();
         String description = tokens.get(index++);
 
-        if (containsDescription(InStateContext.values(), description)) {
+        if (containsDescription(StateContext.values(), description)) {
             state.setContext(StateContext.valueOf(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
