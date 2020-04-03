@@ -1,4 +1,4 @@
-package org.fgn.parser;
+package org.fgn.ontology;
 
 /*
     about pseudo-coordinates: they are technically also states of play, but coordinates dominate context in in-states

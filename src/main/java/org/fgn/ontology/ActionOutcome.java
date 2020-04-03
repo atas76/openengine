@@ -1,4 +1,4 @@
-package org.fgn.parser;
+package org.fgn.ontology;
 
 public enum ActionOutcome {
 

@@ -1,5 +1,7 @@
 package org.fgn.parser;
 
+import org.fgn.ontology.ActionOutcome;
+
 public class Statement {
 
     private MatchTime time;

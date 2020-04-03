@@ -2,6 +2,9 @@ package org.fgn;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
+import org.fgn.ontology.ActionOutcome;
+import org.fgn.ontology.Coordinates;
+import org.fgn.ontology.StateContext;
 import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
 import org.junit.Rule;

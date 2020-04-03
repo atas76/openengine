@@ -1,11 +1,11 @@
 package org.fgn.parser;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import org.fgn.ontology.Coordinates;
+import org.fgn.ontology.StateContext;
 
 import static java.util.Objects.nonNull;
-import static org.fgn.parser.StateContext.SP;
-import static org.fgn.parser.StateContext.T;
+import static org.fgn.ontology.StateContext.SP;
+import static org.fgn.ontology.StateContext.T;
 
 public class State {
 
