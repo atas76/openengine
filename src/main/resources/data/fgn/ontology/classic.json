@@ -1,0 +1,175 @@
+{
+  "context": [
+    {
+      "id": "FREE",
+      "name": "Free play"
+    },
+    {
+      "id": "KO",
+      "name": "Kick-off"
+    },
+    {
+      "id": "F",
+      "name": "Foul"
+    },
+    {
+      "id": "H",
+      "name": "Handball"
+    },
+    {
+      "id": "SP",
+      "name": "Set piece"
+    },
+    {
+      "id": "O",
+      "name": "Offside"
+    },
+    {
+      "id": "T",
+      "name": "Throw-in"
+    },
+    {
+      "id": "C",
+      "name": "Corner kick"
+    },
+    {
+      "id": "GK",
+      "name": "Goal kick"
+    },
+    {
+      "id": "HD",
+      "name": "Header"
+    },
+    {
+      "id": "FT",
+      "name": "First touch"
+    },
+    {
+      "id": "G",
+      "name": "Goal"
+    }
+  ],
+  "outcome": [
+    {
+      "id": "PST",
+      "name": "Post",
+      "description": "Ball hitting the post"
+    },
+    {
+      "id": "GS",
+      "name": "Goalkeeper save"
+    }
+  ],
+  "coordinates": [
+    {
+      "id": "GK",
+      "name": "Goal-kick",
+      "description": "Pseudo-coordinate: overloaded with state context; goal-kick",
+      "x": "0",
+      "y": "0",
+      "front": "",
+      "back": "",
+      "lateral": ""
+    },
+    {
+      "id": "GD",
+      "name": "Goalkeeper out of penalty box",
+      "description": "Pseudo-coordinate: overloaded with situational context",
+      "x": "1",
+      "y": "0",
+      "front": "DM",
+      "back": "Dg",
+      "lateral": "Dw"
+    },
+    {
+      "id": "Dg",
+      "name": "Goalkeeper with ball in the area",
+      "description": "Pseudo-coordinate: overloaded with situational context; need to distinguish between holding and playing",
+      "x": "0",
+      "y": "0",
+      "front": "D",
+      "back": "",
+      "lateral": "Dw"
+    },
+    {
+      "id": "Dp",
+      "name": "Defender in the penalty area",
+      "description": "Situational context, assuming that an outfield player has the ball",
+      "x": "0",
+      "y": "0",
+      "front": "D",
+      "back": "Dg",
+      "lateral": "Dw"
+    },
+    {
+      "id": "D",
+      "name": "Defence",
+      "description": "Defending area centrally out of the penalty box",
+      "x": "1",
+      "y": "0",
+      "front": "DM",
+      "back": "Dp",
+      "lateral": "Dw"
+    },
+    {
+      "id": "Dw",
+      "name": "Defence wings",
+      "description": "The wings of the whole defensive area ('covered' by penalty box and further)",
+      "x": "0,1",
+      "y": "1",
+      "front": "DMw",
+      "back": "",
+      "lateral": "Dp,D"
+    },
+    {
+      "id": "DM",
+      "name": "Defending midfield",
+      "description": "The central area between the defensive area and the half-way line",
+      "x": "1.5",
+      "y": "0",
+      "front": "M",
+      "back": "D",
+      "lateral": "DMw"
+    },
+    {
+      "id": "DMw",
+      "name": "Defending midfield, wings",
+      "description": "The lateral area between the defensive are and the half-way line",
+      "x": "1.5",
+      "y": "1",
+      "front": "Mw",
+      "back": "Dw",
+      "lateral": "DM"
+    },
+    {
+      "id": "M",
+      "name": "Midfield",
+      "description": "The midfield central area between half-way line and attacking area",
+      "x": "2",
+      "y": "0",
+      "front": "A",
+      "back": "DM",
+      "lateral": "Mw"
+    },
+    {
+      "id": "Mw",
+      "name": "Midfield, wings",
+      "description": "The midfield lateral area between half-way line and attacking area",
+      "x": "2",
+      "y": "1",
+      "front": "Aw",
+      "back": "DMw",
+      "lateral": "M"
+    },
+    {
+      "id": "",
+      "name": "",
+      "description": "",
+      "x": "",
+      "y": "",
+      "front": "",
+      "back": "",
+      "lateral": ""
+    }
+  ]
+}

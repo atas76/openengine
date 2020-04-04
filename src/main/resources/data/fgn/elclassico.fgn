@@ -448,7 +448,7 @@
 53:01 R: Awp->BounceOff => C
 53:24 R: CK->Cross => !HD(Dp)
 53:26 B: Dp(HD)->Clearance => !FT(A)
-53:28 R: A(FT)->Shoot => GS >> !GKoo
+53:28 R: A(FT)->Shoot => GS >> !GK # Way over the bar
 #--
 53:46 B: Dp->LongPass => !T(M)
 53:57 R: M(T) => Mw
@@ -471,7 +471,7 @@
 55:20 R: D->Forward => !M
 55:28 B: M->Pass => A
 55:31 B: A->Hold => F(A)
-56:29 B: A(SP)->Shoot => !GKo
+56:29 B: A(SP)->Shoot => !GK # Over the bar
 56:52 R: GK->LongPass => !M
 57:06 B: M->Forward => !Dg
 #--
@@ -572,7 +572,7 @@
 66:36 R: Mw->Forward => A
 66:39 R: A->Move => Apw
 66:39 R: Apw->LowCross => FT(Ap)
-66:39 R: Ap(FT)->Shoot => !GKo
+66:39 R: Ap(FT)->Shoot => !GK # Over the bar
 #--
 67:07 B: Mw->Pass => DMw
 67:11 B: DMw->Pass => Mw
@@ -679,7 +679,7 @@
 79:39 B: Ap->Shoot => GS >> !Dp	# R3
 79:43 R: Dp->Move => F(D)
 #--
-80:11 R: Apw->Shoot => !GKo
+80:11 R: Apw->Shoot => !GK # Over the bar
 80:20 B: GK->LongPass => DM
 80:23 B: DM->Pass => Dw
 80:25 B: Dw->Pass => FT(D)

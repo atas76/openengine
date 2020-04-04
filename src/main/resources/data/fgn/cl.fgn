@@ -14,8 +14,8 @@
 04:07 T: D->Pass => DM
 04:10 T: DM->Pass => Dp
 04:12 T: Dp->LongPass => DMw
-04:18 T: DMw->Pass => AMw
-04:20 T: AMw->Move => DMw
+04:18 T: DMw->Pass => Aw
+04:20 T: Aw->Move => DMw
 04:26 T: DMw->Pass => DM
 04:27 T: DM->LongPass => Aw
 04:34 T: Aw->Pass => C
@@ -27,15 +27,15 @@
 05:37 T: Dg->Pass => D
 05:42 T: D->Pass => DMw
 05:46 T: DMw->Pass => !DM
-05:47 L: DM->Forward => AM
-05:54 L: AM->Pass => A
+05:47 L: DM->Forward => M
+05:54 L: M->Pass => A
 05:59 L: A->Forward => Apw
 06:01 L: Apw->Hold => !Dp
 #--
-06:54 T: AM(T) => DMw
+06:54 T: M(T) => DMw
 06:59 T: DMw->Pass => DM
-07:16 T: DM->Forward => AM
-07:17 T: AM->High => !Dw
+07:16 T: DM->Forward => M
+07:17 T: M->High => !Dw
 07:21 L: Dw->Pass => Dg
 07:22 L: Dg->LongPass => !T(A)
 07:32 T: A(T) => M
@@ -51,7 +51,7 @@
 08:50 T: Mw->Move => Aw
 08:56 T: Aw->Forward => Apc
 08:58 T: Apc->Dribble => A #!
-09:02 T: A->Shoot => !GKo
+09:02 T: A->Shoot => !GK # Over the bar
 09:22 L: GK->Pass => Dw
 09:24 L: Dw->Pass => Dg
 09:26 L: Dg->Pass => D
@@ -267,7 +267,7 @@
 37:47 L: A->Shoot => GS >> C
 38:27 L: CK->Cross => !HD(Dp)
 38:29 T: Dp(HD)->Clearance => !FT(A)
-38:31 L: A(FT)->Shoot => !GKo	# injury
+38:31 L: A(FT)->Shoot => !GK	# over the bar, injury
 40:12 T: GK->LongPass => !M #!HD
 40:21 L: M->LongPass => Awp
 40:32 L: Awp->Pass => Mw
@@ -314,7 +314,7 @@
 45:08 T: DM->Move => M
 45:11 T: M->Move => Mw
 45:15 T: Mw->Move => A
-45:18 T: A->Shoot => !GKo
+45:18 T: A->Shoot => !GK # over the bar
 45:44 L: GK->LongPass => !DMw			#!
 45:58 T: DMw->Pass => D
 45:59 T: D->Pass => Dp
@@ -426,7 +426,7 @@
 56:54 L: Dg(FT)->Clearance => !Apc
 56:55 T: Apc->Shoot => C		# block
 57:15 T: CK->Cross => HD(Ap)
-57:17 T: Ap(HD)->Shoot => !GKo	# sub
+57:17 T: Ap(HD)->Shoot => !GK	# over the bar, sub
 #--
 58:04 L: Dg->LongPass => !T(M)
 #--
@@ -598,7 +598,7 @@
 78:05 T: DMw->Forward => Mw
 78:13 T: Mw->LongPass => Awp
 78:18 T: Awp->LongPass => HD(Ap)
-78:20 T: Ap(HD)->Shoot => !GKo
+78:20 T: Ap(HD)->Shoot => !GK # over the bar
 #--
 79:02 T: M->Move => !D
 79:04 L: D->LongPass => M

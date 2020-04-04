@@ -10,7 +10,6 @@ public enum Coordinates {
     DM,DMw,
     M, Mw,
     CK, // pseudo-coordinate
-    AM, AMw,
     A,Aw,
     Awp,
     Ap, Apc, Apw;
