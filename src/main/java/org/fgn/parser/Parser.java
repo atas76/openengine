@@ -2,6 +2,7 @@ package org.fgn.parser;
 
 import org.fgn.lexan.Token;
 import org.fgn.ontology.ActionOutcome;
+import org.fgn.ontology.ActionType;
 import org.fgn.ontology.Coordinates;
 import org.fgn.ontology.StateContext;
 import org.fgn.parser.exceptions.ParserException;
@@ -139,8 +140,15 @@ public class Parser {
         statement.setStateOut(state);
     }
 
-    private void parseAction(Statement statement) {
-        statement.setAction(new Action(tokens.get(index++)));
+    private void parseAction(Statement statement) throws ParserException {
+
+        String actionDescription = tokens.get(index++);
+
+        if (containsDescription(ActionType.values(), actionDescription)) {
+            statement.setAction(new Action(actionDescription));
+        } else {
+            throw new ParserException("Unsupported action: " + actionDescription);
+        }
     }
 
     private String getNextToken() {

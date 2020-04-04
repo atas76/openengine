@@ -93,12 +93,12 @@ public class ParserTest {
     @Test
     public void testParsedStatement() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement("03:20 L: Mw->Long => !Dg");
+        Statement parsedStatement = parseStatemement("03:20 L: Mw->LongPass => !Dg");
 
         assertEquals(new MatchTime(3, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
         assertEquals(Coordinates.Mw, parsedStatement.getStateIn().getSpace());
-        assertEquals("Long", parsedStatement.getAction().toString());
+        assertEquals("LongPass", parsedStatement.getAction().toString());
         assertEquals(Coordinates.Dg, parsedStatement.getStateOut().getSpace());
         assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
