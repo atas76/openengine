@@ -63,13 +63,13 @@
   "coordinates": [
     {
       "id": "GK",
-      "name": "Goal-kick",
+      "name": "Goal kick",
       "description": "Pseudo-coordinate: overloaded with state context; goal-kick",
       "x": "0",
       "y": "0",
-      "front": "",
-      "back": "",
-      "lateral": ""
+      "front": "Dp",
+      "back": "G",
+      "lateral": "Dw"
     },
     {
       "id": "GD",
@@ -88,7 +88,7 @@
       "x": "0",
       "y": "0",
       "front": "D",
-      "back": "",
+      "back": "G",
       "lateral": "Dw"
     },
     {
@@ -118,8 +118,8 @@
       "x": "0,1",
       "y": "1",
       "front": "DMw",
-      "back": "",
-      "lateral": "Dp,D"
+      "back": "C",
+      "lateral": "Dp, D"
     },
     {
       "id": "DM",
@@ -162,14 +162,74 @@
       "lateral": "M"
     },
     {
-      "id": "",
-      "name": "",
-      "description": "",
-      "x": "",
-      "y": "",
-      "front": "",
-      "back": "",
-      "lateral": ""
+      "id": "CK",
+      "name": "Corner kick",
+      "description": "Pseudo-coordinate",
+      "x": "3",
+      "y": "1",
+      "front": "GK",
+      "back": "Awp",
+      "lateral": "Apw"
+    },
+    {
+      "id": "A",
+      "name": "Attacking area",
+      "description": "Attacking area, central, out of penalty box",
+      "x": "2.5",
+      "y": "0",
+      "front": "Ap",
+      "back": "M",
+      "lateral": "Aw"
+    },
+    {
+      "id": "Aw",
+      "name": "Attacking area, wings",
+      "description": "The wings of attacking area, but not next to penalty box",
+      "x": "2.5",
+      "y": "1",
+      "front": "Awp",
+      "back": "Mw",
+      "lateral": "A"
+    },
+    {
+      "id": "Awp",
+      "name": "Attacking area, wings, advanced",
+      "description": "Attacking area, wings, next to penalty box",
+      "x": "3",
+      "y": "1",
+      "front": "Awp",
+      "back": "Aw",
+      "lateral": "Apw"
+    },
+    {
+      "id": "Apw",
+      "name": "Attacking area, wings of penalty box",
+      "description": "Inside the penalty box, lateral advanced position (more difficult to score)",
+      "x": "3",
+      "y": "0.5",
+      "front": "Apw",
+      "back": "Apc",
+      "lateral": "Ap"
+    },
+    {
+      "id": "Ap",
+      "name": "Attacking area, penalty box",
+      "description": "In the penalty box, facing the goal directly",
+      "x": "3",
+      "y": "0",
+      "front": "Ap",
+      "back": "A",
+      "lateral": "Apw, Apc"
+    },
+    {
+      "id": "Apc",
+      "name": "Penalty box corner area",
+      "description": "Area in the penalty box, facing the goal diagonally",
+      "x": "2.75",
+      "y": "0.5",
+      "front": "Apw",
+      "back": "A",
+      "lateral": "Ap"
     }
   ]
 }
