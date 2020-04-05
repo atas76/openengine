@@ -231,5 +231,87 @@
       "back": "A",
       "lateral": "Ap"
     }
+  ],
+  "actions": [
+    {
+      "id": "High",
+      "name": "High ball",
+      "description": "Near pass, with ball significantly off the ground"
+    },
+    {
+      "id": "LowCross",
+      "name": "Low cross",
+      "description": "Low cross"
+    },
+    {
+      "id": "Clearance",
+      "name": "Clearance",
+      "description": "Clearance by a defender"
+    },
+    {
+      "id": "BounceOff",
+      "name": "Bounce off",
+      "description": "Pseudo-action; placeholder for when a ball is bounced off a player simulating an actual action"
+    },
+    {
+      "id": "HandPass",
+      "name": "Hand pass",
+      "description": "Goalkeeper pass with hands"
+    },
+    {
+      "id": "Move",
+      "name": "Move",
+      "description": "When moving with the ball; all actions imply ball playing"
+    },
+    {
+      "id": "Pass",
+      "name": "Pass",
+      "description": "The usual, normal, mostly boring pass"
+    },
+    {
+      "id": "Dribble",
+      "name": "Dribble",
+      "description": "Dribbling; contrast with Move where for example the player moves into empty space"
+    },
+    {
+      "id": "Forward",
+      "name": "Forward pass",
+      "description": "A direct low pass forward, which typically creates an attacking advantage, if successful"
+    },
+    {
+      "id": "Pivot",
+      "name": "Pivot",
+      "description": "Turning with the back to the goal"
+    },
+    {
+      "id": "Cross",
+      "name": "Cross",
+      "description": "Cross"
+    },
+    {
+      "id": "Shoot",
+      "name": "Shoot",
+      "description": "Shoot; any attempt at goal including headers. To distinguish between attempts, special coordinates are used"
+    },
+    {
+      "id": "Hold",
+      "name": "Hold ball",
+      "description": "Applies to outfield players, so not literally holding. The next expected state should be ball loss or ball out of play"
+    },
+    {
+      "id": "LongPass",
+      "name": "Long pass",
+      "description": "Long pass"
+    },
+    {
+      "id": "LongPassBack",
+      "name": "Long pass back",
+      "description": "Long pass back"
+    },
+    {
+      "id": "SwapWing",
+      "name": "Swap wings",
+      "description": "Long pass from one wing to the other (without aiming the ball significantly forward)"
+    }
   ]
 }
