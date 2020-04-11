@@ -24,7 +24,7 @@ public class ParserTest {
     private static final String PARAMETERISED_INSTATE_STATEMENT = "01:47 L: Ap(SP)->Shoot => G";
     private static final String PARAMETERISED_OUTSTATE_STATEMENT = "11:34 T: D(T) => F(Mw)";
     private static final String GARBAGE_END_STATEMENT = "11:34 T: D(T) => F(Mw)))) Garbage)in (garbage out(";
-    private static final String GOAL_ATTEMPT_STATEMENT = "09:02 T: A->Shoot => GKo";
+    private static final String GOAL_ATTEMPT_STATEMENT = "09:02 T: A->Shoot => GK";
     private static final String SHOT_OFF_TARGET = "16:47 L: A->Shoot => GK # comment";
     private static final String ACTION_OUTCOME = "27:42 R: Ap(FT)->Shoot => PST >> FT(Ap)";
     private static final String GS_ACTION_OUTCOME = "19:44 R: Apc->Shoot => GS >> !Dp";
@@ -95,7 +95,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GOAL_ATTEMPT_STATEMENT);
 
-        assertEquals(StateContextEnum.GKo, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.GK, parsedStatement.getStateOut().getContext());
     }
 
     @Test

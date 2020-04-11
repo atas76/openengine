@@ -109,8 +109,8 @@ public class Parser {
     }
 
     private void defineStateContext(State state, String description) {
-        if (containsDescription(StateContextEnum.values(), description)) {
-            state.setContext(StateContextEnum.valueOf(description));
+        if (StateContext.hasEntity(description)) {
+            state.setContext(StateContext.getEntity(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
         }

@@ -28,10 +28,6 @@ public class State {
         this.space = space;
     }
 
-    void setContext(StateContextEnum parameter) {
-        this.context = parameter;
-    }
-
     void setContext(BaseObject entity) {
         this.context = StateContextEnum.valueOf(entity.getId());
     }
