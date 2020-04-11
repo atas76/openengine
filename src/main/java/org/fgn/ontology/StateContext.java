@@ -7,12 +7,12 @@ public class StateContext {
 
     private static Map<String, BaseObject> entities;
 
-    public static Map<String, BaseObject> getEntities() {
-        return entities;
-    }
-
     public static boolean hasEntity(String key) {
         return entities.containsKey(key);
+    }
+
+    public static BaseObject getEntity(String key) {
+        return entities.get(key);
     }
 
     public static void load(Ontology ontology) {

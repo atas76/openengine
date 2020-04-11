@@ -91,7 +91,7 @@ public class Parser {
         String description = tokens.get(index++);
 
         if (StateContext.hasEntity(description)) {
-            state.setContext(StateContext.getEntities().get(description));
+            state.setContext(StateContext.getEntity(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
         }
@@ -102,7 +102,7 @@ public class Parser {
 
     private void parseParameter(State state) throws ParserException {
         if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.setContext(StateContextEnum.valueOf(tokens.get(++index)));
+            state.setContext(StateContext.getEntity(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             index++;
         }
