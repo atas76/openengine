@@ -1,5 +1,6 @@
 package org.fgn.parser;
 
+import org.fgn.ontology.BaseObject;
 import org.fgn.ontology.Coordinates;
 import org.fgn.ontology.StateContextEnum;
 
@@ -29,6 +30,10 @@ public class State {
 
     void setContext(StateContextEnum parameter) {
         this.context = parameter;
+    }
+
+    void setContext(BaseObject entity) {
+        this.context = StateContextEnum.valueOf(entity.getId());
     }
 
     public StateContextEnum getContext() {

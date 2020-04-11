@@ -91,7 +91,7 @@ public class Parser {
         String description = tokens.get(index++);
 
         if (StateContext.hasEntity(description)) {
-            state.setContext(StateContextEnum.valueOf(description));
+            state.setContext(StateContext.getEntities().get(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
         }

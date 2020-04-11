@@ -1,20 +1,21 @@
 package org.fgn.ontology;
 
-import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StateContext {
 
-    private static Set<String> keys;
+    private static Map<String, BaseObject> entities;
 
-    public static Set<String> getKeys() {
-        return keys;
+    public static Map<String, BaseObject> getEntities() {
+        return entities;
     }
 
     public static boolean hasEntity(String key) {
-        return keys.contains(key);
+        return entities.containsKey(key);
     }
 
     public static void load(Ontology ontology) {
-        keys = ontology.getContextIds();
+        entities = ontology.getContext().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
 }
