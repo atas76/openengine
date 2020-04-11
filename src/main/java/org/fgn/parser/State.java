@@ -1,16 +1,16 @@
 package org.fgn.parser;
 
 import org.fgn.ontology.Coordinates;
-import org.fgn.ontology.StateContext;
+import org.fgn.ontology.StateContextEnum;
 
 import static java.util.Objects.nonNull;
-import static org.fgn.ontology.StateContext.SP;
-import static org.fgn.ontology.StateContext.T;
+import static org.fgn.ontology.StateContextEnum.SP;
+import static org.fgn.ontology.StateContextEnum.T;
 
 public class State {
 
     private Coordinates space;
-    private StateContext context = StateContext.FREE;
+    private StateContextEnum context = StateContextEnum.FREE;
     private boolean keepPossession = true;
 
     public State() {}
@@ -27,11 +27,11 @@ public class State {
         this.space = space;
     }
 
-    void setContext(StateContext parameter) {
+    void setContext(StateContextEnum parameter) {
         this.context = parameter;
     }
 
-    public StateContext getContext() {
+    public StateContextEnum getContext() {
         return this.context;
     }
 

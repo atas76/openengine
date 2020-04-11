@@ -1,10 +1,7 @@
 package org.fgn.parser;
 
 import org.fgn.lexan.Token;
-import org.fgn.ontology.ActionOutcome;
-import org.fgn.ontology.ActionType;
-import org.fgn.ontology.Coordinates;
-import org.fgn.ontology.StateContext;
+import org.fgn.ontology.*;
 import org.fgn.parser.exceptions.ParserException;
 
 import java.util.Arrays;
@@ -93,8 +90,8 @@ public class Parser {
         State state = new State();
         String description = tokens.get(index++);
 
-        if (containsDescription(StateContext.values(), description)) {
-            state.setContext(StateContext.valueOf(description));
+        if (StateContext.hasEntity(description)) {
+            state.setContext(StateContextEnum.valueOf(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
         }
@@ -105,15 +102,15 @@ public class Parser {
 
     private void parseParameter(State state) throws ParserException {
         if (OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.setContext(StateContext.valueOf(tokens.get(++index)));
+            state.setContext(StateContextEnum.valueOf(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             index++;
         }
     }
 
     private void defineStateContext(State state, String description) {
-        if (containsDescription(StateContext.values(), description)) {
-            state.setContext(StateContext.valueOf(description));
+        if (containsDescription(StateContextEnum.values(), description)) {
+            state.setContext(StateContextEnum.valueOf(description));
         } else {
             state.setSpace(Coordinates.valueOf(description));
         }

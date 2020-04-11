@@ -2,20 +2,22 @@ package org.fgn;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.ontology.ActionOutcome;
-import org.fgn.ontology.Coordinates;
-import org.fgn.ontology.StateContext;
+import org.fgn.ontology.*;
 import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class ParserTest {
+
+    private static final String FGN_ROOT = "src/test/resources/data/fgn";
 
     private static final String DEFAULT_ACTION_STATEMENT = "00:00 L: KO => DM";
     private static final String RANDOM_ACTION_STATEMENT = "12:38 T: D->Pass => DM";
@@ -34,13 +36,19 @@ public class ParserTest {
         return new Parser(tokens).parse();
     }
 
+    @Before
+    public void setUp() throws IOException {
+        Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
+        StateContext.load(ontology);
+    }
+
     @Test
     public void testActionOutcome() throws ScannerException, ParserException {
 
         Statement parsedStatement = parseStatemement(ACTION_OUTCOME);
 
         assertEquals(ActionOutcome.PST, parsedStatement.getActionOutcome());
-        assertEquals(StateContext.FT, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.FT, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Ap, parsedStatement.getStateOut().getSpace());
     }
 
@@ -60,7 +68,7 @@ public class ParserTest {
         Statement parsedStatement = parseStatemement(GS_CORNER_KICK);
 
         assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
-        assertEquals(StateContext.C, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.C, parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -68,7 +76,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(SHOT_OFF_TARGET);
 
-        assertEquals(StateContext.GK, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.GK, parsedStatement.getStateOut().getContext());
         assertEquals(" comment", parsedStatement.getComment());
     }
 
@@ -87,7 +95,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GOAL_ATTEMPT_STATEMENT);
 
-        assertEquals(StateContext.GKo, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.GKo, parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -110,7 +118,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContextEnum.KO, parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
         assertEquals(" My comments", parsedStatement.getComment());
     }
@@ -144,7 +152,7 @@ public class ParserTest {
         assertEquals(Coordinates.Ap, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isSetPiece());
         assertEquals("Shoot", parsedStatement.getAction().toString());
-        assertEquals(StateContext.G, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.G, parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -156,9 +164,9 @@ public class ParserTest {
         assertEquals("T", parsedStatement.getTeam());
         assertEquals(Coordinates.D, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isThrowIn());
-        assertEquals(StateContext.T, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContextEnum.T, parsedStatement.getStateIn().getContext());
         assertNull(parsedStatement.getAction());
-        assertEquals(StateContext.F, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.F, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpace());
     }
 
@@ -185,7 +193,7 @@ public class ParserTest {
         assertEquals("L", parsedStatement.getTeam());
         assertEquals(Coordinates.Apc, parsedStatement.getStateIn().getSpace());
         assertEquals("BounceOff", parsedStatement.getAction().toString());
-        assertEquals(StateContext.H, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContextEnum.H, parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpace());
     }
 
@@ -208,7 +216,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals(StateContext.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContextEnum.KO, parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
 

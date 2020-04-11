@@ -1,19 +1,20 @@
 package org.fgn.ontology;
 
-public enum StateContext {
+import java.util.Set;
 
-    FREE("Free play"),
-    KO("Kick-off"),
-    F("Foul"), H("Handball"), SP("Set Piece"), O("Offside"),
-    T("Throw In"), C("Corner kick"),
-    GKoo("Goal kick way over the bar"), GKo("Goal kick over the bar"), GK("Goal kick"),
-    HD("Header"), FT("First touch"),
-    // GS("Goalkeeper save"),
-    G("Goal");
+public class StateContext {
 
-    private String description;
+    private static Set<String> keys;
 
-    StateContext(String description) {
-        this.description = description;
+    public static Set<String> getKeys() {
+        return keys;
+    }
+
+    public static boolean hasEntity(String key) {
+        return keys.contains(key);
+    }
+
+    public static void load(Ontology ontology) {
+        keys = ontology.getContextIds();
     }
 }
