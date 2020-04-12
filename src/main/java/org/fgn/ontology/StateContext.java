@@ -15,6 +15,10 @@ public class StateContext {
         return entities.get(key);
     }
 
+    public static BaseObject getDefault() {
+        return entities.get("FREE");
+    }
+
     public static void load(Ontology ontology) {
         entities = ontology.getContext().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
