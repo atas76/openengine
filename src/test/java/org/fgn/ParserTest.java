@@ -48,7 +48,7 @@ public class ParserTest {
         Statement parsedStatement = parseStatemement(ACTION_OUTCOME);
 
         assertEquals(ActionOutcome.PST, parsedStatement.getActionOutcome());
-        assertEquals(StateContextEnum.FT, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("FT"), parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Ap, parsedStatement.getStateOut().getSpace());
     }
 
@@ -68,7 +68,7 @@ public class ParserTest {
         Statement parsedStatement = parseStatemement(GS_CORNER_KICK);
 
         assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
-        assertEquals(StateContextEnum.C, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("C"), parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(SHOT_OFF_TARGET);
 
-        assertEquals(StateContextEnum.GK, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("GK"), parsedStatement.getStateOut().getContext());
         assertEquals(" comment", parsedStatement.getComment());
     }
 
@@ -95,7 +95,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GOAL_ATTEMPT_STATEMENT);
 
-        assertEquals(StateContextEnum.GK, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("GK"), parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals(StateContextEnum.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContext.getEntity("KO"), parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
         assertEquals(" My comments", parsedStatement.getComment());
     }
@@ -152,7 +152,7 @@ public class ParserTest {
         assertEquals(Coordinates.Ap, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isSetPiece());
         assertEquals("Shoot", parsedStatement.getAction().toString());
-        assertEquals(StateContextEnum.G, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("G"), parsedStatement.getStateOut().getContext());
     }
 
     @Test
@@ -164,9 +164,9 @@ public class ParserTest {
         assertEquals("T", parsedStatement.getTeam());
         assertEquals(Coordinates.D, parsedStatement.getStateIn().getSpace());
         assertTrue(parsedStatement.getStateIn().isThrowIn());
-        assertEquals(StateContextEnum.T, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContext.getEntity("T"), parsedStatement.getStateIn().getContext());
         assertNull(parsedStatement.getAction());
-        assertEquals(StateContextEnum.F, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("F"), parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Mw, parsedStatement.getStateOut().getSpace());
     }
 
@@ -193,7 +193,7 @@ public class ParserTest {
         assertEquals("L", parsedStatement.getTeam());
         assertEquals(Coordinates.Apc, parsedStatement.getStateIn().getSpace());
         assertEquals("BounceOff", parsedStatement.getAction().toString());
-        assertEquals(StateContextEnum.H, parsedStatement.getStateOut().getContext());
+        assertEquals(StateContext.getEntity("H"), parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Apc, parsedStatement.getStateOut().getSpace());
     }
 
@@ -216,7 +216,7 @@ public class ParserTest {
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
-        assertEquals(StateContextEnum.KO, parsedStatement.getStateIn().getContext());
+        assertEquals(StateContext.getEntity("KO"), parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.DM, parsedStatement.getStateOut().getSpace());
     }
 

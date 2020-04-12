@@ -1,5 +1,7 @@
 package org.fgn.ontology;
 
+import java.util.Objects;
+
 public class BaseObject {
 
     private String id;
@@ -36,5 +38,18 @@ public class BaseObject {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BaseObject)) return false;
+        BaseObject that = (BaseObject) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

@@ -2,6 +2,7 @@ package org.fgn.parser;
 
 import org.fgn.ontology.BaseObject;
 import org.fgn.ontology.Coordinates;
+import org.fgn.ontology.StateContext;
 import org.fgn.ontology.StateContextEnum;
 
 import static java.util.Objects.nonNull;
@@ -32,8 +33,8 @@ public class State {
         this.context = StateContextEnum.valueOf(entity.getId());
     }
 
-    public StateContextEnum getContext() {
-        return this.context;
+    public BaseObject getContext() {
+        return StateContext.getEntity(this.context.toString());
     }
 
     public boolean isSetPiece() {
