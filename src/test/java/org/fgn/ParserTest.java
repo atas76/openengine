@@ -40,6 +40,7 @@ public class ParserTest {
     public void setUp() throws IOException {
         Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
         StateContext.load(ontology);
+        ActionOutcomeContext.load(ontology);
     }
 
     @Test
