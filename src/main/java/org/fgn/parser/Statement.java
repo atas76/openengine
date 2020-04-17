@@ -1,6 +1,7 @@
 package org.fgn.parser;
 
 import org.fgn.ontology.ActionOutcome;
+import org.fgn.ontology.BaseObject;
 
 public class Statement {
 
@@ -66,5 +67,9 @@ public class Statement {
 
     public void setActionOutcome(ActionOutcome actionOutcome) {
         this.actionOutcome = actionOutcome;
+    }
+
+    public void setActionOutcome(BaseObject entity) {
+        this.actionOutcome = ActionOutcome.valueOf(entity.getId());
     }
 }

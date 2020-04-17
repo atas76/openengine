@@ -79,7 +79,7 @@ public class Parser {
 
     private void evaluateCurrentToken(Statement statement) throws ParserException {
         if (ActionOutcomeContext.hasEntity(lookaheadToken())) {
-            statement.setActionOutcome(ActionOutcome.valueOf(this.tokens.get(index++)));
+            statement.setActionOutcome(ActionOutcomeContext.getEntity(this.tokens.get(index++)));
         } else {
             parseStateOut(statement);
         }
