@@ -1,14 +1,17 @@
 package org.fgn.parser;
 
 import org.fgn.ontology.BaseObject;
-import org.fgn.ontology.Coordinates;
+import org.fgn.ontology.CoordinateObject;
+import org.fgn.ontology.CoordinatesEnum;
 import org.fgn.ontology.StateContext;
 
 import static java.util.Objects.nonNull;
 
 public class State {
 
-    private Coordinates space;
+    private CoordinatesEnum spaceEnum;
+    private CoordinateObject space;
+
     private BaseObject context = StateContext.getDefault();
     private boolean keepPossession = true;
 
@@ -22,11 +25,19 @@ public class State {
         this.keepPossession = keepPossession;
     }
 
-    public Coordinates getSpace() {
-        return this.space;
+    public CoordinatesEnum getSpaceEnum() {
+        return this.spaceEnum;
     }
 
-    public void setSpace(Coordinates space) {
+    public void setSpaceEnum(CoordinatesEnum space) {
+        this.spaceEnum = space;
+    }
+
+    public CoordinateObject getSpace() {
+        return space;
+    }
+
+    public void setSpace(CoordinateObject space) {
         this.space = space;
     }
 

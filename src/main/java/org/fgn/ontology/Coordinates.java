@@ -1,16 +1,22 @@
 package org.fgn.ontology;
 
-/*
-    about pseudo-coordinates: they are technically also states of play, but coordinates dominate context in in-states
- */
-public enum Coordinates {
-    GK, // pseudo-coordinate
-    GD, Dg,Dp,
-    D,Dw,
-    DM,DMw,
-    M, Mw,
-    CK, // pseudo-coordinate
-    A,Aw,
-    Awp,
-    Ap, Apc, Apw;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class Coordinates {
+
+    private static Map<String, CoordinateObject> entities;
+
+    public static boolean hasEntity(String key) {
+        return entities.containsKey(key);
+    }
+
+    public static CoordinateObject getEntity(String key) {
+        return entities.get(key);
+    }
+
+    public static void load(Ontology ontology) {
+        entities = ontology.getCoordinates().stream().
+                collect(Collectors.toMap(CoordinateObject::getId, coordinateObject -> coordinateObject));
+    }
 }
