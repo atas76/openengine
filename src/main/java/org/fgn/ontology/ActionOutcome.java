@@ -1,12 +1,21 @@
 package org.fgn.ontology;
 
-public enum ActionOutcome {
+import java.util.Map;
+import java.util.stream.Collectors;
 
-    PST("Post"), GS("Goalkeeper save");
+public class ActionOutcome {
 
-    private String description;
+    private static Map<String, BaseObject> entities;
 
-    ActionOutcome(String description) {
-        this.description = description;
+    public static boolean hasEntity(String key) {
+        return entities.containsKey(key);
+    }
+
+    public static BaseObject getEntity(String key) {
+        return entities.get(key);
+    }
+
+    public static void load(Ontology ontology) {
+        entities = ontology.getOutcome().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
 }

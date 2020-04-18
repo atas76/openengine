@@ -2,7 +2,7 @@ package org.openfootie.openengine.util;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.ontology.ActionOutcomeContext;
+import org.fgn.ontology.ActionOutcome;
 import org.fgn.ontology.Ontology;
 import org.fgn.ontology.StateContext;
 import org.fgn.parser.Parser;
@@ -30,7 +30,7 @@ public class MatchNotationParsing {
 
         Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
         StateContext.load(ontology);
-        ActionOutcomeContext.load(ontology);
+        ActionOutcome.load(ontology);
 
         String currentLine = "";
         int lineCount = 0;

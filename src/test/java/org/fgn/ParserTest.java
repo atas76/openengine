@@ -40,7 +40,7 @@ public class ParserTest {
     public void setUp() throws IOException {
         Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
         StateContext.load(ontology);
-        ActionOutcomeContext.load(ontology);
+        ActionOutcome.load(ontology);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(ACTION_OUTCOME);
 
-        assertEquals(ActionOutcome.PST, parsedStatement.getActionOutcome());
+        assertEquals(ActionOutcome.getEntity("PST"), parsedStatement.getActionOutcome());
         assertEquals(StateContext.getEntity("FT"), parsedStatement.getStateOut().getContext());
         assertEquals(Coordinates.Ap, parsedStatement.getStateOut().getSpace());
     }
@@ -58,7 +58,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GS_ACTION_OUTCOME);
 
-        assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
+        assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(Coordinates.Dp, parsedStatement.getStateOut().getSpace());
         assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }
@@ -68,7 +68,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GS_CORNER_KICK);
 
-        assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
+        assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(StateContext.getEntity("C"), parsedStatement.getStateOut().getContext());
     }
 
@@ -86,7 +86,7 @@ public class ParserTest {
 
         Statement parsedStatement = parseStatemement(GS_CATCH);
 
-        assertEquals(ActionOutcome.GS, parsedStatement.getActionOutcome());
+        assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(Coordinates.Dg, parsedStatement.getStateOut().getSpace());
         assertFalse(parsedStatement.getStateOut().isSamePossesion());
     }

@@ -78,8 +78,8 @@ public class Parser {
     }
 
     private void evaluateCurrentToken(Statement statement) throws ParserException {
-        if (ActionOutcomeContext.hasEntity(lookaheadToken())) {
-            statement.setActionOutcome(ActionOutcomeContext.getEntity(this.tokens.get(index++)));
+        if (ActionOutcome.hasEntity(lookaheadToken())) {
+            statement.setActionOutcome(ActionOutcome.getEntity(this.tokens.get(index++)));
         } else {
             parseStateOut(statement);
         }

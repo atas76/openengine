@@ -1,6 +1,5 @@
 package org.fgn.parser;
 
-import org.fgn.ontology.ActionOutcome;
 import org.fgn.ontology.BaseObject;
 
 public class Statement {
@@ -11,7 +10,7 @@ public class Statement {
     private Action action;
     private State stateOut;
     private String comment;
-    private ActionOutcome actionOutcome;
+    private BaseObject actionOutcome;
 
     public String getComment() {
         return comment;
@@ -61,15 +60,11 @@ public class Statement {
         this.time = time;
     }
 
-    public ActionOutcome getActionOutcome() {
-        return actionOutcome;
-    }
-
-    public void setActionOutcome(ActionOutcome actionOutcome) {
-        this.actionOutcome = actionOutcome;
+    public BaseObject getActionOutcome() {
+        return this.actionOutcome;
     }
 
     public void setActionOutcome(BaseObject entity) {
-        this.actionOutcome = ActionOutcome.valueOf(entity.getId());
+        this.actionOutcome = entity;
     }
 }
