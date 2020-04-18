@@ -93,7 +93,7 @@ public class Parser {
         if (StateContext.hasEntity(description)) {
             state.setContext(StateContext.getEntity(description));
         } else {
-            state.setSpaceEnum(CoordinatesEnum.valueOf(description));
+            state.setSpace(Coordinates.getEntity(description));
         }
 
         parseParameter(state);
@@ -112,7 +112,7 @@ public class Parser {
         if (StateContext.hasEntity(description)) {
             state.setContext(StateContext.getEntity(description));
         } else {
-            state.setSpaceEnum(CoordinatesEnum.valueOf(description));
+            state.setSpace(Coordinates.getEntity(description));
         }
     }
 
@@ -129,7 +129,7 @@ public class Parser {
         defineStateContext(state, tokens.get(index++));
 
         if (index < tokens.size() && OPEN_PARENTHESIS.equals(lookaheadToken())) {
-            state.setSpaceEnum(CoordinatesEnum.valueOf(tokens.get(++index)));
+            state.setSpace(Coordinates.getEntity(tokens.get(++index)));
             confirmToken(++index, CLOSE_PARENTHESIS);
             if (hasTokens()) index++;
         }
