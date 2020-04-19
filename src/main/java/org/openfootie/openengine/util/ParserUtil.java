@@ -14,6 +14,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 public class ParserUtil {
 
     private static final String FGN_ROOT = "src/main/resources/data/fgn";
@@ -51,10 +53,16 @@ public class ParserUtil {
                 symbolTable.addStatementTokens(statementWrapper);
 
                 Statement statement = new Parser(tokens).parse();
-                symbolTable.addStateIn(statement.getStateIn());
-                symbolTable.addStateOut(statement.getStateOut());
+
+                if (nonNull(statement.getStateIn())) { // Commented-out statement
+                    symbolTable.addStateIn(statement.getStateIn());
+                    symbolTable.addStateOut(statement.getStateOut());
+                } else {
+                    continue;
+                }
+
                 // TODO Optional may also be used
-                if (statement.getAction() != null) {
+                if (nonNull(statement.getAction())) {
                     symbolTable.addAction(statement.getAction());
                 }
 
