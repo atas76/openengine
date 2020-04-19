@@ -6,7 +6,7 @@ import org.openfootie.openengine.util.analysis.MatchReport;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MatchSampleAnalysis {
+public class MatchSampleUtil {
 
     public static void main(String [] args) {
 

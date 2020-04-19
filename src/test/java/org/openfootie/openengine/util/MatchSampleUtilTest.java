@@ -8,7 +8,7 @@ import org.openfootie.openengine.util.analysis.PlayerParticipation;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-public class MatchSampleAnalysisTest {
+public class MatchSampleUtilTest {
 
     private final String TEST_DATA_PATH = "src/test/resources/data";
     private final String TEST_SAMPLES_DATA_PATH = "src/test/resources/data/samples";

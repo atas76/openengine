@@ -2,10 +2,7 @@ package org.openfootie.openengine.util;
 
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.ontology.ActionOutcome;
-import org.fgn.ontology.Coordinates;
-import org.fgn.ontology.Ontology;
-import org.fgn.ontology.StateContext;
+import org.fgn.ontology.*;
 import org.fgn.parser.Parser;
 import org.fgn.parser.Statement;
 import org.fgn.parser.exceptions.ParserException;
@@ -17,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class MatchNotationParsing {
+public class ParserUtil {
 
     private static final String FGN_ROOT = "src/main/resources/data/fgn";
 
@@ -33,6 +30,7 @@ public class MatchNotationParsing {
         StateContext.load(ontology);
         ActionOutcome.load(ontology);
         Coordinates.load(ontology);
+        ActionType.load(ontology);
 
         String currentLine = "";
         int lineCount = 0;

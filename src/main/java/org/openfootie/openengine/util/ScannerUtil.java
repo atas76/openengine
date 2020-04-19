@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class MatchNotationAnalysis {
+public class ScannerUtil {
 
     private static final String FGN_ROOT = "src/main/resources/data/fgn";
 

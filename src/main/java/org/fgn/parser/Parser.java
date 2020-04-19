@@ -141,7 +141,7 @@ public class Parser {
 
         String actionDescription = tokens.get(index++);
 
-        if (containsDescription(ActionType.values(), actionDescription)) {
+        if (ActionType.hasEntity(actionDescription)) {
             statement.setAction(new Action(actionDescription));
         } else {
             throw new ParserException("Unsupported action: " + actionDescription);

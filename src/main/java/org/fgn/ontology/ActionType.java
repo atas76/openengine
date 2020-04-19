@@ -1,20 +1,21 @@
 package org.fgn.ontology;
 
-public enum ActionType {
-    High,
-    LowCross,
-    Clearance,
-    BounceOff,
-    HandPass,
-    Move,
-    Pass,
-    Dribble,
-    Forward,
-    Pivot,
-    Cross,
-    Shoot,
-    Hold,
-    LongPass,
-    LongPassBack,
-    SwapWing
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class ActionType {
+
+    private static Map<String, BaseObject> entities;
+
+    public static boolean hasEntity(String key) {
+        return entities.containsKey(key);
+    }
+
+    public static BaseObject getEntity(String key) {
+        return entities.get(key);
+    }
+
+    public static void load(Ontology ontology) {
+        entities = ontology.getActions().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
+    }
 }

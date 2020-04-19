@@ -7,10 +7,6 @@ public class Coordinates {
 
     private static Map<String, CoordinateObject> entities;
 
-    public static boolean hasEntity(String key) {
-        return entities.containsKey(key);
-    }
-
     public static CoordinateObject getEntity(String key) {
         return entities.get(key);
     }

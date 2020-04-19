@@ -3,6 +3,7 @@ package org.fgn;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
 import org.fgn.ontology.*;
+import org.fgn.ontology.ActionType;
 import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
 import org.junit.Before;
@@ -42,6 +43,7 @@ public class ParserTest {
         StateContext.load(ontology);
         ActionOutcome.load(ontology);
         Coordinates.load(ontology);
+        ActionType.load(ontology);
     }
 
     @Test
