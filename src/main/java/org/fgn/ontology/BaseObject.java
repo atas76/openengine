@@ -16,6 +16,11 @@ public class BaseObject {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return this.id;
+    }
+
     public String getId() {
         return id;
     }

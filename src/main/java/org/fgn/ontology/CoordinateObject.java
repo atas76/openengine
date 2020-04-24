@@ -9,6 +9,16 @@ public class CoordinateObject extends BaseObject {
     private String back;
     private String lateral;
 
+    @Override
+    public String toString() {
+        return "{" +
+                "x: " +
+                x + ", " +
+                "y: " +
+                y +
+                "}";
+    }
+
     public CoordinateObject() {}
 
     public CoordinateObject(String id, String name, String description) {

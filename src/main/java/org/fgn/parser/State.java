@@ -50,4 +50,32 @@ public class State {
     public boolean isThrowIn() {
         return nonNull(context) && THROW_IN.equals(context.getId());
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("{");
+        if (space != null) {
+            retVal.append("space: ").append(space.toString());
+            retVal.append(", ");
+        }
+        retVal.append("context: ").append(context.toString());
+        if (isSetPiece()) {
+            retVal.append(", ");
+            retVal.append("set piece");
+        }
+        if (isThrowIn()) {
+            retVal.append(", ");
+            retVal.append("throw in");
+        }
+        if (!isSamePossesion()) {
+            retVal.append(", ");
+            retVal.append("possession change");
+        }
+        retVal.append("}");
+
+        return retVal.toString();
+
+    }
 }
