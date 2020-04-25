@@ -67,6 +67,7 @@
       "description": "Pseudo-coordinate: overloaded with state context; goal-kick",
       "x": "0",
       "y": "0",
+      "context": "GK",
       "front": "Dp",
       "back": "G",
       "lateral": "Dw"
@@ -79,7 +80,8 @@
       "y": "0",
       "front": "DM",
       "back": "Dg",
-      "lateral": "Dw"
+      "lateral": "Dw",
+      "player": "GK"
     },
     {
       "id": "Dg",
@@ -89,7 +91,8 @@
       "y": "0",
       "front": "D",
       "back": "G",
-      "lateral": "Dw"
+      "lateral": "Dw",
+      "player": "GK"
     },
     {
       "id": "Dp",
@@ -99,7 +102,8 @@
       "y": "0",
       "front": "D",
       "back": "Dg",
-      "lateral": "Dw"
+      "lateral": "Dw",
+      "player": "FLD"
     },
     {
       "id": "D",
@@ -109,7 +113,8 @@
       "y": "0",
       "front": "DM",
       "back": "Dp",
-      "lateral": "Dw"
+      "lateral": "Dw",
+      "player": "FLD"
     },
     {
       "id": "Dw",
@@ -119,7 +124,8 @@
       "y": "1",
       "front": "DMw",
       "back": "C",
-      "lateral": "Dp, D"
+      "lateral": "Dp, D",
+      "player": "FLD"
     },
     {
       "id": "DM",
@@ -129,7 +135,8 @@
       "y": "0",
       "front": "M",
       "back": "D",
-      "lateral": "DMw"
+      "lateral": "DMw",
+      "player": "FLD"
     },
     {
       "id": "DMw",
@@ -139,7 +146,8 @@
       "y": "1",
       "front": "Mw",
       "back": "Dw",
-      "lateral": "DM"
+      "lateral": "DM",
+      "player": "FLD"
     },
     {
       "id": "M",
@@ -149,7 +157,8 @@
       "y": "0",
       "front": "A",
       "back": "DM",
-      "lateral": "Mw"
+      "lateral": "Mw",
+      "player": "FLD"
     },
     {
       "id": "Mw",
@@ -159,7 +168,8 @@
       "y": "1",
       "front": "Aw",
       "back": "DMw",
-      "lateral": "M"
+      "lateral": "M",
+      "player": "FLD"
     },
     {
       "id": "CK",
@@ -169,7 +179,9 @@
       "y": "1",
       "front": "GK",
       "back": "Awp",
-      "lateral": "Apw"
+      "lateral": "Apw",
+      "player": "FLD",
+      "context": "C"
     },
     {
       "id": "A",
@@ -179,7 +191,8 @@
       "y": "0",
       "front": "Ap",
       "back": "M",
-      "lateral": "Aw"
+      "lateral": "Aw",
+      "player": "FLD"
     },
     {
       "id": "Aw",
@@ -189,7 +202,8 @@
       "y": "1",
       "front": "Awp",
       "back": "Mw",
-      "lateral": "A"
+      "lateral": "A",
+      "player": "FLD"
     },
     {
       "id": "Awp",
@@ -199,7 +213,8 @@
       "y": "1",
       "front": "Awp",
       "back": "Aw",
-      "lateral": "Apw"
+      "lateral": "Apw",
+      "player": "FLD"
     },
     {
       "id": "Apw",
@@ -209,7 +224,8 @@
       "y": "0.2",
       "front": "Apw",
       "back": "Apc",
-      "lateral": "Ap"
+      "lateral": "Ap",
+      "player": "FLD"
     },
     {
       "id": "Ap",
@@ -219,7 +235,8 @@
       "y": "0",
       "front": "Ap",
       "back": "A",
-      "lateral": "Apw, Apc"
+      "lateral": "Apw, Apc",
+      "player": "FLD"
     },
     {
       "id": "Apc",
@@ -229,7 +246,8 @@
       "y": "0.2",
       "front": "Apw",
       "back": "A",
-      "lateral": "Ap"
+      "lateral": "Ap",
+      "player": "FLD"
     }
   ],
   "actions": [

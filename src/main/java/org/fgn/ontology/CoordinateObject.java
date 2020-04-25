@@ -1,5 +1,7 @@
 package org.fgn.ontology;
 
+import static java.util.Objects.nonNull;
+
 public class CoordinateObject extends BaseObject {
 
     private String x;
@@ -9,13 +11,22 @@ public class CoordinateObject extends BaseObject {
     private String back;
     private String lateral;
 
+    private String context;
+    private String player;
+
     @Override
     public String toString() {
+
+        String contextField = nonNull(context) ? ", context: " + context : "";
+        String playerField = nonNull(player) ? ", player: " + player : "";
+
         return "{" +
                 "x: " +
                 x + ", " +
                 "y: " +
                 y +
+                contextField +
+                playerField +
                 "}";
     }
 
@@ -23,6 +34,22 @@ public class CoordinateObject extends BaseObject {
 
     public CoordinateObject(String id, String name, String description) {
         super(id, name, description);
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public String getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(String player) {
+        this.player = player;
     }
 
     public String getX() {
