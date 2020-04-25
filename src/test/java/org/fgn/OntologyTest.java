@@ -30,7 +30,7 @@ public class OntologyTest {
         assertEquals("Ball hitting the post", ontology.getOutcome().get(0).getDescription());
 
         assertEquals("Awp", ontology.getCoordinates().get(13).getId());
-        assertEquals(3, ontology.getCoordinates().get(13).getIntX());
+        assertEquals("0.9", ontology.getCoordinates().get(13).getX());
         assertEquals("Apw", ontology.getCoordinates().get(13).getLateral());
 
         assertEquals("SwapWing", ontology.getActions().get(15).getId());

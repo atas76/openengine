@@ -25,14 +25,6 @@ public class CoordinateObject extends BaseObject {
         super(id, name, description);
     }
 
-    public int getIntX() {
-        return Integer.parseInt(x);
-    }
-
-    public int getIntY() {
-        return Integer.parseInt(y);
-    }
-
     public String getX() {
         return x;
     }
