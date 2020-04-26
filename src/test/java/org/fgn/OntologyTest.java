@@ -19,7 +19,7 @@ public class OntologyTest {
 
         assertEquals(12, ontology.getContext().size());
         assertEquals(2, ontology.getOutcome().size());
-        assertEquals(17, ontology.getCoordinates().size());
+        assertEquals(18, ontology.getCoordinates().size());
         assertEquals(16, ontology.getActions().size());
 
         assertEquals("FREE", ontology.getContext().get(0).getId());
@@ -29,9 +29,9 @@ public class OntologyTest {
         assertEquals("PST", ontology.getOutcome().get(0).getId());
         assertEquals("Ball hitting the post", ontology.getOutcome().get(0).getDescription());
 
-        assertEquals("Awp", ontology.getCoordinates().get(13).getId());
-        assertEquals("0.9", ontology.getCoordinates().get(13).getX());
-        assertEquals("Apw", ontology.getCoordinates().get(13).getLateral());
+        assertEquals("Awp", ontology.getCoordinates().get(14).getId());
+        assertEquals("0.9", ontology.getCoordinates().get(14).getX());
+        assertEquals("Apw", ontology.getCoordinates().get(14).getLateral());
 
         assertEquals("SwapWing", ontology.getActions().get(15).getId());
     }

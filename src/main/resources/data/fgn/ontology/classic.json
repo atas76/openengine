@@ -86,13 +86,26 @@
     {
       "id": "Dg",
       "name": "Goalkeeper with ball in the area",
-      "description": "Pseudo-coordinate: overloaded with situational context; need to distinguish between holding and playing",
+      "description": "Pseudo-coordinate: overloaded with situational context",
       "x": "0.1",
       "y": "0",
       "front": "D",
       "back": "G",
       "lateral": "Dw",
-      "player": "GK"
+      "player": "GK",
+      "hold": false
+    },
+    {
+      "id": "Dh",
+      "name": "Goalkeeper holding ball in the area",
+      "description": "Pseudo-coordinate: overloaded with situational context",
+      "x": "0.1",
+      "y": "0",
+      "front": "D",
+      "back": "G",
+      "lateral": "Dw",
+      "player": "GK",
+      "hold": true
     },
     {
       "id": "Dp",

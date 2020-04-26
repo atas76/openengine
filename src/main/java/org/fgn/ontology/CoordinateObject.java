@@ -13,12 +13,14 @@ public class CoordinateObject extends BaseObject {
 
     private String context;
     private String player;
+    private Boolean hold;
 
     @Override
     public String toString() {
 
         String contextField = nonNull(context) ? ", context: " + context : "";
         String playerField = nonNull(player) ? ", player: " + player : "";
+        String holdField = nonNull(hold) && hold ? ", hold" :  "";
 
         return "{" +
                 "x: " +
@@ -27,6 +29,7 @@ public class CoordinateObject extends BaseObject {
                 y +
                 contextField +
                 playerField +
+                holdField +
                 "}";
     }
 
@@ -34,6 +37,14 @@ public class CoordinateObject extends BaseObject {
 
     public CoordinateObject(String id, String name, String description) {
         super(id, name, description);
+    }
+
+    public Boolean getHold() {
+        return hold;
+    }
+
+    public void setHold(Boolean hold) {
+        this.hold = hold;
     }
 
     public String getContext() {
