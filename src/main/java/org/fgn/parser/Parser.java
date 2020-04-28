@@ -1,7 +1,10 @@
 package org.fgn.parser;
 
+import org.fgn.domain.ActionOutcome;
+import org.fgn.domain.ActionType;
+import org.fgn.domain.Coordinates;
+import org.fgn.domain.StateContext;
 import org.fgn.lexan.Token;
-import org.fgn.ontology.*;
 import org.fgn.parser.exceptions.ParserException;
 
 import java.util.Arrays;

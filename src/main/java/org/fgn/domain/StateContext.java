@@ -1,4 +1,8 @@
-package org.fgn.ontology;
+package org.fgn.domain;
+
+import org.fgn.ontology.BaseObject;
+import org.fgn.ontology.Ontology;
+import org.fgn.ontology.OntologyException;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,7 +15,12 @@ public class StateContext {
         return entities.containsKey(key);
     }
 
-    public static BaseObject getEntity(String key) {
+    public static BaseObject getEntity(String key) throws OntologyException {
+
+        if (entities.get(key) == null) {
+            throw new OntologyException("Object '" + key + "' not supported by ontology");
+        }
+
         return entities.get(key);
     }
 

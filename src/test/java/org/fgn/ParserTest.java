@@ -1,9 +1,12 @@
 package org.fgn;
 
+import org.fgn.domain.ActionOutcome;
+import org.fgn.domain.Coordinates;
+import org.fgn.domain.StateContext;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
 import org.fgn.ontology.*;
-import org.fgn.ontology.ActionType;
+import org.fgn.domain.ActionType;
 import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
 import org.junit.Before;
@@ -31,6 +34,7 @@ public class ParserTest {
     private static final String GS_ACTION_OUTCOME = "19:44 R: Apc->Shoot => GS >> !Dp";
     private static final String GS_CORNER_KICK = "37:47 L: A->Shoot => GS >> C";
     private static final String GS_CATCH = "52:25 L: A->Shoot => GS >> !Dg";
+    private static final String UNSUPPORTED_DOMAIN_OBJECT = "52:25 L: A->Shoot => GS >> !Dggggg";
 
     private Statement parseStatemement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
@@ -174,16 +178,6 @@ public class ParserTest {
         assertEquals(Coordinates.getEntity("Mw"), parsedStatement.getStateOut().getSpace());
     }
 
-    @Rule
-    public ExpectedException expectedEx = ExpectedException.none();
-
-    @Test
-    public void testInvalidStatementEnd() throws ScannerException, ParserException {
-        expectedEx.expect(ParserException.class);
-        expectedEx.expectMessage("Unexpected end of statement");
-        parseStatemement(GARBAGE_END_STATEMENT);
-    }
-
     @Test
     public void testUnknownStates() throws ScannerException, ParserException {
 
@@ -223,6 +217,26 @@ public class ParserTest {
         assertEquals(StateContext.getEntity("KO"), parsedStatement.getStateIn().getContext());
         assertEquals(Coordinates.getEntity("DM"), parsedStatement.getStateOut().getSpace());
     }
+
+    // Unhappy path
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
+
+    @Test
+    public void testUnsupportedDomainObject() throws ScannerException, ParserException {
+        expectedEx.expect(OntologyException.class);
+        expectedEx.expectMessage("not supported");
+        parseStatemement(UNSUPPORTED_DOMAIN_OBJECT);
+    }
+
+    @Test
+    public void testInvalidStatementEnd() throws ScannerException, ParserException {
+        expectedEx.expect(ParserException.class);
+        expectedEx.expectMessage("Unexpected end of statement");
+        parseStatemement(GARBAGE_END_STATEMENT);
+    }
+
 
     @Test
     public void testSyntaxError() throws ScannerException, ParserException {
