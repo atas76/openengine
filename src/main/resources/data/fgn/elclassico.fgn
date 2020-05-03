@@ -197,7 +197,7 @@
 21:31 B: Dh->LongPass => DMw
 21:40 B: DMw->Pass => !DM
 21:44 R: DM->LongPass => FT(A)
-21:47 R: A(FT)->Shoot => GS
+21:47 R: A(FT)->Shoot => GS >> !Dh
 #--
 21:59 B: DMw->Pass => Dp
 22:01 B: Dp->Pass => Dg
