@@ -1,8 +1,8 @@
 package org.fgn.domain;
 
-import org.fgn.ontology.BaseObject;
-import org.fgn.ontology.Ontology;
-import org.fgn.ontology.OntologyException;
+import org.fgn.schema.BaseObject;
+import org.fgn.schema.Schema;
+import org.fgn.schema.SchemaException;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,13 +18,13 @@ public class ActionOutcome {
     public static BaseObject getEntity(String key) {
 
         if (entities.get(key) == null) {
-            throw new OntologyException("Object '" + key + "' not supported by ontology");
+            throw new SchemaException("Object '" + key + "' not supported by ontology");
         }
 
         return entities.get(key);
     }
 
-    public static void load(Ontology ontology) {
-        entities = ontology.getOutcome().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
+    public static void load(Schema schema) {
+        entities = schema.getOutcome().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
 }

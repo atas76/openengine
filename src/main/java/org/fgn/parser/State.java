@@ -1,7 +1,7 @@
 package org.fgn.parser;
 
-import org.fgn.ontology.BaseObject;
-import org.fgn.ontology.CoordinateObject;
+import org.fgn.schema.BaseObject;
+import org.fgn.schema.CoordinateObject;
 import org.fgn.domain.StateContext;
 
 import static java.util.Objects.nonNull;

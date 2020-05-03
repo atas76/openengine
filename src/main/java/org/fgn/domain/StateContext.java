@@ -1,8 +1,8 @@
 package org.fgn.domain;
 
-import org.fgn.ontology.BaseObject;
-import org.fgn.ontology.Ontology;
-import org.fgn.ontology.OntologyException;
+import org.fgn.schema.BaseObject;
+import org.fgn.schema.Schema;
+import org.fgn.schema.SchemaException;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,10 +15,10 @@ public class StateContext {
         return entities.containsKey(key);
     }
 
-    public static BaseObject getEntity(String key) throws OntologyException {
+    public static BaseObject getEntity(String key) throws SchemaException {
 
         if (entities.get(key) == null) {
-            throw new OntologyException("Object '" + key + "' not supported by ontology");
+            throw new SchemaException("Object '" + key + "' not supported by ontology");
         }
 
         return entities.get(key);
@@ -28,7 +28,7 @@ public class StateContext {
         return entities.get("FREE");
     }
 
-    public static void load(Ontology ontology) {
-        entities = ontology.getContext().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
+    public static void load(Schema schema) {
+        entities = schema.getContext().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
 }

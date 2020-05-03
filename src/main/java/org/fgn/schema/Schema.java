@@ -1,4 +1,4 @@
-package org.fgn.ontology;
+package org.fgn.schema;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Ontology {
+public class Schema {
 
     private List<BaseObject> context;
     private List<BaseObject> outcome;
@@ -20,8 +20,8 @@ public class Ontology {
     private Set<String> coordinateIds;
     private Set<String> actionIds;
 
-    public static Ontology create(String source) throws IOException {
-        return new ObjectMapper().readValue(new File(source), Ontology.class);
+    public static Schema create(String source) throws IOException {
+        return new ObjectMapper().readValue(new File(source), Schema.class);
     }
 
     public Set<String> getContextIds() {

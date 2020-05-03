@@ -1,4 +1,4 @@
-package org.fgn.ontology;
+package org.fgn.schema;
 
 import static java.util.Objects.nonNull;
 

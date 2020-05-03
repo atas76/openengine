@@ -6,7 +6,7 @@ import org.fgn.domain.Coordinates;
 import org.fgn.domain.StateContext;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.ontology.*;
+import org.fgn.schema.*;
 import org.fgn.parser.Parser;
 import org.fgn.parser.Statement;
 import org.fgn.parser.exceptions.ParserException;
@@ -32,11 +32,11 @@ public class ParserUtil {
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
-        StateContext.load(ontology);
-        ActionOutcome.load(ontology);
-        Coordinates.load(ontology);
-        ActionType.load(ontology);
+        Schema schema = Schema.create(FGN_ROOT + "/ontology/classic.json");
+        StateContext.load(schema);
+        ActionOutcome.load(schema);
+        Coordinates.load(schema);
+        ActionType.load(schema);
 
         String currentLine = "";
         int lineCount = 0;

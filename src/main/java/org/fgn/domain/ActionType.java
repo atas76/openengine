@@ -1,7 +1,7 @@
 package org.fgn.domain;
 
-import org.fgn.ontology.BaseObject;
-import org.fgn.ontology.Ontology;
+import org.fgn.schema.BaseObject;
+import org.fgn.schema.Schema;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ public class ActionType {
         return entities.containsKey(key);
     }
 
-    public static void load(Ontology ontology) {
-        entities = ontology.getActions().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
+    public static void load(Schema schema) {
+        entities = schema.getActions().stream().collect(Collectors.toMap(BaseObject::getId, baseObject -> baseObject));
     }
 }

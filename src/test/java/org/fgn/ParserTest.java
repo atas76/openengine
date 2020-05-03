@@ -5,7 +5,7 @@ import org.fgn.domain.Coordinates;
 import org.fgn.domain.StateContext;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.ontology.*;
+import org.fgn.schema.*;
 import org.fgn.domain.ActionType;
 import org.fgn.parser.*;
 import org.fgn.parser.exceptions.ParserException;
@@ -43,11 +43,11 @@ public class ParserTest {
 
     @Before
     public void setUp() throws IOException {
-        Ontology ontology = Ontology.create(FGN_ROOT + "/ontology/classic.json");
-        StateContext.load(ontology);
-        ActionOutcome.load(ontology);
-        Coordinates.load(ontology);
-        ActionType.load(ontology);
+        Schema schema = Schema.create(FGN_ROOT + "/ontology/classic.json");
+        StateContext.load(schema);
+        ActionOutcome.load(schema);
+        Coordinates.load(schema);
+        ActionType.load(schema);
     }
 
     @Test
@@ -225,7 +225,7 @@ public class ParserTest {
 
     @Test
     public void testUnsupportedDomainObject() throws ScannerException, ParserException {
-        expectedEx.expect(OntologyException.class);
+        expectedEx.expect(SchemaException.class);
         expectedEx.expectMessage("not supported");
         parseStatemement(UNSUPPORTED_DOMAIN_OBJECT);
     }
