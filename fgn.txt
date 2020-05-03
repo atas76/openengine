@@ -1,0 +1,50 @@
+State: {In, Out}
+	BallPlay: {Continuous, Discrete} // Live, Dead ball
+		Default: Continuous
+	ActionOutcome(Out): ActionOutcomes
+	Context: Contexts
+	Possession(Out): {Own, Opponent}
+		Default: Own
+	PlayerPosition: {GK, Outfield}
+		Default: Outfield
+	PlayingCondition: PlayingConditions[]
+	Coordinate
+		X: {D,DM,M,A}
+		Y: {C,W}
+			Default: C
+		Context: Contexts.Coordinate
+
+Contexts:
+	InState:
+		KO	// Kick-off
+		PK	// Penalty-kick
+		T	// Throw-in
+		CK 	// Corner-kick
+		GK	// Goal-kick
+		SP	// Set-piece
+	OutState:
+		H	// Handball
+		G	// Goal
+		C	// Corner
+		T 	// Throw-in
+		GK	// Goal-kick
+		F	// Foul
+		O 	// Offside
+	Coordinate:
+		PenaltyArea
+
+PlayingConditions:
+	HD, // Header
+	FT	// First-touch
+	Dh  // Goalkeeper-hold
+
+Context relationships:
+	H(Coordinate.Context) -> PK
+	C -> CK
+	T -> T
+	GK -> GK
+	F,O -> SP
+
+ActionOutcomes
+	GS	// Goal-save
+	PST	// Post
