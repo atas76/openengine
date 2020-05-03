@@ -1,6 +1,6 @@
 package org.fgn.parser;
 
-import org.fgn.schema.BaseObject;
+import org.fgn.schema.data.BaseObject;
 
 public class Statement {
 

@@ -1,4 +1,4 @@
-package org.fgn.schema;
+package org.fgn.schema.data;
 
 public class SchemaException extends RuntimeException {
 

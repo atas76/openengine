@@ -1,4 +1,4 @@
-package org.fgn.schema;
+package org.fgn.schema.data;
 
 import java.util.Objects;
 

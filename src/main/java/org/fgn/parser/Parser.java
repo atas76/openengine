@@ -1,9 +1,9 @@
 package org.fgn.parser;
 
-import org.fgn.domain.ActionOutcome;
-import org.fgn.domain.ActionType;
-import org.fgn.domain.Coordinates;
-import org.fgn.domain.StateContext;
+import org.fgn.schema.ActionOutcome;
+import org.fgn.schema.ActionType;
+import org.fgn.schema.Coordinates;
+import org.fgn.schema.StateContext;
 import org.fgn.lexan.Token;
 import org.fgn.parser.exceptions.ParserException;
 

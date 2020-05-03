@@ -1,15 +1,15 @@
 package org.openfootie.openengine.util;
 
-import org.fgn.domain.ActionOutcome;
-import org.fgn.domain.ActionType;
-import org.fgn.domain.Coordinates;
-import org.fgn.domain.StateContext;
+import org.fgn.schema.ActionOutcome;
+import org.fgn.schema.ActionType;
+import org.fgn.schema.Coordinates;
+import org.fgn.schema.StateContext;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
-import org.fgn.schema.*;
 import org.fgn.parser.Parser;
 import org.fgn.parser.Statement;
 import org.fgn.parser.exceptions.ParserException;
+import org.fgn.schema.data.Schema;
 import org.openfootie.openengine.util.fgn.StatementWrapper;
 import org.openfootie.openengine.util.fgn.Token;
 
@@ -32,7 +32,7 @@ public class ParserUtil {
 
         BufferedReader reader = new BufferedReader(new FileReader(file));
 
-        Schema schema = Schema.create(FGN_ROOT + "/ontology/classic.json");
+        Schema schema = Schema.create(FGN_ROOT + "/schema/classic.json");
         StateContext.load(schema);
         ActionOutcome.load(schema);
         Coordinates.load(schema);

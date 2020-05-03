@@ -1,6 +1,6 @@
 package org.fgn;
 
-import org.fgn.schema.Schema;
+import org.fgn.schema.data.Schema;
 import org.junit.Test;
 
 import java.io.IOException;

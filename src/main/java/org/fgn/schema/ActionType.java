@@ -1,7 +1,7 @@
-package org.fgn.domain;
+package org.fgn.schema;
 
-import org.fgn.schema.BaseObject;
-import org.fgn.schema.Schema;
+import org.fgn.schema.data.BaseObject;
+import org.fgn.schema.data.Schema;
 
 import java.util.Map;
 import java.util.stream.Collectors;

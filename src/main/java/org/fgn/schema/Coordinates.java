@@ -1,8 +1,8 @@
-package org.fgn.domain;
+package org.fgn.schema;
 
-import org.fgn.schema.CoordinateObject;
-import org.fgn.schema.Schema;
-import org.fgn.schema.SchemaException;
+import org.fgn.schema.data.CoordinateObject;
+import org.fgn.schema.data.Schema;
+import org.fgn.schema.data.SchemaException;
 
 import java.util.Map;
 import java.util.stream.Collectors;

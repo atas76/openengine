@@ -1,8 +1,8 @@
 package org.fgn.parser;
 
-import org.fgn.schema.BaseObject;
-import org.fgn.schema.CoordinateObject;
-import org.fgn.domain.StateContext;
+import org.fgn.schema.data.BaseObject;
+import org.fgn.schema.data.CoordinateObject;
+import org.fgn.schema.StateContext;
 
 import static java.util.Objects.nonNull;
 
