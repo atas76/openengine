@@ -15,7 +15,7 @@ public class SchemaTest {
     @Test
     public void testLoad() throws IOException {
 
-        Schema schema = Schema.create(FGN_ROOT + "/ontology/classic.json");
+        Schema schema = Schema.create(FGN_ROOT + "/schema/classic.json");
 
         assertEquals(12, schema.getContext().size());
         assertEquals(2, schema.getOutcome().size());

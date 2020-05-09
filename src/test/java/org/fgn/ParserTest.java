@@ -37,14 +37,14 @@ public class ParserTest {
     private static final String GS_CATCH = "52:25 L: A->Shoot => GS >> !Dg";
     private static final String UNSUPPORTED_DOMAIN_OBJECT = "52:25 L: A->Shoot => GS >> !Dggggg";
 
-    private Statement parseStatemement(String statement) throws ScannerException, ParserException {
+    private Statement parseStatement(String statement) throws ScannerException, ParserException {
         List<String> tokens = getTokens(statement);
         return new Parser(tokens).parse();
     }
 
     @Before
     public void setUp() throws IOException {
-        Schema schema = Schema.create(FGN_ROOT + "/ontology/classic.json");
+        Schema schema = Schema.create(FGN_ROOT + "/schema/classic.json");
         StateContext.load(schema);
         ActionOutcome.load(schema);
         Coordinates.load(schema);
@@ -54,7 +54,7 @@ public class ParserTest {
     @Test
     public void testActionOutcome() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(ACTION_OUTCOME);
+        Statement parsedStatement = parseStatement(ACTION_OUTCOME);
 
         assertEquals(ActionOutcome.getEntity("PST"), parsedStatement.getActionOutcome());
         assertEquals(StateContext.getEntity("FT"), parsedStatement.getStateOut().getContext());
@@ -64,7 +64,7 @@ public class ParserTest {
     @Test
     public void testGoalSaveActionOutcome() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(GS_ACTION_OUTCOME);
+        Statement parsedStatement = parseStatement(GS_ACTION_OUTCOME);
 
         assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(Coordinates.getEntity("Dp"), parsedStatement.getStateOut().getSpace());
@@ -74,7 +74,7 @@ public class ParserTest {
     @Test
     public void testGoalSaveCornerKick() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(GS_CORNER_KICK);
+        Statement parsedStatement = parseStatement(GS_CORNER_KICK);
 
         assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(StateContext.getEntity("C"), parsedStatement.getStateOut().getContext());
@@ -83,7 +83,7 @@ public class ParserTest {
     @Test
     public void testShotOffTarget() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(SHOT_OFF_TARGET);
+        Statement parsedStatement = parseStatement(SHOT_OFF_TARGET);
 
         assertEquals(StateContext.getEntity("GK"), parsedStatement.getStateOut().getContext());
         assertEquals(" comment", parsedStatement.getComment());
@@ -92,7 +92,7 @@ public class ParserTest {
     @Test
     public void testGoalSaveCatch() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(GS_CATCH);
+        Statement parsedStatement = parseStatement(GS_CATCH);
 
         assertEquals(ActionOutcome.getEntity("GS"), parsedStatement.getActionOutcome());
         assertEquals(Coordinates.getEntity("Dg"), parsedStatement.getStateOut().getSpace());
@@ -102,7 +102,7 @@ public class ParserTest {
     @Test
     public void testGoalAttempt() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(GOAL_ATTEMPT_STATEMENT);
+        Statement parsedStatement = parseStatement(GOAL_ATTEMPT_STATEMENT);
 
         assertEquals(StateContext.getEntity("GK"), parsedStatement.getStateOut().getContext());
     }
@@ -110,7 +110,7 @@ public class ParserTest {
     @Test
     public void testParsedStatement() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement("03:20 L: Mw->LongPass => !Dg");
+        Statement parsedStatement = parseStatement("03:20 L: Mw->LongPass => !Dg");
 
         assertEquals(new MatchTime(3, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -123,7 +123,7 @@ public class ParserTest {
     @Test
     public void testCommentedStatement() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement("00:00 L: KO => DM # My comments");
+        Statement parsedStatement = parseStatement("00:00 L: KO => DM # My comments");
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -135,26 +135,26 @@ public class ParserTest {
     @Test
     public void testCommentedOutStatement() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement("# My comments");
+        Statement parsedStatement = parseStatement("# My comments");
         assertEquals(" My comments", parsedStatement.getComment());
     }
 
     @Test
     public void testSpecialCommentCharactersStatement() throws ScannerException, ParserException {
-        Statement parsedStatement = parseStatemement("#@");
+        Statement parsedStatement = parseStatement("#@");
         assertEquals("@", parsedStatement.getComment());
     }
 
     @Test
     public void testEmptyComments() throws ScannerException, ParserException {
-        Statement parsedStatement = parseStatemement("#");
+        Statement parsedStatement = parseStatement("#");
         assertEquals("", parsedStatement.getComment());
     }
 
     @Test
     public void testParameterisedStateParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(PARAMETERISED_INSTATE_STATEMENT);
+        Statement parsedStatement = parseStatement(PARAMETERISED_INSTATE_STATEMENT);
 
         assertEquals(new MatchTime(1, 47), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -167,7 +167,7 @@ public class ParserTest {
     @Test
     public void testParameterisedStatesParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(PARAMETERISED_OUTSTATE_STATEMENT);
+        Statement parsedStatement = parseStatement(PARAMETERISED_OUTSTATE_STATEMENT);
 
         assertEquals(new MatchTime(11,34), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
@@ -186,7 +186,7 @@ public class ParserTest {
         final String UNKNOWN_STATES_STATEMENT = "00:20 L: Apc->BounceOff => H(Apc)";
         // final String UNKNOWN_STATES_STATEMENT = "13:30 T: Aw->Long => A(T) \t#!Ap(HD)";
 
-        Statement parsedStatement = parseStatemement(UNKNOWN_STATES_STATEMENT);
+        Statement parsedStatement = parseStatement(UNKNOWN_STATES_STATEMENT);
 
         assertEquals(new MatchTime(0, 20), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -199,7 +199,7 @@ public class ParserTest {
     @Test
     public void testRandomActionParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(RANDOM_ACTION_STATEMENT);
+        Statement parsedStatement = parseStatement(RANDOM_ACTION_STATEMENT);
 
         assertEquals(new MatchTime(12, 38), parsedStatement.getTime());
         assertEquals("T", parsedStatement.getTeam());
@@ -211,7 +211,7 @@ public class ParserTest {
     @Test
     public void testDefaultActionParsing() throws ScannerException, ParserException {
 
-        Statement parsedStatement = parseStatemement(DEFAULT_ACTION_STATEMENT);
+        Statement parsedStatement = parseStatement(DEFAULT_ACTION_STATEMENT);
 
         assertEquals(new MatchTime(0, 0), parsedStatement.getTime());
         assertEquals("L", parsedStatement.getTeam());
@@ -228,14 +228,14 @@ public class ParserTest {
     public void testUnsupportedDomainObject() throws ScannerException, ParserException {
         expectedEx.expect(SchemaException.class);
         expectedEx.expectMessage("not supported");
-        parseStatemement(UNSUPPORTED_DOMAIN_OBJECT);
+        parseStatement(UNSUPPORTED_DOMAIN_OBJECT);
     }
 
     @Test
     public void testInvalidStatementEnd() throws ScannerException, ParserException {
         expectedEx.expect(ParserException.class);
         expectedEx.expectMessage("Unexpected end of statement");
-        parseStatemement(GARBAGE_END_STATEMENT);
+        parseStatement(GARBAGE_END_STATEMENT);
     }
 
 

@@ -11,4 +11,7 @@ public class Match {
     private int halfTimeIndex;
     private List<EventSequence> sequences = new ArrayList<>();
 
+    public void add(EventSequence sequence) {
+        this.sequences.add(sequence);
+    }
 }

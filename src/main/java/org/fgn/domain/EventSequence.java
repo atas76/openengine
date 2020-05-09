@@ -7,4 +7,7 @@ public class EventSequence {
 
     private List<Event> events = new ArrayList<>();
 
+    public void add(Event event) {
+        events.add(event);
+    }
 }

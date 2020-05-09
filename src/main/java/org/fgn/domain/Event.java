@@ -8,4 +8,8 @@ public class Event {
     private String action;
     private OutState outputState;
 
+    public int getTime() {
+        return time;
+    }
+
 }
