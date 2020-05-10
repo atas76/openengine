@@ -8,6 +8,8 @@ public class OutState extends State {
     private Context.OutState context;
     private Possession possession = Possession.getDefault();
 
+    public OutState() {}
+
     public OutState(Context.OutState stateContext) {
         this.context = stateContext;
     }

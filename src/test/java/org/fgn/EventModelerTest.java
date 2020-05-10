@@ -1,6 +1,6 @@
 package org.fgn;
 
-import org.fgn.domain.Event;
+import org.fgn.domain.*;
 import org.fgn.lexan.Scanner;
 import org.fgn.lexan.exceptions.ScannerException;
 import org.fgn.parser.Parser;
@@ -45,13 +45,22 @@ public class EventModelerTest {
     @Test
     public void testKickOff() throws ScannerException, ParserException {
 
-        String kickOff = "00:01 L: KO => DM";
+        String kickOff = "00:00 L: KO => DM";
 
         Statement parsedStatement = parseStatement(kickOff);
 
         Event event = EventModeler.model(parsedStatement);
 
         // TODO Value is faked (matches should start at zero), so that the test does not pass by coincidence
-        assertEquals(1, event.getTime());
+        assertEquals(0, event.getTime());
+        assertEquals("L", event.getTeam());
+
+        InState state = event.getInputState();
+        assertEquals(Context.InState.KO, state.getContext());
+        assertEquals(BallPlay.DISCRETE, state.getBallPlay());
+        assertEquals(PlayerPosition.OUTFIELD, state.getPlayerPosition());
+
+        org.fgn.domain.Coordinates inputCoordinates = state.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.M, inputCoordinates.getX());
     }
 }

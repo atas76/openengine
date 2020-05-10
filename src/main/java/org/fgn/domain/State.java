@@ -11,6 +11,38 @@ public class State {
     protected List<PlayingCondition> playingConditions = new ArrayList<>();
     protected Coordinates coordinates;
 
+    public BallPlay getBallPlay() {
+        return ballPlay;
+    }
+
+    public void setBallPlay(BallPlay ballPlay) {
+        this.ballPlay = ballPlay;
+    }
+
+    public PlayerPosition getPlayerPosition() {
+        return playerPosition;
+    }
+
+    public void setPlayerPosition(PlayerPosition playerPosition) {
+        this.playerPosition = playerPosition;
+    }
+
+    public List<PlayingCondition> getPlayingConditions() {
+        return playingConditions;
+    }
+
+    public void setPlayingConditions(List<PlayingCondition> playingConditions) {
+        this.playingConditions = playingConditions;
+    }
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

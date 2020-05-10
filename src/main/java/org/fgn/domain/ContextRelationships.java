@@ -6,6 +6,7 @@ import java.util.Map;
 public class ContextRelationships {
 
     public static Map<OutState, InState> contextMap = new HashMap<>();
+    public static Map<Context.InState, Coordinates> stateCoordinatesMap = new HashMap<>();
 
     static {
         contextMap.put(new OutState(Context.Coordinate.PenaltyArea, Context.OutState.H), new InState(Context.InState.PK));
@@ -16,5 +17,9 @@ public class ContextRelationships {
         contextMap.put(new OutState(Context.OutState.T), new InState(Context.InState.T));
         contextMap.put(new OutState(Context.OutState.GK), new InState(Context.InState.GK));
         contextMap.put(new OutState(Context.OutState.O), new InState(Context.InState.SP));
+    }
+
+    static {
+        stateCoordinatesMap.put(Context.InState.KO, new Coordinates(Coordinates.X.M));
     }
 }

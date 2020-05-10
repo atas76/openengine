@@ -6,8 +6,19 @@ public class InState extends State {
 
     private Context.InState context;
 
+    public InState() {}
+
     public InState(Context.InState stateContext) {
         this.context = stateContext;
+    }
+
+    public Context.InState getContext() {
+        return context;
+    }
+
+    public void setContext(Context.InState context) {
+        this.context = context;
+        this.ballPlay = BallPlay.DISCRETE;
     }
 
     @Override

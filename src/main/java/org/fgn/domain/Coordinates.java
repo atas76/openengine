@@ -8,7 +8,35 @@ public class Coordinates {
     private Y y = Y.getDefault();
     private Context.Coordinate context;
 
+    public Coordinates(X x) {
+        this.x = x;
+    }
+
     public Coordinates(Context.Coordinate context) {
+        this.context = context;
+    }
+
+    public X getX() {
+        return x;
+    }
+
+    public void setX(X x) {
+        this.x = x;
+    }
+
+    public Y getY() {
+        return y;
+    }
+
+    public void setY(Y y) {
+        this.y = y;
+    }
+
+    public Context.Coordinate getContext() {
+        return context;
+    }
+
+    public void setContext(Context.Coordinate context) {
         this.context = context;
     }
 
@@ -27,11 +55,11 @@ public class Coordinates {
         return Objects.hash(x, y, context);
     }
 
-    private enum X {
+    public enum X {
         D, DM, M, A
     }
 
-    private enum Y {
+    public enum Y {
         C, W;
 
         public static Y getDefault() {
