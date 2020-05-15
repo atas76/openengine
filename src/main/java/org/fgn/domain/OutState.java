@@ -19,6 +19,18 @@ public class OutState extends State {
         this.context = stateContext;
     }
 
+    public Context.OutState getContext() {
+        return context;
+    }
+
+    public ActionOutcome getActionOutcome() {
+        return actionOutcome;
+    }
+
+    public Possession getPossession() {
+        return possession;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

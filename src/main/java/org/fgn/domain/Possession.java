@@ -5,6 +5,6 @@ public enum Possession {
     OWN, OPPONENT;
 
     public static Possession getDefault() {
-        return OPPONENT;
+        return OWN;
     }
 }

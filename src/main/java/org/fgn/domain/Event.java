@@ -36,4 +36,8 @@ public class Event {
     public void setInputState(InState inputState) {
         this.inputState = inputState;
     }
+
+    public OutState getOutputState() {
+        return outputState;
+    }
 }

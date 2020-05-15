@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class EventModelerTest {
 
@@ -51,16 +52,27 @@ public class EventModelerTest {
 
         Event event = EventModeler.model(parsedStatement);
 
-        // TODO Value is faked (matches should start at zero), so that the test does not pass by coincidence
         assertEquals(0, event.getTime());
         assertEquals("L", event.getTeam());
 
-        InState state = event.getInputState();
-        assertEquals(Context.InState.KO, state.getContext());
-        assertEquals(BallPlay.DISCRETE, state.getBallPlay());
-        assertEquals(PlayerPosition.OUTFIELD, state.getPlayerPosition());
+        InState inputState = event.getInputState();
+        assertEquals(Context.InState.KO, inputState.getContext());
+        assertEquals(BallPlay.DISCRETE, inputState.getBallPlay());
+        assertEquals(PlayerPosition.OUTFIELD, inputState.getPlayerPosition());
 
-        org.fgn.domain.Coordinates inputCoordinates = state.getCoordinates();
+        org.fgn.domain.Coordinates inputCoordinates = inputState.getCoordinates();
         assertEquals(org.fgn.domain.Coordinates.X.M, inputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, inputCoordinates.getY());
+
+        OutState outputState = event.getOutputState();
+        assertEquals(BallPlay.CONTINUOUS, outputState.getBallPlay());
+        assertNull(outputState.getContext());
+        assertNull(outputState.getActionOutcome());
+        assertEquals(Possession.OWN, outputState.getPossession());
+        assertEquals(PlayerPosition.OUTFIELD, outputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates outputCoordinates = outputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.DM, outputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
     }
 }

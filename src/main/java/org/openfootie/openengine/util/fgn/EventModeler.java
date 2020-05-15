@@ -23,6 +23,9 @@ public class EventModeler {
             inputState.setCoordinates(contextCoordinates);
         }
 
+        OutState outputState = event.getOutputState();
+        outputState.setCoordinates(new Coordinates(Coordinates.X.valueOf(statement.getStateOut().getSpace().getId())));
+
         return event;
     }
 }
