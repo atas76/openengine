@@ -4,6 +4,7 @@ public class Context {
 
     public enum InState  {
         KO, // Kick-off
+        FREE,
         PK, // Penalty-kick
         T, // Throw-in
         CK, // Corner kick

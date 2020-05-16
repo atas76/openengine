@@ -17,10 +17,18 @@ public class EventModeler {
         InState inputState = event.getInputState();
         inputState.setContext(Context.InState.valueOf(statement.getStateIn().getContext().getId()));
 
+        if (nonNull(statement.getAction())) { // Action is defined in statement
+            event.setAction(Action.valueOf(statement.getAction().toString().toUpperCase()));
+        } else { // Action is implicit from context
+            event.setAction(ContextRelationships.actionMap.get(inputState.getContext()));
+        }
+
         Coordinates contextCoordinates = ContextRelationships.stateCoordinatesMap.get(inputState.getContext());
 
         if (nonNull(contextCoordinates)) {
             inputState.setCoordinates(contextCoordinates);
+        } else {
+            inputState.setCoordinates(new Coordinates(Coordinates.X.valueOf(statement.getStateIn().getSpace().getId())));
         }
 
         OutState outputState = event.getOutputState();

@@ -18,7 +18,9 @@ public class InState extends State {
 
     public void setContext(Context.InState context) {
         this.context = context;
-        this.ballPlay = BallPlay.DISCRETE;
+        if (context != Context.InState.FREE) {
+            this.ballPlay = BallPlay.DISCRETE;
+        }
     }
 
     @Override

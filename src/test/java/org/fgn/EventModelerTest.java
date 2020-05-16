@@ -44,6 +44,40 @@ public class EventModelerTest {
     }
 
     @Test
+    public void testFreePlay() throws ScannerException, ParserException {
+
+        String statement = "00:02 L: DM->LongPass => M";
+
+        Statement parsedStatement = parseStatement(statement);
+
+        Event event = EventModeler.model(parsedStatement);
+
+        assertEquals(2, event.getTime());
+        assertEquals("L", event.getTeam());
+
+        InState inputState = event.getInputState();
+        assertEquals(Context.InState.FREE, inputState.getContext());   // one-time testing: semantics are mapped to ball play value
+        assertEquals(BallPlay.CONTINUOUS, inputState.getBallPlay());
+        assertEquals(PlayerPosition.OUTFIELD, inputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates inputCoordinates = inputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.DM, inputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, inputCoordinates.getY());
+
+        OutState outputState = event.getOutputState();
+        assertEquals(BallPlay.CONTINUOUS, outputState.getBallPlay());
+        assertEquals(Possession.OWN, outputState.getPossession());
+        assertEquals(PlayerPosition.OUTFIELD, outputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates outputCoordinates = outputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.M, outputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
+
+        Action action = event.getAction();
+        assertEquals(Action.LONGPASS, action);
+    }
+
+    @Test
     public void testKickOff() throws ScannerException, ParserException {
 
         String kickOff = "00:00 L: KO => DM";
@@ -66,13 +100,16 @@ public class EventModelerTest {
 
         OutState outputState = event.getOutputState();
         assertEquals(BallPlay.CONTINUOUS, outputState.getBallPlay());
-        assertNull(outputState.getContext());
-        assertNull(outputState.getActionOutcome());
+        assertNull(outputState.getContext());       // one-time test: we don't test null values
+        assertNull(outputState.getActionOutcome()); // one-time
         assertEquals(Possession.OWN, outputState.getPossession());
         assertEquals(PlayerPosition.OUTFIELD, outputState.getPlayerPosition());
 
         org.fgn.domain.Coordinates outputCoordinates = outputState.getCoordinates();
         assertEquals(org.fgn.domain.Coordinates.X.DM, outputCoordinates.getX());
         assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
+
+        Action action = event.getAction();
+        assertEquals(Action.PASS, action);
     }
 }

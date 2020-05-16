@@ -5,7 +5,7 @@ public class Event {
     private int time;
     private String team;
     private InState inputState;
-    private String action;
+    private Action action;
     private OutState outputState;
 
     public Event() {
@@ -39,5 +39,13 @@ public class Event {
 
     public OutState getOutputState() {
         return outputState;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
     }
 }

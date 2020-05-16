@@ -7,6 +7,7 @@ public class ContextRelationships {
 
     public static Map<OutState, InState> contextMap = new HashMap<>();
     public static Map<Context.InState, Coordinates> stateCoordinatesMap = new HashMap<>();
+    public static Map<Context.InState, Action> actionMap = new HashMap<>();
 
     static {
         contextMap.put(new OutState(Context.Coordinate.PenaltyArea, Context.OutState.H), new InState(Context.InState.PK));
@@ -21,5 +22,9 @@ public class ContextRelationships {
 
     static {
         stateCoordinatesMap.put(Context.InState.KO, new Coordinates(Coordinates.X.M));
+    }
+
+    static {
+        actionMap.put(Context.InState.KO, Action.PASS);
     }
 }
