@@ -73,8 +73,7 @@ public class EventModelerTest {
         assertEquals(org.fgn.domain.Coordinates.X.M, outputCoordinates.getX());
         assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
 
-        Action action = event.getAction();
-        assertEquals(Action.LONGPASS, action);
+        assertEquals(Action.LONGPASS, event.getAction());
     }
 
     @Test
@@ -109,7 +108,6 @@ public class EventModelerTest {
         assertEquals(org.fgn.domain.Coordinates.X.DM, outputCoordinates.getX());
         assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
 
-        Action action = event.getAction();
-        assertEquals(Action.PASS, action);
+        assertEquals(Action.PASS, event.getAction());
     }
 }
