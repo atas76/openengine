@@ -8,10 +8,9 @@ public class CoordinatesSchemaMapping {
     private static Map<String, Coordinates> coordinatesShortcutMap = new HashMap<>();
 
     static {
-        // TODO this is put here as an example
-        //  this kind of mapping will be only needed for non-trivial conventions:
-        //   a typical example would be lateral ('wing') positions coordinates
-        coordinatesShortcutMap.put("DM", new Coordinates(Coordinates.X.DM));
+        coordinatesShortcutMap.put("Apc",
+                new Coordinates(Coordinates.X.A, Coordinates.Y.C,
+                        Context.Coordinate.PenaltyArea, Context.GoalAngle.Diagonal));
     }
 
     public static Coordinates getCoordinates(String schemaReference) {

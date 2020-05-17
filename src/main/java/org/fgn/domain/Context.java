@@ -26,4 +26,13 @@ public class Context {
         PenaltyArea
     }
 
+    public enum GoalAngle {
+        Straight,
+        Diagonal,
+        Side;
+
+        public static GoalAngle getDefault() {
+            return Straight;
+        }
+    }
 }

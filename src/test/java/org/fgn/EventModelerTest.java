@@ -44,6 +44,38 @@ public class EventModelerTest {
     }
 
     @Test
+    public void testCustomCoordinates() throws ScannerException, ParserException {
+
+        String statement = "00:16 L: M->LongPass => Apc";
+
+        Statement parsedStatement = parseStatement(statement);
+
+        Event event = EventModeler.model(parsedStatement);
+
+        assertEquals(16, event.getTime());
+        assertEquals("L", event.getTeam());
+
+        InState inputState = event.getInputState();
+        assertEquals(BallPlay.CONTINUOUS, inputState.getBallPlay());
+        assertEquals(PlayerPosition.OUTFIELD, inputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates inputCoordinates = inputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.M, inputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, inputCoordinates.getY());
+
+        OutState outputState = event.getOutputState();
+        assertEquals(BallPlay.CONTINUOUS, outputState.getBallPlay());
+        assertEquals(Possession.OWN, outputState.getPossession());
+        assertEquals(PlayerPosition.OUTFIELD, outputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates outputCoordinates = outputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.A, outputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
+        assertEquals(Context.Coordinate.PenaltyArea, outputCoordinates.getContext());
+        assertEquals(Context.GoalAngle.Diagonal, outputCoordinates.getGoalAngle());
+    }
+
+    @Test
     public void testFreePlay() throws ScannerException, ParserException {
 
         String statement = "00:02 L: DM->LongPass => M";

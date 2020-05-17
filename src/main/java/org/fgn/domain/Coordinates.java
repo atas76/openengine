@@ -7,9 +7,17 @@ public class Coordinates {
     private X x;
     private Y y = Y.getDefault();
     private Context.Coordinate context;
+    private Context.GoalAngle goalAngle = Context.GoalAngle.getDefault();
 
     public Coordinates(X x) {
         this.x = x;
+    }
+
+    public Coordinates(X x, Y y, Context.Coordinate context, Context.GoalAngle goalAngle) {
+        this.x = x;
+        this.y = y;
+        this.context = context;
+        this.goalAngle = goalAngle;
     }
 
     public Coordinates(Context.Coordinate context) {
@@ -38,6 +46,14 @@ public class Coordinates {
 
     public void setContext(Context.Coordinate context) {
         this.context = context;
+    }
+
+    public Context.GoalAngle getGoalAngle() {
+        return goalAngle;
+    }
+
+    public void setGoalAngle(Context.GoalAngle goalAngle) {
+        this.goalAngle = goalAngle;
     }
 
     @Override
