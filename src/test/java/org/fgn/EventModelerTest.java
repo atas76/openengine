@@ -44,6 +44,40 @@ public class EventModelerTest {
     }
 
     @Test
+    public void testDiscreteOutcome() throws ScannerException, ParserException {
+
+        String statement = "00:20 L: Apc->BounceOff => H(Apc)";
+
+        Statement parsedStatement = parseStatement(statement);
+
+        Event event = EventModeler.model(parsedStatement);
+
+        assertEquals(20, event.getTime());
+        assertEquals("L", event.getTeam());
+
+        InState inputState = event.getInputState();
+        assertEquals(BallPlay.CONTINUOUS, inputState.getBallPlay());
+        assertEquals(PlayerPosition.OUTFIELD, inputState.getPlayerPosition());
+
+        org.fgn.domain.Coordinates inputCoordinates = inputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.A, inputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, inputCoordinates.getY());
+        assertEquals(Context.Coordinate.PenaltyArea, inputCoordinates.getContext());
+        assertEquals(Context.GoalAngle.Diagonal, inputCoordinates.getGoalAngle());
+
+        OutState outputState = event.getOutputState();
+        assertEquals(BallPlay.DISCRETE, outputState.getBallPlay());
+        assertEquals(Possession.OWN, outputState.getPossession());
+        assertEquals(Context.OutState.H, outputState.getContext());
+
+        org.fgn.domain.Coordinates outputCoordinates = outputState.getCoordinates();
+        assertEquals(org.fgn.domain.Coordinates.X.A, outputCoordinates.getX());
+        assertEquals(org.fgn.domain.Coordinates.Y.C, outputCoordinates.getY());
+        assertEquals(Context.Coordinate.PenaltyArea, outputCoordinates.getContext());
+        assertEquals(Context.GoalAngle.Diagonal, outputCoordinates.getGoalAngle());
+    }
+
+    @Test
     public void testCustomCoordinates() throws ScannerException, ParserException {
 
         String statement = "00:16 L: M->LongPass => Apc";
@@ -131,7 +165,7 @@ public class EventModelerTest {
 
         OutState outputState = event.getOutputState();
         assertEquals(BallPlay.CONTINUOUS, outputState.getBallPlay());
-        assertNull(outputState.getContext());       // one-time test: we don't test null values
+        assertEquals(Context.OutState.FREE, outputState.getContext());
         assertNull(outputState.getActionOutcome()); // one-time
         assertEquals(Possession.OWN, outputState.getPossession());
         assertEquals(PlayerPosition.OUTFIELD, outputState.getPlayerPosition());

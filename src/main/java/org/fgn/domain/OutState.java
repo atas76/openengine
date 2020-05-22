@@ -23,6 +23,13 @@ public class OutState extends State {
         return context;
     }
 
+    public void setContext(Context.OutState context) {
+        this.context = context;
+        if (context != Context.OutState.FREE) {
+            this.ballPlay = BallPlay.DISCRETE;
+        }
+    }
+
     public ActionOutcome getActionOutcome() {
         return actionOutcome;
     }

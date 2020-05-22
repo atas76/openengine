@@ -13,6 +13,7 @@ public class Context {
     }
 
     public enum OutState {
+        FREE,
         H, // Handball
         G, // Goal
         C, // Corner

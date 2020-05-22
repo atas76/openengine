@@ -24,7 +24,8 @@ public class EventModeler {
         }
 
         Coordinates contextCoordinates = ContextRelationships.stateCoordinatesMap.get(inputState.getContext());
-        Coordinates customCoordinatesOut = CoordinatesSchemaMapping.getCoordinates(statement.getStateOut().getSpace().getId());
+        Coordinates customCoordinatesOut = CoordinatesSchemaMapping.getCoordinates(
+                statement.getStateOut().getSpace().getId());
 
         if (nonNull(contextCoordinates)) {
             inputState.setCoordinates(contextCoordinates);
@@ -35,16 +36,19 @@ public class EventModeler {
             if (nonNull(customCoordinatesIn)) {
                 inputState.setCoordinates(customCoordinatesIn);
             } else {
-                inputState.setCoordinates(new Coordinates(Coordinates.X.valueOf(statement.getStateIn().getSpace().getId())));
+                inputState.setCoordinates(new Coordinates(
+                        Coordinates.X.valueOf(statement.getStateIn().getSpace().getId())));
             }
         }
 
         OutState outputState = event.getOutputState();
+        outputState.setContext(Context.OutState.valueOf(statement.getStateOut().getContext().getId()));
 
         if (nonNull(customCoordinatesOut)) {
             outputState.setCoordinates(customCoordinatesOut);
         } else {
-            outputState.setCoordinates(new Coordinates(Coordinates.X.valueOf(statement.getStateOut().getSpace().getId())));
+            outputState.setCoordinates(
+                    new Coordinates(Coordinates.X.valueOf(statement.getStateOut().getSpace().getId())));
         }
 
         return event;
