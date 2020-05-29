@@ -58,7 +58,7 @@
 08:54 T: A->Pass => !D:B
 08:56 T: A->Pass => Apd
 08:58 T: Apd->Dribble => !D:I
-09:02 T: A->Shoot => !GK        # TODO xG, oR
+09:02 T: A->Shoot => !GK        # xG = 1, oR = 0
 09:22 L: GK->Pass => Dwp
 09:24 L: Dwp->Pass => Gkr
 09:26 L: Gkr->Pass => D
@@ -68,7 +68,7 @@
 09:35 L: D->LongPass => C
 10:40 L: CK->Cross => !Gkr:Punch
 10:43 T: Dp->Clear => !DM
-10:49 L: DM->HeadPass => Gkr
+10:49 L: DM->HeadPass => Gkr:H
 11:04 L: Gkr->HandPass => D
 11:08 L: D->LongPass => !DM*T
 11:34 T: DM:T->ThrowIn => Mw:Pvt
@@ -96,49 +96,53 @@
 13:47 T: Mw->Pass => DM
 13:53 T: DM->Move => M
 13:54 T: M->LongPass => !D*T
-#-- ***
+#--
 14:28 L: Dw->LongPass => !M
 14:32 T: M->Pass => DM
-14:34 T: DM->Pass => Dg
-14:42 T: Dg->Pass => D
+14:34 T: DM->Pass => Gkr
+14:42 T: Gkr->Pass => D
 14:45 T: D->Pass => DM
-14:54 T: DM->Forward => !DM
-15:04 L: DM->Forward => !DM
+14:54 T: DM->Pass => !DM
+15:04 L: DM->Pass => !DM
 15:13 T: DM->LongPass => !GK
 15:42 L: GK->Pass => Dw
-15:44 L: Dw->Pass => Dg
-15:47 L: Dg->Pass => D
+15:44 L: Dw->Pass => Gkr
+15:47 L: Gkr->Pass => D
 15:53 L: D->Pass => Dp
 15:56 L: Dp->Pass => DMw
 15:57 L: DMw->Pass => D
 16:12 L: D->Move => DM
-16:13 L: DM->LongPass => !A
-16:17 T: D->Clearance => !T(M)
-16:39 L: M(T) => M
+16:13 L: DM->LongPass => !D
+16:17 T: D->Clear => !M*T
+16:39 L: M:T->ThrowIn => !DM
+16:42 T: DM->Move => !M
 16:46 L: M->Move => A
-16:47 L: A->Shoot => !GK # R2 chance
+16:47 L: A->Shoot => !GK # xG = 1, oR = 2
 #--
 18:06 L: Dg->Pass => D
 18:09 L: D->Pass => DMw
-18:12 L: DMw->Forward => !Mw
+18:12 L: DMw->Pass => !Mw
 18:17 T: Mw->Pass => M
-18:18 T: M->Forward => !DM
-18:29 L: DM->Pass => DMw
+18:18 T: M->Pass => !DM
+18:27 L: DM->Pass => DMw
 18:29 L: DMw->Move => Mw
 18:33 L: Mw->Move => Aw
 18:34 L: Aw->Move => !GK
 18:53 T: GK->Pass => Dw
 19:01 T: Dw->LongPass => DM
-19:06 T: DM->Forward => M
+19:06 T: DM->Pass => M
 19:09 T: M->Move => A
-19:11 T: A->Dribble => !D
-19:15 L: D->Forward => !M
-19:31 T: M->Forward => A
-19:33 T: A->Forward => !Dp
-19:34 L: Dp->Clearance => !T(A)
-19:40 T: A(T) => Awp
-19:44 T: Awp->Cross => !Dh
-19:49 L: Dh->HandPass => D
+19:11 T: A->Dribble => !D >> DM
+19:12 L: DM->Pass => Dw
+19:15 L: Dw->Pass => !M
+19:31 T: M->Pass => A
+19:33 T: A->Pass => !Dp
+19:34 L: Dp->Clear => !A*T
+19:40 T: A:T=>ThrowIn => Aw
+19:42 T: Aw:FT->Pass => Awp
+19:44 T: Awp->Cross => !Gkr:H
+# - ***
+19:49 L: Gkr->HandPass => D
 19:53 L: D->Pass => DM
 19:57 L: DM->Move => M
 20:07 L: M->Pass => DMw
