@@ -21,7 +21,7 @@
 04:20 T: Mw->Move => DMw
 04:24 T: DMw->Pass => DM
 04:27 T: DM->LongPass => Aw
-04:34 T: Aw->Pass => C
+04:34 T: Aw->Pass => !Dp:I >> C
 #--
 05:15 T: CK->Cross => !Dp:HD
 05:22 T: M->Pass => Gkd
@@ -65,7 +65,7 @@
 09:28 L: D->Move => DM
 09:29 L: DM->Pass => Gkr
 09:33 L: Gkr->Pass => D
-09:35 L: D->LongPass => C
+09:35 L: D->LongPass => !Dpw:Cl >> C
 10:40 L: CK->Cross => !Gkr:Punch
 10:43 T: Dp->Clear => !DM
 10:49 L: DM->HeadPass => Gkr:H
@@ -141,53 +141,53 @@
 19:40 T: A:T=>ThrowIn => Aw
 19:42 T: Aw:FT->Pass => Awp
 19:44 T: Awp->Cross => !Gkr:H
-# - ***
+#-
 19:49 L: Gkr->HandPass => D
 19:53 L: D->Pass => DM
 19:57 L: DM->Move => M
 20:07 L: M->Pass => DMw
 20:09 L: DMw->Pass => D
-20:18 L: D->Pass => DM
+20:14 L: D->Pass => Gkr
+20:14 L: Gkr->Pass => D
+20:18 L: D->Move => DM
+20:20 L: DM->ForwardPass => DM
 20:22 L: DM->Move => M
-20:24 L: M->Pass => Mw
+20:23 L: M->Pass => Mw
 20:26 L: Mw->Move => Aw
 20:27 L: Aw->Pass => A
-20:29 L: A->Shoot => C	# Block
-21:11 L: CK->Cross => !FT(Dh)
-21:13 T: Dh(FT) => !T(A)
-21:47 L: A(T) => Awp
-21:51 L: Awp->Pivot => Apw
-21:52 L: Apw->Shoot => !T(D)
-22:18 T: D(T) => !Awp
+20:29 L: A->Shoot => !D:B >> C
+21:11 L: CK->Cross => !Gkr:Punch >> A*T
+21:47 L: A:T=>ThrowIn => Awp
+21:51 L: Awp->Turn => Apw
+21:52 L: Apw->Shoot => !D*T
+22:18 T: D:T->ThrowIn => !Awp
 22:21 L: Awp->Move => Apw
-22:22 L: Apw->Pass => !Dp
-22:22 T: Dp->Clearance => !M
-22:29 L: M->Forward => A
-22:33 L: A->Pass => Awp
-22:37 L: Awp->Cross => !HD(Dp)
-22:40 T: Dp(HD) => !T(Ap)
-23:03 L: Ap(T) => A		# Volley
-23:13 L: A->Pass => M
+22:22 L: Apw->Pass => !Dp:Cl
+22:29 L: Mw->Pass => Aw
+22:33 L: Aw->Pass => Awp
+22:37 L: Awp->Cross => !Dp:HD >> Ap:T
+23:03 L: Ap:T => Awp:HD
+23:07 T: Dwp->Pass => !A
+23:11 L: A->Pass => M
 23:14 L: M->Move => A
 23:16 L: A->Pass => Awp
-23:22 L: Awp->Cross => C # Block
+23:22 L: Awp->Cross => !Dp:B >> C
 23:51 L: CK->Pass => Apw
 23:53 L: Apw->Pass => A
-23:53 L: A->LongPass => !HD(Dp)
-23:55 T: Dp(HD)->Clearance => F(DM)
-24:51 T: DM(SP)->Pass => D
-24:59 T: D->Pass => Dg
-25:01 T: Dg->LongPass => DMw
+23:53 L: A->LongPass => !Dp:HD >> DM*F
+24:51 T: DM:SP->Pass => D
+24:59 T: D->Pass => Gkr
+25:01 T: Gkr->LongPass => DMw
 25:10 T: DMw->Pass => D
 25:14 T: D->Move => DM
-25:28 T: DM->Pass => Dg
-25:31 T: Dg->LongPass => !T(DM)		#!DM(HD)
-25:59 L: DM(T) => DM			# FT
-26:05 L: DM->LongPass => !DM		#!DM(HD)
-26:10 T: DM->Pass => Dg
-26:13 T: Dg->Pass => D
+25:28 T: DM->Pass => Gkr
+25:31 T: Gkr->LongPass => !DM:HD
+25:59 L: DM:T => !DMw:HD
+26:05 L: DM->LongPass => !DM:HD
+26:10 T: DM->Pass => Gkr
+26:13 T: Gkr->Pass => D
 26:20 T: D->Pass => DM
-26:21 T: DM->Forward => !DM
+26:21 T: DM->Pass => !DM
 26:27 L: DM->LongPass => !GK
 26:40 T: GK->Pass => D
 26:44 T: D->Pass => Dp
@@ -196,8 +196,9 @@
 26:59 T: Dw->Pass => DMw
 27:00 T: DMw->Pass => Dw
 27:02 T: Dw->Pass => D
-27:08 T: D->LongPass => T(DM)
-#--
+27:06 T: D->Move => Dp
+27:08 T: Dp->LongPass => DMw:FT >> DM*T
+#-- ***
 27:26 T: DMw->Pass => D
 27:33 T: D->Pass => DM
 27:41 T: DM->LongPass => !O(M)
