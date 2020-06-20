@@ -1,0 +1,45 @@
+00:00 L: KO => DM
+00:02 L: DM->Long => !DMw:HD >> M
+00:15 L: M->Long => Apd
+00:20 L: Apd->BounceOff => Ap*H
+01:47 L: Penalty->Shoot => G
+#--
+03:18 L: DM:T => DMw
+03:19 L: DMw->Back => DMw
+03:20 L: DMw->Long => !DM:Cl >> DMw
+03:32 L: DMw->Long => !DMw:HD >> DM
+03:40 L: DM->Long => !DM:HD >> M
+03:43 L: M->Long => !DM:HD >> !D
+03:47 T: D->HeadPass => Gkr
+#--
+03:58 T: Dp:Pr => Gkr
+04:02 T: Gkr:Pr => Dpw
+04:04 T: Dpw:Pr => Dwp
+04:07 T: Dwp->BreakPass => Dw
+04:09 T: Dw->Pass => DM
+04:10 T: DM:TR->Pass => Dp
+04:12 T: Dp:Pr->Long => DMw
+04:18 T: DMw->Pass => Mw
+04:20 T: Mw->Move => DMw
+04:22 T: DMw->Back => DMw
+04:24 T: DMw->Pass => DM
+04:27 T: DM:Z->Long => Aw
+04:34 T: Aw->Pass => !Dp:I >> C
+05:15 T: CK->Cross => !Dp:HD >> M
+05:22 T: M->Pass => Gkd
+05:29 T: Gkd->Pass => DMw
+05:34 T: DMw->Pass => Gkr
+05:37 T: Gkr->Pass => D
+05:42 T: D:Pr->Pass => DMw
+05:45 T: DMw->Pass => !DM
+05:47 L: DM->Pass => M
+05:52 L: M->Back => M
+05:54 L: M->DglPass => A
+05:59 L: A->Pass => Apd
+06:01 L: Apd => !Dp
+06:02 T: Dp:TR->Long => !M*T
+#--
+06:33 T: Gkr:Pr->Long => !DMw:HD >> Aw
+06:40 T: Aw->Dribble => !Dwp
+06:44 L: Dpw->Clear => !M*T
+06:53 T: M:T => DMw
