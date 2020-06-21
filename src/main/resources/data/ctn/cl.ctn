@@ -5,23 +5,20 @@
 01:47 L: Penalty->Shoot => G
 #--
 03:18 L: DM:T => DMw
-03:19 L: DMw->Back => DMw
 03:20 L: DMw->Long => !DM:Cl >> DMw
 03:32 L: DMw->Long => !DMw:HD >> DM
 03:40 L: DM->Long => !DM:HD >> M
 03:43 L: M->Long => !DM:HD >> !D
 03:47 T: D->HeadPass => Gkr
 #--
-03:58 T: Dp:Pr => Gkr
-04:02 T: Gkr:Pr => Dpw
-04:04 T: Dpw:Pr => Dwp
+03:58 T: Dp:Pr->Pass => Gkr
+04:02 T: Gkr:Pr->Pass => Dpw:Pr >> Dwp
 04:07 T: Dwp->BreakPass => Dw
 04:09 T: Dw->Pass => DM
 04:10 T: DM:TR->Pass => Dp
 04:12 T: Dp:Pr->Long => DMw
 04:18 T: DMw->Pass => Mw
 04:20 T: Mw->Move => DMw
-04:22 T: DMw->Back => DMw
 04:24 T: DMw->Pass => DM
 04:27 T: DM:Z->Long => Aw
 04:34 T: Aw->Pass => !Dp:I >> C
@@ -33,13 +30,35 @@
 05:42 T: D:Pr->Pass => DMw
 05:45 T: DMw->Pass => !DM
 05:47 L: DM->Pass => M
-05:52 L: M->Back => M
 05:54 L: M->DglPass => A
 05:59 L: A->Pass => Apd
-06:01 L: Apd => !Dp
+06:01 L: Apd->Pass => !Dp
 06:02 T: Dp:TR->Long => !M*T
 #--
 06:33 T: Gkr:Pr->Long => !DMw:HD >> Aw
 06:40 T: Aw->Dribble => !Dwp
 06:44 L: Dpw->Clear => !M*T
-06:53 T: M:T => DMw
+06:53 T: M:T => DMw >> DM
+07:10 T: DM:Pr->Back => DMw >> DM
+07:16 T: DM->RunPass => M
+07:17 T: M->Long => !Dwp
+07:21 L: Dwp:Pr->Pass => Gkr
+07:22 L: Gkr->Clear => !A*T
+07:32 T: A:T => M
+07:39 T: M->Pass => Aw
+07:41 T: Aw->Pass => M
+07:45 T: M->LongPass => !Dwp*T
+08:13 L: D:T => !M
+08:18 T: M->Move => !DM
+08:19 L: DM->Long => !DMw:HD
+08:27 T: DMw->RunPass => Mw
+08:31 T: Mw->Pass => DMw >> DM
+08:47 T: DM:Fr->Pass => Mw
+08:50 T: Mw->Move => Aw
+08:52 T: Aw->Move => A
+08:54 T: A->Pass => !D:I >> A
+08:56 T: A->Pass => Apd
+08:58 T: Apd->Dribble => !D:I >> A
+09:02 T: A->Shoot => !GK            # xG = 1, oR = 0
+09:21 L: GK->Pass => Dwp
+09:23 L: Dwp:Pr->Pass => Gkr
