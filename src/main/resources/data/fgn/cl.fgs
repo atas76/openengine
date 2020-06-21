@@ -58,7 +58,7 @@
 08:56 T: A->Pass => Apd
 08:58 T: Apd->Dribble => !D:I >> A
 09:02 T: A->Shoot => !GK            # xG = 1, oR = 0
-09:22 L: GK->Pass => Dwp
+09:21 L: GK->Pass => Dwp
 09:24 L: Dwp->Pass => Gkr
 09:26 L: Gkr->Pass => D
 09:28 L: D->Move => DM
