@@ -1,0 +1,108 @@
+:Sequence L: KO -> Penalty
+00:00 L: KO => DM
+00:02 L: DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
+00:15 L: M->Long => Apd
+00:20 L: Apd->BounceOff => Ap*H
+:Set L: Penalty -> Goal
+01:47 L: Penalty->Shoot => G
+#--
+:Sequence L: DM:T -> M -> !Gkr
+03:18 L: DM:T => DMw
+03:19 L: DMw->Pass => DMw
+03:20 L: DMw->Long => !DM:Cl >> DM:HD >> DM:HD >> !DMd:HD >> DMw
+03:32 L: DMw->Long => !DMw:HD >> !Md:HD >> DM:Cnt
+03:39 L: DM->Long => !DMd:HD >> M:Cnt
+03:43 L: M->Long => !DM:HD >> !D
+03:47 T: D->HeadPass => Gkr
+#--
+:Pressing T: Dp -> DM -> Mw
+03:58 T: Dp->Pass => Dp
+04:00 T: Dp->Pass => Gkr
+04:02 T: Gkr->Pass => Dp
+04:04 T: Dp->Pass => Dwp
+04:06 T: Dwp->Pass => Dd
+04:08 T: Dd->Pass => DM
+04:10 T: DM->Pass => Dp
+04:12 T: Dp->Long => DMw
+04:18 T: DMw->Pass => Mw
+:/Pressing
+:Sequence T: Mw -> Aw -> C
+04:20 T: Mw->Move => DMw
+04:21 T: DMw->Pass => DMd
+04:23 T: DMd->Pass => DM
+04:27 T: DM->Long => Aw
+04:34 T: Aw->Pass => !Dp:I >> C
+:Set T: Corner -> Gkd
+05:15 T: CK->Cross => !Dp:HD >> M:Cnt
+05:22 T: M->Pass => Gkd
+:Sequence T: Gkd -> DMw -> D
+05:29 T: Gkd->Pass => DMw
+05:34 T: DMw->Pass => Gkr
+05:37 T: Gkr->Pass => D
+:Pressing T: D -> DMw -> !DM
+05:42 T: D->Pass => DMw
+05:45 T: DMw->Pass => !DM
+:/Pressing
+:Transition L: DM -> M -> Md
+05:47 L: DM->Pass => M
+05:51 L: M->Move => Md
+:/Transition
+:Sequence L: Md -> Apd -> M*T
+05:51 L: Md->Pass => Md
+05:53 L: Md->Pass => Ad
+05:58 L: Ad->Pass => Apd
+06:01 L: Apd->Pass => !Dp
+06:02 T: Dp->Long => !M*T
+#--
+:Pressing T: Gkr -> Aw
+06:33 T: Gkr->Long => !DMw:HD >> Aw
+:/Pressing
+:Sequence T: Aw -> M*T
+06:40 T: Aw->Dribble => !Dwp
+06:44 L: Dpw->Clear => !M*T
+:Sequence T: M:T -> DM
+06:53 T: M:T => DMw
+06:57 T: DMw->Pass => DM
+07:09 T: DM:Mrk->Pass => DMd
+07:12 T: DMd->Pass => DM
+:FreeRun T: DM -> M -> !Dwp
+07:16 T: DM->Move => M
+07:17 T: M->Long => !Dwp
+:/FreeRun
+:Pressing L: Dwp -> !A*T
+07:21 L: Dwp->Pass => Gkr
+07:22 L: Gkr->Clear => !A*T
+:/Pressing
+:Sequence T: A:T -> Aw -> !Dwp*T
+07:32 T: A:T => Md
+07:34 T: Md->Pass => M
+07:37 T: M->Pass => Aw
+07:40 T: Aw->Pass => Md
+07:42 T: Md->Pass => M
+07:45 T: M->Long => !Dwp*T
+:Sequence L: D:T -> !Md:Cnt
+08:13 L: D:T => !Md:Cnt
+:Sequence T: Md -> !DM
+08:16 T: Md->Move => !DM
+:Sequence L: DM -> !DMw
+08:18 L: DM->Long => !DMw:HD >> !DMw
+:Sequence T: DMw -> DMw
+08:24 T: DMw->CntDribble => DMw
+:Run T: DMw -> Mw
+08:27 T: DMw->Move => Mw
+08:27 T: Mw->Pass => Mw
+:/Run
+:Sequence T: Mw -> A:Shoot:28 -> !GK:0
+08:28 T: Mw->Triangle => Mw
+08:31 T: Mw->Pass => DMw
+08:33 T: DMw->Pass => DM
+08:40 T: DM->Pass => DM
+08:43 T: DM->Pass => DM
+08:46 T: DM->Move => DMd
+08:47 T: DMd->Pass => Mw
+08:49 T: Mw->Move => Aw
+08:52 T: Aw->Move => Ad
+08:53 T: Ad->Pass => !D:I >> A
+08:56 T: A->Pass => Apd
+08:58 T: Apd->Dribble => !D:I >> A
+09:02 T: A->Shoot => !GK
