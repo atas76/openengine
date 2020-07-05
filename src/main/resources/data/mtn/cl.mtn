@@ -106,3 +106,82 @@
 08:56 T: A->Pass => Apd
 08:58 T: Apd->Dribble => !D:I >> A
 09:02 T: A->Shoot => !GK
+:Pressing L: GK -> DM -> Gkr
+09:21 L: GK->Pass => Dwp
+09:23 L: Dwp->Pass => Gkr
+09:26 L: Gkr->Pass => D
+09:28 L: D->Move => DM
+09:31 L: DM->Pass => Gkr
+:/Pressing
+:Sequence L: Gkr -> Corner -> !Gkr:Punch -> Gkr:H
+09:33 L: Gkr->Pass => D
+09:35 L: D->Long => !Dpw:I >> C
+10:40 L: CK->Cross => !Gkr:Punch >> !Dp
+10:43 T: Dp->Clear => !DM
+10:49 L: DM->HeadPass => Gkr:H
+:Pressing L: Gkr -> Dd -> !DM*T
+11:04 L: Gkr->HandPass => Dd
+11:08 L: D->Long => !DM*T
+:/Pressing
+:Sequence T: DM:T -> Mw*F
+11:34 T: DM:T => Mw:Pvt
+11:36 T: Mw->Turn => !DMw:Tck >> Mw
+11:41 T: Mw->Move => Mw*F
+:Set T: Mw -> Freekick -> A -> !Dw
+12:12 T: Mw:SP->Pass => A
+12:13 T: A->Move => !Dp:I >> !Dw
+:/Set
+:Run L: Dw -> DMw -> !DM*T
+12:17 L: Dw->Move => DMw
+12:17 L: DMw->Long => !DM*T
+:/Run
+#--
+:Sequence T: Gkr -> DM -> D
+12:34 T: Gkr->Pass => D
+12:38 T: D->Pass => DM
+12:43 T: DM->Pass => DMd
+12:46 T: DMd->Pass => DMw
+12:47 T: DMw->Pass => DMd
+12:49 T: DMd->Pass => D
+:Pressing T: D -> DMw
+12:50 T: D->Pass => Gkr
+12:54 T: Gkr->Long => !Mw:HD >> DMw:HD >> !DM:HD >> DMw
+:/Pressing
+:Sequence T: DMw -> Awp -> !D*T
+13:06 T: DMw->Pass => Mw
+13:08 T: Mw->Move => DMw
+13:09 T: DMw->Pass => DMd
+13:12 T: DMd->Pass => DM
+13:14 T: DM->Pass => DMd
+13:17 T: DM->Long => Awp
+13:24 T: Awp->Pass => Awp
+13:26 T: Awp->Pass => Mw
+13:28 T: Mw->Pass => Aw
+13:30 T: Aw->Cross => !Dp:HD >> A*T
+13:46 T: A:T => Mw
+13:47 T: Mw->Pass => DM
+13:53 T: DM->Move => M
+13:53 T: M->Long => !D*T
+#--
+:Sequence L: Dw -> !Md
+14:28 L: Dw->Long => DMw:Cnt >> !Md
+:Sequence T: Md -> !DM
+14:32 T: Md->Pass => DM
+14:34 T: DM->Pass => Gkr
+14:42 T: Gkr->Pass => Dd
+14:47 T: Dd->Pass => D
+14:51 T: D->Pass => DMd
+14:54 T: DMd->Pass => DM
+14:58 T: DM->Pass => DM
+14:59 T: DM->Pass => M:FT >> !DM
+:Sequence L: DM -> !DMd
+15:02 L: DM->Pass => !M:B >> DM
+15:04 L: DM->Pass => DMd:B >> !DMd
+:Sequence T: DMd -> DM -> !GK
+15:06 T: DMd->Triangle => DM
+15:09 T: DM->Pass => DM
+15:13 T: DM->Long => !GK
+:Pressing
+15:42 L: GK->Pass => Dwp
+# ...
+:/Pressing
