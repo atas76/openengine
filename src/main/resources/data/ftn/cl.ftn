@@ -1,0 +1,35 @@
+:set L: Kick-off
+00:02 L: DM->Long => !DMw:HD >> M
+00:15 L: M->Long => Apd
+:track
+00:20 L: Apd->BounceOff => Ap*H
+:set L: PenaltyKick
+01:47 L: Penalty->Shoot => G
+:break
+:set L: Throw-in
+03:18 L: DM => DMw
+:build
+03:20 L: DMw->Long => !DM:Cl >> !Gkr
+:break
+:transition
+03:58 T: Dp => DMw
+:build
+04:21 T: DMw -> DMd -> DM
+04:27 T: DM->Long => Awp
+:track
+04:32 T: Awp->Move => Aw
+04:34 T: Aw->Pass => !Dp:I >> C
+:set T: CornerKick
+05:15 Cross => !Dp:HD >> Gkd
+:build
+05:29 T: Gkd -> DMw -> Gkr -> Dd -> DMw -> !DM
+:transition
+05:47 L: DM => Md
+:build
+05:53 L: Md->Pass => Ad
+:track
+05:58 L: Ad->Pass => Apd
+06:01 L: Apd->Pass => !Dp
+:transition
+06:02 T: Dp => !M*T
+:break
