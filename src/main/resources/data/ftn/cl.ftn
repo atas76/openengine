@@ -1,5 +1,6 @@
 :set L: Kick-off
-00:02 DM->Long => !DMw:HD >> M
+00:00 KO => DM
+00:02 L: DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
 00:15 M->Long => Apd
 :track L
 00:20 Apd->BounceOff => Ap*H
@@ -8,28 +9,91 @@
 :break
 :set L: Throw-in
 03:18 DM => DMw
+03:19 DMw -> DMw
 :build L
-03:20 DMw->Long => !DM:Cl >> !Gkr
+03:20 DMw->Long => !DM:Cl >> DM:HD >> DM:HD >> !DMd:HD >> DMw
+:transition L
+03:32 DMw->Long => !DMw:HD >> !Md:HD >> DM:Cnt
+03:39 DM->Long => !DMd:HD >> M:Cnt
+03:43 M->Long => !DM:HD >> !D
+:transition T
+03:47 D->HeadPass => Gkr
 :break
 :transition T
-03:58 Dp => DMw
+03:58 Dp -> Dp -> Gkr -> Dp -> Dwp -> Dd -> DM -> Dp
+04:12 Dp->Long => DMw
+04:18 DMw -> Mw
+04:20 Mw->Move => DMw
 :build T
 04:21 DMw -> DMd -> DM
 04:27 DM->Long => Awp
 :track T
 04:32 Awp->Move => Aw
 04:34 Aw->Pass => !Dp:I >> C
-:set T: CornerKick
-05:15 CK->Cross => !Dp:HD >> Gkd
+:set T: Corner
+05:15 CK->Cross => !Dp:HD >> M:Cnt
+05:22 M->Pass => Gkd
 :build T
 05:29 T: Gkd -> DMw -> Gkr -> Dd -> DMw -> !DM
 :transition L
-05:47 DM => Md
+05:47 DM -> M
+05:50 M->Move => Md
+05:51 Md -> Md
 :build L
-05:53 Md->Pass => Ad
+05:53 Md -> Ad
 :track L
-05:58 Ad->Pass => Apd
-06:01 Apd->Pass => !Dp
+05:58 Ad -> Apd -> !Dp
 :transition T
-06:02 T: Dp => !M*T
+06:02 Dp->Long => !M*T
 :break
+:transition T
+06:33 T: Gkr->Long => !DMw:HD >> Aw
+:track T
+06:40 T: Aw->Dribble => !Dwp
+:transition L
+06:44 L: Dpw->Clear => !M*T
+:set T: Throw-in
+06:53 T: M => DMw
+:build T
+06:57 T: DMw -> DM -> DMd -> DM -> DMd -> DM
+07:15 DM->FreeRun => M
+07:16 M->ForwardPass => M
+07:17 M:FT->Long => !Dwp
+:transition L
+07:21 Dwp -> Gkr
+07:22 Gkr->Clear => !A*T
+:set T: Throw-in
+07:32 A => Md
+:build T
+07:34 Md -> M -> Aw
+:track T
+07:40 Aw -> Md -> M
+07:45 M->Long => !Dwp*T
+:set L: Throw-in
+08:13 D => !Md:Cnt
+08:16 Md->Move => !DM
+08:18 DM->Long => !DMw:HD >> !DMw
+:transition T
+08:24 DMw->CntDribble => DMw
+08:25 DMw->Move => Mw
+08:27 Mw -> Mw
+08:28 Mw->Triangle => Mw
+:build T
+08:31 Mw -> DMw -> DM -> DM -> DM
+08:44 DM->Move => DMd
+08:47 DMd -> Mw
+08:49 Mw->Move => Aw
+:track T
+08:50 Aw->Move => Ad
+08:53 Ad->ForwardPass => !D:I >> A
+08:56 A->Pass => Apd
+08:58 Apd->Dribble => !D:I >> A
+09:02 A->Shoot => !GK           # d=28, opp=3, dopp=0, r=0
+:transition L
+09:21 GK -> Dwp -> Gkr -> D
+09:28 D->Move => DM
+09:31 DM -> Gkr
+:build L
+09:33 Gkr -> D
+09:35 D->Long => !Dpw:I >> C
+:set L: Corner
