@@ -1,0 +1,60 @@
+:set T: Kick-off
+00:00 K => DM
+00:03 DM->Long => A:HD >> !Dwp
+:transition A
+00:09 Dwp->Clear => !MW:FT >> DMd
+00:13 DMd -> DM -> DMd
+00:18 DMd->Move => DMw
+00:21 DMw -> DMd => DMw
+:build A
+00:26 DMw->Move => DMw
+00:27 DMw->Pass => DMw
+00:27 DMw:FT->Pass => DMw
+00:30 DMw -> Dd -> D -> Dd -> D
+:pressing A
+00:44 D -> Gkr
+00:47 Gkr -> Long => !M*T
+:break
+:pressing T
+01:03 Dw -> Gkr -> Dwp
+01:12 Dwp-> Clear => !Mw
+:transition A
+01:14 Mw:FT -> DMw -> Gkr
+01:24 Gkr -> Long => !M*T
+:set T: Throw-in
+01:34 M => Mw:FT >> Mw
+01:36 Mw->BackPass => Mw
+01:39 Mw->SwapPlay => Mw
+:transition T
+01:44 Mw:FT -> Mw
+01:46 Mw->Move => DMw
+01:49 DMw->Pass => DMd
+:build T
+01:52 DMd -> DM -> DMw -> Gkr
+02:02 Gkr -> Long => !M:FT >> Md
+:transition A
+02:07 Md->Pass => DMw
+02:08 DMw->Pass => Md
+:build A
+02:11 Md->Move => DMd
+02:13 DMd->D -> DMw
+02:19 DMw->ForwardPass => Mw
+02:22 Mw->Move => Aw
+:track A
+02:30 Aw -> Awp -> Awp:Tck -> Md -> Md -> M -> Md
+02:46 Md->HighPass => Ap:Cnt >> !Dp:Clr >> Apd:FT >> Ap:B >> A
+02:52 A->Shoot => !Dp:B >> !DMd
+:transition T
+02:54 DMd -> DM
+02:57 DM->ForwardPass => M
+03:00 M->Dribble => !DM
+:transition A
+03:02 DM -> DMw -> DMd
+:build A
+03:06 DMd -> DMw -> DMw -> DMd -> DMd
+03:09 DMd->ForwardPass => Md
+03:12 Md->FreeRun => M
+03:13 M->Pass => Ad
+:track A
+03:15 Ad->Move => Apd
+03:17 Apd->Shoot => Gkr:S >> !Dp:Cl >> C    # r=2
