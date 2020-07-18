@@ -42,7 +42,7 @@
 02:22 Mw->Move => Aw
 :track A
 02:30 Aw -> Awp -> Awp:Tck -> Md -> Md -> M -> Md
-02:46 Md->HighPass => Ap:Cnt >> !Dp:Clr >> Apd:FT >> Ap:B >> A
+02:46 Md->HighPass => Ap:Cnt >> !Dp:Cl >> Apd:FT >> Ap:B >> A
 02:52 A->Shoot => !Dp:B >> !DMd
 :transition T
 02:54 DMd -> DM

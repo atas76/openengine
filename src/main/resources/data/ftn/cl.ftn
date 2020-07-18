@@ -98,7 +98,9 @@
 09:35 D->Long => !Dpw:I >> C
 :set L: Corner
 10:40 CK->Cross => !Gkr:Punch >> !Dp
+:transition T
 10:43 Dp->Clear => !DM
+:transition L
 10:49 DM->HeadPass => Gkr:H
 :build
 11:04 Gkr->HandPass => Dd
