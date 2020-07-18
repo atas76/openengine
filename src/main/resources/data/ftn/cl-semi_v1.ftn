@@ -1,0 +1,23 @@
+:attack A
+00:03 DM->Long => A:HD >> !Dwp
+:transition A
+00:09 Dwp->Clear => !MW:FT >> DMd
+00:13 DMd -> DM -> DMd
+00:18 DMd->Move => DMw
+00:21 DMw -> DMd => DMw
+:attack A
+02:19 DMw->ForwardPass => Mw:Fr #:BB
+02:22 Mw->FreeRun => Awp
+02:30 Awp->Pass => Awp
+02:38 Awp->Pass => Awp:Tck >> Md
+02:41 Md:Mrk->Pass => Md
+02:42 Md->Pass => M
+02:44 M->Pass => Md:Fr
+02:46 Md:Fr->HighPass => Ap:Cnt >> !Dp:Cl >> Apd:FT >> Ap:B >> A
+02:52 A->Shoot => !Dp:B >> !DMd
+:transition T
+02:54 DMd->Pass => DM:Fr
+02:57 DM->ForwardPass => M
+03:00 M->Dribble => !DM
+:transition A
+03:02 DM -> DMw -> DMd

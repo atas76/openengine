@@ -1,0 +1,50 @@
+:attack L
+00:02 DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
+00:15 M->Long => Apd
+00:20 Apd->BounceOff => Ap*H
+:set L: PenaltyKick
+01:47 Penalty->Shoot => G
+:attack T
+04:27 DM->Long => Awp
+04:32 Awp->Move => Aw
+04:34 Aw->Pass => !Dp:I >> C
+:set T: Corner
+05:15 CK->Cross => !Dp:HD >> M:Cnt
+05:22 M->Pass => Gkd
+:transition L
+05:47 DM->Pass => M
+05:50 M:Mrk->Move => Md:Fr
+05:51 Md->Pass => Md #:FlankMove
+:attack L
+05:53 Md->Pass => Ad
+05:58 Ad->Pass => Apd:Pvt
+05:59 Apd->Pass => !Dp
+:transition T
+06:02 Dp->Long => !M*T
+:attack T
+06:33 Gkr->Long => !DMw:HD >> Aw
+06:40 Aw->Dribble => !Dwp
+:transition L
+06:44 Dpw->Clear => !M*T
+:transition L
+07:21 Dwp->Pass => Gkr
+07:22 Gkr->Clear => !A*T
+:set T: Throw-in
+07:32 A => Md
+07:34 Md -> M -> Aw #:TriangularSwapWing
+07:40 Aw -> Md -> M
+07:45 M->Long => !Dwp*T
+:attack T
+08:49 Mw->Move => Aw
+08:50 Aw->Move => Ad
+08:53 Ad->Pass => !D:I >> A
+08:56 A->Pass => Apd
+08:58 Apd->Dribble => !D:I >> A
+09:02 A->Shoot => !GK #:R=0
+:attack L
+09:35 D->Long => !Dpw:I >> C
+:set L: Corner
+10:40 CK->Cross => !Gkr:Punch >> !Dp
+:transition T
+10:43 Dp->Clear => !DM
+#:Next:10:51
