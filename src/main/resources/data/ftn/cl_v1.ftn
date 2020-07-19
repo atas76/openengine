@@ -94,7 +94,7 @@
 19:33 A->Pass => !Dp
 :transition L
 19:34 Dp->Clear => !A*T
-:transition T
+:set Throw-in T
 19:40 A:T => Aw
 19:41 Aw->FTPass => Awp
 19:44 Awp->Cross => !Gkr:H
