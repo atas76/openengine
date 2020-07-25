@@ -134,4 +134,38 @@
 23:50 CK->Pass => Apw
 23:51 Apw->Pass => A
 23:53 A->Cross => !Dp:HD >> !DM*F
-#:24:35
+:attack T
+27:40 DM->Long => !A*O
+:set L: Freekick
+29:01 M->Long => !GK
+:transition T
+32:25 M->Run => A
+32:27 A->Pass => !D:I >> M
+:attack T
+32:31 M->Pass => Md
+32:33 Md->Pass => M
+32:39 M->Move => Md
+32:40 Md->Pass => Aw
+32:46 Aw->Pass => Mw
+32:48 Mw -> M -> M
+32:55 M->ForwardPass => M:FT >> A:Cnt >> M
+32:58 M->BackPass => Md
+33:01 Md -> Md -> Md
+33:04 Md->Pass => !D*T
+:set L: Throw-in
+33:22 D => !Mw:HD >> !Aw:HD >> !Aw
+:attack T
+33:29 Aw->Move => Awp
+33:32 Awp->LowCross => !Dwp:I >> C
+:set T: Corner
+33:43 CK->Pass => Awp
+33:46 Awp->Cross => !Dp:HD >> A*T
+:set T: Throw-in
+34:11 A => Awp:Cnt >> Ap*T
+:set T: Throw-in
+34:26 Ap => !Dpw:HD >> !Dwp:HD >> Aw:FT >> Mw
+:pressing T
+35:06 Dpw->Long => !Mw:HD >> !Aw
+:attack A
+35:13 Aw->Move => Awp
+35:15 Awp->Cross => !GK
