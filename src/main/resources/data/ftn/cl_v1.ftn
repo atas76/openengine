@@ -1,6 +1,7 @@
-:attack L
+:set L: Kickoff
 00:02 DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
-00:15 M->Long => Apd
+:attack L
+00:15 M:FT->Long => Apd
 00:20 Apd->BounceOff => Ap*H
 :set L: PenaltyKick
 01:47 Penalty->Shoot => G
@@ -217,4 +218,55 @@
 41:49 A->Shoot => !D:B >> C
 :set L: Corner
 42:20 CK->Cross => !Dp:Clr >> M*T
-#42:43
+:pressing T
+43:27 Dpw->Gkr
+43:28 Gkr->Long => Dw:HD >> Dwp
+43:34 Dwp->Dwp
+43:36 Dwp->Move => Dw
+43:38 Dw->Pass => Mw:Fr
+:transition T
+43:41 Mw->FreeRun => Ad
+:attack T
+43:45 Ad->Pass => !Gkr:H
+:transition T
+45:07 DM->Move => M
+45:10 M->Pass => Mw
+45:13 Mw->Move => Ad
+45:14 Ad->Pass => A
+45:15 A->Pass => A
+45:18 A->Shoot => !GK #r=0
+:attack T
+46:31 Mw->Pass => Aw
+46:35 Aw->Pass => MW
+46:38 Mw->Mw->Aw
+46:43 Aw->Pass => Awp
+46:44 Awp->LowCross => !Dp:I >> Awp:Ch >> !Dwp
+:HT
+:attack T
+46:15 DMw->Pass => Awp
+46:24 Awp->Pass => Aw
+46:25 Aw->Cross => Dp:HD >> !Dp:Cl
+:attack T
+46:53 Gkr->Long => M:Cnt
+46:58 M->Move => A
+47:00 A->Move => Apd
+47:01 Apd->LowCross => !Dw
+:set T: Freekick
+50:01 M->Long => Ap*O
+:transition T
+51:11 Dw->Pass => DMw:FT >> DMw
+51:13 DMw->Move => DMw
+51:14 DMw->Pass => Mw
+51:18 Mw->Move => A
+:attack T
+51:20 A->Pass => Ad
+51:22 Ad->Dribble => !Dpw:Ch
+:attack L
+52:06 Mw->Long => Awp
+52:15 Awp->Pass => Apw
+52:16 Apw->Pass => Awp
+52:20 Awp->Pass => Mw
+52:22 Mw->Md
+52:23 Md->Move => A
+52:24 A->Shoot => !D:Tck >> !Gkr:H
+#:52:33
