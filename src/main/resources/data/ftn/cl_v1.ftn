@@ -186,7 +186,7 @@
 37:42 DMw->FreeRun => Mw
 37:43 Mw->FreeRun => Ad
 :attack L
-37:47 Ad->Shoot => Gkr:S >> C # r=2
+37:47 Ad->Shoot => Gkr:S >> C #r=2
 :set L: Corner
 38:28 CK => !Dp:HD >> A:FT
 38:31 A:FT->Shoot => !GK #o
@@ -269,4 +269,41 @@
 52:22 Mw->Md
 52:23 Md->Move => A
 52:24 A->Shoot => !D:Tck >> !Gkr:H
-#:52:33
+:transition L
+53:00 DM->Long => Apd
+:attack L
+53:05 Apd->Shoot => Dp:B >> A:Ch >> A
+53:12 A->Pass => Ad
+53:13 Ad -> M -> Md
+53:17 Md->Move => Ad
+53:19 Ad->Long => !Gkr:H
+:attack T
+53:44 Mw->Long => Ap
+53:48 Ap->Shoot => !Dp:B >> A:HD >> !Dp:Cl >> !Dwp:Ch
+:attack T
+54:23 DM->Long => Awp
+54:31 Awp->Dribble => Awp:Adv >> Awp
+54:33 Awp -> Ad
+54:34 Ad->Pass => !Dp:Cl
+:transition T
+56:13 M->ForwardPass => M
+56:16 M->Move => Apw
+56:22 Apw->BounceOff => !Dpw:B >> C
+:set T: Corner
+56:51 CK->Cross => !Gkr:Punch >> Adp:FT
+56:55 Adp:FT->Shoot => !Dp:B >> C
+:set T: Corner
+57:15 CK->Cross => Apw:HD
+57:17 Apw->HdSht => !GK #r=0
+:transition T
+59:49 DM->Pass => DMw
+59:53 DMw->Move => Mw
+59:59 Mw->BackPass => Mw
+60:01 Mw - >Md -> Mw -> M -> Md:Tck >> Md
+60:10 Md->Pass => Ad:FT >> A:FT -> Ad
+60:13 Ad->Pass => !D:I >> A
+60:17 A->Shoot => !Dp:B >> Aw
+60:21 Aw -> Mw
+60:23 Mw->Move => Md
+60:24 Md->Pass => A:FT >> !GK
+#:60:32
