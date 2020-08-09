@@ -343,7 +343,56 @@
 69:59 Apw->LowCross => Awp
 70:04 Awp->Cross => Awp
 70:08 Awp->Cross => !Gkr:H
-#:70:15
+:attack L
+70:17 Gkr->LongPass => Awp
+70:23 Awp->Move => Apw
+70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr
+:set L: Throw-in
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
+:attack T
+72:28 DM->ForwardPass >> M:FT >> M
+72:32 M->Pass => A
+72:34 A->Pass => Apd
+72:35 Apd->HighPass => !Gkr:H
+:transition L
+74:35 Md:Fr->Pass => Ad:Fr
+:attack L
+74:42 A->HighPass => !Dp:HD >> !D:HD
+:transition T
+74:47 DM -> DM
+74:50 DM:FT->Pass => M
+74:52 M->Move => Ap >> !Dp:Ch >> C
+:set T: Corner
+75:05 CK->Pass => Apw
+75:07 Apw->Pass => Apd
+75:08 Apd -> Awp
+75:09 Awp->Move => Apd
+75:12 Apd->Move => Apw
+75:13 Apw->Cross => !Dp:B >> Apw
+75:16 Apw->Cross => !Dp:HD >> Aw
+75:23 Aw -> Mw
+75:26 Mw->Long => !Apw*H
+:attack T
+78:09 Mw -> Aw
+78:10 Aw->Move => Mw
+78:13 Mw->Long => Awp
+78:18 Awp->Cross => Ap:HD
+78:20 Ap->HdSht => !GK #r=1, over
+:transition T
+79:14 Gkr->Pass => Dpd
+79:17 Dpd -> Dd
+79:21 Dd->Move => DMd
+79:22 DMd => Move => DM
+79:23 DM -> DM
+79:25 DM->Move => Md
+79:27 Md->ForwardPass => Md
+79:31 Md->Pass => M:Fr
+79:33 M->Move => A
+:attack T
+79:34 A->Shoot => !Gkr:S >> Apd #r=2
+79:38 Apd->Pass => Ap
+79:39 Ap->Shoot => !Gkr:H       #r=2
+#:79:45
 
 #: possession <start> -> <finish>
 #: <start> ->
