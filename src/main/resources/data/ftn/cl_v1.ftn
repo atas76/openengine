@@ -392,8 +392,42 @@
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
-#:79:45
+:attack T
+80:18 M->Dribble => A
+80:20 A->Shoot => !Gkr:H        #r=1
+:set L: Corner
+81:44 CK->Cross => !Dp:HD >> A:Cnt
+81:49 A:FT->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
+82:01 A:FT->Shoot => !GK    #r=0
+:attack T
+82:33 Md->Pass => Aw
+82:36 Aw->Cross => !Dp:HD >> Awp:Cnt >> Awp*F
+:set T: Freekick
+84:05 Awp->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => Ap:B >> !Ap*O
+:attack L
+85:41 Mw->Cross => !Dp:Cnt >> C
+:set L: Corner
+86:46 CK->Cross => !Dp:HD >> !Dp:Ch >> !Dp:HD >> !Dp:HD >> Ap:FT >> Apd:Fr
+86:53 Apd->Shoot => G
+:attack T
+88:20 Mw->Move => Aw
+88:22 Aw->Cross => Dp:Cnt >> !GK
+:attack T
+90:09 Gkd->Long => A:HD >> !DM
+:transition T
+90:58 Mw->Move => Apd:Dv
+:attack T
+91:19 Mw->Long => Ad:HD >> !Dp:Clr >> C
+:set T: Corner
+91:44 CK->Cross => !Dp:HD >> Aw
+91:50 Aw->Dribble => A
+91:52 A->Shoot => !Gkr:H    #r=1
+#:91:55
 
+# TODO next pass
+# check offsides
 #: possession <start> -> <finish>
 #: <start> ->
 #: -> <finish>
