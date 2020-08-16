@@ -5,6 +5,19 @@
 00:20 Apd->BounceOff => Ap*H
 :set L: PenaltyKick
 01:47 Penalty->Shoot => G
+:break
+:set L: Throw-in
+03:18 DM => DMw
+03:20 DMw->Pass => DMw
+03:21 DMw->Long => !DM:Tck >> DM:HD >> DM:HD >> !DMd:HD >> DMd
+:possession L
+03:32 DMd:FT->Long => !DMd >> !Md:HD >> DM:Cnt
+03:44 Md->Long => !DM:HD >> !D:HD >> !Gkr
+#:03:50 !
+#: possession <start> -> <finish>
+#: <start> ->
+#: key action
+#: -> <finish>
 :attack T
 04:27 DM->Long => Awp
 04:32 Awp->Move => Aw
@@ -453,7 +466,7 @@
 94:27 A->HighPass => !GK
 
 # TODO next pass
-# check offsides
 #: possession <start> -> <finish>
 #: <start> ->
+#: key action
 #: -> <finish>
