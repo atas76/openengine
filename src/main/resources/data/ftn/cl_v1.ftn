@@ -80,15 +80,18 @@
 11:34 D => Mw:Pvt >> Mw:Cnt
 11:38 Mw->Dribble => !DMw:Tck >> Mw
 11:40 Mw->Dribble => Mw*F
-#:!!!
 :set T: Freekick
 12:11 Mw:SP->Pass => Ad
 12:13 Ad->Move => !Dp:I >> !Dw
 :transition L
 12:15 Dw->FreeRun => DMw
 12:17 DMw->Long => !DM*T
-:attack T
+:break
+:possession T
+12:34 Gkr->Pass => D
+12:56 Gkr->Long => !Mw:HD >> DMw:HD >> !DM:HD >> DMw:Cnt >> Mw
 13:17 DM->Long => Awp
+:attack T
 13:24 Awp->Pass => Awp
 13:26 Awp->Pass => Mw
 13:28 Mw->Pass => Aw
@@ -96,42 +99,58 @@
 :set T: Throw-in
 13:46 A => Mw
 13:47 Mw->Pass => DM
-:attack L
-16:13 DM->Long => A:BT >> !D
-:transition T
-16:17 D->Clear => !M*T
-:transition T
-16:42 DM->Move => !M
+:possession T
+13:54 M->Long => !A*T
+:break
+:possession T
+14:33 Md->Pass => DM
+14:59 DM->ForwardPass => M:FT >> !DM:FT >> M:B >> !DM
 :transition L
-16:45 M->Pass => Md
+15:04 DM->Pass => DM:Cnt >> !DMd
+:transition T
+15:06 DMd->TriangularPass => DMd
+15:09 DMd->Pass => DM
+:possession T
+15:13 DM->Long => !GK
+:possession L
+15:42 GK->Pass => Dwp
+16:13 DM->Long => A:BT >> !D:Clr >> M*T
+:set L: Throw-in
+16:39 M => !DMd:HD >> !DM:Cnt >> M
+16:44 M->Pass => Md
 16:46 Md->Move => Ad
 16:47 Ad->Shoot => !GK  #:r=2
+:break
+:possession L
+18:08 Gkr->Pass => D
+18:14 DMw->Pass => !Mw:Ch >> Mw
+:transition T
+18:17 Mw->Pass => Md
+18:19 Md->Pass => M
+18:20 M->Pass => !DM
 :transition L
 18:25 DM -> DM -> DM -> DMw
 18:29 DMw->FreeRun => Mw
 18:31 Mw->FreeRun => Aw
-18:34 Aw:B->Move => !GK
-:set T: Goalkick:Pressing
-18:53 GK -> Dwp -> Dwp -> Dwp -> Dwp
-19:01 Dwp->Long => DM
-19:05 DM -> DM
-19:06 DM->Pass => M
+18:34 Aw:Mrk->Move => !GK
+:possession T
+18:53 GK->Pass => Dwp
+19:01 Dwp->Long => DM:Cnt
+19:06 DM->ForwardPass => M
 19:09 M->FreeRun => A
 19:10 A->Dribble => !D:I >> !DM
 :transition L
 19:11 DM->Pass => Dw
 19:15 Dw->Pass => !M:I >> !M
 :transition T
-19:20 M->Triangle => M
+19:20 M->TriangularPass => M
 19:24 M -> Md -> M -> M
 19:30 M->Pass => A
-19:33 A->Pass => !Dp
-:transition L
-19:34 Dp->Clear => !A*T
-:set Throw-in T
-19:40 A:T => Aw
-19:41 Aw->FTPass => Awp
+19:33 A->Pass => !Dp:Clr >> A*T
+:set T: Throw-in
+19:40 A => Aw:FT >> Awp
 19:44 Awp->Cross => !Gkr:H
+#!:19:47
 :attack L
 20:23 Mw->Move => Aw
 20:27 Aw->Pass => A
