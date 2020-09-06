@@ -429,9 +429,36 @@
 :attack T
 47:00 A->Move => Apd
 47:01 Apd->LowCross => !D*T
-#!:47:26
+:set L: Throw-in
+47:26 D => !Mw:HD >> DM*T
+:set L: Throw-in
+47:36 DM => Mw:HD >> !DMw:FT >> DMw:HD >> DMw
+47:43 DMw->Pass => DMw
+47:44 DMw:FT->HighPass => !DMw
+:possession T
+47:47 Mw->Pass => !DMw
+:set L: Throw-in
+48:00 DM => !Dw
+:possession T
+48:04 Dw->Pass => Gkr
+48:22 Gkr->Long => !M:HD >> Dd:Cnt
+48:29 Dd->Long => !M*T
+:set L: Throw-in
+48:53 M => !Dpw
+:transition T
+48:58 Dpw->Long => !M*T
+:set L: Throw-in
+49:05 M => Aw:HD >> Mw:HD >> !DM*T
+:set T: Throw-in
+49:26 DM => Md:FT >> M*FT
 :set T: Freekick
-50:01 M->Long => !Ap*O
+50:01 M->Long => !Dp*O
+:break
+:set T: Throw-in
+50:48 M => DMw
+50:54 DMw->Pass => Gkr
+:possession T
+50:56 Gkr->Long => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
 :transition T
 51:11 Dw->Pass => DMw:FT >> DMw
 51:13 DMw->Move => DMw
@@ -440,14 +467,26 @@
 :attack T
 51:20 A->Pass => Ad
 51:22 Ad->Dribble => !Dpw:Ch
-:attack L
+:transition L
+51:26 Dwp->Pass => Dwp
+51:28 Dwp:FT->Pass => Dwp:Tck >> !Aw:HD >> DM*T
+:set L: Throw-in
+51:55 DM => DMw
+51:57 DMw->BackPass => DMw
+51:58 DMw->Long => Mw
+:possession L
 52:06 Mw->Long => Awp
+:attack L
 52:15 Awp->Pass => Apw
 52:16 Apw->Pass => Awp
 52:20 Awp->Pass => Mw
 52:22 Mw->Md
 52:23 Md->Move => A
 52:24 A->Shoot => !D:Tck >> !Gkr:H
+:possession T
+52:33 Gkr->HandPass => Dp
+52:51 D->Long => DMw
+52:55 Mw->Long => !DMd:HD >> !DMd
 :transition L
 53:00 DM->Long => Apd
 :attack L
@@ -456,6 +495,8 @@
 53:13 Ad -> M -> Md
 53:17 Md->Move => Ad
 53:19 Ad->Long => !Gkr:H
+:break
+#!:53:28
 :attack T
 53:44 Mw->Long => Ap
 53:48 Ap->Shoot => !Dp:B >> A:HD >> !Dp:Cl >> !Dwp:Ch
@@ -585,7 +626,7 @@
 :set T: Freekick
 84:05 Awp->Shoot => !Gkr:S >> C
 :set T: Corner
-84:37 CK->Cross => Ap:B >> !Ap*O
+84:37 CK->Cross => Ap:B >> !Dp*O
 :attack L
 85:41 Mw->Cross => !Dp:Cnt >> C
 :set L: Corner
