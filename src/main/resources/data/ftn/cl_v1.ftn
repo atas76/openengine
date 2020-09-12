@@ -580,13 +580,23 @@
 63:43 DM->Pass => DM
 64:19 DMd->Long => !DM:HD >> !DM:F
 :set L: Freekick
-#!:64:41
-:transition L
-65:48 Gkr -> Dw:FT -> DMd -> DMw
+64:41 DM:SP->Long => !DM*T
+:substitution
+:set T: Throw-in
+65:29 DM => DMw
+65:30 DMw->Pass => DMw
+65:32 DMw->HighPass => Mw:HD >> DMw
+65:35 DMw->Pass => DMw
+65:39 DMw->Pass => DMd
+65:42 DMd->ForwardPass => M:Cnt >> !DMw
+:possession L
+65:45 DMw->Pass => Gkr
+65:48 Gkr -> Dw:FT -> DMd -> DMw # TODO: Save this format for instant one-touch combinations
 65:54 DMw->ForwardPass => Md:Cnt => Md
 65:59 Md:Hld -> M
 66:00 M->Pass => Mw:Fr
 66:01 Mw->FreeRun => Ad
+:attack L
 66:05 Ad->Cross => !Dp:HD >> C
 :set L: Corner
 66:35 CK->Cross => !Dp:Cl >> A*T
@@ -596,6 +606,11 @@
 67:00 A => Awp
 67:03 Awp->BounceOff => Awp
 67:04 Awp:FT->HighPass => !GK
+:possession T
+67:19 Gkr->Long => DMw:HD >> DMd
+67:24 DMd->Move => DM
+67:27 DM->Pass => Mw
+67:30 Mw->HighPass => !Dw*T
 :set L: Throw-in
 67:51 Dw => DMw:HD >> DMd:Cnt
 67:57 DMd->Dribble => DM
@@ -605,13 +620,24 @@
 68:07 A->Pass => Ap
 68:08 Ap->Pass => Ap
 68:09 Ap->Shoot => !GK #r=2
-:attack T
+:break
+:possession T
+68:41 Gkr->Pass => Dpw
+68:52 Dpw->Pass => D
+68:55 D->Pass => Dpw
+68:57 Dpw->Pass => D
 69:01 D->Long => !D:B >> M
 69:06 M->Move => Apd
-69:11 Apd->Pass => Awp
-69:12 Awp->Cross => !Dp:B >> !Dp:Cl
 :attack T
+69:11 Apd->Pass => Awp
+69:12 Awp->Cross => !Dp:B >> !Dp:Clr >> DMw
+:possession T
+69:25 DMw->Pass => Gkd
+69:29 Gkd->Pass => Dd
+69:32 Dd->Move => DMw
+69:35 DMw->Long => !D:HD >> M
 69:55 DM->Long => Awp:Cnt >> Apw
+:attack T
 69:59 Apw->LowCross => Awp
 70:04 Awp->Cross => Awp
 70:08 Awp->Cross => !Gkr:H
@@ -621,6 +647,9 @@
 70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr
 :set L: Throw-in
 71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
+:set T: Throw-in
+71:56 DM => Dp
+#!:71:58
 :attack T
 72:28 DM->ForwardPass >> M:FT >> M
 72:32 M->Pass => A
