@@ -649,18 +649,41 @@
 71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
 :set T: Throw-in
 71:56 DM => Dp
-#!:71:58
-:attack T
+71:58 Dp->Pass => Gkr
+72:01 Gkr->Pass => Dp
+72:04 Dp->Move => D
+:possession T
+72:16 DM->Pass => !DM
+:transition L
+72:18 DM->Pass => !Gkr:H
+:possession T
+72:22 Gkr->HandPass => Dd
 72:28 DM->ForwardPass >> M:FT >> M
+:attack T
 72:32 M->Pass => A
 72:34 A->Pass => Apd
 72:35 Apd->HighPass => !Gkr:H
+:substitution
+:possession L
+73:44 Gkr->Pass => DM
+73:54 Mw->ForwardPass => !GK
+:break
+:possession T
+74:15 Gkr->Pass => Dp
+74:19 Dp->Pass => Gkr
+74:22 Gkr->Long => DMw:Cnt >> !Mw:I >> !Mw
 :transition L
-74:35 Md:Fr->Pass => Ad:Fr
+72:28 Mw:FT->Pass => !DMd
+:transition T
+74:30 DMd->Pass => DM
+74:32 DM->Pass => !DMw
+:transition L
+74:33 DMw->Move => Md:Fr
+74:38 Md:Fr->Pass => A:Fr
 :attack L
 74:42 A->HighPass => !Dp:HD >> !D:HD
 :transition T
-74:47 DM -> DM
+74:47 DM->Pass => DM
 74:50 DM:FT->Pass => M
 74:52 M->Move => Ap >> !Dp:Ch >> C
 :set T: Corner
@@ -673,18 +696,41 @@
 75:16 Apw->Cross => !Dp:HD >> Aw
 75:23 Aw -> Mw
 75:26 Mw->Long => !Apw*H
+:break
+:transition T
+76:05 DM->ForwardPass => DM
+76:09 DM->Move => M
+76:12 M->Long => !Dd:HD >> !DM:HD >> !DMd
+:transition L
+76:20 DMd->Pass => DMw
+76:24 DMd->Long => !Gkr:H
+:possession T
+76:30 Gkr->HandPass => DMw
+76:36 DMw->Long => !Gkr:H
+:possession L
+76:40 Gkr->HandPass => DM
+76:51 Mw->Pass => !DMw:B >> M*T
+:set L: Throw-in
+77:11 M => !Dw:HD >> !Dw:FT >> !D
+:possession T
+77:22 D->Move => DMw
+78:09 Mw->Pass => Aw
 :attack T
-78:09 Mw -> Aw
 78:10 Aw->Move => Mw
 78:13 Mw->Long => Awp
 78:18 Awp->Cross => Ap:HD
 78:20 Ap->HdSht => !GK #r=1, over
+:break
+:transition L
+79:04 D->Clear => DM:Cnt
+79:08 DM->Move => M
+79:10 M->Pass => !DM
 :transition T
+79:12 DM->Pass => Gkr
 79:14 Gkr->Pass => Dpd
-79:17 Dpd -> Dd
+79:17 Dpd->Pass => Dd
 79:21 Dd->Move => DMd
-79:22 DMd => Move => DM
-79:23 DM -> DM
+79:22 DMd->Pass => DM
 79:25 DM->Move => Md
 79:27 Md->ForwardPass => Md
 79:31 Md->Pass => M:Fr
@@ -693,6 +739,9 @@
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
+:break
+:possession L
+#!:79:52
 :attack T
 80:18 M->Dribble => A
 80:20 A->Shoot => !Gkr:H        #r=1
