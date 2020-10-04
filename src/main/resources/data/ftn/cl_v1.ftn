@@ -741,39 +741,82 @@
 79:39 Ap->Shoot => !Gkr:H       #r=2
 :break
 :possession L
-#!:79:52
+79:52 DMw->ForwardPass => DMw
+80:00 Mw->ForwardPass => !DMw
+:transition T
+80:02 DMw->ForwardPass => DMw
+80:05 DMw->Move => M
+80:06 M->Pass => DM
+:possession T
+80:07 DM->Pass => Mw
+80:16 M->ForwardPass => M
+80:17 M->Dribble => A
 :attack T
-80:18 M->Dribble => A
 80:20 A->Shoot => !Gkr:H        #r=1
+:break
+:possession L
+80:30 DMw->ForwardPass => !Dw
+:transition T
+80:34 D->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
 81:49 A:FT->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
 82:01 A:FT->Shoot => !GK    #r=0
-:attack T
+:break
+:possession T
+82:10 DMw:Fr->Move => Mw
 82:33 Md->Pass => Aw
+:attack T
 82:36 Aw->Cross => !Dp:HD >> Awp:Cnt >> Awp*F
 :set T: Freekick
 84:05 Awp->Shoot => !Gkr:S >> C
 :set T: Corner
 84:37 CK->Cross => Ap:B >> !Dp*O
-:attack L
+:break
+:possession T
+85:20 Gkr->Long => !Gkr:H
+:possession L
+85:33 Gkr->HandPass => Mw
 85:41 Mw->Cross => !Dp:Cnt >> C
 :set L: Corner
 86:46 CK->Cross => !Dp:HD >> !Dp:Ch >> !Dp:HD >> !Dp:HD >> Ap:FT >> Apd:Fr
 86:53 Apd->Shoot => G
-:attack T
+:break
+:possession T
 88:20 Mw->Move => Aw
+:attack T
 88:22 Aw->Cross => Dp:Cnt >> !GK
-:attack T
-90:09 Gkd->Long => A:HD >> !DM
+:break
+:substitution
+:possession T
+89:53 DMw->Long => !DM:FT >> !M:FT
+:transition L
+89:57 M:FT->ForwardPass => !Dw
 :transition T
-90:58 Mw->Move => Apd:Dv
-:attack T
+90:04 Dw->Pass => Gkd
+90:09 Gkd->Long => A:HD >> !DM
+:transition L
+90:16 DM->Pass => !M:B >> !DMw
+:possession L
+90:21 DMw->Pass => DMw
+90:30 DMd->Long => !Gkr:H
+:possession L
+90:48 Gkr->Long => !DMd:HD >> DMw:Cnt >> !Mw
+:transition T
+90:58 Mw->Move => Apd:Dv >> !Dpw
+:transition L
+91:05 Dpw->Long => !DMd:FT >> D:HD >> !M
+:transition T
+91:15 M->Pass => DMd
+:possession T
+91:16 DMd->Pass => Mw
 91:19 Mw->Long => Ad:HD >> !Dp:Clr >> C
 :set T: Corner
 91:44 CK->Cross => !Dp:HD >> Aw
 91:50 Aw->Dribble => A
 91:52 A->Shoot => !Gkr:H    #r=1
+:possession L
+#!:92:08
 :transition T
 92:14 DMw->Long => M:HD >> M
 92:19 M->Pass => Ad
