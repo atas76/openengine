@@ -797,7 +797,7 @@
 90:09 Gkd->Long => A:HD >> !DM
 :transition L
 90:16 DM->Pass => !M:B >> !DMw
-:possession L
+:possession T
 90:21 DMw->Pass => DMw
 90:30 DMd->Long => !Gkr:H
 :possession L
