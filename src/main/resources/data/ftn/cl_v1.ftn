@@ -816,10 +816,11 @@
 91:50 Aw->Dribble => A
 91:52 A->Shoot => !Gkr:H    #r=1
 :possession L
-#!:92:08
+92:08 Gkr->Long => !DMw
 :transition T
 92:14 DMw->Long => M:HD >> M
 92:19 M->Pass => Ad
+:attack T
 92:22 Ad->Move => Apd
 92:23 Apd->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
@@ -828,8 +829,13 @@
 :attack T
 92:51 A->Move => Apd
 92:52 Apd->Shoot => !Gkr:H  #r=1
+:possession L
+93:13 Gkr->Long => !Gkr:H
+:possession T
+93:19 Gkr->HandPass => Dd
+93:24 DMd->Long => Md:HD >> Md:Cnt >> !DM:Clr >> !DM*T
+:break
 :attack T
-93:54 M->Move => A
 93:56 A->Pass => !Dp:Clr >> A*T
 :set T: Throw-in
 94:02 A => Aw
@@ -844,9 +850,3 @@
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-
-# TODO next pass
-#: possession <start> -> <finish>
-#: <start> ->
-#: key action
-#: -> <finish>
