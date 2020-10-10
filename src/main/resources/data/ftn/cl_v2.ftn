@@ -1,0 +1,13 @@
+:set L: Kickoff
+00:02 DM->Long => !DMw:HD >>> Md:HD >> Md:FT >> M
+:transition L
+00:15 M:FT->Long => Apd
+00:20 Apd->Cross => Ap*H
+:set L: PenaltyKick
+01:47 Penalty->Shoot => G
+:break
+:set L: Throw-in
+03:18 DM => DMw >>> DMw
+03:21 DMw->Long => !DM:Tck >>> Md
+:transition L
+03:43 Md->Long => !DM:HD >>> !Gkr
