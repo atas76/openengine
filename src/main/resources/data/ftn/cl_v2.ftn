@@ -151,6 +151,7 @@
 :transition T
 19:20 M->Triangle => M
 19:23 M->Pass => Ad
+:attack T
 19:26 Ad->Pass => M
 19:28 M->Pass => A
 19:30 A->ForwardPass => A
@@ -175,7 +176,7 @@
 21:52 Apw->Shoot => !D*T
 :set T: Throw-in
 22:17 D => Dwp:Cnt >> !Awp:I >> !Awp
-:attack A
+:attack L
 22:20 Awp->Move => Apd
 22:22 Apd->Pass => !Dp:Cl >> !Dw >> Aw:I >> Mw
 22:29 Mw->Pass => Aw
