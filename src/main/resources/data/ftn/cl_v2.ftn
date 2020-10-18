@@ -53,7 +53,7 @@
 07:22 Gkr->Clear => !A*T
 :set T: Throw-in
 07:32 A => Md
-07:34 Md -> M -> Aw
+07:34 Md -> M -> Aw # TODO
 :attack T
 07:40 Aw->Pass => Md
 07:45 M->Long => Aw:Cnt >> !Dwp*T
@@ -120,7 +120,7 @@
 :possession L
 15:42 GK ->
 16:13 DM->Long => A:BT >> !D:Clr >> M*T
-:set L: Throw-in
+:set L: Throw-in    # TODO
 16:39 M => !DMd:HD >>> M
 16:44 M->Pass => Md:Fr
 16:46 Md:Fr->Move => Ad
@@ -139,4 +139,82 @@
 18:29 DMw:Fr->Run => Aw
 18:34 Aw:Mrk->Move => !GK
 :possession T
-# 18:53 GK
+18:53 GK -> Dwp
+19:01 Dwp->Long => DM:Cnt >> DM
+:transition T
+19:06 DM->ForwardPass => M
+19:09 M->FreeRun => A
+19:10 A->Dribble => !D:I >> !DM
+:transition L
+19:11 DM->Pass => Dw
+19:15 Dw->Pass => !M:I >> !M
+:transition T
+19:20 M->Triangle => M
+19:23 M->Pass => Ad
+19:26 Ad->Pass => M
+19:28 M->Pass => A
+19:30 A->ForwardPass => A
+19:32 A->Pass => !Dp:Clr >> A*T
+:set T: Throw-in
+19:40 A => Aw:FT >> Awp
+:attack T
+19:44 Awp->Cross => !Gkr:H
+:possession L
+19:48 Gkr -> Mw
+20:23 Mw->Move => Aw
+:attack L
+20:27 Aw->Pass => A
+20:29 A->OneTwoPass => A
+20:30 A->Shoot => !D:B >> C
+:set L: Corner
+21:11 CK->Cross => !Gkr:Punch >> A*T
+:set L: Throw-in
+21:47 A => Awp:Pvt
+:attack L
+21:51 Awp->Turn => Apw
+21:52 Apw->Shoot => !D*T
+:set T: Throw-in
+22:17 D => Dwp:Cnt >> !Awp:I >> !Awp
+:attack A
+22:20 Awp->Move => Apd
+22:22 Apd->Pass => !Dp:Cl >> !Dw >> Aw:I >> Mw
+22:29 Mw->Pass => Aw
+22:30 Aw->Pass => Aw
+22:32 Aw->BackHeelPass => Awp
+22:36 Awp->Pass => Awp
+22:37 Awp->Cross => !Dp:HD >> Ap*T
+:set L: Throw-in
+23:03 Ap => Awp:HD >> !Dpw:HD >>> Ad
+:attack A
+23:10 Ad->Pass => Ad
+23:11 Ad->Pass => M:Fr
+23:14 M->Move => A
+23:15 A->Pass => Awp
+23:21 Awp->Move => Apw
+23:22 Apw->Cross => !Dp:I >> C
+:set L: Corner
+23:50 CK->Pass => Apw
+23:51 Apw->Pass => A
+23:53 A->Cross => !Dp:HD >> !DMd*F
+:set T: Freekick
+24:51 DMd:SP->Pass => D
+:possession T
+24:57 D -> Gkr
+25:01 Gkr->Long => DMw:Cnt
+25:04 DMw -> Gkr
+25:31 Gkr->Long => !DM:HD >> DM:Cnt >> !DMd:Ch >> !DM*T
+:set L: Throw-in
+25:58 DM => !DM:HD >>> !DM:FT >> DM
+:transition L
+26:05 DM->Long:FT => !DMd:HD >>> !Gkr
+:possession T
+26:14 Gkr -> DM
+26:21 DM->ForwardPass => !DM:I >> !DMd
+:transition L
+26:26 DMd->Long => !GK
+:possession T
+26:40 GK -> Dp
+27:08 Dp->Long => DMw:FT >> !Mw:B >> DM*T
+:break
+:possession T
+# 27:31 D
