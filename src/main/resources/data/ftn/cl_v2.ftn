@@ -216,7 +216,105 @@
 :possession T
 26:40 GK -> Dp
 27:08 Dp->Long => DMw:FT >> !Mw:B >> DM*T
+# TODO Regress to top: introduce more subjective criteria for transitions; record all data of possession transitions
 :break
 :possession T
-# TODO Regress to top: introduce more subjective criteria for transitions; record all data of possession transitions
-# 27:31 D
+27:31 D -> DM
+27:40 DM->Long => !D*O
+:break
+:possession L
+28:17 DMw->Long => M*F
+:set L: Freekick
+29:01 M:SP->Long => !GK
+:possession T
+29:20 GK -> Gkr
+29:27 Gkr->HighPass => !Mw:HD >> Dpw:HD >> DMw
+29:35 DMw->ForwardPass => !M:B >> DM*F
+:break
+:possession T
+29:50 DM -> Gkr
+30:02 Gkr->Long => !DM:FT >> !D
+:transition L
+30:10 D->HighPass => !M*T
+:set T: Throw-in
+30:22 M => M:FT >> !DM:Clr >> DM*T
+:set T: Throw-in
+30:31 M => Gkr
+:possession T
+30:52 Gkr->Long => !Mw:HD >> DMw:B >> !Mw
+:transition L
+30:57 Mw->ForwardPass => Mw
+31:00 Mw->ForwardPass => !Dpw
+:transition T
+31:03 Dpw->Clear => !Mw >> !Md:HD >> Dd*O
+:set T: Freekick
+31:13 Dd:SP->Pass => D
+:break
+:possession T
+31:20 DM -> Dpd
+31:45 Dpd->Long => DMw
+31:49 DMw->Dribble => DMw
+31:51 DMw->Move => Mw
+31:53 Mw->Pass => !M*T
+:set L: Throw-in
+32:19 DM => DM:FT >> D:Clr >> !M
+:transition T
+32:25 M->Run => A
+32:27 A->Pass => !D:I >> M
+:possession T
+32:31 M -> Md
+32:40 Md->Pass => Aw
+:attack T
+32:46 Aw->Pass => Mw
+32:48 Mw -> M
+32:55 M->ForwardPass => M:FT >> A:Cnt >> M
+32:58 M -> Md
+33:04 Md->Pass => !D*T
+:set L: Throw-in
+33:22 D => !Mw:HD >> !Aw:HD >> !Aw
+:attack T
+33:29 Aw->Move => Awp
+33:32 Awp->LowCross => !Dwp:I >> C
+:set T: Corner
+33:43 CK->Pass => Awp
+33:46 Awp->Cross => !Dp:HD >> A*T
+:set T: Throw-in
+34:11 A => Awp:Cnt >> Ap*T
+:set T: Throw-in
+34:26 Ap => !Dpw:HD >> !Dwp:HD >> Aw:FT >> Mw
+34:35 Mw->Pass => DM
+:possession T
+34:41 DM -> Dpw
+35:06 Dpw->Long => !Mw:HD >> !Aw
+:attack L
+35:13 Aw->Move => Awp
+35:15 Awp->Cross => !GK
+:possession T
+35:42 GK -> D
+35:44 D->Run => DM
+35:47 DM->Pass => DMw:Fr
+35:52 DMw->Long => Md
+35:57 Md->ForwardPass => !Gkr:H
+:possession L
+36:15 Gkr->Long => !DM*T
+:set T: Throw-in
+36:25 DM => DMw:FT >> DMw
+36:28 DMw->Pass => Gkr
+:possession T
+36:32 Gkr -> DMw
+36:46 DMw -> Pass => !Mw:I >> !Mw:Cnt
+:transition L
+36:48 Mw->High => Awp
+:attack L
+36:54 Awp->Aw -> Awp
+36:59 Awp:Hld => !Dw:Ch >> !D*T
+:set T: Throw-in
+37:24 D => DMd:Cnt
+37:27 DMd->Long => !DMw
+:possession L
+37:32 DMw -> Dd
+37:39 Dd->SwapPlayPass => DMw:Fr
+37:42 DMw:Fr->Run => Ad
+:attack L
+37:47 Ad->Shoot => Gkr:S >> C #r=2
+
