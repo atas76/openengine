@@ -223,7 +223,7 @@
 :break
 :possession T
 29:50 DM->Pass => DMw
-30:02 Gkr->Long => !DM:FT >> D
+30:02 Gkr->Long => !DM:FT >> !D
 :transition L
 30:10 D->HighPass => !M*T
 :set T: Throw-in
@@ -237,7 +237,7 @@
 30:57 Mw->ForwardPass => Mw
 31:00 Mw->ForwardPass => !Dpw
 :transition T
-31:03 Dpw->Clear => !Mw >> !Md:HD >> !Dd*O
+31:03 Dpw->Clear => !Mw >> !Md:HD >> Dd*O
 :set T: Freekick
 31:13 Dd:SP->Pass => D
 :break
@@ -303,8 +303,8 @@
 37:27 DMd->Long => !DMw
 :possession L
 37:32 DMw->Pass => Gkr
-37:39 Dd->DiagonalPass => DMw
-37:42 DMw->FreeRun => Ad
+37:39 Dd->SwapPlayPass => DMw:Fr
+37:42 DMw:Fr->Run => Ad
 :attack L
 37:47 Ad->Shoot => Gkr:S >> C #r=2
 :set L: Corner
