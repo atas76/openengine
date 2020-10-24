@@ -317,4 +317,97 @@
 37:42 DMw:Fr->Run => Ad
 :attack L
 37:47 Ad->Shoot => Gkr:S >> C #r=2
-
+:set L: Corner
+38:28 CK->Cross => !Dp:HD >> A:FT
+38:31 A:FT->Shoot => !GK #r=0
+:injury
+:possession T
+40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> !Md
+:transition L
+40:21 Md:FT->Long => Awp
+:attack L
+40:32 Awp->Pass => Mw
+40:36 Mw->Pass => Ad
+40:39 Ad->Pass => Awp
+40:42 Awp->BackHeelPass => !Dw:Ch >> M*T
+:set L: Throw-in
+40:59 M => Aw:HD >> Aw
+:attack L
+41:03 Aw->Dribble => !Dw
+:transition T
+41:04 Dw->Move => !Mw:I >> Dw
+41:06 Dw->Move => !M:I
+:transition L
+41:09 M->Move => A
+:attack L
+41:10 A->Shoot => !D:B >> A:Cnt
+41:14 A->Move => !D:Ch >> Ad
+41:16 Ad->Pass => Awp
+41:18 Awp->Cross => !Dwp:B >> C
+:set L: Corner
+41:45 CK->Cross => !Dp:HD >> A:Cnt
+41:49 A->Shoot => !D:B >> C
+:set L: Corner
+42:20 CK->Cross => !Dp:Clr >> M*T
+:set L: Throw-in
+42:40 M => DM
+:possession L
+42:55 DM->Long => Mw
+42:59 Mw->ForwardPass => !D:I >> !DM:Cnt >> !DM*H
+:set T: Freekick
+43:12 DM->Long => !DM:HD >> M:Cnt >> M
+43:17 M->Dribble => !D:Ch >> !D
+:transition L
+43:20 D->BackPass => Dd:Fr
+43:22 Dd->Long => !Dpw
+:transition T
+43:27 Dpw->Pass => Gkr
+43:28 Gkr->HighPass:FT => Dw:HD >> Dwp
+43:36 Dwp->Move => Dw
+43:38 Dw->ForwardPass => Mw:Fr
+43:41 Mw:Fr->Run => Ad
+:attack T
+43:45 Ad->Pass => !Gkr:H
+:possession L
+43:51 Gkr -> DMw
+44:23 DMw->Long => !D:HD >> !Gkr:H
+# TODO Discard breaks when they are just part of trivial possession chains
+:possession T
+44:29 Gkr -> DMw
+44:36 DMw->Long => !Dw:Tck >> M*T
+:set T: Throw-in
+44:58 M => Mw:FT >> Mw
+44:59 Mw:FT->HighPass => M:HD >> !DM:FT >> DM
+:transition T
+45:07 DM->Move => M
+45:10 M->Pass => Mw
+45:13 Mw->Move => Ad
+45:14 Ad->Pass => A
+45:15 A->Pass:FT => A
+:attack T
+45:18 A->Shoot => !GK #r=0
+:possession L
+45:42 GK->Long => M:HD >> M:Cnt >> !DMw
+:transition T
+45:53 DMw->Pass => DMw
+45:56 DMw->Pass => D
+45:57 D->Pass => Dpw
+46:01 Dpw->Pass => Dp
+:possession T
+46:02 Dp -> DMw
+46:06 DMw->Long => !DM:HD >> !DM:FT >> M*T
+:set T: Throw-in
+46:20 M => Mw:FT >> Mw:FT >> Mw
+46:25 Mw->Pass => M
+:possession T
+46:29 M -> Mw
+46:31 Mw->Pass => Aw
+:attack T
+46:35 Aw->Pass => Mw
+46:38 Mw->BackPass => Mw
+46:40 Mw->ForwardPass => Aw
+46:43 Aw->Pass => Awp
+46:44 Awp->LowCross => !Dp:I >> Awp:Ch >> !Dwp
+:transition L
+46:50 Dwp->Clear => !M*T
+:HT
