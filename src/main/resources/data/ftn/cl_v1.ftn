@@ -311,7 +311,7 @@
 38:28 CK => !Dp:HD >> A:FT
 38:31 A:FT->Shoot => !GK #r=0
 :possession T
-40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> Md
+40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> !Md
 :attack L
 40:21 Md:FT->Long => Awp
 40:32 Awp->Pass => Mw
