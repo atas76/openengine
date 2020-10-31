@@ -411,3 +411,128 @@
 :transition L
 46:50 Dwp->Clear => !M*T
 :HT
+:set T: Kickoff
+45:04 DM->Long => !D*T
+:set L: Throw-in
+45:10 D => !DMw:HD >> DMW:HD >> DMw
+45:19 DMw->ForwardPass => !DM
+:transition T
+45:22 DM->ForwardPass => DM
+45:24 DM:FT->Pass => DM
+45:27 DM->Dribble => M
+45:28 M->Move => Md
+45:29 Md->Pass => Mw
+45:32 Mw->Long => !Dw:HD >> !DMw:Cnt >> M*T
+:set T: Throw-in
+45:50 M => Mw
+45:56 Mw->Pass => Md
+:possession T
+45:57 Md -> DMw
+46:15 DMw->Pass => Awp
+:attack T
+46:24 Awp->Pass => Aw
+46:25 Aw->Cross => Dp:HD >> !Dp:Cl >> DM
+:possession T
+46:35 DM -> Gkr
+46:53 Gkr->Long => M:Cnt
+46:58 M->Move => A
+:attack T
+47:00 A->Move => Apd
+47:01 Apd->LowCross => !D*T
+:set L: Throw-in
+47:26 D => !Mw:HD >> DM*T
+:set L: Throw-in
+47:36 DM => Mw:HD >> !DMw:FT >> DMw:HD >> DMw
+47:43 DMw->Pass => DMw
+47:44 DMw:FT->HighPass => !DMw
+:transition T
+47:47 Mw->Pass => !DMw
+:set L: Throw-in
+48:00 DM => !Dw
+:possession T
+48:04 Dw -> Gkr
+48:22 Gkr->Long => !M:HD >> Dd:Cnt
+48:29 Dd->Long => !M*T
+:set L: Throw-in
+48:53 M => !Dpw
+:transition T
+48:58 Dpw->Long => !M*T
+:set L: Throw-in
+49:05 M => Aw:HD >> Mw:HD >> !DM*T
+:set T: Throw-in
+49:26 DM => Md:FT >> M*FT
+:set T: Freekick
+50:01 M->Long => !Dp*O
+:break
+:set T: Throw-in
+50:48 M => DMw
+50:54 DMw->Pass => Gkr
+:possession T
+50:56 Gkr->Long => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
+:transition T
+51:11 Dw->Pass => DMw:FT >> DMw
+51:13 DMw->Move => DMw
+51:14 DMw->Pass => Mw
+51:18 Mw->Move => A
+:attack T
+51:20 A->Pass => Ad
+51:22 Ad->Dribble => !Dpw:Ch
+:transition L
+51:26 Dwp->Pass => Dwp
+51:28 Dwp:FT->Pass => Dwp:Tck >> !Aw:HD >> DM*T
+:set L: Throw-in
+51:55 DM => DMw
+51:57 DMw->BackPass => DMw
+51:58 DMw->Long => Mw
+:transition L
+52:06 Mw->Long => Awp
+:attack L
+52:15 Awp->Pass => Apw
+52:16 Apw->Pass => Awp
+52:20 Awp->Pass => Mw
+52:22 Mw->Md
+52:23 Md->Move => A
+52:24 A->Shoot => !D:Tck >> !Gkr:H
+:possession T
+52:33 Gkr -> D
+52:51 D->Long => DMw:Fr
+52:54 DMw:Fr->Move => Mw
+52:55 Mw->Long => !DMd:HD >> !DMd
+:transition L
+53:00 DM->Long => Apd
+:attack L
+53:05 Apd->Shoot => Dp:B >> A:Ch >> A
+53:12 A->Pass => Ad
+53:13 Ad -> M -> Md
+53:17 Md->Move => Ad
+53:19 Ad->Long => !Gkr:H
+:break
+:possession T
+53:34 DMd -> DMw
+53:39 DMw->ForwardPass => Mw:Fr # Nobody covering for Fabinho
+53:44 Mw->Long => Ap:Cnt
+:attack T
+53:48 Ap->Shoot => !Dp:B >> A:HD >> !Dp:Clr >> !Dwp:Ch >> !Dwp:Clr >> DMw
+:possession T
+54:05 DMw -> DM
+54:23 DM->Long => Awp
+:attack T
+54:31 Awp->Dribble => Awp:Adv >> Awp
+54:33 Awp->Pass => Ad
+54:34 Ad->Pass => !Dp:Clr >> DM*T
+:injury
+:break
+:possession T
+56:02 Gkr->Long => !DM:HD >> !DM:HD >> M:FT >> !M:Cnt >> M:FT >> M
+:transition T
+56:16 M->Move => Apw
+56:22 Apw->Cross => !Dpw:B >> C
+:set T: Corner
+56:51 CK->Cross => !Gkr:Punch >> Adp
+56:55 Adp->Shoot:FT => !Dp:B >> C
+# TODO Parameterize "first touches" in actions (instead of states)
+:set T: Corner
+57:15 CK->Cross => Apw:HD
+57:17 Apw->HdSht => !GK #r=0
+:break
+# 01:10:33
