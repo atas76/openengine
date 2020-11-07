@@ -592,8 +592,8 @@
 65:42 DMd->ForwardPass => M:Cnt >> !DMw
 :possession L
 65:45 DMw->Pass => Gkr
-65:48 Gkr -> Dw:FT -> DMd -> DMw # TODO: Save this format for instant one-touch combinations
-65:54 DMw->ForwardPass => Md:Cnt => Md
+65:48 Gkr -> Dw:FT -> DMd -> DMw # TODO (not): Save this format for instant one-touch combinations
+65:54 DMw->ForwardPass => Md:Cnt >> Md
 65:59 Md:Hld -> M
 66:00 M->Pass => Mw:Fr
 66:01 Mw->FreeRun => Ad
@@ -608,7 +608,7 @@
 67:03 Awp->BounceOff => Awp
 67:04 Awp:FT->HighPass => !GK
 :possession T
-67:19 Gkr->Long => DMw:HD >> DMd
+67:19 GK->Long => DMw:HD >> DMd
 67:24 DMd->Move => DM
 67:27 DM->Pass => Mw
 67:30 Mw->HighPass => !Dw*T
