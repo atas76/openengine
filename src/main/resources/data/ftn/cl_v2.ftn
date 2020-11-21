@@ -874,10 +874,11 @@
 :transition L
 94:15 DM->ForwardPass => DM
 94:16 DM->Move => M
-94:17 M->Pass:Open => Aw # TODO Identify open passes
+94:17 M->Pass:Open => Aw
 :attack L
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-# TODO identify first touches
-# TODO Experimental: introduce counter-attacks
+# TODO Identify open passes
+# TODO Identify first touches
+# TODO Experimental: introduce counter-attacks/attacking-possessions/attacking-transitions
