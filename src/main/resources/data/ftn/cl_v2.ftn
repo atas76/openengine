@@ -781,4 +781,103 @@
 80:17 M->Dribble => A
 :attack T
 80:20 A->Shoot => !Gkr:H        #r=1
-# 01:33:34
+:break
+:possession L
+80:30 DMw->ForwardPass => !Dw
+:transition T
+80:34 Dw->Pass => !C
+:set L: Corner
+81:44 CK->Cross => !Dp:HD >> A:Cnt
+81:49 A->HighPass:FT => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
+82:01 A->Shoot:FT => !GK    #r=0
+:break
+:possession T
+82:10 DMw:Fr->Move => Mw
+82:15 Mw -> Md
+82:33 Md->Pass => Aw
+:attack T
+82:36 Aw->Cross => !Dp:HD >> Awp:Cnt >> Awp*F
+:set T: Freekick
+84:05 Awp->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => Ap:B >> !Dp*O
+:break
+:possession T
+85:20 Gkr->Long => !Gkr:H
+:possession L
+85:33 Gkr->HandPass => Mw
+85:41 Mw->Cross => !Dp:Cnt >> C
+:set L: Corner
+86:46 CK->Cross => !Dp:HD >> !Dp:Ch >> !Dp:HD >> !Dp:HD >> Ap:FT >> Apd:Fr
+86:53 Apd->Shoot => G
+:break
+:transition T
+88:20 Mw->Move => Aw
+:attack T
+88:22 Aw->Cross => Dp:Cnt >> !GK
+:break
+:substitution
+:possession T
+89:53 DMw->Long => !DM:FT >> !M
+:transition L
+89:57 M->ForwardPass:FT => !Dw
+:transition T
+90:04 Dw->Pass => Gkd
+90:09 Gkd->Long => A:HD >> !DM
+:transition L
+90:16 DM->Pass => !M:B >> !DMw
+:possession T
+90:21 DMw -> DMd
+90:30 DMd->Long => !Gkr:H
+:possession L
+90:48 Gkr->Long => !DMd:HD >> DMw:Cnt >> !Mw
+:transition T
+90:58 Mw->Move => Apd:Dv >> !Dpw
+:transition L
+91:05 Dpw->Long => !DMd:FT >> D:HD >> !M
+:transition T
+91:15 M->Pass => DMd
+:possession T
+91:16 DMd -> Mw
+91:19 Mw->Long => Ad:HD >> !Dp:Clr >> C
+:set T: Corner
+91:44 CK->Cross => !Dp:HD >> Aw
+91:50 Aw->Dribble => A
+91:52 A->Shoot => !Gkr:H    #r=1
+:possession L
+92:08 Gkr->Long => !DMw
+:transition T
+92:14 DMw->Long => M:HD >> M
+92:19 M->Pass:FT => Ad
+:attack T
+92:22 Ad->Move => Apd
+92:23 Apd->Shoot => !Gkr:S >> C #r=2
+:set T: Corner
+92:41 CK->Cross => !Dp:HD >> A:HD >> M
+92:49 M->ForwardPass => A
+:attack T
+92:51 A->Move => Apd
+92:52 Apd->Shoot => !Gkr:H  #r=1
+:possession L
+93:13 Gkr->Long => !Gkr:H
+:possession T
+93:19 Gkr -> DMd
+93:24 DMd->Long => Md:HD >> Md:Cnt >> !DM:Clr >> !DM*T
+:break
+:attack T
+93:56 A->Pass => !Dp:Clr >> A*T
+:set T: Throw-in
+94:02 A => Aw
+:attack T
+94:05 Aw->Cross => !Dp:HD >> M
+94:11 M->Long => !DM
+:transition L
+94:15 DM->ForwardPass => DM
+94:16 DM->Move => M
+94:17 M->Pass:Open => Aw # TODO Identify open passes
+:attack L
+94:23 Aw->Move => Ad
+94:26 Ad->Pass => A
+94:27 A->HighPass => !GK
+# TODO identify first touches
+# TODO Experimental: introduce counter-attacks
