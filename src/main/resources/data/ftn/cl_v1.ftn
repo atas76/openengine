@@ -758,7 +758,7 @@
 :possession L
 80:30 DMw->ForwardPass => !Dw
 :transition T
-80:34 D->Pass => !C
+80:34 Dw->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
 81:49 A:FT->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
