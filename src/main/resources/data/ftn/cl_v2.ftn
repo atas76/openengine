@@ -121,9 +121,10 @@
 :possession L
 15:42 GK ->
 16:13 DM->Long => A:BT >> !D:Clr >> M*T
-:set L: Throw-in    # TODO
-16:39 M => !DMd:HD >>> M
+:set L: Throw-in
+16:39 M => !DMd:HD >> !DM:Cnt >> M
 16:44 M->Pass => Md:Fr
+:transition T
 16:46 Md:Fr->Move => Ad
 16:47 Ad->Shoot => !GK  #:r=2
 :break
