@@ -903,3 +903,4 @@
 # TODO Experimental: introduce counter-attacks/attacking-possessions/attacking-transitions
 # TODO Classify passes based on direction
 # TODO Experimental: provide more context in terms of player positioning (tracking data)
+# TODO Describe lines positioning on flow state changes
