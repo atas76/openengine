@@ -204,7 +204,7 @@
 22:36 Awp->Pass => Awp
 22:37 Awp->Cross => !Dp:HD >> Ap*T
 :set L: Throw-in
-23:03 Ap => Awp:HD >> !Dpw:HD >>> Ad
+23:03 Ap => Awp:HD >> !Dpw:HD >> !Dwp:Cnt
 :attack A
 23:10 Ad->Pass => Ad
 23:11 Ad->Pass => M:Fr
@@ -224,9 +224,9 @@
 25:04 DMw -> Gkr
 25:31 Gkr->Long => !DM:HD >> DM:Cnt >> !DMd:Ch >> !DM*T
 :set L: Throw-in
-25:58 DM => !DM:HD >>> !DM:FT >> DM
+25:58 DM => !DM:HD >> M:Cnt >> !DM:FT >> DM
 :transition L
-26:05 DM->Long:FT => !DMd:HD >>> !Gkr
+26:05 DM->Long => !DMd:HD >> !DMd:FT >> !DM >> !Gkr
 :possession T
 26:14 Gkr -> DM
 26:21 DM->ForwardPass => !DM:I >> !DMd
@@ -235,7 +235,6 @@
 :possession T
 26:40 GK -> Dp
 27:08 Dp->Long => DMw:FT >> !Mw:B >> DM*T
-# TODO Regress to top: introduce more subjective criteria for transitions; record all data of possession transitions
 :break
 :possession T
 27:31 D -> DM
