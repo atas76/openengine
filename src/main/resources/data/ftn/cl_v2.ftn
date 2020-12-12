@@ -226,7 +226,7 @@
 :set L: Throw-in
 25:58 DM => !DM:HD >> M:Cnt >> !DM:FT >> DM
 :transition L
-26:05 DM->Long => !DMd:HD >> !DMd:FT >> !DM >> !Gkr
+26:05 DM->Long:FT => !DMd:HD >> !DMd:FT >> !DM >> !Gkr
 :possession T
 26:14 Gkr -> DM
 26:21 DM->ForwardPass => !DM:I >> !DMd
