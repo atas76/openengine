@@ -337,12 +337,12 @@
 37:47 Ad->Shoot => Gkr:S >> C #r=2
 :set L: Corner
 38:28 CK->Cross => !Dp:HD >> A:FT
-38:31 A:FT->Shoot => !GK #r=0
+38:31 A->Shoot:FT => !GK #r=0
 :injury
 :possession T
 40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> !Md
 :transition L
-40:21 Md:FT->Long => Awp
+40:21 Md->Long:FT => Awp
 :attack L
 40:32 Awp->Pass => Mw
 40:36 Mw->Pass => Ad
@@ -389,13 +389,12 @@
 :possession L
 43:51 Gkr -> DMw
 44:23 DMw->Long => !D:HD >> !Gkr:H
-# TODO Discard breaks when they are just part of trivial possession chains
 :possession T
 44:29 Gkr -> DMw
 44:36 DMw->Long => !Dw:Tck >> M*T
 :set T: Throw-in
 44:58 M => Mw:FT >> Mw
-44:59 Mw:FT->HighPass => M:HD >> !DM:FT >> DM
+44:59 Mw->HighPass:FT => M:HD >> !DM:FT >> DM
 :transition T
 45:07 DM->Move => M
 45:10 M->Pass => Mw
@@ -436,7 +435,7 @@
 45:19 DMw->ForwardPass => !DM
 :transition T
 45:22 DM->ForwardPass => DM
-45:24 DM:FT->Pass => DM
+45:24 DM->Pass:FT => DM
 45:27 DM->Dribble => M
 45:28 M->Move => Md
 45:29 Md->Pass => Mw
@@ -462,7 +461,7 @@
 :set L: Throw-in
 47:36 DM => Mw:HD >> !DMw:FT >> DMw:HD >> DMw
 47:43 DMw->Pass => DMw
-47:44 DMw:FT->HighPass => !DMw
+47:44 DMw->HighPass:FT => !DMw
 :transition T
 47:47 Mw->Pass => !DMw
 :set L: Throw-in
@@ -497,7 +496,7 @@
 51:22 Ad->Dribble => !Dpw:Ch
 :transition L
 51:26 Dwp->Pass => Dwp
-51:28 Dwp:FT->Pass => Dwp:Tck >> !Aw:HD >> DM*T
+51:28 Dwp->Pass:FT => Dwp:Tck >> !Aw:HD >> DM*T
 :set L: Throw-in
 51:55 DM => DMw
 51:57 DMw->BackPass => DMw
@@ -548,7 +547,6 @@
 :set T: Corner
 56:51 CK->Cross => !Gkr:Punch >> Adp
 56:55 Adp->Shoot:FT => !Dp:B >> C
-# TODO Parameterize "first touches" in actions (instead of states)
 :set T: Corner
 57:15 CK->Cross => Apw:HD
 57:17 Apw->HdSht => !GK #r=0
