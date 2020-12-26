@@ -902,3 +902,5 @@
 # TODO Experimental: provide more context in terms of player positioning (tracking data)
 # TODO Describe lines positioning on flow state changes
 # TODO flow states quadrant: set vs. challenge / static vs. movement
+# TODO expand use case scenarios types
+# TODO double touch possession chain boundary
