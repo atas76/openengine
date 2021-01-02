@@ -262,7 +262,7 @@
 30:52 Gkr->Long => !Mw:HD >> DMw:B >> !Mw
 :transition L
 30:57 Mw->ForwardPass => Mw
-31:00 Mw->ForwardPass => !Dpw
+31:00 Mw->ForwardPass:Open => !Dpw
 :transition T
 31:03 Dpw->Clear => !Mw >> !Md:HD >> Dd*O
 :set T: Freekick
@@ -312,7 +312,7 @@
 35:44 D->Run => DM
 35:47 DM->Pass => DMw:Fr
 35:52 DMw->Long => Md
-35:57 Md->ForwardPass => !Gkr:H
+35:57 Md->ForwardPass:Open => !Gkr:H
 :possession L
 36:15 Gkr->Long => !DM*T
 :set T: Throw-in
@@ -322,13 +322,13 @@
 36:32 Gkr -> DMw
 36:46 DMw -> Pass => !Mw:I >> !Mw:Cnt
 :transition L
-36:48 Mw->High => Awp
+36:48 Mw->HighPass => Awp
 :attack L
 36:54 Awp->Aw -> Awp
 36:59 Awp:Hld => !Dw:Ch >> !D*T
 :set T: Throw-in
 37:24 D => DMd:Cnt
-37:27 DMd->Long => !DMw
+37:27 DMd->Long:Open => !DMw
 :possession L
 37:32 DMw -> Dd
 37:39 Dd->SwapPlayPass => DMw:Fr
@@ -342,7 +342,7 @@
 :possession T
 40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> !Md
 :transition L
-40:21 Md->Long:FT => Awp
+40:21 Md->Long:FT:Open => Awp
 :attack L
 40:32 Awp->Pass => Mw
 40:36 Mw->Pass => Ad
@@ -377,7 +377,7 @@
 43:17 M->Dribble => !D:Ch >> !D
 :transition L
 43:20 D->BackPass => Dd:Fr
-43:22 Dd->Long => !Dpw
+43:22 Dd->Long:Open => !Dpw
 :transition T
 43:27 Dpw->Pass => Gkr
 43:28 Gkr->HighPass:FT => Dw:HD >> Dwp
@@ -385,13 +385,13 @@
 43:38 Dw->ForwardPass => Mw:Fr
 43:41 Mw:Fr->Run => Ad
 :attack T
-43:45 Ad->Pass => !Gkr:H
+43:45 Ad->Pass:Open => !Gkr:H
 :possession L
 43:51 Gkr -> DMw
-44:23 DMw->Long => !D:HD >> !Gkr:H
+44:23 DMw->Long:Open => !D:HD >> !Gkr:H
 :possession T
 44:29 Gkr -> DMw
-44:36 DMw->Long => !Dw:Tck >> M*T
+44:36 DMw->Long:Open => !Dw:Tck >> M*T
 :set T: Throw-in
 44:58 M => Mw:FT >> Mw
 44:59 Mw->HighPass:FT => M:HD >> !DM:FT >> DM
@@ -567,7 +567,7 @@
 58:51 DMd->Move => DMd
 58:56 DMd->Long => !DMd:HD >> !DMw
 :transition L
-59:03 DMw->Long => !Gkr:H
+59:03 DMw->Long:Open => !Gkr:H
 :possession T
 59:27 Gkr->Long => DMw:FT >> !DMd:Clr >> DM:HD >> DM:Cnt >> !M:I >> !M:Cnt
 :transition L
@@ -904,3 +904,4 @@
 # TODO flow states quadrant: set vs. challenge / static vs. movement
 # TODO expand use case scenarios types
 # TODO double touch possession chain boundary
+# TODO identify markings
