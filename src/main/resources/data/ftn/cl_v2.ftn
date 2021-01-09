@@ -98,7 +98,7 @@
 10:40 CK->Cross => !Gkr:Punch >> !Dp:Clr >> DM:HD >> Gkr:H
 :possession L
 11:04 Gkr -> Dd
-11:08 Dd->LongPass => !D*T
+11:08 Dd->Long => !D*T
 :set T: Throw-in
 11:34 D => Mw:Pvt >> Mw:Cnt
 11:38 Mw->Dribble => !DMw:Tck >> Mw
@@ -680,7 +680,7 @@
 70:04 Awp->Cross => Awp
 70:08 Awp->Cross => !Gkr:H
 :possession L
-70:17 Gkr->LongPass => Awp
+70:17 Gkr->Long:Open => Awp
 :attack L
 70:23 Awp->Move => Apw
 70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr
@@ -697,7 +697,7 @@
 72:15 DM->Pass => DM
 72:16 DM->Pass => !DM
 :transition L
-72:18 DM->Pass => !Gkr:H
+72:18 DM->ForwardPass:Open => !Gkr:H
 :possession T
 72:22 Gkr -> DM
 72:28 DM->ForwardPass >> M:FT >> M
@@ -709,7 +709,7 @@
 :fair-play
 :possession L
 73:44 Gkr -> Mw
-73:53 Mw->ForwardPass => !GK
+73:53 Mw->ForwardPass:Open => !GK
 :break
 :possession T
 74:22 Gkr->Long => DMw:Cnt >> !Mw:I >> !Mw:FT >> DMw
@@ -799,7 +799,7 @@
 80:20 A->Shoot => !Gkr:H        #r=1
 :break
 :possession L
-80:30 DMw->ForwardPass => !Dw
+80:30 DMw->ForwardPass:Open => !Dw
 :transition T
 80:34 Dw->Pass => !C
 :set L: Corner
@@ -818,6 +818,7 @@
 :set T: Corner
 84:37 CK->Cross => Ap:B >> !Dp*O
 :break
+# !!!
 :possession T
 85:20 Gkr->Long => !Gkr:H
 :possession L
@@ -904,4 +905,5 @@
 # TODO flow states quadrant: set vs. challenge / static vs. movement
 # TODO expand use case scenarios types
 # TODO double touch possession chain boundary
-# TODO identify markings
+# TODO identify markings (pivots, runs to the ball, etc.)
+# TODO tactical snapshot per action
