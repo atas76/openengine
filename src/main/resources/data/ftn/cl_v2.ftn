@@ -818,7 +818,6 @@
 :set T: Corner
 84:37 CK->Cross => Ap:B >> !Dp*O
 :break
-# !!!
 :possession T
 85:20 Gkr->Long => !Gkr:H
 :possession L
@@ -896,7 +895,6 @@
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-# TODO Identify open passes
 # TODO Identify first touches
 # TODO Experimental: introduce counter-attacks/attacking-possessions/attacking-transitions
 # TODO Classify passes based on direction
