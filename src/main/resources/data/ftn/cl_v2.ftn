@@ -43,12 +43,12 @@
 05:53 Md->Pass => Ad
 :attack L
 05:58 Ad->Pass => Apd:Pvt
-05:59 Apd->Pass => !Dp
+05:59 Apd->Pass => !Dp:I >> !Dp
 :transition T
-06:02 Dp->Long => !M*T
+06:02 Dp->Long:FT => !M*T
 :break
 :possession T
-06:33 Gkr->Long => !DMw:HD >> Aw:Mrk
+06:33 Gkr->Long:FT => !DMw:HD >> Aw:Mrk
 06:40 Aw:Mrk->Dribble => !Dwp:Clr >> M*T
 :set T: Throw-in
 06:53 M => DMw
@@ -59,7 +59,7 @@
 07:16 M:Mrk->ForwardPass => M
 07:17 M->HighPass:FT => !Dwp
 :transition L
-07:21 Dwp->Pass => Gkr
+07:21 Dwp->Pass:FT => Gkr
 07:22 Gkr->Clear => !A*T
 :set T: Throw-in
 07:32 A => Md
@@ -67,12 +67,12 @@
 07:37 M->Pass:FT => Aw
 :attack T
 07:40 Aw->Pass => Md
-07:43 Md->BackPass => M
+07:43 Md->BackPass:FT => M
 07:45 M->Long => Aw:Cnt >> !Dwp*T
 :set L: Throw-in
 08:12 Dp => !Mw:Cnt >> !Md:Ch >> DM
 :transition L
-08:18 DM->Long => !DM:HD >> !DMw:Cnt
+08:18 DM->Long:FT => !DM:HD >> !DMw:Cnt
 :transition T
 08:25 DMw->Move => Mw
 08:27 Mw:Mrk->ForwardPass => Mw
@@ -128,7 +128,7 @@
 :possession T
 14:59 DM->ForwardPass => M:FT >> !DM:FT >> M:B >> !DM
 :transition L
-15:04 DM->Pass => DM:Cnt >> !DMd
+15:04 DM->Pass:FT => DM:Cnt >> !DMd
 :transition T
 15:06 DMd->Triangle => DMd
 15:09 DMd->Pass => DM
@@ -143,6 +143,7 @@
 :transition T
 16:46 Md:Fr->Move => Ad
 16:47 Ad->Shoot => !GK  #:r=2
+# !!!
 :break
 :possession L
 18:08 Gkr -> DMw
