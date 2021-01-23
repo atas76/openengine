@@ -11,7 +11,7 @@
 03:20 DMw->Pass => DMw
 03:21 DMw->Long => !DM:Tck >> DM:HD >> DM:HD >> !DMd:HD >> DMd
 03:32 DMd->Long:FT:Open => !DMd >> !Md:HD >> DM:Cnt
-03:40 DM->HighPass:FT => !DMd:HD >> Md
+03:40 DM->HighPass => !DMd:HD >> Md
 :transition L
 03:43 Md->Long => !DM:HD >> !D:HD >> !Gkr
 :break
@@ -57,7 +57,7 @@
 07:12 DMd:Pr->Pass => DM:Fr
 07:14 DM:Fr->Move => M:Mrk
 07:16 M:Mrk->ForwardPass => M
-07:17 M->HighPass:FT => !Dwp
+07:17 M->HighPass => !Dwp
 :transition L
 07:21 Dwp->Pass:FT => Gkr
 07:22 Gkr->Clear => !A*T
@@ -165,7 +165,7 @@
 19:09 M:Fr->Run => A
 19:10 A->Dribble => !D:I >> !DM
 :transition L
-19:11 DM->Pass => Dw
+19:11 DM->Pass:FT => Dw
 19:15 Dw->Pass => !M:I >> !M
 :transition T
 19:20 M->Triangle => M
@@ -202,7 +202,7 @@
 22:30 Aw->Pass => Aw
 22:32 Aw->BackHeelPass => Awp
 22:36 Awp->Pass => Awp
-22:37 Awp->Cross => !Dp:HD >> Ap*T
+22:37 Awp->Cross:FT => !Dp:HD >> Ap*T
 :set L: Throw-in
 23:03 Ap => Awp:HD >> !Dpw:HD >> !Dwp:Cnt
 :attack A
@@ -214,8 +214,8 @@
 23:22 Apw->Cross => !Dp:I >> C
 :set L: Corner
 23:50 CK->Pass => Apw
-23:51 Apw->Pass => A
-23:53 A->Cross => !Dp:HD >> !DMd*F
+23:51 Apw->Pass:FT => A
+23:53 A->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
 :possession T
@@ -244,15 +244,14 @@
 28:17 DMw->Long => M*F
 :set L: Freekick
 29:01 M:SP->Long => !GK
-# !!!
 :possession T
 29:20 GK -> Gkr
 29:27 Gkr->HighPass => !Mw:HD >> Dpw:HD >> DMw
-29:35 DMw->ForwardPass => !M:B >> DM*F
+29:35 DMw->ForwardPass:FT => !M:B >> DM*F
 :break
 :possession T
 29:50 DM -> Gkr
-30:02 Gkr->Long => !DM:FT >> !D
+30:02 Gkr->Long:FT => !DM:FT >> !D
 :transition L
 30:10 D->HighPass => !M*T
 :set T: Throw-in
@@ -301,7 +300,7 @@
 34:11 A => Awp:Cnt >> Ap*T
 :set T: Throw-in
 34:26 Ap => !Dpw:HD >> !Dwp:HD >> Aw:FT >> Mw
-34:35 Mw->Pass => DM
+34:35 Mw->Pass:FT => DM
 :possession T
 34:41 DM -> Dpw
 35:06 Dpw->Long => !Mw:HD >> !Aw
@@ -325,7 +324,8 @@
 :transition L
 36:48 Mw->HighPass => Awp
 :attack L
-36:54 Awp->Aw -> Awp
+36:54 Awp->Pass => Aw
+36:57 Aw->Pass => Awp
 36:59 Awp:Hld => !Dw:Ch >> !D*T
 :set T: Throw-in
 37:24 D => DMd:Cnt
@@ -337,7 +337,7 @@
 :attack L
 37:47 Ad->Shoot => Gkr:S >> C #r=2
 :set L: Corner
-38:28 CK->Cross => !Dp:HD >> A:FT
+38:28 CK->Cross => !Dp:HD >> A
 38:31 A->Shoot:FT => !GK #r=0
 :injury
 :possession T
@@ -374,14 +374,14 @@
 42:55 DM->Long => Mw
 42:59 Mw->ForwardPass => !D:I >> !DM:Cnt >> !DM*H
 :set T: Freekick
-43:12 DM->Long => !DM:HD >> M:Cnt >> M
+43:12 DM:SP->Long => !DM:HD >> M:Cnt >> M
 43:17 M->Dribble => !D:Ch >> !D
 :transition L
 43:20 D->BackPass => Dd:Fr
 43:22 Dd->Long:Open => !Dpw
 :transition T
-43:27 Dpw->Pass => Gkr
-43:28 Gkr->HighPass:FT => Dw:HD >> Dwp
+43:27 Dpw->Pass:FT => Gkr
+43:28 Gkr->HighPass => Dw:HD >> Dwp
 43:36 Dwp->Move => Dw
 43:38 Dw->ForwardPass => Mw:Fr
 43:41 Mw:Fr->Run => Ad
@@ -395,7 +395,7 @@
 44:36 DMw->Long:Open => !Dw:Tck >> M*T
 :set T: Throw-in
 44:58 M => Mw:FT >> Mw
-44:59 Mw->HighPass:FT => M:HD >> !DM:FT >> DM
+44:59 Mw->HighPass => M:HD >> !DM:FT >> DM
 :transition T
 45:07 DM->Move => M
 45:10 M->Pass => Mw
@@ -410,7 +410,7 @@
 45:53 DMw->Pass => DMw
 45:56 DMw->Pass => D
 45:57 D->Pass => Dpw
-46:01 Dpw->Pass => Dp
+46:00 Dpw->Pass => Dp
 :possession T
 46:02 Dp -> DMw
 46:06 DMw->Long => !DM:HD >> !DM:FT >> M*T
@@ -425,10 +425,11 @@
 46:38 Mw->BackPass => Mw
 46:40 Mw->ForwardPass => Aw
 46:43 Aw->Pass => Awp
-46:44 Awp->LowCross => !Dp:I >> Awp:Ch >> !Dwp
+46:44 Awp->LowCross:FT => !Dp:I >> Awp:Ch >> !Dwp
 :transition L
 46:50 Dwp->Clear => !M*T
 :HT
+# !!!
 :set T: Kickoff
 45:04 DM->Long => !D*T
 :set L: Throw-in
@@ -462,7 +463,7 @@
 :set L: Throw-in
 47:36 DM => Mw:HD >> !DMw:FT >> DMw:HD >> DMw
 47:43 DMw->Pass => DMw
-47:44 DMw->HighPass:FT => !DMw
+47:44 DMw->HighPass => !DMw
 :transition T
 47:47 Mw->Pass => !DMw
 :set L: Throw-in
@@ -805,7 +806,7 @@
 80:34 Dw->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
-81:49 A->HighPass:FT => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
+81:49 A->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
 82:01 A->Shoot:FT => !GK    #r=0
 :break
 :possession T
