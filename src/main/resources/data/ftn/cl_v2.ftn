@@ -907,3 +907,12 @@
 # TODO double touch possession chain boundary
 # TODO identify markings (pivots, runs to the ball, etc.)
 # TODO tactical snapshot per action
+# TODO situational context (apply suitable subjectivity where applicable):
+    # play-making (from: { defence, midfield })
+    # zonal marking
+    # pressing
+    # creation (from: {midfield, attack})
+    # marking
+    # challenge
+    # transition
+    # counter-attack
