@@ -429,7 +429,6 @@
 :transition L
 46:50 Dwp->Clear => !M*T
 :HT
-# !!!
 :set T: Kickoff
 45:04 DM->Long => !D*T
 :set L: Throw-in
@@ -449,8 +448,8 @@
 45:57 Md -> DMw
 46:15 DMw->Pass => Awp
 :attack T
-46:24 Awp->Pass => Aw
-46:25 Aw->Cross => Dp:HD >> !Dp:Cl >> DM
+46:23 Awp->Pass => Aw
+46:24 Aw->Cross:FT => Dp:HD >> !Dp:Cl >> DM
 :possession T
 46:35 DM -> Gkr
 46:53 Gkr->Long => M:Cnt
@@ -470,24 +469,24 @@
 48:00 DM => !Dw
 :possession T
 48:04 Dw -> Gkr
-48:22 Gkr->Long => !M:HD >> Dd:Cnt
+48:22 Gkr->Long:FT => !M:HD >> Dd:Cnt
 48:29 Dd->Long => !M*T
 :set L: Throw-in
 48:53 M => !Dpw
 :transition T
-48:58 Dpw->Long => !M*T
+48:58 Dpw->Long:FT => !M*T
 :set L: Throw-in
 49:05 M => Aw:HD >> Mw:HD >> !DM*T
 :set T: Throw-in
 49:26 DM => Md:FT >> M*FT
 :set T: Freekick
-50:01 M->Long => !Dp*O
+50:01 M:SP->Long => !Dp*O
 :break
 :set T: Throw-in
 50:48 M => DMw
 50:54 DMw->Pass => Gkr
 :possession T
-50:56 Gkr->Long => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
+50:56 Gkr->Long:FT => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
 :transition T
 51:11 Dw->Pass => DMw:FT >> DMw
 51:13 DMw->Move => DMw
@@ -502,12 +501,12 @@
 :set L: Throw-in
 51:55 DM => DMw
 51:57 DMw->BackPass => DMw
-51:58 DMw->Long => Mw
+51:58 DMw->Long:FT => Mw
 :transition L
 52:06 Mw->Long => Awp
 :attack L
 52:15 Awp->Pass => Apw
-52:16 Apw->Pass => Awp
+52:16 Apw->Pass:FT => Awp
 52:20 Awp->Pass => Mw
 52:22 Mw->Md
 52:23 Md->Move => A
@@ -522,7 +521,8 @@
 :attack L
 53:05 Apd->Shoot => Dp:B >> A:Ch >> A
 53:12 A->Pass => Ad
-53:13 Ad -> M -> Md
+53:13 Ad->Pass:FT => M
+53:14 M->Pass => Md
 53:17 Md->Move => Ad
 53:19 Ad->Long => !Gkr:H
 :break
@@ -578,14 +578,18 @@
 59:49 DM->Pass => DMw
 59:53 DMw->Move => Mw
 59:59 Mw->BackPass => Mw
-60:01 Mw -> Md -> Mw -> M -> Md:Tck >> Md
+60:01 Mw->Pass => Md
+60:02 Md->Pass:FT => Mw
+60:04 Mw->Pass => M
+60:05 M->Pass => Md:Mrk:Tck >> Md
 60:10 Md->Pass => Ad:FT >> A:FT -> Ad
 :attack T
 60:13 Ad->Pass => !D:I >> A
 60:17 A->Shoot => !Dp:B >> Aw
-60:21 Aw->Pass => Mw
+60:20 Aw->Pass:FT => Mw
 60:23 Mw->Move => Md
 60:24 Md->Pass => A:FT >> !GK
+# !!!
 :possession L
 60:53 GK->Long => !DMw:I >> M*T
 :set L: Throw-in
