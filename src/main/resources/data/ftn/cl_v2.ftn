@@ -906,17 +906,15 @@
 # TODO Classify passes based on direction
 # TODO Experimental: provide more context in terms of player positioning (tracking data)
 # TODO Describe lines positioning on flow state changes
-# TODO flow states quadrant: set vs. challenge / static vs. movement
+# TODO flow states quadrant: set (possession chain) vs. (team/individual) challenge / static vs. movement (static vs. dynamic tempo)
 # TODO expand use case scenarios types
 # TODO double touch possession chain boundary
 # TODO identify markings (pivots, runs to the ball, etc.)
 # TODO tactical snapshot per action
 # TODO situational context (apply suitable subjectivity where applicable):
-    # play-making (from: { defence, midfield })
-    # zonal marking
-    # pressing
-    # creation (from: {midfield, attack})
-    # marking
-    # challenge
-    # transition
-    # counter-attack
+    # play-making (from: { defence, midfield }) vs. pressing
+    # zonal marking vs. man marking vs. individual pressing
+    # creation (from: {midfield, attack}) vs. possession
+    # tempo: dynamic vs. static
+    # possession chain vs. individual challenge vs. team challenge
+    # transition vs. counter-attack vs. hold
