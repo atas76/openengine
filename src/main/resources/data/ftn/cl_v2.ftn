@@ -15,7 +15,7 @@
 :transition L
 03:43 Md->Long => !DM:HD >> !D:HD >> !Gkr
 :break
-:pressing T
+:pressed T
 04:04 Dpw->Pass => Dwp
 04:06 Dwp->ForwardPass => Dd
 04:08 Dd->Pass => DM
@@ -589,7 +589,6 @@
 60:20 Aw->Pass:FT => Mw
 60:23 Mw->Move => Md
 60:24 Md->Pass => A:FT >> !GK
-# !!!
 :possession L
 60:53 GK->Long => !DMw:I >> M*T
 :set L: Throw-in
@@ -598,7 +597,7 @@
 :set L: Throw-in
 61:59 A => !Dpw:Cl >> !Dp:Cl >> Md*F
 :set L: Freekick
-62:19 Md->Pass => DM
+62:19 Md:SP->Pass => DM
 :possession L
 62:22 DM -> DMw
 62:36 DMw->Long => M
@@ -606,8 +605,8 @@
 62:40 M->Pass:FT => M
 62:41 M->Dribble:Open => !GK
 :break
-:pressing T
-63:07 Dpw -> ForwardPass => Dd
+:pressed T
+63:07 Dpw->ForwardPass => Dd
 63:09 Dd->Move => Dw
 63:10 Dw->Dribble => Dw
 63:13 Dw->Pass => DMd
@@ -616,7 +615,7 @@
 63:20 DMw->ForwardPass => !Dp
 :transition L
 63:23 Dp->Pass => Gkr
-63:24 Gkr->Long => !Mw:HD >> !DMd:HD >> D:Clr >> !Dwp:Ch
+63:24 Gkr->Long:FT => !Mw:HD >> !DMd:HD >> D:Clr >> !Dwp:Ch
 :possession T
 63:41 Dwp -> DMd
 64:19 DMd->Long => !DM:HD >> !DM:F
@@ -648,7 +647,7 @@
 :set L: Throw-in
 67:00 A => Awp
 67:03 Awp->BounceOff => Awp
-67:04 Awp:FT->HighPass => !GK
+67:04 Awp->HighPass => !GK
 :possession T
 67:18 GK->Long => DMw:HD >> DMd
 :transition T
@@ -673,7 +672,7 @@
 69:06 M->Move => Apd
 :attack T
 69:11 Apd->Pass => Awp
-69:12 Awp->Cross => !Dp:B >> !Dp:Clr >> DMw
+69:12 Awp->Cross:FT => !Dp:B >> !Dp:Clr >> DMw
 :possession T
 69:35 DMw->Long => !D:HD >> M
 :transition T
@@ -703,7 +702,7 @@
 72:15 DM->Pass => DM
 72:16 DM->Pass => !DM
 :transition L
-72:18 DM->ForwardPass:Open => !Gkr:H
+72:18 DM->ForwardPass:Open:FT => !Gkr:H
 :possession T
 72:22 Gkr -> DM
 72:28 DM->ForwardPass >> M:FT >> M
@@ -734,14 +733,15 @@
 :set T: Corner
 75:05 CK->Pass => Apw
 75:07 Apw->Pass => Apd
-75:08 Apd -> Awp
+75:08 Apd->Pass => Awp
 75:09 Awp->Move => Apd
 75:12 Apd->Move => Apw
 75:13 Apw->Cross => !Dp:B >> Apw
 75:16 Apw->Cross => !Dp:HD >> Aw
-75:23 Aw -> Mw
+75:23 Aw->Pass => Mw
 75:26 Mw->Long => !Apw*H
 :break
+# !!!
 :transition T
 76:05 DM->ForwardPass => DM
 76:09 DM->Move => M
