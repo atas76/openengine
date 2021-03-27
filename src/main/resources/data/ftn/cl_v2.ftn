@@ -741,7 +741,6 @@
 75:23 Aw->Pass => Mw
 75:26 Mw->Long => !Apw*H
 :break
-# !!!
 :transition T
 76:05 DM->ForwardPass => DM
 76:09 DM->Move => M
@@ -775,7 +774,7 @@
 79:10 M->Pass => !DM
 :transition T
 79:12 DM->Pass => Gkr
-79:14 Gkr->Pass => Dpd
+79:14 Gkr->Pass:FT => Dpd
 79:17 Dpd->Pass => Dd
 79:21 Dd->Move => DMd
 79:22 DMd->Pass => DM
@@ -785,19 +784,19 @@
 79:33 M->Move => A
 :attack T
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
-79:38 Apd->Pass => Ap
+79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
 :break
 :possession L
 79:52 DMw->ForwardPass => DMw
-79:58 DMw->Pass => Mw:Fr
+79:58 DMw->Pass:FT => Mw:Fr
 80:00 Mw->ForwardPass => !DMw
 :transition T
 80:02 DMw->ForwardPass => DMw
 80:05 DMw->Move => M
 80:06 M->Pass => DM
 :possession T
-80:07 DM->Pass => Mw
+80:07 DM->Pass:FT => Mw
 80:12 Mw->Move => M
 80:16 M->ForwardPass => M
 80:17 M->Dribble => A
@@ -807,7 +806,7 @@
 :possession L
 80:30 DMw->ForwardPass:Open => !Dw
 :transition T
-80:34 Dw->Pass => !C
+80:34 Dw->Pass:FT => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
 81:49 A->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
@@ -816,11 +815,11 @@
 :possession T
 82:10 DMw:Fr->Move => Mw
 82:15 Mw -> Md
-82:33 Md->Pass => Aw
+82:32 Md->Pass:FT => Aw
 :attack T
 82:36 Aw->Cross => !Dp:HD >> Awp:Cnt >> Awp*F
 :set T: Freekick
-84:05 Awp->Shoot => !Gkr:S >> C
+84:05 Awp:SP->Shoot => !Gkr:S >> C
 :set T: Corner
 84:37 CK->Cross => Ap:B >> !Dp*O
 :break
@@ -847,7 +846,7 @@
 90:04 Dw->Pass => Gkd
 90:09 Gkd->Long => A:HD >> !DM
 :transition L
-90:16 DM->Pass => !M:B >> !DMw
+90:16 DM->Pass:FT => !M:B >> !DMw
 :possession T
 90:21 DMw -> DMd
 90:30 DMd->Long => !Gkr:H
@@ -858,7 +857,7 @@
 :transition L
 91:05 Dpw->Long => !DMd:FT >> D:HD >> !M
 :transition T
-91:15 M->Pass => DMd
+91:14 M->Pass => DMd
 :possession T
 91:16 DMd -> Mw
 91:19 Mw->Long => Ad:HD >> !Dp:Clr >> C
