@@ -1,6 +1,6 @@
 :set L: Kickoff
 00:15 M->Pass => A
-00:20 A->Shoot => Goal
+00:20 A->Shoot => G
 :break
 :possession L
 03:21 Mw->Pass => M
