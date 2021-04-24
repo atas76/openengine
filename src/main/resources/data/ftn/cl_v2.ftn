@@ -140,14 +140,13 @@
 :set L: Throw-in
 16:39 M => !DMd:HD >> !DM:Cnt >> M
 16:44 M->Pass => Md:Fr
-:transition T
+:transition L
 16:46 Md:Fr->Move => Ad
 16:47 Ad->Shoot => !GK  #:r=2
-# !!!
 :break
 :possession L
 18:08 Gkr -> DMw
-18:14 DMw->Pass => !Mw:Ch >> Mw
+18:14 DMw->Pass => !Mw:Ch >> !Mw
 :transition T
 18:17 Mw->Pass => Md
 18:19 Md->Pass => M
