@@ -204,6 +204,7 @@
 22:37 Awp->Cross:FT => !Dp:HD >> Ap*T
 :set L: Throw-in
 23:03 Ap => Awp:HD >> !Dpw:HD >> !Dwp:Cnt
+23:06 Dwp->Pass => !Ad
 :attack A
 23:10 Ad->Pass => Ad
 23:11 Ad->Pass => M:Fr
@@ -213,8 +214,8 @@
 23:22 Apw->Cross => !Dp:I >> C
 :set L: Corner
 23:50 CK->Pass => Apw
-23:51 Apw->Pass:FT => A
-23:53 A->Cross:FT => !Dp:HD >> !DMd*F
+23:51 Apw->Pass:FT => Aw
+23:53 Aw->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
 :possession T
