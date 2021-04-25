@@ -118,3 +118,35 @@
 19:40 A => Aw
 :possession T
 19:44 Aw->Cross => !Gkr:H
+:possession L
+19:48 Gkr->Pass => Mw
+20:23 Mw->Move => Aw
+20:27 Aw->Pass => A
+20:30 A->Shoot => !D:B >> C
+:set L: Corner
+21:11 CK->Cross => !Gkr:Punch >> A*T
+:set L: Throw-in
+21:47 A => Aw
+21:51 Aw->Move => A
+21:52 A->Shoot => !D*T
+:set T: Throw-in
+22:17 D => Dw:Cnt >> !Aw:I >> !Aw
+22:20 Aw->Move => A
+22:22 A->Pass => !D:Cl >> !Dw >> Aw:I >> Mw
+22:29 Mw->Pass => Aw
+22:37 Aw->Cross => !D:HD >> A*T
+:set L: Throw-in
+23:03 A => Aw:HD >> !Dw:HD >> !Dw:Cnt
+23:06 Dw->Pass => !A
+23:11 A->Pass => M
+23:14 M->Move => A
+23:15 A->Pass => Aw
+23:22 Aw->Cross => !Dp:I >> C
+:set L: Corner
+23:50 CK->Pass => Aw
+23:53 Aw->Cross => !D:HD >> !D
+:possession T
+24:57 D->Pass => Gkr
+25:01 Gkr->Pass => Dw
+25:04 Dw -> Gkr
+25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T
