@@ -150,3 +150,37 @@
 25:01 Gkr->Pass => Dw
 25:04 Dw -> Gkr
 25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T
+:set L: Throw-in
+25:58 M => !M:HD >> M:Cnt >> !M:FT >> M
+:possession L
+26:05 M->Pass => !M:HD >> !M:FT >> !M >> !Gkr
+:possession T
+26:14 Gkr->Pass => M
+26:21 M->Pass => !M:I >> !M
+:possession L
+26:26 M->Pass => !GK
+:possession T
+26:40 GK->Pass => D
+27:08 D->Pass => Mw:FT >> !Mw:B >> M*T
+:break
+:possession T
+27:31 D->Pass => M
+27:40 M->Pass => !D*O
+:break
+:possession L
+28:17 Mw->Pass => M
+29:01 M->Pass => !GK
+:possession T
+29:20 GK->Pass => Gkr
+29:27 Gkr->HighPass => !Mw:HD >> Dw:HD >> Mw
+29:35 Mw->Pass => !M:B >> M
+:break
+:possession T
+29:50 M->Pass => Gkr
+30:02 Gkr->Pass => !M:FT >> !D
+:possession L
+30:10 D->Pass => !M*T
+:set T: Throw-in
+30:22 M => M:FT >> !M:Clr >> M*T
+:set T: Throw-in
+30:31 M => Gkr
