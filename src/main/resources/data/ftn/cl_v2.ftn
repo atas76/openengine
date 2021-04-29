@@ -297,7 +297,7 @@
 33:43 CK->Pass => Awp
 33:46 Awp->Cross => !Dp:HD >> A*T
 :set T: Throw-in
-34:11 A => Awp:Cnt >> Ap*T
+34:11 A => Awp:Cnt >> !Dwp:I >> Ap*T
 :set T: Throw-in
 34:26 Ap => !Dpw:HD >> !Dwp:HD >> Aw:FT >> Mw
 34:35 Mw->Pass:FT => DM
