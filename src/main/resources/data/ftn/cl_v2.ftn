@@ -432,7 +432,7 @@
 :set T: Kickoff
 45:04 DM->Long => !D*T
 :set L: Throw-in
-45:10 D => !DMw:HD >> DMW:HD >> DMw
+45:10 D => !DMw:HD >> DMw:HD >> DMw
 45:19 DMw->ForwardPass => !DM
 :transition T
 45:22 DM->ForwardPass => DM
@@ -465,6 +465,7 @@
 47:44 DMw->HighPass => !DMw
 :transition T
 47:47 Mw->Pass => !DMw
+:break # TODO
 :set L: Throw-in
 48:00 DM => !Dw
 :possession T
@@ -478,7 +479,7 @@
 :set L: Throw-in
 49:05 M => Aw:HD >> Mw:HD >> !DM*T
 :set T: Throw-in
-49:26 DM => Md:FT >> M*FT
+49:26 DM => Md:FT >> M*F
 :set T: Freekick
 50:01 M:SP->Long => !Dp*O
 :break
@@ -508,7 +509,7 @@
 52:15 Awp->Pass => Apw
 52:16 Apw->Pass:FT => Awp
 52:20 Awp->Pass => Mw
-52:22 Mw->Md
+52:22 Mw -> Md # TODO ?
 52:23 Md->Move => A
 52:24 A->Shoot => !D:Tck >> !Gkr:H
 :possession T
@@ -550,7 +551,7 @@
 56:51 CK->Cross => !Gkr:Punch >> Adp
 56:55 Adp->Shoot:FT => !Dp:B >> C
 :set T: Corner
-57:15 CK->Cross => Apw:HD
+57:15 CK->Cross => Apw:HD >> Apw
 57:17 Apw->HdSht => !GK #r=0
 :substitution
 :break
@@ -565,6 +566,7 @@
 :set T: Throw-in
 58:44 DM => DMw
 58:48 DMw->BackPass => D
+:break # TODO
 :possession T
 58:51 DMd->Move => DMd
 58:56 DMd->Long => !DMd:HD >> !DMw
