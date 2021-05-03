@@ -662,7 +662,6 @@
 67:59 DM->Move => Mw
 68:04 Mw->Dribble => A
 :attack L
-68:04 Mw->Dribble => A
 68:07 A->Pass => Ap
 68:08 Ap->Pass:FT => Ap
 68:09 Ap->Shoot => !GK #r=2
@@ -683,16 +682,16 @@
 :possession T
 69:55 DM->Long => Awp:Cnt >> Apw
 :attack T
-69:59 Apw->LowCross => Awp
+69:59 Apw->LowCross => Awp  # TODO ???
 70:04 Awp->Cross => Awp
 70:08 Awp->Cross => !Gkr:H
 :possession L
 70:17 Gkr->Long:Open => Awp
 :attack L
 70:23 Awp->Move => Apw
-70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr
+70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr >> M*T
 :set L: Throw-in
-71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !DM*T # TODO ?
 :set T: Throw-in
 71:56 DM => Dp
 71:58 Dp->Pass => Gkr
@@ -712,8 +711,8 @@
 :attack T
 72:34 A->Pass => Apd
 72:35 Apd->HighPass => !Gkr:H
-:substitution
 :fair-play
+:substitution
 :possession L
 73:44 Gkr -> Mw
 73:53 Mw->ForwardPass:Open => !GK
@@ -727,7 +726,7 @@
 74:33 DMw->Move => Md:Fr
 74:38 Md:Fr->Pass => A:Fr
 :attack L
-74:42 A->HighPass => !Dp:HD >> !D:HD
+74:42 A->HighPass => !Dp:HD >> !D:HD >> DM
 :transition T
 74:47 DM->Pass => DM
 74:50 DM->Pass:FT => M
@@ -765,7 +764,7 @@
 :attack T
 78:10 Aw->Move => Mw
 78:13 Mw->Long => Awp
-78:18 Awp->Cross => Ap:HD
+78:18 Awp->Cross => Ap
 78:20 Ap->HdSht => !GK #r=1, over
 :break
 :transition T
@@ -837,7 +836,7 @@
 :transition T
 88:20 Mw->Move => Aw
 :attack T
-88:22 Aw->Cross => Dp:Cnt >> !GK
+88:22 Aw->Cross => Dp:Cnt >> !A >> !GK # TODO ???
 :break
 :substitution
 :possession T
@@ -855,7 +854,7 @@
 :possession L
 90:48 Gkr->Long => !DMd:HD >> DMw:Cnt >> !Mw
 :transition T
-90:58 Mw->Move => Apd:Dv >> !Dpw
+90:58 Mw->Move => Apd:Dv >> !Dpw # that's a dive!
 :transition L
 91:05 Dpw->Long => !DMd:FT >> D:HD >> !M
 :transition T
