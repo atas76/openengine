@@ -509,7 +509,7 @@
 52:15 Awp->Pass => Apw
 52:16 Apw->Pass:FT => Awp
 52:20 Awp->Pass => Mw
-52:22 Mw -> Md # TODO ?
+52:22 Mw->Pass => Md
 52:23 Md->Move => A
 52:24 A->Shoot => !D:Tck >> !Gkr:H
 :possession T
@@ -682,8 +682,8 @@
 :possession T
 69:55 DM->Long => Awp:Cnt >> Apw
 :attack T
-69:59 Apw->LowCross => Awp  # TODO ???
-70:04 Awp->Cross => Awp
+69:59 Apw->LowCross => Awp  # opposite side
+70:04 Awp->Cross => Awp # opposite side
 70:08 Awp->Cross => !Gkr:H
 :possession L
 70:17 Gkr->Long:Open => Awp
@@ -691,9 +691,9 @@
 70:23 Awp->Move => Apw
 70:25 Apw->CutBack => !Dp:B >> Ap:Cnt >> !Dp:Clr >> M*T
 :set L: Throw-in
-71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !DM*T # TODO ?
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
 :set T: Throw-in
-71:56 DM => Dp
+71:56 D => Dp
 71:58 Dp->Pass => Gkr
 72:01 Gkr->Pass => Dp
 :transition T
@@ -836,7 +836,7 @@
 :transition T
 88:20 Mw->Move => Aw
 :attack T
-88:22 Aw->Cross => Dp:Cnt >> !A >> !GK # TODO ???
+88:22 Aw->Cross => A:Cnt >> !GK
 :break
 :substitution
 :possession T
@@ -901,7 +901,6 @@
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-# TODO Identify first touches
 # TODO Experimental: introduce counter-attacks/attacking-possessions/attacking-transitions
 # TODO Classify passes based on direction
 # TODO Experimental: provide more context in terms of player positioning (tracking data)

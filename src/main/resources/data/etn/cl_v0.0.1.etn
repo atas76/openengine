@@ -537,15 +537,17 @@
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
 69:55 D->Pass => Aw:Cnt >> Aw
+69:59 Aw->LowCross => Aw  # opposite side
+70:04 Aw->Cross => Aw # opposite side
 70:08 Aw->Cross => !Gkr:H
 :possession L
 70:17 Gkr->Pass => Aw
 70:23 Aw->Move => A
 70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T
 :set L: Throw-in
-71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !M*T
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
 :set T: Throw-in
-71:56 M => D
+71:56 D => D
 71:58 D->Pass => Gkr
 72:01 Gkr->Pass => D
 :possession T
@@ -664,7 +666,7 @@
 :break
 :possession T
 88:20 Mw->Move => Aw
-88:22 Aw->Cross => !GK
+88:22 Aw->Cross => A:Cnt >> !GK
 :break
 :substitution
 :possession T
