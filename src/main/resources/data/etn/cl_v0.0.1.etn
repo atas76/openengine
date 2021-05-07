@@ -12,46 +12,46 @@
 04:10 M->Pass => Dw
 04:12 Dw->Pass => Mw
 04:23 Mw->Pass => M
-04:27 M->Pass => Aw
-04:34 Aw->Pass => C
+04:27 M->Pass => Aw     # TODO future
+04:34 Aw->Pass => C     # TODO future
 :set T: Corner
 05:15 CK->Cross => M
-05:22 M->Pass => Gkd
+05:22 M->Pass => Gkd    # TODO future
 05:27 Gkd->Pass => Dw
 05:45 Dw->Pass => !M
 :possession L
 05:53 M->Pass => A
-05:58 A->Pass => A
-05:59 A->Pass => !D
+05:58 A->Pass => A      # TODO future
+05:59 A->Pass => !D     # TODO future
 :possession T
 06:02 D->Pass => !M
 :break
 :possession T
-06:33 Gkr->Pass => Aw
-06:40 Aw->Move => !Dw:Clr >> M*T
-:set T: Throw-in
-06:53 M => Mw
+06:33 Gkr->Pass => Aw               # TODO future
+06:40 Aw->Move => !Dw:Clr >> M*T    # TODO future
+:set T: Throw-in                    # TODO future
+06:53 M => Mw                       # TODO future
 :possession T
 06:57 Mw->Pass => M
 07:17 M->Pass => !Dw
 :possession L
 07:21 Dw->Pass => Gkr
-07:22 Gkr->Pass => !A*T
-:set T: Throw-in
-07:32 A => M
-07:37 M->Pass => Aw
-07:40 Aw->Pass => M
-07:45 M->PAss => !Dw*T
-:set L: Throw-in
-08:12 D => M
+07:22 Gkr->Pass => !A*T             # TODO future
+:set T: Throw-in                    # TODO future
+07:32 A => M                        # TODO future
+07:37 M->Pass => Aw                 # TODO future
+07:40 Aw->Pass => M                 # TODO future
+07:45 M->Pass => !Dw*T              # TODO future
+:set L: Throw-in                    # TODO future
+08:12 D => M                        # TODO future
 :possession L
 08:18 M->Pass => !Dw
 :possession T
-08:25 Dw->Move => Mw
-08:49 Mw->Move => Aw
-08:50 Aw->Move => A
-08:56 A->Pass => A
-08:58 A->Move => !D:I >> A
+08:25 Dw->Move => Mw                # TODO future
+08:49 Mw->Move => Aw                # TODO future
+08:50 Aw->Move => A                 # TODO future
+08:56 A->Pass => A                  # TODO future
+08:58 A->Move => !D:I >> A          # TODO future
 09:02 A->Shoot => !GK #:r=0
 :possession L
 09:20 GK->Pass => D
@@ -59,39 +59,40 @@
 :set L: Corner
 10:40 CK->Cross => Gkr:H
 :possession L
-11:04 Gkr -> D
-11:08 D->Pass => !D*T
-:set T: Throw-in
-11:34 D => Mw
+11:04 Gkr->Pass => D
+11:08 D->Pass => !D*T               # TODO future
+:set T: Throw-in                    # TODO future
+11:34 D => Mw                       # TODO future
 12:11 Mw->Pass => A
-12:13 A->Move => !Dw
+12:13 A->Move => !Dw                # TODO future
 :possession L
 12:17 Dw->Pass => !Mw
 :break
 :possession T
 12:56 Gkr->Pass => Mw
 13:08 Mw->Pass => M
-13:17 M->Pass => Aw
-13:26 Aw->Pass => Mw
-13:28 Mw->Pass => Aw
-13:30 Aw->Cross => !Dp:HD >> A*T
-:set T: Throw-in
-13:46 A => Mw
+13:17 M->Pass => Aw                 # TODO future
+13:26 Aw->Pass => Mw                # TODO future
+13:28 Mw->Pass => Aw                # TODO future
+13:30 Aw->Cross => !Dp:HD >> A*T    # TODO future
+:set T: Throw-in                    # TODO future
+13:46 A => Mw                       # TODO future
 13:47 Mw->Pass => M
 :possession T
-13:54 M->Pass => !A*T
+13:54 M->Pass => !A*T               # TODO future
 :break
 :possession T
 14:59 M->Pass => !M
 :possession L
-15:04 M->Pass:FT => !M
+15:04 M->Pass => !M
 :possession T
 15:13 M->Pass => !GK
 :possession L
-15:42 GK->Pass => DM
-16:13 M->Pass => !D:Clr >> M*T
-:set L: Throw-in
-16:46 M->Move => A
+15:42 GK->Pass => M
+16:13 M->Pass => !D:Clr >> M*T      # TODO future
+:set L: Throw-in                    # TODO future
+16:39 M => M                        # TODO future
+16:46 M->Move => A                  # TODO future
 16:47 A->Shoot => !GK  #:r=2
 :break
 :possession L
@@ -102,63 +103,63 @@
 18:20 M->Pass => !M
 :possession L
 18:28 M->Pass => Mw
-18:29 Mw->Move => Aw
-18:34 Aw->Move => !GK
+18:29 Mw->Move => Aw            # TODO future
+18:34 Aw->Move => !GK           # TODO future
 :possession T
 18:53 GK->Pass => Dw
 19:01 Dw->Pass => M
-19:09 M->Move => A
-19:10 A->Move => !D >> !M
+19:09 M->Move => A              # TODO future
+19:10 A->Move => !D >> !M       # TODO future
 :possession L
 19:11 M->Pass => Dw
 19:15 Dw->Pass => !M
 :possession T
 19:23 M->Pass => A
-19:26 A->Pass => M
+19:26 A->Pass => M              # TODO future
 19:28 M->Pass => A
-19:30 A->Pass => A
-19:32 A->Pass => !D:Clr >> A*T
-:set T: Throw-in
-19:40 A => Aw
+19:30 A->Pass => A              # TODO future
+19:32 A->Pass => !D:Clr >> A*T  # TODO future
+:set T: Throw-in                # TODO future
+19:40 A => Aw                   # TODO future
 :possession T
-19:44 Aw->Cross => !Gkr:H
+19:44 Aw->Cross => !Gkr:H       # TODO future
 :possession L
 19:48 Gkr->Pass => Mw
-20:23 Mw->Move => Aw
-20:27 Aw->Pass => A
-20:28 A->Pass => A
-20:29 A->Pass => A             # 1 - 2 pass
+20:23 Mw->Move => Aw            # TODO future
+20:27 Aw->Pass => A             # TODO future
+20:28 A->Pass => A              # TODO future
+20:29 A->Pass => A              # 1 - 2 pass     # TODO future
 20:30 A->Shoot => !D:B >> C
 :set L: Corner
-21:11 CK->Cross => !Gkr:Punch >> A*T
-:set L: Throw-in
-21:47 A => Aw
-21:51 Aw->Move => A
-21:52 A->Shoot => !D*T
-:set T: Throw-in
-22:17 D => Dw:Cnt >> !Aw:I >> !Aw
-22:20 Aw->Move => A
-22:22 A->Pass => !D:Cl >> !Dw >> Aw:I >> Mw
-22:29 Mw->Pass => Aw
-22:37 Aw->Cross => !D:HD >> A*T
-:set L: Throw-in
-23:03 A => Aw:HD >> !Dw:HD >> !Dw:Cnt
+21:11 CK->Cross => !Gkr:Punch >> A*T    # TODO future
+:set L: Throw-in                        # TODO future
+21:47 A => Aw                           # TODO future
+21:51 Aw->Move => A                     # TODO future
+21:52 A->Shoot => !D*T                  # TODO future account for shots totally missing the target (Salah)
+:set T: Throw-in                        # TODO future
+22:17 D => Dw:Cnt >> !Aw:I >> !Aw       # TODO future
+22:20 Aw->Move => A                     # TODO future
+22:22 A->Pass => !D:Cl >> !Dw >> Aw:I >> Mw     # TODO future
+22:29 Mw->Pass => Aw                            # TODO future
+22:37 Aw->Cross => !D:HD >> A*T                 # TODO future
+:set L: Throw-in                                # TODO future
+23:03 A => Aw:HD >> !Dw:HD >> !Dw:Cnt           # TODO future
 23:06 Dw->Pass => !A
-23:10 A->Pass => A
-23:11 A->Pass => M
-23:14 M->Move => A
-23:15 A->Pass => Aw
-23:22 Aw->Cross => !Dp:I >> C
+23:10 A->Pass => A                              # TODO future
+23:11 A->Pass => M                              # TODO future
+23:14 M->Move => A                              # TODO future
+23:15 A->Pass => Aw                             # TODO future
+23:22 Aw->Cross => !Dp:I >> C                   # TODO future
 :set L: Corner
-23:50 CK->Pass => Aw
-23:53 Aw->Cross => !D:HD >> !D
+23:50 CK->Pass => Aw                            # TODO future
+23:53 Aw->Cross => !D:HD >> !D                  # TODO future
 :possession T
 24:57 D->Pass => Gkr
 25:01 Gkr->Pass => Dw
-25:04 Dw -> Gkr
-25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T
-:set L: Throw-in
-25:58 M => !M:HD >> M:Cnt >> !M:FT >> M
+25:04 Dw->Pass => Gkr
+25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T  # TODO future
+:set L: Throw-in                                    # TODO future
+25:58 M => !M:HD >> M:Cnt >> !M:FT >> M             # TODO future
 :possession L
 26:05 M->Pass => !M:HD >> !M:FT >> !M >> !Gkr
 :possession T
@@ -168,7 +169,7 @@
 26:26 M->Pass => !GK
 :possession T
 26:40 GK->Pass => D
-27:08 D->Pass => Mw:FT >> !Mw:B >> M*T
+27:08 D->Pass => Mw:FT >> !Mw:B >> M*T              # TODO future
 :break
 :possession T
 27:31 D->Pass => M
@@ -179,18 +180,18 @@
 29:01 M->Pass => !GK
 :possession T
 29:20 GK->Pass => Gkr
-29:27 Gkr->HighPass => !Mw:HD >> Dw:HD >> Mw
+29:27 Gkr->Pass => !Mw:HD >> Dw:HD >> Mw
 29:35 Mw->Pass => !M:B >> M
 :break
 :possession T
 29:50 M->Pass => Gkr
 30:02 Gkr->Pass => !M:FT >> !D
 :possession L
-30:10 D->Pass => !M*T
-:set T: Throw-in
-30:22 M => M:FT >> !M:Clr >> M*T
-:set T: Throw-in
-30:31 M => Gkr
+30:10 D->Pass => !M*T                               # TODO future
+:set T: Throw-in                                    # TODO future
+30:22 M => M:FT >> !M:Clr >> M*T                    # TODO future
+:set T: Throw-in                                    # TODO future
+30:31 M => Gkr                                      # TODO future
 :possession T
 30:52 Gkr->Pass => !Mw:HD >> Mw:B >> !Mw
 :possession L
@@ -201,58 +202,58 @@
 :possession T
 31:20 M->Pass => D
 31:45 D->Pass => Mw
-31:53 Mw->Pass => !M*T
+31:53 Mw->Pass => !M*T                             # TODO future
 :set L: Throw-in
 32:19 M => M:FT >> D:Clr >> !M
 :transition T
-32:25 M->Move => A
-32:27 A->Pass => !D:I >> M
+32:25 M->Move => A                                  # TODO future
+32:27 A->Pass => !D:I >> M                          # TODO future
 :possession T
-32:40 M->Pass => Aw
-32:46 Aw->Pass => Mw
+32:40 M->Pass => Aw                                 # TODO future
+32:46 Aw->Pass => Mw                                # TODO future
 32:48 Mw->Pass => M
 32:48 Mw->Pass => M
 32:55 M->Pass => M:FT >> A:Cnt >> M
-33:04 M->Pass => !D*T
-:set L: Throw-in
-33:22 D => !Mw:HD >> !Aw:HD >> !Aw
-33:32 Aw->LowCross => !Dw:I >> C
+33:04 M->Pass => !D*T                               # TODO future
+:set L: Throw-in                                    # TODO future
+33:22 D => !Mw:HD >> !Aw:HD >> !Aw                  # TODO future
+33:32 Aw->LowCross => !Dw:I >> C                    # TODO future
 :set T: Corner
-33:43 CK->Pass => Aw
-33:46 Aw->Cross => !D:HD >> A*T
-:set T: Throw-in
-34:11 A => Aw:Cnt >> !Dw:I >> A*T
-:set T: Throw-in
-34:26 A => !Dw:HD >> !Dw:HD >> Aw:FT >> Mw
-34:35 Mw->Pass:FT => M
+33:43 CK->Pass => Aw                                # TODO future
+33:46 Aw->Cross => !D:HD >> A*T                     # TODO future
+:set T: Throw-in                                    # TODO future
+34:11 A => Aw:Cnt >> !Dw:I >> A*T                   # TODO future
+:set T: Throw-in                                    # TODO future
+34:26 A => !Dw:HD >> !Dw:HD >> Aw:FT >> Mw          # TODO future
+34:35 Mw->Pass => M
 :possession T
 34:41 M->Pass => Dw
-35:06 Dw->Pass => !Mw:HD >> !Aw
+35:06 Dw->Pass => !Mw:HD >> !Aw                     # TODO future
 :possession L
-35:15 Aw->Cross => !GK
+35:15 Aw->Cross => !GK                              # TODO future
 :possession T
 35:42 GK->Pass => D
 35:47 D->Pass => Dw
 35:52 Dw->Pass => M
 35:57 M->Pass => !Gkr:H
 :possession L
-36:15 Gkr->Pass => !DM*T
-:set T: Throw-in
-36:25 M => Mw:FT >> Mw
-36:28 Mw->Pass => Gkr
+36:15 Gkr->Pass => !DM*T                            # TODO future
+:set T: Throw-in                                    # TODO future
+36:25 M => Mw:FT >> Mw                              # TODO future
+36:28 Mw->Pass => Gkr                               # TODO future
 :possession T
 36:32 Gkr->Pass => Dw
 36:46 Dw -> Pass => !Mw:I >> !Mw:Cnt
 :possession L
-36:48 Mw->Pass => Aw
-36:59 Awp:Hld => !Dw:Ch >> !D*T
-:set T: Throw-in
-37:24 D => M:Cnt
+36:48 Mw->Pass => Aw                                # TODO future
+36:59 Aw:Hld => !Dw:Ch >> !D*T                      # TODO future
+:set T: Throw-in                                    # TODO future
+37:24 D => M:Cnt                                    # TODO future
 37:27 M->Pass => !Mw
 :possession L
 37:32 Mw->Pass => D
 37:39 D->Pass => Mw
-37:42 Mw->Move => A
+37:42 Mw->Move => A                                 # TODO future
 37:47 A->Shoot => Gkr:S >> C #r=2
 :set L: Corner
 38:28 CK->Cross => !D:HD >> A
@@ -261,36 +262,36 @@
 :possession T
 40:12 GK->Pass => !M:HD >> !M:Cnt >> !M:FT >> !M
 :possession L
-40:21 M->Pass => Aw
-40:32 Aw->Pass => Mw
+40:21 M->Pass => Aw                                 # TODO future
+40:32 Aw->Pass => Mw                                # TODO future
 40:36 Mw->Pass => A
-40:39 Ad->Pass => Aw
-40:42 Aw->Pass => !Dw:Ch >> M*T
-:set L: Throw-in
-40:59 M => Aw:HD >> Aw
-41:03 Aw->Move => !Dw
+40:39 A->Pass => Aw                                 # TODO future
+40:42 Aw->Pass => !Dw:Ch >> M*T                     # TODO future
+:set L: Throw-in                                    # TODO future
+40:59 M => Aw:HD >> Aw                              # TODO future
+41:03 Aw->Move => !Dw                               # TODO future
 :possession T
-41:04 Dw->Move => !Mw:I >> Dw
-41:06 Dw->Move => !M:I
+41:04 Dw->Move => !Mw:I >> Dw                       # TODO future
+41:06 Dw->Move => !M:I                              # TODO future
 :possession L
-41:09 M->Move => A
+41:09 M->Move => A                                  # TODO future
 41:10 A->Shoot => !D:B >> A:Cnt
-41:14 A->Move => !D:Ch >> A
-41:16 A->Pass => Aw
-41:18 Aw->Cross => !Dw:B >> C
+41:14 A->Move => !D:Ch >> A                         # TODO future
+41:16 A->Pass => Aw                                 # TODO future
+41:18 Aw->Cross => !Dw:B >> C                       # TODO future
 :set L: Corner
 41:45 CK->Cross => !D:HD >> A:Cnt
 41:49 A->Shoot => !D:B >> C
 :set L: Corner
-42:20 CK->Cross => !D:Clr >> M*T
-:set L: Throw-in
-42:40 M => DM
+42:20 CK->Cross => !D:Clr >> M*T                    # TODO future
+:set L: Throw-in                                    # TODO future
+42:40 M => M                                        # TODO future
 :possession L
 42:55 M->Pass => Mw
 42:59 Mw->Pass => !D:I >> !M:Cnt >> !M
 :possession T
 43:12 M->Pass => !M:HD >> M:Cnt >> M
-43:17 M->Move => !D:Ch >> !D
+43:17 M->Move => !D:Ch >> !D                        # TODO future
 :possession L
 43:22 D->Pass => !Dw
 :possession T
@@ -298,21 +299,21 @@
 43:28 Gkr->Pass => Dw:HD >> Dw
 43:38 Dw->Pass => Mw
 43:41 Mw->Move => A
-43:45 A->Pass => !Gkr:H
+43:45 A->Pass => !Gkr:H                             # TODO future
 :possession L
 43:51 Gkr->Pass => Dw
 44:23 Dw->Pass => !D:HD >> !Gkr:H
 :possession T
 44:29 Gkr->Pass => Dw
-44:36 Dw->Pass => !Dw:Tck >> M*T
-:set T: Throw-in
+44:36 Dw->Pass => !Dw:Tck >> M*T                    # TODO future
+:set T: Throw-in                                    # TODO future
 44:58 M => Mw:FT >> Mw
 44:59 Mw->Pass => M:HD >> !M:FT >> M
 :possession T
 45:10 M->Pass => Mw
-45:13 Mw->Move => A
-45:14 A->Pass => A
-45:15 A->Pass => A
+45:13 Mw->Move => A                                 # TODO future
+45:14 A->Pass => A                                  # TODO future
+45:15 A->Pass => A                                  # TODO future
 45:18 A->Shoot => !GK #r=0
 :possession L
 45:42 GK->Pass => M:HD >> M:Cnt >> !Dw
@@ -321,82 +322,83 @@
 45:57 D->Pass => Dw
 46:00 Dw->Pass => D
 46:02 D->Pass => Dw
-46:06 Dw->Pass => !M:HD >> !M:FT >> M*T
-:set T: Throw-in
-46:20 M => Mw:FT >> Mw:FT >> Mw
+46:06 Dw->Pass => !M:HD >> !M:FT >> M*T             # TODO future
+:set T: Throw-in                                    # TODO future
+46:20 M => Mw:FT >> Mw:FT >> Mw                     # TODO future
 46:25 Mw->Pass => M
 :possession T
 46:29 M->Pass => Mw
-46:31 Mw->Pass => Aw
-46:35 Aw->Pass => Mw
-46:40 Mw->Pass => Aw
-46:44 Aw->LowCross => !D:I >> Aw:Ch >> !Dw
+46:31 Mw->Pass => Aw                                # TODO future
+46:35 Aw->Pass => Mw                                # TODO future
+46:40 Mw->Pass => Aw                                # TODO future
+46:44 Aw->LowCross => !D:I >> Aw:Ch >> !Dw          # TODO future
 :possession L
-46:50 Dw->Pass => !M*T
+46:50 Dw->Pass => !M*T                              # TODO future
 :HT
 :set T: Kickoff
-45:04 M->Pass => !D*T
-:set L: Throw-in
-45:10 D => !Dw:HD >> Dw:HD >> Dw
+45:04 M->Pass => !D*T                               # TODO future
+:set L: Throw-in                                    # TODO future
+45:10 D => !Dw:HD >> Dw:HD >> Dw                    # TODO future
 45:19 Dw->Pass => !M
 :possession T
 45:29 M->Pass => Mw
-45:32 Mw->Pass => !Dw:HD >> !Dw:Cnt >> M*T
-:set T: Throw-in
-45:50 M => Mw
+45:32 Mw->Pass => !Dw:HD >> !Dw:Cnt >> M*T          # TODO future
+:set T: Throw-in                                    # TODO future
+45:50 M => Mw                                       # TODO future
 45:56 Mw->Pass => M
 :possession T
 45:57 M->Pass => Dw
-46:15 Dw->Pass => Aw
-46:24 Aw->Cross => D:HD >> !D:Cl >> M
-46:35 M->Pass => Gkr
+46:15 Dw->Pass => Aw                                # TODO future
+46:24 Aw->Cross => D:HD >> !D:Cl >> M               # TODO future
+46:35 M->Pass => Gkr                                # TODO future
 46:53 Gkr->Pass => M:Cnt
-46:58 M->Move => Aw
-47:01 Aw->LowCross => !D*T
-47:26 D => !Mw:HD >> M*T
-:set L: Throw-in
-47:36 M => Mw:HD >> !Mw:FT >> Mw:HD >> Mw
+46:58 M->Move => Aw                                 # TODO future
+47:01 Aw->LowCross => !D*T                          # TODO future
+:set L: Throw-in                                    # TODO future
+47:26 D => !Mw:HD >> M*T                            # TODO future
+:set L: Throw-in                                    # TODO future
+47:36 M => Mw:HD >> !Mw:FT >> Mw:HD >> Mw           # TODO future
 47:44 Mw->Pass => !Mw
 :possession T
 47:47 Mw->Pass => !Dw
 :break
-:set L: Throw-in
-48:00 DM => !Dw
+:set L: Throw-in                                    # TODO future
+48:00 DM => !Dw                                     # TODO future
 :possession T
 48:04 Dw->Pass => Gkr
 48:22 Gkr->Pass => !M:HD >> D:Cnt
-48:29 D->Pass => !M*T
-:set L: Throw-in
-48:53 M => !Dw
+48:29 D->Pass => !M*T                               # TODO future
+:set L: Throw-in                                    # TODO future
+48:53 M => !Dw                                      # TODO future
 :possession T
-48:58 Dw->Pass => !M*T
-:set L: Throw-in
-49:05 M => Aw:HD >> Mw:HD >> !M*T
-:set T: Throw-in
-49:26 M => M:FT >> M
+48:58 Dw->Pass => !M*T                              # TODO future
+:set L: Throw-in                                    # TODO future
+49:05 M => Aw:HD >> Mw:HD >> !M*T                   # TODO future
+:set T: Throw-in                                    # TODO future
+49:26 M => M:FT >> M                                # TODO future
 50:01 M->Pass => !D
 :break
-:set T: Throw-in
-50:48 M => Dw
+:set T: Throw-in                                    # TODO future
+50:48 M => Dw                                       # TODO future
 50:54 Dw->Pass => Gkr
 :possession T
 50:56 Gkr->Pass => M:HD >> !Dw:Cnt >> !Dw:FT >> Dw:I >> Dw
 51:14 Dw->Pass => Mw
-51:18 Mw->Move => A
-51:20 A->Pass => A
-51:22 A->Move => !Dw:Ch
+51:18 Mw->Move => A                                         # TODO future
+51:20 A->Pass => A                                          # TODO future
+51:22 A->Move => !Dw:Ch                                     # TODO future
 :possession L
-51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T
-:set L: Throw-in
-51:55 D => Dw
+51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T                   # TODO future
+:set L: Throw-in                                            # TODO future
+51:55 D => Dw                                               # TODO future
 51:58 Dw->Pass => Mw
 :possession L
-52:06 Mw->Pass => Aw
-52:15 Aw->Pass => A
-52:16 A->Pass => Aw
-52:20 Aw->Pass => Mw
+52:06 Mw->Pass => Aw                                        # TODO future
+52:15 Aw->Pass => A                                         # TODO future
+52:16 A->Pass => Aw                                         # TODO future
+52:20 Aw->Pass => Mw                                        # TODO future
 52:22 Mw->Pass => M
-52:23 Md->Move => A
+52:23 M->Move => A                                          # TODO future
 52:24 A->Shoot => !D:Tck >> !Gkr:H
 :possession T
 52:33 Gkr->Pass => D
@@ -405,10 +407,10 @@
 :possession L
 53:00 M->Pass => A
 53:05 A->Shoot => D:B >> A:Ch >> A
-53:12 A->Pass => A
-53:13 A->Pass => M
-53:17 M->Move => A
-53:19 A->Pass => !Gkr:H
+53:12 A->Pass => A                                          # TODO future
+53:13 A->Pass => M                                          # TODO future
+53:17 M->Move => A                                          # TODO future
+53:19 A->Pass => !Gkr:H                                     # TODO future
 :break
 :possession T
 53:34 D->Pass => Dw
@@ -416,34 +418,34 @@
 53:44 Mw->Pass => A:Cnt
 53:48 A->Shoot => !D:B >> A:HD >> !D:Clr >> !Dw:Ch >> !Dw:Clr >> Mw
 54:05 Mw->Pass => M
-54:23 M->Pass => Aw
-54:31 Aw->Move => Aw
-54:33 Aw->Pass => A
-54:34 A->Pass => !D:Clr >> M*T
+54:23 M->Pass => Aw                                                 # TODO future
+54:31 Aw->Move => Aw                                                # TODO future
+54:33 Aw->Pass => A                                                 # TODO future
+54:34 A->Pass => !D:Clr >> M*T                                      # TODO future
 :injury
 :break
 :possession T
 56:02 Gkr->Pass => !M:HD >> !M:HD >> M:FT >> !M:Cnt >> M:FT >> M
-56:16 M->Move => Aw
-56:22 Aw->Cross => !Dw:B >> C
+56:16 M->Move => Aw                                                 # TODO future
+56:22 Aw->Cross => !Dw:B >> C                                       # TODO future
 :set T: Corner
 56:51 CK->Cross => !Gkr:Punch >> A
 56:55 A->Shoot => !D:B >> C
 :set T: Corner
-57:15 CK->Cross => Aw:HD
+57:15 CK->Cross => A:HD
 57:17 A->HdSht => !GK #r=0
 :substitution
 :break
 :possession L
-58:03 Gkr->Pass => !M*T
+58:03 Gkr->Pass => !M*T                                             # TODO future
 :break
 :possession T
 58:16 D->Pass => Gkr
 58:22 Gkr->Pass => Mw:Cnt
 58:27 Mw->Pass => Dw
-58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T
-:set T: Throw-in
-58:44 M => Mw
+58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T                       # TODO future
+:set T: Throw-in                                                    # TODO future
+58:44 M => Mw                                                       # TODO future
 58:48 Mw->Pass => D
 :break
 :possession T
@@ -456,33 +458,33 @@
 59:39 M->Pass => !D:I >> M:HD >> !D:HD >> M:Cnt >> !D:FT >> !D
 :possession T
 59:49 D->Pass => Dw
-59:53 Dw->Move => Mw
+59:53 Dw->Move => Mw                                                # TODO future
 60:01 Mw->Pass => M
 60:02 M->Pass => Mw
 60:04 Mw->Pass => M
-60:05 M->Pass => Md:Mrk:Tck >> M
+60:05 M->Pass => M:Mrk:Tck >> M
 60:10 M->Pass => A:FT >> A:FT -> A
-60:13 A->Pass => !D:I >> A
-60:17 A->Shoot => !Dp:B >> Aw
-60:20 Aw->Pass => Mw
-60:23 Mw->Move => M
+60:13 A->Pass => !D:I >> A                                          # TODO future
+60:17 A->Shoot => !Dp:B >> Aw                                       # TODO future
+60:20 Aw->Pass => Mw                                                # TODO future
+60:23 Mw->Move => M                                                 # TODO future
 60:24 M->Pass => A:FT >> !GK
 :possession L
-60:53 GK->Pass => !Dw:I >> M*T
-:set L: Throw-in
-61:20 M => Aw:Cnt >> !Dw:Ch >> A*T
+60:53 GK->Pass => !Dw:I >> M*T                                      # TODO future
+:set L: Throw-in                                                    # TODO future
+61:20 M => Aw:Cnt >> !Dw:Ch >> A*T                                  # TODO future
 :substitution
-:set L: Throw-in
-61:59 A => !Dw:Cl >> !D:Cl >> M
+:set L: Throw-in                                                    # TODO future
+61:59 A => !Dw:Cl >> !D:Cl >> M                                     # TODO future
 62:19 M->Pass => D
 62:22 D->Pass => Dw
 62:36 Dw->Pass => M
-62:41 M->Move => !GK
+62:41 M->Move => !GK                                                # TODO future
 :break
 :possession T
-63:09 D->Move => Dw
+63:09 D->Move => Dw                                                 # TODO future
 63:13 Dw->Pass => M
-63:14 M->Pass:FT => Mw
+63:14 M->Pass => Mw
 63:20 Mw->Pass => !D
 :possession L
 63:23 D->Pass => Gkr
@@ -491,13 +493,13 @@
 63:41 Dw->Pass => M
 64:19 M->Pass => !D:HD >> !M
 :possession L
-64:41 DM:SP->Long => !D*T
+64:41 M->Pass => !D*T                                               # TODO future
 :substitution
-:set T: Throw-in
-65:29 D => Dw
+:set T: Throw-in                                                    # TODO future
+65:29 D => Dw                                                       # TODO future
 65:32 Dw->Pass => Mw:HD >> Dw
 65:39 Dw->Pass => D
-65:42 DMd->Pass => M:Cnt >> !Mw
+65:42 D->Pass => M:Cnt >> !Mw
 :possession L
 65:45 Mw->Pass => Gkr
 65:48 Gkr->Pass => Dw
@@ -505,49 +507,49 @@
 65:52 M->Pass => Dw
 65:54 Dw->Pass => M:Cnt >> M
 66:00 M->Pass => Mw
-66:01 Mw->Move => A
-66:05 A->Pass => !D:HD >> C
+66:01 Mw->Move => A                                                 # TODO future
+66:05 A->Pass => !D:HD >> C                                         # TODO future
 :set L: Corner
-66:35 CK->Cross => !D:Cl >> A*T
-:set L: Throw-in
-66:51 A => !Dw:Tck >> A*T
-:set L: Throw-in
-67:00 A => Aw
-67:04 Awp->HighPass => !GK
+66:35 CK->Cross => !D:Cl >> A*T                                     # TODO future
+:set L: Throw-in                                                    # TODO future
+66:51 A => !Dw:Tck >> A*T                                           # TODO future
+:set L: Throw-in                                                    # TODO future
+67:00 A => Aw                                                       # TODO future
+67:04 Aw->Pass => !GK                                               # TODO future
 :possession T
 67:18 GK->Pass => Mw:HD >> M
 67:27 M->Pass => Mw
-67:30 Mw->Pass => !Dw*T
-:set L: Throw-in
-67:51 Dw => Mw:HD >> M:Cnt
-67:59 M->Move => Mw
-68:04 Mw->Move => A
+67:30 Mw->Pass => !Dw*T                                             # TODO future
+:set L: Throw-in                                                    # TODO future
+67:51 Dw => Mw:HD >> M:Cnt                                          # TODO future
+67:59 M->Move => Mw                                                 # TODO future
+68:04 Mw->Move => A                                                 # TODO future
 :possession L
-68:07 A->Pass => A
-68:08 A->Pass => A
+68:07 A->Pass => A                                                  # TODO future
+68:08 A->Pass => A                                                  # TODO future
 68:09 A->Shoot => !GK #r=2
 :break
 :possession T
 68:41 Gkr->Pass => D
 69:01 D->Pass => !D:B >> M
-69:06 M->Move => A
-69:11 A->Pass => Aw
-69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw
+69:06 M->Move => A                                                  # TODO future
+69:11 A->Pass => Aw                                                 # TODO future
+69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO future
 69:35 Mw->Pass => !D:HD >> M
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
-69:55 D->Pass => Aw:Cnt >> Aw
-69:59 Aw->LowCross => Aw  # opposite side
-70:04 Aw->Cross => Aw # opposite side
-70:08 Aw->Cross => !Gkr:H
+69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO future
+69:59 Aw->LowCross => Aw  # opposite side                           # TODO future
+70:04 Aw->Cross => Aw # opposite side                               # TODO future
+70:08 Aw->Cross => !Gkr:H                                           # TODO future
 :possession L
-70:17 Gkr->Pass => Aw
-70:23 Aw->Move => A
-70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T
-:set L: Throw-in
-71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
-:set T: Throw-in
-71:56 D => D
+70:17 Gkr->Pass => Aw                                               # TODO future
+70:23 Aw->Move => A                                                 # TODO future
+70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T                     # TODO future
+:set L: Throw-in                                                    # TODO future
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T                          # TODO future
+:set T: Throw-in                                                    # TODO future
+71:56 D => D                                                        # TODO future
 71:58 D->Pass => Gkr
 72:01 Gkr->Pass => D
 :possession T
@@ -560,8 +562,9 @@
 72:22 Gkr->Pass => M
 72:28 M->Pass >> M:FT >> M
 72:32 M->Pass => A
-72:34 A->Pass => A
-72:35 A->Pass => !Gkr:H
+72:34 A->Pass => A                                                  # TODO future
+72:34 A->Pass => A                                                  # TODO future
+72:35 A->Pass => !Gkr:H                                             # TODO future
 :fair-play
 :substitution
 :possession L
@@ -573,20 +576,20 @@
 74:30 Mw->Pass => M
 74:32 M->Pass => !Mw
 :possession L
-74:33 Mw->Move => M
+74:33 Mw->Move => M                                                 # TODO future
 74:38 M->Pass => A
-74:42 A->Pass => !D:HD >> !D:HD >> M
+74:42 A->Pass => !D:HD >> !D:HD >> M                                # TODO future
 :possession T
-74:52 M->Move => A >> !D:Ch >> C
+74:52 M->Move => A >> !D:Ch >> C                                    # TODO future
 :set T: Corner
-75:05 CK->Pass => Aw
-75:07 Aw->Pass => A
-75:08 A->Pass => Aw
-75:09 Aw->Move => A
-75:12 A->Move => Aw
-75:13 Aw->Cross => !D:B >> Aw
-75:16 Aw->Cross => !D:HD >> Aw
-75:23 Aw->Pass => Mw
+75:05 CK->Pass => Aw                                                # TODO future
+75:07 Aw->Pass => A                                                 # TODO future
+75:08 A->Pass => Aw                                                 # TODO future
+75:09 Aw->Move => A                                                 # TODO future
+75:12 A->Move => Aw                                                 # TODO future
+75:13 Aw->Cross => !D:B >> Aw                                       # TODO future
+75:16 Aw->Cross => !D:HD >> Aw                                      # TODO future
+75:23 Aw->Pass => Mw                                                # TODO future
 75:26 Mw->Pass => !D
 :break
 :possession T
@@ -599,30 +602,30 @@
 76:36 Mw->Pass => !Gkr:H
 :possession L
 76:40 Gkr->Pass => Mw
-76:51 Mw->Pass => !Mw:B >> M*T
-:set L: Throw-in
-77:11 M => !Dw:HD >> !Dw:FT >> !D
+76:51 Mw->Pass => !Mw:B >> M*T                                      # TODO future
+:set L: Throw-in                                                    # TODO future
+77:11 M => !Dw:HD >> !Dw:FT >> !D                                   # TODO future
 :possession T
-77:22 D->Move => M
+77:22 D->Move => M                                                  # TODO future
 77:27 M->Pass => Mw
-78:09 Mw->Pass => Aw
-78:10 Aw->Move => Mw
-78:13 Mw->Pass => Aw
-78:18 Aw->Cross => A
+78:09 Mw->Pass => Aw                                                # TODO future
+78:10 Aw->Move => Mw                                                # TODO future
+78:13 Mw->Pass => Aw                                                # TODO future
+78:18 Aw->Cross => A                                                # TODO future
 78:20 A->HdSht => !GK #r=1, over
 :break
 :possession T
 78:59 M->Pass => M:FT >> M
-79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt
+79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt                          # TODO future
 :possession L
 79:10 M->Pass => !D
 :possession T
 79:12 M->Pass => Gkr
 79:14 Gkr->Pass => D
 79:22 D->Pass => M
-79:33 M->Move => A
+79:33 M->Move => A                                                  # TODO future
 79:34 A->Shoot => !Gkr:S >> A #r=2
-79:38 Apd->Pass => A
+79:38 A->Pass => A                                                  # TODO future
 79:39 A->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -630,11 +633,11 @@
 80:00 Mw->Pass => !Dw
 :possession T
 80:02 Dw->Pass => Mw
-80:05 Mw->Move => M
+80:05 Mw->Move => M                                                 # TODO future
 80:06 M->Pass => D
 80:07 D->Pass => Mw
-80:12 Mw->Move => M
-80:17 M->Move => A
+80:12 Mw->Move => M                                                 # TODO future
+80:17 M->Move => A                                                  # TODO future
 80:20 A->Shoot => !Gkr:H        #r=1
 :break
 :possession L
@@ -643,17 +646,17 @@
 80:34 Dw->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !D:HD >> A:Cnt
-81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A
+81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A              # TODO future
 82:01 A->Shoot => !GK    #r=0
 :break
 :possession T
-82:10 Dw->Move => Mw
+82:10 Dw->Move => Mw                                                # TODO future
 82:15 Mw->Pass => M
-82:32 M->Pass => Aw
-82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw
-84:05 Aw->Shoot => !Gkr:S >> C
+82:32 M->Pass => Aw                                                 # TODO future
+82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO future
+84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO future
 :set T: Corner
-84:37 CK->Cross => Ap:B >> !D
+84:37 CK->Cross => A:B >> !D
 :break
 :possession T
 85:20 Gkr->Pass => !Gkr:H
@@ -665,8 +668,8 @@
 86:53 A->Shoot => G
 :break
 :possession T
-88:20 Mw->Move => Aw
-88:22 Aw->Cross => A:Cnt >> !GK
+88:20 Mw->Move => Aw                                                # TODO future
+88:22 Aw->Cross => A:Cnt >> !GK                                     # TODO future
 :break
 :substitution
 :possession T
@@ -684,7 +687,7 @@
 :possession L
 90:48 Gkr->Pass => !M:HD >> Mw:Cnt >> !Mw
 :possession T
-90:58 Mw->Move => A:Dv >> !Dw
+90:58 Mw->Move => A:Dv >> !Dw                                       # TODO future
 :possession L
 91:05 Dw->Pass => !M:FT >> D:HD >> !M
 :possession T
@@ -692,37 +695,37 @@
 91:16 D->Pass => Mw
 91:19 Mw->Pass => A:HD >> !D:Clr >> C
 :set T: Corner
-91:44 CK->Cross => !D:HD >> Aw
-91:50 Aw->Move => A
+91:44 CK->Cross => !D:HD >> Aw                                      # TODO future
+91:50 Aw->Move => A                                                 # TODO future
 91:52 A->Shoot => !Gkr:H    #r=1
 :possession L
 92:08 Gkr->Pass => !Dw
 :possession T
 92:14 Dw->Pass => M:HD >> M
 92:19 M->Pass => A
-92:22 A->Move => A
+92:22 A->Move => A                                                  # TODO future
 92:23 A->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M
 92:49 M->Pass => A
-92:51 A->Move => A
+92:51 A->Move => A                                                  # TODO future
 92:52 A->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H
 :possession T
 93:19 Gkr->Pass => D
-93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T
+93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO future
 :break
-:possession A
-93:56 A->Pass => !D:Clr >> A*T
-:set T: Throw-in
-94:02 A => Aw
-:possession A
-94:05 Aw->Cross => !D:HD >> M
+:possession T
+93:56 A->Pass => !D:Clr >> A*T                                      # TODO future
+:set T: Throw-in                                                    # TODO future
+94:02 A => Aw                                                       # TODO future
+:possession T
+94:05 Aw->Cross => !D:HD >> M                                       # TODO future
 94:11 M->Pass => !D
 :possession L
 94:15 D->Pass => M
-94:17 M->Pass => Aw
-94:23 Aw->Move => A
-94:26 Ad->Pass => A
-94:27 A->Pass => !GK
+94:17 M->Pass => Aw                                                 # TODO future
+94:23 Aw->Move => A                                                 # TODO future
+94:26 A->Pass => A                                                  # TODO future
+94:27 A->Pass => !GK                                                # TODO future
