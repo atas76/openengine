@@ -1,7 +1,8 @@
 :set L: Kickoff
 00:02 DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
-:transition L
+:possession L
 00:15 M->Long:FT:Open => Apd
+:attack L
 00:20 Apd->BounceOff => Ap*H
 :set L: PenaltyKick
 01:47 Penalty->Shoot => G
@@ -12,10 +13,13 @@
 03:21 DMw->Long => !DM:Tck >> DM:HD >> DM:HD >> !DMd:HD >> DMd
 03:32 DMd->Long:FT:Open => !DMd >> !Md:HD >> DM:Cnt
 03:40 DM->HighPass => !DMd:HD >> Md
-:transition L
+:possession L
 03:43 Md->Long => !DM:HD >> !D:HD >> !Gkr
 :break
 :pressed T
+03:58 Dp->Pass => Dp
+04:00 Dp->Pass => Gkr
+04:02 Gkr->Pass:FT =>
 04:04 Dpw->Pass => Dwp
 04:06 Dwp->ForwardPass => Dd
 04:08 Dd->Pass => DM
@@ -23,10 +27,10 @@
 04:12 Dpw->Long => DMw:Fr
 :transition T
 04:17 DMw->Pass => Mw
+:possession T
 04:19 Mw->Move => DMw
 04:21 DMw->BackPass => DMw
 04:23 DMw->Pass => DM
-:possession T
 04:27 DM->Long => Awp
 :attack T
 04:32 Awp->Move => Aw
@@ -44,7 +48,7 @@
 :attack L
 05:58 Ad->Pass => Apd:Pvt
 05:59 Apd->Pass => !Dp:I >> !Dp
-:transition T
+:establish T
 06:02 Dp->Long:FT => !M*T
 :break
 :possession T
