@@ -952,3 +952,5 @@
 # TODO defensive direction (push/(hold)/back)
 # TODO spot the runs
 # TODO space/pitch control changes (defensive actions and outcomes)
+# TODO crosses classification
+# TODO protect/optimize/attempt
