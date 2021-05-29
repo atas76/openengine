@@ -206,10 +206,18 @@
 19:40 A => Aw:FT >> Awp
 :attack T
 19:44 Awp->Cross => !Gkr:H
-# !!!
-:possession L
+:build-up L
 19:48 Gkr -> Mw
-20:23 Mw->Move => Aw
+:possession L
+20:09 Mw -> D
+:pull-back L
+20:12 D->Pass => Gkr
+20:14 Gkr->Pass:FT => Dd
+20:17 Dd->Move => DMd
+20:18 DMd->ForwardPass => DM
+20:21 DM->Move => M
+20:22 M->Pass => Mw
+20:24 Mw->Move => Aw
 :attack L
 20:27 Aw->Pass => A
 20:29 A->OneTwoPass => A
@@ -226,13 +234,14 @@
 :attack L
 22:20 Awp->Move => Apd
 22:22 Apd->Pass => !Dp:Cl >> !Dw >> Aw:I >> Mw
-22:29 Mw->Pass => Aw
+22:28 Mw->Pass:FT => Aw
 22:30 Aw->Pass => Aw
 22:32 Aw->BackHeelPass => Awp
-22:36 Awp->Pass => Awp
-22:37 Awp->Cross:FT => !Dp:HD >> Ap*T
+22:36 Awp->Pass => Aw
+22:37 Aw->Cross:FT => !Dp:HD >> Ap*T
 :set L: Throw-in
 23:03 Ap => Awp:HD >> !Dpw:HD >> !Dwp:Cnt
+:establish L
 23:06 Dwp->Pass => !Ad
 :attack A
 23:10 Ad->Pass => Ad
@@ -247,33 +256,47 @@
 23:53 Aw->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
-:possession T
+:build-up T
 24:57 D -> Gkr
+:pressed T
 25:01 Gkr->Long => DMw:Cnt
-25:04 DMw -> Gkr
+25:04 DMw->Pass => DMw
+:post-pressed T
+25:09 DMw->Pass => D
+:build-up T
+25:11 D -> Gkr
 25:31 Gkr->Long => !DM:HD >> DM:Cnt >> !DMd:Ch >> !DM*T
 :set L: Throw-in
 25:58 DM => !DM:HD >> M:Cnt >> !DM:FT >> DM
 :transition L
 26:05 DM->Long:FT => !DMd:HD >> !DMd:FT >> !DM >> !Gkr
-:possession T
+:build-up T
 26:14 Gkr -> DM
 26:21 DM->ForwardPass => !DM:I >> !DMd
-:transition L
+:counter-transition L
 26:26 DMd->Long => !GK
-:possession T
-26:40 GK -> Dp
+:break
+:pressed T
+26:43 D->Pass => D
+26:44 D->Pass:FT => Dp
+26:48 Dp->Move => Dd # opposition backtracks
+26:50 Dd->Pass => Dd # other side
+26:52 Dd->Pass => Dw
+:post-pressed-build-up T
+26:56 Dw -> Dp
+:pressed T
 27:08 Dp->Long => DMw:FT >> !Mw:B >> DM*T
 :break
 :possession T
 27:31 D -> DM
 27:40 DM->Long => !D*O
 :break
-:possession L
+:build-up L
 28:17 DMw->Long => M*F
 :set L: Freekick
 29:01 M:SP->Long => !GK
-:possession T
+# !!!
+:build-up T
 29:20 GK -> Gkr
 29:27 Gkr->HighPass => !Mw:HD >> Dpw:HD >> DMw
 29:35 DMw->ForwardPass:FT => !M:B >> DM*F
@@ -955,3 +978,5 @@
 # TODO crosses classification
 # TODO protect/optimize/attempt
 # TODO velocity
+# TODO first (attacking) action
+# TODO (separate project) goal-backward analysis
