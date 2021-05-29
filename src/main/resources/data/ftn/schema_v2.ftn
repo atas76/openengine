@@ -1,0 +1,12 @@
+set
+possession
+attack
+pressed
+post-pressed
+counter-transition: from possession change in different halves
+counter-attacking-transition: from counter-transition
+establish
+build-up
+attacking-transition: from possession change in attacking half
+transition: from possession establishment/possession change within defending half
+
