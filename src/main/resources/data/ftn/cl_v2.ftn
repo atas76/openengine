@@ -355,7 +355,6 @@
 33:00 M->Pass => Md
 33:01 Md->BackPass:FT => Md
 33:04 Md->Pass => !D*T
-# !!!
 :set L: Throw-in
 33:22 D => !Mw:HD >> !Aw:HD >> !Aw
 :attack T
@@ -370,11 +369,16 @@
 34:26 Ap => !Dpw:HD >> !Dwp:HD >> Aw:FT >> Mw
 34:35 Mw->Pass:FT => DM
 :possession T
-34:41 DM -> Dpw
+34:41 DM -> Gkr
+:pressed T
+34:56 Gkr->Pass => Dpd
+34:59 Dpd->Pass => Gkr
+35:02 Gkr->Pass => Dpw
 35:06 Dpw->Long => !Mw:HD >> !Aw
 :attack L
 35:13 Aw->Move => Awp
 35:15 Awp->Cross => !GK
+# !!!
 :possession T
 35:42 GK -> D
 35:44 D->Run => DM
