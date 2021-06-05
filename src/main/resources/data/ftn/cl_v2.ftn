@@ -378,22 +378,29 @@
 :attack L
 35:13 Aw->Move => Awp
 35:15 Awp->Cross => !GK
-# !!!
-:possession T
-35:42 GK -> D
+:pressed T
+35:42 GK->Pass => D
 35:44 D->Run => DM
 35:47 DM->Pass => DMw:Fr
+:post-pressed T
 35:52 DMw->Long => Md
+:possession T
 35:57 Md->ForwardPass:Open => !Gkr:H
-:possession L
+:build-up L
 36:15 Gkr->Long => !DM*T
 :set T: Throw-in
 36:25 DM => DMw:FT >> DMw
 36:28 DMw->Pass => Gkr
-:possession T
-36:32 Gkr -> DMw
-36:46 DMw -> Pass => !Mw:I >> !Mw:Cnt
-:transition L
+:pressed T
+36:32 Gkr->Pass => Dp
+36:35 Dp->Move => Dpw
+36:37 Dpw->Pass => Dd
+36:39 Dd->Pass => Dw
+36:41 Dw->BackPass => Dw
+36:43 Dw->Move => DMw
+36:44 DMw->Pass => DMw
+36:45 DMw->Pass:FT => !Mw:I >> !Mw:Cnt
+:attacking-transition L
 36:48 Mw->HighPass => Awp
 :attack L
 36:54 Awp->Pass => Aw
@@ -403,7 +410,9 @@
 37:24 D => DMd:Cnt
 37:27 DMd->Long:Open => !DMw
 :possession L
-37:32 DMw -> Dd
+37:32 DMw->Pass => Gkr
+:pressed L
+37:35 Gkr->Pass => Dd
 37:39 Dd->SwapPlayPass => DMw:Fr
 37:42 DMw:Fr->Run => Ad
 :attack L
@@ -412,9 +421,9 @@
 38:28 CK->Cross => !Dp:HD >> A
 38:31 A->Shoot:FT => !GK #r=0
 :injury
-:possession T
+:build-up T
 40:12 GK->Long => !DM:HD >> !Md:Cnt >> !Md:FT >> !Md
-:transition L
+:attacking-transition L
 40:21 Md->Long:FT:Open => Awp
 :attack L
 40:32 Awp->Pass => Mw
@@ -425,10 +434,10 @@
 40:59 M => Aw:HD >> Aw
 :attack L
 41:03 Aw->Dribble => !Dw
-:transition T
+:establish T
 41:04 Dw->Move => !Mw:I >> Dw
 41:06 Dw->Move => !M:I
-:transition L
+:attacking-transition L
 41:09 M->Move => A
 :attack L
 41:10 A->Shoot => !D:B >> A:Cnt
@@ -448,10 +457,11 @@
 :set T: Freekick
 43:12 DM:SP->Long => !DM:HD >> M:Cnt >> M
 43:17 M->Dribble => !D:Ch >> !D
-:transition L
+:establish L
 43:20 D->BackPass => Dd:Fr
+:transition L
 43:22 Dd->Long:Open => !Dpw
-:transition T
+:pressed T
 43:27 Dpw->Pass:FT => Gkr
 43:28 Gkr->HighPass => Dw:HD >> Dwp
 43:36 Dwp->Move => Dw
@@ -459,32 +469,40 @@
 43:41 Mw:Fr->Run => Ad
 :attack T
 43:45 Ad->Pass:Open => !Gkr:H
-:possession L
-43:51 Gkr -> DMw
+:build-up L
+43:51 Gkr -> Dd
+:pressed L
+44:10 Dd->Pass => Gkr
+44:12 Gkr->Pass:FT => Dd
+44:16 Dd->Pass => Gkr
+44:19 Gkr->Pass => Dw
+44:22 Dw->Move => DMw
 44:23 DMw->Long:Open => !D:HD >> !Gkr:H
-:possession T
+:build-up T
 44:29 Gkr -> DMw
 44:36 DMw->Long:Open => !Dw:Tck >> M*T
 :set T: Throw-in
 44:58 M => Mw:FT >> Mw
 44:59 Mw->HighPass => M:HD >> !DM:FT >> DM
-:transition T
+:counter-transition T
 45:07 DM->Move => M
 45:10 M->Pass => Mw
 45:13 Mw->Move => Ad
+:attack T
 45:14 Ad->Pass => A
 45:15 A->Pass:FT => A
 :attack T
 45:18 A->Shoot => !GK #r=0
-:possession L
+:build-up L
 45:42 GK->Long => M:HD >> M:Cnt >> !DMw
-:transition T
+:establish T
 45:53 DMw->Pass => DMw
+:transition T
 45:56 DMw->Pass => D
+:pressed T
 45:57 D->Pass => Dpw
 46:00 Dpw->Pass => Dp
-:possession T
-46:02 Dp -> DMw
+46:02 Dp->Pass => DMw
 46:06 DMw->Long => !DM:HD >> !DM:FT >> M*T
 :set T: Throw-in
 46:20 M => Mw:FT >> Mw:FT >> Mw
@@ -498,7 +516,7 @@
 46:40 Mw->ForwardPass => Aw
 46:43 Aw->Pass => Awp
 46:44 Awp->LowCross:FT => !Dp:I >> Awp:Ch >> !Dwp
-:transition L
+:establish L
 46:50 Dwp->Clear => !M*T
 :HT
 :set T: Kickoff
