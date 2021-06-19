@@ -1,6 +1,5 @@
 :set L: Kickoff
 00:02 DM->Long => !DMw:HD >> Md:HD >> !DMd:FT >> Md:HD >> !DMd:HD >> Md:HD >> Md:FT >> M
-:possession L
 00:15 M->Long:FT:Open => Apd
 :attack L
 00:20 Apd->BounceOff => Ap*H
@@ -9,11 +8,11 @@
 :break
 :set L: Throw-in
 03:18 DM => DMw
+:transition L
 03:20 DMw->Pass => DMw
 03:21 DMw->Long => !DM:Tck >> DM:HD >> DM:HD >> !DMd:HD >> DMd
 03:32 DMd->Long:FT:Open => !DMd >> !Md:HD >> DM:Cnt
 03:40 DM->HighPass => !DMd:HD >> Md
-:possession L
 03:43 Md->Long => !DM:HD >> !D:HD >> !Gkr
 :break
 :pressed T
@@ -25,11 +24,11 @@
 04:08 Dd->Pass => DM
 04:10 DM->Pass => Dpw
 04:12 Dpw->Long => DMw:Fr
-:post-pressed T
+:transition T
 04:17 DMw->Pass => Mw
-:possession T
 04:19 Mw->Move => DMw
 04:21 DMw->BackPass => DMw
+:possession T
 04:23 DMw->Pass => DM
 04:27 DM->Long => Awp
 :attack T
@@ -41,10 +40,9 @@
 :possession T
 05:27 Gkd -> DMw
 05:45 DMw->Pass => !DM
-:counter-transition L
+:transition L
 05:47 DM->ForwardPass => M
 05:50 M:Mrk->Move => Md:Fr
-:counter-attacking-transition L
 05:53 Md->Pass => Ad
 :attack L
 05:58 Ad->Pass => Apd:Pvt
@@ -52,7 +50,7 @@
 :establish T
 06:02 Dp->Long:FT => !M*T
 :break
-:build-up T
+:possession T
 06:33 Gkr->Long:FT => !DMw:HD >> Aw:Mrk
 :attack T
 06:40 Aw:Mrk->Dribble => !Dwp:Clr >> M*T
@@ -70,6 +68,7 @@
 :set T: Throw-in
 07:32 A => Md
 07:34 Md->Pass => M
+:possession T
 07:37 M->Pass:FT => Aw
 :attack T
 07:40 Aw->Pass => Md
@@ -79,7 +78,7 @@
 08:12 Dp => !Mw:Cnt >> !Md:Ch >> DM
 :transition L
 08:18 DM->Long:FT => !DM:HD >> !DMw:Cnt
-:counter-transition T
+:transition T
 08:25 DMw->Move => Mw
 08:27 Mw:Mrk->ForwardPass => Mw
 08:28 Mw->Pass:FT => Mw
@@ -93,7 +92,7 @@
 08:49 Mw->Move => Aw
 :attack T
 08:50 Aw->Move => Ad
-08:53 Ad->Pass => !D:I >>> A    # TODO
+08:53 Ad->Pass => !D:I >> Ad:I >> A
 08:56 A->Pass => Apd
 08:58 Apd->Dribble => !Dp:I >> A
 09:02 A->Shoot => !GK #:r=0
@@ -102,17 +101,19 @@
 09:23 Dwp->Pass => Gkr
 09:26 Gkr->Pass => D
 09:28 D->Move => DM
+:transition L
 09:31 DM->Pass => Gkr
-:build-up L
+:possession L
 09:34 Gkr -> D
 09:37 D->Long:Open => !Dpw:I >> C
 :set L: Corner
 10:40 CK->Cross => !Gkr:Punch >> !Dp:Clr >> DM:HD >> Gkr:H
-:build-up L
+:possession L
 11:04 Gkr -> Dd
 11:08 Dd->Long => !D*T
 :set T: Throw-in
 11:34 D => Mw:Pvt >> Mw:Cnt
+:transition T
 11:38 Mw->Dribble => !DMw:Tck >> Mw
 11:40 Mw->Dribble => Mw*F
 :set T: Freekick
@@ -139,6 +140,7 @@
 13:53 DM -> M
 13:54 M->Long => !D*T
 :break
+# !!!
 :possession T
 14:59 DM->ForwardPass => M:FT >> !DM:FT >> M:B >> !DM
 :establish L
@@ -655,7 +657,7 @@
 :set T: Corner
 57:15 CK->Cross => Apw:HD >> Apw
 57:17 Apw->HdSht => !GK #r=0
-# !!!
+# TODO continue with schema version 2.1
 :substitution
 :break
 :possession L
