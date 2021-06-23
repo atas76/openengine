@@ -140,12 +140,11 @@
 13:53 DM -> M
 13:54 M->Long => !D*T
 :break
-# !!!
 :possession T
 14:59 DM->ForwardPass => M:FT >> !DM:FT >> M:B >> !DM
 :establish L
 15:04 DM->Pass:FT => DM:Cnt >> !DMd
-:counter-transition T
+:transition T
 15:06 DMd->Triangle => DMd
 15:09 DMd->Pass => DM
 :possession T
@@ -156,7 +155,7 @@
 15:48 Gkr->Pass => D
 15:51 D->Pass => Dpw
 15:52 Dpw->Pass:FT => Dpw # swap side
-:build-up L
+:possession L
 15:56 Dpw => DMd
 16:13 DMd->Long => A:Cnt >> !D:Clr >> M*T
 :set L: Throw-in
@@ -186,9 +185,8 @@
 18:56 Dw->Pass:FT => Dwp
 18:59 Dwp->Pass => Dwp
 19:01 Dwp->Long => DM:Cnt >> DM
-:post-pressed T
+:transition T
 19:06 DM->ForwardPass => M
-:counter-attacking-transition T
 19:09 M:Fr->Run => A
 :attack T
 19:10 A->Dribble => !D:I >> !DM
@@ -208,14 +206,13 @@
 19:40 A => Aw:FT >> Awp
 :attack T
 19:44 Awp->Cross => !Gkr:H
-:build-up L
-19:48 Gkr -> Mw
 :possession L
-20:09 Mw -> D
-:pull-back L
+19:48 Gkr -> D
+:pressed L
 20:12 D->Pass => Gkr
 20:14 Gkr->Pass:FT => Dd
 20:17 Dd->Move => DMd
+:possession L
 20:18 DMd->ForwardPass => DM
 20:21 DM->Move => M
 20:22 M->Pass => Mw
@@ -243,7 +240,7 @@
 22:37 Aw->Cross:FT => !Dp:HD >> Ap*T
 :set L: Throw-in
 23:03 Ap => Awp:HD >> !Dpw:HD >> !Dwp:Cnt
-:establish L
+:establish T
 23:06 Dwp->Pass => !Ad
 :attack A
 23:10 Ad->Pass => Ad
@@ -258,33 +255,32 @@
 23:53 Aw->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
-:build-up T
+:possession T
 24:57 D -> Gkr
 :pressed T
 25:01 Gkr->Long => DMw:Cnt
 25:04 DMw->Pass => DMw
-:post-pressed T
+:transition T
 25:09 DMw->Pass => D
-:build-up T
+:possession T
 25:11 D -> Gkr
 25:31 Gkr->Long => !DM:HD >> DM:Cnt >> !DMd:Ch >> !DM*T
 :set L: Throw-in
 25:58 DM => !DM:HD >> M:Cnt >> !DM:FT >> DM
-:transition L
 26:05 DM->Long:FT => !DMd:HD >> !DMd:FT >> !DM >> !Gkr
-:build-up T
+:possession T
 26:14 Gkr -> DM
 26:21 DM->ForwardPass => !DM:I >> !DMd
-:counter-transition L
+:transition L
 26:26 DMd->Long => !GK
 :break
 :pressed T
 26:43 D->Pass => D
 26:44 D->Pass:FT => Dp
-26:48 Dp->Move => Dd # opposition backtracks
+26:48 Dp->Move => Dd # opposition starts to backtrack
 26:50 Dd->Pass => Dd # other side
 26:52 Dd->Pass => Dw
-:post-pressed-build-up T
+:possession T
 26:56 Dw -> Dp
 :pressed T
 27:08 Dp->Long => DMw:FT >> !Mw:B >> DM*T
@@ -293,7 +289,7 @@
 27:31 D -> DM
 27:40 DM->Long => !D*O
 :break
-:build-up L
+:possession L
 28:17 DMw->Long => M*F
 :set L: Freekick
 29:01 M:SP->Long => !GK
@@ -317,7 +313,7 @@
 30:22 M => M:FT >> !DM:Clr >> DM*T
 :set T: Throw-in
 30:31 M => Gkr
-:build-up T
+:possession T
 30:37 Gkr -> Dd
 :pressed T
 30:45 Dd->Pass => Gkr
@@ -330,6 +326,7 @@
 :set T: Freekick
 31:13 Dd:SP->Pass => D
 :break
+# !!!
 :possession T
 31:20 DM -> Gkr
 :pressed T
