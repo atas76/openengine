@@ -639,7 +639,6 @@
 54:34 Ad->Pass => !Dp:Clr >> DM*T
 :injury
 :break
-# !!!
 :possession T
 56:02 Gkr->Long => !DM:HD >> !DM:HD >> M:FT >> !M:Cnt >> M:FT >> M
 :attacking-transition T
@@ -652,49 +651,49 @@
 :set T: Corner
 57:15 CK->Cross => Apw:HD >> Apw
 57:17 Apw->HdSht => !GK #r=0
-# TODO continue with schema version 2.1
 :substitution
 :break
-:possession L
+:pressed L
 58:03 Gkr->Long => !DM*T
 :break
 :possession T
 58:16 DMd -> Gkr
+:pressed T
 58:22 Gkr->Long => DMw:Cnt
-58:27 DMw -> Dw
+58:27 DMw->Pass => Dw
 58:30 Dw->Long => !DMd >> DMd:HD >> !Mw:HD >> DM*T
 :set T: Throw-in
 58:44 DM => DMw
 58:48 DMw->BackPass => D
-:break # TODO
 :possession T
-58:51 DMd->Move => DMd
+58:51 D->Move => DMd
 58:56 DMd->Long => !DMd:HD >> !DMw
 :transition L
 59:03 DMw->Long:Open => !Gkr:H
 :possession T
 59:27 Gkr->Long => DMw:FT >> !DMd:Clr >> DM:HD >> DM:Cnt >> !M:I >> !M:Cnt
-:transition L
+:attacking-transition L
 59:39 M->Long => !DM:I >> M:HD >> !D:HD >> Md:Cnt >> !DMd:FT >> !DM
 :transition T
 59:49 DM->Pass => DMw
 59:53 DMw->Move => Mw
 59:59 Mw->BackPass => Mw
-60:01 Mw->Pass => Md
-60:02 Md->Pass:FT => Mw
-60:04 Mw->Pass => M
-60:05 M->Pass => Md:Mrk:Tck >> Md
-60:10 Md->Pass => Ad:FT >> A:FT -> Ad
+:possession T
+60:01 Mw -> M
+60:05 M->Pass => Md:Mrk:Tck >> M
+60:07 M->Pass:FT => Md
+60:10 Md->Pass => Ad:FT >> A:FT >> Ad
 :attack T
 60:13 Ad->Pass => !D:I >> A
 60:17 A->Shoot => !Dp:B >> Aw
 60:20 Aw->Pass:FT => Mw
 60:23 Mw->Move => Md
 60:24 Md->Pass => A:FT >> !GK
-:possession L
+:pressed L
 60:53 GK->Long => !DMw:I >> M*T
 :set L: Throw-in
 61:20 M => Aw:Cnt >> !Dw:Ch >> A*T
+# !!!
 :substitution
 :set L: Throw-in
 61:59 A => !Dpw:Cl >> !Dp:Cl >> Md*F
