@@ -884,37 +884,32 @@
 78:18 Awp->Cross => Ap
 78:20 Ap->HdSht => !GK #r=1, over
 :break
-# !!!
 :transition T
 78:59 M->Pass => M:FT >> M
 79:01 M->Move => !D:Ch >> !D:Clr >> !DM:Cnt
 :transition L
 79:08 DM->Move => M
 79:10 M->Pass => !DM
-:transition T
+:establish T
 79:12 DM->Pass => Gkr
 79:14 Gkr->Pass:FT => Dpd
-79:17 Dpd->Pass => Dd
-79:21 Dd->Move => DMd
-79:22 DMd->Pass => DM
-79:25 DM->Move => Md
-79:27 Md->ForwardPass => Md
+:possession T
+79:17 Dpd -> Md
 79:31 Md->Pass => M:Fr
 79:33 M->Move => A
 :attack T
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
-:break
 :possession L
 79:52 DMw->ForwardPass => DMw
 79:58 DMw->Pass:FT => Mw:Fr
 80:00 Mw->ForwardPass => !DMw
-:transition T
+:establish T
 80:02 DMw->ForwardPass => DMw
+:transition T
 80:05 DMw->Move => M
 80:06 M->Pass => DM
-:possession T
 80:07 DM->Pass:FT => Mw
 80:12 Mw->Move => M
 80:16 M->ForwardPass => M
@@ -924,7 +919,7 @@
 :break
 :possession L
 80:30 DMw->ForwardPass:Open => !Dw
-:transition T
+:establish T
 80:34 Dw->Pass:FT => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
@@ -961,19 +956,21 @@
 89:53 DMw->Long => !DM:FT >> !M
 :transition L
 89:57 M->ForwardPass:FT => !Dw
-:transition T
+:establish T
 90:04 Dw->Pass => Gkd
-90:09 Gkd->Long => A:HD >> !DM
-:transition L
-90:16 DM->Pass:FT => !M:B >> !DMw
 :possession T
-90:21 DMw -> DMd
+90:09 Gkd->Long => A:HD >> !DM
+:establish L
+90:16 DM->Pass:FT => !M:B >> !DMw
+:transition T
+90:21 DMw->Pass => DMw
+90:26 DMw->Pass => DMd
 90:30 DMd->Long => !Gkr:H
 :possession L
 90:48 Gkr->Long => !DMd:HD >> DMw:Cnt >> !Mw
-:transition T
+:attacking-transition T
 90:58 Mw->Move => Apd:Dv >> !Dpw # that's a dive!
-:transition L
+:establish L
 91:05 Dpw->Long => !DMd:FT >> D:HD >> !M
 :transition T
 91:14 M->Pass => DMd
@@ -1011,8 +1008,9 @@
 :attack T
 94:05 Aw->Cross => !Dp:HD >> M
 94:11 M->Long => !DM
-:transition L
+:establish L
 94:15 DM->ForwardPass => DM
+:transition L
 94:16 DM->Move => M
 94:17 M->Pass:Open => Aw
 :attack L
