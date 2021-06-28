@@ -83,7 +83,7 @@
 08:27 Mw:Mrk->ForwardPass => Mw
 08:28 Mw->Pass:FT => Mw
 08:29 Mw->BackPass:FT => Mw
-:possession T
+:attacking-possession T
 08:30 Mw->Pass => DMw
 08:33 DMw->Pass => DM
 08:43 DM:Pr->ForwardPass => DM
@@ -156,7 +156,7 @@
 15:51 D->Pass => Dpw
 15:52 Dpw->Pass:FT => Dpw # swap side
 :possession L
-15:56 Dpw => DMd
+15:56 Dpw -> DMd
 16:13 DMd->Long => A:Cnt >> !D:Clr >> M*T
 :set L: Throw-in
 16:39 M => !DMd:HD >> !DM:Cnt >> M
@@ -207,7 +207,9 @@
 :attack T
 19:44 Awp->Cross => !Gkr:H
 :possession L
-19:48 Gkr -> D
+19:48 Gkr -> Md
+:attacking-possession L
+19:58 Md -> D
 :pressed L
 20:12 D->Pass => Gkr
 20:14 Gkr->Pass:FT => Dd
@@ -216,6 +218,7 @@
 20:18 DMd->ForwardPass => DM
 20:21 DM->Move => M
 20:22 M->Pass => Mw
+:attacking-possession L
 20:24 Mw->Move => Aw
 :attack L
 20:27 Aw->Pass => A
@@ -255,6 +258,7 @@
 23:53 Aw->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
+# !!!
 :possession T
 24:57 D -> Gkr
 :pressed T
