@@ -187,8 +187,8 @@
 19:01 Dwp->Long => DM:Cnt >> DM
 :transition T
 19:06 DM->ForwardPass => M
+:counter-attack T
 19:09 M:Fr->Run => A
-:attack T
 19:10 A->Dribble => !D:I >> !DM
 :establish L
 19:11 DM->Pass:FT => Dw
@@ -464,9 +464,8 @@
 43:28 Gkr->HighPass => Dw:HD >> Dwp
 43:36 Dwp->Move => Dw
 43:38 Dw->ForwardPass => Mw:Fr
-:transition T
+:counter-attack T
 43:41 Mw:Fr->Run => Ad
-:attack T
 43:45 Ad->Pass:Open => !Gkr:H
 :possession L
 43:51 Gkr -> Dd
@@ -491,7 +490,6 @@
 :attack T
 45:14 Ad->Pass => A
 45:15 A->Pass:FT => A
-:attack T
 45:18 A->Shoot => !GK #r=0
 :possession L
 45:42 GK->Long => M:HD >> M:Cnt >> !DMw
@@ -546,9 +544,8 @@
 46:35 DM -> Gkr
 :pressed T
 46:53 Gkr->Long => M:Cnt
-:transition T
+:counter-attack T
 46:58 M->Move => A
-:attack T
 47:00 A->Move => Apd
 47:01 Apd->LowCross => !D*T
 :set L: Throw-in
@@ -589,8 +586,7 @@
 51:11 Dw->Pass => DMw:FT >> DMw
 51:13 DMw->Move => DMw
 51:14 DMw->Pass => Mw
-51:18 Mw->Move => A
-:attack T
+:counter-attack T
 51:20 A->SwapPlayPass => Ad
 51:22 Ad->Dribble => !Dpw:Ch
 :establish L
@@ -616,10 +612,11 @@
 52:55 Mw->Long => !DMd:HD >> !DMd
 :transition L
 53:00 DM->Long:Open => Apd
-:attack L
+:counter-attack L
 53:05 Apd->Shoot => Dp:B >> A:Ch >> A
 53:12 A->Pass => Ad
 53:13 Ad->Pass:FT => M
+:attack L
 53:14 M->Pass => Md
 53:17 Md->Move => Ad
 53:19 Ad->Long => !Gkr:H
@@ -840,15 +837,17 @@
 74:32 DM->Pass => !DMw
 :transition L
 74:33 DMw->Move => Md:Fr
+:counter-attack L
 74:38 Md:Fr->Pass => A:Fr
-:attack L
 74:42 A->HighPass => !Dp:HD >> !D:HD >> DM
 :transition T
 74:47 DM->Pass => DM
 74:50 DM->Pass:FT => M
+:counter-attack T
 74:52 M->Run => Ap >> !Dp:Ch >> C
 :set T: Corner
 75:05 CK->Pass => Apw
+:attack T
 75:07 Apw->Pass => Apd
 75:08 Apd->Pass => Awp
 75:09 Awp->Move => Apd
