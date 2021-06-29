@@ -258,7 +258,6 @@
 23:53 Aw->Cross:FT => !Dp:HD >> !DMd*F
 :set T: Freekick
 24:51 DMd:SP->Pass => D
-# !!!
 :possession T
 24:57 D -> Gkr
 :pressed T
@@ -455,6 +454,7 @@
 42:40 M => DM
 :possession L
 42:55 DM->Long => Mw
+:attacking-possession L
 42:59 Mw->ForwardPass => !D:I >> !DM:Cnt >> !DM*H
 :set T: Freekick
 43:12 DM:SP->Long => !DM:HD >> M:Cnt >> M
@@ -510,7 +510,7 @@
 :set T: Throw-in
 46:20 M => Mw:FT >> Mw:FT >> Mw
 46:25 Mw->Pass => M
-:possession T
+:attacking-possession T
 46:29 M -> Mw
 46:31 Mw->Pass => Aw
 :attack T
@@ -538,7 +538,7 @@
 :set T: Throw-in
 45:50 M => Mw
 45:56 Mw->Pass => Md
-:possession T
+:attacking-possession T
 45:57 Md -> DMw
 46:15 DMw->Pass => Awp
 :attack T
@@ -628,6 +628,7 @@
 :possession T
 53:34 DMd -> DMw
 53:39 DMw->ForwardPass => Mw:Fr # Nobody covering for Fabinho
+:attacking-possession T
 53:44 Mw->Long => Ap:Cnt
 :attack T
 53:48 Ap->Shoot => !Dp:B >> A:HD >> !Dp:Clr >> !Dwp:Ch >> !Dwp:Clr >> DMw
@@ -679,7 +680,7 @@
 59:49 DM->Pass => DMw
 59:53 DMw->Move => Mw
 59:59 Mw->BackPass => Mw
-:possession T
+:attacking-possession T
 60:01 Mw -> M
 60:05 M->Pass => Md:Mrk:Tck >> M
 60:07 M->Pass:FT => Md
@@ -719,7 +720,12 @@
 63:23 Dp->Pass => Gkr
 63:24 Gkr->Long:FT => !Mw:HD >> !DMd:HD >> D:Clr >> !Dwp:Ch
 :possession T
-63:41 Dwp -> DMd
+63:41 Dwp -> M
+:attacking-possession T
+63:55 M -> DMd
+64:05 DMd -> Gkr
+:possession T
+64:11 Gkr -> DMd
 64:19 DMd->Long => !DM:HD >> !DM:F
 :set L: Freekick
 64:41 DM:SP->Long => !DM*T
@@ -818,6 +824,7 @@
 :possession T
 72:22 Gkr -> DM
 72:28 DM->ForwardPass >> M:FT >> M
+:attacking-possession T
 72:32 M->Pass => A
 :attack T
 72:34 A->Pass => Apd
@@ -880,6 +887,11 @@
 :possession T
 77:22 D->Move => DM
 77:27 DM -> Mw
+:attacking-possession T
+77:31 Mw -> Gkr
+:possession T
+77:52 Gkr -> Mw
+:attacking-possession T
 78:09 Mw->Pass => Aw
 :attack T
 78:10 Aw->Move => Mw
@@ -898,12 +910,14 @@
 79:14 Gkr->Pass:FT => Dpd
 :possession T
 79:17 Dpd -> Md
+:attacking-possession T
 79:31 Md->Pass => M:Fr
 79:33 M->Move => A
 :attack T
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
+# !!!
 :possession L
 79:52 DMw->ForwardPass => DMw
 79:58 DMw->Pass:FT => Mw:Fr
