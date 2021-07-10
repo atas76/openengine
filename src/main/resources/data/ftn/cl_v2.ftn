@@ -917,10 +917,10 @@
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
-# !!!
 :possession L
 79:52 DMw->ForwardPass => DMw
 79:58 DMw->Pass:FT => Mw:Fr
+:attacking-possession L
 80:00 Mw->ForwardPass => !DMw
 :establish T
 80:02 DMw->ForwardPass => DMw
@@ -945,6 +945,7 @@
 :break
 :possession T
 82:10 DMw:Fr->Move => Mw
+:attacking-possession T
 82:15 Mw -> Md
 82:32 Md->Pass:FT => Aw
 :attack T
@@ -958,6 +959,7 @@
 85:20 Gkr->Long => !Gkr:H
 :possession L
 85:33 Gkr->HandPass => Mw
+:attacking-possession L
 85:41 Mw->Cross => !Dp:Cnt >> C
 :set L: Corner
 86:46 CK->Cross => !Dp:HD >> !Dp:Ch >> !Dp:HD >> !Dp:HD >> Ap:FT >> Apd:Fr
@@ -993,6 +995,7 @@
 91:14 M->Pass => DMd
 :possession T
 91:16 DMd -> Mw
+:attacking-possession T
 91:19 Mw->Long => Ad:HD >> !Dp:Clr >> C
 :set T: Corner
 91:44 CK->Cross => !Dp:HD >> Aw
@@ -1034,7 +1037,6 @@
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-# TODO Experimental: introduce attacking-possessions/attacking-transitions
 # TODO Classify passes based on direction
 # TODO Experimental: provide more context in terms of player positioning (tracking data)
 # TODO Describe lines positioning on flow state changes
