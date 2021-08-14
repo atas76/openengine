@@ -12,23 +12,23 @@
 04:10 M->Pass => Dw
 04:12 Dw->Pass => Mw
 04:23 Mw->Pass => M
-04:27 M->Pass => Aw     # TODO future
-04:34 Aw->Pass => C     # TODO future
+04:27 M->Pass => Aw     # TODO future: extra space
+04:34 Aw->Pass => C     # TODO future: extra space
 :set T: Corner
 05:15 CK->Cross => !D:HD >> M:Cnt
-05:22 M->Pass => Gkd    # TODO future
+05:22 M->Pass => Gkd    # TODO future: Goalkeeper movement
 05:27 Gkd->Pass => Dw
 05:45 Dw->Pass => !M
 :possession L
 05:53 M->Pass => A
-05:58 A->Pass => A      # TODO future
-05:59 A->Pass => !D     # TODO future
+05:58 A->Pass => A      # TODO future: pass between attackers
+05:59 A->Pass => !D     # TODO future: pass between attackers
 :possession T
 06:02 D->Pass => !M
 :break
 :possession T
-06:33 Gkr->Pass => Aw               # TODO future
-06:40 Aw->Move => !Dw:Clr >> M*T    # TODO future
+06:33 Gkr->Pass => Aw               # TODO future: extra space
+06:40 Aw->Move => !Dw:Clr >> M*T    # TODO future: extra space, move with ball
 :set T: Throw-in                    # TODO future
 06:53 M => Mw                       # TODO future
 :possession T
@@ -39,19 +39,19 @@
 07:22 Gkr->Pass => !A*T             # TODO future
 :set T: Throw-in                    # TODO future
 07:32 A => M                        # TODO future
-07:37 M->Pass => Aw                 # TODO future
-07:40 Aw->Pass => M                 # TODO future
+07:37 M->Pass => Aw                 # TODO future: extra space
+07:40 Aw->Pass => M                 # TODO future: extra space
 07:45 M->Pass => !Dw*T              # TODO future
 :set L: Throw-in                    # TODO future
 08:12 D => M                        # TODO future
 :possession L
 08:18 M->Pass => !Dw
 :possession T
-08:25 Dw->Move => Mw                # TODO future
-08:49 Mw->Move => Aw                # TODO future
-08:50 Aw->Move => A                 # TODO future
-08:56 A->Pass => A                  # TODO future
-08:58 A->Move => !D:I >> A          # TODO future
+08:25 Dw->Move => Mw                # TODO future: move with ball
+08:49 Mw->Move => Aw                # TODO future: move with ball, extra space
+08:50 Aw->Move => A                 # TODO future: move with ball, extra space
+08:56 A->Pass => A                  # TODO future: pass between attackers
+08:58 A->Move => !D:I >> A          # TODO future: move with ball in attacking space
 09:02 A->Shoot => !GK #:r=0
 :possession L
 09:20 GK->Pass => D
@@ -64,17 +64,17 @@
 :set T: Throw-in                    # TODO future
 11:34 D => Mw                       # TODO future
 12:11 Mw->Pass => A
-12:13 A->Move => !Dw                # TODO future
+12:13 A->Move => !Dw                # TODO future: move with ball in attacking space
 :possession L
 12:17 Dw->Pass => !Mw
 :break
 :possession T
 12:56 Gkr->Pass => Mw
 13:08 Mw->Pass => M
-13:17 M->Pass => Aw                 # TODO future
-13:26 Aw->Pass => Mw                # TODO future
-13:28 Mw->Pass => Aw                # TODO future
-13:30 Aw->Cross => !Dp:HD >> A*T    # TODO future
+13:17 M->Pass => Aw                 # TODO future: extra space
+13:26 Aw->Pass => Mw                # TODO future: extra space
+13:28 Mw->Pass => Aw                # TODO future: extra space
+13:30 Aw->Cross => !Dp:HD >> A*T    # TODO future: extra space, cross
 :set T: Throw-in                    # TODO future
 13:46 A => Mw                       # TODO future
 13:47 Mw->Pass => M
@@ -92,7 +92,7 @@
 16:13 M->Pass => !D:Clr >> M*T      # TODO future
 :set L: Throw-in                    # TODO future
 16:39 M => M                        # TODO future
-16:46 M->Move => A                  # TODO future
+16:46 M->Move => A                  # TODO future: move with ball
 16:47 A->Shoot => !GK  #:r=2
 :break
 :possession L
@@ -103,61 +103,61 @@
 18:20 M->Pass => !M
 :possession L
 18:28 M->Pass => Mw
-18:29 Mw->Move => Aw            # TODO future
-18:34 Aw->Move => !GK           # TODO future
+18:29 Mw->Move => Aw            # TODO future: move with ball, extra space
+18:34 Aw->Move => !GK           # TODO future: move with ball, extra space
 :possession T
 18:53 GK->Pass => Dw
 19:01 Dw->Pass => M
-19:09 M->Move => A              # TODO future
-19:10 A->Move => !D >> !M       # TODO future
+19:09 M->Move => A              # TODO future: move with ball
+19:10 A->Move => !D >> !M       # TODO future: move with ball
 :possession L
 19:11 M->Pass => Dw
 19:15 Dw->Pass => !M
 :possession T
 19:23 M->Pass => A
-19:26 A->Pass => M              # TODO future
+19:26 A->Pass => M              # TODO future: back pass from attacker
 19:28 M->Pass => A
-19:30 A->Pass => A              # TODO future
-19:32 A->Pass => !D:Clr >> A*T  # TODO future
+19:30 A->Pass => A              # TODO future: pass between attackers
+19:32 A->Pass => !D:Clr >> A*T  # TODO future: pass between attackers
 :set T: Throw-in                # TODO future
 19:40 A => Aw                   # TODO future
 :possession T
-19:44 Aw->Cross => !Gkr:H       # TODO future
+19:44 Aw->Cross => !Gkr:H       # TODO future: extra space, cross
 :possession L
 19:48 Gkr->Pass => Mw
-20:23 Mw->Move => Aw            # TODO future
-20:27 Aw->Pass => A             # TODO future
-20:28 A->Pass => A              # TODO future
-20:29 A->Pass => A              # 1 - 2 pass     # TODO future
+20:23 Mw->Move => Aw            # TODO future: move with ball, extra space
+20:27 Aw->Pass => A             # TODO future: extra space
+20:28 A->Pass => A              # TODO future: pass between attackers
+20:29 A->Pass => A              # 1 - 2 pass     # TODO future: pass between attackers
 20:30 A->Shoot => !D:B >> C
 :set L: Corner
 21:11 CK->Cross => !Gkr:Punch >> A*T    # TODO future
 :set L: Throw-in                        # TODO future
 21:47 A => Aw                           # TODO future
-21:51 Aw->Move => A                     # TODO future
-21:52 A->Shoot => !D*T                  # TODO future account for shots totally missing the target (Salah)
+21:51 Aw->Move => A                     # TODO future: move with ball, extra space
+21:52 A->Shoot => !D*T                  # TODO future: shot totally missing the target (Salah)
 :set T: Throw-in                        # TODO future
 22:17 D => Dw:Cnt >> !Aw:I >> !Aw       # TODO future
-22:20 Aw->Move => A                     # TODO future
-22:22 A->Pass => !D:Cl >> !Dw >> Aw:I >> Mw     # TODO future
-22:29 Mw->Pass => Aw                            # TODO future
-22:37 Aw->Cross => !D:HD >> A*T                 # TODO future
+22:20 Aw->Move => A                     # TODO future: move with ball, extra space
+22:22 A->Pass => !D:Cl >> !Dw >> Aw:I >> Mw     # TODO future: ball clearance, ball contention
+22:29 Mw->Pass => Aw                            # TODO future: extra space
+22:37 Aw->Cross => !D:HD >> A*T                 # TODO future: extra space, cross
 :set L: Throw-in                                # TODO future
 23:03 A => Aw:HD >> !Dw:HD >> !Dw:Cnt           # TODO future
 23:06 Dw->Pass => !A
-23:10 A->Pass => A                              # TODO future
-23:11 A->Pass => M                              # TODO future
-23:14 M->Move => A                              # TODO future
-23:15 A->Pass => Aw                             # TODO future
-23:22 Aw->Cross => !Dp:I >> C                   # TODO future
+23:10 A->Pass => A                              # TODO future: pass between attackers
+23:11 A->Pass => M                              # TODO future: back pass from attacker
+23:14 M->Move => A                              # TODO future: move with ball
+23:15 A->Pass => Aw                             # TODO future: extra space
+23:22 Aw->Cross => !Dp:I >> C                   # TODO future: extra space, cross
 :set L: Corner
-23:50 CK->Pass => Aw                            # TODO future
-23:53 Aw->Cross => !D:HD >> !D                  # TODO future
+23:50 CK->Pass => Aw                            # TODO future: extra space
+23:53 Aw->Cross => !D:HD >> !D                  # TODO future: extra space, cross
 :possession T
 24:57 D->Pass => Gkr
 25:01 Gkr->Pass => Dw
 25:04 Dw->Pass => Gkr
-25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T  # TODO future
+25:31 Gkr->Pass => !M:HD >> M:Cnt >> !M:Ch >> !M*T  # TODO future: header, ball contention
 :set L: Throw-in                                    # TODO future
 25:58 M => !M:HD >> M:Cnt >> !M:FT >> M             # TODO future
 :possession L
@@ -185,7 +185,7 @@
 29:35 Mw->Pass => !M:B >> M
 :break
 :possession T
-29:50 M->Pass => Gkr                                # TODO future
+29:50 M->Pass => Gkr                                # TODO future: back pass to Goalkeeper
 30:02 Gkr->Pass => !M:FT >> !D
 :possession L
 30:10 D->Pass => !M*T                               # TODO future
@@ -198,7 +198,7 @@
 :possession L
 31:00 Mw->Pass => !Dw
 :possession T
-31:03 Dw->Pass => !Mw >> !M:HD >> D                 # TODO future
+31:03 Dw->Pass => !Mw >> !M:HD >> D                 # TODO future: pass block, ball contention
 :break
 :possession T
 31:20 M->Pass => D
@@ -207,20 +207,20 @@
 :set L: Throw-in                                    # TODO future
 32:19 M => M:FT >> D:Clr >> !M                      # TODO future
 :possession T
-32:25 M->Move => A                                  # TODO future
-32:27 A->Pass => !D:I >> M                          # TODO future
+32:25 M->Move => A                                  # TODO future: move with ball
+32:27 A->Pass => !D:I >> M                          # TODO future: pass between attackers
 :possession T
-32:40 M->Pass => Aw                                 # TODO future
-32:46 Aw->Pass => Mw                                # TODO future
+32:40 M->Pass => Aw                                 # TODO future: extra space
+32:46 Aw->Pass => Mw                                # TODO future: extra space
 32:48 Mw->Pass => M
-32:55 M->Pass => M:FT >> A:Cnt >> M                 # TODO future
+32:55 M->Pass => M:FT >> A:Cnt >> M                 # TODO future: ball contention
 33:04 M->Pass => !D*T                               # TODO future
 :set L: Throw-in                                    # TODO future
 33:22 D => !Mw:HD >> !Aw:HD >> !Aw                  # TODO future
-33:32 Aw->LowCross => !Dw:I >> C                    # TODO future
+33:32 Aw->LowCross => !Dw:I >> C                    # TODO future: extra space, low cross
 :set T: Corner
-33:43 CK->Pass => Aw                                # TODO future
-33:46 Aw->Cross => !D:HD >> A*T                     # TODO future
+33:43 CK->Pass => Aw                                # TODO future: extra space
+33:46 Aw->Cross => !D:HD >> A*T                     # TODO future: extra space, cross
 :set T: Throw-in                                    # TODO future
 34:11 A => Aw:Cnt >> !Dw:I >> A*T                   # TODO future
 :set T: Throw-in                                    # TODO future
@@ -228,9 +228,9 @@
 34:35 Mw->Pass => M
 :possession T
 34:41 M->Pass => Dw
-35:06 Dw->Pass => !Mw:HD >> !Aw                     # TODO future
+35:06 Dw->Pass => !Mw:HD >> !Aw                     # TODO future: header, extra space
 :possession L
-35:15 Aw->Cross => !GK                              # TODO future
+35:15 Aw->Cross => !GK                              # TODO future: extra space, cross
 :possession T
 35:42 GK->Pass => D
 35:47 D->Pass => Dw
@@ -240,12 +240,12 @@
 36:15 Gkr->Pass => !DM*T                            # TODO future
 :set T: Throw-in                                    # TODO future
 36:25 M => Mw:FT >> Mw                              # TODO future
-36:28 Mw->Pass => Gkr                               # TODO future
+36:28 Mw->Pass => Gkr                               # TODO future: back pass to Goalkeeper
 :possession T
 36:32 Gkr->Pass => Dw
 36:46 Dw->Pass => !Mw:I >> !Mw:Cnt
 :possession L
-36:48 Mw->Pass => Aw                                # TODO future
+36:48 Mw->Pass => Aw                                # TODO future: extra space
 36:59 Aw:Hld => !Dw:Ch >> !D*T                      # TODO future
 :set T: Throw-in                                    # TODO future
 37:24 D => M:Cnt                                    # TODO future
@@ -253,7 +253,7 @@
 :possession L
 37:32 Mw->Pass => D
 37:39 D->Pass => Mw
-37:42 Mw->Move => A                                 # TODO future
+37:42 Mw->Move => A                                 # TODO future: move with ball
 37:47 A->Shoot => Gkr:S >> C #r=2
 :set L: Corner
 38:28 CK->Cross => !D:HD >> A
@@ -262,44 +262,44 @@
 :possession T
 40:12 GK->Pass => !M:HD >> !M:Cnt >> !M:FT >> !M
 :possession L
-40:21 M->Pass => Aw                                 # TODO future
-40:32 Aw->Pass => Mw                                # TODO future
+40:21 M->Pass => Aw                                 # TODO future: extra space
+40:32 Aw->Pass => Mw                                # TODO future: extra space
 40:36 Mw->Pass => A
-40:39 A->Pass => Aw                                 # TODO future
+40:39 A->Pass => Aw                                 # TODO future: extra space
 40:42 Aw->Pass => !Dw:Ch >> M*T                     # TODO future
 :set L: Throw-in                                    # TODO future
 40:59 M => Aw:HD >> Aw                              # TODO future
-41:03 Aw->Move => !Dw                               # TODO future
+41:03 Aw->Move => !Dw                               # TODO future: extra space, move with ball
 :possession T
-41:04 Dw->Move => !Mw:I >> Dw                       # TODO future
-41:06 Dw->Move => !M:I                              # TODO future
+41:04 Dw->Move => !Mw:I >> Dw                       # TODO future: move with ball, interception
+41:06 Dw->Move => !M:I                              # TODO future: move with ball, interception
 :possession L
-41:09 M->Move => A                                  # TODO future
+41:09 M->Move => A                                  # TODO future: move with ball
 41:10 A->Shoot => !D:B >> A:Cnt
-41:14 A->Move => !D:Ch >> A                         # TODO future
-41:16 A->Pass => Aw                                 # TODO future
-41:18 Aw->Cross => !Dw:B >> C                       # TODO future
+41:14 A->Move => !D:Ch >> A                         # TODO future: move with ball, challenge
+41:16 A->Pass => Aw                                 # TODO future: extra space
+41:18 Aw->Cross => !Dw:B >> C                       # TODO future: extra space, cross
 :set L: Corner
 41:45 CK->Cross => !D:HD >> A:Cnt
 41:49 A->Shoot => !D:B >> C
 :set L: Corner
-42:20 CK->Cross => !D:Clr >> M*T                    # TODO future
+42:20 CK->Cross => !D:Clr >> M*T                    # TODO future: cross
 :set L: Throw-in                                    # TODO future
 42:40 M => M                                        # TODO future
 :possession L
 42:55 M->Pass => Mw
-42:59 Mw->Pass => !D:I >> !M:Cnt >> !M              # TODO future
+42:59 Mw->Pass => !D:I >> !M:Cnt >> !M              # TODO future: interception, ball contention
 :possession T
-43:12 M->Pass => !M:HD >> M:Cnt >> M                # TODO future
-43:17 M->Move => !D:Ch >> !D                        # TODO future
+43:12 M->Pass => !M:HD >> M:Cnt >> M                # TODO future: header, ball contention
+43:17 M->Move => !D:Ch >> !D                        # TODO future: move with ball, challenge
 :possession L
 43:22 D->Pass => !Dw
 :possession T
 43:27 Dw->Pass => Gkr
 43:28 Gkr->Pass => Dw:HD >> Dw
 43:38 Dw->Pass => Mw
-43:41 Mw->Move => A                                 # TODO future
-43:45 A->Pass => !Gkr:H                             # TODO future
+43:41 Mw->Move => A                                 # TODO future: move with ball
+43:45 A->Pass => !Gkr:H                             # TODO future: pass between attackers
 :possession L
 43:51 Gkr->Pass => Dw
 44:23 Dw->Pass => !D:HD >> !Gkr:H
@@ -311,9 +311,9 @@
 44:59 Mw->Pass => M:HD >> !M:FT >> M
 :possession T
 45:10 M->Pass => Mw
-45:13 Mw->Move => A                                 # TODO future
-45:14 A->Pass => A                                  # TODO future
-45:15 A->Pass => A                                  # TODO future
+45:13 Mw->Move => A                                 # TODO future: move with ball
+45:14 A->Pass => A                                  # TODO future: pass between attackers
+45:15 A->Pass => A                                  # TODO future: pass between attackers
 45:18 A->Shoot => !GK #r=0
 :possession L
 45:42 GK->Pass => M:HD >> M:Cnt >> !Dw
@@ -328,10 +328,10 @@
 46:25 Mw->Pass => M
 :possession T
 46:29 M->Pass => Mw
-46:31 Mw->Pass => Aw                                # TODO future
-46:35 Aw->Pass => Mw                                # TODO future
-46:40 Mw->Pass => Aw                                # TODO future
-46:44 Aw->LowCross => !D:I >> Aw:Ch >> !Dw          # TODO future
+46:31 Mw->Pass => Aw                                # TODO future: extra space
+46:35 Aw->Pass => Mw                                # TODO future: extra space
+46:40 Mw->Pass => Aw                                # TODO future: extra space
+46:44 Aw->LowCross => !D:I >> Aw:Ch >> !Dw          # TODO future: extra space, low cross
 :possession L
 46:50 Dw->Pass => !M*T                              # TODO future
 :HT
@@ -348,17 +348,17 @@
 45:56 Mw->Pass => M
 :possession T
 45:57 M->Pass => Dw
-46:15 Dw->Pass => Aw                                # TODO future
-46:24 Aw->Cross => D:HD >> !D:Cl >> M               # TODO future
-46:35 M->Pass => Gkr                                # TODO future
+46:15 Dw->Pass => Aw                                # TODO future: extra space
+46:24 Aw->Cross => D:HD >> !D:Cl >> M               # TODO future: extra space, cross
+46:35 M->Pass => Gkr                                # TODO future: back pass to Goalkeeper
 46:53 Gkr->Pass => M:Cnt
-46:58 M->Move => Aw                                 # TODO future
-47:01 Aw->LowCross => !D*T                          # TODO future
+46:58 M->Move => Aw                                 # TODO future: move with ball, extra space
+47:01 Aw->LowCross => !D*T                          # TODO future: extra space, low cross
 :set L: Throw-in                                    # TODO future
 47:26 D => !Mw:HD >> M*T                            # TODO future
 :set L: Throw-in                                    # TODO future
 47:36 M => Mw:HD >> !Mw:FT >> Mw:HD >> Mw           # TODO future
-47:44 Mw->Pass => !Mw                               # TODO future
+47:44 Mw->Pass => !Mw                               # TODO future: local pass
 :possession T
 47:47 Mw->Pass => !Dw
 :break
@@ -366,7 +366,7 @@
 48:00 DM => !Dw                                     # TODO future
 :possession T
 48:04 Dw->Pass => Gkr
-48:22 Gkr->Pass => !M:HD >> D:Cnt                   # TODO future
+48:22 Gkr->Pass => !M:HD >> D:Cnt                   # TODO future: header, ball control
 48:29 D->Pass => !M*T                               # TODO future
 :set L: Throw-in                                    # TODO future
 48:53 M => !Dw                                      # TODO future
@@ -382,23 +382,23 @@
 50:48 M => Dw                                       # TODO future
 50:54 Dw->Pass => Gkr
 :possession T
-50:56 Gkr->Pass => M:HD >> !Dw:Cnt >> !Dw:FT >> Dw:I >> Dw  # TODO future
+50:56 Gkr->Pass => M:HD >> !Dw:Cnt >> !Dw:FT >> Dw:I >> Dw  # TODO future: header, ball contention
 51:14 Dw->Pass => Mw
-51:18 Mw->Move => A                                         # TODO future
-51:20 A->Pass => A                                          # TODO future
-51:22 A->Move => !Dw:Ch                                     # TODO future
+51:18 Mw->Move => A                                         # TODO future: move with ball
+51:20 A->Pass => A                                          # TODO future: pass between attackers
+51:22 A->Move => !Dw:Ch                                     # TODO future: move with ball, challenge
 :possession L
-51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T                   # TODO future
+51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T                   # TODO future: tackling, header
 :set L: Throw-in                                            # TODO future
 51:55 D => Dw                                               # TODO future
 51:58 Dw->Pass => Mw
 :possession L
-52:06 Mw->Pass => Aw                                        # TODO future
-52:15 Aw->Pass => A                                         # TODO future
-52:16 A->Pass => Aw                                         # TODO future
-52:20 Aw->Pass => Mw                                        # TODO future
+52:06 Mw->Pass => Aw                                        # TODO future: extra space
+52:15 Aw->Pass => A                                         # TODO future: extra space
+52:16 A->Pass => Aw                                         # TODO future: extra space
+52:20 Aw->Pass => Mw                                        # TODO future: extra space
 52:22 Mw->Pass => M
-52:23 M->Move => A                                          # TODO future
+52:23 M->Move => A                                          # TODO future: move with ball
 52:24 A->Shoot => !D:Tck >> !Gkr:H
 :possession T
 52:33 Gkr->Pass => D
@@ -407,10 +407,10 @@
 :possession L
 53:00 M->Pass => A
 53:05 A->Shoot => D:B >> A:Ch >> A
-53:12 A->Pass => A                                          # TODO future
-53:13 A->Pass => M                                          # TODO future
-53:17 M->Move => A                                          # TODO future
-53:19 A->Pass => !Gkr:H                                     # TODO future
+53:12 A->Pass => A                                          # TODO future: pass between attackers
+53:13 A->Pass => M                                          # TODO future: back pass from attacker
+53:17 M->Move => A                                          # TODO future: move with ball
+53:19 A->Pass => !Gkr:H                                     # TODO future: pass between attackers
 :break
 :possession T
 53:34 D->Pass => Dw
@@ -418,16 +418,16 @@
 53:44 Mw->Pass => A:Cnt
 53:48 A->Shoot => !D:B >> A:HD >> !D:Clr >> !Dw:Ch >> !Dw:Clr >> Mw
 54:05 Mw->Pass => M
-54:23 M->Pass => Aw                                                 # TODO future
-54:31 Aw->Move => Aw                                                # TODO future
-54:33 Aw->Pass => A                                                 # TODO future
+54:23 M->Pass => Aw                                                 # TODO future: extra space
+54:31 Aw->Move => Aw                                                # TODO future: move with ball, extra space
+54:33 Aw->Pass => A                                                 # TODO future: extra space
 54:34 A->Pass => !D:Clr >> M*T                                      # TODO future
 :injury
 :break
 :possession T
 56:02 Gkr->Pass => !M:HD >> !M:HD >> M:FT >> !M:Cnt >> M:FT >> M
-56:16 M->Move => Aw                                                 # TODO future
-56:22 Aw->Cross => !Dw:B >> C                                       # TODO future
+56:16 M->Move => Aw                                                 # TODO future: move with ball, extra space
+56:22 Aw->Cross => !Dw:B >> C                                       # TODO future: extra space, cross
 :set T: Corner
 56:51 CK->Cross => !Gkr:Punch >> A
 56:55 A->Shoot => !D:B >> C
@@ -443,7 +443,7 @@
 58:16 D->Pass => Gkr
 58:22 Gkr->Pass => Mw:Cnt
 58:27 Mw->Pass => Dw
-58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T                       # TODO future
+58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T                       # TODO future: pass block, header, contention
 :set T: Throw-in                                                    # TODO future
 58:44 M => Mw                                                       # TODO future
 58:48 Mw->Pass => D
@@ -458,16 +458,16 @@
 59:39 M->Pass => !D:I >> M:HD >> !D:HD >> M:Cnt >> !D:FT >> !D
 :possession T
 59:49 D->Pass => Dw
-59:53 Dw->Move => Mw                                                # TODO future
+59:53 Dw->Move => Mw                                                # TODO future: move with ball
 60:01 Mw->Pass => M
 60:02 M->Pass => Mw
 60:04 Mw->Pass => M
-60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO future
+60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO future: tackling
 60:10 M->Pass => A:FT >> A:FT -> A
-60:13 A->Pass => !D:I >> A                                          # TODO future
-60:17 A->Shoot => !Dp:B >> Aw                                       # TODO future
-60:20 Aw->Pass => Mw                                                # TODO future
-60:23 Mw->Move => M                                                 # TODO future
+60:13 A->Pass => !D:I >> A                                          # TODO future: pass between attackers, interception
+60:17 A->Shoot => !Dp:B >> Aw                                       # TODO future: extra space
+60:20 Aw->Pass => Mw                                                # TODO future: extra space
+60:23 Mw->Move => M                                                 # TODO future: move with ball
 60:24 M->Pass => A:FT >> !GK
 :possession L
 60:53 GK->Pass => !Dw:I >> M*T                                      # TODO future
@@ -479,10 +479,10 @@
 62:19 M->Pass => D
 62:22 D->Pass => Dw
 62:36 Dw->Pass => M
-62:41 M->Move => !GK                                                # TODO future
+62:41 M->Move => !GK                                                # TODO future: move with ball
 :break
 :possession T
-63:09 D->Move => Dw                                                 # TODO future
+63:09 D->Move => Dw                                                 # TODO future: move with ball
 63:13 Dw->Pass => M
 63:14 M->Pass => Mw
 63:20 Mw->Pass => !D
@@ -497,55 +497,55 @@
 :substitution
 :set T: Throw-in                                                    # TODO future
 65:29 D => Dw                                                       # TODO future
-65:32 Dw->Pass => Mw:HD >> Dw                                       # TODO future
+65:32 Dw->Pass => Mw:HD >> Dw                                       # TODO future: header
 65:39 Dw->Pass => D
-65:42 D->Pass => M:Cnt >> !Mw                                       # TODO future
+65:42 D->Pass => M:Cnt >> !Mw                                       # TODO future: ball control
 :possession L
-65:45 Mw->Pass => Gkr                                               # TODO future
+65:45 Mw->Pass => Gkr                                               # TODO future: back pass to Goalkeeper
 65:48 Gkr->Pass => Dw
 65:50 Dw->Pass => M
 65:52 M->Pass => Dw
 65:54 Dw->Pass => M:Cnt >> M
 66:00 M->Pass => Mw
-66:01 Mw->Move => A                                                 # TODO future
-66:05 A->Pass => !D:HD >> C                                         # TODO future
+66:01 Mw->Move => A                                                 # TODO future: move with ball
+66:05 A->Pass => !D:HD >> C                                         # TODO future: header
 :set L: Corner
-66:35 CK->Cross => !D:Cl >> A*T                                     # TODO future
+66:35 CK->Cross => !D:Cl >> A*T                                     # TODO future: cross
 :set L: Throw-in                                                    # TODO future
 66:51 A => !Dw:Tck >> A*T                                           # TODO future
 :set L: Throw-in                                                    # TODO future
 67:00 A => Aw                                                       # TODO future
-67:04 Aw->Pass => !GK                                               # TODO future
+67:04 Aw->Pass => !GK                                               # TODO future: extra space
 :possession T
-67:18 GK->Pass => Mw:HD >> M                                        # TODO future
+67:18 GK->Pass => Mw:HD >> M                                        # TODO future: header
 67:27 M->Pass => Mw
 67:30 Mw->Pass => !Dw*T                                             # TODO future
 :set L: Throw-in                                                    # TODO future
 67:51 Dw => Mw:HD >> M:Cnt                                          # TODO future
-67:59 M->Move => Mw                                                 # TODO future
-68:04 Mw->Move => A                                                 # TODO future
+67:59 M->Move => Mw                                                 # TODO future: move with ball
+68:04 Mw->Move => A                                                 # TODO future: move with ball
 :possession L
-68:07 A->Pass => A                                                  # TODO future
-68:08 A->Pass => A                                                  # TODO future
+68:07 A->Pass => A                                                  # TODO future: pass between attackers
+68:08 A->Pass => A                                                  # TODO future: pass between attackers
 68:09 A->Shoot => !GK #r=2
 :break
 :possession T
 68:41 Gkr->Pass => D
 69:01 D->Pass => !D:B >> M
-69:06 M->Move => A                                                  # TODO future
-69:11 A->Pass => Aw                                                 # TODO future
-69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO future
-69:35 Mw->Pass => !D:HD >> M                                        # TODO future
+69:06 M->Move => A                                                  # TODO future: move with ball
+69:11 A->Pass => Aw                                                 # TODO future: extra space
+69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO future: cross, block, clearance
+69:35 Mw->Pass => !D:HD >> M                                        # TODO future: header
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
-69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO future
-69:59 Aw->LowCross => Aw  # opposite side                           # TODO future
-70:04 Aw->Cross => Aw # opposite side                               # TODO future
-70:08 Aw->Cross => !Gkr:H                                           # TODO future
+69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO future: control, extra space
+69:59 Aw->LowCross => Aw  # opposite side                           # TODO future: extra space, low cross
+70:04 Aw->Cross => Aw # opposite side                               # TODO future: extra space, cross
+70:08 Aw->Cross => !Gkr:H                                           # TODO future: extra space, cross
 :possession L
-70:17 Gkr->Pass => Aw                                               # TODO future
-70:23 Aw->Move => A                                                 # TODO future
-70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T                     # TODO future
+70:17 Gkr->Pass => Aw                                               # TODO future: extra space
+70:23 Aw->Move => A                                                 # TODO future: extra space, move with ball
+70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T                     # TODO future:
 :set L: Throw-in                                                    # TODO future
 71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T                          # TODO future
 :set T: Throw-in                                                    # TODO future
@@ -562,9 +562,9 @@
 72:22 Gkr->Pass => M
 72:28 M->Pass >> M:FT >> M
 72:32 M->Pass => A
-72:34 A->Pass => A                                                  # TODO future
-72:34 A->Pass => A                                                  # TODO future
-72:35 A->Pass => !Gkr:H                                             # TODO future
+72:34 A->Pass => A                                                  # TODO future: pass between attackers
+72:34 A->Pass => A                                                  # TODO future: pass between attackers
+72:35 A->Pass => !Gkr:H                                             # TODO future: pass between attackers
 :fair-play
 :substitution
 :possession L
@@ -576,20 +576,20 @@
 74:30 Mw->Pass => M
 74:32 M->Pass => !Mw
 :possession L
-74:33 Mw->Move => M                                                 # TODO future
+74:33 Mw->Move => M                                                 # TODO future: move with ball
 74:38 M->Pass => A
-74:42 A->Pass => !D:HD >> !D:HD >> M                                # TODO future
+74:42 A->Pass => !D:HD >> !D:HD >> M                                # TODO future: pass between attackers, header
 :possession T
-74:52 M->Move => A >> !D:Ch >> C                                    # TODO future
+74:52 M->Move => A >> !D:Ch >> C                                    # TODO future: move with ball, challenge
 :set T: Corner
-75:05 CK->Pass => Aw                                                # TODO future
-75:07 Aw->Pass => A                                                 # TODO future
-75:08 A->Pass => Aw                                                 # TODO future
-75:09 Aw->Move => A                                                 # TODO future
-75:12 A->Move => Aw                                                 # TODO future
-75:13 Aw->Cross => !D:B >> Aw                                       # TODO future
-75:16 Aw->Cross => !D:HD >> Aw                                      # TODO future
-75:23 Aw->Pass => Mw                                                # TODO future
+75:05 CK->Pass => Aw                                                # TODO future: extra space
+75:07 Aw->Pass => A                                                 # TODO future: extra space
+75:08 A->Pass => Aw                                                 # TODO future: extra space
+75:09 Aw->Move => A                                                 # TODO future: extra space
+75:12 A->Move => Aw                                                 # TODO future: move with ball, extra space
+75:13 Aw->Cross => !D:B >> Aw                                       # TODO future: extra space, cross, block
+75:16 Aw->Cross => !D:HD >> Aw                                      # TODO future: extra space, cross, header
+75:23 Aw->Pass => Mw                                                # TODO future: extra space
 75:26 Mw->Pass => !D
 :break
 :possession T
@@ -606,26 +606,26 @@
 :set L: Throw-in                                                    # TODO future
 77:11 M => !Dw:HD >> !Dw:FT >> !D                                   # TODO future
 :possession T
-77:22 D->Move => M                                                  # TODO future
+77:22 D->Move => M                                                  # TODO future: move with ball
 77:27 M->Pass => Mw
-78:09 Mw->Pass => Aw                                                # TODO future
-78:10 Aw->Move => Mw                                                # TODO future
-78:13 Mw->Pass => Aw                                                # TODO future
-78:18 Aw->Cross => A                                                # TODO future
+78:09 Mw->Pass => Aw                                                # TODO future: extra space
+78:10 Aw->Move => Mw                                                # TODO future: extra space, move with ball
+78:13 Mw->Pass => Aw                                                # TODO future: extra space
+78:18 Aw->Cross => A                                                # TODO future: extra space, cross
 78:20 A->HdSht => !GK #r=1, over
 :break
 :possession T
-78:59 M->Pass => M:FT >> M                                          # TODO future
-79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt                          # TODO future
+78:59 M->Pass => M:FT >> M                                          # TODO future: first touch
+79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt                          # TODO future: challenge, clearance, control, contention
 :possession L
 79:10 M->Pass => !D
 :possession T
-79:12 M->Pass => Gkr                                                # TODO future
+79:12 M->Pass => Gkr                                                # TODO future: back pass to Goalkeeper
 79:14 Gkr->Pass => D
 79:22 D->Pass => M
-79:33 M->Move => A                                                  # TODO future
+79:33 M->Move => A                                                  # TODO future: move with ball
 79:34 A->Shoot => !Gkr:S >> A #r=2
-79:38 A->Pass => A                                                  # TODO future
+79:38 A->Pass => A                                                  # TODO future: pass between attackers
 79:39 A->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -633,11 +633,11 @@
 80:00 Mw->Pass => !Dw
 :possession T
 80:02 Dw->Pass => Mw
-80:05 Mw->Move => M                                                 # TODO future
+80:05 Mw->Move => M                                                 # TODO future: move with ball
 80:06 M->Pass => D
 80:07 D->Pass => Mw
-80:12 Mw->Move => M                                                 # TODO future
-80:17 M->Move => A                                                  # TODO future
+80:12 Mw->Move => M                                                 # TODO future: move with ball
+80:17 M->Move => A                                                  # TODO future: move with ball
 80:20 A->Shoot => !Gkr:H        #r=1
 :break
 :possession L
@@ -646,15 +646,15 @@
 80:34 Dw->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !D:HD >> A:Cnt
-81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A              # TODO future
+81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A              # TODO future: pass between attackers, clearance, header, control, contention
 82:01 A->Shoot => !GK    #r=0
 :break
 :possession T
-82:10 Dw->Move => Mw                                                # TODO future
+82:10 Dw->Move => Mw                                                # TODO future: move with ball
 82:15 Mw->Pass => M
-82:32 M->Pass => Aw                                                 # TODO future
-82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO future
-84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO future
+82:32 M->Pass => Aw                                                 # TODO future: extra space
+82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO future: extra space, cross, header, control
+84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO future: extra space
 :set T: Corner
 84:37 CK->Cross => A:B >> !D
 :break
@@ -668,8 +668,8 @@
 86:53 A->Shoot => G
 :break
 :possession T
-88:20 Mw->Move => Aw                                                # TODO future
-88:22 Aw->Cross => A:Cnt >> !GK                                     # TODO future
+88:20 Mw->Move => Aw                                                # TODO future: extra space, move with ball
+88:22 Aw->Cross => A:Cnt >> !GK                                     # TODO future: extra space, cross, control
 :break
 :substitution
 :possession T
@@ -687,7 +687,7 @@
 :possession L
 90:48 Gkr->Pass => !M:HD >> Mw:Cnt >> !Mw
 :possession T
-90:58 Mw->Move => A:Dv >> !Dw                                       # TODO future
+90:58 Mw->Move => A:Dv >> !Dw                                       # TODO future: move with ball, dive
 :possession L
 91:05 Dw->Pass => !M:FT >> D:HD >> !M
 :possession T
@@ -695,37 +695,37 @@
 91:16 D->Pass => Mw
 91:19 Mw->Pass => A:HD >> !D:Clr >> C
 :set T: Corner
-91:44 CK->Cross => !D:HD >> Aw                                      # TODO future
-91:50 Aw->Move => A                                                 # TODO future
+91:44 CK->Cross => !D:HD >> Aw                                      # TODO future: cross, header, extra space
+91:50 Aw->Move => A                                                 # TODO future: extra space, move with ball
 91:52 A->Shoot => !Gkr:H    #r=1
 :possession L
 92:08 Gkr->Pass => !Dw
 :possession T
 92:14 Dw->Pass => M:HD >> M
 92:19 M->Pass => A
-92:22 A->Move => A                                                  # TODO future
+92:22 A->Move => A                                                  # TODO future: move with ball in attacking space
 92:23 A->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M
 92:49 M->Pass => A
-92:51 A->Move => A                                                  # TODO future
+92:51 A->Move => A                                                  # TODO future: move with ball in attacking space
 92:52 A->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H
 :possession T
 93:19 Gkr->Pass => D
-93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO future
+93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO future: header, control, clearance, contention
 :break
 :possession T
 93:56 A->Pass => !D:Clr >> A*T                                      # TODO future
 :set T: Throw-in                                                    # TODO future
 94:02 A => Aw                                                       # TODO future
 :possession T
-94:05 Aw->Cross => !D:HD >> M                                       # TODO future
+94:05 Aw->Cross => !D:HD >> M                                       # TODO future: extra space, header, cross
 94:11 M->Pass => !D
 :possession L
 94:15 D->Pass => M
-94:17 M->Pass => Aw                                                 # TODO future
-94:23 Aw->Move => A                                                 # TODO future
-94:26 A->Pass => A                                                  # TODO future
-94:27 A->Pass => !GK                                                # TODO future
+94:17 M->Pass => Aw                                                 # TODO future: extra space
+94:23 Aw->Move => A                                                 # TODO future: extra space
+94:26 A->Pass => A                                                  # TODO future: pass between attackers
+94:27 A->Pass => !GK                                                # TODO future: pass between attackers
