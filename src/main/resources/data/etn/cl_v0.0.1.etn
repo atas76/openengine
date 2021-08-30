@@ -12,17 +12,17 @@
 04:10 M->Pass => Dw
 04:12 Dw->Pass => Mw
 04:23 Mw->Pass => M
-04:27 M->Pass => Aw             # TODO future
-04:34 Aw->Pass => !D:I >> C     # TODO future
+04:27 M->Pass => Aw             # TODO player moves in empty space
+04:34 Aw->Pass => !D:I >> C     # TODO unclear possession
 :set T: Corner
 05:15 CK->Cross => !D:HD >> M:Cnt
-05:22 M->Pass => Gkd    # TODO future
+05:22 M->Pass => Gkd    # TODO goalkeeper out of area
 05:27 Gkd->Pass => Dw
 05:45 Dw->Pass => !M
 :possession L
 05:53 M->Pass => A
-05:58 A->Pass => A      # TODO future
-05:59 A->Pass => !D     # TODO future
+05:58 A->Pass => A      # TODO pass within attacking space
+05:59 A->Pass => !D     # TODO pass within attacking space
 :possession T
 06:02 D->Pass => !M
 :break
