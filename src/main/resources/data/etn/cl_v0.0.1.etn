@@ -426,8 +426,8 @@
 :break
 :possession T
 56:02 Gkr->Pass => !M:HD >> !M:HD >> M:FT >> !M:Cnt >> M:FT >> M
-56:16 M->Move => Aw                                                 # TODO future
-56:22 Aw->Cross => !Dw:B >> C                                       # TODO future
+56:16 M->Move => Aw                                                 # TODO probability model enhancement
+56:22 Aw->Cross => !Dw:B >> C                                       # TODO unclear possession
 :set T: Corner
 56:51 CK->Cross => !Gkr:Punch >> A
 56:55 A->Shoot => !D:B >> C
@@ -437,15 +437,15 @@
 :substitution
 :break
 :possession L
-58:03 Gkr->Pass => !M*T                                             # TODO future
+58:03 Gkr->Pass => !M*T                                             # TODO throw-in
 :break
 :possession T
 58:16 D->Pass => Gkr
 58:22 Gkr->Pass => Mw:Cnt
 58:27 Mw->Pass => Dw
-58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T                       # TODO future
-:set T: Throw-in                                                    # TODO future
-58:44 M => Mw                                                       # TODO future
+58:30 Dw->Pass => !M >> M:HD >> !Mw:HD >> M*T                       # TODO throw-in
+:set T: Throw-in                                                    # TODO
+58:44 M => Mw                                                       # TODO
 58:48 Mw->Pass => D
 :break
 :possession T
@@ -458,31 +458,31 @@
 59:39 M->Pass => !D:I >> M:HD >> !D:HD >> M:Cnt >> !D:FT >> !D
 :possession T
 59:49 D->Pass => Dw
-59:53 Dw->Move => Mw                                                # TODO future
+59:53 Dw->Move => Mw
 60:01 Mw->Pass => M
 60:02 M->Pass => Mw
 60:04 Mw->Pass => M
-60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO future
+60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO unclear possession
 60:10 M->Pass => A:FT >> A:FT -> A
-60:13 A->Pass => !D:I >> A                                          # TODO future
-60:17 A->Shoot => !Dp:B >> Aw                                       # TODO future
-60:20 Aw->Pass => Mw                                                # TODO future
-60:23 Mw->Move => M                                                 # TODO future
+60:13 A->Pass => !D:I >> A                                          # TODO pass within attacking space
+60:17 A->Shoot => !Dp:B >> Aw                                       # TODO probability model enhancement
+60:20 Aw->Pass => Mw                                                # TODO probability model enhancement
+60:23 Mw->Move => M
 60:24 M->Pass => A:FT >> !GK
 :possession L
-60:53 GK->Pass => !Dw:I >> M*T                                      # TODO future
-:set L: Throw-in                                                    # TODO future
-61:20 M => Aw:Cnt >> !Dw:Ch >> A*T                                  # TODO future
+60:53 GK->Pass => !Dw:I >> M*T                                      # TODO throw-in
+:set L: Throw-in                                                    #
+61:20 M => Aw:Cnt >> !Dw:Ch >> A*T                                  #
 :substitution
-:set L: Throw-in                                                    # TODO future
-61:59 A => !Dw:Cl >> !D:Cl >> M                                     # TODO future
+:set L: Throw-in                                                    # TODO throw-in
+61:59 A => !Dw:Cl >> !D:Cl >> M                                     #
 62:19 M->Pass => D
 62:22 D->Pass => Dw
 62:36 Dw->Pass => M
-62:41 M->Move => !GK                                                # TODO future
+62:41 M->Move => !GK
 :break
 :possession T
-63:09 D->Move => Dw                                                 # TODO future
+63:09 D->Move => Dw
 63:13 Dw->Pass => M
 63:14 M->Pass => Mw
 63:20 Mw->Pass => !D
@@ -493,63 +493,63 @@
 63:41 Dw->Pass => M
 64:19 M->Pass => !D:HD >> !M
 :possession L
-64:41 M->Pass => !D*T                                               # TODO future
+64:41 M->Pass => !D*T                                               # TODO throw-in
 :substitution
-:set T: Throw-in                                                    # TODO future
-65:29 D => Dw                                                       # TODO future
-65:32 Dw->Pass => Mw:HD >> Dw                                       # TODO future
+:set T: Throw-in                                                    # TODO throw-in
+65:29 D => Dw                                                       #
+65:32 Dw->Pass => Mw:HD >> Dw                                       #
 65:39 Dw->Pass => D
-65:42 D->Pass => M:Cnt >> !Mw                                       # TODO future
+65:42 D->Pass => M:Cnt >> !Mw                                       # TODO unclear possession
 :possession L
-65:45 Mw->Pass => Gkr                                               # TODO future
+65:45 Mw->Pass => Gkr                                               # TODO back pass to goalkeeper from midfield
 65:48 Gkr->Pass => Dw
 65:50 Dw->Pass => M
 65:52 M->Pass => Dw
 65:54 Dw->Pass => M:Cnt >> M
 66:00 M->Pass => Mw
-66:01 Mw->Move => A                                                 # TODO future
-66:05 A->Pass => !D:HD >> C                                         # TODO future
+66:01 Mw->Move => A
+66:05 A->Pass => !D:HD >> C                                         # TODO unclear possession
 :set L: Corner
-66:35 CK->Cross => !D:Cl >> A*T                                     # TODO future
-:set L: Throw-in                                                    # TODO future
-66:51 A => !Dw:Tck >> A*T                                           # TODO future
-:set L: Throw-in                                                    # TODO future
-67:00 A => Aw                                                       # TODO future
-67:04 Aw->Pass => !GK                                               # TODO future
+66:35 CK->Cross => !D:Cl >> A*T                                     # TODO throw-in
+:set L: Throw-in                                                    #
+66:51 A => !Dw:Tck >> A*T                                           # TODO throw-in
+:set L: Throw-in                                                    #
+67:00 A => Aw                                                       #
+67:04 Aw->Pass => !GK
 :possession T
-67:18 GK->Pass => Mw:HD >> M                                        # TODO future
+67:18 GK->Pass => Mw:HD >> M                                        # TODO unclear possession
 67:27 M->Pass => Mw
-67:30 Mw->Pass => !Dw*T                                             # TODO future
-:set L: Throw-in                                                    # TODO future
-67:51 Dw => Mw:HD >> M:Cnt                                          # TODO future
-67:59 M->Move => Mw                                                 # TODO future
-68:04 Mw->Move => A                                                 # TODO future
+67:30 Mw->Pass => !Dw*T                                             # TODO throw-in
+:set L: Throw-in                                                    #
+67:51 Dw => Mw:HD >> M:Cnt                                          #
+67:59 M->Move => Mw
+68:04 Mw->Move => A
 :possession L
-68:07 A->Pass => A                                                  # TODO future
-68:08 A->Pass => A                                                  # TODO future
+68:07 A->Pass => A                                                  # TODO pass within attacking space
+68:08 A->Pass => A                                                  # TODO pass within attacking space
 68:09 A->Shoot => !GK #r=2
 :break
 :possession T
 68:41 Gkr->Pass => D
 69:01 D->Pass => !D:B >> M
-69:06 M->Move => A                                                  # TODO future
-69:11 A->Pass => Aw                                                 # TODO future
-69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO future
-69:35 Mw->Pass => !D:HD >> M                                        # TODO future
+69:06 M->Move => A
+69:11 A->Pass => Aw                                                 # TODO pass within attacking space
+69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO unclear possession
+69:35 Mw->Pass => !D:HD >> M                                        # TODO unclear possession
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
-69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO future
-69:59 Aw->LowCross => Aw  # opposite side                           # TODO future
-70:04 Aw->Cross => Aw # opposite side                               # TODO future
-70:08 Aw->Cross => !Gkr:H                                           # TODO future
+69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO unclear possession
+69:59 Aw->LowCross => Aw  # opposite side                           # TODO probability model enhancement
+70:04 Aw->Cross => Aw # opposite side                               # TODO probability model enhancement
+70:08 Aw->Cross => !Gkr:H
 :possession L
-70:17 Gkr->Pass => Aw                                               # TODO future
-70:23 Aw->Move => A                                                 # TODO future
-70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T                     # TODO future
-:set L: Throw-in                                                    # TODO future
-71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T                          # TODO future
-:set T: Throw-in                                                    # TODO future
-71:56 D => D                                                        # TODO future
+70:17 Gkr->Pass => Aw                                               # TODO player moves in empty space
+70:23 Aw->Move => A                                                 # TODO probability model enhancement
+70:25 A->Pass => !D:B >> A:Cnt >> !D:Clr >> M*T                     # TODO throw-in
+:set L: Throw-in                                                    #
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T                          #
+:set T: Throw-in                                                    # TODO throw-in
+71:56 D => D                                                        #
 71:58 D->Pass => Gkr
 72:01 Gkr->Pass => D
 :possession T
@@ -562,9 +562,9 @@
 72:22 Gkr->Pass => M
 72:28 M->Pass >> M:FT >> M
 72:32 M->Pass => A
-72:34 A->Pass => A                                                  # TODO future
-72:34 A->Pass => A                                                  # TODO future
-72:35 A->Pass => !Gkr:H                                             # TODO future
+72:34 A->Pass => A                                                  # TODO pass within attacking space
+72:34 A->Pass => A                                                  # TODO pass within attacking space
+72:35 A->Pass => !Gkr:H                                             # TODO pass within attacking space
 :fair-play
 :substitution
 :possession L
@@ -576,20 +576,20 @@
 74:30 Mw->Pass => M
 74:32 M->Pass => !Mw
 :possession L
-74:33 Mw->Move => M                                                 # TODO future
+74:33 Mw->Move => M
 74:38 M->Pass => A
-74:42 A->Pass => !D:HD >> !D:HD >> M                                # TODO future
+74:42 A->Pass => !D:HD >> !D:HD >> M                                # TODO unclear possession
 :possession T
-74:52 M->Move => A >> !D:Ch >> C                                    # TODO future
+74:52 M->Move => A >> !D:Ch >> C                                    # TODO unclear possession
 :set T: Corner
-75:05 CK->Pass => Aw                                                # TODO future
-75:07 Aw->Pass => A                                                 # TODO future
-75:08 A->Pass => Aw                                                 # TODO future
-75:09 Aw->Move => A                                                 # TODO future
-75:12 A->Move => Aw                                                 # TODO future
-75:13 Aw->Cross => !D:B >> Aw                                       # TODO future
-75:16 Aw->Cross => !D:HD >> Aw                                      # TODO future
-75:23 Aw->Pass => Mw                                                # TODO future
+75:05 CK->Pass => Aw                                                # TODO probability model enhancement
+75:07 Aw->Pass => A                                                 # TODO probability model enhancement
+75:08 A->Pass => Aw                                                 # TODO probability model enhancement
+75:09 Aw->Move => A                                                 # TODO probability model enhancement
+75:12 A->Move => Aw                                                 # TODO probability model enhancement
+75:13 Aw->Cross => !D:B >> Aw                                       # TODO unclear possession
+75:16 Aw->Cross => !D:HD >> Aw                                      # TODO unclear possession
+75:23 Aw->Pass => Mw                                                # TODO probability model enhancement
 75:26 Mw->Pass => !D
 :break
 :possession T
@@ -602,30 +602,30 @@
 76:36 Mw->Pass => !Gkr:H
 :possession L
 76:40 Gkr->Pass => Mw
-76:51 Mw->Pass => !Mw:B >> M*T                                      # TODO future
-:set L: Throw-in                                                    # TODO future
-77:11 M => !Dw:HD >> !Dw:FT >> !D                                   # TODO future
+76:51 Mw->Pass => !Mw:B >> M*T                                      # TODO throw-in
+:set L: Throw-in                                                    #
+77:11 M => !Dw:HD >> !Dw:FT >> !D                                   #
 :possession T
-77:22 D->Move => M                                                  # TODO future
+77:22 D->Move => M
 77:27 M->Pass => Mw
-78:09 Mw->Pass => Aw                                                # TODO future
-78:10 Aw->Move => Mw                                                # TODO future
-78:13 Mw->Pass => Aw                                                # TODO future
-78:18 Aw->Cross => A                                                # TODO future
+78:09 Mw->Pass => Aw                                                # TODO player moves in empty space
+78:10 Aw->Move => Mw                                                # TODO probability model enhancement
+78:13 Mw->Pass => Aw                                                # TODO player moves in empty space
+78:18 Aw->Cross => A
 78:20 A->HdSht => !GK #r=1, over
 :break
 :possession T
-78:59 M->Pass => M:FT >> M                                          # TODO future
-79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt                          # TODO future
+78:59 M->Pass => M:FT >> M                                          # TODO unclear possession
+79:01 M->Move => !D:Ch >> !D:Clr >> !M:Cnt                          # TODO unclear possession
 :possession L
 79:10 M->Pass => !D
 :possession T
-79:12 M->Pass => Gkr                                                # TODO future
+79:12 M->Pass => Gkr                                                # TODO back pass to goalkeeper from midfield
 79:14 Gkr->Pass => D
 79:22 D->Pass => M
-79:33 M->Move => A                                                  # TODO future
+79:33 M->Move => A
 79:34 A->Shoot => !Gkr:S >> A #r=2
-79:38 A->Pass => A                                                  # TODO future
+79:38 A->Pass => A                                                  # TODO pass within attacking space
 79:39 A->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -633,11 +633,11 @@
 80:00 Mw->Pass => !Dw
 :possession T
 80:02 Dw->Pass => Mw
-80:05 Mw->Move => M                                                 # TODO future
+80:05 Mw->Move => M
 80:06 M->Pass => D
 80:07 D->Pass => Mw
-80:12 Mw->Move => M                                                 # TODO future
-80:17 M->Move => A                                                  # TODO future
+80:12 Mw->Move => M
+80:17 M->Move => A
 80:20 A->Shoot => !Gkr:H        #r=1
 :break
 :possession L
@@ -646,15 +646,15 @@
 80:34 Dw->Pass => !C
 :set L: Corner
 81:44 CK->Cross => !D:HD >> A:Cnt
-81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A              # TODO future
+81:49 A->Pass => !D:Clr >> M:HD >> !D:HD >> M:Cnt >> A              # TODO unclear possession
 82:01 A->Shoot => !GK    #r=0
 :break
 :possession T
-82:10 Dw->Move => Mw                                                # TODO future
+82:10 Dw->Move => Mw
 82:15 Mw->Pass => M
-82:32 M->Pass => Aw                                                 # TODO future
-82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO future
-84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO future
+82:32 M->Pass => Aw                                                 # TODO player moves in empty space
+82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO unclear possession
+84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO probability model enhancement
 :set T: Corner
 84:37 CK->Cross => A:B >> !D
 :break
@@ -668,8 +668,8 @@
 86:53 A->Shoot => G
 :break
 :possession T
-88:20 Mw->Move => Aw                                                # TODO future
-88:22 Aw->Cross => A:Cnt >> !GK                                     # TODO future
+88:20 Mw->Move => Aw
+88:22 Aw->Cross => A:Cnt >> !GK                                     # TODO unclear possession
 :break
 :substitution
 :possession T
@@ -687,7 +687,7 @@
 :possession L
 90:48 Gkr->Pass => !M:HD >> Mw:Cnt >> !Mw
 :possession T
-90:58 Mw->Move => A:Dv >> !Dw                                       # TODO future
+90:58 Mw->Move => A:Dv >> !Dw                                       # TODO dive
 :possession L
 91:05 Dw->Pass => !M:FT >> D:HD >> !M
 :possession T
@@ -695,37 +695,37 @@
 91:16 D->Pass => Mw
 91:19 Mw->Pass => A:HD >> !D:Clr >> C
 :set T: Corner
-91:44 CK->Cross => !D:HD >> Aw                                      # TODO future
-91:50 Aw->Move => A                                                 # TODO future
+91:44 CK->Cross => !D:HD >> Aw                                      # TODO unclear possession
+91:50 Aw->Move => A                                                 # TODO probability model enhancement
 91:52 A->Shoot => !Gkr:H    #r=1
 :possession L
 92:08 Gkr->Pass => !Dw
 :possession T
 92:14 Dw->Pass => M:HD >> M
 92:19 M->Pass => A
-92:22 A->Move => A                                                  # TODO future
+92:22 A->Move => A                                                  # TODO move within attacking space
 92:23 A->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M
 92:49 M->Pass => A
-92:51 A->Move => A                                                  # TODO future
+92:51 A->Move => A                                                  # TODO move within attacking space
 92:52 A->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H
 :possession T
 93:19 Gkr->Pass => D
-93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO future
+93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO throw-in
 :break
 :possession T
-93:56 A->Pass => !D:Clr >> A*T                                      # TODO future
-:set T: Throw-in                                                    # TODO future
-94:02 A => Aw                                                       # TODO future
+93:56 A->Pass => !D:Clr >> A*T                                      # TODO throw-in
+:set T: Throw-in                                                    #
+94:02 A => Aw                                                       #
 :possession T
-94:05 Aw->Cross => !D:HD >> M                                       # TODO future
+94:05 Aw->Cross => !D:HD >> M                                       # TODO unclear possession
 94:11 M->Pass => !D
 :possession L
 94:15 D->Pass => M
-94:17 M->Pass => Aw                                                 # TODO future
-94:23 Aw->Move => A                                                 # TODO future
-94:26 A->Pass => A                                                  # TODO future
-94:27 A->Pass => !GK                                                # TODO future
+94:17 M->Pass => Aw                                                 # TODO player moves in empty space
+94:23 Aw->Move => A                                                 # TODO probability model enhancement
+94:26 A->Pass => A                                                  # TODO pass within attacking space
+94:27 A->Pass => !GK                                                # TODO pass within attacking space
