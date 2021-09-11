@@ -265,7 +265,7 @@
 40:21 M->Pass => Aw                                 # TODO player moves in empty space
 40:32 Aw->Pass => Mw                                # TODO attacking setup
 40:36 Mw->Pass => A
-40:39 A->Pass => Aw                                 # TODO probability model enhancement
+40:39 A->Pass => Aw                                 # TODO off the ball player movement
 40:42 Aw->Pass => !Dw:Ch >> M*T                     # TODO throw-in
 :set L: Throw-in                                    # TODO
 40:59 M => Aw:HD >> Aw                              # TODO
@@ -584,7 +584,7 @@
 :set T: Corner
 75:05 CK->Pass => Aw                                                # TODO probability model enhancement
 75:07 Aw->Pass => A
-75:08 A->Pass => Aw                                                 # TODO probability model enhancement
+75:08 A->Pass => Aw                                                 # TODO off the ball player movement
 75:09 Aw->Move => A
 75:12 A->Move => Aw                                                 # TODO probability model enhancement
 75:13 Aw->Cross => !D:B >> Aw                                       # TODO unclear possession
