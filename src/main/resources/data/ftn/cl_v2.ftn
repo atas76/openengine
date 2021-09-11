@@ -976,7 +976,7 @@
 :possession T
 89:53 DMw->Long => !DM:FT >> !M
 :transition L
-89:57 M->ForwardPass:FT => !Dw
+89:57 M->ForwardPass:FT:Open => !Dw
 :establish T
 90:04 Dw->Pass => Gkd
 :possession T
