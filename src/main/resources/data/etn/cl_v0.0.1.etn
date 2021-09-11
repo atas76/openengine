@@ -126,7 +126,7 @@
 :possession L
 19:48 Gkr->Pass => Mw
 20:23 Mw->Move => Aw
-20:27 Aw->Pass => A             # TODO probability model enhancement
+20:27 Aw->Pass => A
 20:28 A->Pass => A              # TODO pass within attacking space
 20:29 A->Pass => A              # TODO passing combination 1 - 2
 20:30 A->Shoot => !D:B >> C
@@ -211,7 +211,7 @@
 32:27 A->Pass => !D:I >> M                          # TODO unclear possession
 :possession T
 32:40 M->Pass => Aw                                 # TODO player moves in empty space
-32:46 Aw->Pass => Mw                                # TODO probability model enhancement
+32:46 Aw->Pass => Mw                                # TODO attacking setup
 32:48 Mw->Pass => M
 32:55 M->Pass => M:FT >> A:Cnt >> M                 # TODO unclear possession
 33:04 M->Pass => !D*T                               # TODO throw-in
@@ -263,7 +263,7 @@
 40:12 GK->Pass => !M:HD >> !M:Cnt >> !M:FT >> !M
 :possession L
 40:21 M->Pass => Aw                                 # TODO player moves in empty space
-40:32 Aw->Pass => Mw                                # TODO probability model enhancement
+40:32 Aw->Pass => Mw                                # TODO attacking setup
 40:36 Mw->Pass => A
 40:39 A->Pass => Aw                                 # TODO probability model enhancement
 40:42 Aw->Pass => !Dw:Ch >> M*T                     # TODO throw-in
@@ -329,7 +329,7 @@
 :possession T
 46:29 M->Pass => Mw
 46:31 Mw->Pass => Aw                                # TODO player moves in empty space
-46:35 Aw->Pass => Mw                                # TODO probability model enhancement
+46:35 Aw->Pass => Mw                                # TODO attacking setup
 46:40 Mw->Pass => Aw                                # TODO player moves in empty space
 46:44 Aw->LowCross => !D:I >> Aw:Ch >> !Dw          # TODO unclear possession
 :possession L
@@ -394,9 +394,9 @@
 51:58 Dw->Pass => Mw
 :possession L
 52:06 Mw->Pass => Aw                                        # TODO player moves in empty space
-52:15 Aw->Pass => A                                         # TODO probability model enhancement
+52:15 Aw->Pass => A
 52:16 A->Pass => Aw                                         # TODO player moves in empty space
-52:20 Aw->Pass => Mw                                        # TODO probability model enhancement
+52:20 Aw->Pass => Mw                                        # TODO attacking setup
 52:22 Mw->Pass => M
 52:23 M->Move => A
 52:24 A->Shoot => !D:Tck >> !Gkr:H
@@ -420,7 +420,7 @@
 54:05 Mw->Pass => M
 54:23 M->Pass => Aw                                                 # TODO player moves in empty space
 54:31 Aw->Move => Aw                                                # TODO move within attacking wing
-54:33 Aw->Pass => A                                                 # TODO probability model enhancement
+54:33 Aw->Pass => A
 54:34 A->Pass => !D:Clr >> M*T                                      # TODO throw-in
 :injury
 :break
@@ -466,7 +466,7 @@
 60:10 M->Pass => A:FT >> A:FT -> A
 60:13 A->Pass => !D:I >> A                                          # TODO pass within attacking space
 60:17 A->Shoot => !Dp:B >> Aw                                       # TODO probability model enhancement
-60:20 Aw->Pass => Mw                                                # TODO probability model enhancement
+60:20 Aw->Pass => Mw                                                # TODO attacking setup
 60:23 Mw->Move => M
 60:24 M->Pass => A:FT >> !GK
 :possession L
@@ -583,13 +583,13 @@
 74:52 M->Move => A >> !D:Ch >> C                                    # TODO unclear possession
 :set T: Corner
 75:05 CK->Pass => Aw                                                # TODO probability model enhancement
-75:07 Aw->Pass => A                                                 # TODO probability model enhancement
+75:07 Aw->Pass => A
 75:08 A->Pass => Aw                                                 # TODO probability model enhancement
 75:09 Aw->Move => A
 75:12 A->Move => Aw                                                 # TODO probability model enhancement
 75:13 Aw->Cross => !D:B >> Aw                                       # TODO unclear possession
 75:16 Aw->Cross => !D:HD >> Aw                                      # TODO unclear possession
-75:23 Aw->Pass => Mw                                                # TODO probability model enhancement
+75:23 Aw->Pass => Mw                                                # TODO attacking setup
 75:26 Mw->Pass => !D
 :break
 :possession T
@@ -726,6 +726,6 @@
 :possession L
 94:15 D->Pass => M
 94:17 M->Pass => Aw                                                 # TODO player moves in empty space
-94:23 Aw->Move => A                                                 
+94:23 Aw->Move => A
 94:26 A->Pass => A                                                  # TODO pass within attacking space
 94:27 A->Pass => !GK                                                # TODO pass within attacking space
