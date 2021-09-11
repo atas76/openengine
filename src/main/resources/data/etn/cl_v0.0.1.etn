@@ -217,7 +217,7 @@
 33:04 M->Pass => !D*T                               # TODO throw-in
 :set L: Throw-in                                    # TODO
 33:22 D => !Mw:HD >> !Aw:HD >> !Aw                  # TODO
-33:32 Aw->LowCross => !Dw:I >> C                    # TODO probability model enhancement
+33:32 Aw->LowCross => !Dw:I >> C                    # TODO unclear possession
 :set T: Corner
 33:43 CK->Pass => Aw
 33:46 Aw->Cross => !D:HD >> A*T                     # TODO throw-in
@@ -539,7 +539,7 @@
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
 69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO unclear possession
-69:59 Aw->LowCross => Aw  # opposite side                           # TODO probability model enhancement
+69:59 Aw->LowCross => Aw  # opposite side                           # TODO attacking setup
 70:04 Aw->Cross => Aw # opposite side                               # TODO probability model enhancement
 70:08 Aw->Cross => !Gkr:H
 :possession L
