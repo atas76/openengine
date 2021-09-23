@@ -196,7 +196,7 @@
 :possession T
 30:52 Gkr->Pass => !Mw:HD >> Mw:B >> !Mw            # TODO unclear possession
 :possession L
-31:00 Mw->Pass => !Dw
+31:00 Mw->Pass => !Dw                               # TODO open pass
 :possession T
 31:03 Dw->Pass => !Mw >> !M:HD >> D                 # TODO unclear possession
 :break
@@ -293,10 +293,10 @@
 43:12 M->Pass => !M:HD >> M:Cnt >> M                # TODO unclear possession
 43:17 M->Move => !D:Ch >> !D                        # TODO unclear possession
 :possession L
-43:22 D->Pass => !Dw
+43:22 D->Pass => !Dw                                # TODO open pass
 :possession T
 43:27 Dw->Pass => Gkr
-43:28 Gkr->Pass => Dw:HD >> Dw
+43:28 Gkr->Pass => Dw:HD >> Dw                      # TODO unclear possession
 43:38 Dw->Pass => Mw
 43:41 Mw->Move => A
 43:45 A->Pass => !Gkr:H                             # TODO pass within attacking space
@@ -360,9 +360,8 @@
 47:36 M => Mw:HD >> !Mw:FT >> Mw:HD >> Mw           # TODO
 47:44 Mw->Pass => !Mw                               # TODO pass within short space
 :possession T
-47:47 Mw->Pass => !Dw
-:break
-:set L: Throw-in                                    # TODO throw-in
+47:47 Mw->Pass => !M*T                              # TODO throw-in
+:set L: Throw-in                                    # TODO
 48:00 DM => !Dw                                     # TODO
 :possession T
 48:04 Dw->Pass => Gkr
@@ -569,7 +568,7 @@
 :substitution
 :possession L
 73:44 Gkr->Pass => Mw
-73:53 Mw->Pass => !GK
+73:53 Mw->Pass => !GK                                               # TODO open pass
 :break
 :possession T
 74:22 Gkr->Pass => Mw:Cnt >> !Mw:I >> !Mw:FT >> Mw                  # TODO unclear possession
@@ -630,7 +629,7 @@
 :break
 :possession L
 79:58 Dw->Pass => Mw
-80:00 Mw->Pass => !Dw
+80:00 Mw->Pass => !Dw                                               # TODO player moves in empty space
 :possession T
 80:02 Dw->Pass => Mw
 80:05 Mw->Move => M
@@ -641,7 +640,7 @@
 80:20 A->Shoot => !Gkr:H        #r=1
 :break
 :possession L
-80:30 Mw->Pass => !Dw
+80:30 Mw->Pass => !Dw                                               # TODO player moves in empty space
 :possession T
 80:34 Dw->Pass => !C
 :set L: Corner
@@ -659,7 +658,7 @@
 84:37 CK->Cross => A:B >> !D                                        # TODO unclear possession
 :break
 :possession T
-85:20 Gkr->Pass => !Gkr:H
+85:20 Gkr->Pass => !Gkr:H                                           # TODO open pass
 :possession L
 85:33 Gkr->Pass => Mw
 85:41 Mw->Cross => !D:Cnt >> C                                      # TODO unclear possession
@@ -711,7 +710,7 @@
 92:51 A->Move => A                                                  # TODO move within attacking space
 92:52 A->Shoot => !Gkr:H  #r=1
 :possession L
-93:13 Gkr->Pass => !Gkr:H
+93:13 Gkr->Pass => !Gkr:H                                           # TODO open pass
 :possession T
 93:19 Gkr->Pass => D
 93:24 D->Pass => M:HD >> M:Cnt >> !D:Clr >> !D*T                    # TODO throw-in
