@@ -1,0 +1,443 @@
+:set L: Kickoff
+00:15 M->Pass => A
+00:20 A->Shoot => G
+:break
+:possession L
+03:21 Mw->Pass => M
+03:40 M->Pass => Mw
+03:43 Mw->Pass => !Gkr
+:break
+:possession T
+04:08 D->Pass => M
+04:10 M->Pass => Dw
+04:12 Dw->Pass => Mw
+04:23 Mw->Pass => M
+:set T: Corner
+05:45 Dw->Pass => !M
+:possession L
+05:53 M->Pass => A
+:possession T
+06:02 D->Pass => !M
+:break
+:possession T
+:possession T
+06:57 Mw->Pass => M
+:possession L
+07:21 Dw->Pass => Gkr
+:possession L
+:possession T
+08:25 Dw->Move => Mw
+08:49 Mw->Move => Aw
+08:50 Aw->Move => A
+09:02 A->Shoot => !GK #:r=0
+:possession L
+09:20 GK->Pass => D
+:set L: Corner
+10:40 CK->Cross => Gkr:H
+:possession L
+11:04 Gkr->Pass => D
+12:11 Mw->Pass => A
+:possession L
+12:17 Dw->Pass => !Mw
+:break
+:possession T
+12:56 Gkr->Pass => Mw
+13:08 Mw->Pass => M
+13:47 Mw->Pass => M
+:possession T
+:break
+:possession T
+:possession L
+:possession T
+15:13 M->Pass => !GK
+:possession L
+15:42 GK->Pass => M
+16:46 M->Move => A
+16:47 A->Shoot => !GK  #:r=2
+:break
+:possession L
+18:08 Gkr->Pass => Dw
+18:14 Dw->Pass => !Mw
+:possession T
+18:17 Mw->Pass => M
+:possession L
+18:28 M->Pass => Mw
+18:29 Mw->Move => Aw
+18:34 Aw->Move => !GK
+:possession T
+18:53 GK->Pass => Dw
+19:01 Dw->Pass => M
+19:09 M->Move => A
+:possession L
+19:11 M->Pass => Dw
+19:15 Dw->Pass => !M
+:possession T
+19:23 M->Pass => A
+19:28 M->Pass => A
+:possession T
+19:44 Aw->Cross => !Gkr:H
+:possession L
+19:48 Gkr->Pass => Mw
+20:23 Mw->Move => Aw
+20:27 Aw->Pass => A
+20:30 A->Shoot => !D:B >> C
+:set L: Corner
+:set L: Throw-in
+21:47 A => Aw
+21:51 Aw->Move => A
+:set T: Throw-in
+22:17 D => Dw:Cnt >> !Aw:I >> !Aw
+22:20 Aw->Move => A
+23:06 Dw->Pass => !A
+23:14 M->Move => A
+:set L: Corner
+23:50 CK->Pass => Aw
+:possession T
+24:57 D->Pass => Gkr
+25:01 Gkr->Pass => Dw
+25:04 Dw->Pass => Gkr
+:possession L
+:possession T
+26:14 Gkr->Pass => M
+:possession L
+26:26 M->Pass => !GK
+:possession T
+26:40 GK->Pass => D
+:break
+:possession T
+27:31 D->Pass => M
+27:40 M->Pass => !D
+:break
+:possession L
+28:17 Mw->Pass => M
+29:01 M->Pass => !GK
+:possession T
+29:20 GK->Pass => D
+29:22 D->Pass => Gkr
+:break
+:possession T
+:possession L
+:possession T
+:possession L
+:possession T
+:break
+:possession T
+31:20 M->Pass => D
+31:45 D->Pass => Mw
+:possession T
+32:25 M->Move => A
+:possession T
+32:48 Mw->Pass => M
+:set T: Corner
+33:43 CK->Pass => Aw
+:set T: Throw-in
+34:11 A => Aw:Cnt >> !Dw:I >> A*T
+34:35 Mw->Pass => M
+:possession T
+34:41 M->Pass => Dw
+:possession L
+35:15 Aw->Cross => !GK
+:possession T
+35:42 GK->Pass => D
+35:47 D->Pass => Dw
+35:52 Dw->Pass => M
+35:57 M->Pass => !Gkr:H
+:possession L
+:set T: Throw-in
+36:25 M => Mw:FT >> Mw
+:possession T
+36:32 Gkr->Pass => Dw
+:possession L
+37:27 M->Pass => !Mw
+:possession L
+37:32 Mw->Pass => D
+37:39 D->Pass => Mw
+37:42 Mw->Move => A
+37:47 A->Shoot => Gkr:S >> C #r=2
+:set L: Corner
+38:31 A->Shoot => !GK #r=0
+:injury
+:possession T
+:possession L
+40:36 Mw->Pass => A
+41:03 Aw->Move => !Dw
+:possession T
+:possession L
+41:09 M->Move => A
+41:10 A->Shoot => !D:B >> A:Cnt
+:set L: Corner
+41:49 A->Shoot => !D:B >> C
+:set L: Corner
+:possession L
+42:55 M->Pass => Mw
+:possession T
+:possession L
+:possession T
+43:27 Dw->Pass => Gkr
+43:38 Dw->Pass => Mw
+43:41 Mw->Move => A
+:possession L
+43:51 Gkr->Pass => Dw
+:possession T
+44:29 Gkr->Pass => Dw
+:possession T
+45:10 M->Pass => Mw
+45:13 Mw->Move => A
+45:18 A->Shoot => !GK #r=0
+:possession L
+:possession T
+45:56 Dw->Pass => D
+45:57 D->Pass => Dw
+46:00 Dw->Pass => D
+46:02 D->Pass => Dw
+46:25 Mw->Pass => M
+:possession T
+46:29 M->Pass => Mw
+:possession L
+:HT
+:set T: Kickoff
+45:19 Dw->Pass => !M
+:possession T
+45:29 M->Pass => Mw
+45:56 Mw->Pass => M
+:possession T
+45:57 M->Pass => Dw
+46:53 Gkr->Pass => M:Cnt
+:possession T
+:possession T
+48:04 Dw->Pass => Gkr
+:possession T
+50:01 M->Pass => !D
+:break
+50:54 Dw->Pass => Gkr
+:possession T
+51:14 Dw->Pass => Mw
+51:18 Mw->Move => A
+:possession L
+51:58 Dw->Pass => Mw
+:possession L
+52:15 Aw->Pass => A
+52:22 Mw->Pass => M
+52:23 M->Move => A
+52:24 A->Shoot => !D:Tck >> !Gkr:H
+:possession T
+52:33 Gkr->Pass => D
+52:51 D->Pass => Mw
+:possession L
+53:00 M->Pass => A
+53:05 A->Shoot => !D:B >> A:Ch >> A
+53:17 M->Move => A
+:break
+:possession T
+53:34 D->Pass => Dw
+53:39 Dw->Pass => Mw
+53:44 Mw->Pass => A:Cnt
+53:48 A->Shoot => !D:B >> A:HD >> !D:Clr >> !Dw:Ch >> !Dw:Clr >> Mw
+54:05 Mw->Pass => M
+54:33 Aw->Pass => A
+:injury
+:break
+:possession T
+:set T: Corner
+56:55 A->Shoot => !D:B >> C
+:set T: Corner
+57:15 CK->Cross => A:HD
+57:17 A->HdSht => !GK #r=0
+:substitution
+:break
+:possession L
+:break
+:possession T
+58:16 D->Pass => Gkr
+58:22 Gkr->Pass => Mw:Cnt
+58:27 Mw->Pass => Dw
+58:48 Mw->Pass => D
+:break
+:possession T
+:possession L
+59:03 Mw->Pass => !Gkr:H
+:possession T
+:possession L
+:possession T
+59:49 D->Pass => Dw
+59:53 Dw->Move => Mw
+60:01 Mw->Pass => M
+60:02 M->Pass => Mw
+60:04 Mw->Pass => M
+60:23 Mw->Move => M
+:possession L
+:substitution
+62:19 M->Pass => D
+62:22 D->Pass => Dw
+62:36 Dw->Pass => M
+62:41 M->Move => !GK
+:break
+:possession T
+63:09 D->Move => Dw
+63:13 Dw->Pass => M
+63:14 M->Pass => Mw
+63:20 Mw->Pass => !D
+:possession L
+63:23 D->Pass => Gkr
+:possession T
+:possession L
+:substitution
+65:29 D => Dw
+65:32 Dw->Pass => Mw:HD >> Dw
+65:39 Dw->Pass => D
+:possession L
+65:48 Gkr->Pass => Dw
+65:50 Dw->Pass => M
+65:52 M->Pass => Dw
+66:00 M->Pass => Mw
+66:01 Mw->Move => A
+:set L: Corner
+:set L: Throw-in                                                    #
+:set L: Throw-in                                                    #
+67:00 A => Aw                                                       #
+67:04 Aw->Pass => !GK
+:possession T
+67:27 M->Pass => Mw
+:set L: Throw-in                                                    #
+67:51 Dw => Mw:HD >> M:Cnt                                          #
+67:59 M->Move => Mw
+68:04 Mw->Move => A
+:possession L
+68:09 A->Shoot => !GK #r=2
+:break
+:possession T
+68:41 Gkr->Pass => D
+69:06 M->Move => A
+69:42 M->Pass => Mw
+69:47 Mw->Pass => D
+70:08 Aw->Cross => !Gkr:H
+:possession L
+70:23 Aw->Move => A
+:set L: Throw-in                                                    #
+71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T                          #
+:set T: Throw-in                                                    #
+71:56 D => D                                                        #
+71:58 D->Pass => Gkr
+72:01 Gkr->Pass => D
+:possession T
+72:05 D->Pass => Mw
+72:08 Mw->Pass => M
+72:16 M->Pass => M >>> !M
+:possession L
+72:18 M->Pass => !Gkr:H
+:possession T
+72:22 Gkr->Pass => M
+72:32 M->Pass => A
+:fair-play
+:substitution
+:possession L
+73:44 Gkr->Pass => Mw
+:break
+:possession T
+74:30 Mw->Pass => M
+74:32 M->Pass => !Mw
+:possession L
+74:33 Mw->Move => M
+74:38 M->Pass => A
+:possession T
+:set T: Corner
+75:07 Aw->Pass => A
+75:09 Aw->Move => A
+75:26 Mw->Pass => !D
+:break
+:possession T
+:possession L
+76:20 M->Pass => Mw
+76:24 Mw->Pass => !Gkr:H
+:possession T
+76:30 Gkr->Pass => Mw
+76:36 Mw->Pass => !Gkr:H
+:possession L
+76:40 Gkr->Pass => Mw
+:set L: Throw-in                                                    #
+77:11 M => !Dw:HD >> !Dw:FT >> !D                                   #
+:possession T
+77:22 D->Move => M
+77:27 M->Pass => Mw
+78:10 Aw->Move => Mw
+78:18 Aw->Cross => A
+78:20 A->HdSht => !GK #r=1, over
+:break
+:possession T
+:possession L
+79:10 M->Pass => !D
+:possession T
+79:14 Gkr->Pass => D
+79:22 D->Pass => M
+79:33 M->Move => A
+79:34 A->Shoot => !Gkr:S >> A #r=2
+79:39 A->Shoot => !Gkr:H       #r=2
+:break
+:possession L
+79:58 Dw->Pass => Mw
+:possession T
+80:02 Dw->Pass => Mw
+80:05 Mw->Move => M
+80:06 M->Pass => D
+80:07 D->Pass => Mw
+80:12 Mw->Move => M
+80:17 M->Move => A
+80:20 A->Shoot => !Gkr:H        #r=1
+:break
+:possession L
+:possession T
+80:34 Dw->Pass => !C
+:set L: Corner
+82:01 A->Shoot => !GK    #r=0
+:break
+:possession T
+82:10 Dw->Move => Mw
+82:15 Mw->Pass => M
+:set T: Corner
+:break
+:possession T
+:possession L
+85:33 Gkr->Pass => Mw
+:set L: Corner
+86:53 A->Shoot => G
+:break
+:possession T
+88:20 Mw->Move => Aw
+:break
+:substitution
+:possession T
+:possession L
+:possession T
+90:04 Dw->Pass => Gkd
+:possession L
+:possession T
+90:21 Mw->Pass => M
+90:30 M->Pass => !Gkr:H
+:possession L
+:possession T
+:possession L
+:possession T
+91:14 M->Pass => D
+91:16 D->Pass => Mw
+:set T: Corner
+91:50 Aw->Move => A
+91:52 A->Shoot => !Gkr:H    #r=1
+:possession L
+:possession T
+92:19 M->Pass => A
+92:23 A->Shoot => !Gkr:S >> C #r=2
+:set T: Corner
+92:49 M->Pass => A
+92:52 A->Shoot => !Gkr:H  #r=1
+:possession L
+:possession T
+93:19 Gkr->Pass => D
+:break
+:possession T
+:set T: Throw-in                                                    #
+94:02 A => Aw                                                       #
+:possession T
+94:11 M->Pass => !D
+:possession L
+94:15 D->Pass => M
+94:23 Aw->Move => A
