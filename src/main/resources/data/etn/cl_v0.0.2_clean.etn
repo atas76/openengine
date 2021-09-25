@@ -63,7 +63,6 @@
 :possession L
 18:28 M->Pass => Mw
 18:29 Mw->Move => Aw
-18:34 Aw->Move => !GK
 :possession T
 18:53 GK->Pass => Dw
 19:01 Dw->Pass => M
@@ -91,7 +90,6 @@
 23:06 Dw->Pass => !A
 23:14 M->Move => A
 :set L: Corner
-23:50 CK->Pass => Aw
 :possession T
 24:57 D->Pass => Gkr
 25:01 Gkr->Pass => Dw
@@ -129,7 +127,6 @@
 :possession T
 32:48 Mw->Pass => M
 :set T: Corner
-33:43 CK->Pass => Aw
 :set T: Throw-in
 34:11 A => Aw:Cnt >> !Dw:I >> A*T
 34:35 Mw->Pass => M
@@ -295,7 +292,6 @@
 :set L: Throw-in                                                    #
 :set L: Throw-in                                                    #
 67:00 A => Aw                                                       #
-67:04 Aw->Pass => !GK
 :possession T
 67:27 M->Pass => Mw
 :set L: Throw-in                                                    #

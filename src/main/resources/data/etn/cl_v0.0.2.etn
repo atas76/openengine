@@ -104,7 +104,7 @@
 :possession L
 18:28 M->Pass => Mw
 18:29 Mw->Move => Aw
-18:34 Aw->Move => !GK
+18:34 Aw->Move => !GK             # TODO move within attacking space
 :possession T
 18:53 GK->Pass => Dw
 19:01 Dw->Pass => M
@@ -151,7 +151,7 @@
 23:15 A->Pass => Aw                             # TODO player moves in empty space
 23:22 Aw->Cross => !Dp:I >> C                   # TODO unclear possession
 :set L: Corner
-23:50 CK->Pass => Aw
+23:50 CK->Pass => Aw                            # TODO Corner kick short pass
 23:53 Aw->Cross => !D:HD >> !D                  # TODO unclear possession
 :possession T
 24:57 D->Pass => Gkr
@@ -219,7 +219,7 @@
 33:22 D => !Mw:HD >> !Aw:HD >> !Aw                  # TODO
 33:32 Aw->LowCross => !Dw:I >> C                    # TODO unclear possession
 :set T: Corner
-33:43 CK->Pass => Aw
+33:43 CK->Pass => Aw                                # TODO Corner kick short pass
 33:46 Aw->Cross => !D:HD >> A*T                     # TODO throw-in
 :set T: Throw-in
 34:11 A => Aw:Cnt >> !Dw:I >> A*T
@@ -514,7 +514,7 @@
 66:51 A => !Dw:Tck >> A*T                                           # TODO throw-in
 :set L: Throw-in                                                    #
 67:00 A => Aw                                                       #
-67:04 Aw->Pass => !GK
+67:04 Aw->Pass => !GK                                               # TODO pass within attacking space
 :possession T
 67:18 GK->Pass => Mw:HD >> M                                        # TODO unclear possession
 67:27 M->Pass => Mw
