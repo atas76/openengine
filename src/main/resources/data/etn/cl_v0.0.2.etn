@@ -21,8 +21,8 @@
 05:45 Dw->Pass => !M
 :possession L
 05:53 M->Pass => A
-05:58 A->Pass => A      # TODO pass within attacking space
-05:59 A->Pass => !D     # TODO pass within attacking space
+05:58 A->Pass => A      # TODO pass within attacking space - forward attacking line
+05:59 A->Pass => !D     # TODO pass within attacking space - pivot position
 :possession T
 06:02 D->Pass => !M
 :break
@@ -50,7 +50,7 @@
 08:25 Dw->Move => Mw
 08:49 Mw->Move => Aw
 08:50 Aw->Move => A
-08:56 A->Pass => A                  # TODO pass within attacking space
+08:56 A->Pass => A                  # TODO pass within attacking space - forward attacking line
 08:58 A->Move => !D:I >> A          # TODO move within attacking space
 09:02 A->Shoot => !GK #:r=0
 :possession L
