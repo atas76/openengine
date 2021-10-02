@@ -585,7 +585,7 @@
 75:07 Aw->Pass => A
 75:08 A->Pass => Aw                                                 # TODO off the ball player movement
 75:09 Aw->Move => A
-75:12 A->Move => Aw                                                 
+75:12 A->Move => Aw
 75:13 Aw->Cross => !D:B >> Aw                                       # TODO unclear possession
 75:16 Aw->Cross => !D:HD >> Aw                                      # TODO unclear possession
 75:23 Aw->Pass => Mw                                                # TODO attacking setup
@@ -653,7 +653,7 @@
 82:15 Mw->Pass => M
 82:32 M->Pass => Aw                                                 # TODO player moves in empty space
 82:36 Aw->Cross => !D:HD >> Aw:Cnt >> Aw                            # TODO unclear possession
-84:05 Aw->Shoot => !Gkr:S >> C                                      # TODO probability model enhancement
+84:05 Aw->Shoot => !Gkr:S >> C
 :set T: Corner
 84:37 CK->Cross => A:B >> !D                                        # TODO unclear possession
 :break
