@@ -117,7 +117,7 @@
 19:23 M->Pass => A
 19:26 A->Pass => M              # TODO back pass from attack
 19:28 M->Pass => A
-19:30 A->Pass => A              # TODO pass within attacking space
+19:30 A->Pass => A              # TODO pass within attacking space - forward attacking line
 19:32 A->Pass => !D:Clr >> A*T  # TODO throw-in
 :set T: Throw-in                # TODO
 19:40 A => Aw                   # TODO
@@ -127,7 +127,7 @@
 19:48 Gkr->Pass => Mw
 20:23 Mw->Move => Aw
 20:27 Aw->Pass => A
-20:28 A->Pass => A              # TODO pass within attacking space
+20:28 A->Pass => A              # TODO pass within attacking space - unmarked player
 20:29 A->Pass => A              # TODO passing combination 1 - 2
 20:30 A->Shoot => !D:B >> C
 :set L: Corner
@@ -145,7 +145,7 @@
 :set L: Throw-in                                # TODO
 23:03 A => Aw:HD >> !Dw:HD >> !Dw:Cnt           # TODO
 23:06 Dw->Pass => !A
-23:10 A->Pass => A                              # TODO pass within attacking space
+23:10 A->Pass => A                              # TODO pass within attacking space - backpass
 23:11 A->Pass => M                              # TODO back pass from attack
 23:14 M->Move => A
 23:15 A->Pass => Aw                             # TODO player moves in empty space
@@ -299,7 +299,7 @@
 43:28 Gkr->Pass => Dw:HD >> Dw                      # TODO unclear possession
 43:38 Dw->Pass => Mw
 43:41 Mw->Move => A
-43:45 A->Pass => !Gkr:H                             # TODO pass within attacking space
+43:45 A->Pass => !Gkr:H                             # TODO open pass
 :possession L
 43:51 Gkr->Pass => Dw
 44:23 Dw->Pass => !D:HD >> !Gkr:H                   # TODO unclear possession
@@ -312,8 +312,8 @@
 :possession T
 45:10 M->Pass => Mw
 45:13 Mw->Move => A
-45:14 A->Pass => A                                  # TODO pass within attacking space
-45:15 A->Pass => A                                  # TODO pass within attacking space
+45:14 A->Pass => A                                  # TODO pass within attacking space - pitch control variance
+45:15 A->Pass => A                                  # TODO pass within attacking space - backpass
 45:18 A->Shoot => !GK #r=0
 :possession L
 45:42 GK->Pass => M:HD >> M:Cnt >> !Dw              # TODO unclear possession
@@ -384,7 +384,7 @@
 50:56 Gkr->Pass => M:HD >> !Dw:Cnt >> !Dw:FT >> Dw:I >> Dw  # TODO unclear possession
 51:14 Dw->Pass => Mw
 51:18 Mw->Move => A
-51:20 A->Pass => A                                          # TODO pass within attacking space
+51:20 A->Pass => A                                          # TODO pass within attacking space - unmarked player
 51:22 A->Move => !Dw:Ch                                     # TODO move within attacking space
 :possession L
 51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T                   # TODO throw-in
@@ -406,10 +406,10 @@
 :possession L
 53:00 M->Pass => A
 53:05 A->Shoot => !D:B >> A:Ch >> A
-53:12 A->Pass => A                                          # TODO pass within attacking space
+53:12 A->Pass => A                                          # TODO pass within attacking space - unmarked secure player
 53:13 A->Pass => M                                          # TODO back pass from attack
 53:17 M->Move => A
-53:19 A->Pass => !Gkr:H                                     # TODO pass within attacking space
+53:19 A->Pass => !Gkr:H                                     # TODO pass within attacking space - cross
 :break
 :possession T
 53:34 D->Pass => Dw
@@ -463,7 +463,7 @@
 60:04 Mw->Pass => M
 60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO unclear possession
 60:10 M->Pass => A:FT >> A:FT -> A                                  # TODO unclear possession
-60:13 A->Pass => !D:I >> A                                          # TODO pass within attacking space
+60:13 A->Pass => !D:I >> A                                          # TODO unclear possession
 60:17 A->Shoot => !Dp:B >> Aw                                       # TODO shot rebound possession
 60:20 Aw->Pass => Mw                                                # TODO attacking setup
 60:23 Mw->Move => M
@@ -514,7 +514,7 @@
 66:51 A => !Dw:Tck >> A*T                                           # TODO throw-in
 :set L: Throw-in                                                    #
 67:00 A => Aw                                                       #
-67:04 Aw->Pass => !GK                                               # TODO pass within attacking space
+67:04 Aw->Pass => !GK                                               #
 :possession T
 67:18 GK->Pass => Mw:HD >> M                                        # TODO unclear possession
 67:27 M->Pass => Mw
@@ -524,15 +524,15 @@
 67:59 M->Move => Mw
 68:04 Mw->Move => A
 :possession L
-68:07 A->Pass => A                                                  # TODO pass within attacking space
-68:08 A->Pass => A                                                  # TODO pass within attacking space
+68:07 A->Pass => A                                                  # TODO pass within attacking space - combination
+68:08 A->Pass => A                                                  #
 68:09 A->Shoot => !GK #r=2
 :break
 :possession T
 68:41 Gkr->Pass => D
 69:01 D->Pass => !D:B >> M                                          # TODO unclear possession
 69:06 M->Move => A
-69:11 A->Pass => Aw                                                 # TODO pass within attacking space
+69:11 A->Pass => Aw                                                 # TODO pass within attacking space - pitch control variance
 69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO unclear possession
 69:35 Mw->Pass => !D:HD >> M                                        # TODO unclear possession
 69:42 M->Pass => Mw
@@ -561,9 +561,8 @@
 72:22 Gkr->Pass => M
 72:28 M->Pass >> M:FT >> M                                          # TODO unclear possession
 72:32 M->Pass => A
-72:34 A->Pass => A                                                  # TODO pass within attacking space
-72:34 A->Pass => A                                                  # TODO pass within attacking space
-72:35 A->Pass => !Gkr:H                                             # TODO pass within attacking space
+72:34 A->Pass => A                                                  # TODO pass within attacking space - pitch control variance
+72:35 A->Pass => !Gkr:H                                             # TODO pass within attacking space - cross
 :fair-play
 :substitution
 :possession L
@@ -624,7 +623,7 @@
 79:22 D->Pass => M
 79:33 M->Move => A
 79:34 A->Shoot => !Gkr:S >> A #r=2
-79:38 A->Pass => A                                                  # TODO pass within attacking space
+79:38 A->Pass => A                                                  # TODO pass within attacking space - threat variance
 79:39 A->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -726,5 +725,5 @@
 94:15 D->Pass => M
 94:17 M->Pass => Aw                                                 # TODO player moves in empty space
 94:23 Aw->Move => A
-94:26 A->Pass => A                                                  # TODO pass within attacking space
-94:27 A->Pass => !GK                                                # TODO pass within attacking space
+94:26 A->Pass => A                                                  # TODO pass within attacking space - backpass
+94:27 A->Pass => !GK                                                # TODO open pass
