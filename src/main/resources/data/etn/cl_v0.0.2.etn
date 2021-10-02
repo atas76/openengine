@@ -585,7 +585,7 @@
 75:07 Aw->Pass => A
 75:08 A->Pass => Aw                                                 # TODO off the ball player movement
 75:09 Aw->Move => A
-75:12 A->Move => Aw                                                 # TODO probability model enhancement
+75:12 A->Move => Aw                                                 
 75:13 Aw->Cross => !D:B >> Aw                                       # TODO unclear possession
 75:16 Aw->Cross => !D:HD >> Aw                                      # TODO unclear possession
 75:23 Aw->Pass => Mw                                                # TODO attacking setup
