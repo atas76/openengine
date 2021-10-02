@@ -425,7 +425,7 @@
 :break
 :possession T
 56:02 Gkr->Pass => !M:HD >> !M:HD >> M:FT >> !M:Cnt >> M:FT >> M    # TODO unclear possession
-56:16 M->Move => Aw                                                 
+56:16 M->Move => Aw
 56:22 Aw->Cross => !Dw:B >> C                                       # TODO unclear possession
 :set T: Corner
 56:51 CK->Cross => !Gkr:Punch >> A                                  # TODO unclear possession
@@ -464,7 +464,7 @@
 60:05 M->Pass => M:Mrk:Tck >> M                                     # TODO unclear possession
 60:10 M->Pass => A:FT >> A:FT -> A                                  # TODO unclear possession
 60:13 A->Pass => !D:I >> A                                          # TODO pass within attacking space
-60:17 A->Shoot => !Dp:B >> Aw                                       # TODO probability model enhancement
+60:17 A->Shoot => !Dp:B >> Aw                                       # TODO shot rebound possession
 60:20 Aw->Pass => Mw                                                # TODO attacking setup
 60:23 Mw->Move => M
 60:24 M->Pass => A:FT >> !GK                                        # TODO unclear possession
@@ -581,7 +581,7 @@
 :possession T
 74:52 M->Move => A >> !D:Ch >> C                                    # TODO unclear possession
 :set T: Corner
-75:05 CK->Pass => Aw                                                # TODO probability model enhancement
+75:05 CK->Pass => Aw                                                # TODO corner kick short pass
 75:07 Aw->Pass => A
 75:08 A->Pass => Aw                                                 # TODO off the ball player movement
 75:09 Aw->Move => A
