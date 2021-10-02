@@ -539,7 +539,7 @@
 69:47 Mw->Pass => D
 69:55 D->Pass => Aw:Cnt >> Aw                                       # TODO unclear possession
 69:59 Aw->LowCross => Aw  # opposite side                           # TODO attacking setup
-70:04 Aw->Cross => Aw # opposite side                               # TODO probability model enhancement
+70:04 Aw->Cross => Aw # opposite side                               # TODO cross receiving possession
 70:08 Aw->Cross => !Gkr:H
 :possession L
 70:17 Gkr->Pass => Aw                                               # TODO player moves in empty space
