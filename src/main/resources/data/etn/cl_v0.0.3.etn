@@ -55,9 +55,9 @@
 09:02 A->Shoot => !GK               #:r=0
 :possession L
 09:20 GK->Pass => D
-09:37 D->Pass => !Dw:I >> C         # TODO unclean possession
+09:37 D->Pass => !Dw:I >> C         # TODO unclear possession
 :set L: Corner
-10:40 CK->Cross => Gkr:H
+10:40 CK->Cross => Gkr:H            # TODO unclear possession - check .ftn file
 :possession L
 11:04 Gkr->Pass => D
 11:08 D->Pass => !D*T               # TODO throw-in
@@ -584,8 +584,8 @@
 75:07 Apw->Pass => Ad
 75:08 Ad->Pass => Aw                                                 # TODO off the ball player movement
 75:09 Aw->Move => Ad
-75:12 Ad->Move => Apw
-75:13 Apw->Cross => !D:B >> Apw                                      # TODO unclear possession
+75:12 Ad->Move => Awd
+75:13 Awd->Cross => !D:B >> Apw                                      # TODO unclear possession
 75:16 Apw->Cross => !D:HD >> Aw                                      # TODO unclear possession
 75:23 Aw->Pass => Mw                                                # TODO attacking setup
 75:26 Mw->Pass => !D

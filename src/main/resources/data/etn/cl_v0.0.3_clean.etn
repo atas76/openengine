@@ -33,7 +33,6 @@
 :possession L
 09:20 GK->Pass => D
 :set L: Corner
-10:40 CK->Cross => Gkr:H
 :possession L
 11:04 Gkr->Pass => D
 12:11 Mw->Pass => A
@@ -331,7 +330,7 @@
 :set T: Corner
 75:07 Apw->Pass => Ad
 75:09 Aw->Move => Ad
-75:12 Ad->Move => Apw
+75:12 Ad->Move => Awd
 75:26 Mw->Pass => !D
 :break
 :possession T
