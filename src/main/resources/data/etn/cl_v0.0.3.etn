@@ -64,7 +64,7 @@
 :set T: Throw-in                    # TODO
 11:34 D => Mw                       # TODO
 12:11 Mw->Pass => A
-12:13 A->Move => !Dw                # TODO move within attacking space - dribble
+12:13 A->Move => !Dw
 :possession L
 12:17 Dw->Pass => !Mw
 :break
@@ -385,7 +385,7 @@
 51:14 Dw->Pass => Mw
 51:18 Mw->Move => A
 51:20 A->Pass => A                                          # TODO pass within attacking space - unmarked player
-51:22 A->Move => !Dw:Ch                                     # TODO move within attacking space - dribble
+51:22 A->Move => !Dw:Ch
 :possession L
 51:28 Dw->Pass => Dw:Tck >> !Aw:HD >> D*T                   # TODO throw-in
 :set L: Throw-in                                            # TODO
@@ -701,12 +701,12 @@
 :possession T
 92:14 Dw->Pass => M:HD >> M                                         # TODO unclear possession
 92:19 M->Pass => A
-92:22 A->Move => Ad                                                  # TODO move within attacking space - penalty area
+92:22 A->Move => Ad
 92:23 Ad->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M                               # TODO unclear possession
 92:49 M->Pass => A
-92:51 A->Move => Ad                                                  # TODO move within attacking space - penalty area
+92:51 A->Move => Ad                                                 
 92:52 Ad->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H                                           # TODO open pass
