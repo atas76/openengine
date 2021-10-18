@@ -104,7 +104,7 @@
 :possession L
 18:28 M->Pass => Mw
 18:29 Mw->Move => Aw
-18:34 Aw->Move => !GK             # TODO move within attacking wing - dribble
+18:34 Aw->Move => !GK
 :possession T
 18:53 GK->Pass => Dw
 19:01 Dw->Pass => M
@@ -706,7 +706,7 @@
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M                               # TODO unclear possession
 92:49 M->Pass => A
-92:51 A->Move => Ad                                                 
+92:51 A->Move => Ad
 92:52 Ad->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H                                           # TODO open pass
