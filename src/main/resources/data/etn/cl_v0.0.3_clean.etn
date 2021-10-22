@@ -85,7 +85,7 @@
 21:51 Aw->Move => Awd
 :set T: Throw-in
 22:17 D => Dw:Cnt >> !Aw:I >> !Aw
-22:20 Aw->Move => Ad
+22:20 Aw->Move => Apd
 23:06 Dw->Pass => !A
 23:14 M->Move => A
 :set L: Corner
@@ -237,7 +237,7 @@
 :possession T
 56:16 M->Move => Apw
 :set T: Corner
-56:55 Ad->Shoot => !D:B >> C
+56:55 Apd->Shoot => !D:B >> C
 :set T: Corner
 57:15 CK->Cross => Adw:HD
 57:17 Adw->HdSht => !GK #r=0
@@ -298,7 +298,7 @@
 :break
 :possession T
 68:41 Gkr->Pass => D
-69:06 M->Move => Ad
+69:06 M->Move => Apd
 69:42 M->Pass => Mw
 69:47 Mw->Pass => D
 70:08 Aw->Cross => !Gkr:H
@@ -328,9 +328,9 @@
 74:38 M->Pass => A
 :possession T
 :set T: Corner
-75:07 Apw->Pass => Ad
-75:09 Aw->Move => Ad
-75:12 Ad->Move => Awd
+75:07 Apw->Pass => Apd
+75:09 Aw->Move => Apd
+75:12 Apd->Move => Awd
 75:26 Mw->Pass => !D
 :break
 :possession T
@@ -356,7 +356,7 @@
 79:14 Gkr->Pass => D
 79:22 D->Pass => M
 79:33 M->Move => A
-79:34 A->Shoot => !Gkr:S >> Ad #r=2
+79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:39 Ap->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -412,10 +412,10 @@
 :possession L
 :possession T
 92:19 M->Pass => A
-92:23 Ad->Shoot => !Gkr:S >> C #r=2
+92:23 Apd->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:49 M->Pass => A
-92:52 Ad->Shoot => !Gkr:H  #r=1
+92:52 Apd->Shoot => !Gkr:H  #r=1
 :possession L
 :possession T
 93:19 Gkr->Pass => D

@@ -138,8 +138,8 @@
 21:52 Awd->Shoot => !D*T                  # TODO throw-in (account for shots totally missing the target (Salah))
 :set T: Throw-in
 22:17 D => Dw:Cnt >> !Aw:I >> !Aw
-22:20 Aw->Move => Ad
-22:22 Ad->Pass => !D:Cl >> !Dw >> Aw:I >> Mw     # TODO unclear possession
+22:20 Aw->Move => Apd
+22:22 Apd->Pass => !D:Cl >> !Dw >> Aw:I >> Mw     # TODO unclear possession
 22:29 Mw->Pass => Aw                            # TODO player moves in empty space
 22:37 Aw->Cross => !D:HD >> A*T                 # TODO throw-in
 :set L: Throw-in                                # TODO
@@ -428,8 +428,8 @@
 56:16 M->Move => Apw
 56:22 Apw->Cross => !Dw:B >> C                                       # TODO unclear possession
 :set T: Corner
-56:51 CK->Cross => !Gkr:Punch >> Ad                                  # TODO unclear possession
-56:55 Ad->Shoot => !D:B >> C
+56:51 CK->Cross => !Gkr:Punch >> Apd                                  # TODO unclear possession
+56:55 Apd->Shoot => !D:B >> C
 :set T: Corner
 57:15 CK->Cross => Adw:HD
 57:17 Adw->HdSht => !GK #r=0
@@ -531,8 +531,8 @@
 :possession T
 68:41 Gkr->Pass => D
 69:01 D->Pass => !D:B >> M                                          # TODO unclear possession
-69:06 M->Move => Ad
-69:11 Ad->Pass => Aw                                                 # TODO pass within attacking space - pitch control variance
+69:06 M->Move => Apd
+69:11 Apd->Pass => Aw                                                 # TODO pass within attacking space - pitch control variance
 69:12 Aw->Cross => !Dp:B >> !Dp:Clr >> Mw                           # TODO unclear possession
 69:35 Mw->Pass => !D:HD >> M                                        # TODO unclear possession
 69:42 M->Pass => Mw
@@ -561,8 +561,8 @@
 72:22 Gkr->Pass => M
 72:28 M->Pass >> M:FT >> M                                          # TODO unclear possession
 72:32 M->Pass => A
-72:34 A->Pass => Ad                                                  # TODO pass within attacking space - pitch control variance
-72:35 Ad->Pass => !Gkr:H                                             # TODO pass within attacking space - cross
+72:34 A->Pass => Apd                                                  # TODO pass within attacking space - pitch control variance
+72:35 Apd->Pass => !Gkr:H                                             # TODO pass within attacking space - cross
 :fair-play
 :substitution
 :possession L
@@ -581,10 +581,10 @@
 74:52 M->Move => Ap >> !D:Ch >> C                                    # TODO unclear possession
 :set T: Corner
 75:05 CK->Pass => Apw                                                # TODO corner kick short pass
-75:07 Apw->Pass => Ad
-75:08 Ad->Pass => Aw                                                 # TODO off the ball player movement
-75:09 Aw->Move => Ad
-75:12 Ad->Move => Awd
+75:07 Apw->Pass => Apd
+75:08 Apd->Pass => Aw                                                 # TODO off the ball player movement
+75:09 Aw->Move => Apd
+75:12 Apd->Move => Awd
 75:13 Awd->Cross => !D:B >> Apw                                      # TODO unclear possession
 75:16 Apw->Cross => !D:HD >> Aw                                      # TODO unclear possession
 75:23 Aw->Pass => Mw                                                # TODO attacking setup
@@ -622,8 +622,8 @@
 79:14 Gkr->Pass => D
 79:22 D->Pass => M
 79:33 M->Move => A
-79:34 A->Shoot => !Gkr:S >> Ad #r=2
-79:38 Ad->Pass => Ap                                                  # TODO pass within attacking space - threat variance
+79:34 A->Shoot => !Gkr:S >> Apd #r=2
+79:38 Apd->Pass => Ap                                                  # TODO pass within attacking space - threat variance
 79:39 Ap->Shoot => !Gkr:H       #r=2
 :break
 :possession L
@@ -701,13 +701,13 @@
 :possession T
 92:14 Dw->Pass => M:HD >> M                                         # TODO unclear possession
 92:19 M->Pass => A
-92:22 A->Move => Ad
-92:23 Ad->Shoot => !Gkr:S >> C #r=2
+92:22 A->Move => Apd
+92:23 Apd->Shoot => !Gkr:S >> C #r=2
 :set T: Corner
 92:41 CK->Cross => !D:HD >> A:HD >> M                               # TODO unclear possession
 92:49 M->Pass => A
-92:51 A->Move => Ad
-92:52 Ad->Shoot => !Gkr:H  #r=1
+92:51 A->Move => Apd
+92:52 Apd->Shoot => !Gkr:H  #r=1
 :possession L
 93:13 Gkr->Pass => !Gkr:H                                           # TODO open pass
 :possession T
