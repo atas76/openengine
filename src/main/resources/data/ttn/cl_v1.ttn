@@ -3,5 +3,5 @@
 00:02 DM->Long >>> M RC @ DM
 00:15 M->Long:FT:Open => F LC @ Apd
 :attack L
-00:20 Apd->BounceOff => Ap*H @ M C
+00:20 Apd->BounceOff => M C @ Ap*H
 
