@@ -30,4 +30,9 @@ public class ScannerTest {
         assertEquals("@", tokens.get(9));
         assertEquals("DM", tokens.get(10));
     }
+
+    @Test(expected = org.fgn.lexan.exceptions.ScannerException.class)
+    public void testStatementUnsupportedToken() throws org.fgn.lexan.exceptions.ScannerException {
+        new org.fgn.lexan.Scanner("00:02 DM->Long >>> M RC % DM").scan();
+    }
 }
