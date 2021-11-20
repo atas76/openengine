@@ -56,6 +56,18 @@ public class ScannerTest {
         assertEquals("=>", tokens.get(0));
     }
 
+    @Test
+    public void testMatchPhaseDeclaration() throws ScannerException {
+        String statement = ":attack L";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(3, tokens.size());
+        assertEquals(":", tokens.get(0));
+        assertEquals("attack", tokens.get(1));
+        assertEquals("L", tokens.get(2));
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementUnsupportedToken() throws org.ttn.lexan.exceptions.ScannerException {
         new Scanner("00:02 DM->Long >>> M RC % DM").scan();
