@@ -35,13 +35,18 @@ public class ScannerTest {
         assertEquals("=>", directOutcomeTokens.get(10));
     }
 
-    @Test(expected = org.ttn.lexan.exceptions.ScannerException.class)
+    @Test(expected = ScannerException.class)
     public void testStatementUnsupportedToken() throws org.ttn.lexan.exceptions.ScannerException {
-        new org.ttn.lexan.Scanner("00:02 DM->Long >>> M RC % DM").scan();
+        new Scanner("00:02 DM->Long >>> M RC % DM").scan();
     }
 
-    @Test(expected = org.ttn.lexan.exceptions.ScannerException.class)
+    @Test(expected = ScannerException.class)
     public void testStatementScanInvalidToken() throws org.ttn.lexan.exceptions.ScannerException {
-        new org.ttn.lexan.Scanner("00:15 M->Long:FT:Open ==> F LC @ Apd").scan();
+        new Scanner("00:15 M->Long:FT:Open ==> F LC @ Apd").scan();
+    }
+
+    @Test(expected = ScannerException.class)
+    public void testStatementRandomToken() throws org.ttn.lexan.exceptions.ScannerException {
+        new Scanner("---").scan();
     }
 }
