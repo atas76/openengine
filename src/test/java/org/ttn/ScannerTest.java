@@ -46,6 +46,16 @@ public class ScannerTest {
         assertEquals("Kickoff", tokens.get(4));
     }
 
+    @Test
+    public void testSetPieceExecution() throws ScannerException {
+        String statement = "=> D C @ DM";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(5, tokens.size());
+        assertEquals("=>", tokens.get(0));
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementUnsupportedToken() throws org.ttn.lexan.exceptions.ScannerException {
         new Scanner("00:02 DM->Long >>> M RC % DM").scan();
