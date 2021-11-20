@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class ScannerTest {
 
     @Test
-    public void testStatementScan() throws ScannerException {
+    public void testStandardStatementScan() throws ScannerException {
         String indirectOutcomeStatement = "00:02 DM->Long >>> M RC @ DM";
         String directOutcomeStatement = "00:15 M->Long:FT:Open => F LC @ Apd";
 
@@ -33,6 +33,17 @@ public class ScannerTest {
         //
         assertEquals(15, directOutcomeTokens.size());
         assertEquals("=>", directOutcomeTokens.get(10));
+    }
+
+    @Test
+    public void testSetPieceDeclaration() throws ScannerException {
+        String statement = ":set L: Kickoff";
+
+        List<String> tokens = new Scanner(statement).scan();
+
+        assertEquals(5, tokens.size());
+        assertEquals("set", tokens.get(1));
+        assertEquals("Kickoff", tokens.get(4));
     }
 
     @Test(expected = ScannerException.class)
