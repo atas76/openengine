@@ -1,15 +1,31 @@
 package org.ttn.parser;
 
 import org.ttn.engine.input.TacticalPosition;
+import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
+
+import static java.util.Map.entry;
+import static org.ttn.parser.Statement.Type.SPX;
 
 public class Parser {
 
-    private List<String> tokens;
+    private enum Keyword {
+        SET
+    }
+
+    private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
+            entry(Keyword.SET, SPX));
+
+    private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
+            entry("Kickoff", SetPiece.KICK_OFF)
+    );
+
+    private final List<String> tokens;
     private int index = 0;
 
     private static final Pattern numericMinutesPattern = Pattern.compile("\\d{2}");
@@ -36,6 +52,16 @@ public class Parser {
         }
     }
 
+    private Keyword expectKeyword() throws ParserException {
+        String token = tokens.get(index++);
+        switch (token) {
+            case "set":
+                return Keyword.SET;
+            default:
+                throw new ParserException("Keyword expected");
+        }
+    }
+
     public Statement parse() throws ParserException {
 
         Statement statement = new Statement();
@@ -53,6 +79,12 @@ public class Parser {
                     statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
                     break;
                 case ":":
+                    nextToken();
+                    statement.setType(keywordMapping.get(expectKeyword()));
+                    statement.setTeam(readNextToken());
+                    expectToken(":");
+                    statement.setSetPiece(setPieceMapping.get(readNextToken()));
+                    break;
                 default:
                     throw new ParserException("Unknown symbol: " + token);
             }

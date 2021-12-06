@@ -12,6 +12,8 @@ import org.ttn.parser.exceptions.ParserException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.ttn.engine.rules.SetPiece.KICK_OFF;
+import static org.ttn.parser.Statement.Type.SPX;
 
 public class ParserTest {
 
@@ -38,6 +40,18 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
+    }
+
+    // Test all statements so far
+
+    @Test
+    public void testSetPieceExecution() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L: Kickoff");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(SPX, statement.getType());
+        assertEquals("L", statement.getTeam());
+        assertEquals(KICK_OFF, statement.getSetPiece());
     }
 
     private List<String> getTokens(String s) throws ScannerException {
