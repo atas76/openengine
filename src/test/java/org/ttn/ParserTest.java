@@ -1,6 +1,8 @@
 package org.ttn;
 
 import org.junit.Test;
+import org.ttn.engine.input.TacticalPosition;
+import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
@@ -26,6 +28,16 @@ public class ParserTest {
         List<String> tokens = getTokens("a:b T: D->Pass => DM");
 
         new Parser(tokens).parse();
+    }
+
+    @Test
+    public void testDefaultActionParsing() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("=> D C @ DM");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.DM, statement.getPitchPosition());
     }
 
     private List<String> getTokens(String s) throws ScannerException {
