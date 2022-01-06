@@ -1,5 +1,7 @@
 package org.ttn.parser;
 
+import org.ttn.engine.agent.Action;
+import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
@@ -7,13 +9,15 @@ import org.ttn.parser.exceptions.ParserException;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import static java.util.Map.entry;
-import static org.ttn.parser.Statement.Type.POSSESSION_BLOCK_START;
-import static org.ttn.parser.Statement.Type.SP_EXECUTION;
+import static org.ttn.parser.Statement.Type.*;
 
 public class Parser {
+
+    private final Set<String> STATEMENT_QUALIFIERS = Set.of("=>", ":");
 
     private enum Keyword {
         SET, POSSESSION
@@ -78,27 +82,44 @@ public class Parser {
 
         if (numericMinutesPattern.matcher(token).matches()) {
             parseTime(statement);
-        } else {
-            switch(token) {
-                case "=>":
-                    nextToken();
-                    statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
-                    statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
-                    expectToken("@");
-                    statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
-                    break;
-                case ":":
-                    nextToken();
-                    statement.setType(keywordMapping.get(expectKeyword()));
-                    statement.setTeam(readNextToken());
-                    if (hasNextToken()) {
-                        expectToken(":");
-                        statement.setSetPiece(setPieceMapping.get(readNextToken()));
-                    }
-                    break;
-                default:
-                    throw new ParserException("Unknown symbol: " + token);
-            }
+            token = peekNextToken();
+        } else if (!STATEMENT_QUALIFIERS.contains(token)) {
+            throw new ParserException("Invalid time format");
+        }
+
+        switch(token) {
+            case "=>":
+                nextToken();
+                statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
+                statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+                expectToken("@");
+                statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
+                break;
+            case ":":
+                nextToken();
+                statement.setType(keywordMapping.get(expectKeyword()));
+                statement.setTeam(readNextToken());
+                if (hasNextToken()) {
+                    expectToken(":");
+                    statement.setSetPiece(setPieceMapping.get(readNextToken()));
+                }
+                break;
+            default:
+                PitchPosition actionPitchPosition = PitchPosition.valueOf(token);
+
+                nextToken();
+                expectToken("->");
+                ActionType actionType = ActionType.valueOf(readNextToken());
+                Action action = new Action(actionType, actionPitchPosition);
+                statement.setAction(action);
+
+                expectToken(">>>");
+                statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
+                statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+
+                expectToken("@");
+                statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
+                statement.setType(INDIRECT_OUTCOME);
         }
 
         return statement;

@@ -1,6 +1,7 @@
 package org.ttn;
 
 import org.junit.Test;
+import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
@@ -13,22 +14,13 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.ttn.engine.rules.SetPiece.KICK_OFF;
-import static org.ttn.parser.Statement.Type.POSSESSION_BLOCK_START;
-import static org.ttn.parser.Statement.Type.SP_EXECUTION;
+import static org.ttn.parser.Statement.Type.*;
 
 public class ParserTest {
 
-    @Test
-    public void testTimeParsing() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("00:15 M->Long:FT:Open => F LC @ Apd");
-        Statement statement = new Parser(tokens).parse();
-
-        assertEquals(15, statement.getTime());
-    }
-
     @Test(expected = ParserException.class)
     public void testInvalidTimeFormat() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("a:b T: D->Pass => DM");
+        List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");
 
         new Parser(tokens).parse();
     }
@@ -62,6 +54,20 @@ public class ParserTest {
 
         assertEquals(POSSESSION_BLOCK_START, statement.getType());
         assertEquals("L", statement.getTeam());
+    }
+
+    @Test
+    public void testIndirectOutcomeStatement() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:02 DM->Long >>> M RC @ Md");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(2, statement.getTime());
+        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
+        assertEquals(INDIRECT_OUTCOME, statement.getType());
     }
 
     private List<String> getTokens(String s) throws ScannerException {

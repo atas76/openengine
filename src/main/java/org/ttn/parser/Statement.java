@@ -1,5 +1,6 @@
 package org.ttn.parser;
 
+import org.ttn.engine.agent.Action;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
@@ -7,10 +8,11 @@ import org.ttn.engine.space.PitchPosition;
 public class Statement {
 
     public enum Type {
-        SP_EXECUTION, POSSESSION_BLOCK_START
+        SP_EXECUTION, POSSESSION_BLOCK_START, INDIRECT_OUTCOME
     }
 
     private int time;
+    private Action action;
     private TacticalPosition.X tacticalPositionX;
     private TacticalPosition.Y tacticalPositionY;
     private PitchPosition pitchPosition;
@@ -48,6 +50,14 @@ public class Statement {
 
     public void setPitchPosition(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
+    }
+
+    public Action getAction() {
+        return action;
+    }
+
+    public void setAction(Action action) {
+        this.action = action;
     }
 
     public String getTeam() {
