@@ -13,7 +13,8 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.ttn.engine.rules.SetPiece.KICK_OFF;
-import static org.ttn.parser.Statement.Type.SPX;
+import static org.ttn.parser.Statement.Type.POSSESSION_BLOCK_START;
+import static org.ttn.parser.Statement.Type.SP_EXECUTION;
 
 public class ParserTest {
 
@@ -49,9 +50,18 @@ public class ParserTest {
         List<String> tokens = getTokens(":set L: Kickoff");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(SPX, statement.getType());
+        assertEquals(SP_EXECUTION, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(KICK_OFF, statement.getSetPiece());
+    }
+
+    @Test
+    public void testPossessionBlockStart() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possession L");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(POSSESSION_BLOCK_START, statement.getType());
+        assertEquals("L", statement.getTeam());
     }
 
     private List<String> getTokens(String s) throws ScannerException {

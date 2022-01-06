@@ -10,16 +10,19 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import static java.util.Map.entry;
-import static org.ttn.parser.Statement.Type.SPX;
+import static org.ttn.parser.Statement.Type.POSSESSION_BLOCK_START;
+import static org.ttn.parser.Statement.Type.SP_EXECUTION;
 
 public class Parser {
 
     private enum Keyword {
-        SET
+        SET, POSSESSION
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
-            entry(Keyword.SET, SPX));
+            entry(Keyword.SET, SP_EXECUTION),
+            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START)
+            );
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF)
@@ -42,6 +45,10 @@ public class Parser {
         ++index;
     }
 
+    private boolean hasNextToken() {
+        return index < tokens.size() - 1;
+    }
+
     private String readNextToken() {
         return tokens.get(index++);
     }
@@ -57,6 +64,8 @@ public class Parser {
         switch (token) {
             case "set":
                 return Keyword.SET;
+            case "possession":
+                return Keyword.POSSESSION;
             default:
                 throw new ParserException("Keyword expected");
         }
@@ -82,8 +91,10 @@ public class Parser {
                     nextToken();
                     statement.setType(keywordMapping.get(expectKeyword()));
                     statement.setTeam(readNextToken());
-                    expectToken(":");
-                    statement.setSetPiece(setPieceMapping.get(readNextToken()));
+                    if (hasNextToken()) {
+                        expectToken(":");
+                        statement.setSetPiece(setPieceMapping.get(readNextToken()));
+                    }
                     break;
                 default:
                     throw new ParserException("Unknown symbol: " + token);

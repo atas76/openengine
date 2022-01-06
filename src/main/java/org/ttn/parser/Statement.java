@@ -7,7 +7,7 @@ import org.ttn.engine.space.PitchPosition;
 public class Statement {
 
     public enum Type {
-        SPX
+        SP_EXECUTION, POSSESSION_BLOCK_START
     }
 
     private int time;
