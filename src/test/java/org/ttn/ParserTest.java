@@ -12,7 +12,7 @@ import org.ttn.parser.exceptions.ParserException;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.ttn.engine.rules.SetPiece.KICK_OFF;
 import static org.ttn.parser.Statement.Type.*;
 
@@ -64,6 +64,22 @@ public class ParserTest {
         assertEquals(15, statement.getTime());
         assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
+        assertEquals(STANDARD, statement.getType());
+    }
+
+    @Test
+    public void testActionParameter() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:15 Md->Long:FT => F LC @ Apd");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(15, statement.getTime());
+        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertTrue(statement.getAction().isFirstTouch());
+        assertFalse(statement.getAction().isOpenPass());
         assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
         assertEquals(PitchPosition.Apd, statement.getPitchPosition());

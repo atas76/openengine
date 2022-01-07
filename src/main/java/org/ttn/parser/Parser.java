@@ -2,17 +2,21 @@ package org.ttn.parser;
 
 import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
 
 import static java.util.Map.entry;
+import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
+import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
 import static org.ttn.parser.Statement.Type.*;
 
 public class Parser {
@@ -26,12 +30,14 @@ public class Parser {
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
             entry(Keyword.SET, SP_EXECUTION),
-            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START)
-            );
+            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
-            entry("Kickoff", SetPiece.KICK_OFF)
-    );
+            entry("Kickoff", SetPiece.KICK_OFF));
+
+    private static final Map<String, ActionParameter> actionParameterMapping = Map.ofEntries(
+            entry("Open", OPEN_PASS),
+            entry("FT", FIRST_TOUCH));
 
     private final List<String> tokens;
     private int index = 0;
@@ -110,8 +116,14 @@ public class Parser {
 
                 nextToken();
                 expectToken("->");
-                ActionType actionType = ActionType.valueOf(readNextToken());
-                Action action = new Action(actionType, actionPitchPosition);
+                token = readNextToken();
+                List<ActionParameter> actionParameters = new ArrayList<>();
+                ActionType actionType = ActionType.valueOf(token);
+                if (":".equals(peekNextToken())) {
+                    expectToken(":");
+                    actionParameters.add(actionParameterMapping.get(readNextToken()));
+                }
+                Action action = new Action(actionType, actionPitchPosition, actionParameters);
                 statement.setAction(action);
 
                 token = readNextToken();
