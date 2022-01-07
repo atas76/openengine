@@ -87,6 +87,22 @@ public class ParserTest {
     }
 
     @Test
+    public void testActionParameters() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:15 Md->Long:FT:Open => F LC @ Apd");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(15, statement.getTime());
+        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertTrue(statement.getAction().isFirstTouch());
+        assertTrue(statement.getAction().isOpenPass());
+        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
+        assertEquals(STANDARD, statement.getType());
+    }
+
+    @Test
     public void testIndirectOutcomeStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:02 DM->Long >>> M RC @ Md");
         Statement statement = new Parser(tokens).parse();

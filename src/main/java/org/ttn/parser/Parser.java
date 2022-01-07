@@ -119,9 +119,11 @@ public class Parser {
                 token = readNextToken();
                 List<ActionParameter> actionParameters = new ArrayList<>();
                 ActionType actionType = ActionType.valueOf(token);
-                if (":".equals(peekNextToken())) {
+                token = peekNextToken();
+                while (":".equals(token)) {
                     expectToken(":");
                     actionParameters.add(actionParameterMapping.get(readNextToken()));
+                    token = peekNextToken();
                 }
                 Action action = new Action(actionType, actionPitchPosition, actionParameters);
                 statement.setAction(action);
