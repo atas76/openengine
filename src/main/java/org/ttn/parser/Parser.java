@@ -18,6 +18,7 @@ import static org.ttn.parser.Statement.Type.*;
 public class Parser {
 
     private final Set<String> STATEMENT_QUALIFIERS = Set.of("=>", ":");
+    private final Set<String> OUTCOME_DELIMITERS = Set.of("=>", ">>>");
 
     private enum Keyword {
         SET, POSSESSION
@@ -113,13 +114,17 @@ public class Parser {
                 Action action = new Action(actionType, actionPitchPosition);
                 statement.setAction(action);
 
-                expectToken(">>>");
+                token = readNextToken();
+                if (!OUTCOME_DELIMITERS.contains(token)) {
+                    throw new ParserException("Outcome delimiter expected");
+                }
                 statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
                 statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
 
                 expectToken("@");
                 statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
-                statement.setType(INDIRECT_OUTCOME);
+
+                statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
         }
 
         return statement;

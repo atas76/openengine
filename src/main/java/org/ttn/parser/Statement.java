@@ -8,7 +8,7 @@ import org.ttn.engine.space.PitchPosition;
 public class Statement {
 
     public enum Type {
-        SP_EXECUTION, POSSESSION_BLOCK_START, INDIRECT_OUTCOME
+        SP_EXECUTION, POSSESSION_BLOCK_START, INDIRECT_OUTCOME, STANDARD
     }
 
     private int time;
