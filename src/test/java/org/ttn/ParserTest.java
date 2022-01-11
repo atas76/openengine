@@ -35,6 +35,20 @@ public class ParserTest {
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
     }
 
+    @Test
+    public void testIgnorePostStatementEnd() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd abc");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(15, statement.getTime());
+        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
+        assertEquals(STANDARD, statement.getType());
+    }
+
     // Test all statements so far
 
     @Test
