@@ -3,6 +3,8 @@ package org.ttn.parser;
 import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.agent.ActionParameter;
+import org.ttn.engine.environment.ActionOutcome;
+import org.ttn.engine.environment.OutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
@@ -17,6 +19,7 @@ import java.util.regex.Pattern;
 import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
 import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
+import static org.ttn.engine.environment.OutcomeType.HANDBALL;
 import static org.ttn.parser.Statement.Type.*;
 
 public class Parser {
@@ -38,6 +41,9 @@ public class Parser {
     private static final Map<String, ActionParameter> actionParameterMapping = Map.ofEntries(
             entry("Open", OPEN_PASS),
             entry("FT", FIRST_TOUCH));
+
+    private static final Map<String, OutcomeType> actionOutcomeType = Map.ofEntries(
+            entry("H", HANDBALL));
 
     private final List<String> tokens;
     private int index = 0;
@@ -111,7 +117,7 @@ public class Parser {
                     statement.setSetPiece(setPieceMapping.get(readNextToken()));
                 }
                 break;
-            default:
+            default: // TODO don't reuse token variable: each assignment should be a declaration with extracted method if possible
                 PitchPosition actionPitchPosition = PitchPosition.valueOf(token);
 
                 nextToken();
@@ -132,13 +138,24 @@ public class Parser {
                 if (!OUTCOME_DELIMITERS.contains(token)) {
                     throw new ParserException("Outcome delimiter expected");
                 }
+
+                statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
+
                 statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
                 statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
 
                 expectToken("@");
-                statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
+                PitchPosition outcomePitchPosition = PitchPosition.valueOf(readNextToken());
 
-                statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
+                if (hasNextToken()) {
+                    if (peekNextToken().equals("*")) {
+                        nextToken();
+                        statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
+                                actionOutcomeType.get(readNextToken())));
+                    }
+                } else {
+                    statement.setPitchPosition(outcomePitchPosition);
+                }
         }
 
         return statement;

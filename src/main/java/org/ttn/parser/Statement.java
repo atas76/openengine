@@ -1,6 +1,7 @@
 package org.ttn.parser;
 
 import org.ttn.engine.agent.Action;
+import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
@@ -15,7 +16,7 @@ public class Statement {
     private Action action;
     private TacticalPosition.X tacticalPositionX;
     private TacticalPosition.Y tacticalPositionY;
-    private PitchPosition pitchPosition;
+    private ActionOutcome actionOutcome;
     private String team;
     private SetPiece setPiece;
     private Type type;
@@ -44,12 +45,22 @@ public class Statement {
         this.tacticalPositionY = tacticalPositionY;
     }
 
+    // TODO refactor
     public PitchPosition getPitchPosition() {
-        return pitchPosition;
+        return actionOutcome.getPitchPosition();
     }
 
+    // TODO refactor
     public void setPitchPosition(PitchPosition pitchPosition) {
-        this.pitchPosition = pitchPosition;
+        this.actionOutcome = new ActionOutcome(pitchPosition);
+    }
+
+    public void setActionOutcome(ActionOutcome actionOutcome) {
+        this.actionOutcome = actionOutcome;
+    }
+
+    public ActionOutcome getActionOutcome() {
+        return this.actionOutcome;
     }
 
     public Action getAction() {

@@ -2,6 +2,7 @@ package org.ttn;
 
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.environment.OutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
@@ -48,6 +49,8 @@ public class ParserTest {
         assertEquals(PitchPosition.Apd, statement.getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
+
+    // TODO test invalid domain objects (enum values)
 
     // Test all statements so far
 
@@ -128,6 +131,20 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
         assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(INDIRECT_OUTCOME, statement.getType());
+    }
+
+    @Test
+    public void testActionOutcomeType() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:20 Apd->BounceOff => M C @ Ap*H");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(20, statement.getTime());
+        assertEquals(PitchPosition.Apd, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.BounceOff, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Ap, statement.getPitchPosition());
+        assertEquals(OutcomeType.HANDBALL, statement.getActionOutcome().getType());
     }
 
     private List<String> getTokens(String s) throws ScannerException {
