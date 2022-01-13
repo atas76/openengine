@@ -36,8 +36,8 @@ public class ParserTest {
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
     }
 
-    @Test
-    public void testIgnorePostStatementEnd() throws ScannerException, ParserException {
+    @Test(expected=ParserException.class)
+    public void testInvalidStatementEnd() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd abc");
         Statement statement = new Parser(tokens).parse();
 
@@ -180,6 +180,24 @@ public class ParserTest {
     @Test(expected = ParserException.class)
     public void testMissingActionDelimiter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D Pass => DM");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = ParserException.class)
+    public void testUnknownBlockLabel() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":random L");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = ParserException.class)
+    public void teamMissing() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possession");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = ParserException.class)
+    public void testInvalidStatementQualifier() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("@possession");
         new Parser(tokens).parse();
     }
 

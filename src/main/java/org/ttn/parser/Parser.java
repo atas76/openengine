@@ -63,7 +63,7 @@ public class Parser {
     }
 
     private boolean hasNextToken() {
-        return index < tokens.size() - 1;
+        return index < tokens.size();
     }
 
     private String readNextToken() {
@@ -111,7 +111,11 @@ public class Parser {
             case ":":
                 nextToken();
                 statement.setType(keywordMapping.get(expectKeyword()));
-                statement.setTeam(readNextToken());
+                if (hasNextToken()) {
+                    statement.setTeam(readNextToken());
+                } else {
+                    throw new ParserException("Team expected in block definition");
+                }
                 if (hasNextToken()) {
                     expectToken(":");
                     statement.setSetPiece(setPieceMapping.get(readNextToken()));
@@ -141,6 +145,8 @@ public class Parser {
                         nextToken();
                         statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
                                 actionOutcomeType.get(readNextToken())));
+                    } else {
+                        throw new ParserException("Invalid token at the end of statement");
                     }
                 } else {
                     statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
