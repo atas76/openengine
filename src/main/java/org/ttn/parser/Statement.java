@@ -4,7 +4,6 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
-import org.ttn.engine.space.PitchPosition;
 
 public class Statement {
 
