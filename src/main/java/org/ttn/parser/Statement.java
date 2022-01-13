@@ -49,12 +49,7 @@ public class Statement {
     public PitchPosition getPitchPosition() {
         return actionOutcome.getPitchPosition();
     }
-
-    // TODO refactor
-    public void setPitchPosition(PitchPosition pitchPosition) {
-        this.actionOutcome = new ActionOutcome(pitchPosition);
-    }
-
+    
     public void setActionOutcome(ActionOutcome actionOutcome) {
         this.actionOutcome = actionOutcome;
     }

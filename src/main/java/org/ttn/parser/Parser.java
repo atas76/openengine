@@ -106,7 +106,7 @@ public class Parser {
                 statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
                 statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
                 expectToken("@");
-                statement.setPitchPosition(PitchPosition.valueOf(readNextToken()));
+                statement.setActionOutcome(new ActionOutcome(PitchPosition.valueOf(readNextToken())));
                 break;
             case ":":
                 nextToken();
@@ -154,7 +154,7 @@ public class Parser {
                                 actionOutcomeType.get(readNextToken())));
                     }
                 } else {
-                    statement.setPitchPosition(outcomePitchPosition);
+                    statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
                 }
         }
 
