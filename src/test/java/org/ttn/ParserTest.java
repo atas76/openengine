@@ -153,6 +153,12 @@ public class ParserTest {
         new Parser(tokens).parse();
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testInvalidDomainObject() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("=> D C @ DMM");
+        new Parser(tokens).parse();
+    }
+
     private List<String> getTokens(String s) throws ScannerException {
         return new Scanner(s).scan();
     }
