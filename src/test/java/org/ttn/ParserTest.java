@@ -147,6 +147,12 @@ public class ParserTest {
         assertEquals(OutcomeType.HANDBALL, statement.getActionOutcome().getType());
     }
 
+    @Test(expected = ParserException.class)
+    public void testInvalidTimeSeparator() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00 20 Apd->BounceOff => M C @ Ap*H");
+        new Parser(tokens).parse();
+    }
+
     private List<String> getTokens(String s) throws ScannerException {
         return new Scanner(s).scan();
     }
