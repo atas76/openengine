@@ -159,6 +159,30 @@ public class ParserTest {
         new Parser(tokens).parse();
     }
 
+    @Test(expected = ParserException.class)
+    public void testMissingDelimiters() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("12:38 D Pass DM");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMissingOutcomeDelimiter() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("12:38 D->Pass DM");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = ScannerException.class)
+    public void testInvalidOutcomeDelimiter() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("12:38 D->Pass + DM");
+        new Parser(tokens).parse();
+    }
+
+    @Test(expected = ParserException.class)
+    public void testMissingActionDelimiter() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("12:38 D Pass => DM");
+        new Parser(tokens).parse();
+    }
+
     private List<String> getTokens(String s) throws ScannerException {
         return new Scanner(s).scan();
     }
