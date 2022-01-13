@@ -117,22 +117,11 @@ public class Parser {
                     statement.setSetPiece(setPieceMapping.get(readNextToken()));
                 }
                 break;
-            default: // TODO don't reuse token variable: each assignment should be a declaration with extracted method if possible
+            default:
                 PitchPosition actionPitchPosition = PitchPosition.valueOf(token);
-
                 nextToken();
                 expectToken("->");
-                token = readNextToken();
-                List<ActionParameter> actionParameters = new ArrayList<>();
-                ActionType actionType = ActionType.valueOf(token);
-                token = peekNextToken();
-                while (":".equals(token)) {
-                    expectToken(":");
-                    actionParameters.add(actionParameterMapping.get(readNextToken()));
-                    token = peekNextToken();
-                }
-                Action action = new Action(actionType, actionPitchPosition, actionParameters);
-                statement.setAction(action);
+                parseAction(statement, actionPitchPosition);
 
                 token = readNextToken();
                 if (!OUTCOME_DELIMITERS.contains(token)) {
@@ -159,6 +148,20 @@ public class Parser {
         }
 
         return statement;
+    }
+
+    private void parseAction(Statement statement, PitchPosition actionPitchPosition) throws ParserException {
+        String actionToken = readNextToken();
+        List<ActionParameter> actionParameters = new ArrayList<>();
+        ActionType actionType = ActionType.valueOf(actionToken);
+        actionToken = peekNextToken();
+        while (":".equals(actionToken)) {
+            expectToken(":");
+            actionParameters.add(actionParameterMapping.get(readNextToken()));
+            actionToken = peekNextToken();
+        }
+        Action action = new Action(actionType, actionPitchPosition, actionParameters);
+        statement.setAction(action);
     }
 
     private void parseTime(Statement statement) throws ParserException {
