@@ -45,11 +45,6 @@ public class Statement {
         this.tacticalPositionY = tacticalPositionY;
     }
 
-    // TODO refactor
-    public PitchPosition getPitchPosition() {
-        return actionOutcome.getPitchPosition();
-    }
-    
     public void setActionOutcome(ActionOutcome actionOutcome) {
         this.actionOutcome = actionOutcome;
     }
