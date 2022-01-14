@@ -36,7 +36,8 @@ public class Parser {
             entry(Keyword.POSSESSION, POSSESSION_BLOCK_START));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
-            entry("Kickoff", SetPiece.KICK_OFF));
+            entry("Kickoff", SetPiece.KICK_OFF),
+            entry("Penalty", SetPiece.PENALTY));
 
     private static final Map<String, ActionParameter> actionParameterMapping = Map.ofEntries(
             entry("Open", OPEN_PASS),

@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.rules.SetPiece.KICK_OFF;
+import static org.ttn.engine.rules.SetPiece.PENALTY;
 import static org.ttn.parser.Statement.Type.*;
 
 public class ParserTest {
@@ -50,18 +51,24 @@ public class ParserTest {
         assertEquals(STANDARD, statement.getType());
     }
 
-    // TODO test invalid domain objects (enum values)
-
-    // Test all statements so far
-
     @Test
-    public void testSetPieceExecution() throws ScannerException, ParserException {
+    public void testKickOffBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Kickoff");
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(SP_EXECUTION, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(KICK_OFF, statement.getSetPiece());
+    }
+
+    @Test
+    public void testPenaltyKickBlockDefinition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L: Penalty");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals("L", statement.getTeam());
+        assertEquals(PENALTY, statement.getSetPiece());
     }
 
     @Test
