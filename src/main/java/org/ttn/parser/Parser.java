@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
 import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
+import static org.ttn.engine.environment.OutcomeType.GOAL;
 import static org.ttn.engine.environment.OutcomeType.HANDBALL;
 import static org.ttn.parser.Statement.Type.*;
 
@@ -44,7 +45,8 @@ public class Parser {
             entry("FT", FIRST_TOUCH));
 
     private static final Map<String, OutcomeType> actionOutcomeType = Map.ofEntries(
-            entry("H", HANDBALL));
+            entry("H", HANDBALL),
+            entry("G", GOAL));
 
     private final List<String> tokens;
     private int index = 0;
@@ -135,26 +137,35 @@ public class Parser {
 
                 statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
 
-                statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
-                statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+                String outcomeFirstToken = readNextToken();
 
-                expectToken("@");
-                PitchPosition outcomePitchPosition = PitchPosition.valueOf(readNextToken());
-
-                if (hasNextToken()) {
-                    if (peekNextToken().equals("*")) {
-                        nextToken();
-                        statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
-                                actionOutcomeType.get(readNextToken())));
-                    } else {
-                        throw new ParserException("Invalid token at the end of statement");
-                    }
+                if ("G".equals(outcomeFirstToken)) {
+                    statement.setActionOutcome(new ActionOutcome(actionOutcomeType.get(outcomeFirstToken)));
                 } else {
-                    statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
+                    parseSpaceBoundOutcome(statement, outcomeFirstToken);
                 }
         }
 
         return statement;
+    }
+
+    private void parseSpaceBoundOutcome(Statement statement, String outcomeFirstToken) throws ParserException {
+        statement.setTacticalPositionX(TacticalPosition.X.valueOf(outcomeFirstToken));
+        statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+        expectToken("@");
+
+        PitchPosition outcomePitchPosition = PitchPosition.valueOf(readNextToken());
+        if (hasNextToken()) {
+            if (peekNextToken().equals("*")) {
+                nextToken();
+                statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
+                        actionOutcomeType.get(readNextToken())));
+            } else {
+                throw new ParserException("Invalid token at the end of statement");
+            }
+        } else {
+            statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
+        }
     }
 
     private void parseAction(Statement statement, PitchPosition actionPitchPosition) throws ParserException {

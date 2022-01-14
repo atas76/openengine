@@ -1,5 +1,5 @@
 package org.ttn.engine.agent;
 
 public enum ActionType {
-    Long, BounceOff
+    Long, BounceOff, Shoot
 }

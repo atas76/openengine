@@ -11,6 +11,10 @@ public class ActionOutcome {
         this.pitchPosition = pitchPosition;
     }
 
+    public ActionOutcome(OutcomeType type) {
+        this.type = type;
+    }
+
     public ActionOutcome(PitchPosition pitchPosition, OutcomeType type) {
         this.pitchPosition = pitchPosition;
         this.type = type;
