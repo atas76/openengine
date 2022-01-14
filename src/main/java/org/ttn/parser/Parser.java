@@ -39,7 +39,8 @@ public class Parser {
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
-            entry("Penalty", SetPiece.PENALTY));
+            entry("Penalty", SetPiece.PENALTY),
+            entry("ThrowIn", SetPiece.THROW_IN));
 
     private static final Map<String, ActionParameter> actionParameterMapping = Map.ofEntries(
             entry("Open", OPEN_PASS),

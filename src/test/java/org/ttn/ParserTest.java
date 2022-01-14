@@ -14,8 +14,7 @@ import org.ttn.parser.exceptions.ParserException;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.ttn.engine.rules.SetPiece.KICK_OFF;
-import static org.ttn.engine.rules.SetPiece.PENALTY;
+import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.Statement.Type.*;
 
 public class ParserTest {
@@ -69,6 +68,16 @@ public class ParserTest {
         assertEquals(SP_EXECUTION, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(PENALTY, statement.getSetPiece());
+    }
+
+    @Test
+    public void testThrowInBlock() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L: ThrowIn");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals("L", statement.getTeam());
+        assertEquals(THROW_IN, statement.getSetPiece());
     }
 
     @Test
