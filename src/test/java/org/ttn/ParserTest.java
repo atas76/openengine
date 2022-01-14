@@ -81,6 +81,14 @@ public class ParserTest {
     }
 
     @Test
+    public void testBreakDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":break");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(BREAK, statement.getType());
+    }
+
+    @Test
     public void testStandardStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd");
         Statement statement = new Parser(tokens).parse();

@@ -29,12 +29,13 @@ public class Parser {
     private final Set<String> OUTCOME_DELIMITERS = Set.of("=>", ">>>");
 
     private enum Keyword {
-        SET, POSSESSION
+        SET, POSSESSION, BREAK
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
             entry(Keyword.SET, SP_EXECUTION),
-            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START));
+            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START),
+            entry(Keyword.BREAK, BREAK));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
@@ -86,6 +87,8 @@ public class Parser {
                 return Keyword.SET;
             case "possession":
                 return Keyword.POSSESSION;
+            case "break":
+                return Keyword.BREAK;
             default:
                 throw new ParserException("Keyword expected");
         }
@@ -117,7 +120,8 @@ public class Parser {
                 if (hasNextToken()) {
                     statement.setTeam(readNextToken());
                 } else {
-                    throw new ParserException("Team expected in block definition");
+                    if (!BREAK.equals(statement.getType()))
+                        throw new ParserException("Team expected in block definition");
                 }
                 if (hasNextToken()) {
                     expectToken(":");
