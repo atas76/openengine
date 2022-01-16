@@ -27,6 +27,7 @@ public class Parser {
 
     private final Set<String> STATEMENT_QUALIFIERS = Set.of("=>", ":");
     private final Set<String> OUTCOME_DELIMITERS = Set.of("=>", ">>>");
+    private final Set<String> ACTION_DELIMITERS = Set.of("=>", "->");
 
     private enum Keyword {
         SET, POSSESSION, BREAK
@@ -132,15 +133,28 @@ public class Parser {
             default:
                 PitchPosition actionPitchPosition = PitchPosition.valueOf(token);
                 nextToken();
-                expectToken("->");
-                parseAction(statement, actionPitchPosition);
-
-                token = readNextToken();
-                if (!OUTCOME_DELIMITERS.contains(token)) {
-                    throw new ParserException("Outcome delimiter expected");
+                String actionDelimiterToken = readNextToken();
+                if (!ACTION_DELIMITERS.contains(actionDelimiterToken)) {
+                    throw new ParserException("Action delimiter expected");
+                }
+                if ("->".equals(actionDelimiterToken)) {
+                    parseAction(statement, actionPitchPosition);
                 }
 
-                statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
+                boolean defaultAction = false;
+
+                if ("=>".equals(actionDelimiterToken)) {
+                    statement.setType(DEFAULT_EXECUTION);
+                    defaultAction = true;
+                }
+
+                if (!defaultAction) {
+                    token = readNextToken();
+                    if (!OUTCOME_DELIMITERS.contains(token)) {
+                        throw new ParserException("Outcome delimiter expected");
+                    }
+                    statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
+                }
 
                 String outcomeFirstToken = readNextToken();
 

@@ -81,6 +81,17 @@ public class ParserTest {
     }
 
     @Test
+    public void defaultExecution() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("03:18 DM => F LC @ DMw");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(DEFAULT_EXECUTION, statement.getType());
+        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
     public void testPossessionBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Statement statement = new Parser(tokens).parse();

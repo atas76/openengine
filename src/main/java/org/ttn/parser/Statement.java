@@ -8,7 +8,7 @@ import org.ttn.engine.rules.SetPiece;
 public class Statement {
 
     public enum Type {
-        SP_EXECUTION, POSSESSION_BLOCK_START, INDIRECT_OUTCOME, STANDARD, BREAK
+        SP_EXECUTION, POSSESSION_BLOCK_START, INDIRECT_OUTCOME, STANDARD, BREAK, DEFAULT_EXECUTION
     }
 
     private int time;
