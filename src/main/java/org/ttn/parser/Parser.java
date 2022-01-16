@@ -141,19 +141,10 @@ public class Parser {
                     parseAction(statement, actionPitchPosition);
                 }
 
-                boolean defaultAction = false;
-
                 if ("=>".equals(actionDelimiterToken)) {
                     statement.setType(DEFAULT_EXECUTION);
-                    defaultAction = true;
-                }
-
-                if (!defaultAction) {
-                    token = readNextToken();
-                    if (!OUTCOME_DELIMITERS.contains(token)) {
-                        throw new ParserException("Outcome delimiter expected");
-                    }
-                    statement.setType(">>>".equals(token) ? INDIRECT_OUTCOME : STANDARD);
+                } else {
+                    parseOutcomeDelimiter(statement);
                 }
 
                 String outcomeFirstToken = readNextToken();
@@ -166,6 +157,14 @@ public class Parser {
         }
 
         return statement;
+    }
+
+    private void parseOutcomeDelimiter(Statement statement) throws ParserException {
+        String outcomeDelimiterToken = readNextToken();
+        if (!OUTCOME_DELIMITERS.contains(outcomeDelimiterToken)) {
+            throw new ParserException("Outcome delimiter expected");
+        }
+        statement.setType(">>>".equals(outcomeDelimiterToken) ? INDIRECT_OUTCOME : STANDARD);
     }
 
     private void parseSpaceBoundOutcome(Statement statement, String outcomeFirstToken) throws ParserException {
