@@ -6,3 +6,10 @@
 00:15 Md->Long:FT:Open => F LC @ Apd
 :attack L
 00:20 Apd->BounceOff => M C @ Ap*H
+:set L: Penalty
+01:47 Ap->Shoot => G
+:break
+:set L: ThrowIn
+03:18 DM => F LC @ DMw
+03:20 DMw->BackPass => D L @ DMw
+03:21 DMw->Long >>> !Gkr
