@@ -19,6 +19,7 @@ public class Statement {
     private String team;
     private SetPiece setPiece;
     private Type type;
+    private boolean ballPossessionChange;
 
     public void setTime(int time) {
         this.time = time;
@@ -74,6 +75,14 @@ public class Statement {
 
     public void setSetPiece(SetPiece setPiece) {
         this.setPiece = setPiece;
+    }
+
+    public void setBallPossessionChange(boolean ballPossessionChange) {
+        this.ballPossessionChange = true;
+    }
+
+    public boolean isBallPossessionChange() {
+        return this.ballPossessionChange;
     }
 
     public Type getType() {

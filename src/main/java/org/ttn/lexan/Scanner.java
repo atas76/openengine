@@ -31,7 +31,7 @@ public class Scanner {
             } else if (Character.isAlphabetic(ch)) {
                 result.add(getNextToken(Character::isAlphabetic));
                 continue;
-            } else if (ch == ':' || ch == '@' || ch == '*') {
+            } else if (ch == ':' || ch == '@' || ch == '*' || ch == '!') {
                 result.add(String.valueOf(ch));
             } else if (ch == '-') {
                 result.add(getNextToken("->"));

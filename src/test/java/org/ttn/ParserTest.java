@@ -205,6 +205,19 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
         assertEquals(OutcomeType.HANDBALL, statement.getActionOutcome().getType());
+        assertFalse(statement.isBallPossessionChange());
+    }
+
+    @Test
+    public void testOutcomeNegation() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(201, statement.getTime());
+        assertEquals(PitchPosition.DMw, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.Gkr, statement.getTacticalPositionX()); // Tactical and pitch position merge
+        assertTrue(statement.isBallPossessionChange());
     }
 
     @Test(expected = ParserException.class)

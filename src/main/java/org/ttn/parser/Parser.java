@@ -167,22 +167,31 @@ public class Parser {
         statement.setType(">>>".equals(outcomeDelimiterToken) ? INDIRECT_OUTCOME : STANDARD);
     }
 
-    private void parseSpaceBoundOutcome(Statement statement, String outcomeFirstToken) throws ParserException {
-        statement.setTacticalPositionX(TacticalPosition.X.valueOf(outcomeFirstToken));
-        statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
-        expectToken("@");
+    private void parseSpaceBoundOutcome(Statement statement, String outcomeToken) throws ParserException {
 
-        PitchPosition outcomePitchPosition = PitchPosition.valueOf(readNextToken());
-        if (hasNextToken()) {
-            if (peekNextToken().equals("*")) {
-                nextToken();
-                statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
-                        actionOutcomeType.get(readNextToken())));
+        if ("!".equals(outcomeToken)) {
+            statement.setBallPossessionChange(true);
+            outcomeToken = readNextToken();
+        }
+
+        statement.setTacticalPositionX(TacticalPosition.X.valueOf(outcomeToken));
+
+        if (!"Gkr".equals(outcomeToken)) {
+            statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+            expectToken("@");
+
+            PitchPosition outcomePitchPosition = PitchPosition.valueOf(readNextToken());
+            if (hasNextToken()) {
+                if (peekNextToken().equals("*")) {
+                    nextToken();
+                    statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
+                            actionOutcomeType.get(readNextToken())));
+                } else {
+                    throw new ParserException("Invalid token at the end of statement");
+                }
             } else {
-                throw new ParserException("Invalid token at the end of statement");
+                statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
             }
-        } else {
-            statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
         }
     }
 
