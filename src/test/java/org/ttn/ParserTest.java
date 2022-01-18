@@ -101,6 +101,15 @@ public class ParserTest {
     }
 
     @Test
+    public void testPressureBlockDefinition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":pressure T");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(PRESSURE_BLOCK_START, statement.getType());
+        assertEquals("T", statement.getTeam());
+    }
+
+    @Test
     public void testBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");
         Statement statement = new Parser(tokens).parse();

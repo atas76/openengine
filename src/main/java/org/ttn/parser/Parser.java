@@ -30,13 +30,14 @@ public class Parser {
     private final Set<String> ACTION_DELIMITERS = Set.of("=>", "->");
 
     private enum Keyword {
-        SET, POSSESSION, BREAK
+        SET, POSSESSION, BREAK, PRESSURE
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
             entry(Keyword.SET, SP_EXECUTION),
             entry(Keyword.POSSESSION, POSSESSION_BLOCK_START),
-            entry(Keyword.BREAK, BREAK));
+            entry(Keyword.BREAK, BREAK),
+            entry(Keyword.PRESSURE, PRESSURE_BLOCK_START));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
@@ -89,6 +90,8 @@ public class Parser {
                 return Keyword.SET;
             case "possession":
                 return Keyword.POSSESSION;
+            case "pressure":
+                return Keyword.PRESSURE;
             case "break":
                 return Keyword.BREAK;
             default:
