@@ -28,16 +28,18 @@ public class Parser {
     private final Set<String> STATEMENT_QUALIFIERS = Set.of("=>", ":");
     private final Set<String> OUTCOME_DELIMITERS = Set.of("=>", ">>>");
     private final Set<String> ACTION_DELIMITERS = Set.of("=>", "->");
+    private final Set<Statement.Type> DIRECTIVE_STATEMENT_TYPES = Set.of(BREAK, POSSESSOR_DEFINITION);
 
     private enum Keyword {
-        SET, POSSESSION, BREAK, PRESSURE
+        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
             entry(Keyword.SET, SP_EXECUTION),
-            entry(Keyword.POSSESSION, POSSESSION_BLOCK_START),
+            entry(Keyword.POSSESSION, POSSESSION_STATEMENT_BLOCK),
             entry(Keyword.BREAK, BREAK),
-            entry(Keyword.PRESSURE, PRESSURE_BLOCK_START));
+            entry(Keyword.PRESSURE, PRESSURE_STATEMENT_BLOCK),
+            entry(Keyword.POSSESSOR, POSSESSOR_DEFINITION));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
@@ -94,6 +96,8 @@ public class Parser {
                 return Keyword.PRESSURE;
             case "break":
                 return Keyword.BREAK;
+            case "possessor":
+                return Keyword.POSSESSOR;
             default:
                 throw new ParserException("Keyword expected");
         }
@@ -122,10 +126,14 @@ public class Parser {
             case ":":
                 nextToken();
                 statement.setType(keywordMapping.get(expectKeyword()));
+                if (POSSESSOR_DEFINITION.equals(statement.getType())) {
+                    statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
+                    statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));
+                }
                 if (hasNextToken()) {
                     statement.setTeam(readNextToken());
                 } else {
-                    if (!BREAK.equals(statement.getType()))
+                    if (!DIRECTIVE_STATEMENT_TYPES.contains(statement.getType()))
                         throw new ParserException("Team expected in block definition");
                 }
                 if (hasNextToken()) {

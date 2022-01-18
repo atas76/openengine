@@ -96,7 +96,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":possession L");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(POSSESSION_BLOCK_START, statement.getType());
+        assertEquals(POSSESSION_STATEMENT_BLOCK, statement.getType());
         assertEquals("L", statement.getTeam());
     }
 
@@ -105,10 +105,19 @@ public class ParserTest {
         List<String> tokens = getTokens(":pressure T");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(PRESSURE_BLOCK_START, statement.getType());
+        assertEquals(PRESSURE_STATEMENT_BLOCK, statement.getType());
         assertEquals("T", statement.getTeam());
     }
 
+    @Test
+    public void testPossessorDefinition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possessor D C");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(POSSESSOR_DEFINITION, statement.getType());
+        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+    }
     @Test
     public void testBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");

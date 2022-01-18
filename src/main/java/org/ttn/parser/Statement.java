@@ -9,8 +9,9 @@ public class Statement {
 
     public enum Type {
         SP_EXECUTION,
-        POSSESSION_BLOCK_START,
-        PRESSURE_BLOCK_START,
+        POSSESSION_STATEMENT_BLOCK,
+        PRESSURE_STATEMENT_BLOCK,
+        POSSESSOR_DEFINITION,
         INDIRECT_OUTCOME,
         STANDARD,
         BREAK,
