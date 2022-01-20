@@ -269,6 +269,20 @@ public class ParserTest {
     }
 
     @Test
+    public void testOutcomeParameters() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("04:12 Dpw->Long => D L @ DMw:Fr");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(252, statement.getTime());
+        assertEquals(PitchPosition.Dpw, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+        assertTrue(statement.getActionOutcome().isFreeSpace());
+    }
+
+    @Test
     public void testOutcomeNegation() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
         Statement statement = new Parser(tokens).parse();

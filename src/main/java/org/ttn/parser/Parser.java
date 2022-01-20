@@ -4,6 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.environment.ActionOutcome;
+import org.ttn.engine.environment.OutcomeParameter;
 import org.ttn.engine.environment.OutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
@@ -50,9 +51,12 @@ public class Parser {
             entry("Open", OPEN_PASS),
             entry("FT", FIRST_TOUCH));
 
-    private static final Map<String, OutcomeType> actionOutcomeType = Map.ofEntries(
+    private static final Map<String, OutcomeType> outcomeType = Map.ofEntries(
             entry("H", HANDBALL),
             entry("G", GOAL));
+
+    private static final Map<String, OutcomeParameter> outcomeParameterMapping = Map.ofEntries(
+            entry("Fr", OutcomeParameter.FREE_SPACE));
 
     private final List<String> tokens;
     private int index = 0;
@@ -161,7 +165,7 @@ public class Parser {
                 String outcomeFirstToken = readNextToken();
 
                 if ("G".equals(outcomeFirstToken)) {
-                    statement.setActionOutcome(new ActionOutcome(actionOutcomeType.get(outcomeFirstToken)));
+                    statement.setActionOutcome(new ActionOutcome(outcomeType.get(outcomeFirstToken)));
                 } else {
                     parseSpaceBoundOutcome(statement, outcomeFirstToken);
                 }
@@ -196,7 +200,20 @@ public class Parser {
                 if (peekNextToken().equals("*")) {
                     nextToken();
                     statement.setActionOutcome(new ActionOutcome(outcomePitchPosition,
-                            actionOutcomeType.get(readNextToken())));
+                            outcomeType.get(readNextToken())));
+                } else if (peekNextToken().equals(":")) {
+                    String parameterToken = peekNextToken();
+                    List<OutcomeParameter> outcomeParameters = new ArrayList<>();
+                    while (":".equals(parameterToken)) {
+                        expectToken(":");
+                        outcomeParameters.add(outcomeParameterMapping.get(readNextToken()));
+                        if (hasNextToken()) {
+                            parameterToken = peekNextToken();
+                        } else {
+                            break;
+                        }
+                    }
+                    statement.setActionOutcome(new ActionOutcome(outcomePitchPosition, outcomeParameters));
                 } else {
                     throw new ParserException("Invalid token at the end of statement");
                 }
