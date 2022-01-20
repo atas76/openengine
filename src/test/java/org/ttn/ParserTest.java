@@ -110,6 +110,15 @@ public class ParserTest {
     }
 
     @Test
+    public void testTransitionBlockDefinition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":transition T");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(TRANSITION_STATEMENT_BLOCK, statement.getType());
+        assertEquals("T", statement.getTeam());
+    }
+
+    @Test
     public void testPossessorDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possessor D C");
         Statement statement = new Parser(tokens).parse();

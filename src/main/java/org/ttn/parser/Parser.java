@@ -32,7 +32,7 @@ public class Parser {
     private final Set<Statement.Type> DIRECTIVE_STATEMENT_TYPES = Set.of(BREAK, POSSESSOR_DEFINITION);
 
     private enum Keyword {
-        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR
+        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
@@ -40,7 +40,8 @@ public class Parser {
             entry(Keyword.POSSESSION, POSSESSION_STATEMENT_BLOCK),
             entry(Keyword.BREAK, BREAK),
             entry(Keyword.PRESSURE, PRESSURE_STATEMENT_BLOCK),
-            entry(Keyword.POSSESSOR, POSSESSOR_DEFINITION));
+            entry(Keyword.POSSESSOR, POSSESSOR_DEFINITION),
+            entry(Keyword.TRANSITION, TRANSITION_STATEMENT_BLOCK));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
@@ -102,6 +103,8 @@ public class Parser {
                 return Keyword.BREAK;
             case "possessor":
                 return Keyword.POSSESSOR;
+            case "transition":
+                return Keyword.TRANSITION;
             default:
                 throw new ParserException("Keyword expected");
         }
