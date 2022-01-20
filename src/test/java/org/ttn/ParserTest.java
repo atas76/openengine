@@ -206,6 +206,18 @@ public class ParserTest {
     }
 
     @Test
+    public void testMoveAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("04:16 DMw->Move => MDw");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(256, statement.getTime());
+        assertEquals(PitchPosition.DMw, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Move, statement.getAction().getType());
+        assertEquals(PitchPosition.MDw, statement.getActionOutcome().getPitchPosition());
+        assertEquals(STANDARD, statement.getType());
+    }
+
+    @Test
     public void testShotAtGoal() throws ScannerException, ParserException {
         List<String> tokens = getTokens("01:47 Ap->Shoot => G");
         Statement statement = new Parser(tokens).parse();
