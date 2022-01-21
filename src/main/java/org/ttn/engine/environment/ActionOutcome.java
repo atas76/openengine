@@ -9,6 +9,8 @@ public class ActionOutcome {
     private PitchPosition pitchPosition;
     private OutcomeType type;
     private boolean freeSpace;
+    private boolean interception;
+    private OutcomeType restingOutcome;
 
     public ActionOutcome(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
@@ -34,8 +36,15 @@ public class ActionOutcome {
                 case FREE_SPACE:
                     this.freeSpace = true;
                     break;
+                case INTERCEPTION:
+                    this.interception = true;
+                    break;
             }
         });
+    }
+
+    public void setRestingOutcome(OutcomeType restingOutcome) {
+        this.restingOutcome = restingOutcome;
     }
 
     public PitchPosition getPitchPosition() {
@@ -46,7 +55,15 @@ public class ActionOutcome {
         return type;
     }
 
+    public OutcomeType getRestingOutcome() {
+        return this.restingOutcome;
+    }
+
     public boolean isFreeSpace() {
         return freeSpace;
+    }
+
+    public boolean isInterception() {
+        return interception;
     }
 }

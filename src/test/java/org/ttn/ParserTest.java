@@ -275,6 +275,21 @@ public class ParserTest {
     }
 
     @Test
+    public void testInterceptionAndRestingOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(274, statement.getTime());
+        assertEquals(PitchPosition.Aw, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Pass, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
+        assertTrue(statement.isBallPossessionChange());
+        assertTrue(statement.getActionOutcome().isInterception());
+        assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+    }
+
+    @Test
     public void testIndirectOutcomeStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:02 DM->Long >>> M RC @ Md");
         Statement statement = new Parser(tokens).parse();
@@ -347,7 +362,7 @@ public class ParserTest {
         new Parser(tokens).parse();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = ParserException.class)
     public void testMissingOutcomeDelimiter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D->Pass DM");
         new Parser(tokens).parse();

@@ -34,13 +34,19 @@ public class Scanner {
             } else if (ch == ':' || ch == '@' || ch == '*' || ch == '!') {
                 result.add(String.valueOf(ch));
             } else if (ch == '-') {
-                result.add(getNextToken("->"));
+                result.add(checkNextToken("->"));
                 continue;
             } else if (ch == '=') {
-                result.add(getNextToken("=>"));
+                result.add(checkNextToken("=>"));
                 continue;
             } else if (ch == '>') {
-                result.add(getNextToken(">>>"));
+                int localIndex = this.index;
+                StringBuilder currentToken = new StringBuilder();
+                while (localIndex < statementChars.length && statementChars[localIndex] == '>') {
+                    currentToken.append(ch);
+                    ++localIndex;
+                }
+                result.add(checkNextToken(currentToken.toString()));
                 continue;
             } else if (Character.isWhitespace(ch)) {
                 index++;
@@ -53,6 +59,14 @@ public class Scanner {
         }
 
         return result;
+    }
+
+    private String checkNextToken(String token) throws ScannerException {
+        if (isNextToken(token)) {
+            return token;
+        } else {
+            throw new ScannerException(token + " expected");
+        }
     }
 
     private String getNextToken(Predicate<Character> tokenInclusionPredicate) {
@@ -74,8 +88,7 @@ public class Scanner {
         return result.toString();
     }
 
-    private String getNextToken(String token) throws ScannerException {
-
+    private boolean isNextToken(String token) {
         int tokenIndex = 0;
         int endTokenIndex = index + token.length();
 
@@ -85,13 +98,13 @@ public class Scanner {
             char currentTokenChar = token.charAt(tokenIndex);
 
             if (currentChar != currentTokenChar) {
-                throw new ScannerException(token);
+                return false;
             }
 
             tokenIndex++;
             index++;
         }
 
-        return token;
+        return true;
     }
 }

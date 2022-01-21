@@ -22,8 +22,7 @@ import static java.util.Objects.nonNull;
 import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
 import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
 import static org.ttn.engine.agent.ActionType.Move;
-import static org.ttn.engine.environment.OutcomeType.GOAL;
-import static org.ttn.engine.environment.OutcomeType.HANDBALL;
+import static org.ttn.engine.environment.OutcomeType.*;
 import static org.ttn.parser.Statement.Type.*;
 
 public class Parser {
@@ -56,10 +55,12 @@ public class Parser {
 
     private static final Map<String, OutcomeType> outcomeType = Map.ofEntries(
             entry("H", HANDBALL),
-            entry("G", GOAL));
+            entry("G", GOAL),
+            entry("C", CORNER));
 
     private static final Map<String, OutcomeParameter> outcomeParameterMapping = Map.ofEntries(
-            entry("Fr", OutcomeParameter.FREE_SPACE));
+            entry("Fr", OutcomeParameter.FREE_SPACE),
+            entry("I", OutcomeParameter.INTERCEPTION));
 
     private final List<String> tokens;
     private int index = 0;
@@ -234,8 +235,20 @@ public class Parser {
             } else {
                 throw new ParserException("Invalid token at the end of statement");
             }
+            if (hasNextToken()) {
+                parseRestingOutcome(statement);
+            }
         } else {
             statement.setActionOutcome(new ActionOutcome(outcomePitchPosition));
+        }
+    }
+
+    private void parseRestingOutcome(Statement statement) throws ParserException {
+        if (peekNextToken().equals(">>")) {
+            nextToken();
+            statement.getActionOutcome().setRestingOutcome(outcomeType.get(readNextToken()));
+        } else {
+            throw new ParserException(">> expected");
         }
     }
 
