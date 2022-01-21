@@ -150,6 +150,20 @@ public class ParserTest {
     }
 
     @Test
+    public void testPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("04:17 MDw->Pass => AM L @ Mw");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(257, statement.getTime());
+        assertEquals(PitchPosition.MDw, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Pass, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.AM, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Mw, statement.getActionOutcome().getPitchPosition());
+        assertEquals(STANDARD, statement.getType());
+    }
+
+    @Test
     public void testBackPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:20 DMw->BackPass => D L @ DMw");
         Statement statement = new Parser(tokens).parse();
