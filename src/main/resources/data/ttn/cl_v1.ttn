@@ -13,3 +13,25 @@
 03:18 DM => F LC @ DMw
 03:20 DMw->BackPass => D L @ DMw
 03:21 DMw->Long >>> !Gkr
+:break
+:pressure T
+:possessor D C
+03:58 Dp->ParallelPass => D C @ Dp
+04:00 Dp->BackPass => Gkr
+04:02 Gkr->Pass:FT => D C @ Dpw
+04:04 Dpw->DiagonalPass => D R @ Dwp
+04:06 Dwp->ForwardPass => AM C @ Dd
+04:08 Dd->DiagonalPass => DM @ DM
+04:10 DM->BackPass => D C @ Dpw
+04:12 Dpw->Long => D L @ DMw:Fr
+:transition T
+04:16 DMw->Move => MDw
+04:17 MDw->Pass => AM L @ Mw
+04:19 Mw->Move => MDw
+04:21 MDw->BackPass => D C @ DMw
+:possession T
+04:23 DMw->Pass => D C @ DM
+04:27 DM->Long => A R @ Awp
+:attack T
+04:32 Awp->Move => Aw
+04:34 Aw->Pass => !D C @ Dp:I >> C            
