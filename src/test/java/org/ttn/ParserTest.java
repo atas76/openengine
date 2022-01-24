@@ -2,6 +2,7 @@ package org.ttn;
 
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.environment.OutcomeParameter;
 import org.ttn.engine.environment.OutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
@@ -309,8 +310,22 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
         assertTrue(statement.isBallPossessionChange());
-        assertTrue(statement.getActionOutcome().isInterception());
+        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.INTERCEPTION));
         assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+    }
+
+    @Test
+    public void testHeader() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("05:15 CK->Cross => !D C @ Dp:HD");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(315, statement.getTime());
+        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition());
+        assertEquals(ActionType.Cross, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertTrue(statement.isBallPossessionChange());
+        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.HEADER));
     }
 
     @Test
@@ -353,7 +368,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
-        assertTrue(statement.getActionOutcome().isFreeSpace());
+        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.FREE_SPACE));
     }
 
     @Test

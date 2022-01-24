@@ -62,7 +62,8 @@ public class Parser {
 
     private static final Map<String, OutcomeParameter> outcomeParameterMapping = Map.ofEntries(
             entry("Fr", OutcomeParameter.FREE_SPACE),
-            entry("I", OutcomeParameter.INTERCEPTION));
+            entry("I", OutcomeParameter.INTERCEPTION),
+            entry("HD", OutcomeParameter.HEADER));
 
     private final List<String> tokens;
     private int index = 0;

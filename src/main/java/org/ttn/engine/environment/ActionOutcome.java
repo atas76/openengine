@@ -2,15 +2,15 @@ package org.ttn.engine.environment;
 
 import org.ttn.engine.space.PitchPosition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ActionOutcome {
 
     private PitchPosition pitchPosition;
     private OutcomeType type;
-    private boolean freeSpace;
-    private boolean interception;
     private OutcomeType restingOutcome;
+    private List<OutcomeParameter> outcomeParameters = new ArrayList<>();
 
     public ActionOutcome(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
@@ -27,20 +27,7 @@ public class ActionOutcome {
 
     public ActionOutcome(PitchPosition pitchPosition, List<OutcomeParameter> outcomeParameters) {
         this.pitchPosition = pitchPosition;
-        assignOutcomeParameters(outcomeParameters);
-    }
-
-    private void assignOutcomeParameters(List<OutcomeParameter> outcomeParameters) {
-        outcomeParameters.forEach(param -> {
-            switch(param) {
-                case FREE_SPACE:
-                    this.freeSpace = true;
-                    break;
-                case INTERCEPTION:
-                    this.interception = true;
-                    break;
-            }
-        });
+        this.outcomeParameters = outcomeParameters;
     }
 
     public void setRestingOutcome(OutcomeType restingOutcome) {
@@ -59,11 +46,7 @@ public class ActionOutcome {
         return this.restingOutcome;
     }
 
-    public boolean isFreeSpace() {
-        return freeSpace;
-    }
-
-    public boolean isInterception() {
-        return interception;
+    public boolean isOutcome(OutcomeParameter outcomeParameter) {
+        return outcomeParameters.contains(outcomeParameter);
     }
 }
