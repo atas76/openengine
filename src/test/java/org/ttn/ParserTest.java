@@ -9,6 +9,7 @@ import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
+import org.ttn.parser.ParserUtil;
 import org.ttn.parser.Statement;
 import org.ttn.parser.exceptions.ParserException;
 
@@ -19,6 +20,11 @@ import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.Statement.Type.*;
 
 public class ParserTest {
+
+    @Test
+    public void testGetPitchPosition() {
+        assertEquals(PitchPosition.DM, ParserUtil.getPitchPosition("DM"));
+    }
 
     @Test(expected = ParserException.class)
     public void testInvalidTimeFormat() throws ScannerException, ParserException {
@@ -325,6 +331,8 @@ public class ParserTest {
         assertTrue(statement.isBallPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.INTERCEPTION));
         assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+        // TODO
+        // assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome().getType());
     }
 
     @Test
