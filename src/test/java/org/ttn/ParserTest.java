@@ -81,6 +81,16 @@ public class ParserTest {
     }
 
     @Test
+    public void testCornerKickBlock() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set T: Corner");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals("T", statement.getTeam());
+        assertEquals(CORNER_KICK, statement.getSetPiece());
+    }
+
+    @Test
     public void defaultExecution() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:18 DM => F LC @ DMw");
         Statement statement = new Parser(tokens).parse();
