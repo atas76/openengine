@@ -117,6 +117,19 @@ public class ParserTest {
     }
 
     @Test
+    public void testBallControl() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd:Cnt");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
+        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition()); // Virtual pitch position
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
+        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.CONTROL));
+    }
+
+    @Test
     public void testPossessionBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Statement statement = new Parser(tokens).parse();
