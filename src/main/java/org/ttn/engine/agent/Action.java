@@ -11,6 +11,11 @@ public class Action {
     private boolean firstTouch;
     private boolean openPass;
 
+    public Action(ActionType type, PitchPosition pitchPosition) {
+        this.type = type;
+        this.pitchPosition = pitchPosition;
+    }
+
     public Action(ActionType type, PitchPosition pitchPosition, List<ActionParameter> actionParameters) {
         this.type = type;
         this.pitchPosition = pitchPosition;

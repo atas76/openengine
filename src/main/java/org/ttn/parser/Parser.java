@@ -21,6 +21,7 @@ import static java.util.Map.entry;
 import static java.util.Objects.nonNull;
 import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
 import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
+import static org.ttn.engine.agent.ActionType.Default;
 import static org.ttn.engine.agent.ActionType.Move;
 import static org.ttn.engine.environment.OutcomeType.*;
 import static org.ttn.parser.Statement.Type.*;
@@ -37,7 +38,7 @@ public class Parser {
     }
 
     private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
-            entry(Keyword.SET, SP_EXECUTION),
+            entry(Keyword.SET, SET_PIECE_EXECUTION_BLOCK),
             entry(Keyword.POSSESSION, POSSESSION_STATEMENT_BLOCK),
             entry(Keyword.BREAK, BREAK),
             entry(Keyword.PRESSURE, PRESSURE_STATEMENT_BLOCK),
@@ -164,7 +165,8 @@ public class Parser {
                 }
 
                 if ("=>".equals(actionDelimiterToken)) {
-                    statement.setType(DEFAULT_EXECUTION);
+                    statement.setType(DEFAULT_SET_PIECE_EXECUTION);
+                    statement.setAction(new Action(Default, actionPitchPosition));
                 } else {
                     parseOutcomeDelimiter(statement);
                 }

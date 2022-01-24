@@ -55,7 +55,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":set L: Kickoff");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(KICK_OFF, statement.getSetPiece());
     }
@@ -65,7 +65,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":set L: Penalty");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(PENALTY, statement.getSetPiece());
     }
@@ -75,7 +75,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":set L: ThrowIn");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
         assertEquals("L", statement.getTeam());
         assertEquals(THROW_IN, statement.getSetPiece());
     }
@@ -85,7 +85,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":set T: Corner");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(SP_EXECUTION, statement.getType());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
         assertEquals("T", statement.getTeam());
         assertEquals(CORNER_KICK, statement.getSetPiece());
     }
@@ -95,10 +95,24 @@ public class ParserTest {
         List<String> tokens = getTokens("03:18 DM => F LC @ DMw");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(DEFAULT_EXECUTION, statement.getType());
+        assertEquals(DEFAULT_SET_PIECE_EXECUTION, statement.getType());
+        assertEquals(ActionType.Default, statement.getAction().getType());
+        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
         assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
+    public void testCornerKickExecution() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
+        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition()); // Virtual pitch position
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test
