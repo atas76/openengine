@@ -1,5 +1,6 @@
 package org.ttn.engine.environment;
 
+import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.List;
 
 public class ActionOutcome {
 
+    private TacticalPosition tacticalPosition;
     private PitchPosition pitchPosition;
     private OutcomeType type;
     private OutcomeType restingOutcome;
@@ -18,6 +20,11 @@ public class ActionOutcome {
 
     public ActionOutcome(OutcomeType type) {
         this.type = type;
+    }
+
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition) {
+        this.tacticalPosition = tacticalPosition;
+        this.pitchPosition = pitchPosition;
     }
 
     public ActionOutcome(PitchPosition pitchPosition, OutcomeType type) {
@@ -32,6 +39,10 @@ public class ActionOutcome {
 
     public void setRestingOutcome(OutcomeType restingOutcome) {
         this.restingOutcome = restingOutcome;
+    }
+
+    public TacticalPosition getTacticalPosition() {
+        return this.tacticalPosition;
     }
 
     public PitchPosition getPitchPosition() {

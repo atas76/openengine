@@ -2,6 +2,7 @@ package org.ttn;
 
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.environment.OutcomeParameter;
 import org.ttn.engine.environment.OutcomeType;
 import org.ttn.engine.input.TacticalPosition;
@@ -45,6 +46,17 @@ public class ParserTest {
 
         assertEquals(TacticalPosition.X.D, tacticalPosition.getX());
         assertEquals(TacticalPosition.Y.C, tacticalPosition.getY());
+    }
+    
+    @Test
+    public void testSpaceBoundOutcome() throws ParserException {
+        List<String> tokens = Arrays.asList("D", "C", "@", "DM");
+
+        ActionOutcome actionOutcome = ParserUtil.parseActionOutcome(tokens);
+
+        assertEquals(TacticalPosition.X.D, actionOutcome.getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, actionOutcome.getTacticalPosition().getY());
+        assertEquals(PitchPosition.DM, actionOutcome.getPitchPosition());
     }
 
     @Test(expected = ParserException.class)
