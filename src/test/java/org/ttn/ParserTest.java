@@ -38,7 +38,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testGetTacticalPosition() {
+    public void testParseTacticalPosition() {
         List<String> tokens = Arrays.asList("D", "C");
 
         TacticalPosition tacticalPosition = ParserUtil.parseTacticalPosition(tokens);
