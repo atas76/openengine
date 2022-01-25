@@ -12,4 +12,8 @@ public class ParserUtil {
     public static TacticalPosition.X getTacticalPositionX(String tacticalPositionX) throws IllegalArgumentException {
         return TacticalPosition.X.valueOf(tacticalPositionX);
     }
+
+    public static TacticalPosition.Y getTacticalPositionY(String tacticalPositionY) throws IllegalArgumentException {
+        return TacticalPosition.Y.valueOf(tacticalPositionY);
+    }
 }
