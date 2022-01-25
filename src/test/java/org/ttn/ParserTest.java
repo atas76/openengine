@@ -13,6 +13,7 @@ import org.ttn.parser.ParserUtil;
 import org.ttn.parser.Statement;
 import org.ttn.parser.exceptions.ParserException;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -34,6 +35,16 @@ public class ParserTest {
     @Test
     public void testGetTacticalPositionY() {
         assertEquals(TacticalPosition.Y.C, ParserUtil.getTacticalPositionY("C"));
+    }
+
+    @Test
+    public void testGetTacticalPosition() {
+        List<String> tokens = Arrays.asList("D", "C");
+
+        TacticalPosition tacticalPosition = ParserUtil.parseTacticalPosition(tokens);
+
+        assertEquals(TacticalPosition.X.D, tacticalPosition.getX());
+        assertEquals(TacticalPosition.Y.C, tacticalPosition.getY());
     }
 
     @Test(expected = ParserException.class)
