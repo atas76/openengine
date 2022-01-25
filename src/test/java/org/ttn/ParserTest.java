@@ -26,6 +26,11 @@ public class ParserTest {
         assertEquals(PitchPosition.DM, ParserUtil.getPitchPosition("DM"));
     }
 
+    @Test
+    public void testGetTacticalPositionX() {
+        assertEquals(TacticalPosition.X.D, ParserUtil.getTacticalPositionX("D"));
+    }
+
     @Test(expected = ParserException.class)
     public void testInvalidTimeFormat() throws ScannerException, ParserException {
         List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");
