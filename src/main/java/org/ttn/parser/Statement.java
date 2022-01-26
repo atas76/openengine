@@ -29,6 +29,12 @@ public class Statement {
     private Type type;
     private boolean ballPossessionChange;
 
+    public Statement() {} // Bring on mutability
+
+    public Statement(ActionOutcome actionOutcome) {
+        this.actionOutcome = actionOutcome;
+    }
+
     public void setTime(int time) {
         this.time = time;
     }

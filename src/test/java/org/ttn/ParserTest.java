@@ -59,6 +59,17 @@ public class ParserTest {
         assertEquals(PitchPosition.DM, actionOutcome.getPitchPosition());
     }
 
+    @Test
+    public void testDefaultActionStatement() throws ParserException {
+        List<String> tokens = Arrays.asList("=>", "D", "C", "@", "DM");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
+    }
+
     @Test(expected = ParserException.class)
     public void testInvalidTimeFormat() throws ScannerException, ParserException {
         List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");

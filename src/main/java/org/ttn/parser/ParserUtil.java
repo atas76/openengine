@@ -32,6 +32,13 @@ public class ParserUtil {
         return new ActionOutcome(tacticalPosition, pitchPosition);
     }
 
+    public static Statement parseStatement(List<String> tokens) throws ParserException {
+        if ("=>".equals(tokens.get(0))) { // TDD: make the tests pass for now
+            return new Statement(parseActionOutcome(tokens.subList(1, tokens.size())));
+        }
+        throw new ParserException("Invalid or unsupported statement");
+    }
+
     private static void expectToken(String token, String currentToken) throws ParserException {
         if (!token.equals(currentToken)) {
             throw new ParserException("Expected: " + token);
