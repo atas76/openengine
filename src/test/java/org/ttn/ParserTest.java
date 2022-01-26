@@ -70,8 +70,25 @@ public class ParserTest {
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
     }
 
+    @Test
+    public void testParseTime() throws ParserException {
+        assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
+        assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));
+        assertEquals(-235, ParserUtil.parseTime(Arrays.asList("-5", ":", "65"))); // No semantic checks provided
+    }
+
     @Test(expected = ParserException.class)
-    public void testInvalidTimeFormat() throws ScannerException, ParserException {
+    public void testParseTimeInvalidFormat() throws ParserException {
+        ParserUtil.parseTime(Arrays.asList("05", "::", "15"));
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testParseTimeInvalidNumbers() throws ParserException {
+        ParserUtil.parseTime(Arrays.asList("a", ":", "b"));
+    }
+
+    @Test(expected = ParserException.class) // TODO to be replaced with NumberFormatException (probably)
+    public void statementWithInvalidTime() throws ScannerException, ParserException {
         List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");
 
         new Parser(tokens).parse();

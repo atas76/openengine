@@ -21,6 +21,14 @@ public class ParserUtil {
         return TacticalPosition.Y.valueOf(tacticalPositionY);
     }
 
+    public static int parseTime(List<String> tokens) throws ParserException, NumberFormatException {
+        int minutes = Integer.parseInt(tokens.get(0));
+        expectToken(":", tokens.get(1));
+        int seconds = Integer.parseInt(tokens.get(2));
+
+        return minutes * 60 + seconds;
+    }
+
     public static TacticalPosition parseTacticalPosition(List<String> tokens) {
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
     }
