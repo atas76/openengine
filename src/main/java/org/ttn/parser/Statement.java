@@ -1,9 +1,11 @@
 package org.ttn.parser;
 
 import org.ttn.engine.agent.Action;
+import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
+import org.ttn.engine.space.PitchPosition;
 
 public class Statement {
 
@@ -31,7 +33,9 @@ public class Statement {
 
     public Statement() {} // Bring on mutability
 
-    public Statement(ActionOutcome actionOutcome) {
+    public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
+        this.time = time;
+        this.action = new Action(ActionType.Default, pitchPosition);
         this.actionOutcome = actionOutcome;
     }
 

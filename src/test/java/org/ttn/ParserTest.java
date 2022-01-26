@@ -61,10 +61,13 @@ public class ParserTest {
 
     @Test
     public void testDefaultActionStatement() throws ParserException {
-        List<String> tokens = Arrays.asList("=>", "D", "C", "@", "DM");
+        List<String> tokens = Arrays.asList("00", ":", "00", "KO", "=>", "D", "C", "@", "DM");
 
         Statement statement = ParserUtil.parseStatement(tokens);
 
+        assertEquals(0, statement.getTime());
+        assertEquals(ActionType.Default, statement.getAction().getType());
+        assertEquals(PitchPosition.KO, statement.getAction().getPitchPosition());
         assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
