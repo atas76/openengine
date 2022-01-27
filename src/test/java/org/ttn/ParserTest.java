@@ -1,6 +1,8 @@
 package org.ttn;
 
 import org.junit.Test;
+import org.ttn.engine.agent.Action;
+import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.environment.OutcomeParameter;
@@ -13,6 +15,7 @@ import org.ttn.parser.Parser;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.Statement;
 import org.ttn.parser.exceptions.ParserException;
+import org.ttn.parser.exceptions.ValueException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +47,12 @@ public class ParserTest {
     }
 
     @Test
+    public void testGetActionParameter() throws ValueException {
+        assertEquals(ActionParameter.FIRST_TOUCH, ParserUtil.getActionParameter("FT"));
+        assertEquals(ActionParameter.OPEN_PASS, ParserUtil.getActionParameter("Open"));
+    }
+
+    @Test
     public void testParseTacticalPosition() {
         List<String> tokens = Arrays.asList("D", "C");
 
@@ -65,32 +74,84 @@ public class ParserTest {
     }
 
     @Test
-    public void testDefaultActionStatement() throws ParserException {
+    public void testDefaultActionStatement() throws ParserException, ValueException {
         List<String> tokens = Arrays.asList("00", ":", "00", "KO", "=>", "D", "C", "@", "DM");
 
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(0, statement.getTime());
         assertEquals(ActionType.Default, statement.getAction().getType());
-        assertEquals(PitchPosition.KO, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.KO, statement.getPitchPosition());
         assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test
-    public void testParseIndirectOutcomeStatement() throws ParserException {
+    public void testParseIndirectOutcomeStatement() throws ParserException, ValueException {
         List<String> tokens = Arrays.asList("00", ":", "02", "DM", "->", "Long", ">>>", "M", "RC", "@", "Md");
 
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(2, statement.getTime());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DM, statement.getPitchPosition());
         assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Md, statement.getActionOutcome().getPitchPosition());
-        // TODO assertEquals(INDIRECT_OUTCOME, statement.getType());
+        assertEquals(INDIRECT_OUTCOME, statement.getType());
+    }
+
+    @Test
+    public void testParseDirectOutcomeStatement() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(15, statement.getTime());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
+    public void testParseActionParameters() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("FT:Open");
+
+        List<ActionParameter> actionParameters = ParserUtil.parseActionParameters(tokens);
+
+        assertEquals(2, actionParameters.size());
+        assertEquals(ActionParameter.FIRST_TOUCH, actionParameters.get(0));
+        assertEquals(ActionParameter.OPEN_PASS, actionParameters.get(1));
+    }
+
+    @Test
+    public void testParseParameterisedAction() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("Long:FT:Open");
+
+        Action action = ParserUtil.parseAction(tokens);
+
+        assertEquals(ActionType.Long, action.getType());
+        assertTrue(action.isFirstTouch());
+        assertTrue(action.isOpenPass());
+    }
+
+    @Test
+    public void testParseActionParametersStatement() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("00:15 Md->Long:FT:Open => F LC @ Apd");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(15, statement.getTime());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertTrue(statement.getAction().isFirstTouch());
+        assertTrue(statement.getAction().isOpenPass());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test
@@ -133,7 +194,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(15, statement.getTime());
-        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
@@ -188,7 +249,7 @@ public class ParserTest {
 
         assertEquals(DEFAULT_SET_PIECE_EXECUTION, statement.getType());
         assertEquals(ActionType.Default, statement.getAction().getType());
-        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DM, statement.getPitchPosition());
         assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
@@ -200,7 +261,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
-        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition()); // Virtual pitch position
+        assertEquals(PitchPosition.CK, statement.getPitchPosition()); // Virtual pitch position
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
@@ -212,7 +273,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
-        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition()); // Virtual pitch position
+        assertEquals(PitchPosition.CK, statement.getPitchPosition()); // Virtual pitch position
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
@@ -269,7 +330,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(15, statement.getTime());
-        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
@@ -283,7 +344,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(257, statement.getTime());
-        assertEquals(PitchPosition.MDw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.MDw, statement.getPitchPosition());
         assertEquals(ActionType.Pass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.AM, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
@@ -297,7 +358,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(200, statement.getTime());
-        assertEquals(PitchPosition.DMw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.BackPass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
@@ -311,7 +372,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(238, statement.getTime());
-        assertEquals(PitchPosition.Dp, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Dp, statement.getPitchPosition());
         assertEquals(ActionType.ParallelPass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
@@ -325,7 +386,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(244, statement.getTime());
-        assertEquals(PitchPosition.Dpw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Dpw, statement.getPitchPosition());
         assertEquals(ActionType.DiagonalPass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.R, statement.getTacticalPositionY());
@@ -339,7 +400,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(246, statement.getTime());
-        assertEquals(PitchPosition.Dwp, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Dwp, statement.getPitchPosition());
         assertEquals(ActionType.ForwardPass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.AM, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
@@ -353,7 +414,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(256, statement.getTime());
-        assertEquals(PitchPosition.DMw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Move, statement.getAction().getType());
         assertEquals(PitchPosition.MDw, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
@@ -365,7 +426,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(107, statement.getTime());
-        assertEquals(PitchPosition.Ap, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Ap, statement.getPitchPosition());
         assertEquals(ActionType.Shoot, statement.getAction().getType());
         assertEquals(OutcomeType.GOAL, statement.getActionOutcome().getType());
     }
@@ -376,7 +437,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(15, statement.getTime());
-        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertTrue(statement.getAction().isFirstTouch());
         assertFalse(statement.getAction().isOpenPass());
@@ -392,7 +453,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(15, statement.getTime());
-        assertEquals(PitchPosition.Md, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertTrue(statement.getAction().isFirstTouch());
         assertTrue(statement.getAction().isOpenPass());
@@ -408,7 +469,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(274, statement.getTime());
-        assertEquals(PitchPosition.Aw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Aw, statement.getPitchPosition());
         assertEquals(ActionType.Pass, statement.getAction().getType());
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
@@ -425,7 +486,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(315, statement.getTime());
-        assertEquals(PitchPosition.CK, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.CK, statement.getPitchPosition());
         assertEquals(ActionType.Cross, statement.getAction().getType());
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
@@ -439,7 +500,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(2, statement.getTime());
-        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DM, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
@@ -453,7 +514,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(20, statement.getTime());
-        assertEquals(PitchPosition.Apd, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
         assertEquals(ActionType.BounceOff, statement.getAction().getType());
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
@@ -468,7 +529,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(252, statement.getTime());
-        assertEquals(PitchPosition.Dpw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.Dpw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
@@ -482,7 +543,7 @@ public class ParserTest {
         Statement statement = new Parser(tokens).parse();
 
         assertEquals(201, statement.getTime());
-        assertEquals(PitchPosition.DMw, statement.getAction().getPitchPosition());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(TacticalPosition.X.Gkr, statement.getTacticalPositionX()); // Tactical and pitch position merge
         assertTrue(statement.isBallPossessionChange());

@@ -168,7 +168,8 @@ public class Parser {
 
                 if ("=>".equals(actionDelimiterToken)) {
                     statement.setType(DEFAULT_SET_PIECE_EXECUTION);
-                    statement.setAction(new Action(Default, actionPitchPosition));
+                    statement.setPitchPosition(actionPitchPosition);
+                    statement.setAction(new Action(Default));
                 } else {
                     parseOutcomeDelimiter(statement);
                 }
@@ -267,7 +268,8 @@ public class Parser {
             actionParameters.add(actionParameterMapping.get(readNextToken()));
             actionToken = peekNextToken();
         }
-        Action action = new Action(actionType, actionPitchPosition, actionParameters);
+        Action action = new Action(actionType, actionParameters);
+        statement.setPitchPosition(actionPitchPosition);
         statement.setAction(action);
     }
 

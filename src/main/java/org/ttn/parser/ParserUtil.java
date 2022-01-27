@@ -1,11 +1,15 @@
 package org.ttn.parser;
 
+import org.ttn.engine.agent.Action;
+import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
+import org.ttn.parser.exceptions.ValueException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParserUtil {
@@ -24,6 +28,42 @@ public class ParserUtil {
 
     public static ActionType getActionType(String actionType) throws IllegalArgumentException {
         return ActionType.valueOf(actionType);
+    }
+
+    public static ActionParameter getActionParameter(String actionParameterValue) throws ValueException {
+        switch(actionParameterValue) {
+            case "FT":
+                return ActionParameter.FIRST_TOUCH;
+            case "Open":
+                return ActionParameter.OPEN_PASS;
+            default:
+                throw new ValueException("Could not map action parameter value");
+        }
+    }
+
+    public static List<ActionParameter> parseActionParameters(List<String> tokens)
+            throws ValueException, ParserException {
+
+        List<ActionParameter> actionParameters = new ArrayList<>();
+
+        int currentIndex = 0;
+        actionParameters.add(getActionParameter(tokens.get(currentIndex++)));
+        while (currentIndex < tokens.size()) {
+            expectToken(":", tokens.get(currentIndex++));
+            actionParameters.add(getActionParameter(tokens.get(currentIndex++)));
+        }
+
+        return actionParameters;
+    }
+
+    public static Action parseAction(List<String> tokens) throws ValueException, ParserException {
+
+        ActionType actionType = getActionType(tokens.get(0));
+
+        if (tokens.size() > 1 && ":".equals(tokens.get(1))) {
+            return new Action(actionType, parseActionParameters(tokens.subList(2, tokens.size())));
+        }
+        return new Action(actionType);
     }
 
     public static int parseTime(List<String> tokens) throws ParserException, NumberFormatException {
@@ -45,19 +85,30 @@ public class ParserUtil {
         return new ActionOutcome(tacticalPosition, pitchPosition);
     }
 
-    public static Statement parseStatement(List<String> tokens) throws ParserException {
+    public static Statement parseStatement(List<String> tokens) throws ParserException, ValueException {
         int time = parseTime(tokens.subList(0, 3));
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
         int currentIndex = 4;
         final String actionDelimiter = tokens.get(currentIndex++);
 
+        int outcomeDelimiterIndex;
+        Statement.Type statementType;
+        if (tokens.contains(">>>")) {
+            statementType = Statement.Type.INDIRECT_OUTCOME;
+            outcomeDelimiterIndex = tokens.indexOf(">>>");
+        } else if (tokens.contains("=>")) {
+            statementType = Statement.Type.STANDARD;
+            outcomeDelimiterIndex = tokens.indexOf("=>");
+        } else {
+            throw new ParserException("Outcome delimiter expected");
+        }
+
         if ("=>".equals(actionDelimiter)) {
             return new Statement(time, pitchPosition, parseSpaceBoundActionOutcome(tokens.subList(currentIndex, tokens.size())));
         } else if ("->".equals(actionDelimiter)) {
-            ActionType actionType = getActionType(tokens.get(currentIndex++));
-            expectToken(">>>", tokens.get(currentIndex++));
-            return new Statement(time, pitchPosition, actionType,
-                    parseSpaceBoundActionOutcome(tokens.subList(currentIndex, tokens.size())));
+            return new Statement(time, pitchPosition,
+                    parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex)),
+                    parseSpaceBoundActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, tokens.size())), statementType);
         } else {
             throw new ParserException("Action delimiter expected");
         }

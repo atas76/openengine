@@ -22,25 +22,33 @@ public class Statement {
     }
 
     private int time;
+    private PitchPosition pitchPosition;
     private Action action;
     private TacticalPosition.X tacticalPositionX;
     private TacticalPosition.Y tacticalPositionY;
     private ActionOutcome actionOutcome;
     private String team;
     private SetPiece setPiece;
-    private Type type; // TODO is it really needed for the semantic phase?
+    private Type type;
     private boolean ballPossessionChange;
 
     public Statement() {} // Bring on mutability (for the time being)
 
-    public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
-        this(time, pitchPosition, ActionType.Default, actionOutcome);
+    public Statement(int time, PitchPosition pitchPosition, Action action, ActionOutcome actionOutcome, Type type) {
+        this.time = time;
+        this.pitchPosition = pitchPosition;
+        this.action = action;
+        this.actionOutcome = actionOutcome;
+        this.type = type;
     }
 
-    public Statement(int time, PitchPosition pitchPosition, ActionType actionType, ActionOutcome actionOutcome) {
-        this.time = time;
-        this.action = new Action(actionType, pitchPosition);
-        this.actionOutcome = actionOutcome;
+    public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
+        this(time, pitchPosition, new Action(ActionType.Default), actionOutcome, Type.STANDARD);
+    }
+
+    public Statement(int time, PitchPosition pitchPosition,
+                     ActionType actionType, ActionOutcome actionOutcome) {
+        this(time, pitchPosition, new Action(actionType), actionOutcome, Type.STANDARD);
     }
 
     public void setTime(int time) {
@@ -49,6 +57,14 @@ public class Statement {
 
     public int getTime() {
         return time;
+    }
+
+    public PitchPosition getPitchPosition() {
+        return pitchPosition;
+    }
+
+    public void setPitchPosition(PitchPosition pitchPosition) {
+        this.pitchPosition = pitchPosition;
     }
 
     public TacticalPosition.X getTacticalPositionX() {
