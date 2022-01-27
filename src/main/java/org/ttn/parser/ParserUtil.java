@@ -1,5 +1,6 @@
 package org.ttn.parser;
 
+import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
@@ -21,6 +22,10 @@ public class ParserUtil {
         return TacticalPosition.Y.valueOf(tacticalPositionY);
     }
 
+    public static ActionType getActionType(String actionType) throws IllegalArgumentException {
+        return ActionType.valueOf(actionType);
+    }
+
     public static int parseTime(List<String> tokens) throws ParserException, NumberFormatException {
         int minutes = Integer.parseInt(tokens.get(0));
         expectToken(":", tokens.get(1));
@@ -33,7 +38,7 @@ public class ParserUtil {
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
     }
 
-    public static ActionOutcome parseActionOutcome(List<String> tokens) throws ParserException {
+    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens) throws ParserException {
         TacticalPosition tacticalPosition = parseTacticalPosition(tokens.subList(0, 2));
         expectToken("@", tokens.get(2));
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
@@ -44,9 +49,18 @@ public class ParserUtil {
         int time = parseTime(tokens.subList(0, 3));
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
         int currentIndex = 4;
-        expectToken("=>", tokens.get(currentIndex++));
+        final String actionDelimiter = tokens.get(currentIndex++);
 
-        return new Statement(time, pitchPosition, parseActionOutcome(tokens.subList(currentIndex, tokens.size())));
+        if ("=>".equals(actionDelimiter)) {
+            return new Statement(time, pitchPosition, parseSpaceBoundActionOutcome(tokens.subList(currentIndex, tokens.size())));
+        } else if ("->".equals(actionDelimiter)) {
+            ActionType actionType = getActionType(tokens.get(currentIndex++));
+            expectToken(">>>", tokens.get(currentIndex++));
+            return new Statement(time, pitchPosition, actionType,
+                    parseSpaceBoundActionOutcome(tokens.subList(currentIndex, tokens.size())));
+        } else {
+            throw new ParserException("Action delimiter expected");
+        }
     }
 
     private static void expectToken(String token, String currentToken) throws ParserException {

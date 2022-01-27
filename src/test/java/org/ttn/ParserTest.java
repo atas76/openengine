@@ -39,6 +39,11 @@ public class ParserTest {
     }
 
     @Test
+    public void testGetActionType() {
+        assertEquals(ActionType.Long, ParserUtil.getActionType("Long"));
+    }
+
+    @Test
     public void testParseTacticalPosition() {
         List<String> tokens = Arrays.asList("D", "C");
 
@@ -52,7 +57,7 @@ public class ParserTest {
     public void testSpaceBoundOutcome() throws ParserException {
         List<String> tokens = Arrays.asList("D", "C", "@", "DM");
 
-        ActionOutcome actionOutcome = ParserUtil.parseActionOutcome(tokens);
+        ActionOutcome actionOutcome = ParserUtil.parseSpaceBoundActionOutcome(tokens);
 
         assertEquals(TacticalPosition.X.D, actionOutcome.getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.C, actionOutcome.getTacticalPosition().getY());
@@ -71,6 +76,21 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
+    public void testParseIndirectOutcomeStatement() throws ParserException {
+        List<String> tokens = Arrays.asList("00", ":", "02", "DM", "->", "Long", ">>>", "M", "RC", "@", "Md");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(2, statement.getTime());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(PitchPosition.DM, statement.getAction().getPitchPosition());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Md, statement.getActionOutcome().getPitchPosition());
+        // TODO assertEquals(INDIRECT_OUTCOME, statement.getType());
     }
 
     @Test

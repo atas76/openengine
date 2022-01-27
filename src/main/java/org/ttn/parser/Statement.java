@@ -28,14 +28,18 @@ public class Statement {
     private ActionOutcome actionOutcome;
     private String team;
     private SetPiece setPiece;
-    private Type type;
+    private Type type; // TODO is it really needed for the semantic phase?
     private boolean ballPossessionChange;
 
-    public Statement() {} // Bring on mutability
+    public Statement() {} // Bring on mutability (for the time being)
 
     public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
+        this(time, pitchPosition, ActionType.Default, actionOutcome);
+    }
+
+    public Statement(int time, PitchPosition pitchPosition, ActionType actionType, ActionOutcome actionOutcome) {
         this.time = time;
-        this.action = new Action(ActionType.Default, pitchPosition);
+        this.action = new Action(actionType, pitchPosition);
         this.actionOutcome = actionOutcome;
     }
 
