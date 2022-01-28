@@ -1,6 +1,4 @@
-<direct-outcome-statement> ::= <time> <pitch-position> '->' <action> '=>' <space-bound-outcome>
-<indirect-outcome-statement> ::= <time> <pitch-position> '->' <action> '>>>' <space-bound-outcome>
-<default-action-statement> ::= <time> <pitch-position> '=>' <action-outcome>
+<statement> ::= <time> <pitch-position> ['->' <action>] ('=>', '>>>') <action-outcome>
 <action-outcome> ::= <space-bound-outcome> || <action-outcome-type>
 <space-bound-outcome> ::= <tactical-position> '@' <pitch-position> ['*' <action-outcome-type>]
 <tactical-position> ::= <tactical-position X> <tactical-position Y>
