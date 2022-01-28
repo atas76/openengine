@@ -174,6 +174,18 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseActionOutcome() throws ScannerException, ValueException, ParserException {
+        ActionOutcome goalScoredActionOutcome = ParserUtil.parseActionOutcome(getTokens("G"));
+        ActionOutcome spaceBoundActionOutcome = ParserUtil.parseActionOutcome(getTokens("M C @ Ap*H"));
+
+        assertEquals(ActionOutcomeType.GOAL, goalScoredActionOutcome.getType());
+        assertEquals(TacticalPosition.X.M, spaceBoundActionOutcome.getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, spaceBoundActionOutcome.getTacticalPosition().getY());
+        assertEquals(PitchPosition.Ap, spaceBoundActionOutcome.getPitchPosition());
+        assertEquals(ActionOutcomeType.HANDBALL, spaceBoundActionOutcome.getType());
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));

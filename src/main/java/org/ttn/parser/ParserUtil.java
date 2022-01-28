@@ -11,6 +11,7 @@ import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ParserUtil {
@@ -105,6 +106,16 @@ public class ParserUtil {
             }
         }
         return new ActionOutcome(tacticalPosition, pitchPosition);
+    }
+
+    public static ActionOutcome parseActionOutcome(List<String> tokens) throws ValueException, ParserException {
+        if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(0)))) {
+            return parseSpaceBoundActionOutcome(tokens);
+        } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(0)))) {
+            return new ActionOutcome(getActionOutcomeType(tokens.get(0)));
+        } else {
+            throw new ParserException("Tactical position or action outcome type expected");
+        }
     }
 
     public static Statement parseStatement(List<String> tokens) throws ParserException, ValueException {
