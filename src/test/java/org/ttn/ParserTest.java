@@ -68,7 +68,7 @@ public class ParserTest {
     }
     
     @Test
-    public void testSpaceBoundOutcome() throws ParserException {
+    public void testSpaceBoundOutcome() throws ValueException, ParserException {
         List<String> tokens = Arrays.asList("D", "C", "@", "DM");
 
         ActionOutcome actionOutcome = ParserUtil.parseSpaceBoundActionOutcome(tokens);
@@ -160,18 +160,17 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionOutcomeType() throws ScannerException, ParserException {
+    public void testParseActionOutcomeType() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("00:20 Apd->BounceOff => M C @ Ap*H");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(20, statement.getTime());
         assertEquals(PitchPosition.Apd, statement.getPitchPosition());
         assertEquals(ActionType.BounceOff, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
         assertEquals(ActionOutcomeType.HANDBALL, statement.getActionOutcome().getType());
-        assertFalse(statement.isBallPossessionChange());
     }
 
     @Test

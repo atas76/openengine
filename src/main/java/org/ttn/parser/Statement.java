@@ -67,6 +67,7 @@ public class Statement {
         this.pitchPosition = pitchPosition;
     }
 
+    @Deprecated
     public TacticalPosition.X getTacticalPositionX() {
         return tacticalPositionX;
     }
@@ -75,6 +76,7 @@ public class Statement {
         this.tacticalPositionX = tacticalPositionX;
     }
 
+    @Deprecated
     public TacticalPosition.Y getTacticalPositionY() {
         return tacticalPositionY;
     }

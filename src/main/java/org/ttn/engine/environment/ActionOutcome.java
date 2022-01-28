@@ -23,13 +23,17 @@ public class ActionOutcome {
     }
 
     public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition) {
+        this(tacticalPosition, pitchPosition, null);
+    }
+
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeType type) {
         this.tacticalPosition = tacticalPosition;
         this.pitchPosition = pitchPosition;
+        this.type = type;
     }
 
     public ActionOutcome(PitchPosition pitchPosition, ActionOutcomeType type) {
-        this.pitchPosition = pitchPosition;
-        this.type = type;
+        this(null, pitchPosition, type);
     }
 
     public ActionOutcome(PitchPosition pitchPosition, List<OutcomeParameter> outcomeParameters) {

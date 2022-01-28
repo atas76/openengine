@@ -92,10 +92,18 @@ public class ParserUtil {
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
     }
 
-    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens) throws ParserException {
+    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens)
+            throws ValueException, ParserException {
         TacticalPosition tacticalPosition = parseTacticalPosition(tokens.subList(0, 2));
         expectToken("@", tokens.get(2));
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
+        if (tokens.size() > 4) {
+            if ("*".equals(tokens.get(4))) {
+                return new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)));
+            } else {
+                throw new ParserException("Outcome delimiter parameter expected");
+            }
+        }
         return new ActionOutcome(tacticalPosition, pitchPosition);
     }
 
