@@ -5,7 +5,7 @@ import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.environment.OutcomeParameter;
-import org.ttn.engine.environment.OutcomeType;
+import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
@@ -23,7 +23,7 @@ import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
 import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
 import static org.ttn.engine.agent.ActionType.Default;
 import static org.ttn.engine.agent.ActionType.Move;
-import static org.ttn.engine.environment.OutcomeType.*;
+import static org.ttn.engine.environment.ActionOutcomeType.*;
 import static org.ttn.parser.Statement.Type.*;
 
 public class Parser {
@@ -55,7 +55,7 @@ public class Parser {
             entry("Open", OPEN_PASS),
             entry("FT", FIRST_TOUCH));
 
-    private static final Map<String, OutcomeType> outcomeType = Map.ofEntries(
+    private static final Map<String, ActionOutcomeType> outcomeType = Map.ofEntries(
             entry("H", HANDBALL),
             entry("G", GOAL),
             entry("C", CORNER));

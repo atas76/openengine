@@ -4,6 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
+import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
@@ -38,6 +39,19 @@ public class ParserUtil {
                 return ActionParameter.OPEN_PASS;
             default:
                 throw new ValueException("Could not map action parameter value");
+        }
+    }
+
+    public static ActionOutcomeType getActionOutcomeType(String actionOutcomeValue) throws ValueException {
+        switch(actionOutcomeValue) {
+            case "H":
+                return ActionOutcomeType.HANDBALL;
+            case "C":
+                return ActionOutcomeType.CORNER;
+            case "G":
+                return ActionOutcomeType.GOAL;
+            default:
+                throw new ValueException("Could not map action outcome value");
         }
     }
 

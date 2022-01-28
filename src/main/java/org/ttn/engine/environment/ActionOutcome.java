@@ -10,15 +10,15 @@ public class ActionOutcome {
 
     private TacticalPosition tacticalPosition;
     private PitchPosition pitchPosition;
-    private OutcomeType type;
-    private OutcomeType restingOutcome;
+    private ActionOutcomeType type;
+    private ActionOutcomeType restingOutcome;
     private List<OutcomeParameter> outcomeParameters = new ArrayList<>();
 
     public ActionOutcome(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
     }
 
-    public ActionOutcome(OutcomeType type) {
+    public ActionOutcome(ActionOutcomeType type) {
         this.type = type;
     }
 
@@ -27,7 +27,7 @@ public class ActionOutcome {
         this.pitchPosition = pitchPosition;
     }
 
-    public ActionOutcome(PitchPosition pitchPosition, OutcomeType type) {
+    public ActionOutcome(PitchPosition pitchPosition, ActionOutcomeType type) {
         this.pitchPosition = pitchPosition;
         this.type = type;
     }
@@ -37,7 +37,7 @@ public class ActionOutcome {
         this.outcomeParameters = outcomeParameters;
     }
 
-    public void setRestingOutcome(OutcomeType restingOutcome) {
+    public void setRestingOutcome(ActionOutcomeType restingOutcome) {
         this.restingOutcome = restingOutcome;
     }
 
@@ -49,11 +49,11 @@ public class ActionOutcome {
         return pitchPosition;
     }
 
-    public OutcomeType getType() {
+    public ActionOutcomeType getType() {
         return type;
     }
 
-    public OutcomeType getRestingOutcome() {
+    public ActionOutcomeType getRestingOutcome() {
         return this.restingOutcome;
     }
 

@@ -6,7 +6,7 @@ import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.environment.OutcomeParameter;
-import org.ttn.engine.environment.OutcomeType;
+import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
@@ -50,6 +50,11 @@ public class ParserTest {
     public void testGetActionParameter() throws ValueException {
         assertEquals(ActionParameter.FIRST_TOUCH, ParserUtil.getActionParameter("FT"));
         assertEquals(ActionParameter.OPEN_PASS, ParserUtil.getActionParameter("Open"));
+    }
+
+    @Test
+    public void testGetActionOutcomeType() throws ValueException {
+        assertEquals(ActionOutcomeType.HANDBALL, ParserUtil.getActionOutcomeType("H"));
     }
 
     @Test
@@ -152,6 +157,21 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
+    public void testParseActionOutcomeType() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:20 Apd->BounceOff => M C @ Ap*H");
+        Statement statement = new Parser(tokens).parse();
+
+        assertEquals(20, statement.getTime());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
+        assertEquals(ActionType.BounceOff, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
+        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
+        assertEquals(ActionOutcomeType.HANDBALL, statement.getActionOutcome().getType());
+        assertFalse(statement.isBallPossessionChange());
     }
 
     @Test
@@ -428,7 +448,7 @@ public class ParserTest {
         assertEquals(107, statement.getTime());
         assertEquals(PitchPosition.Ap, statement.getPitchPosition());
         assertEquals(ActionType.Shoot, statement.getAction().getType());
-        assertEquals(OutcomeType.GOAL, statement.getActionOutcome().getType());
+        assertEquals(ActionOutcomeType.GOAL, statement.getActionOutcome().getType());
     }
 
     @Test
@@ -475,7 +495,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
         assertTrue(statement.isBallPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.INTERCEPTION));
-        assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
         // TODO
         // assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome().getType());
     }
@@ -519,7 +539,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
-        assertEquals(OutcomeType.HANDBALL, statement.getActionOutcome().getType());
+        assertEquals(ActionOutcomeType.HANDBALL, statement.getActionOutcome().getType());
         assertFalse(statement.isBallPossessionChange());
     }
 
