@@ -137,11 +137,11 @@ public class ParserUtil {
         }
 
         if ("=>".equals(actionDelimiter)) {
-            return new Statement(time, pitchPosition, parseSpaceBoundActionOutcome(tokens.subList(currentIndex, tokens.size())));
+            return new Statement(time, pitchPosition, parseActionOutcome(tokens.subList(currentIndex, tokens.size())));
         } else if ("->".equals(actionDelimiter)) {
             return new Statement(time, pitchPosition,
                     parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex)),
-                    parseSpaceBoundActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, tokens.size())), statementType);
+                    parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, tokens.size())), statementType);
         } else {
             throw new ParserException("Action delimiter expected");
         }

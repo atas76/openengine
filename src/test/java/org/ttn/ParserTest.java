@@ -186,6 +186,17 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseFixedSpaceActionOutcome() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("01:47 Ap->Shoot => G");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(107, statement.getTime());
+        assertEquals(PitchPosition.Ap, statement.getPitchPosition());
+        assertEquals(ActionType.Shoot, statement.getAction().getType());
+        assertEquals(ActionOutcomeType.GOAL, statement.getActionOutcome().getType());
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));
