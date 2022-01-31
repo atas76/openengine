@@ -12,6 +12,10 @@ public class TacticalPositionImpl implements TacticalPosition {
         this.y = y;
     }
 
+    public TacticalPositionImpl(X x) {
+        this.x = x;
+    }
+
     @Override
     public X getX() {
         return this.x;
@@ -20,5 +24,10 @@ public class TacticalPositionImpl implements TacticalPosition {
     @Override
     public Y getY() {
         return this.y;
+    }
+
+    @Override
+    public boolean isGoalkeeper() {
+        return X.Gkr.equals(x);
     }
 }

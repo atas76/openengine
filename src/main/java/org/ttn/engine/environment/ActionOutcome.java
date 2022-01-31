@@ -22,6 +22,10 @@ public class ActionOutcome {
         this.type = type;
     }
 
+    public ActionOutcome(TacticalPosition tacticalPosition) {
+        this.tacticalPosition = tacticalPosition;
+    }
+
     public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition) {
         this(tacticalPosition, pitchPosition, null);
     }

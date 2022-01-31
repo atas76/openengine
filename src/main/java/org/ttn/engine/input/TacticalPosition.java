@@ -7,4 +7,5 @@ public interface TacticalPosition {
 
     X getX();
     Y getY();
+    boolean isGoalkeeper();
 }

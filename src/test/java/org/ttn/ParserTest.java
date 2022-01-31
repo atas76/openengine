@@ -42,6 +42,11 @@ public class ParserTest {
     }
 
     @Test
+    public void testGetGoalkeeperPosition() {
+        assertEquals(TacticalPosition.X.Gkr, ParserUtil.getGoalkeeperPosition("Gkr").getX());
+    }
+
+    @Test
     public void testGetActionType() {
         assertEquals(ActionType.Long, ParserUtil.getActionType("Long"));
     }
@@ -171,6 +176,17 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
         assertEquals(ActionOutcomeType.HANDBALL, statement.getActionOutcome().getType());
+    }
+
+    @Test
+    public void testParseGoalkeeperTacticalPosition() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("03:21 DMw->Long >>> Gkr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(201, statement.getTime());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX());
     }
 
     @Test
