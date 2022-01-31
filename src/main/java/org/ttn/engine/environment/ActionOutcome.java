@@ -13,31 +13,36 @@ public class ActionOutcome {
     private ActionOutcomeType type;
     private ActionOutcomeType restingOutcome;
     private List<OutcomeParameter> outcomeParameters = new ArrayList<>();
+    private boolean possessionChange;
 
     public ActionOutcome(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
     }
 
-    public ActionOutcome(ActionOutcomeType type) {
+    public ActionOutcome(ActionOutcomeType type, boolean possessionChange) {
         this.type = type;
+        this.possessionChange = possessionChange;
     }
 
-    public ActionOutcome(TacticalPosition tacticalPosition) {
+    public ActionOutcome(TacticalPosition tacticalPosition, boolean possessionChange) {
         this.tacticalPosition = tacticalPosition;
+        this.possessionChange = possessionChange;
     }
 
-    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition) {
-        this(tacticalPosition, pitchPosition, null);
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, boolean possessionChange) {
+        this(tacticalPosition, pitchPosition, null, possessionChange);
     }
 
-    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeType type) {
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeType type,
+                         boolean possessionChange) {
         this.tacticalPosition = tacticalPosition;
         this.pitchPosition = pitchPosition;
         this.type = type;
+        this.possessionChange = possessionChange;
     }
 
     public ActionOutcome(PitchPosition pitchPosition, ActionOutcomeType type) {
-        this(null, pitchPosition, type);
+        this(null, pitchPosition, type, false);
     }
 
     public ActionOutcome(PitchPosition pitchPosition, List<OutcomeParameter> outcomeParameters) {
@@ -67,5 +72,9 @@ public class ActionOutcome {
 
     public boolean isOutcome(OutcomeParameter outcomeParameter) {
         return outcomeParameters.contains(outcomeParameter);
+    }
+
+    public boolean isPossessionChange() {
+        return possessionChange;
     }
 }

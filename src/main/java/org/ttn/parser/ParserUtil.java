@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
+
 public class ParserUtil {
 
     public static PitchPosition getPitchPosition(String pitchPosition) throws IllegalArgumentException {
@@ -54,7 +56,7 @@ public class ParserUtil {
             case "C":
                 return ActionOutcomeType.CORNER;
             case "G":
-                return ActionOutcomeType.GOAL;
+                return GOAL;
             default:
                 throw new ValueException("Could not map action outcome value");
         }
@@ -100,7 +102,7 @@ public class ParserUtil {
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
     }
 
-    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens)
+    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens, boolean possessionChange)
             throws ValueException, ParserException {
         TacticalPosition tacticalPosition = parseTacticalPosition(tokens);
         if (!tacticalPosition.isGoalkeeper()) {
@@ -108,22 +110,35 @@ public class ParserUtil {
             PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
             if (tokens.size() > 4) {
                 if ("*".equals(tokens.get(4))) {
-                    return new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)));
+                    return new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)),
+                            possessionChange);
                 } else {
                     throw new ParserException("Outcome delimiter parameter expected");
                 }
             }
-            return new ActionOutcome(tacticalPosition, pitchPosition);
+            return new ActionOutcome(tacticalPosition, pitchPosition, possessionChange);
         } else {
-            return new ActionOutcome(tacticalPosition);
+            return new ActionOutcome(tacticalPosition, possessionChange);
         }
     }
 
+    public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens)
+            throws ValueException, ParserException {
+        return parseSpaceBoundActionOutcome(tokens, false);
+    }
+
     public static ActionOutcome parseActionOutcome(List<String> tokens) throws ValueException, ParserException {
-        if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(0)))) {
-            return parseSpaceBoundActionOutcome(tokens);
-        } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(0)))) {
-            return new ActionOutcome(getActionOutcomeType(tokens.get(0)));
+        int outcomeIndex = "!".equals(tokens.get(0)) ? 1 : 0;
+        boolean possessionChange = outcomeIndex > 0;
+
+        if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex)))) {
+            return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
+        } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(outcomeIndex)))) {
+            ActionOutcomeType actionOutcomeType = getActionOutcomeType(tokens.get(outcomeIndex));
+            if (GOAL.equals(actionOutcomeType)) {
+                possessionChange = true;
+            }
+            return new ActionOutcome(actionOutcomeType, possessionChange);
         } else {
             throw new ParserException("Tactical position or action outcome type expected");
         }

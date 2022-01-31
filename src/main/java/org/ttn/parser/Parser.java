@@ -179,7 +179,7 @@ public class Parser {
                 if (nonNull(statement.getAction()) && Move.equals(statement.getAction().getType())) {
                     parseSpaceBoundOutcome(statement, outcomeFirstToken, true);
                 } else if ("G".equals(outcomeFirstToken)) {
-                    statement.setActionOutcome(new ActionOutcome(outcomeType.get(outcomeFirstToken)));
+                    statement.setActionOutcome(new ActionOutcome(outcomeType.get(outcomeFirstToken), true));
                 } else {
                     parseSpaceBoundOutcome(statement, outcomeFirstToken);
                 }

@@ -190,6 +190,18 @@ public class ParserTest {
     }
 
     @Test
+    public void testParsePossessionChangeStatement() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(201, statement.getTime());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
+    }
+
+    @Test
     public void testParseActionOutcome() throws ScannerException, ValueException, ParserException {
         ActionOutcome goalScoredActionOutcome = ParserUtil.parseActionOutcome(getTokens("G"));
         ActionOutcome spaceBoundActionOutcome = ParserUtil.parseActionOutcome(getTokens("M C @ Ap*H"));
@@ -210,6 +222,18 @@ public class ParserTest {
         assertEquals(PitchPosition.Ap, statement.getPitchPosition());
         assertEquals(ActionType.Shoot, statement.getAction().getType());
         assertEquals(ActionOutcomeType.GOAL, statement.getActionOutcome().getType());
+    }
+
+    @Test
+    public void testPossessionChangeWhenGoalIsScored() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("01:47 Ap->Shoot => G");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(107, statement.getTime());
+        assertEquals(PitchPosition.Ap, statement.getPitchPosition());
+        assertEquals(ActionType.Shoot, statement.getAction().getType());
+        assertEquals(ActionOutcomeType.GOAL, statement.getActionOutcome().getType());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
     }
 
     @Test
