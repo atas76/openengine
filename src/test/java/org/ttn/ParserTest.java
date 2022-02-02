@@ -5,7 +5,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
-import org.ttn.engine.environment.OutcomeParameter;
+import org.ttn.engine.environment.ActionOutcomeParameter;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
@@ -60,6 +60,11 @@ public class ParserTest {
     @Test
     public void testGetActionOutcomeType() throws ValueException {
         assertEquals(ActionOutcomeType.HANDBALL, ParserUtil.getActionOutcomeType("H"));
+    }
+
+    @Test
+    public void testGetActionOutcomeParameter() throws ValueException {
+        assertEquals(ActionOutcomeParameter.FREE_SPACE, ParserUtil.getActionOutcomeParameter("Fr"));
     }
 
     @Test
@@ -237,6 +242,20 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseOutcomeParametersStatement() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("04:12 Dpw->Long => D L @ DMw:Fr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(252, statement.getTime());
+        assertEquals(PitchPosition.Dpw, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.L, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.FREE_SPACE));
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));
@@ -359,7 +378,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
-        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.CONTROL));
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.CONTROL));
     }
 
     @Test
@@ -556,7 +575,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
         assertTrue(statement.isBallPossessionChange());
-        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.INTERCEPTION));
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.INTERCEPTION));
         assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
         // TODO
         // assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome().getType());
@@ -573,7 +592,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
         assertTrue(statement.isBallPossessionChange());
-        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.HEADER));
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.HEADER));
     }
 
     @Test
@@ -616,7 +635,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
-        assertTrue(statement.getActionOutcome().isOutcome(OutcomeParameter.FREE_SPACE));
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.FREE_SPACE));
     }
 
     @Test

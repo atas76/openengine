@@ -12,7 +12,7 @@ public class ActionOutcome {
     private PitchPosition pitchPosition;
     private ActionOutcomeType type;
     private ActionOutcomeType restingOutcome;
-    private List<OutcomeParameter> outcomeParameters = new ArrayList<>();
+    private List<ActionOutcomeParameter> actionOutcomeParameters = new ArrayList<>();
     private boolean possessionChange;
 
     public ActionOutcome(PitchPosition pitchPosition) {
@@ -30,7 +30,8 @@ public class ActionOutcome {
     }
 
     public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, boolean possessionChange) {
-        this(tacticalPosition, pitchPosition, null, possessionChange);
+        this(tacticalPosition, possessionChange);
+        this.pitchPosition = pitchPosition;
     }
 
     public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeType type,
@@ -41,13 +42,21 @@ public class ActionOutcome {
         this.possessionChange = possessionChange;
     }
 
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeParameter actionOutcomeParameter,
+                         boolean possessionChange) {
+        this.tacticalPosition = tacticalPosition;
+        this.pitchPosition = pitchPosition;
+        this.actionOutcomeParameters.add(actionOutcomeParameter);
+        this.possessionChange = possessionChange;
+    }
+
     public ActionOutcome(PitchPosition pitchPosition, ActionOutcomeType type) {
         this(null, pitchPosition, type, false);
     }
 
-    public ActionOutcome(PitchPosition pitchPosition, List<OutcomeParameter> outcomeParameters) {
+    public ActionOutcome(PitchPosition pitchPosition, List<ActionOutcomeParameter> actionOutcomeParameters) {
         this.pitchPosition = pitchPosition;
-        this.outcomeParameters = outcomeParameters;
+        this.actionOutcomeParameters = actionOutcomeParameters;
     }
 
     public void setRestingOutcome(ActionOutcomeType restingOutcome) {
@@ -70,8 +79,8 @@ public class ActionOutcome {
         return this.restingOutcome;
     }
 
-    public boolean isOutcome(OutcomeParameter outcomeParameter) {
-        return outcomeParameters.contains(outcomeParameter);
+    public boolean isOutcome(ActionOutcomeParameter actionOutcomeParameter) {
+        return actionOutcomeParameters.contains(actionOutcomeParameter);
     }
 
     public boolean isPossessionChange() {

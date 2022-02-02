@@ -4,6 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
+import org.ttn.engine.environment.ActionOutcomeParameter;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.ttn.engine.environment.ActionOutcomeParameter.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
 
 public class ParserUtil {
@@ -39,27 +41,30 @@ public class ParserUtil {
     }
 
     public static ActionParameter getActionParameter(String actionParameterValue) throws ValueException {
-        switch(actionParameterValue) {
-            case "FT":
-                return ActionParameter.FIRST_TOUCH;
-            case "Open":
-                return ActionParameter.OPEN_PASS;
-            default:
-                throw new ValueException("Could not map action parameter value");
-        }
+        return switch (actionParameterValue) {
+            case "FT" -> ActionParameter.FIRST_TOUCH;
+            case "Open" -> ActionParameter.OPEN_PASS;
+            default -> throw new ValueException("Could not map action parameter value");
+        };
+    }
+
+    public static ActionOutcomeParameter getActionOutcomeParameter(String actionOutcomeParameterValue) throws ValueException {
+        return switch(actionOutcomeParameterValue) {
+            case "Fr" -> FREE_SPACE;
+            case "I" -> INTERCEPTION;
+            case "HD" -> HEADER;
+            case "Cnt" -> CONTROL;
+            default -> throw new ValueException("Could not map action outcome parameter value");
+        };
     }
 
     public static ActionOutcomeType getActionOutcomeType(String actionOutcomeValue) throws ValueException {
-        switch(actionOutcomeValue) {
-            case "H":
-                return ActionOutcomeType.HANDBALL;
-            case "C":
-                return ActionOutcomeType.CORNER;
-            case "G":
-                return GOAL;
-            default:
-                throw new ValueException("Could not map action outcome value");
-        }
+        return switch (actionOutcomeValue) {
+            case "H" -> ActionOutcomeType.HANDBALL;
+            case "C" -> ActionOutcomeType.CORNER;
+            case "G" -> GOAL;
+            default -> throw new ValueException("Could not map action outcome value");
+        };
     }
 
     public static List<ActionParameter> parseActionParameters(List<String> tokens)
@@ -109,12 +114,13 @@ public class ParserUtil {
             expectToken("@", tokens.get(2));
             PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
             if (tokens.size() > 4) {
-                if ("*".equals(tokens.get(4))) {
-                    return new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)),
+                return switch(tokens.get(4)) {
+                    case "*" -> new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)),
                             possessionChange);
-                } else {
-                    throw new ParserException("Outcome delimiter parameter expected");
-                }
+                    case ":" -> new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeParameter(tokens.get(5)),
+                            possessionChange);
+                    default -> throw new ParserException("Outcome delimiter parameter expected");
+                };
             }
             return new ActionOutcome(tacticalPosition, pitchPosition, possessionChange);
         } else {

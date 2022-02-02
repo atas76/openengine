@@ -1,5 +1,5 @@
 package org.ttn.engine.environment;
 
-public enum OutcomeParameter {
+public enum ActionOutcomeParameter {
     FREE_SPACE, INTERCEPTION, HEADER, CONTROL
 }

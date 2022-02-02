@@ -4,7 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.environment.ActionOutcome;
-import org.ttn.engine.environment.OutcomeParameter;
+import org.ttn.engine.environment.ActionOutcomeParameter;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
@@ -60,11 +60,11 @@ public class Parser {
             entry("G", GOAL),
             entry("C", CORNER));
 
-    private static final Map<String, OutcomeParameter> outcomeParameterMapping = Map.ofEntries(
-            entry("Fr", OutcomeParameter.FREE_SPACE),
-            entry("I", OutcomeParameter.INTERCEPTION),
-            entry("HD", OutcomeParameter.HEADER),
-            entry("Cnt", OutcomeParameter.CONTROL));
+    private static final Map<String, ActionOutcomeParameter> outcomeParameterMapping = Map.ofEntries(
+            entry("Fr", ActionOutcomeParameter.FREE_SPACE),
+            entry("I", ActionOutcomeParameter.INTERCEPTION),
+            entry("HD", ActionOutcomeParameter.HEADER),
+            entry("Cnt", ActionOutcomeParameter.CONTROL));
 
     private final List<String> tokens;
     private int index = 0;
@@ -227,17 +227,17 @@ public class Parser {
                         outcomeType.get(readNextToken())));
             } else if (peekNextToken().equals(":")) {
                 String parameterToken = peekNextToken();
-                List<OutcomeParameter> outcomeParameters = new ArrayList<>();
+                List<ActionOutcomeParameter> actionOutcomeParameters = new ArrayList<>();
                 while (":".equals(parameterToken)) {
                     expectToken(":");
-                    outcomeParameters.add(outcomeParameterMapping.get(readNextToken()));
+                    actionOutcomeParameters.add(outcomeParameterMapping.get(readNextToken()));
                     if (hasNextToken()) {
                         parameterToken = peekNextToken();
                     } else {
                         break;
                     }
                 }
-                statement.setActionOutcome(new ActionOutcome(outcomePitchPosition, outcomeParameters));
+                statement.setActionOutcome(new ActionOutcome(outcomePitchPosition, actionOutcomeParameters));
             } else {
                 throw new ParserException("Invalid token at the end of statement");
             }
