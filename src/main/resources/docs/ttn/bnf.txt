@@ -1,5 +1,5 @@
 <statement> ::= <time> <pitch-position> ['->' <action>] ('=>', '>>>') ['!'] <action-outcome>
-<action-outcome> ::= <space-bound-outcome> || <action-outcome-type>
+<action-outcome> ::= <space-bound-outcome> ['>>' <action-outcome-type>] || <action-outcome-type>
 <space-bound-outcome> ::=
     <outfield-tactical-position> '@' <pitch-position> [ ('*' <action-outcome-type>) || (':' <action-outcome-parameter>)] ||
     <goalkeeper-position>
