@@ -256,6 +256,21 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseRestingOutcome() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(274, statement.getTime());
+        assertEquals(PitchPosition.Aw, statement.getPitchPosition());
+        assertEquals(ActionType.Pass, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.INTERCEPTION));
+        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));

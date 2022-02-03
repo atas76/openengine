@@ -138,7 +138,16 @@ public class ParserUtil {
         boolean possessionChange = outcomeIndex > 0;
 
         if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex)))) {
-            return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
+            ActionOutcomeType restingOutcomeType;
+            if (tokens.contains(">>")) {
+                int actionOutcomeBound = tokens.indexOf(">>");
+                ActionOutcome actionOutcome = parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, actionOutcomeBound), possessionChange);
+                restingOutcomeType = getActionOutcomeType(tokens.get(actionOutcomeBound + 1));
+                actionOutcome.setRestingOutcome(restingOutcomeType);
+                return actionOutcome;
+            } else {
+                return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
+            }
         } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(outcomeIndex)))) {
             ActionOutcomeType actionOutcomeType = getActionOutcomeType(tokens.get(outcomeIndex));
             if (GOAL.equals(actionOutcomeType)) {
