@@ -268,6 +268,7 @@ public class ParserTest {
         assertTrue(statement.getActionOutcome().isPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.INTERCEPTION));
         assertEquals(ActionOutcomeType.CORNER, statement.getRestingOutcome().getType());
+        assertFalse(statement.isPossessionChange());
     }
 
     @Test
@@ -288,6 +289,7 @@ public class ParserTest {
         assertFalse(statement.getRestingOutcome().isPossessionChange());
         assertTrue(statement.getRestingOutcome().isOutcome(ActionOutcomeParameter.CONTROL));
         assertEquals(PitchPosition.AMd, statement.getRestingOutcome().getPitchPosition());
+        assertFalse(statement.isPossessionChange());
     }
 
     @Test

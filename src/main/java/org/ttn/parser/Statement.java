@@ -7,6 +7,8 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 
+import static java.util.Objects.nonNull;
+
 public class Statement {
 
     public enum Type {
@@ -130,8 +132,16 @@ public class Statement {
         this.ballPossessionChange = true;
     }
 
+    @Deprecated
     public boolean isBallPossessionChange() {
         return this.ballPossessionChange;
+    }
+
+    public boolean isPossessionChange() {
+        if (nonNull(restingOutcome)) {
+            return restingOutcome.isPossessionChange();
+        }
+        return actionOutcome.isPossessionChange();
     }
 
     public Type getType() {
