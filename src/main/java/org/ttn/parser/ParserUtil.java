@@ -138,16 +138,7 @@ public class ParserUtil {
         boolean possessionChange = outcomeIndex > 0;
 
         if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex)))) {
-            ActionOutcomeType restingOutcomeType;
-            if (tokens.contains(">>")) {
-                int actionOutcomeBound = tokens.indexOf(">>");
-                ActionOutcome actionOutcome = parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, actionOutcomeBound), possessionChange);
-                restingOutcomeType = getActionOutcomeType(tokens.get(actionOutcomeBound + 1));
-                actionOutcome.setRestingOutcome(restingOutcomeType);
-                return actionOutcome;
-            } else {
-                return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
-            }
+            return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
         } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(outcomeIndex)))) {
             ActionOutcomeType actionOutcomeType = getActionOutcomeType(tokens.get(outcomeIndex));
             if (GOAL.equals(actionOutcomeType)) {
@@ -177,15 +168,27 @@ public class ParserUtil {
             throw new ParserException("Outcome delimiter expected");
         }
 
+        ActionOutcome actionOutcome;
+        Statement statement;
+        int actionOutcomeBound = tokens.size();
+        if (tokens.contains(">>")) {
+            actionOutcomeBound = tokens.indexOf(">>");
+        }
         if ("=>".equals(actionDelimiter)) {
-            return new Statement(time, pitchPosition, parseActionOutcome(tokens.subList(currentIndex, tokens.size())));
+            actionOutcome = parseActionOutcome(tokens.subList(currentIndex, actionOutcomeBound));
+            statement = new Statement(time, pitchPosition, actionOutcome);
         } else if ("->".equals(actionDelimiter)) {
-            return new Statement(time, pitchPosition,
-                    parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex)),
-                    parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, tokens.size())), statementType);
+            Action action = parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex));
+            actionOutcome = parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, actionOutcomeBound));
+            statement = new Statement(time, pitchPosition, action, actionOutcome, statementType);
         } else {
             throw new ParserException("Action delimiter expected");
         }
+        if (actionOutcomeBound < tokens.size()) {
+            statement.setRestingOutcome(parseActionOutcome(tokens.subList(actionOutcomeBound + 1, tokens.size())));
+        }
+
+        return statement;
     }
 
     private static void expectToken(String token, String currentToken) throws ParserException {

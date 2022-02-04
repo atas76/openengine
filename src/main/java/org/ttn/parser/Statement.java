@@ -27,6 +27,7 @@ public class Statement {
     private TacticalPosition.X tacticalPositionX;
     private TacticalPosition.Y tacticalPositionY;
     private ActionOutcome actionOutcome;
+    private ActionOutcome restingOutcome;
     private String team;
     private SetPiece setPiece;
     private Type type;
@@ -91,6 +92,14 @@ public class Statement {
 
     public ActionOutcome getActionOutcome() {
         return this.actionOutcome;
+    }
+
+    public ActionOutcome getRestingOutcome() {
+        return restingOutcome;
+    }
+
+    public void setRestingOutcome(ActionOutcome restingOutcome) {
+        this.restingOutcome = restingOutcome;
     }
 
     public Action getAction() {

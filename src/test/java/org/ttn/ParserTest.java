@@ -256,7 +256,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseRestingOutcome() throws ScannerException, ValueException, ParserException {
+    public void testParseRestingOutcomeType() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -267,7 +267,27 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
         assertTrue(statement.getActionOutcome().isPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.INTERCEPTION));
-        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
+        assertEquals(ActionOutcomeType.CORNER, statement.getRestingOutcome().getType());
+    }
+
+    @Test
+    public void testParseRestingOutcome() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:15 CK->Cross => !D C @ Dp:HD >> M C @ AMd:Cnt");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(315, statement.getTime());
+        assertEquals(PitchPosition.CK, statement.getPitchPosition());
+        assertEquals(ActionType.Cross, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
+        assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.HEADER));
+        assertEquals(PitchPosition.Dp, statement.getActionOutcome().getPitchPosition());
+        assertEquals(TacticalPosition.X.M, statement.getRestingOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
+        assertFalse(statement.getRestingOutcome().isPossessionChange());
+        assertTrue(statement.getRestingOutcome().isOutcome(ActionOutcomeParameter.CONTROL));
+        assertEquals(PitchPosition.AMd, statement.getRestingOutcome().getPitchPosition());
     }
 
     @Test
@@ -591,9 +611,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
         assertTrue(statement.isBallPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(ActionOutcomeParameter.INTERCEPTION));
-        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome());
-        // TODO
-        // assertEquals(OutcomeType.CORNER, statement.getActionOutcome().getRestingOutcome().getType());
+        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcomeType());
     }
 
     @Test

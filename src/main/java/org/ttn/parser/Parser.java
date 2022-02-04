@@ -252,7 +252,7 @@ public class Parser {
     private void parseRestingOutcome(Statement statement) throws ParserException {
         if (peekNextToken().equals(">>")) {
             nextToken();
-            statement.getActionOutcome().setRestingOutcome(outcomeType.get(readNextToken()));
+            statement.getActionOutcome().setRestingOutcomeType(outcomeType.get(readNextToken()));
         } else {
             throw new ParserException(">> expected");
         }
