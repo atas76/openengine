@@ -14,11 +14,21 @@ import org.ttn.parser.exceptions.ValueException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
+import static java.util.Map.entry;
 import static org.ttn.engine.environment.ActionOutcomeParameter.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
 
 public class ParserUtil {
+
+    static final Map<Parser.Keyword, Directive.Type> keywordMapping = Map.ofEntries(
+            entry(Parser.Keyword.SET, Directive.Type.SET_PIECE_EXECUTION_BLOCK),
+            entry(Parser.Keyword.POSSESSION, Directive.Type.POSSESSION_STATEMENT_BLOCK),
+            entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
+            entry(Parser.Keyword.PRESSURE, Directive.Type.PRESSURE_STATEMENT_BLOCK),
+            entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
+            entry(Parser.Keyword.TRANSITION, Directive.Type.TRANSITION_STATEMENT_BLOCK));
 
     public static PitchPosition getPitchPosition(String pitchPosition) throws IllegalArgumentException {
         return PitchPosition.valueOf(pitchPosition);
@@ -157,12 +167,12 @@ public class ParserUtil {
         final String actionDelimiter = tokens.get(currentIndex++);
 
         int outcomeDelimiterIndex;
-        Statement.Type statementType;
+        Directive.Type statementType;
         if (tokens.contains(">>>")) {
-            statementType = Statement.Type.INDIRECT_OUTCOME;
+            statementType = Directive.Type.INDIRECT_OUTCOME;
             outcomeDelimiterIndex = tokens.indexOf(">>>");
         } else if (tokens.contains("=>")) {
-            statementType = Statement.Type.STANDARD;
+            statementType = Directive.Type.STANDARD;
             outcomeDelimiterIndex = tokens.indexOf("=>");
         } else {
             throw new ParserException("Outcome delimiter expected");
@@ -189,6 +199,26 @@ public class ParserUtil {
         }
 
         return statement;
+    }
+
+    public static Directive parseDirective(List<String> tokens) throws ParserException {
+        if (!":".equals(tokens.get(0))) {
+            throw new ParserException("Directives must start with ':'");
+        }
+        return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2));
+    }
+
+    private static Parser.Keyword expectKeyword(String keyword) throws ParserException {
+
+        return switch(keyword) {
+            case "set" -> Parser.Keyword.SET;
+            case "possession" -> Parser.Keyword.POSSESSION;
+            case "pressure" -> Parser.Keyword.PRESSURE;
+            case "break" -> Parser.Keyword.BREAK;
+            case "possessor" -> Parser.Keyword.POSSESSOR;
+            case "transition" -> Parser.Keyword.TRANSITION;
+            default -> throw new ParserException("Keyword expected");
+        };
     }
 
     private static void expectToken(String token, String currentToken) throws ParserException {

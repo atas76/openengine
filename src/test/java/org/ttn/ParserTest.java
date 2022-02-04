@@ -11,6 +11,7 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
+import org.ttn.parser.Directive;
 import org.ttn.parser.Parser;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.Statement;
@@ -22,7 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.Statement.Type.*;
+import static org.ttn.parser.Directive.Type.*;
 
 public class ParserTest {
 
@@ -290,6 +291,15 @@ public class ParserTest {
         assertTrue(statement.getRestingOutcome().isOutcome(ActionOutcomeParameter.CONTROL));
         assertEquals(PitchPosition.AMd, statement.getRestingOutcome().getPitchPosition());
         assertFalse(statement.isPossessionChange());
+    }
+
+    @Test
+    public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possession L");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(Directive.Type.POSSESSION_STATEMENT_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
     }
 
     @Test

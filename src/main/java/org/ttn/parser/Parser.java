@@ -24,26 +24,18 @@ import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
 import static org.ttn.engine.agent.ActionType.Default;
 import static org.ttn.engine.agent.ActionType.Move;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
-import static org.ttn.parser.Statement.Type.*;
+import static org.ttn.parser.Directive.Type.*;
 
 public class Parser {
 
     private final Set<String> STATEMENT_QUALIFIERS = Set.of("=>", ":");
     private final Set<String> OUTCOME_DELIMITERS = Set.of("=>", ">>>");
     private final Set<String> ACTION_DELIMITERS = Set.of("=>", "->");
-    private final Set<Statement.Type> DIRECTIVE_STATEMENT_TYPES = Set.of(BREAK, POSSESSOR_DEFINITION);
+    private final Set<Directive.Type> DIRECTIVE_STATEMENT_TYPES = Set.of(BREAK, POSSESSOR_DEFINITION);
 
-    private enum Keyword {
+    enum Keyword {
         SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION
     }
-
-    private static final Map<Keyword, Statement.Type> keywordMapping = Map.ofEntries(
-            entry(Keyword.SET, SET_PIECE_EXECUTION_BLOCK),
-            entry(Keyword.POSSESSION, POSSESSION_STATEMENT_BLOCK),
-            entry(Keyword.BREAK, BREAK),
-            entry(Keyword.PRESSURE, PRESSURE_STATEMENT_BLOCK),
-            entry(Keyword.POSSESSOR, POSSESSOR_DEFINITION),
-            entry(Keyword.TRANSITION, TRANSITION_STATEMENT_BLOCK));
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
@@ -139,7 +131,7 @@ public class Parser {
                 break;
             case ":":
                 nextToken();
-                statement.setType(keywordMapping.get(expectKeyword()));
+                statement.setType(ParserUtil.keywordMapping.get(expectKeyword()));
                 if (POSSESSOR_DEFINITION.equals(statement.getType())) {
                     statement.setTacticalPositionX(TacticalPosition.X.valueOf(readNextToken()));
                     statement.setTacticalPositionY(TacticalPosition.Y.valueOf(readNextToken()));

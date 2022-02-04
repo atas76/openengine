@@ -10,19 +10,7 @@ import org.ttn.engine.space.PitchPosition;
 import static java.util.Objects.nonNull;
 
 public class Statement {
-
-    public enum Type {
-        SET_PIECE_EXECUTION_BLOCK,
-        POSSESSION_STATEMENT_BLOCK,
-        PRESSURE_STATEMENT_BLOCK,
-        TRANSITION_STATEMENT_BLOCK,
-        POSSESSOR_DEFINITION,
-        INDIRECT_OUTCOME,
-        STANDARD,
-        BREAK,
-        DEFAULT_SET_PIECE_EXECUTION
-    }
-
+    
     private int time;
     private PitchPosition pitchPosition;
     private Action action;
@@ -32,12 +20,12 @@ public class Statement {
     private ActionOutcome restingOutcome;
     private String team;
     private SetPiece setPiece;
-    private Type type;
+    private Directive.Type type;
     private boolean ballPossessionChange;
 
     public Statement() {} // Bring on mutability (for the time being)
 
-    public Statement(int time, PitchPosition pitchPosition, Action action, ActionOutcome actionOutcome, Type type) {
+    public Statement(int time, PitchPosition pitchPosition, Action action, ActionOutcome actionOutcome, Directive.Type type) {
         this.time = time;
         this.pitchPosition = pitchPosition;
         this.action = action;
@@ -46,12 +34,12 @@ public class Statement {
     }
 
     public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
-        this(time, pitchPosition, new Action(ActionType.Default), actionOutcome, Type.STANDARD);
+        this(time, pitchPosition, new Action(ActionType.Default), actionOutcome, Directive.Type.STANDARD);
     }
 
     public Statement(int time, PitchPosition pitchPosition,
                      ActionType actionType, ActionOutcome actionOutcome) {
-        this(time, pitchPosition, new Action(actionType), actionOutcome, Type.STANDARD);
+        this(time, pitchPosition, new Action(actionType), actionOutcome, Directive.Type.STANDARD);
     }
 
     public void setTime(int time) {
@@ -144,11 +132,11 @@ public class Statement {
         return actionOutcome.isPossessionChange();
     }
 
-    public Type getType() {
+    public Directive.Type getType() {
         return type;
     }
 
-    public void setType(Type type) {
+    public void setType(Directive.Type type) {
         this.type = type;
     }
 }
