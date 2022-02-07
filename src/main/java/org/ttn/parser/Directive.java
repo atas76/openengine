@@ -1,12 +1,11 @@
 package org.ttn.parser;
 
-import org.ttn.parser.exceptions.ParserException;
-
 public class Directive {
 
     public enum Type {
         SET_PIECE_EXECUTION_BLOCK,
-        POSSESSION_STATEMENT_BLOCK,
+        POSSESSION_CHAIN_BLOCK,
+        BALL_RECOVERY_BLOCK,
         PRESSURE_STATEMENT_BLOCK,
         TRANSITION_STATEMENT_BLOCK,
         POSSESSOR_DEFINITION,

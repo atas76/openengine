@@ -298,7 +298,16 @@ public class ParserTest {
         List<String> tokens = getTokens(":possession L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(Directive.Type.POSSESSION_STATEMENT_BLOCK, directive.getType());
+        assertEquals(Directive.Type.POSSESSION_CHAIN_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+    }
+
+    @Test
+    public void testParseBallRecoveryDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":recovery L");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(BALL_RECOVERY_BLOCK, directive.getType());
         assertEquals("L", directive.getTeam());
     }
 
@@ -433,7 +442,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":possession L");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(POSSESSION_STATEMENT_BLOCK, statement.getType());
+        assertEquals(POSSESSION_CHAIN_BLOCK, statement.getType());
         assertEquals("L", statement.getTeam());
     }
 

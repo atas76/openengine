@@ -24,7 +24,8 @@ public class ParserUtil {
 
     static final Map<Parser.Keyword, Directive.Type> keywordMapping = Map.ofEntries(
             entry(Parser.Keyword.SET, Directive.Type.SET_PIECE_EXECUTION_BLOCK),
-            entry(Parser.Keyword.POSSESSION, Directive.Type.POSSESSION_STATEMENT_BLOCK),
+            entry(Parser.Keyword.POSSESSION, Directive.Type.POSSESSION_CHAIN_BLOCK),
+            entry(Parser.Keyword.RECOVERY, Directive.Type.BALL_RECOVERY_BLOCK),
             entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
             entry(Parser.Keyword.PRESSURE, Directive.Type.PRESSURE_STATEMENT_BLOCK),
             entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
@@ -213,6 +214,7 @@ public class ParserUtil {
         return switch(keyword) {
             case "set" -> Parser.Keyword.SET;
             case "possession" -> Parser.Keyword.POSSESSION;
+            case "recovery" -> Parser.Keyword.RECOVERY;
             case "pressure" -> Parser.Keyword.PRESSURE;
             case "break" -> Parser.Keyword.BREAK;
             case "possessor" -> Parser.Keyword.POSSESSOR;
