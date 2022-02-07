@@ -312,6 +312,15 @@ public class ParserTest {
     }
 
     @Test
+    public void testAttackChainDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":attack L");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(ATTACK_CHAIN_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));

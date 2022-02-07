@@ -26,6 +26,7 @@ public class ParserUtil {
             entry(Parser.Keyword.SET, Directive.Type.SET_PIECE_EXECUTION_BLOCK),
             entry(Parser.Keyword.POSSESSION, Directive.Type.POSSESSION_CHAIN_BLOCK),
             entry(Parser.Keyword.RECOVERY, Directive.Type.BALL_RECOVERY_BLOCK),
+            entry(Parser.Keyword.ATTACK, Directive.Type.ATTACK_CHAIN_BLOCK),
             entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
             entry(Parser.Keyword.PRESSURE, Directive.Type.PRESSURE_STATEMENT_BLOCK),
             entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
@@ -209,12 +210,14 @@ public class ParserUtil {
         return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2));
     }
 
+    // TODO define those in a file
     private static Parser.Keyword expectKeyword(String keyword) throws ParserException {
 
         return switch(keyword) {
             case "set" -> Parser.Keyword.SET;
             case "possession" -> Parser.Keyword.POSSESSION;
             case "recovery" -> Parser.Keyword.RECOVERY;
+            case "attack" -> Parser.Keyword.ATTACK;
             case "pressure" -> Parser.Keyword.PRESSURE;
             case "break" -> Parser.Keyword.BREAK;
             case "possessor" -> Parser.Keyword.POSSESSOR;

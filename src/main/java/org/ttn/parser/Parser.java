@@ -34,7 +34,7 @@ public class Parser {
     private final Set<Directive.Type> DIRECTIVE_STATEMENT_TYPES = Set.of(BREAK, POSSESSOR_DEFINITION);
 
     enum Keyword {
-        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION, RECOVERY
+        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION, RECOVERY, ATTACK
     }
 
     private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
