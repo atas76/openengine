@@ -1,5 +1,7 @@
 package org.ttn.parser;
 
+import org.ttn.engine.rules.SetPiece;
+
 public class Directive {
 
     public enum Type {
@@ -18,6 +20,15 @@ public class Directive {
 
     private Type type;
     private String team;
+    private SetPiece setPiece;
+
+    public void setSetPiece(SetPiece setPiece) {
+        this.setPiece = setPiece;
+    }
+
+    public SetPiece getSetPiece() {
+        return setPiece;
+    }
 
     public Type getType() {
         return type;

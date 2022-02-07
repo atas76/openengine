@@ -37,7 +37,7 @@ public class Parser {
         SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION, RECOVERY, ATTACK
     }
 
-    private static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
+    public static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(
             entry("Kickoff", SetPiece.KICK_OFF),
             entry("Penalty", SetPiece.PENALTY),
             entry("ThrowIn", SetPiece.THROW_IN),

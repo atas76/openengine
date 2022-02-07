@@ -207,7 +207,12 @@ public class ParserUtil {
         if (!":".equals(tokens.get(0))) {
             throw new ParserException("Directives must start with ':'");
         }
-        return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2));
+        Directive directive = new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2));
+        if ("set".equals(tokens.get(1))) {
+            expectToken(":", tokens.get(3));
+            directive.setSetPiece(Parser.setPieceMapping.get(tokens.get(4)));
+        }
+        return directive;
     }
 
     // TODO define those in a file
