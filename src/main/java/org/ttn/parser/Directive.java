@@ -38,8 +38,17 @@ public class Directive {
         return team;
     }
 
-    public Directive(Type type, String team) {
+    public Directive(Type type) {
         this.type = type;
+    }
+
+    public Directive(Type type, String team) {
+        this(type);
         this.team = team;
+    }
+
+    public Directive(Type type, String team, SetPiece setPiece) {
+        this(type, team);
+        this.setPiece = setPiece;
     }
 }

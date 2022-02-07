@@ -331,6 +331,14 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseBreakDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":break");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(BREAK, directive.getType());
+    }
+
+    @Test
     public void testParseTime() throws ParserException {
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("05", ":", "15")));
         assertEquals(315, ParserUtil.parseTime(Arrays.asList("5", ":", "15")));
@@ -492,6 +500,7 @@ public class ParserTest {
         assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
         assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
     }
+
     @Test
     public void testBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");
