@@ -331,6 +331,16 @@ public class ParserTest {
     }
 
     @Test
+    public void testThrowInChain() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L: ThrowIn");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+        assertEquals(THROW_IN, directive.getSetPiece());
+    }
+
+    @Test
     public void testParseBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");
         Directive directive = ParserUtil.parseDirective(tokens);
