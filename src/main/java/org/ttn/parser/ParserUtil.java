@@ -30,7 +30,7 @@ public class ParserUtil {
             entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
             entry(Parser.Keyword.PRESSURE, Directive.Type.BUILDUP_PRESSURE_BLOCK),
             entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
-            entry(Parser.Keyword.TRANSITION, Directive.Type.TRANSITION_STATEMENT_BLOCK));
+            entry(Parser.Keyword.TRANSITION, Directive.Type.TRANSITION_CHAIN_BLOCK));
 
     public static PitchPosition getPitchPosition(String pitchPosition) throws IllegalArgumentException {
         return PitchPosition.valueOf(pitchPosition);

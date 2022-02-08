@@ -330,6 +330,15 @@ public class ParserTest {
     }
 
     @Test
+    public void testTransitionChainDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":transition T");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(TRANSITION_CHAIN_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
+    }
+
+    @Test
     public void testPossessorDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possessor D C");
         Directive directive = ParserUtil.parseDirective(tokens);
@@ -516,7 +525,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":transition T");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(TRANSITION_STATEMENT_BLOCK, statement.getType());
+        assertEquals(TRANSITION_CHAIN_BLOCK, statement.getType());
         assertEquals("T", statement.getTeam());
     }
 
