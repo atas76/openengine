@@ -196,6 +196,17 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseGoalkeeperOutsideAreaPosition() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:22 AMd->BackPass => Gkd");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(322, statement.getTime());
+        assertEquals(PitchPosition.AMd, statement.getPitchPosition());
+        assertEquals(ActionType.BackPass, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.Gkd, statement.getActionOutcome().getTacticalPosition().getX());
+    }
+
+    @Test
     public void testParsePossessionChangeStatement() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);

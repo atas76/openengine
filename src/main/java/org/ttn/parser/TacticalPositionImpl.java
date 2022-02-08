@@ -28,6 +28,6 @@ public class TacticalPositionImpl implements TacticalPosition {
 
     @Override
     public boolean isGoalkeeper() {
-        return X.Gkr.equals(x);
+        return X.Gkr.equals(x) || X.Gkd.equals(x);
     }
 }

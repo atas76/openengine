@@ -113,7 +113,7 @@ public class ParserUtil {
     }
 
     public static TacticalPosition parseTacticalPosition(List<String> tokens) {
-        if ("Gkr".equals(tokens.get(0))) {
+        if ("Gkr".equals(tokens.get(0)) || "Gkd".equals(tokens.get(0))) {
             return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)));
         }
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
