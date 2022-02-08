@@ -1,5 +1,6 @@
 package org.ttn.parser;
 
+import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 
 public class Directive {
@@ -18,13 +19,10 @@ public class Directive {
         DEFAULT_SET_PIECE_EXECUTION
     }
 
-    private Type type;
+    private final Type type;
     private String team;
     private SetPiece setPiece;
-
-    public void setSetPiece(SetPiece setPiece) {
-        this.setPiece = setPiece;
-    }
+    private TacticalPosition tacticalPosition;
 
     public SetPiece getSetPiece() {
         return setPiece;
@@ -38,6 +36,10 @@ public class Directive {
         return team;
     }
 
+    public TacticalPosition getTacticalPosition() {
+        return tacticalPosition;
+    }
+
     public Directive(Type type) {
         this.type = type;
     }
@@ -45,6 +47,11 @@ public class Directive {
     public Directive(Type type, String team) {
         this(type);
         this.team = team;
+    }
+
+    public Directive(Type type, TacticalPosition tacticalPosition) {
+        this(type);
+        this.tacticalPosition = tacticalPosition;
     }
 
     public Directive(Type type, String team, SetPiece setPiece) {

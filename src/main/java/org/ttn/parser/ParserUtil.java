@@ -207,15 +207,18 @@ public class ParserUtil {
         if (!":".equals(tokens.get(0))) {
             throw new ParserException("Directives must start with ':'");
         }
+        Directive.Type directiveType = keywordMapping.get(expectKeyword(tokens.get(1)));
         switch(tokens.get(1)) {
             case "break":
-                return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))));
+                return new Directive(directiveType);
             case "set":
                 expectToken(":", tokens.get(3));
-                return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2),
+                return new Directive(directiveType, tokens.get(2),
                         Parser.setPieceMapping.get(tokens.get(4)));
+            case "possessor":
+                return new Directive(directiveType, parseTacticalPosition(tokens.subList(2, tokens.size())));
             default:
-                return new Directive(keywordMapping.get(expectKeyword(tokens.get(1))), tokens.get(2));
+                return new Directive(directiveType, tokens.get(2));
         }
     }
 

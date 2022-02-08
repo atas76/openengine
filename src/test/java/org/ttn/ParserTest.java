@@ -330,6 +330,16 @@ public class ParserTest {
     }
 
     @Test
+    public void testPossessorDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possessor D C");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(POSSESSOR_DEFINITION, directive.getType());
+        assertEquals(TacticalPosition.X.D, directive.getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, directive.getTacticalPosition().getY());
+    }
+
+    @Test
     public void testPenaltyKickChain() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Penalty");
         Directive directive = ParserUtil.parseDirective(tokens);
