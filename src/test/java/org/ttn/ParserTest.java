@@ -369,6 +369,16 @@ public class ParserTest {
     }
 
     @Test
+    public void testCornerKickChain() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set T: Corner");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
+        assertEquals(CORNER_KICK, directive.getSetPiece());
+    }
+
+    @Test
     public void testParseBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");
         Directive directive = ParserUtil.parseDirective(tokens);
