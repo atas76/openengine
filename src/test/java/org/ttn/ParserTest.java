@@ -321,6 +321,15 @@ public class ParserTest {
     }
 
     @Test
+    public void testBuildupPressureDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":pressure T");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
+    }
+
+    @Test
     public void testPenaltyKickChain() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Penalty");
         Directive directive = ParserUtil.parseDirective(tokens);
@@ -488,7 +497,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":pressure T");
         Statement statement = new Parser(tokens).parse();
 
-        assertEquals(PRESSURE_STATEMENT_BLOCK, statement.getType());
+        assertEquals(BUILDUP_PRESSURE_BLOCK, statement.getType());
         assertEquals("T", statement.getTeam());
     }
 

@@ -28,7 +28,7 @@ public class ParserUtil {
             entry(Parser.Keyword.RECOVERY, Directive.Type.BALL_RECOVERY_BLOCK),
             entry(Parser.Keyword.ATTACK, Directive.Type.ATTACK_CHAIN_BLOCK),
             entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
-            entry(Parser.Keyword.PRESSURE, Directive.Type.PRESSURE_STATEMENT_BLOCK),
+            entry(Parser.Keyword.PRESSURE, Directive.Type.BUILDUP_PRESSURE_BLOCK),
             entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
             entry(Parser.Keyword.TRANSITION, Directive.Type.TRANSITION_STATEMENT_BLOCK));
 
