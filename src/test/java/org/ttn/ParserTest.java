@@ -139,7 +139,7 @@ public class ParserTest {
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(327, statement.getTime());
-        assertEquals(ActionType.IndirectPossessionChain, statement.getAction().getType());
+        assertEquals(ActionType.Implicit, statement.getAction().getType());
         assertEquals(PitchPosition.Gkd, statement.getPitchPosition());
         assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());

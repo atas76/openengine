@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Map.entry;
-import static org.ttn.engine.agent.ActionType.IndirectPossessionChain;
+import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionOutcomeParameter.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
 
@@ -193,7 +193,7 @@ public class ParserUtil {
             statement = new Statement(time, pitchPosition, actionOutcome);
         } else if ("->".equals(actionDelimiter)) {
             Action action = Directive.Type.TRIVIAL_POSSESSION_CHAIN.equals(statementType) ?
-                    new Action(IndirectPossessionChain) :
+                    new Action(Implicit) :
                     parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex));
             actionOutcome = parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, actionOutcomeBound));
             statement = new Statement(time, pitchPosition, action, actionOutcome, statementType);
