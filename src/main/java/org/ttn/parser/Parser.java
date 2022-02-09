@@ -4,7 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.environment.ActionOutcome;
-import org.ttn.engine.environment.ActionOutcomeParameter;
+import org.ttn.engine.environment.ActionContext;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
@@ -52,11 +52,11 @@ public class Parser {
             entry("G", GOAL),
             entry("C", CORNER));
 
-    private static final Map<String, ActionOutcomeParameter> outcomeParameterMapping = Map.ofEntries(
-            entry("Fr", ActionOutcomeParameter.FREE_SPACE),
-            entry("I", ActionOutcomeParameter.INTERCEPTION),
-            entry("HD", ActionOutcomeParameter.HEADER),
-            entry("Cnt", ActionOutcomeParameter.CONTROL));
+    private static final Map<String, ActionContext> outcomeParameterMapping = Map.ofEntries(
+            entry("Fr", ActionContext.FREE_SPACE),
+            entry("I", ActionContext.INTERCEPTION),
+            entry("HD", ActionContext.HEADER),
+            entry("Cnt", ActionContext.CONTROL));
 
     private final List<String> tokens;
     private int index = 0;
@@ -219,7 +219,7 @@ public class Parser {
                         outcomeType.get(readNextToken())));
             } else if (peekNextToken().equals(":")) {
                 String parameterToken = peekNextToken();
-                List<ActionOutcomeParameter> actionOutcomeParameters = new ArrayList<>();
+                List<ActionContext> actionOutcomeParameters = new ArrayList<>();
                 while (":".equals(parameterToken)) {
                     expectToken(":");
                     actionOutcomeParameters.add(outcomeParameterMapping.get(readNextToken()));

@@ -13,11 +13,16 @@ public class ActionOutcome {
     private ActionOutcomeType type;
     @Deprecated
     private ActionOutcomeType restingOutcomeType;
-    private List<ActionOutcomeParameter> actionOutcomeParameters = new ArrayList<>();
+    private List<ActionContext> actionOutcomeParameters = new ArrayList<>();
     private boolean possessionChange;
 
     public ActionOutcome(PitchPosition pitchPosition) {
         this.pitchPosition = pitchPosition;
+    }
+
+    public ActionOutcome(PitchPosition pitchPosition, ActionContext actionContext) {
+        this.pitchPosition = pitchPosition;
+        this.actionOutcomeParameters.add(actionContext);
     }
 
     public ActionOutcome(ActionOutcomeType type, boolean possessionChange) {
@@ -43,7 +48,7 @@ public class ActionOutcome {
         this.possessionChange = possessionChange;
     }
 
-    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionOutcomeParameter actionOutcomeParameter,
+    public ActionOutcome(TacticalPosition tacticalPosition, PitchPosition pitchPosition, ActionContext actionOutcomeParameter,
                          boolean possessionChange) {
         this.tacticalPosition = tacticalPosition;
         this.pitchPosition = pitchPosition;
@@ -55,7 +60,7 @@ public class ActionOutcome {
         this(null, pitchPosition, type, false);
     }
 
-    public ActionOutcome(PitchPosition pitchPosition, List<ActionOutcomeParameter> actionOutcomeParameters) {
+    public ActionOutcome(PitchPosition pitchPosition, List<ActionContext> actionOutcomeParameters) {
         this.pitchPosition = pitchPosition;
         this.actionOutcomeParameters = actionOutcomeParameters;
     }
@@ -81,7 +86,7 @@ public class ActionOutcome {
         return this.restingOutcomeType;
     }
 
-    public boolean isOutcome(ActionOutcomeParameter actionOutcomeParameter) {
+    public boolean isOutcome(ActionContext actionOutcomeParameter) {
         return actionOutcomeParameters.contains(actionOutcomeParameter);
     }
 

@@ -2,6 +2,7 @@ package org.ttn.parser;
 
 import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.environment.ActionContext;
 import org.ttn.engine.environment.ActionOutcome;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
@@ -13,6 +14,7 @@ public class Statement {
     
     private int time;
     private PitchPosition pitchPosition;
+    private ActionContext actionContext;
     private Action action;
     private TacticalPosition.X tacticalPositionX;
     private TacticalPosition.Y tacticalPositionY;
@@ -78,6 +80,14 @@ public class Statement {
 
     public void setActionOutcome(ActionOutcome actionOutcome) {
         this.actionOutcome = actionOutcome;
+    }
+
+    public void setActionContext(ActionContext actionContext) {
+        this.actionContext = actionContext;
+    }
+
+    public ActionContext getActionContext() {
+        return this.actionContext;
     }
 
     public ActionOutcome getActionOutcome() {

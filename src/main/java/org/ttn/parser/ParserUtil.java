@@ -4,7 +4,7 @@ import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionParameter;
 import org.ttn.engine.agent.ActionType;
 import org.ttn.engine.environment.ActionOutcome;
-import org.ttn.engine.environment.ActionOutcomeParameter;
+import org.ttn.engine.environment.ActionContext;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionType.Implicit;
-import static org.ttn.engine.environment.ActionOutcomeParameter.*;
+import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
 
 public class ParserUtil {
@@ -61,12 +61,13 @@ public class ParserUtil {
         };
     }
 
-    public static ActionOutcomeParameter getActionOutcomeParameter(String actionOutcomeParameterValue) throws ValueException {
-        return switch(actionOutcomeParameterValue) {
+    public static ActionContext getActionContext(String actionContextValue) throws ValueException {
+        return switch(actionContextValue) {
             case "Fr" -> FREE_SPACE;
             case "I" -> INTERCEPTION;
             case "HD" -> HEADER;
             case "Cnt" -> CONTROL;
+            case "Mrk" -> MARKED;
             default -> throw new ValueException("Could not map action outcome parameter value");
         };
     }
@@ -128,7 +129,7 @@ public class ParserUtil {
                 return switch(tokens.get(4)) {
                     case "*" -> new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeType(tokens.get(5)),
                             possessionChange);
-                    case ":" -> new ActionOutcome(tacticalPosition, pitchPosition, getActionOutcomeParameter(tokens.get(5)),
+                    case ":" -> new ActionOutcome(tacticalPosition, pitchPosition, getActionContext(tokens.get(5)),
                             possessionChange);
                     default -> throw new ParserException("Outcome delimiter parameter expected");
                 };
@@ -156,7 +157,12 @@ public class ParserUtil {
                 possessionChange = true;
             }
             return new ActionOutcome(actionOutcomeType, possessionChange);
-        } else {
+        } else if ((Arrays.stream(PitchPosition.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex))))) {
+            if (outcomeIndex < tokens.size() - 1 && ":".equals(tokens.get(outcomeIndex + 1))) {
+                return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)), getActionContext(tokens.get(outcomeIndex + 2)));
+            }
+            return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)));
+        }else {
             throw new ParserException("Tactical position or action outcome type expected");
         }
     }
@@ -165,6 +171,12 @@ public class ParserUtil {
         int time = parseTime(tokens.subList(0, 3));
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
         int currentIndex = 4;
+        ActionContext actionContext = null;
+        if (":".equals(tokens.get(4))) {
+            actionContext = getActionContext(tokens.get(5));
+            currentIndex = 6;
+        }
+
         final String actionDelimiter = tokens.get(currentIndex++);
 
         int outcomeDelimiterIndex;
@@ -203,6 +215,7 @@ public class ParserUtil {
         if (actionOutcomeBound < tokens.size()) {
             statement.setRestingOutcome(parseActionOutcome(tokens.subList(actionOutcomeBound + 1, tokens.size())));
         }
+        statement.setActionContext(actionContext);
 
         return statement;
     }
