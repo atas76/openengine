@@ -1,4 +1,6 @@
-<statement> ::= <time> <pitch-position> ['->' <action>] ('=>' || '>>>') ['!'] <action-outcome> ['>>' <action-outcome>]
+<statement> ::= <time> <pitch-position> <action-designator> ['!'] <action-outcome> ['>>' <action-outcome>]
+<action-designator> ::= '->' || '->' <action> <action-outcome-delimiter> || <action-outcome-delimiter>
+<action-outcome-delimiter> ::= '=>' || '>>>'
 <action-outcome> ::= <space-bound-outcome> || <action-outcome-type>
 <space-bound-outcome> ::=
     <outfield-tactical-position> '@' <pitch-position> [ ('*' <action-outcome-type>) || (':' <action-outcome-parameter>)] ||
