@@ -5,7 +5,7 @@ import org.ttn.engine.rules.SetPiece;
 
 public class Directive {
 
-    public enum Type {
+    public enum Type { // TODO Split directive and statement types
         SET_PIECE_EXECUTION_BLOCK,
         POSSESSION_CHAIN_BLOCK,
         BALL_RECOVERY_BLOCK,
@@ -15,6 +15,7 @@ public class Directive {
         POSSESSOR_DEFINITION,
         INDIRECT_OUTCOME,
         STANDARD,
+        TRIVIAL_POSSESSION_CHAIN,
         BREAK,
         DEFAULT_SET_PIECE_EXECUTION
     }

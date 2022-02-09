@@ -133,6 +133,20 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseIndirectAction() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:27 Gkd -> D R @ DMw");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(327, statement.getTime());
+        assertEquals(ActionType.IndirectPossessionChain, statement.getAction().getType());
+        assertEquals(PitchPosition.Gkd, statement.getPitchPosition());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
     public void testParseActionParameters() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("FT:Open");
 

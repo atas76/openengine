@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Map.entry;
+import static org.ttn.engine.agent.ActionType.IndirectPossessionChain;
 import static org.ttn.engine.environment.ActionOutcomeParameter.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
 
@@ -95,9 +96,7 @@ public class ParserUtil {
     }
 
     public static Action parseAction(List<String> tokens) throws ValueException, ParserException {
-
         ActionType actionType = getActionType(tokens.get(0));
-
         if (tokens.size() > 1 && ":".equals(tokens.get(1))) {
             return new Action(actionType, parseActionParameters(tokens.subList(2, tokens.size())));
         }
@@ -176,6 +175,9 @@ public class ParserUtil {
         } else if (tokens.contains("=>")) {
             statementType = Directive.Type.STANDARD;
             outcomeDelimiterIndex = tokens.indexOf("=>");
+        } else if (tokens.contains("->")) {
+            statementType = Directive.Type.TRIVIAL_POSSESSION_CHAIN;
+            outcomeDelimiterIndex = tokens.indexOf("->");
         } else {
             throw new ParserException("Outcome delimiter expected");
         }
@@ -190,7 +192,9 @@ public class ParserUtil {
             actionOutcome = parseActionOutcome(tokens.subList(currentIndex, actionOutcomeBound));
             statement = new Statement(time, pitchPosition, actionOutcome);
         } else if ("->".equals(actionDelimiter)) {
-            Action action = parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex));
+            Action action = Directive.Type.TRIVIAL_POSSESSION_CHAIN.equals(statementType) ?
+                    new Action(IndirectPossessionChain) :
+                    parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex));
             actionOutcome = parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, actionOutcomeBound));
             statement = new Statement(time, pitchPosition, action, actionOutcome, statementType);
         } else {
