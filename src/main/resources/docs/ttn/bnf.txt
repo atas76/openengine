@@ -1,11 +1,12 @@
-<statement> ::= <time> <pitch-position> <action-designator> ['!'] <action-outcome> ['>>' <action-outcome>]
+<statement> ::= <time> <pitch-position> [':' <action-context>] <action-designator> ['!'] <action-outcome> ['>>' <action-outcome>]
 <action-designator> ::= '->' || '->' <action> <action-outcome-delimiter> || <action-outcome-delimiter>
 <action-outcome-delimiter> ::= '=>' || '>>>'
-<action-outcome> ::= <space-bound-outcome> || <action-outcome-type>
+<action-outcome> ::= <space-bound-outcome> || <action-outcome-type> || <pitch-position> [':' <action-context>]
 <space-bound-outcome> ::=
     <outfield-tactical-position> '@' <pitch-position> [ ('*' <action-outcome-type>) || (':' <action-outcome-parameter>)] ||
     <goalkeeper-position>
-<action-outcome-parameter> :: = <enum>
+<action-outcome-parameter> ::= <action-context>
+<action-context> ::= enum
 <goalkeeper-position> ::= <enum>
 <outfield-tactical-position> ::= <tactical-position X> <tactical-position Y>
 <time> ::= <number> ':' <number>
