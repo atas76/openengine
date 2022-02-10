@@ -357,6 +357,21 @@ public class ParserTest {
     }
 
     @Test
+    public void testPossessionChangeInBothOutcomes() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:59 Apd->Pass => !AM L @ Dp:I >> !D C @ Dp");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(359, statement.getTime());
+        assertEquals(PitchPosition.Apd, statement.getPitchPosition());
+        assertEquals(ActionType.Pass, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.AM, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.L, statement.getActionOutcome().getTacticalPosition().getY());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.INTERCEPTION));
+        assertTrue(statement.isPossessionChange());
+    }
+
+    @Test
     public void testParseRestingOutcome() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => !D C @ Dp:HD >> M C @ AMd:Cnt");
         Statement statement = ParserUtil.parseStatement(tokens);
