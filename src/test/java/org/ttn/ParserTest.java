@@ -195,6 +195,17 @@ public class ParserTest {
     }
 
     @Test
+    public void testPivotActionOutcomeContext() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:58 Ad->Pass => F RC @ Apd:Pvt");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+        assertEquals(358, statement.getTime());
+        assertEquals(ActionType.Pass, statement.getAction().getType());
+        assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.PIVOT));
+    }
+
+    @Test
     public void testParseActionParameters() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("FT:Open");
 
