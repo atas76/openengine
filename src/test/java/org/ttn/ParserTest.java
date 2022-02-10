@@ -133,6 +133,20 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseActionType() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("05:53 MA->WidePass => F LC @ Ad");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(353, statement.getTime());
+        assertEquals(ActionType.WidePass, statement.getAction().getType());
+        assertEquals(PitchPosition.MA, statement.getPitchPosition());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Ad, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
     public void testParseIndirectAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("05:27 Gkd -> D R @ DMw");
 
