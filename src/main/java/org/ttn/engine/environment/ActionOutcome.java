@@ -60,6 +60,10 @@ public class ActionOutcome {
         this(null, pitchPosition, type, false);
     }
 
+    public ActionOutcome(PitchPosition pitchPosition, ActionOutcomeType type, boolean possessionChange) {
+        this(null, pitchPosition, type, possessionChange);
+    }
+
     public ActionOutcome(PitchPosition pitchPosition, List<ActionContext> actionOutcomeParameters) {
         this.pitchPosition = pitchPosition;
         this.actionOutcomeParameters = actionOutcomeParameters;

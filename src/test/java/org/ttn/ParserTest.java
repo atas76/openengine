@@ -258,6 +258,19 @@ public class ParserTest {
     }
 
     @Test
+    public void testParseThrowIn() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("06:02 Dp->Long:FT => !MA*T");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(362, statement.getTime());
+        assertEquals(PitchPosition.Dp, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(PitchPosition.MA, statement.getActionOutcome().getPitchPosition());
+        assertEquals(ActionOutcomeType.THROW_IN, statement.getActionOutcome().getType());
+        assertTrue(statement.isPossessionChange());
+    }
+
+    @Test
     public void testParseGoalkeeperTacticalPosition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);

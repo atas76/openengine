@@ -77,6 +77,7 @@ public class ParserUtil {
         return switch (actionOutcomeValue) {
             case "H" -> ActionOutcomeType.HANDBALL;
             case "C" -> ActionOutcomeType.CORNER;
+            case "T" -> ActionOutcomeType.THROW_IN;
             case "G" -> GOAL;
             default -> throw new ValueException("Could not map action outcome value");
         };
@@ -159,8 +160,13 @@ public class ParserUtil {
             }
             return new ActionOutcome(actionOutcomeType, possessionChange);
         } else if ((Arrays.stream(PitchPosition.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex))))) {
-            if (outcomeIndex < tokens.size() - 1 && ":".equals(tokens.get(outcomeIndex + 1))) {
-                return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)), getActionContext(tokens.get(outcomeIndex + 2)));
+            if (outcomeIndex < tokens.size() - 1) {
+                if (":".equals(tokens.get(outcomeIndex + 1))) {
+                    return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)), getActionContext(tokens.get(outcomeIndex + 2)));
+                } else if ("*".equals(tokens.get(outcomeIndex + 1))) {
+                    return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)), getActionOutcomeType(tokens.get(outcomeIndex + 2)),
+                            possessionChange);
+                }
             }
             return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)));
         }else {
@@ -177,9 +183,7 @@ public class ParserUtil {
             actionContext = getActionContext(tokens.get(5));
             currentIndex = 6;
         }
-
         final String actionDelimiter = tokens.get(currentIndex++);
-
         int outcomeDelimiterIndex;
         Directive.Type statementType;
         if (tokens.contains(">>>")) {
@@ -194,7 +198,6 @@ public class ParserUtil {
         } else {
             throw new ParserException("Outcome delimiter expected");
         }
-
         ActionOutcome actionOutcome;
         Statement statement;
         int actionOutcomeBound = tokens.size();
