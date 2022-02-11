@@ -86,6 +86,7 @@ public class ActionOutcome {
         return type;
     }
 
+    @Deprecated
     public ActionOutcomeType getRestingOutcomeType() {
         return this.restingOutcomeType;
     }
