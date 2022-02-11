@@ -1,9 +1,9 @@
-package org.ttn.parser;
+package org.ttn.parser.output;
 
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 
-public class Directive {
+public class Directive implements Parsable {
 
     public enum Type { // TODO Split directive and statement types
         SET_PIECE_EXECUTION_BLOCK,

@@ -11,10 +11,10 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
-import org.ttn.parser.Directive;
+import org.ttn.parser.output.Directive;
 import org.ttn.parser.Parser;
 import org.ttn.parser.ParserUtil;
-import org.ttn.parser.Statement;
+import org.ttn.parser.output.Statement;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 
@@ -23,7 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.Directive.Type.*;
+import static org.ttn.parser.output.Directive.Type.*;
 
 public class ParserTest {
 
@@ -515,11 +515,11 @@ public class ParserTest {
         ParserUtil.parseTime(Arrays.asList("a", ":", "b"));
     }
 
-    @Test(expected = ParserException.class) // TODO to be replaced with NumberFormatException (probably)
-    public void statementWithInvalidTime() throws ScannerException, ParserException {
+    @Test(expected = NumberFormatException.class)
+    public void statementWithInvalidTime() throws ScannerException, ParserException, ValueException {
         List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");
 
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package org.ttn.parser;
+package org.ttn.parser.output;
 
 import org.ttn.engine.agent.Action;
 import org.ttn.engine.agent.ActionType;
@@ -10,7 +10,7 @@ import org.ttn.engine.space.PitchPosition;
 
 import static java.util.Objects.nonNull;
 
-public class Statement {
+public class Statement implements Parsable {
     
     private int time;
     private PitchPosition pitchPosition;

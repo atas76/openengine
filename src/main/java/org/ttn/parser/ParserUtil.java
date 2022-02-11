@@ -10,6 +10,8 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
+import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.Statement;
 
 import java.util.ArrayList;
 import java.util.Arrays;

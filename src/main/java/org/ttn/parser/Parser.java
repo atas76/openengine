@@ -10,6 +10,10 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.ParserException;
+import org.ttn.parser.exceptions.ValueException;
+import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.Parsable;
+import org.ttn.parser.output.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +28,7 @@ import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
 import static org.ttn.engine.agent.ActionType.Default;
 import static org.ttn.engine.agent.ActionType.Move;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
-import static org.ttn.parser.Directive.Type.*;
+import static org.ttn.parser.output.Directive.Type.*;
 
 public class Parser {
 
@@ -58,12 +62,15 @@ public class Parser {
             entry("HD", ActionContext.HEADER),
             entry("Cnt", ActionContext.CONTROL));
 
-    private final List<String> tokens;
+    @Deprecated
+    private List<String> tokens;
     private int index = 0;
 
     private static final Pattern numericMinutesPattern = Pattern.compile("\\d{2}");
 
-    public Parser(List<String> tokens) {
+    public Parser() {}
+
+    public Parser(@Deprecated List<String> tokens) {
         this.tokens = tokens;
     }
 
@@ -109,6 +116,14 @@ public class Parser {
         }
     }
 
+    public Parsable parse(List<String> tokens) throws ParserException, ValueException {
+        if (":".equals(tokens.get(0))) {
+            return ParserUtil.parseDirective(tokens);
+        }
+        return ParserUtil.parseStatement(tokens);
+    }
+
+    @Deprecated
     public Statement parse() throws ParserException {
 
         Statement statement = new Statement();
