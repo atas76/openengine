@@ -523,240 +523,239 @@ public class ParserTest {
     }
 
     @Test
-    public void testDefaultActionParsing() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("=> D C @ DM");
-        Statement statement = new Parser(tokens).parse();
+    public void testParseKickOff() throws ScannerException, ValueException, ParserException {
+        List<String> tokens = getTokens("00:00 KO => D C @ DM");
+        Statement statement = (Statement) new Parser().parse(tokens);
 
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DM, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test(expected=ParserException.class)
-    public void testInvalidStatementEnd() throws ScannerException, ParserException {
+    public void testInvalidStatementEnd() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd abc");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(15, statement.getTime());
         assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testKickOffBlockDefinition() throws ScannerException, ParserException {
+    public void testKickOffBlockDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":set L: Kickoff");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
-        assertEquals("L", statement.getTeam());
-        assertEquals(KICK_OFF, statement.getSetPiece());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+        assertEquals(KICK_OFF, directive.getSetPiece());
     }
 
     @Test
-    public void testPenaltyKickBlockDefinition() throws ScannerException, ParserException {
+    public void testPenaltyKickBlockDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":set L: Penalty");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
-        assertEquals("L", statement.getTeam());
-        assertEquals(PENALTY, statement.getSetPiece());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+        assertEquals(PENALTY, directive.getSetPiece());
     }
 
     @Test
-    public void testThrowInBlock() throws ScannerException, ParserException {
+    public void testThrowInBlock() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":set L: ThrowIn");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
-        assertEquals("L", statement.getTeam());
-        assertEquals(THROW_IN, statement.getSetPiece());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
+        assertEquals(THROW_IN, directive.getSetPiece());
     }
 
     @Test
-    public void testCornerKickBlock() throws ScannerException, ParserException {
+    public void testCornerKickBlock() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":set T: Corner");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, statement.getType());
-        assertEquals("T", statement.getTeam());
-        assertEquals(CORNER_KICK, statement.getSetPiece());
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
+        assertEquals(CORNER_KICK, directive.getSetPiece());
     }
 
     @Test
-    public void defaultExecution() throws ScannerException, ParserException {
+    public void defaultExecution() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("03:18 DM => F LC @ DMw");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
-        assertEquals(DEFAULT_SET_PIECE_EXECUTION, statement.getType());
         assertEquals(ActionType.Default, statement.getAction().getType());
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
-        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test
-    public void testCornerKickExecution() throws ScannerException, ParserException {
+    public void testCornerKickExecution() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
         assertEquals(PitchPosition.CK, statement.getPitchPosition()); // Virtual pitch position
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
     }
 
     @Test
-    public void testBallControl() throws ScannerException, ParserException {
+    public void testBallControl() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd:Cnt");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(STANDARD, statement.getType()); // In the current processing layer it is treated as a standard action
         assertEquals(PitchPosition.CK, statement.getPitchPosition()); // Virtual pitch position
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.AMd, statement.getActionOutcome().getPitchPosition());
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CONTROL));
     }
 
     @Test
-    public void testPossessionBlockDefinition() throws ScannerException, ParserException {
+    public void testPossessionBlockDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":possession L");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(POSSESSION_CHAIN_BLOCK, statement.getType());
-        assertEquals("L", statement.getTeam());
+        assertEquals(POSSESSION_CHAIN_BLOCK, directive.getType());
+        assertEquals("L", directive.getTeam());
     }
 
     @Test
-    public void testPressureBlockDefinition() throws ScannerException, ParserException {
+    public void testPressureBlockDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":pressure T");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(BUILDUP_PRESSURE_BLOCK, statement.getType());
-        assertEquals("T", statement.getTeam());
+        assertEquals(BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
     }
 
     @Test
-    public void testTransitionBlockDefinition() throws ScannerException, ParserException {
+    public void testTransitionBlockDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":transition T");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(TRANSITION_CHAIN_BLOCK, statement.getType());
-        assertEquals("T", statement.getTeam());
+        assertEquals(TRANSITION_CHAIN_BLOCK, directive.getType());
+        assertEquals("T", directive.getTeam());
     }
 
     @Test
-    public void testPossessorDefinition() throws ScannerException, ParserException {
+    public void testPossessorDefinition() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":possessor D C");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(POSSESSOR_DEFINITION, statement.getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(POSSESSOR_DEFINITION, directive.getType());
+        assertEquals(TacticalPosition.X.D, directive.getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, directive.getTacticalPosition().getY());
     }
 
     @Test
-    public void testBreakDirective() throws ScannerException, ParserException {
+    public void testBreakDirective() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens(":break");
-        Statement statement = new Parser(tokens).parse();
+        Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(BREAK, statement.getType());
+        assertEquals(BREAK, directive.getType());
     }
 
     @Test
-    public void testStandardStatement() throws ScannerException, ParserException {
+    public void testStandardStatement() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(15, statement.getTime());
         assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testPassAction() throws ScannerException, ParserException {
+    public void testPassAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:17 MDw->Pass => AM L @ Mw");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(257, statement.getTime());
         assertEquals(PitchPosition.MDw, statement.getPitchPosition());
         assertEquals(ActionType.Pass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.AM, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.AM, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.L, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Mw, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testBackPassAction() throws ScannerException, ParserException {
+    public void testBackPassAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("03:20 DMw->BackPass => D L @ DMw");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(200, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.BackPass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.L, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testParallelPassAction() throws ScannerException, ParserException {
+    public void testParallelPassAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("03:58 Dp->ParallelPass => D C @ Dp");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(238, statement.getTime());
         assertEquals(PitchPosition.Dp, statement.getPitchPosition());
         assertEquals(ActionType.ParallelPass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Dp, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testDiagonalPassAction() throws ScannerException, ParserException {
+    public void testDiagonalPassAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:04 Dpw->DiagonalPass => D R @ Dwp");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(244, statement.getTime());
         assertEquals(PitchPosition.Dpw, statement.getPitchPosition());
         assertEquals(ActionType.DiagonalPass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.R, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Dwp, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testForwardPassAction() throws ScannerException, ParserException {
+    public void testForwardPassAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:06 Dwp->ForwardPass => AM C @ Dd");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(246, statement.getTime());
         assertEquals(PitchPosition.Dwp, statement.getPitchPosition());
         assertEquals(ActionType.ForwardPass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.AM, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.AM, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Dd, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testMoveAction() throws ScannerException, ParserException {
+    public void testMoveAction() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:16 DMw->Move => MDw");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(256, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
@@ -766,9 +765,9 @@ public class ParserTest {
     }
 
     @Test
-    public void testShotAtGoal() throws ScannerException, ParserException {
+    public void testShotAtGoal() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("01:47 Ap->Shoot => G");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(107, statement.getTime());
         assertEquals(PitchPosition.Ap, statement.getPitchPosition());
@@ -777,50 +776,50 @@ public class ParserTest {
     }
 
     @Test
-    public void testActionParameter() throws ScannerException, ParserException {
+    public void testActionParameter() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long:FT => F LC @ Apd");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(15, statement.getTime());
         assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertTrue(statement.getAction().isFirstTouch());
         assertFalse(statement.getAction().isOpenPass());
-        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testActionParameters() throws ScannerException, ParserException {
+    public void testActionParameters() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long:FT:Open => F LC @ Apd");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(15, statement.getTime());
         assertEquals(PitchPosition.Md, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertTrue(statement.getAction().isFirstTouch());
         assertTrue(statement.getAction().isOpenPass());
-        assertEquals(TacticalPosition.X.F, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.LC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Apd, statement.getActionOutcome().getPitchPosition());
         assertEquals(STANDARD, statement.getType());
     }
 
     @Test
-    public void testInterceptionAndRestingOutcome() throws ScannerException, ParserException {
+    public void testInterceptionAndRestingOutcome() throws ScannerException, ValueException, ParserException {
         List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(274, statement.getTime());
         assertEquals(PitchPosition.Aw, statement.getPitchPosition());
         assertEquals(ActionType.Pass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
-        assertTrue(statement.isBallPossessionChange());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
+        assertFalse(statement.isPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.INTERCEPTION));
-        assertEquals(ActionOutcomeType.CORNER, statement.getActionOutcome().getRestingOutcomeType());
+        assertEquals(ActionOutcomeType.CORNER, statement.getRestingOutcome().getType());
     }
 
     @Test
