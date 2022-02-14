@@ -19,6 +19,10 @@ public class Scanner {
 
         List<String> result = new ArrayList<>();
 
+        if (statement.isEmpty()) {
+            return result;
+        }
+
         final char [] statementChars = statement.toCharArray();
 
         while (index < statementChars.length) {

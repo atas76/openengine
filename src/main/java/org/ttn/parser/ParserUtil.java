@@ -8,6 +8,7 @@ import org.ttn.engine.environment.ActionContext;
 import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
+import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 import org.ttn.parser.output.Directive;
@@ -227,22 +228,34 @@ public class ParserUtil {
     }
 
     public static Directive parseDirective(List<String> tokens) throws ParserException {
+        final int tokensNumber = tokens.size();
+        checkMissingTokens(tokensNumber, 0, "':'");
         if (!":".equals(tokens.get(0))) {
             throw new ParserException("Directives must start with ':'");
         }
+        checkMissingTokens(tokensNumber, 1, "directive");
         Directive.Type directiveType = keywordMapping.get(expectKeyword(tokens.get(1)));
         switch(tokens.get(1)) {
             case "break":
                 return new Directive(directiveType);
             case "set":
+                checkMissingTokens(tokensNumber, 2, "team");
+                checkMissingTokens(tokensNumber, 3, "':'");
                 expectToken(":", tokens.get(3));
+                checkMissingTokens(tokensNumber, 4, "set piece keyword");
                 return new Directive(directiveType, tokens.get(2),
                         Parser.setPieceMapping.get(tokens.get(4)));
             case "possessor":
+                checkMissingTokens(tokensNumber, 2, "tactical position");
                 return new Directive(directiveType, parseTacticalPosition(tokens.subList(2, tokens.size())));
             default:
+                checkMissingTokens(tokensNumber, 2, "team");
                 return new Directive(directiveType, tokens.get(2));
         }
+    }
+
+    public static void checkMissingTokens(int tokensNumber, int tokenIndex, String expectedToken) throws MissingTokenException {
+        if (tokenIndex > tokensNumber - 1) throw new MissingTokenException("Expected: " + expectedToken);
     }
 
     // TODO define those in a file

@@ -117,6 +117,7 @@ public class Parser {
     }
 
     public Parsable parse(List<String> tokens) throws ParserException, ValueException {
+        ParserUtil.checkMissingTokens(tokens.size(), 0, "TTN statement or directive");
         if (":".equals(tokens.get(0))) {
             return ParserUtil.parseDirective(tokens);
         }

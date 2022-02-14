@@ -11,6 +11,7 @@ import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
+import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.Parser;
 import org.ttn.parser.ParserUtil;
@@ -79,7 +80,7 @@ public class ParserTest {
     }
     
     @Test
-    public void testSpaceBoundOutcome() throws ValueException, ParserException {
+    public void testSpaceBoundOutcome() throws ParserException {
         List<String> tokens = Arrays.asList("D", "C", "@", "DM");
 
         ActionOutcome actionOutcome = ParserUtil.parseSpaceBoundActionOutcome(tokens);
@@ -90,7 +91,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testDefaultActionStatement() throws ParserException, ValueException {
+    public void testDefaultActionStatement() throws ParserException {
         List<String> tokens = Arrays.asList("00", ":", "00", "KO", "=>", "D", "C", "@", "DM");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -104,7 +105,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseIndirectOutcomeStatement() throws ParserException, ValueException {
+    public void testParseIndirectOutcomeStatement() throws ParserException {
         List<String> tokens = Arrays.asList("00", ":", "02", "DM", "->", "Long", ">>>", "M", "RC", "@", "Md");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -119,7 +120,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseDirectOutcomeStatement() throws ScannerException, ValueException, ParserException {
+    public void testParseDirectOutcomeStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -133,7 +134,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionType() throws ScannerException, ValueException, ParserException {
+    public void testParseActionType() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:53 MA->WidePass => F LC @ Ad");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -147,7 +148,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseIndirectAction() throws ScannerException, ValueException, ParserException {
+    public void testParseIndirectAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:27 Gkd -> D R @ DMw");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -161,7 +162,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseMoveAction() throws ScannerException, ValueException, ParserException {
+    public void testParseMoveAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:16 DMw->Move => MDw");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -173,7 +174,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testActionContext() throws ScannerException, ValueException, ParserException {
+    public void testActionContext() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:50 MA:Mrk->Move => MA");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -184,7 +185,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testActionContextInActionOutcomePitchPosition() throws ScannerException, ValueException, ParserException {
+    public void testActionContextInActionOutcomePitchPosition() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:50 MA:Mrk->Move => MA:Fr");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -195,7 +196,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPivotActionOutcomeContext() throws ScannerException, ValueException, ParserException {
+    public void testPivotActionOutcomeContext() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:58 Ad->Pass => F RC @ Apd:Pvt");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -206,7 +207,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionParameters() throws ScannerException, ValueException, ParserException {
+    public void testParseActionParameters() throws ScannerException, ParserException {
         List<String> tokens = getTokens("FT:Open");
 
         List<ActionParameter> actionParameters = ParserUtil.parseActionParameters(tokens);
@@ -217,7 +218,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseParameterisedAction() throws ScannerException, ValueException, ParserException {
+    public void testParseParameterisedAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("Long:FT:Open");
 
         Action action = ParserUtil.parseAction(tokens);
@@ -228,7 +229,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionParametersStatement() throws ScannerException, ValueException, ParserException {
+    public void testParseActionParametersStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long:FT:Open => F LC @ Apd");
 
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -244,7 +245,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionOutcomeType() throws ScannerException, ValueException, ParserException {
+    public void testParseActionOutcomeType() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:20 Apd->BounceOff => M C @ Ap*H");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -258,7 +259,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseThrowIn() throws ScannerException, ValueException, ParserException {
+    public void testParseThrowIn() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:02 Dp->Long:FT => !MA*T");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -271,7 +272,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseGoalkeeperTacticalPosition() throws ScannerException, ValueException, ParserException {
+    public void testParseGoalkeeperTacticalPosition() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -282,7 +283,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseGoalkeeperOutsideAreaPosition() throws ScannerException, ValueException, ParserException {
+    public void testParseGoalkeeperOutsideAreaPosition() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:22 AMd->BackPass => Gkd");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -293,7 +294,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParsePossessionChangeStatement() throws ScannerException, ValueException, ParserException {
+    public void testParsePossessionChangeStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -305,7 +306,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseActionOutcome() throws ScannerException, ValueException, ParserException {
+    public void testParseActionOutcome() throws ScannerException, ParserException {
         ActionOutcome goalScoredActionOutcome = ParserUtil.parseActionOutcome(getTokens("G"));
         ActionOutcome spaceBoundActionOutcome = ParserUtil.parseActionOutcome(getTokens("M C @ Ap*H"));
 
@@ -317,7 +318,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseFixedSpaceActionOutcome() throws ScannerException, ValueException, ParserException {
+    public void testParseFixedSpaceActionOutcome() throws ScannerException, ParserException {
         List<String> tokens = getTokens("01:47 Ap->Shoot => G");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -328,7 +329,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPossessionChangeWhenGoalIsScored() throws ScannerException, ValueException, ParserException {
+    public void testPossessionChangeWhenGoalIsScored() throws ScannerException, ParserException {
         List<String> tokens = getTokens("01:47 Ap->Shoot => G");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -340,7 +341,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseOutcomeParametersStatement() throws ScannerException, ValueException, ParserException {
+    public void testParseOutcomeParametersStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:12 Dpw->Long => D L @ DMw:Fr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -354,7 +355,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseRestingOutcomeType() throws ScannerException, ValueException, ParserException {
+    public void testParseRestingOutcomeType() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -370,7 +371,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPossessionChangeInBothOutcomes() throws ScannerException, ValueException, ParserException {
+    public void testPossessionChangeInBothOutcomes() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:59 Apd->Pass => !AM L @ Dp:I >> !D C @ Dp");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -385,7 +386,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParseRestingOutcome() throws ScannerException, ValueException, ParserException {
+    public void testParseRestingOutcome() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => !D C @ Dp:HD >> M C @ AMd:Cnt");
         Statement statement = ParserUtil.parseStatement(tokens);
 
@@ -516,14 +517,14 @@ public class ParserTest {
     }
 
     @Test(expected = NumberFormatException.class)
-    public void statementWithInvalidTime() throws ScannerException, ParserException, ValueException {
+    public void statementWithInvalidTime() throws ScannerException, ParserException {
         List<String> tokens = getTokens("a:b DM->Long >>> M RC @ Md");
 
         new Parser().parse(tokens);
     }
 
     @Test
-    public void testParseKickOff() throws ScannerException, ValueException, ParserException {
+    public void testParseKickOff() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:00 KO => D C @ DM");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -533,7 +534,7 @@ public class ParserTest {
     }
 
     @Test(expected=ParserException.class)
-    public void testInvalidStatementEnd() throws ScannerException, ValueException, ParserException {
+    public void testInvalidStatementEnd() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd abc");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -547,7 +548,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testKickOffBlockDefinition() throws ScannerException, ValueException, ParserException {
+    public void testKickOffBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Kickoff");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -557,7 +558,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPenaltyKickBlockDefinition() throws ScannerException, ValueException, ParserException {
+    public void testPenaltyKickBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Penalty");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -567,7 +568,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testThrowInBlock() throws ScannerException, ValueException, ParserException {
+    public void testThrowInBlock() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: ThrowIn");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -577,7 +578,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testCornerKickBlock() throws ScannerException, ValueException, ParserException {
+    public void testCornerKickBlock() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set T: Corner");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -587,7 +588,7 @@ public class ParserTest {
     }
 
     @Test
-    public void defaultExecution() throws ScannerException, ValueException, ParserException {
+    public void defaultExecution() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:18 DM => F LC @ DMw");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -599,7 +600,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testCornerKickExecution() throws ScannerException, ValueException, ParserException {
+    public void testCornerKickExecution() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -611,7 +612,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testBallControl() throws ScannerException, ValueException, ParserException {
+    public void testBallControl() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => M C @ AMd:Cnt");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -624,7 +625,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPossessionBlockDefinition() throws ScannerException, ValueException, ParserException {
+    public void testPossessionBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -633,7 +634,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPressureBlockDefinition() throws ScannerException, ValueException, ParserException {
+    public void testPressureBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":pressure T");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -642,7 +643,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testTransitionBlockDefinition() throws ScannerException, ValueException, ParserException {
+    public void testTransitionBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":transition T");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -651,7 +652,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPossessorDefinition() throws ScannerException, ValueException, ParserException {
+    public void testPossessorDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possessor D C");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -661,7 +662,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testBreakDirective() throws ScannerException, ValueException, ParserException {
+    public void testBreakDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":break");
         Directive directive = (Directive) new Parser().parse(tokens);
 
@@ -669,7 +670,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testStandardStatement() throws ScannerException, ValueException, ParserException {
+    public void testStandardStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long => F LC @ Apd");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -683,7 +684,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testPassAction() throws ScannerException, ValueException, ParserException {
+    public void testPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:17 MDw->Pass => AM L @ Mw");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -697,7 +698,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testBackPassAction() throws ScannerException, ValueException, ParserException {
+    public void testBackPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:20 DMw->BackPass => D L @ DMw");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -711,7 +712,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testParallelPassAction() throws ScannerException, ValueException, ParserException {
+    public void testParallelPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:58 Dp->ParallelPass => D C @ Dp");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -725,7 +726,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testDiagonalPassAction() throws ScannerException, ValueException, ParserException {
+    public void testDiagonalPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:04 Dpw->DiagonalPass => D R @ Dwp");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -739,7 +740,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testForwardPassAction() throws ScannerException, ValueException, ParserException {
+    public void testForwardPassAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:06 Dwp->ForwardPass => AM C @ Dd");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -753,7 +754,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testMoveAction() throws ScannerException, ValueException, ParserException {
+    public void testMoveAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:16 DMw->Move => MDw");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -765,7 +766,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testShotAtGoal() throws ScannerException, ValueException, ParserException {
+    public void testShotAtGoal() throws ScannerException, ParserException {
         List<String> tokens = getTokens("01:47 Ap->Shoot => G");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -776,7 +777,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testActionParameter() throws ScannerException, ValueException, ParserException {
+    public void testActionParameter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long:FT => F LC @ Apd");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -792,7 +793,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testActionParameters() throws ScannerException, ValueException, ParserException {
+    public void testActionParameters() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:15 Md->Long:FT:Open => F LC @ Apd");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -808,7 +809,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testInterceptionAndRestingOutcome() throws ScannerException, ValueException, ParserException {
+    public void testInterceptionAndRestingOutcome() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:34 Aw->Pass => !M RC @ Dp:I >> C");
         Statement statement = (Statement) new Parser().parse(tokens);
 
@@ -825,27 +826,27 @@ public class ParserTest {
     @Test
     public void testHeader() throws ScannerException, ParserException {
         List<String> tokens = getTokens("05:15 CK->Cross => !D C @ Dp:HD");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(315, statement.getTime());
         assertEquals(PitchPosition.CK, statement.getPitchPosition());
         assertEquals(ActionType.Cross, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
-        assertTrue(statement.isBallPossessionChange());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
+        assertTrue(statement.isPossessionChange());
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.HEADER));
     }
 
     @Test
     public void testIndirectOutcomeStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:02 DM->Long >>> M RC @ Md");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(2, statement.getTime());
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.RC, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Md, statement.getActionOutcome().getPitchPosition());
         assertEquals(INDIRECT_OUTCOME, statement.getType());
     }
@@ -853,28 +854,28 @@ public class ParserTest {
     @Test
     public void testActionOutcomeType() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00:20 Apd->BounceOff => M C @ Ap*H");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(20, statement.getTime());
         assertEquals(PitchPosition.Apd, statement.getPitchPosition());
         assertEquals(ActionType.BounceOff, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.M, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.C, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.C, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Ap, statement.getActionOutcome().getPitchPosition());
         assertEquals(ActionOutcomeType.HANDBALL, statement.getActionOutcome().getType());
-        assertFalse(statement.isBallPossessionChange());
+        assertFalse(statement.isPossessionChange());
     }
 
     @Test
     public void testOutcomeParameters() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:12 Dpw->Long => D L @ DMw:Fr");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(252, statement.getTime());
         assertEquals(PitchPosition.Dpw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.D, statement.getTacticalPositionX());
-        assertEquals(TacticalPosition.Y.L, statement.getTacticalPositionY());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.L, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.FREE_SPACE));
     }
@@ -882,61 +883,103 @@ public class ParserTest {
     @Test
     public void testOutcomeNegation() throws ScannerException, ParserException {
         List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
-        Statement statement = new Parser(tokens).parse();
+        Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.Gkr, statement.getTacticalPositionX()); // Tactical and pitch position merge
-        assertTrue(statement.isBallPossessionChange());
+        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX()); // Tactical and pitch position merge
+        assertTrue(statement.isPossessionChange());
     }
 
     @Test(expected = ParserException.class)
     public void testInvalidTimeSeparator() throws ScannerException, ParserException {
         List<String> tokens = getTokens("00 20 Apd->BounceOff => M C @ Ap*H");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidDomainObject() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("=> D C @ DMM");
-        new Parser(tokens).parse();
+        List<String> tokens = getTokens("KO => D C @ DMM");
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ParserException.class)
     public void testMissingDelimiters() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D Pass DM");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ParserException.class)
     public void testMissingOutcomeDelimiter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D->Pass DM");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ScannerException.class)
     public void testInvalidOutcomeDelimiter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D->Pass + DM");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ParserException.class)
     public void testMissingActionDelimiter() throws ScannerException, ParserException {
         List<String> tokens = getTokens("12:38 D Pass => DM");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ParserException.class)
     public void testUnknownBlockLabel() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":random L");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
     }
 
-    @Test(expected = ParserException.class)
+    @Test(expected = MissingTokenException.class)
     public void teamMissing() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void possessorTacticalPositionMissing() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possessor");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void invalidPossessorDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":possessor ABC");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void emptyString() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void emptyDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void teamMissingFromSetPieceDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void separatorMissingFromSetPieceDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void missingSetPieceKeyword() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L:");
+        new Parser().parse(tokens);
     }
 
     @Test(expected = ParserException.class)
