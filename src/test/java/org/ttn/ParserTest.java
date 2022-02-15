@@ -982,10 +982,40 @@ public class ParserTest {
         new Parser().parse(tokens);
     }
 
-    @Test(expected = ParserException.class)
-    public void testInvalidStatementQualifier() throws ScannerException, ParserException {
+    @Test(expected = MissingTokenException.class)
+    public void testInvalidDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens("@possession");
-        new Parser(tokens).parse();
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void testInvalidDirectiveQualifier() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("@possession L");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void testTimedEmptyStatement() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:09");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testTimedStatementWithInvalidPitchPosition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:09 ABC");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void testIncompleteStatementWithMissingAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:09 A");
+        new Parser().parse(tokens);
+    }
+
+    @Test(expected = MissingTokenException.class)
+    public void testIncompleteStatementWithMissingActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:09 A:");
+        new Parser().parse(tokens);
     }
 
     private List<String> getTokens(String s) throws ScannerException {

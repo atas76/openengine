@@ -177,12 +177,16 @@ public class ParserUtil {
         }
     }
 
-    public static Statement parseStatement(List<String> tokens) throws ParserException, ValueException {
+    public static Statement parseStatement(List<String> tokens) throws ParserException {
+        checkMissingTokens(tokens.size(), 2, "time");
         int time = parseTime(tokens.subList(0, 3));
+        checkMissingTokens(tokens.size(), 3, "pitch position");
         PitchPosition pitchPosition = getPitchPosition(tokens.get(3));
         int currentIndex = 4;
         ActionContext actionContext = null;
+        checkMissingTokens(tokens.size(), 4, "action definition");
         if (":".equals(tokens.get(4))) {
+            checkMissingTokens(tokens.size(), 5, "action context");
             actionContext = getActionContext(tokens.get(5));
             currentIndex = 6;
         }
