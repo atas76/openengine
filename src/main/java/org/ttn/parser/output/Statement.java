@@ -9,6 +9,7 @@ import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 
 import static java.util.Objects.nonNull;
+import static org.ttn.parser.output.Parsable.StatementType.STANDARD;
 
 public class Statement implements Parsable {
     
@@ -22,12 +23,12 @@ public class Statement implements Parsable {
     private ActionOutcome restingOutcome;
     private String team;
     private SetPiece setPiece;
-    private Directive.Type type;
+    private StatementType type;
     private boolean ballPossessionChange;
 
     public Statement() {} // Bring on mutability (for the time being)
 
-    public Statement(int time, PitchPosition pitchPosition, Action action, ActionOutcome actionOutcome, Directive.Type type) {
+    public Statement(int time, PitchPosition pitchPosition, Action action, ActionOutcome actionOutcome, StatementType type) {
         this.time = time;
         this.pitchPosition = pitchPosition;
         this.action = action;
@@ -36,12 +37,12 @@ public class Statement implements Parsable {
     }
 
     public Statement(int time, PitchPosition pitchPosition, ActionOutcome actionOutcome) {
-        this(time, pitchPosition, new Action(ActionType.Default), actionOutcome, Directive.Type.STANDARD);
+        this(time, pitchPosition, new Action(ActionType.Default), actionOutcome, STANDARD);
     }
 
     public Statement(int time, PitchPosition pitchPosition,
                      ActionType actionType, ActionOutcome actionOutcome) {
-        this(time, pitchPosition, new Action(actionType), actionOutcome, Directive.Type.STANDARD);
+        this(time, pitchPosition, new Action(actionType), actionOutcome, STANDARD);
     }
 
     public void setTime(int time) {
@@ -142,11 +143,11 @@ public class Statement implements Parsable {
         return actionOutcome.isPossessionChange();
     }
 
-    public Directive.Type getType() {
+    public StatementType getType() {
         return type;
     }
 
-    public void setType(Directive.Type type) {
+    public void setType(StatementType type) {
         this.type = type;
     }
 }

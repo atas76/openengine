@@ -13,6 +13,7 @@ import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.ParserUtil;
+import org.ttn.parser.output.Parsable;
 import org.ttn.parser.output.Statement;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
@@ -22,7 +23,8 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.Directive.Type.*;
+import static org.ttn.parser.output.Parsable.DirectiveType.*;
+import static org.ttn.parser.output.Parsable.StatementType.*;
 
 public class ParserUtilitiesTest {
 
@@ -409,7 +411,7 @@ public class ParserUtilitiesTest {
         List<String> tokens = getTokens(":possession L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(Directive.Type.POSSESSION_CHAIN_BLOCK, directive.getType());
+        assertEquals(POSSESSION_CHAIN_BLOCK, directive.getType());
         assertEquals("L", directive.getTeam());
     }
 
@@ -436,7 +438,7 @@ public class ParserUtilitiesTest {
         List<String> tokens = getTokens(":pressure T");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals(Parsable.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
         assertEquals("T", directive.getTeam());
     }
 

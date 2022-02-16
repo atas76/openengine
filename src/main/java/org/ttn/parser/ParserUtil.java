@@ -12,6 +12,7 @@ import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.Parsable;
 import org.ttn.parser.output.Statement;
 
 import java.util.ArrayList;
@@ -23,18 +24,20 @@ import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
+import static org.ttn.parser.output.Parsable.DirectiveType.*;
+import static org.ttn.parser.output.Parsable.StatementType.*;
 
 public class ParserUtil {
 
-    static final Map<Parser.Keyword, Directive.Type> keywordMapping = Map.ofEntries(
-            entry(Parser.Keyword.SET, Directive.Type.SET_PIECE_EXECUTION_BLOCK),
-            entry(Parser.Keyword.POSSESSION, Directive.Type.POSSESSION_CHAIN_BLOCK),
-            entry(Parser.Keyword.RECOVERY, Directive.Type.BALL_RECOVERY_BLOCK),
-            entry(Parser.Keyword.ATTACK, Directive.Type.ATTACK_CHAIN_BLOCK),
-            entry(Parser.Keyword.BREAK, Directive.Type.BREAK),
-            entry(Parser.Keyword.PRESSURE, Directive.Type.BUILDUP_PRESSURE_BLOCK),
-            entry(Parser.Keyword.POSSESSOR, Directive.Type.POSSESSOR_DEFINITION),
-            entry(Parser.Keyword.TRANSITION, Directive.Type.TRANSITION_CHAIN_BLOCK));
+    static final Map<Parser.Keyword, Parsable.DirectiveType> keywordMapping = Map.ofEntries(
+            entry(Parser.Keyword.SET, SET_PIECE_EXECUTION_BLOCK),
+            entry(Parser.Keyword.POSSESSION, POSSESSION_CHAIN_BLOCK),
+            entry(Parser.Keyword.RECOVERY, BALL_RECOVERY_BLOCK),
+            entry(Parser.Keyword.ATTACK, ATTACK_CHAIN_BLOCK),
+            entry(Parser.Keyword.BREAK, BREAK),
+            entry(Parser.Keyword.PRESSURE, BUILDUP_PRESSURE_BLOCK),
+            entry(Parser.Keyword.POSSESSOR, POSSESSOR_DEFINITION),
+            entry(Parser.Keyword.TRANSITION, TRANSITION_CHAIN_BLOCK));
 
     public static PitchPosition getPitchPosition(String pitchPosition) throws IllegalArgumentException {
         return PitchPosition.valueOf(pitchPosition);
@@ -192,15 +195,15 @@ public class ParserUtil {
         }
         final String actionDelimiter = tokens.get(currentIndex++);
         int outcomeDelimiterIndex;
-        Directive.Type statementType;
+        Parsable.StatementType statementType;
         if (tokens.contains(">>>")) {
-            statementType = Directive.Type.INDIRECT_OUTCOME;
+            statementType = INDIRECT_OUTCOME;
             outcomeDelimiterIndex = tokens.indexOf(">>>");
         } else if (tokens.contains("=>")) {
-            statementType = Directive.Type.STANDARD;
+            statementType = STANDARD;
             outcomeDelimiterIndex = tokens.indexOf("=>");
         } else if (tokens.contains("->")) {
-            statementType = Directive.Type.TRIVIAL_POSSESSION_CHAIN;
+            statementType = TRIVIAL_POSSESSION_CHAIN;
             outcomeDelimiterIndex = tokens.indexOf("->");
         } else {
             throw new ParserException("Outcome delimiter expected");
@@ -215,7 +218,7 @@ public class ParserUtil {
             actionOutcome = parseActionOutcome(tokens.subList(currentIndex, actionOutcomeBound));
             statement = new Statement(time, pitchPosition, actionOutcome);
         } else if ("->".equals(actionDelimiter)) {
-            Action action = Directive.Type.TRIVIAL_POSSESSION_CHAIN.equals(statementType) ?
+            Action action = TRIVIAL_POSSESSION_CHAIN.equals(statementType) ?
                     new Action(Implicit) :
                     parseAction(tokens.subList(currentIndex, outcomeDelimiterIndex));
             actionOutcome = parseActionOutcome(tokens.subList(outcomeDelimiterIndex + 1, actionOutcomeBound));
@@ -238,7 +241,7 @@ public class ParserUtil {
             throw new ParserException("Directives must start with ':'");
         }
         checkMissingTokens(tokensNumber, 1, "directive");
-        Directive.Type directiveType = keywordMapping.get(expectKeyword(tokens.get(1)));
+        Parsable.DirectiveType directiveType = keywordMapping.get(expectKeyword(tokens.get(1)));
         switch(tokens.get(1)) {
             case "break":
                 return new Directive(directiveType);
