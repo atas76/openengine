@@ -1,5 +1,5 @@
 :set L: Kickoff
-=> D C @ DM
+00:00 KO => D C @ DM
 :possession L
 00:02 DM->Long >>> M RC @ Md
 :recovery L
@@ -34,4 +34,20 @@
 04:27 DM->Long => A R @ Awp
 :attack T
 04:32 Awp->Move => Aw
-04:34 Aw->Pass => !D C @ Dp:I >> C            
+04:34 Aw->Pass => !D C @ Dp:I >> C
+:set T: Corner
+05:15 CK->Cross => !D C @ Dp:HD >> M C @ AMd:Cnt
+05:22 AMd->BackPass => Gkd
+:possession T
+05:27 Gkd -> D R @ DMw
+05:45 DMw->DiagonalPass => !M C @ MDd
+:transition L
+05:47 MDd->ForwardPass => F LC @ MA
+05:50 MA:Mrk->Move => MA:Fr
+05:51 MA->BackPass => M RC @ MA
+05:53 MA->WidePass => F LC @ Ad
+:attack L
+05:58 Ad->Pass => F RC @ Apd:Pvt
+05:59 Apd->Pass => !AM L @ Dp:I >> !D C @ Dp
+:recovery T
+06:02 Dp->Long:FT => !MA*T
