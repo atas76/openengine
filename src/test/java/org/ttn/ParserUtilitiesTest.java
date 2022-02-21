@@ -408,10 +408,18 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testDribbleAction() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("06:40 Aw->Dribble => !D C @ Dwp");
+        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(ActionType.Dribble, statement.getAction().getType());
+    }
+
+    @Test
+    public void testClearanceActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
     }
 
     @Test
