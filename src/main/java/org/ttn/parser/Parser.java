@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import static java.util.Map.entry;
-import static org.ttn.engine.agent.ActionParameter.FIRST_TOUCH;
-import static org.ttn.engine.agent.ActionParameter.OPEN_PASS;
-import static org.ttn.engine.environment.ActionOutcomeType.*;
 
 public class Parser {
     enum Keyword {
@@ -25,21 +22,6 @@ public class Parser {
             entry("Penalty", SetPiece.PENALTY),
             entry("ThrowIn", SetPiece.THROW_IN),
             entry("Corner", SetPiece.CORNER_KICK));
-
-    private static final Map<String, ActionParameter> actionParameterMapping = Map.ofEntries(
-            entry("Open", OPEN_PASS),
-            entry("FT", FIRST_TOUCH));
-
-    private static final Map<String, ActionOutcomeType> outcomeType = Map.ofEntries(
-            entry("H", HANDBALL),
-            entry("G", GOAL),
-            entry("C", CORNER));
-
-    private static final Map<String, ActionContext> outcomeParameterMapping = Map.ofEntries(
-            entry("Fr", ActionContext.FREE_SPACE),
-            entry("I", ActionContext.INTERCEPTION),
-            entry("HD", ActionContext.HEADER),
-            entry("Cnt", ActionContext.CONTROL));
 
     public Parser() {}
 
