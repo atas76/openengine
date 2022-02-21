@@ -176,7 +176,7 @@ public class ParserUtil {
                 }
             }
             return new ActionOutcome(getPitchPosition(tokens.get(outcomeIndex)));
-        }else {
+        } else {
             throw new ParserException("Tactical position or action outcome type expected");
         }
     }
