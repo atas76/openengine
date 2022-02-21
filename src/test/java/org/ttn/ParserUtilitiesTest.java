@@ -423,6 +423,16 @@ public class ParserUtilitiesTest {
     }
 
     @Test
+    public void testPitchTacticalPositionClash() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
+        assertEquals(PitchPosition.Mw, statement.getRestingOutcome().getPitchPosition());
+        assertEquals(ActionOutcomeType.THROW_IN, statement.getRestingOutcome().getType());
+    }
+
+    @Test
     public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Directive directive = ParserUtil.parseDirective(tokens);
