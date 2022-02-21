@@ -407,6 +407,14 @@ public class ParserUtilitiesTest {
     }
 
     @Test
+    public void testDribbleAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("06:40 Aw->Dribble => !D C @ Dwp");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.Dribble, statement.getAction().getType());
+    }
+
+    @Test
     public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Directive directive = ParserUtil.parseDirective(tokens);
@@ -497,6 +505,18 @@ public class ParserUtilitiesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(BREAK, directive.getType());
+    }
+
+    @Test
+    public void testGenericDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":set L: Corner");
+        ParserUtil.parseDirective(tokens);
+    }
+
+    @Test
+    public void testGenericStatement() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("09:37 Dd->Long:Open => !D R @ Dpw:I >> C");
+        ParserUtil.parseStatement(tokens);
     }
 
     @Test
