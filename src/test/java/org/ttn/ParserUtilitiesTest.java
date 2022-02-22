@@ -406,7 +406,7 @@ public class ParserUtilitiesTest {
         assertFalse(statement.isPossessionChange());
     }
 
-    // New action tests
+    // Action tests
 
     @Test
     public void testDribbleAction() throws ScannerException, ParserException {
@@ -442,7 +442,7 @@ public class ParserUtilitiesTest {
         assertEquals(ActionOutcomeType.THROW_IN, statement.getRestingOutcome().getType());
     }
 
-    // New pitch position tests
+    // Pitch position tests
 
     @Test
     public void testDMdPitchPositionTest() throws ScannerException, ParserException {
