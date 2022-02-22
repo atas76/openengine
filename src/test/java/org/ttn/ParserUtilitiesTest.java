@@ -424,12 +424,22 @@ public class ParserUtilitiesTest {
         assertEquals(ActionType.HighPass, statement.getAction().getType());
     }
 
+    // Action context tests
+
     @Test
     public void testClearanceActionContext() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
+    }
+
+    @Test
+    public void testUnderPressureActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("07:12 DMd:Pr->ForwardPass => M C @ MDd:Fr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionContext.PRESSED, statement.getActionContext());
     }
 
     @Test
@@ -545,6 +555,8 @@ public class ParserUtilitiesTest {
         assertEquals(BREAK, directive.getType());
     }
 
+    // Generic tests
+
     @Test
     public void testGenericDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Corner");
@@ -553,7 +565,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testGenericStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("09:37 Dd->Long:Open => !D R @ Dpw:I >> C");
+        List<String> tokens = getTokens("07:12 DMd:Pr->ForwardPass => M C @ MDd:Fr");
         ParserUtil.parseStatement(tokens);
     }
 
