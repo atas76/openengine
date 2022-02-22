@@ -433,6 +433,14 @@ public class ParserUtilitiesTest {
     }
 
     @Test
+    public void testDMdPitchPositionTest() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("06:57 MD -> D C @ DMd");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+        assertEquals(PitchPosition.DMd, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
     public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
         Directive directive = ParserUtil.parseDirective(tokens);
