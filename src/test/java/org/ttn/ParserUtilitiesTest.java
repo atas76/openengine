@@ -406,12 +406,22 @@ public class ParserUtilitiesTest {
         assertFalse(statement.isPossessionChange());
     }
 
+    // New action tests
+
     @Test
     public void testDribbleAction() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(ActionType.Dribble, statement.getAction().getType());
+    }
+
+    @Test
+    public void testHighPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("07:17 Mw->HighPass => !D R @ Dwp");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.HighPass, statement.getAction().getType());
     }
 
     @Test
@@ -431,6 +441,8 @@ public class ParserUtilitiesTest {
         assertEquals(PitchPosition.Mw, statement.getRestingOutcome().getPitchPosition());
         assertEquals(ActionOutcomeType.THROW_IN, statement.getRestingOutcome().getType());
     }
+
+    // New pitch position tests
 
     @Test
     public void testDMdPitchPositionTest() throws ScannerException, ParserException {
