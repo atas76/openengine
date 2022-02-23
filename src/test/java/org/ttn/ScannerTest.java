@@ -68,6 +68,16 @@ public class ScannerTest {
         assertEquals("L", tokens.get(2));
     }
 
+    @Test
+    public void testAllowUnderscores() throws ScannerException {
+        String directive = ":attacking_possession T";
+
+        List<String> tokens = new Scanner(directive).scan();
+
+        assertEquals(3, tokens.size());
+        assertEquals("attacking_possession", tokens.get(1));
+    }
+
     @Test(expected = ScannerException.class)
     public void testStatementUnsupportedToken() throws org.ttn.lexan.exceptions.ScannerException {
         new Scanner("00:02 DM->Long >>> M RC % DM").scan();

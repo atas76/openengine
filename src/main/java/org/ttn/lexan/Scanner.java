@@ -32,8 +32,8 @@ public class Scanner {
             if (Character.isDigit(ch)) {
                 result.add(getNextToken(Character::isDigit));
                 continue;
-            } else if (Character.isAlphabetic(ch)) {
-                result.add(getNextToken(Character::isAlphabetic));
+            } else if (Character.isAlphabetic(ch) || ch == '_') {
+                result.add(getNextToken(this::isPermissibleCharacter));
                 continue;
             } else if (ch == ':' || ch == '@' || ch == '*' || ch == '!') {
                 result.add(String.valueOf(ch));
@@ -71,6 +71,10 @@ public class Scanner {
         } else {
             throw new ScannerException(token + " expected");
         }
+    }
+
+    private boolean isPermissibleCharacter(char ch) {
+        return Character.isAlphabetic(ch) || ch == '_';
     }
 
     private String getNextToken(Predicate<Character> tokenInclusionPredicate) {
