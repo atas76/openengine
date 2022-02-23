@@ -455,6 +455,14 @@ public class ParserUtilitiesTest {
     // Pitch position tests
 
     @Test
+    public void testAMwPitchPosition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("08:29 Mw->BackPass:FT => D L @ AMw");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(PitchPosition.AMw, statement.getActionOutcome().getPitchPosition());
+    }
+
+    @Test
     public void testDMdPitchPositionTest() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:57 MD -> D C @ DMd");
 
@@ -565,7 +573,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testGenericStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("07:12 DMd:Pr->ForwardPass => M C @ MDd:Fr");
+        List<String> tokens = getTokens("08:29 Mw->BackPass:FT => D L @ AMw");
         ParserUtil.parseStatement(tokens);
     }
 
