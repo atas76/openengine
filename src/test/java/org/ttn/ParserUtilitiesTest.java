@@ -566,13 +566,13 @@ public class ParserUtilitiesTest {
     // Generic tests
 
     @Test
-    public void testGenericDirective() throws ScannerException, ParserException {
+    public void testDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":set L: Corner");
         ParserUtil.parseDirective(tokens);
     }
 
     @Test
-    public void testGenericStatement() throws ScannerException, ParserException {
+    public void testStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("08:29 Mw->BackPass:FT => D L @ AMw");
         ParserUtil.parseStatement(tokens);
     }
