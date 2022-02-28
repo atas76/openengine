@@ -14,7 +14,7 @@ import static java.util.Map.entry;
 
 public class Parser {
     enum Keyword {
-        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION, RECOVERY, ATTACK
+        SET, POSSESSION, BREAK, PRESSURE, POSSESSOR, TRANSITION, RECOVERY, ATTACK, ATTACKING_POSSESSION
     }
 
     public static final Map<String, SetPiece> setPieceMapping = Map.ofEntries(

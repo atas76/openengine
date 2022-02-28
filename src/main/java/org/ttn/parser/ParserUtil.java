@@ -35,6 +35,7 @@ public class ParserUtil {
             entry(Parser.Keyword.RECOVERY, BALL_RECOVERY_BLOCK),
             entry(Parser.Keyword.ATTACK, ATTACK_CHAIN_BLOCK),
             entry(Parser.Keyword.BREAK, BREAK),
+            entry(Parser.Keyword.ATTACKING_POSSESSION, ATTACKING_POSSESSION),
             entry(Parser.Keyword.PRESSURE, BUILDUP_PRESSURE_BLOCK),
             entry(Parser.Keyword.POSSESSOR, POSSESSOR_DEFINITION),
             entry(Parser.Keyword.TRANSITION, TRANSITION_CHAIN_BLOCK));
@@ -279,6 +280,7 @@ public class ParserUtil {
             case "break" -> Parser.Keyword.BREAK;
             case "possessor" -> Parser.Keyword.POSSESSOR;
             case "transition" -> Parser.Keyword.TRANSITION;
+            case "attacking_possession" -> Parser.Keyword.ATTACKING_POSSESSION;
             default -> throw new ParserException("Keyword expected");
         };
     }

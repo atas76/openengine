@@ -470,6 +470,8 @@ public class ParserUtilitiesTest {
         assertEquals(PitchPosition.DMd, statement.getActionOutcome().getPitchPosition());
     }
 
+    // Directive tests
+
     @Test
     public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":possession L");
@@ -561,6 +563,14 @@ public class ParserUtilitiesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(BREAK, directive.getType());
+    }
+
+    @Test
+    public void testAttackingPossessionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":attacking_possession T");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(ATTACKING_POSSESSION, directive.getType());
     }
 
     // Generic tests

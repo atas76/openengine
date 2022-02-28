@@ -11,6 +11,7 @@ public interface Parsable {
         TRANSITION_CHAIN_BLOCK,
         POSSESSOR_DEFINITION,
         BREAK,
+        ATTACKING_POSSESSION
     }
 
     enum StatementType {
