@@ -11,8 +11,6 @@ public class ActionOutcome {
     private TacticalPosition tacticalPosition;
     private PitchPosition pitchPosition;
     private ActionOutcomeType type;
-    @Deprecated
-    private ActionOutcomeType restingOutcomeType;
     private List<ActionContext> actionOutcomeParameters = new ArrayList<>();
     private boolean possessionChange;
 
@@ -69,11 +67,6 @@ public class ActionOutcome {
         this.actionOutcomeParameters = actionOutcomeParameters;
     }
 
-    @Deprecated
-    public void setRestingOutcomeType(ActionOutcomeType restingOutcomeType) {
-        this.restingOutcomeType = restingOutcomeType;
-    }
-
     public TacticalPosition getTacticalPosition() {
         return this.tacticalPosition;
     }
@@ -84,11 +77,6 @@ public class ActionOutcome {
 
     public ActionOutcomeType getType() {
         return type;
-    }
-
-    @Deprecated
-    public ActionOutcomeType getRestingOutcomeType() {
-        return this.restingOutcomeType;
     }
 
     public boolean isOutcome(ActionContext actionOutcomeParameter) {
