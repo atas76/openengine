@@ -23,7 +23,7 @@ import java.util.Map;
 import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
-import static org.ttn.engine.environment.ActionOutcomeType.GOAL;
+import static org.ttn.engine.environment.ActionOutcomeType.*;
 import static org.ttn.parser.output.Parsable.DirectiveType.*;
 import static org.ttn.parser.output.Parsable.StatementType.*;
 
@@ -84,10 +84,11 @@ public class ParserUtil {
 
     public static ActionOutcomeType getActionOutcomeType(String actionOutcomeValue) throws ValueException {
         return switch (actionOutcomeValue) {
-            case "H" -> ActionOutcomeType.HANDBALL;
-            case "C" -> ActionOutcomeType.CORNER;
-            case "T" -> ActionOutcomeType.THROW_IN;
+            case "H" -> HANDBALL;
+            case "C" -> CORNER;
+            case "T" -> THROW_IN;
             case "G" -> GOAL;
+            case "GK" -> GOAL_KICK;
             default -> throw new ValueException("Could not map action outcome value");
         };
     }

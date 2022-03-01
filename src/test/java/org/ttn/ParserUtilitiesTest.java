@@ -341,6 +341,15 @@ public class ParserUtilitiesTest {
     }
 
     @Test
+    public void testGoalKick() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("09:02 A->Shoot => !GK");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionOutcomeType.GOAL_KICK, statement.getActionOutcome().getType());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
+    }
+
+    @Test
     public void testParseOutcomeParametersStatement() throws ScannerException, ParserException {
         List<String> tokens = getTokens("04:12 Dpw->Long => D L @ DMw:Fr");
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -583,7 +592,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("08:29 Mw->BackPass:FT => D L @ AMw");
+        List<String> tokens = getTokens("09:02 A->Shoot => !GK");
         ParserUtil.parseStatement(tokens);
     }
 
