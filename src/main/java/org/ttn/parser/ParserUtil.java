@@ -52,8 +52,12 @@ public class ParserUtil {
         return TacticalPosition.Y.valueOf(tacticalPositionY);
     }
 
+    public static TacticalPosition.Gk getTacticalPositionGk(String tacticalPositionGk) throws IllegalArgumentException {
+        return TacticalPosition.Gk.valueOf(tacticalPositionGk);
+    }
+
     public static TacticalPosition getGoalkeeperPosition(String goalkeeperPosition) throws IllegalArgumentException {
-        return new TacticalPositionImpl(TacticalPosition.X.valueOf(goalkeeperPosition));
+        return new TacticalPositionImpl(TacticalPosition.Gk.valueOf(goalkeeperPosition));
     }
 
     public static ActionType getActionType(String actionType) throws IllegalArgumentException {
@@ -125,14 +129,14 @@ public class ParserUtil {
     }
 
     public static TacticalPosition parseTacticalPosition(List<String> tokens) {
-        if ("Gkr".equals(tokens.get(0)) || "Gkd".equals(tokens.get(0))) {
-            return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)));
+        if (TacticalPosition.isGoalkeeper(tokens.get(0))) {
+            return new TacticalPositionImpl(getTacticalPositionGk(tokens.get(0)));
         }
         return new TacticalPositionImpl(getTacticalPositionX(tokens.get(0)), getTacticalPositionY(tokens.get(1)));
     }
 
     public static ActionOutcome parseSpaceBoundActionOutcome(List<String> tokens, boolean possessionChange)
-            throws ValueException, ParserException {
+            throws ParserException {
         TacticalPosition tacticalPosition = parseTacticalPosition(tokens);
         if (!tacticalPosition.isGoalkeeper()) {
             expectToken("@", tokens.get(2));

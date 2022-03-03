@@ -45,7 +45,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testGetGoalkeeperPosition() {
-        assertEquals(TacticalPosition.X.Gkr, ParserUtil.getGoalkeeperPosition("Gkr").getX());
+        assertEquals(TacticalPosition.Gk.Gkr, ParserUtil.getGoalkeeperPosition("Gkr").getGk());
     }
 
     @Test
@@ -279,7 +279,7 @@ public class ParserUtilitiesTest {
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
     }
 
     @Test
@@ -290,7 +290,7 @@ public class ParserUtilitiesTest {
         assertEquals(322, statement.getTime());
         assertEquals(PitchPosition.AMd, statement.getPitchPosition());
         assertEquals(ActionType.BackPass, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.Gkd, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Gk.Gkd, statement.getActionOutcome().getTacticalPosition().getGk());
     }
 
     @Test
@@ -301,7 +301,7 @@ public class ParserUtilitiesTest {
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
         assertTrue(statement.getActionOutcome().isPossessionChange());
     }
 
@@ -589,6 +589,20 @@ public class ParserUtilitiesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(ATTACKING_POSSESSION, directive.getType());
+    }
+
+    // Gk position tests
+
+    @Test
+    public void testGkPositionStatement() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(201, statement.getTime());
+        assertEquals(PitchPosition.DMw, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
+        assertTrue(statement.getActionOutcome().isPossessionChange());
     }
 
     // Generic tests

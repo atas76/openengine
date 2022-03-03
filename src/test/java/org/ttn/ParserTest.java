@@ -397,7 +397,7 @@ public class ParserTest {
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.Gkr, statement.getActionOutcome().getTacticalPosition().getX()); // Tactical and pitch position merge
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
         assertTrue(statement.isPossessionChange());
     }
 
