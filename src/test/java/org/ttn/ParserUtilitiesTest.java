@@ -479,6 +479,15 @@ public class ParserUtilitiesTest {
         assertEquals(PitchPosition.DMd, statement.getActionOutcome().getPitchPosition());
     }
 
+    @Test
+    public void testGoalkickPitchPosition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("09:20 GK->ParallelPass => D C @ Dwp");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(PitchPosition.GK, statement.getPitchPosition());
+    }
+
     // Directive tests
 
     @Test
@@ -592,7 +601,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("09:02 A->Shoot => !GK");
+        List<String> tokens = getTokens("09:20 GK->ParallelPass => D C @ Dwp");
         ParserUtil.parseStatement(tokens);
     }
 
