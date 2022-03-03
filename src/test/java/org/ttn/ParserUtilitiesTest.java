@@ -433,6 +433,15 @@ public class ParserUtilitiesTest {
         assertEquals(ActionType.HighPass, statement.getAction().getType());
     }
 
+    @Test
+    public void testClearanceAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("07:22 Gkr->Clear => !A*T");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.Clear, statement.getAction().getType());
+    }
+
     // Action context tests
 
     @Test
@@ -615,7 +624,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("09:20 GK->ParallelPass => D C @ Dwp");
+        List<String> tokens = getTokens("07:22 Gkr->Clear => !A*T");
         ParserUtil.parseStatement(tokens);
     }
 
