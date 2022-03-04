@@ -135,13 +135,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testParseActionType() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("05:53 MA->WidePass => F LC @ Ad");
+        List<String> tokens = getTokens("05:53 AM->WidePass => F LC @ Ad");
 
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(353, statement.getTime());
         assertEquals(ActionType.WidePass, statement.getAction().getType());
-        assertEquals(PitchPosition.MA, statement.getPitchPosition());
+        assertEquals(PitchPosition.AM, statement.getPitchPosition());
         assertEquals(TacticalPosition.X.F, statement.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.LC, statement.getActionOutcome().getTacticalPosition().getY());
         assertEquals(PitchPosition.Ad, statement.getActionOutcome().getPitchPosition());
@@ -175,23 +175,23 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testActionContext() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("05:50 MA:Mrk->Move => MA");
+        List<String> tokens = getTokens("05:50 AM:Mrk->Move => AM");
 
         Statement statement = ParserUtil.parseStatement(tokens);
         assertEquals(350, statement.getTime());
         assertEquals(ActionType.Move, statement.getAction().getType());
-        assertEquals(PitchPosition.MA, statement.getActionOutcome().getPitchPosition());
+        assertEquals(PitchPosition.AM, statement.getActionOutcome().getPitchPosition());
         assertEquals(ActionContext.MARKED, statement.getActionContext());
     }
 
     @Test
     public void testActionContextInActionOutcomePitchPosition() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("05:50 MA:Mrk->Move => MA:Fr");
+        List<String> tokens = getTokens("05:50 AM:Mrk->Move => AM:Fr");
 
         Statement statement = ParserUtil.parseStatement(tokens);
         assertEquals(350, statement.getTime());
         assertEquals(ActionType.Move, statement.getAction().getType());
-        assertEquals(PitchPosition.MA, statement.getActionOutcome().getPitchPosition());
+        assertEquals(PitchPosition.AM, statement.getActionOutcome().getPitchPosition());
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.FREE_SPACE));
     }
 
@@ -260,13 +260,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testParseThrowIn() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("06:02 Dp->Long:FT => !MA*T");
+        List<String> tokens = getTokens("06:02 Dp->Long:FT => !AM*T");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(362, statement.getTime());
         assertEquals(PitchPosition.Dp, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(PitchPosition.MA, statement.getActionOutcome().getPitchPosition());
+        assertEquals(PitchPosition.AM, statement.getActionOutcome().getPitchPosition());
         assertEquals(ActionOutcomeType.THROW_IN, statement.getActionOutcome().getType());
         assertTrue(statement.isPossessionChange());
     }
@@ -624,7 +624,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("07:22 Gkr->Clear => !A*T");
+        List<String> tokens = getTokens("05:47 MDd->ForwardPass => F LC @ AM");
         ParserUtil.parseStatement(tokens);
     }
 

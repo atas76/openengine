@@ -161,12 +161,14 @@ public class ParserUtil {
         return parseSpaceBoundActionOutcome(tokens, false);
     }
 
-    public static ActionOutcome parseActionOutcome(List<String> tokens) throws ValueException, ParserException {
+    public static ActionOutcome parseActionOutcome(List<String> tokens) throws ParserException {
         int outcomeIndex = "!".equals(tokens.get(0)) ? 1 : 0;
         boolean possessionChange = outcomeIndex > 0;
 
-        if (Arrays.stream(TacticalPosition.X.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex)))) {
+        if (tokens.contains("@")) {
             return parseSpaceBoundActionOutcome(tokens.subList(outcomeIndex, tokens.size()), possessionChange);
+        } else if ((Arrays.stream(TacticalPosition.Gk.values()).anyMatch(value -> value.name().equals(tokens.get(outcomeIndex))))) {
+            return new ActionOutcome(new TacticalPositionImpl(getTacticalPositionGk(tokens.get(outcomeIndex))), possessionChange);
         } else if (Arrays.stream(ActionOutcomeType.values()).anyMatch(value -> value.getName().equals(tokens.get(outcomeIndex)))) {
             ActionOutcomeType actionOutcomeType = getActionOutcomeType(tokens.get(outcomeIndex));
             if (GOAL.equals(actionOutcomeType)) {
