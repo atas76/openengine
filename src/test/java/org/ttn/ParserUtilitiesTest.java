@@ -497,6 +497,18 @@ public class ParserUtilitiesTest {
         assertEquals(PitchPosition.GK, statement.getPitchPosition());
     }
 
+    // Tactical position tests
+
+    @Test
+    public void testCentreMidfielderTacticalPosition() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("04:08 Dd->ParallelPass => M CL @ DM");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.CL, statement.getActionOutcome().getTacticalPosition().getY());
+    }
+
     // Directive tests
 
     @Test
