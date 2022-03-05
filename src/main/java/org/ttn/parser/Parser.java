@@ -1,8 +1,5 @@
 package org.ttn.parser;
 
-import org.ttn.engine.agent.ActionParameter;
-import org.ttn.engine.environment.ActionContext;
-import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Parsable;
