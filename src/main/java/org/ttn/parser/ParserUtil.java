@@ -18,9 +18,7 @@ import org.ttn.parser.output.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
-import static java.util.Map.entry;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
@@ -28,17 +26,6 @@ import static org.ttn.parser.output.Parsable.DirectiveType.*;
 import static org.ttn.parser.output.Parsable.StatementType.*;
 
 public class ParserUtil {
-
-    static final Map<Parser.Keyword, Parsable.DirectiveType> keywordMapping = Map.ofEntries(
-            entry(Parser.Keyword.SET, SET_PIECE_EXECUTION_BLOCK),
-            entry(Parser.Keyword.POSSESSION, POSSESSION_CHAIN_BLOCK),
-            entry(Parser.Keyword.RECOVERY, BALL_RECOVERY_BLOCK),
-            entry(Parser.Keyword.ATTACK, ATTACK_CHAIN_BLOCK),
-            entry(Parser.Keyword.BREAK, BREAK),
-            entry(Parser.Keyword.ATTACKING_POSSESSION, ATTACKING_POSSESSION),
-            entry(Parser.Keyword.PRESSURE, BUILDUP_PRESSURE_BLOCK),
-            entry(Parser.Keyword.POSSESSOR, POSSESSOR_DEFINITION),
-            entry(Parser.Keyword.TRANSITION, TRANSITION_CHAIN_BLOCK));
 
     public static PitchPosition getPitchPosition(String pitchPosition) throws IllegalArgumentException {
         return PitchPosition.valueOf(pitchPosition);
@@ -251,7 +238,7 @@ public class ParserUtil {
             throw new ParserException("Directives must start with ':'");
         }
         checkMissingTokens(tokensNumber, 1, "directive");
-        Parsable.DirectiveType directiveType = keywordMapping.get(expectKeyword(tokens.get(1)));
+        Parsable.DirectiveType directiveType = expectDirective(tokens.get(1));
         switch(tokens.get(1)) {
             case "break":
                 return new Directive(directiveType);
@@ -275,19 +262,17 @@ public class ParserUtil {
         if (tokenIndex > tokensNumber - 1) throw new MissingTokenException("Expected: " + expectedToken);
     }
 
-    // TODO define those in a file
-    private static Parser.Keyword expectKeyword(String keyword) throws ParserException {
-
-        return switch(keyword) {
-            case "set" -> Parser.Keyword.SET;
-            case "possession" -> Parser.Keyword.POSSESSION;
-            case "recovery" -> Parser.Keyword.RECOVERY;
-            case "attack" -> Parser.Keyword.ATTACK;
-            case "pressure" -> Parser.Keyword.PRESSURE;
-            case "break" -> Parser.Keyword.BREAK;
-            case "possessor" -> Parser.Keyword.POSSESSOR;
-            case "transition" -> Parser.Keyword.TRANSITION;
-            case "attacking_possession" -> Parser.Keyword.ATTACKING_POSSESSION;
+    private static Parsable.DirectiveType expectDirective(String directive) throws ParserException {
+        return switch(directive) {
+            case "set" -> SET_PIECE_EXECUTION_BLOCK;
+            case "possession" -> POSSESSION_CHAIN_BLOCK;
+            case "recovery" -> BALL_RECOVERY_BLOCK;
+            case "attack" -> ATTACK_CHAIN_BLOCK;
+            case "pressure" -> BUILDUP_PRESSURE_BLOCK;
+            case "break" -> BREAK;
+            case "possessor" -> POSSESSOR_DEFINITION;
+            case "transition" -> TRANSITION_CHAIN_BLOCK;
+            case "attacking_possession" -> ATTACKING_POSSESSION;
             default -> throw new ParserException("Keyword expected");
         };
     }
