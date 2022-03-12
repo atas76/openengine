@@ -612,6 +612,16 @@ public class ParserUtilitiesTest {
         assertEquals(ATTACKING_POSSESSION, directive.getType());
     }
 
+    // Action ('causal') directives
+
+    @Test
+    public void testBreakBallActionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":break_ball_action");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(BREAK_BALL_ACTION, directive.getType());
+    }
+
     // Gk position tests
 
     @Test

@@ -239,6 +239,9 @@ public class ParserUtil {
         }
         checkMissingTokens(tokensNumber, 1, "directive");
         Parsable.DirectiveType directiveType = expectDirective(tokens.get(1));
+        if (tokens.get(1).endsWith("_action")) { // Action directive
+            return new Directive(directiveType);
+        }
         switch(tokens.get(1)) {
             case "break":
                 return new Directive(directiveType);
@@ -273,6 +276,7 @@ public class ParserUtil {
             case "possessor" -> POSSESSOR_DEFINITION;
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "attacking_possession" -> ATTACKING_POSSESSION;
+            case "break_ball_action" -> BREAK_BALL_ACTION;
             default -> throw new ParserException("Keyword expected");
         };
     }
