@@ -638,6 +638,14 @@ public class ParserUtilitiesTest {
         assertEquals(RELEASE_PRESSING_ACTION, directive.getType());
     }
 
+    @Test
+    public void testCoolDownActionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":cool_down_action");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(COOL_DOWN_ACTION, directive.getType());
+    }
+
     // Gk position tests
 
     @Test

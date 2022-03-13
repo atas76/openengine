@@ -279,6 +279,7 @@ public class ParserUtil {
             case "break_ball_action" -> BREAK_BALL_ACTION;
             case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
+            case "cool_down_action" -> COOL_DOWN_ACTION;
             default -> throw new ParserException("Keyword expected");
         };
     }
