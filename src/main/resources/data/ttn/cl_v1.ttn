@@ -1,8 +1,9 @@
 :set L: Kickoff
 00:00 KO => D C @ DM
 :possession L
+:break_ball_action
 00:02 DM->Long >>> M RC @ Md
-:recovery L
+:attack_action
 00:15 Md->Long:FT:Open => F LC @ Apd
 :attack L
 00:20 Apd->BounceOff => M C @ Ap*H
@@ -23,14 +24,17 @@
 04:06 Dwp->DiagonalPass => AM C @ Dd
 04:08 Dd->ParallelPass => M CL @ DM
 04:10 DM->BackPass => D C @ Dpw
+:release_pressing_action
 04:12 Dpw->Long => D L @ DMw:Fr
 :transition T
 04:16 DMw->Move => MDw
 04:17 MDw->Pass => AM L @ Mw
 04:19 Mw->Move => MDw
+:cool_down_action
 04:21 MDw->BackPass => D C @ DMw
 :possession T
 04:23 DMw->Pass => D C @ DM
+:break_ball_action
 04:27 DM->Long => A R @ Awp
 :attack T
 04:32 Awp->Move => Aw
@@ -60,6 +64,7 @@
 06:58 MDw->Pass => D C @ MD
 06:57 MD -> D C @ DMd
 07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
+:attack_action
 07:14 MDd:Fr->Move => M:Mrk
 07:16 M:Mrk->ForwardPass => AM C @ M
 07:17 M->HighPass => !D R @ Dwp
@@ -76,7 +81,6 @@
 07:45 Md->Long => D L @ Aw:Cnt >> !Dwp*T
 :set L: Throw-in
 08:12 Dp => !M CL @ Mw:Cnt >>> D L @ DM
-:transition L
 08:18 DM->Long:FT => !D C @ DMd:HD >> !D L @ MDw:Cnt
 :transition T
 08:25 MDw->Move => Mw
@@ -103,11 +107,11 @@
 09:23 Dwp->BackPass => Gkr
 09:26 Gkr->ForwardPass => M C @ D
 09:28 D->Move => DM
-:transition L
 09:31 DM->BackPass => Gkr
+:withdraw_pressure_action
 :possession L
 09:34 Gkr -> D C @ Dd
+:break_ball_action
 09:37 Dd->Long:Open => !D R @ Dpw:I >> C
 :set L: Corner
 # 16:11
-
