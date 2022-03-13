@@ -630,6 +630,14 @@ public class ParserUtilitiesTest {
         assertEquals(ATTACK_ACTION, directive.getType());
     }
 
+    @Test
+    public void testReleasePressingActionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":release_pressing_action");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(RELEASE_PRESSING_ACTION, directive.getType());
+    }
+
     // Gk position tests
 
     @Test
