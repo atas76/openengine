@@ -12,7 +12,8 @@ public interface Parsable {
         POSSESSOR_DEFINITION,
         BREAK,
         ATTACKING_POSSESSION,
-        BREAK_BALL_ACTION
+        BREAK_BALL_ACTION,
+        ATTACK_ACTION
     }
 
     enum StatementType {
