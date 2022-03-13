@@ -15,7 +15,8 @@ public interface Parsable {
         BREAK_BALL_ACTION,
         ATTACK_ACTION,
         RELEASE_PRESSING_ACTION,
-        COOL_DOWN_ACTION
+        COOL_DOWN_ACTION,
+        WITHDRAW_PRESSURE_ACTION
     }
 
     enum StatementType {

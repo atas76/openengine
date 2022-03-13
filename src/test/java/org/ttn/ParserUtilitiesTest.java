@@ -631,7 +631,7 @@ public class ParserUtilitiesTest {
     }
 
     @Test
-    public void testReleasePressingActionDirective() throws ScannerException, ParserException {
+    public void testReleaseFromPressingActionDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":release_pressing_action");
         Directive directive = ParserUtil.parseDirective(tokens);
 
@@ -644,6 +644,14 @@ public class ParserUtilitiesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(COOL_DOWN_ACTION, directive.getType());
+    }
+
+    @Test
+    public void testWithdrawFromPressureActionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":withdraw_pressure_action");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(WITHDRAW_PRESSURE_ACTION, directive.getType());
     }
 
     // Gk position tests
