@@ -1,7 +1,7 @@
 package org.ttn.engine.environment;
 
 public enum ActionOutcomeType {
-    HANDBALL("H"), GOAL("G"), CORNER("C"), THROW_IN("T"), GOAL_KICK("GK");
+    HANDBALL("H"), GOAL("G"), CORNER("C"), THROW_IN("T"), GOAL_KICK("GK"), FOUL("F");
 
     private final String name;
 

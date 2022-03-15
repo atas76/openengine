@@ -442,24 +442,6 @@ public class ParserUtilitiesTest {
         assertEquals(ActionType.Clear, statement.getAction().getType());
     }
 
-    // Action context tests
-
-    @Test
-    public void testClearanceActionContext() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr");
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
-    }
-
-    @Test
-    public void testUnderPressureActionContext() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("07:12 DMd:Pr->ForwardPass => M C @ MDd:Fr");
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertEquals(ActionContext.PRESSED, statement.getActionContext());
-    }
-
     @Test
     public void testPitchTacticalPositionClash() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T");
@@ -678,7 +660,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ Mw");
+        List<String> tokens = getTokens("11:40 Mw->Dribble => Mw*F");
         ParserUtil.parseStatement(tokens);
     }
 
