@@ -69,6 +69,7 @@ public class ParserUtil {
             case "Pvt" -> PIVOT;
             case "Clr" -> CLEARANCE;
             case "Pr" -> PRESSED;
+            case "Tck" -> TACKLING;
             default -> throw new ValueException("Could not map action outcome parameter value");
         };
     }
