@@ -279,6 +279,7 @@ public class ParserUtil {
             case "possessor" -> POSSESSOR_DEFINITION;
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "attacking_possession" -> ATTACKING_POSSESSION;
+            case "defensive_transition" -> DEFENSIVE_TRANSITION;
             case "break_ball_action" -> BREAK_BALL_ACTION;
             case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;

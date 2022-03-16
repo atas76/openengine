@@ -491,109 +491,6 @@ public class ParserUtilitiesTest {
         assertEquals(TacticalPosition.Y.CL, statement.getActionOutcome().getTacticalPosition().getY());
     }
 
-    // Directive tests
-
-    @Test
-    public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":possession L");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(POSSESSION_CHAIN_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-    }
-
-    @Test
-    public void testParseBallRecoveryDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":recovery L");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(BALL_RECOVERY_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-    }
-
-    @Test
-    public void testAttackChainDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attack L");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(ATTACK_CHAIN_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-    }
-
-    @Test
-    public void testBuildupPressureDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":pressure T");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(Parsable.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
-        assertEquals("T", directive.getTeam());
-    }
-
-    @Test
-    public void testTransitionChainDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":transition T");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(TRANSITION_CHAIN_BLOCK, directive.getType());
-        assertEquals("T", directive.getTeam());
-    }
-
-    @Test
-    public void testPossessorDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":possessor D C");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(POSSESSOR_DEFINITION, directive.getType());
-        assertEquals(TacticalPosition.X.D, directive.getTacticalPosition().getX());
-        assertEquals(TacticalPosition.Y.C, directive.getTacticalPosition().getY());
-    }
-
-    @Test
-    public void testPenaltyKickChain() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":set L: Penalty");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-        assertEquals(PENALTY, directive.getSetPiece());
-    }
-
-    @Test
-    public void testThrowInChain() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":set L: ThrowIn");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-        assertEquals(THROW_IN, directive.getSetPiece());
-    }
-
-    @Test
-    public void testCornerKickChain() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":set T: Corner");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(SET_PIECE_EXECUTION_BLOCK, directive.getType());
-        assertEquals("T", directive.getTeam());
-        assertEquals(CORNER_KICK, directive.getSetPiece());
-    }
-
-    @Test
-    public void testParseBreakDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":break");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(BREAK, directive.getType());
-    }
-
-    @Test
-    public void testAttackingPossessionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attacking_possession T");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(ATTACKING_POSSESSION, directive.getType());
-    }
-
     // Action ('causal') directives
 
     @Test
@@ -654,13 +551,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":set T: Freekick");
+        List<String> tokens = getTokens(":defensive_transition L");
         ParserUtil.parseDirective(tokens);
     }
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("12:11 Mw:SP->ForwardPass => AM L @ Ad");
+        List<String> tokens = getTokens("12:13 Ad->Move => !D L @ Dp:I >> !D L @ Dw");
         ParserUtil.parseStatement(tokens);
     }
 
