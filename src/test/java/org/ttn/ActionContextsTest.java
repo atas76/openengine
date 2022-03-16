@@ -32,10 +32,10 @@ public class ActionContextsTest {
     }
 
     @Test
-    public void testTacklingActionOutcome() throws ScannerException, ParserException {
-       List<String> tokens = getTokens("11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ Mw");
-       Statement statement = ParserUtil.parseStatement(tokens);
+    public void testSetPieceActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("12:11 Mw:SP->ForwardPass => AM L @ Ad");
+        Statement statement = ParserUtil.parseStatement(tokens);
 
-       assertTrue(statement.getActionOutcome().isOutcome(ActionContext.TACKLING));
+        assertEquals(ActionContext.SET_PIECE, statement.getActionContext());
     }
 }

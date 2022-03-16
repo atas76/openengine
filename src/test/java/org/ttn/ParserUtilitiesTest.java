@@ -654,13 +654,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":set L: Corner");
+        List<String> tokens = getTokens(":set T: Freekick");
         ParserUtil.parseDirective(tokens);
     }
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("11:40 Mw->Dribble => Mw*F");
+        List<String> tokens = getTokens("12:11 Mw:SP->ForwardPass => AM L @ Ad");
         ParserUtil.parseStatement(tokens);
     }
 
