@@ -1,5 +1,5 @@
 :set L: Kickoff
-00:00 KO => D C @ DM
+00:00 KO => D CR @ DM
 :possession L
 :break_ball_action
 00:02 DM->Long >>> M RC @ Md
@@ -16,14 +16,14 @@
 03:21 DMw->Long >>> !Gkr
 :break
 :pressure T
-:possessor D C
-03:58 Dp->ParallelPass => D C @ Dp
+:possessor D CR
+03:58 Dp->ParallelPass => D CL @ Dp
 04:00 Dp->BackPass => Gkr
-04:02 Gkr->Pass:FT => D C @ Dpw
+04:02 Gkr->Pass:FT => D CR @ Dpw
 04:04 Dpw->DiagonalPass => D R @ Dwp
 04:06 Dwp->DiagonalPass => AM C @ Dd
 04:08 Dd->ParallelPass => M CL @ DM
-04:10 DM->BackPass => D C @ Dpw
+04:10 DM->BackPass => D CR @ Dpw
 :release_pressing_action
 04:12 Dpw->Long => D L @ DMw:Fr
 :transition T
@@ -31,16 +31,16 @@
 04:17 MDw->Pass => AM L @ Mw
 04:19 Mw->Move => MDw
 :cool_down_action
-04:21 MDw->BackPass => D C @ DMw
+04:21 MDw->BackPass => D CL @ DMw
 :possession T
-04:23 DMw->Pass => D C @ DM
+04:23 DMw->Pass => D CR @ DM
 :break_ball_action
 04:27 DM->Long => A R @ Awp
 :attack T
 04:32 Awp->Move => Aw
-04:34 Aw->Pass => !D C @ Dp:I >> C
+04:34 Aw->Pass => !M RC @ Dp:I >> C
 :set T: Corner
-05:15 CK->Cross => !D C @ Dp:HD >> M CR @ AMd:Cnt
+05:15 CK->Cross => !D LC @ Dp:HD >> M CR @ AMd:Cnt
 05:22 AMd->BackPass => Gkd
 :possession T
 05:27 Gkd -> D R @ DMw
@@ -52,7 +52,7 @@
 05:53 AM->WidePass => F LC @ Ad
 :attack L
 05:58 Ad->Pass => F RC @ Apd:Pvt
-05:59 Apd->Pass => !AM L @ Dp:I >> !D C @ Dp
+05:59 Apd->Pass => !AM L @ Dp:I >> !D RC @ Dp
 :recovery T
 06:02 Dp->Long:FT => !AM*T
 :break
@@ -61,8 +61,8 @@
 :set T: ThrowIn
 06:53 M => MDw
 :possession T
-06:58 MDw->Pass => D C @ MD
-06:57 MD -> D C @ DMd
+06:58 MDw->Pass => D RC @ MD
+07:01 MD -> D LC @ DMd
 07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
 :attack_action
 07:14 MDd:Fr->Move => M:Mrk
@@ -77,21 +77,21 @@
 07:37 AM->WidePass:FT => D R @ Aw
 :attack T
 07:40 Aw->BackPass => M CR @ AMd
-07:43 AMd->BackPass:FT => D C @ Md
+07:43 AMd->BackPass:FT => D RC @ Md
 07:45 Md->Long => D L @ Aw:Cnt >> !Dwp*T
 :set L: Throw-in
 08:12 Dp => !M CL @ Mw:Cnt >>> D L @ DM
-08:18 DM->Long:FT => !D C @ DMd:HD >> !D L @ MDw:Cnt
+08:18 DM->Long:FT => !M C @ DMd:HD >> !D L @ MDw:Cnt
 :transition T
 08:25 MDw->Move => Mw
 08:27 Mw:Mrk->ForwardPass => AM L @ Mw
 08:28 Mw->Pass:FT => AM R @ Mw
 08:29 Mw->BackPass:FT => D L @ AMw
 :attacking_possession T
-08:30 Mw->BackPass => D C @ MDd
-08:33 MDd->Pass => D C @ MD
+08:30 Mw->BackPass => D CL @ MDd
+08:33 MDd->Pass => D CR @ MD
 08:35 MD->Move => MDd
-08:40 MDd->Pass => D C @ MDd
+08:40 MDd->Pass => D CL @ MDd
 08:43 MDd:Pr->ForwardPass => M CL @ MDd
 08:45 MDd->Move => MDw:Fr
 08:46 MDw->WidePass => AM L @ AMw
@@ -100,7 +100,7 @@
 08:50 Aw->Move => Ad
 08:53 Ad->ForwardPass => !M RC @ D:I >>> AM C @ Ad
 08:56 Ad->Pass => AM L @ Apd
-08:58 Apd->Dribble => !D C @ Dp:I >> M CR @ A
+08:58 Apd->Dribble => !D CR @ Dp:I >> M CR @ A
 09:02 A->Shoot => !GK #:r=0
 :pressure L
 09:20 GK->ParallelPass => D C @ Dwp
@@ -110,8 +110,24 @@
 09:31 DM->BackPass => Gkr
 :withdraw_pressure_action
 :possession L
-09:34 Gkr -> D C @ Dd
+09:34 Gkr -> D CL @ Dd
 :break_ball_action
 09:37 Dd->Long:Open => !D R @ Dpw:I >> C
 :set L: Corner
-# 16:11
+10:40 CK->Cross => !Gkr:Punch >>> Gkr:H
+:possession L
+11:04 Gkr -> D CR @ Dd
+:break_ball_action
+11:08 Dd->Long => !D*T
+:set T: Throw-in
+11:34 D => F C @ Mw:Pvt >> AM R @ Mw:Cnt
+11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ Mw
+11:40 Mw->Dribble => Mw*F
+:possessor AM R
+:set T: Freekick
+12:11 Mw:SP->ForwardPass => AM L @ Ad
+:attack T
+12:13 Ad->Move => !D L @ Dp:I >> !D L @ Dw
+:defensive_transition L
+12:17 Dw->Long:Open => !DMw*T
+:break                                      #! 19:00
