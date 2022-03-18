@@ -71,6 +71,7 @@ public class ParserUtil {
             case "Pr" -> PRESSED;
             case "Tck" -> TACKLING;
             case "SP" -> SET_PIECE;
+            case "Ch" -> CHALLENGE;
             default -> throw new ValueException("Could not map action context value");
         };
     }

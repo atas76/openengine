@@ -38,4 +38,5 @@ public class ActionContextsTest {
 
         assertEquals(ActionContext.SET_PIECE, statement.getActionContext());
     }
+
 }

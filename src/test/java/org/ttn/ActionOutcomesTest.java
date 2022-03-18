@@ -21,4 +21,12 @@ public class ActionOutcomesTest {
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.TACKLING));
     }
+
+    @Test
+    public void testChallengeActionOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("18:14 DMw->ForwardPass => !D R @ Mw:Ch >> !AM C @ Mw");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CHALLENGE));
+    }
 }
