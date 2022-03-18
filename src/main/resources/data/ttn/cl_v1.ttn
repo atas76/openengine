@@ -150,3 +150,32 @@
 :attack_action
 13:54 M->Long => !D*T
 :break
+:possession T
+:possessor M CR
+14:59 DM->ForwardPass => M:FT >>> !D L @ DMd
+:defensive_transition L
+15:04 DM->ForwardPass:FT => M LC @ DMd:Cnt >> !D R @ DMd
+:transition T
+15:06 DMd->Triangle => M CR @ DMd
+15:09 DMd->Pass => D CL @ DM
+:possession T
+:attack_action
+15:13 DM->Long:Open => !GK
+:pressure L
+15:42 GK->ParallelPass => D CL @ Dwp
+15:45 Dwp->BackPass => Gkr
+15:48 Gkr->ForwardPass => M C @ D
+15:51 D->BackPass => D CR @ Dpw
+15:52 Dpw->ParallelPass:FT => D CL @ Dpw
+:possession L
+15:56 Dpw -> D CR @ DMd
+:attack_action
+16:13 DMd->Long => F LC @ A:Cnt >>> M*T
+:set L: Throw-in
+16:39 M => !M CL @ DMd:HD >>> M RC @ M
+16:44 M->Pass => D R @ Md:Fr
+:attacking_possession L
+16:46 Md:Fr->Move => Ad
+:attack L
+16:47 Ad->Shoot => !GK  #:r=2
+:break # 23:14
