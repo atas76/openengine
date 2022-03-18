@@ -415,33 +415,6 @@ public class ParserUtilitiesTest {
         assertFalse(statement.isPossessionChange());
     }
 
-    // Action tests
-
-    @Test
-    public void testDribbleAction() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp");
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertEquals(ActionType.Dribble, statement.getAction().getType());
-    }
-
-    @Test
-    public void testHighPassAction() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("07:17 Mw->HighPass => !D R @ Dwp");
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertEquals(ActionType.HighPass, statement.getAction().getType());
-    }
-
-    @Test
-    public void testClearanceAction() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("07:22 Gkr->Clear => !A*T");
-
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertEquals(ActionType.Clear, statement.getAction().getType());
-    }
-
     @Test
     public void testPitchTacticalPositionClash() throws ScannerException, ParserException {
         List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T");
@@ -557,7 +530,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("12:13 Ad->Move => !D L @ Dp:I >> !D L @ Dw");
+        List<String> tokens = getTokens("16:47 Ad->Shoot => !GK");
         ParserUtil.parseStatement(tokens);
     }
 
