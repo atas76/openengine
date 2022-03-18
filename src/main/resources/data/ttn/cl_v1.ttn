@@ -178,4 +178,19 @@
 16:46 Md:Fr->Move => Ad
 :attack L
 16:47 Ad->Shoot => !GK  #:r=2
-:break # 23:14
+:break
+:possession L
+18:08 Gkr -> D L @ DMw
+18:14 DMw->ForwardPass => !D R @ Mw:Ch >> !AM C @ Mw
+:attacking_transition T
+18:17 Mw->Pass => AM R @ Md
+18:19 Md->BackPass => AM R @ M
+18:20 M->ForwardPass => !M RC @ DM:B >> !D C @ DM
+:defensive_transition L
+18:25 DM->Triangle => M RC @ DM
+:counter_attack L
+18:28 DM->ParallelPass => D L @ DMw:Fr
+18:29 DMw:Fr->Run => Aw
+:attack L
+18:34 Aw:Mrk->Move => !GK
+# 25:08
