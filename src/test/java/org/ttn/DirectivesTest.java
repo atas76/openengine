@@ -126,4 +126,12 @@ public class DirectivesTest {
 
         assertEquals(DEFENSIVE_TRANSITION, directive.getType());
     }
+
+    @Test
+    public void testAttackingTransitionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":attacking_transition T");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(ATTACKING_TRANSITION, directive.getType());
+    }
 }
