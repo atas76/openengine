@@ -51,4 +51,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.Triangle, statement.getAction().getType());
     }
+
+    @Test
+    public void testRunAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("18:29 DMw:Fr->Run => Aw");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.Run, statement.getAction().getType());
+    }
 }
