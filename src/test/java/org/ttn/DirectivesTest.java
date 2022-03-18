@@ -134,4 +134,12 @@ public class DirectivesTest {
 
         assertEquals(ATTACKING_TRANSITION, directive.getType());
     }
+
+    @Test
+    public void testCounterAttackDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":counter_attack L");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(COUNTER_ATTACK, directive.getType());
+    }
 }

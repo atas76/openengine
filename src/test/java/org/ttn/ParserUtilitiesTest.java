@@ -524,7 +524,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attacking_transition T");
+        List<String> tokens = getTokens(":counter_attack L");
         ParserUtil.parseDirective(tokens);
     }
 
