@@ -530,7 +530,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("18:14 DMw->ForwardPass => !D R @ Mw:Ch >> !AM C @ Mw");
+        List<String> tokens = getTokens("18:20 M->ForwardPass => !M RC @ DM:B >> !D C @ DM");
         ParserUtil.parseStatement(tokens);
     }
 

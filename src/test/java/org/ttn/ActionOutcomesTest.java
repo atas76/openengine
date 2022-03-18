@@ -29,4 +29,12 @@ public class ActionOutcomesTest {
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CHALLENGE));
     }
+
+    @Test
+    public void testBlockActionOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("18:20 M->ForwardPass => !M RC @ DM:B >> !D C @ DM");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.BLOCK));
+    }
 }
