@@ -130,4 +130,23 @@
 12:13 Ad->Move => !D L @ Dp:I >> !D L @ Dw
 :defensive_transition L
 12:17 Dw->Long:Open => !DMw*T
-:break                                      #! 19:00
+:break
+:pressure T
+12:56 Gkr->Long => !D R @ Mw:HD >>> AM L @ Mw
+:possession T
+13:08 Mw -> D CL @ DM
+:attack_action
+13:17 DM->Long:Open => D R @ Awp
+:attack T
+13:23 Awp->BackPass => AM C @ Awp
+13:26 Awp->BackPass => M CR @ Mw
+13:28 Mw->WidePass => AM C @ Aw
+13:30 Aw->Cross => !D R @ Dp:HD >> A*T
+:set T: Throw-in
+13:46 A => M CL @ Mw
+:attacking_possession T
+13:47 Mw->BackPass => D CR @ DM
+13:53 DM -> D CR @ M
+:attack_action
+13:54 M->Long => !D*T
+:break
