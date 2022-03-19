@@ -221,4 +221,24 @@
 19:40 A => AM R @ Aw:FT >> AM C @ Awp
 :attack T
 19:44 Awp->Cross => !Gkr:H
-# 26:16
+:possession L
+19:48 Gkr -> M CL @ Md
+:attacking_possession L
+19:58 Md -> D CL @ D
+:pressure L
+20:12 D->BackPass => Gkr
+20:14 Gkr->Pass:FT => D CL @ Dd
+20:17 Dd->Move => DMd
+:possession L
+20:18 DMd->ForwardPass => M RC @ MDd
+20:21 MDd->Move => Md
+20:22 Md->WidePass => D R @ AMw
+:attacking-possession L
+20:24 AMw->Move => Aw
+:attack L
+20:27 Aw->Pass => F C @ Ad
+20:29 A->OneTwoPass => F RC @ A
+20:30 A->Shoot => !D CR @ D:B >> C
+:set L: Corner
+# 27:00
+# TODO review all pitch positions in midfield
