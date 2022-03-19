@@ -193,4 +193,32 @@
 18:29 DMw:Fr->Run => Aw
 :attack L
 18:34 Aw:Mrk->Move => !GK
-# 25:08
+:pressure T
+18:53 GK->ParallelPass => D CR @ Dwp
+18:55 Dwp->WidePass => D R @ Dw
+18:56 Dw->BackPass:FT => D CR @ Dwp
+18:59 Dwp->Pass => D R @ Dwp
+:release_pressure_action
+19:01 Dwp->Long => F C @ DM:Cnt >> AM C @ DM
+:transition T
+19:06 DM->ForwardPass => AM L @ M
+:counter_attack T
+19:09 M:Fr->Run => A
+19:10 A->Dribble => !D R @ D:I >> !M C @ DM
+:defensive_transition L
+19:11 DM->Pass:FT => D R @ Dw
+19:15 Dw->ForwardPass => !M CR @ M:I >> !M CL @ M
+:attacking_possession T
+19:20 M->Triangle => M CR @ M
+19:23 M->WidePass => AM R @ Ad
+19:26 Ad->Pass => M CL @ M
+19:28 M->Pass => AM R @ A
+:attack_action
+19:30 A->ForwardPass => AM C @ A
+:attack T
+19:32 A->ForwardPass => !M RC @ Dp:Clr >> A*T
+:set T: Throw-in
+19:40 A => AM R @ Aw:FT >> AM C @ Awp
+:attack T
+19:44 Awp->Cross => !Gkr:H
+# 26:16
