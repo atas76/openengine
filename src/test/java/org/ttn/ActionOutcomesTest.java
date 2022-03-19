@@ -15,6 +15,14 @@ import static org.ttn.ParserUtilitiesTest.getTokens;
 public class ActionOutcomesTest {
 
     @Test
+    public void testClearanceActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
+    }
+
+    @Test
     public void testTacklingActionOutcome() throws ScannerException, ParserException {
         List<String> tokens = getTokens("11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ Mw");
         Statement statement = ParserUtil.parseStatement(tokens);
@@ -36,5 +44,13 @@ public class ActionOutcomesTest {
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.BLOCK));
+    }
+
+    @Test
+    public void testFirstTouchActionOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("19:40 A => AM R @ Aw:FT >> AM C @ Awp");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.FIRST_TOUCH));
     }
 }

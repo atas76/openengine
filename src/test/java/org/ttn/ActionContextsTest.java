@@ -10,18 +10,9 @@ import org.ttn.parser.output.Statement;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 
 public class ActionContextsTest {
-
-    @Test
-    public void testClearanceActionContext() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr");
-        Statement statement = ParserUtil.parseStatement(tokens);
-
-        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.CLEARANCE));
-    }
 
     @Test
     public void testUnderPressureActionContext() throws ScannerException, ParserException {

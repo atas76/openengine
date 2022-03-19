@@ -73,6 +73,7 @@ public class ParserUtil {
             case "SP" -> SET_PIECE;
             case "Ch" -> CHALLENGE;
             case "B" -> BLOCK;
+            case "FT" -> FIRST_TOUCH;
             default -> throw new ValueException("Could not map action context value");
         };
     }
