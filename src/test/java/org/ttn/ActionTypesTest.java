@@ -69,4 +69,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.OneTwoPass, statement.getAction().getType());
     }
+
+    @Test
+    public void testTurningAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("21:51 Awp->Turn => Apw");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.Turn, statement.getAction().getType());
+    }
 }
