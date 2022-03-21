@@ -78,4 +78,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.Turn, statement.getAction().getType());
     }
+
+    @Test
+    public void testBackHeelPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("22:32 Aw->BackHeelPass => M LC @ Awp");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.BackHeelPass, statement.getAction().getType());
+    }
 }
