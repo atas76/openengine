@@ -87,4 +87,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.BackHeelPass, statement.getAction().getType());
     }
+
+    @Test
+    public void testParallelHighPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("23:11 Ad->ParallelHighPass => D L @ AM:Fr");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.ParallelHighPass, statement.getAction().getType());
+    }
 }
