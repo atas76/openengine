@@ -240,5 +240,33 @@
 20:29 A->OneTwoPass => F RC @ A
 20:30 A->Shoot => !D CR @ D:B >> C
 :set L: Corner
-# 27:00
+21:11 CK->Cross => !Gkr:Punch >> A*T
+:set L: Throw-in
+21:47 A => F RC @ Awp:Pvt
+:attack L
+21:51 Awp->Turn => Apw
+21:52 Apw->Shoot => !D*T
+:set T: Throw-in
+22:17 D => AM R @ Dwp:Cnt >>> !F C @ Awp
+:attack L
+22:20 Awp->Move => Apd
+22:22 Apd->Pass => !D CL @ Dp:Cl >>> D L @ AMw
+22:28 AMw->ForwardPass:FT => F C @ Aw
+22:30 Aw->BackPass => F LC @ Aw
+22:32 Aw->BackHeelPass => M LC @ Awp
+22:36 Awp->BackPass => D L @ Aw
+22:37 Aw->Cross:FT => !D L @ Dp:HD >> Ap*T
+:set L: Throw-in
+23:03 Ap => M RC @ Awp:HD >>> !AM L @ Dwp:Cnt
+:defensive_transition T
+23:06 Dwp->ForwardPass => !M LC @ Ad
+:attack A
+23:10 Ad->BackPass => M C @ Ad
+23:11 Ad->ParallelHighPass => D L @ AM:Fr
+23:14 M->Move => A
+23:15 A->WidePass => F LC @ Awp
+23:21 Awp->Move => Apw
+23:22 Apw->Cross => !D R @ Dp:I >> C
+:set L: Corner
+# 23:22
 # TODO review all pitch positions in midfield
