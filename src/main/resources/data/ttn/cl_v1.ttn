@@ -11,8 +11,8 @@
 01:47 Ap->Shoot => G
 :break
 :set L: ThrowIn
-03:18 DM => F LC @ DMw
-03:20 DMw->BackPass => D L @ DMw
+03:18 DM => F LC @ MDw
+03:20 MDw->BackPass => D L @ DMw
 03:21 DMw->Long >>> !Gkr
 :break
 :pressure T
@@ -43,8 +43,8 @@
 05:15 CK->Cross => !D LC @ Dp:HD >> M CR @ AMd:Cnt
 05:22 AMd->BackPass => Gkd
 :possession T
-05:27 Gkd -> D R @ DMw
-05:45 DMw->DiagonalPass => !M C @ MDd
+05:27 Gkd -> D R @ MDw
+05:45 MDw->DiagonalPass => !M C @ MDd
 :transition L
 05:47 MDd->ForwardPass => F LC @ AM
 05:50 AM:Mrk->Move => AM:Fr
@@ -60,7 +60,7 @@
 06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T
 :set T: ThrowIn
 06:53 M => MDw
-:possession T
+:possession T                   # !!!
 06:58 MDw->Pass => D RC @ MD
 07:01 MD -> D LC @ DMd
 07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
