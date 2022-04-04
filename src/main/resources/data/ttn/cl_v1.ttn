@@ -217,7 +217,7 @@
 19:30 A->ForwardPass => AM C @ A
 :attack T
 19:32 A->ForwardPass => !M RC @ Dp:Clr >> A*T
-:set T: Throw-in                                # !!!
+:set T: Throw-in
 19:40 A => AM R @ Aw:FT >> AM C @ Awp
 :attack T
 19:44 Awp->Cross => !Gkr:H
@@ -260,13 +260,13 @@
 23:03 Ap => M RC @ Awp:HD >>> !AM L @ Dwp:Cnt
 :defensive_transition T
 23:06 Dwp->ForwardPass => !M LC @ Ad
-:attack A
+:attack L
 23:10 Ad->BackPass => M C @ Ad
 23:11 Ad->ParallelHighPass => D L @ AM:Fr
-23:14 M->Move => A
+23:14 AM->Move => A
 23:15 A->WidePass => F LC @ Awp
 23:21 Awp->Move => Apw
 23:22 Apw->Cross => !D R @ Dp:I >> C
 :set L: Corner
 # 23:22
-# TODO review all pitch positions in midfield
+
