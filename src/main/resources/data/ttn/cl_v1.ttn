@@ -309,4 +309,9 @@
 :pressure T
 27:08 Dp->Long => D R @ MDw:FT >>> DM*T
 :break
-# 33:40
+:possession T
+:possessor D CL
+27:31 D -> D C @ DM
+27:40 DM->Long => !D*O
+:break
+# 34:15
