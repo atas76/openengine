@@ -297,4 +297,16 @@
 26:26 MDd->Long => !GK
 :break
 :pressure T
-# 33:06
+:possessor M CL
+26:43 D->Pass => M CR @ D
+26:44 D->BackPass:FT => M CL @ Dp
+26:48 Dp->Move => Dd
+26:50 Dd->ParallelPass => M CR @ D
+26:52 Dd->Pass => D CL @ Dw
+:withdraw_pressure_action
+:possession T
+26:56 Dw -> D CR @ Dp
+:pressure T
+27:08 Dp->Long => D R @ MDw:FT >>> DM*T
+:break
+# 33:40
