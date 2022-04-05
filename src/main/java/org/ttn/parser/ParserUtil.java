@@ -90,8 +90,7 @@ public class ParserUtil {
         };
     }
 
-    public static List<ActionParameter> parseActionParameters(List<String> tokens)
-            throws ValueException, ParserException {
+    public static List<ActionParameter> parseActionParameters(List<String> tokens) throws ParserException {
 
         List<ActionParameter> actionParameters = new ArrayList<>();
 
@@ -105,7 +104,7 @@ public class ParserUtil {
         return actionParameters;
     }
 
-    public static Action parseAction(List<String> tokens) throws ValueException, ParserException {
+    public static Action parseAction(List<String> tokens) throws ParserException {
         ActionType actionType = getActionType(tokens.get(0));
         if (tokens.size() > 1 && ":".equals(tokens.get(1))) {
             return new Action(actionType, parseActionParameters(tokens.subList(2, tokens.size())));
@@ -201,7 +200,7 @@ public class ParserUtil {
         Parsable.StatementType statementType;
         if (tokens.contains(">>>")) {
             statementType = INDIRECT_OUTCOME;
-            outcomeDelimiterIndex = tokens.indexOf(">>>");
+            outcomeDelimiterIndex = tokens.indexOf("=>");
         } else if (tokens.contains("=>")) {
             statementType = STANDARD;
             outcomeDelimiterIndex = tokens.indexOf("=>");
@@ -216,6 +215,9 @@ public class ParserUtil {
         int actionOutcomeBound = tokens.size();
         if (tokens.contains(">>")) {
             actionOutcomeBound = tokens.indexOf(">>");
+        }
+        else if (tokens.contains(">>>")) {
+            actionOutcomeBound = tokens.indexOf(">>>");
         }
         if ("=>".equals(actionDelimiter)) {
             actionOutcome = parseActionOutcome(tokens.subList(currentIndex, actionOutcomeBound));

@@ -13,7 +13,6 @@ import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.ParserUtil;
-import org.ttn.parser.output.Parsable;
 import org.ttn.parser.output.Statement;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
@@ -22,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.Parsable.DirectiveType.*;
 import static org.ttn.parser.output.Parsable.StatementType.*;
 
@@ -105,17 +103,19 @@ public class ParserUtilitiesTest {
     }
 
     @Test
-    public void testParseIndirectOutcomeStatement() throws ParserException {
-        List<String> tokens = Arrays.asList("00", ":", "02", "DM", "->", "Long", ">>>", "M", "RC", "@", "Md");
+    public void testParseIndirectOutcomeStatement() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md");
 
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(2, statement.getTime());
         assertEquals(ActionType.Long, statement.getAction().getType());
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
-        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
-        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
-        assertEquals(PitchPosition.Md, statement.getActionOutcome().getPitchPosition());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(TacticalPosition.X.M, statement.getRestingOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getRestingOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Md, statement.getRestingOutcome().getPitchPosition());
         assertEquals(INDIRECT_OUTCOME, statement.getType());
     }
 
@@ -273,13 +273,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testParseGoalkeeperTacticalPosition() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("03:21 DMw->Long >>> Gkr");
+        List<String> tokens = getTokens("03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getRestingOutcome().getTacticalPosition().getGk());
     }
 
     @Test
@@ -295,13 +295,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testParsePossessionChangeStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        List<String> tokens = getTokens("03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getRestingOutcome().getTacticalPosition().getGk());
         assertTrue(statement.getActionOutcome().isPossessionChange());
     }
 
@@ -510,13 +510,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testGkPositionStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        List<String> tokens = getTokens("03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr");
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getRestingOutcome().getTacticalPosition().getGk());
         assertTrue(statement.getActionOutcome().isPossessionChange());
     }
 
@@ -530,7 +530,7 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("23:22 Apw->Cross => !D R @ Dp:I >> C");
+        List<String> tokens = getTokens("26:26 MDd->Long => !GK");
         ParserUtil.parseStatement(tokens);
     }
 

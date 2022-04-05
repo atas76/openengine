@@ -348,15 +348,33 @@ public class ParserTest {
 
     @Test
     public void testIndirectOutcomeStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("00:02 DM->Long >>> M RC @ Md");
+        List<String> tokens = getTokens("00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md");
         Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(2, statement.getTime());
         assertEquals(PitchPosition.DM, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.X.M, statement.getActionOutcome().getTacticalPosition().getX());
-        assertEquals(TacticalPosition.Y.RC, statement.getActionOutcome().getTacticalPosition().getY());
-        assertEquals(PitchPosition.Md, statement.getActionOutcome().getPitchPosition());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.DMw, statement.getActionOutcome().getPitchPosition());
+        assertEquals(TacticalPosition.X.M, statement.getRestingOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.RC, statement.getRestingOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.Md, statement.getRestingOutcome().getPitchPosition());
+        assertEquals(INDIRECT_OUTCOME, statement.getType());
+    }
+
+    @Test
+    public void testIndirectOutcomeStatementIndirectDelimiterBugFix() throws ScannerException, ParserException {
+        // '=>': direct action outcome delimiter
+        // '>>' and '>>>': indirect action outcome delimiters
+        List<String> tokens = getTokens("26:05 MD->Long:FT => !D R @ DMd:HD >>> !Gkr");
+        Statement statement = (Statement) new Parser().parse(tokens);
+
+        assertEquals(PitchPosition.MD, statement.getPitchPosition());
+        assertEquals(ActionType.Long, statement.getAction().getType());
+        assertEquals(TacticalPosition.X.D, statement.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.R, statement.getActionOutcome().getTacticalPosition().getY());
+        assertEquals(PitchPosition.DMd, statement.getActionOutcome().getPitchPosition());
         assertEquals(INDIRECT_OUTCOME, statement.getType());
     }
 
@@ -391,13 +409,13 @@ public class ParserTest {
 
     @Test
     public void testOutcomeNegation() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("03:21 DMw->Long >>> !Gkr");
+        List<String> tokens = getTokens("03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr");
         Statement statement = (Statement) new Parser().parse(tokens);
 
         assertEquals(201, statement.getTime());
         assertEquals(PitchPosition.DMw, statement.getPitchPosition());
         assertEquals(ActionType.Long, statement.getAction().getType());
-        assertEquals(TacticalPosition.Gk.Gkr, statement.getActionOutcome().getTacticalPosition().getGk());
+        assertEquals(TacticalPosition.Gk.Gkr, statement.getRestingOutcome().getTacticalPosition().getGk());
         assertTrue(statement.isPossessionChange());
     }
 
