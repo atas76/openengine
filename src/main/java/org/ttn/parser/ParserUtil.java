@@ -86,6 +86,7 @@ public class ParserUtil {
             case "G" -> GOAL;
             case "GK" -> GOAL_KICK;
             case "F" -> FOUL;
+            case "O" -> OFFSIDE;
             default -> throw new ValueException("Could not map action outcome value");
         };
     }

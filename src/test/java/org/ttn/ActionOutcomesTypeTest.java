@@ -25,4 +25,12 @@ public class ActionOutcomesTypeTest {
 
         assertEquals(ActionOutcomeType.FOUL, statement.getActionOutcome().getType());
     }
+
+    @Test
+    public void testParseOffside() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("27:40 DM->Long => !D*O");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionOutcomeType.OFFSIDE, statement.getActionOutcome().getType());
+    }
 }
