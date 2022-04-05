@@ -314,4 +314,17 @@
 27:31 D -> D C @ DM
 27:40 DM->Long => !D*O
 :break
-# 34:15
+:possession L
+:possessor D R
+28:17 MDw->Long => M*F
+:set L: Freekick
+29:01 M:SP->Long => !GK
+:pressure T
+29:20 GK->Pass => M CR @ D
+29:22 D->BackPass => Gkr
+29:23 Gkr->Pass:FT => D CR @ Dpw
+29:26 Dpw->Pass => Gkr
+29:27 Gkr->Long => !D L @ AMw:HD >>> D R @ Dw
+29:35 Dw->ForwardPass:FT => !AM C @ Md:B >> MDd*F
+:break
+# 36:08
