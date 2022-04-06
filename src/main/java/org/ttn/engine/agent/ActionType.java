@@ -4,7 +4,7 @@ public enum ActionType {
     Implicit,
     Long, BounceOff, Shoot, Move, Cross, Dribble, Run,
     Pass, BackPass, ParallelPass, DiagonalPass, ForwardPass, WidePass,
-    HighPass, Triangle, OneTwoPass, BackHeelPass, ParallelHighPass,
+    HighPass, Triangle, OneTwoPass, BackHeelPass, ParallelHighPass, WideHighPass,
     Clear, Turn,
     Default
 }

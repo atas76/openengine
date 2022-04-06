@@ -524,13 +524,13 @@ public class ParserUtilitiesTest {
 
     @Test
     public void testDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":counter_attack L");
+        List<String> tokens = getTokens(":attacking_transition L");
         ParserUtil.parseDirective(tokens);
     }
 
     @Test
     public void testStatement() throws ScannerException, ParserException {
-        List<String> tokens = getTokens("27:40 DM->Long => !D*O");
+        List<String> tokens = getTokens("31:13 Dd:SP->Pass => D CR @ Dd");
         ParserUtil.parseStatement(tokens);
     }
 

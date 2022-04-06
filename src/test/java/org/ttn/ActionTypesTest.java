@@ -96,4 +96,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.ParallelHighPass, statement.getAction().getType());
     }
+
+    @Test
+    public void testWideHighPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("30:10 D->WideHighPass => !M*T");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.WideHighPass, statement.getAction().getType());
+    }
 }
