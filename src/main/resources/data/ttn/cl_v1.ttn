@@ -327,4 +327,29 @@
 29:27 Gkr->Long => !D L @ AMw:HD >>> D R @ Dw
 29:35 Dw->ForwardPass:FT => !AM C @ Md:B >> MDd*F
 :break
-# 36:08
+:possession T
+:possessor D CL
+29:50 DM -> D CL @ Dd
+:pressure T
+30:00 Dd->BackPass => Gkr
+30:02 Gkr->Long:FT => !D CR @ DM:FT >> !D CL @ Dd
+:pressure L
+30:10 D->WideHighPass => !M*T
+:set T: Throw-in
+30:22 M => F C @ AMd:FT >>> MD*T
+:set T: Throw-in
+30:31 M => Gkr
+:possession T
+30:37 Gkr -> D CL @ Dd
+:pressure T
+30:45 Dd->BackPass => Gkr
+30:52 Gkr->Long => !D R @ Mw:HD >>> !D R @ Mw
+:attacking_transition L
+30:57 Mw->ForwardPass => F RC @ AMw
+31:00 AMw->ForwardPass:Open => !D CR @ Dpw
+:recovery T
+31:03 Dpw->Clear => !M RC @ Mw >>> Dd*O
+:set T: Freekick
+31:13 Dd:SP->Pass => D CR @ Dd
+:break
+# 37:41
