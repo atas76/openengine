@@ -344,7 +344,7 @@
 :attacking-transition T
 32:25 M->Run => A
 :attack T
-32:27 A->AssistPass => !D:I >> M
+32:27 A->ForwardPass => !D:I >> M
 32:31 M->Pass => Md
 32:32 Md->BackPass:FT => M
 32:39 M->Move => Md
