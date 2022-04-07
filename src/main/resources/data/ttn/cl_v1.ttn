@@ -381,4 +381,9 @@
 33:01 AMd->BackPass:FT => M CL @ AMd
 33:04 AMd->WidePass => !D*T
 :set L: Throw_in
-# 39:32
+33:22 D => !D R @ Mw:HD >>> !AM R @ Aw
+:attack T
+33:29 Aw->Move => Awp
+33:32 Awp->LowCross => !D CR @ Dwp:I >> C
+:set T: Corner
+# 40:00
