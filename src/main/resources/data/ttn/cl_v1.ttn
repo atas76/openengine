@@ -352,4 +352,33 @@
 :set T: Freekick
 31:13 Dd:SP->Pass => D CR @ Dd
 :break
-# 37:41
+:possession T
+:possessor M CL
+31:20 MDd -> Gkr
+:pressure T
+31:39 Gkr->Pass => D CR @ Dp
+31:40 Dp->Move => Dpd
+31:45 Dpd->Long => D L @ DMw
+31:49 DMw->Dribble => Mw
+:transition T
+31:53 Mw->Pass => !M*T
+:set L: Throw_in
+32:19 DM => M LC @ DM:FT >>> !M CR @ M
+:attacking_transition T
+32:25 M->Run => A
+:attack T
+32:27 A->ForwardPass => !D CL @ D:I >> M CL @ M
+32:31 M->Pass => D R @ AMw
+32:32 Md->BackPass:FT => AM C @ M
+32:39 M->Move => AM C @ AMd
+32:40 AMd->WidePass => D L @ Aw
+32:46 Aw->BackPass => D CL @ Mw
+32:48 Mw->Pass => D CR @ M
+32:51 M->Pass => M CL @ Md
+32:55 Md->ForwardPass => AM R @ AM:FT >>> F C @ A:Cnt
+32:59 A->BackPass => M CL @ AMd
+33:00 AMd->Pass => AM C @ AMd
+33:01 AMd->BackPass:FT => M CL @ AMd
+33:04 AMd->WidePass => !D*T
+:set L: Throw_in
+# 39:32
