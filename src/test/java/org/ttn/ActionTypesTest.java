@@ -105,4 +105,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.WideHighPass, statement.getAction().getType());
     }
+
+    @Test
+    public void testLowCrossAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("33:32 Awp->LowCross => !D CR @ Dwp:I >> C");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.LowCross, statement.getAction().getType());
+    }
 }
