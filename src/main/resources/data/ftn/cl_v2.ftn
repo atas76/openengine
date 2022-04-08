@@ -542,7 +542,7 @@
 45:56 Mw->Pass => Md
 :attacking-possession T
 45:57 Md -> DMw
-46:15 DMw->Pass => Awp
+46:15 DMw->ForwardPass:Open => Awp
 :attack T
 46:23 Awp->Pass => Aw
 46:24 Aw->Cross:FT => Dp:HD >> !Dp:Cl >> DM
@@ -561,13 +561,13 @@
 47:43 DMw->Pass => DMw
 :transition L
 47:44 DMw->HighPass => !DMw:Cnt # allow 'instant' change of coordinates
-47:47 Mw->Pass => !DM*T
+47:47 Mw->ForwardPass => !DM*T
 :set L: Throw-in
 48:00 DM => !Dw
 :pressed T
-48:04 Dw->Pass:FT => Gkr
+48:04 Dw->BackPass:FT => Gkr
 48:08 Gkr->Pass => Dpd
-48:15 Dpd->Pass => Gkr
+48:15 Dpd->BackPass => Gkr
 48:17 Gkr->Pass => Dpw
 48:20 Dpw->Pass => Gkr
 48:22 Gkr->Long:FT => !M:HD >> Dd:Cnt
@@ -585,15 +585,15 @@
 :break
 :set T: Throw-in
 50:48 M => DMw
-50:54 DMw->Pass => Gkr
+50:54 DMw->BackPass => Gkr
 :pressed T
 50:56 Gkr->Long:FT => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
 :transition T
 51:11 Dw->Pass => DMw:FT >> DMw
 51:13 DMw->Move => DMw
-51:14 DMw->Pass => Mw
+51:14 DMw->Pass:Open => Mw
 :counter-attack T
-51:20 A->SwapSidePass => Ad
+51:20 A->ParallelPass => Ad
 51:22 Ad->Dribble => !Dpw:Ch
 :establish L
 51:26 Dwp->Pass => Dwp
@@ -623,9 +623,10 @@
 53:12 A->Pass => Ad
 53:13 Ad->Pass:FT => M
 :attack L
-53:14 M->Pass => Md
-53:17 Md->Move => Ad
+53:14 M->Pass => Md:Fr
+53:17 Md:Fr->Move => Ad
 53:19 Ad->Long => !Gkr:H
+# !!! 01:02:44
 :break
 :possession T
 53:34 DMd -> DMw
