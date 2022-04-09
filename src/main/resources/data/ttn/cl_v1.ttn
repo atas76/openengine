@@ -404,3 +404,40 @@
 35:13 Aw->Move => Awp
 35:15 Awp->Cross => !GK
 :pressure T
+35:42 GK->Pass => M CR @ D
+35:44 D->Run => DM
+:transition T
+35:47 DM->Pass => D L @ Mw:Fr
+35:52 Mw->Long => AM R @ AMd
+35:57 AMd->ForwardPass:Open => !Gkr:H
+:possession L
+36:15 Gkr->Long => !DM*T
+:set T: Throw-in
+36:25 DM => M CL @ DMw:FT >> D R @ DMw
+36:28 DMw->BackPass => Gkr
+:pressure T
+36:32 Gkr->Pass => D CL @ Dp
+36:35 Dp->Move => Dpw
+36:37 Dpw->Pass => M CL @ Dd
+36:39 Dd->Pass => D L @ Dw
+36:41 Dw->BackPass => M CL @ Dw
+36:43 Dw->Move => DMw
+36:44 DMw->Pass => D L @ DMw
+36:45 DMw->Pass:FT => !D R @ Mw:I >> !M RC @ AMw:Cnt
+:recovery L
+36:48 Mw->HighPass => F RC @ Awp
+:attack L
+36:54 Awp->Pass => F C @ Aw
+36:57 Aw->Pass => F RC @ Awp
+36:59 Awp:Hld => !D CL @ Dw:Ch >> !D*T
+:set T: Throw-in
+37:24 D => M CR @ DMd:Cnt
+37:27 DMd->Long:Open => !D L @ DMw
+:possession L
+37:32 DMw->BackPass => Gkr
+:pressure L
+37:35 Gkr->Pass => D CR @ Dd
+37:39 Dd->SwapSidePass => D L @ MDw:Fr
+:transition L
+37:42 MDw:Fr->Run => Ad
+:set L: Corner
