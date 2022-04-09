@@ -626,7 +626,6 @@
 53:14 M->Pass => Md:Fr
 53:17 Md:Fr->Move => Ad
 53:19 Ad->Long => !Gkr:H
-# !!! 01:02:44
 :break
 :possession T
 53:34 DMd -> DMw
@@ -641,7 +640,7 @@
 :attack T
 54:31 Awp->Dribble => Awp:Adv >> Awp
 54:33 Awp->Pass => Ad
-54:34 Ad->Pass => !Dp:Clr >> DM*T
+54:34 Ad->ForwardPass => !Dp:Clr >> DM*T
 :injury
 :break
 :possession T
@@ -665,7 +664,7 @@
 58:16 DMd -> Gkr
 :pressed T
 58:22 Gkr->Long => DMw:Cnt
-58:27 DMw->Pass => Dw
+58:27 DMw->BackPass => Dw
 58:30 Dw->Long => !DMd >> DMd:HD >> !Mw:HD >> DM*T
 :set T: Throw-in
 58:44 DM => DMw
@@ -687,13 +686,13 @@
 60:01 Mw -> M
 60:05 M->Pass => Md:Mrk:Tck >> M
 60:07 M->Pass:FT => Md
-60:10 Md->Pass => Ad:FT >> A:FT >> Ad
+60:10 Md->ForwardPass => Ad:FT >> A:FT >> Ad
 :attack T
 60:13 Ad->Pass => !D:I >> A
 60:17 A->Shoot => !Dp:B >> Aw
 60:20 Aw->Pass:FT => Mw
 60:23 Mw->Move => Md
-60:24 Md->Pass => A:FT >> !GK
+60:24 Md->ForwardPass => A:FT >> !GK
 :pressed L
 60:53 GK->Long => !DMw:I >> M*T
 :set L: Throw-in
@@ -702,10 +701,10 @@
 :set L: Throw-in
 61:59 A => !Dpw:Cl >> !Dp:Cl >> Md*F
 :set L: Freekick
-62:19 Md:SP->Pass => DM
+62:19 Md:SP->BackPass => DM
 :possession L
 62:22 DM -> DMw
-62:36 DMw->Long => M
+62:36 DMw->ForwardPass => M
 62:38 M->Pass:FT => M
 62:40 M->Pass:FT => M
 62:41 M->Dribble:Open => !GK
@@ -718,7 +717,7 @@
 :transition T
 63:14 DMd->Pass => DMw
 63:17 DMw->Pass => DMw
-63:20 DMw->ForwardPass => !Dp
+63:20 DMw->ForwardPass:Open => !Dp
 :pressed L
 63:23 Dp->Pass => Gkr
 63:24 Gkr->Long:FT => !Mw:HD >> !DMd:HD >> D:Clr >> !Dwp:Ch
@@ -738,12 +737,12 @@
 65:30 DMw->Pass => DMw
 :transition T
 65:32 DMw->HighPass => Mw:HD >> DMw
-65:35 DMw->BackPass => DMw
+65:35 DMw->Pass => DMw
 :possession T
 65:39 DMw->Pass => DMd
 65:42 DMd->ForwardPass => M:Cnt >> !DMw
 :establish L
-65:45 DMw->Pass => Gkr
+65:45 DMw->BackPass => Gkr
 :pressed L
 65:48 Gkr->Pass => Dw
 65:50 Dw->Pass:FT => DMd
@@ -797,7 +796,7 @@
 69:35 DMw->Long => !D:HD >> M
 :transition T
 69:42 M->Pass => Mw
-69:47 Mw->Pass => DM
+69:47 Mw->BackPass => DM
 :possession T
 69:55 DM->Long => Awp:Cnt >> Apw
 :attack T
@@ -813,13 +812,13 @@
 71:42 M => Aw:HD >> !Dw:B >> Aw:Ch >> !D*T
 :set T: Throw-in
 71:56 D => Dp
-71:58 Dp->Pass => Gkr
+71:58 Dp->BackPass => Gkr
 :pressed T
 72:01 Gkr->Pass => Dp
 72:04 Dp->Move => D
 72:05 D->Pass => DMw
 :transition T
-72:08 DMw->Pass => DM
+72:08 DMw->ForwardPass => DM
 72:15 DM->Pass => DM
 72:16 DM->Pass => !DM
 :transition L
@@ -834,6 +833,7 @@
 72:35 Apd->HighPass => !Gkr:H
 :fair-play
 :substitution
+#!!! 01:22:55
 :pressed L
 73:44 Gkr->Pass => D
 73:46 D->Move => DM
