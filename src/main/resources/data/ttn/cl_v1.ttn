@@ -386,4 +386,21 @@
 33:29 Aw->Move => Awp
 33:32 Awp->LowCross => !D CR @ Dwp:I >> C
 :set T: Corner
-# 40:00
+33:43 CK->Pass => D R @ Awp
+33:46 Awp->Cross => !M LC @ Dp:HD >> A*T
+:set T: Throw-in
+34:11 A => AM C @ Awp:Cnt >>> Ap*T
+:set T: Throw-in
+34:26 Ap => !D CL @ Dpw:HD >>> M CR @ Mw
+34:35 Mw->BackPass:FT => D CR @ DM
+:possession T
+34:41 DM -> Gkr
+:pressure T
+34:56 Gkr->Pass => D CL @ Dpd
+34:59 Dpd->BackPass => Gkr
+35:02 Gkr->Pass => D CR @ Dpw
+35:06 Dpw->Long => !M RC @ Mw:HD >> !M RC @ Aw
+:attack L
+35:13 Aw->Move => Awp
+35:15 Awp->Cross => !GK
+:pressure T
