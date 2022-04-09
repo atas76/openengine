@@ -114,4 +114,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.LowCross, statement.getAction().getType());
     }
+
+    @Test
+    public void testSwapSidePassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("37:39 Dd->SwapSidePass => D L @ MDw:Fr");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.SwapSidePass, statement.getAction().getType());
+    }
 }
