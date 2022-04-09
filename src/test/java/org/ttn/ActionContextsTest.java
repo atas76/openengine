@@ -30,4 +30,11 @@ public class ActionContextsTest {
         assertEquals(ActionContext.SET_PIECE, statement.getActionContext());
     }
 
+    @Test
+    public void testHoldBallActionContext() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("36:59 Awp:Hld => !D CL @ Dw:Ch >> !D*T");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionContext.HOLD, statement.getActionContext());
+    }
 }

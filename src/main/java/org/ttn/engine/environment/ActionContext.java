@@ -13,5 +13,6 @@ public enum ActionContext {
     SET_PIECE,
     CHALLENGE,
     BLOCK,
-    FIRST_TOUCH
+    FIRST_TOUCH,
+    HOLD
 }
