@@ -833,7 +833,6 @@
 72:35 Apd->HighPass => !Gkr:H
 :fair-play
 :substitution
-#!!! 01:22:55
 :pressed L
 73:44 Gkr->Pass => D
 73:46 D->Move => DM
@@ -848,15 +847,15 @@
 74:22 Gkr->Long => DMw:Cnt >> !Mw:I >> !Mw:FT >> DMw
 :transition T
 74:30 DMw->Pass => DM
-74:32 DM->Pass => !DMw
+74:32 DM->WidePass:Open => !DMw
 :transition L
 74:33 DMw->Move => Md:Fr
 :counter-attack L
-74:38 Md:Fr->Pass => A:Fr
+74:38 Md:Fr->ParallelPass => A:Fr
 74:42 A->HighPass => !Dp:HD >> !D:HD >> DM
 :transition T
 74:47 DM->Pass => DM
-74:50 DM->Pass:FT => M
+74:50 DM->ForwardPass:FT => M
 :counter-attack T
 74:52 M->Run => Ap >> !Dp:Ch >> C
 :set T: Corner
@@ -876,7 +875,7 @@
 76:09 DM->Move => M
 76:12 M->Long => !Dd:HD >> !DM:HD >> !DMd
 :transition L
-76:20 DMd->Pass => DMw
+76:20 DMd->BackPass => DMw
 :possession L
 76:24 DMw->Long => !Gkr:H
 :possession T
@@ -884,7 +883,7 @@
 76:36 DMw->Long => !Gkr:H
 :possession L
 76:40 Gkr -> Mw
-76:51 Mw->Pass => !DMw:B >> M*T
+76:51 Mw->ForwardPass => !DMw:B >> M*T
 :set L: Throw-in
 77:11 M => !Dw:HD >> !Dw:FT >> !D
 :possession T
@@ -907,30 +906,31 @@
 79:01 M->Move => !D:Ch >> !D:Clr >> !DM:Cnt
 :transition L
 79:08 DM->Move => M
-79:10 M->Pass => !DM
+79:10 M->ForwardPass => !DM
 :establish T
-79:12 DM->Pass => Gkr
+79:12 DM->BackPass => Gkr
 79:14 Gkr->Pass:FT => Dpd
 :possession T
 79:17 Dpd -> Md
 :attacking-possession T
-79:31 Md->Pass => M:Fr
+79:31 Md->ParallelPass => M:Fr
 79:33 M->Move => A
 :attack T
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
 :possession L
-79:52 DMw->ForwardPass => DMw
+79:54 DMw->ForwardPass => DMw
+79:57 DMw->Pass => DMw
 79:58 DMw->Pass:FT => Mw:Fr
 :attacking-possession L
-80:00 Mw->ForwardPass => !DMw
+80:00 Mw->ForwardPass:Open => !DMw
 :establish T
 80:02 DMw->ForwardPass => DMw
 :transition T
 80:05 DMw->Move => M
 80:06 M->Pass => DM
-80:07 DM->Pass:FT => Mw
+80:07 DM->DiagonalPass:FT => Mw
 80:12 Mw->Move => M
 80:16 M->ForwardPass => M
 80:17 M->Dribble => A
@@ -940,7 +940,7 @@
 :possession L
 80:30 DMw->ForwardPass:Open => !Dw
 :establish T
-80:34 Dw->Pass:FT => !C
+80:34 Dw->BackPass:FT => !C
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
 81:49 A->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
@@ -950,7 +950,7 @@
 82:10 DMw:Fr->Move => Mw
 :attacking-possession T
 82:15 Mw -> Md
-82:32 Md->Pass:FT => Aw
+82:32 Md->WidePass => Aw
 :attack T
 82:36 Aw->Cross => !Dp:HD >> Awp:Cnt >> Awp*F
 :set T: Freekick
@@ -983,9 +983,9 @@
 :possession T
 90:09 Gkd->Long => A:HD >> !DM
 :establish L
-90:16 DM->Pass:FT => !M:B >> !DMw
+90:16 DM->Clear:FT => !M:B >> !DMw
 :transition T
-90:21 DMw->Pass => DMw
+90:21 DMw->Pass:FT => DMw
 90:26 DMw->Pass => DMd
 90:30 DMd->Long => !Gkr:H
 :possession L
@@ -1008,7 +1008,7 @@
 92:08 Gkr->Long => !DMw
 :transition T
 92:14 DMw->Long => M:HD >> M
-92:19 M->Pass:FT => Ad
+92:19 M->DiagonalPass:FT => Ad
 :attack T
 92:22 Ad->Move => Apd
 92:23 Apd->Shoot => !Gkr:S >> C #r=2
@@ -1025,7 +1025,7 @@
 93:24 DMd->Long => Md:HD >> Md:Cnt >> !DM:Clr >> !DM*T
 :break
 :attack T
-93:56 A->Pass => !Dp:Clr >> A*T
+93:56 A->ForwardPass => !Dp:Clr >> A*T
 :set T: Throw-in
 94:02 A => Aw
 :attack T
@@ -1040,7 +1040,6 @@
 94:23 Aw->Move => Ad
 94:26 Ad->Pass => A
 94:27 A->HighPass => !GK
-# TODO Classify passes based on direction
 # TODO Experimental: provide more context in terms of player positioning (tracking data)
 # TODO Describe lines positioning on flow state changes
 # TODO flow states quadrant: set (possession chain) vs. (team/individual) challenge / static vs. movement (static vs. dynamic tempo)
