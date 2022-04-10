@@ -441,3 +441,29 @@
 :transition L
 37:42 MDw:Fr->Run => Ad
 :set L: Corner
+38:28 CK->Cross => !AM L @ Dp:HD >> F RC @ A
+38:31 A->Shoot:FT => !GK #r=0
+:injury
+:possession T
+40:12 GK->Long => !D CL @ DM:HD >>> !M RC @ Md
+40:20 Md->Long:FT:Open => F LC @ Awp
+:attack L
+40:32 Awp->BackPass => D L @ AMw
+40:36 Mw->Pass => M LC @ Ad
+40:39 Ad->Pass => F RC @ Awp
+40:42 Awp->BackHeelPass => !M RC @ Dw:Ch >> M*T
+:set L: Throw-in
+40:59 M => F C @ Aw:HD >> D L @ Aw
+:attack L
+41:03 Aw->Dribble => !AM L @ Dw:Ch >> !AM C @ Dw
+:defensive_transition T
+41:04 Dw->Move => !M C @ Mw:I >> AM L @ DMw
+41:06 Dw->Move => !M RC @ M:I
+:attacking_transition L
+41:09 M->Move => A
+:attack L
+41:10 A->Shoot => !D CL @ D:B >> F C @ A:Cnt
+41:14 A->Move => !AM R @ D:Ch >> M RC @ Ad
+41:15 Ad->Pass => D R @ Awp
+41:18 Awp->Cross => !D L @ Dwp:B >> C
+:set L: Corner
