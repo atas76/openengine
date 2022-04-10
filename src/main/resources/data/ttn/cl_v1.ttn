@@ -467,3 +467,31 @@
 41:15 Ad->Pass => D R @ Awp
 41:18 Awp->Cross => !D L @ Dwp:B >> C
 :set L: Corner
+41:45 CK->Cross => !F C @ Dp:HD >> F RC @ A:Cnt
+41:49 A->Shoot => !M CL @ D:B >> C
+:set L: Corner
+42:20 CK->Cross => !AM L @ Dp:Clr >> M*T
+:set L: Throw_in
+42:40 M => D CL @ MDd
+:possession L
+42:43 MDd -> D CL @ MDd
+42:55 MDd->Long => D R @ AMw
+:transition L
+42:59 Mw->ForwardPass => !D RC @ D:I >>> !DM*H
+:set T: Freekick
+43:12 DM:SP->Long => !D RC @ DM:HD >>> F C @ AM
+43:17 M->Dribble => !D CL @ D:Ch >> !D CR @ D
+:recovery L
+43:20 D->BackPass => D R @ Dd:Fr
+:defensive_transition L
+43:22 Dd->Long:Open => !D CL @ Dpw
+:pressure T
+43:27 Dpw->BackPass:FT => Gkr
+43:28 Gkr->HighPass => D L @ Dw:HD >> D CL @ Dwp
+43:35 Dwp->Pass => D L @ Dwp
+43:36 Dwp->Move => Dw
+43:38 Dw->ForwardPass => AM R @ Mw:Fr
+:counter_attack T
+43:41 Mw:Fr->Run => Ad
+43:45 Ad->ForwardPass:Open => !Gkr:H
+:possession L
