@@ -254,6 +254,7 @@ public class ParserUtil {
         }
         switch(tokens.get(1)) {
             case "break":
+            case "HT":
                 return new Directive(directiveType);
             case "set":
                 checkMissingTokens(tokensNumber, 2, "team");
@@ -283,6 +284,7 @@ public class ParserUtil {
             case "attack" -> ATTACK_CHAIN_BLOCK;
             case "pressure" -> BUILDUP_PRESSURE_BLOCK;
             case "break" -> BREAK;
+            case "HT" -> HALF_TIME;
             case "possessor" -> POSSESSOR_DEFINITION;
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "attacking_possession" -> ATTACKING_POSSESSION;

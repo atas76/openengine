@@ -112,6 +112,14 @@ public class DirectivesTest {
     }
 
     @Test
+    public void testHalfTimeDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":HT");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(HALF_TIME, directive.getType());
+    }
+
+    @Test
     public void testAttackingPossessionDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":attacking_possession T");
         Directive directive = ParserUtil.parseDirective(tokens);

@@ -11,6 +11,7 @@ public interface Parsable {
         TRANSITION_CHAIN_BLOCK,
         POSSESSOR_DEFINITION,
         BREAK,
+        HALF_TIME,
         ATTACKING_POSSESSION,
         DEFENSIVE_TRANSITION,
         ATTACKING_TRANSITION,
