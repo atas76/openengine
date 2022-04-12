@@ -542,4 +542,35 @@
 46:44 Awp->LowCross:FT => !D CR @ Dp:I >>> !D R @ Dwp
 :defensive_transition L
 46:50 Dwp->Clear => !M*T
-# 53:20
+:HT
+:set T: Kickoff
+45:04 DM->Long => !D*T
+:set L: Throw-in
+45:10 D => !D CR @ DMw:HD >>> F LC @ Mw:Pvt
+45:19 Mw->ForwardPass => !D L @ DM
+:transition T
+45:22 DM->ForwardPass => AM R @ MD
+45:24 MD->BackPass:FT => M CL @ MD
+45:27 MD->Dribble => M
+45:28 M:Mrk->Move => Md
+45:29 Md->Pass => D R @ Mw
+45:32 Mw->Long => !D L @ Dw:HD >>> M*T
+:set T: Throw-in
+45:50 M => M CL @ Mw
+:attacking_possession T
+45:56 Mw->Pass => M RC @ Mw
+45:57 Mw->Pass => M CL @ MD
+46:01 MD -> D R @ MDw
+46:15 MDw->ForwardPass:Open => AM L @ Awp
+:attack T
+46:23 Awp->Pass => D R @ Aw
+46:24 Aw->Cross:FT => AM R @ Apw:HD >>> D CR @ DM
+:possession T
+46:35 DM -> Gkr
+:pressure T
+46:53 Gkr->Long => F C @ AMd:Cnt
+:counter_attack T
+46:58 AMd->Move => Apd
+47:01 Apd->LowCross => !D*T
+:set L: Throw-in
+# 56:29
