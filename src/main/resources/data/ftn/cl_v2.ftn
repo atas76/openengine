@@ -545,7 +545,7 @@
 46:15 DMw->ForwardPass:Open => Awp
 :attack T
 46:23 Awp->Pass => Aw
-46:24 Aw->Cross:FT => Dp:HD >> !Dp:Cl >> DM
+46:24 Aw->Cross:FT => Apw:HD >> !Dp:Cl >> DM
 :possession T
 46:35 DM -> Gkr
 :pressed T
