@@ -588,13 +588,14 @@
 50:48 M => DMw
 50:54 DMw->BackPass => Gkr
 :pressed T
-50:56 Gkr->Long:FT => M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
+50:56 Gkr->Long:FT => !M:HD >> !DMw:Cnt >> !DMw:FT >> Dw:I >> Dw
 :transition T
 51:11 Dw->Pass => DMw:FT >> DMw
 51:13 DMw->Move => DMw
-51:14 DMw->Pass:Open => Mw
+51:14 DMw->Pass:Open => Mw:Fr
 :counter-attack T
-51:20 A->ParallelPass => Ad
+51:17 Mw:Fr->Run => Ad
+51:20 Ad->ParallelPass => Ad
 51:22 Ad->Dribble => !Dpw:Ch
 :establish L
 51:26 Dwp->Pass => Dwp
