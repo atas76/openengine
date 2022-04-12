@@ -495,3 +495,51 @@
 43:41 Mw:Fr->Run => Ad
 43:45 Ad->ForwardPass:Open => !Gkr:H
 :possession L
+43:51 Gkr -> D CR @ Dd
+:pressure L
+44:10 Dd->BackPass => Gkr
+44:12 Gkr->Pass:FT => D CL @ Dd
+44:16 Dd->BackPass => Gkr
+44:19 Gkr->Pass => D CR @ Dw
+44:22 Dw->Move => DMw
+:transition L
+44:23 DMw->Long:Open => !D R @ D:HD >> !Gkr:H
+:possession T
+44:29 Gkr -> D R @ MDw
+44:36 DMw->Long:Open => !D L @ Dw:Tck >> M*T
+:set T: Throw_in
+44:58 M => AM C @ Mw:FT >> D R @ Mw
+44:59 Mw->HighPass => D CL @ M:HD >>> M CR @ MD
+:transition T
+45:07 MD->Move => M
+45:10 M->WidePass => AM L @ AMw
+45:13 AMw->Move => Ad
+:attack T
+45:14 Ad->Pass => AM R @ A
+45:15 A->Pass:FT => AM C @ A
+45:18 A->Shoot => !GK #r=0
+:possession L
+45:42 GK->Long => F LC @ Md:HD >>> !D L @ DMw
+:transition L
+45:53 DMw->Pass => M CL @ DMd
+45:56 DMw->Pass => D CR @ D
+:pressure T
+45:57 D->Pass => D CL @ Dpw
+46:00 Dpw->Pass => D CR @ Dp
+46:02 Dp->WidePass => D R @ DMw
+46:06 DMw->Long => !D CR @ DM:HD >>> M*T
+:set T: Throw_in
+46:20 M => M CR @ Mw:FT >>> M CR @ Mw
+46:25 Mw->Pass => D CL @ M
+:attacking_possession T
+46:29 M -> D L @ Mw
+46:31 Mw->WidePass => AM L @ Aw
+:attack T
+46:35 Aw->BackPass => M CL @ AMw
+46:38 AMw->BackPass => D L @ AMw
+46:40 AMw->ForwardPass => AM L @ Aw
+46:43 Aw->ForwardPass:Open => M CL @ Awp
+46:44 Awp->LowCross:FT => !D CR @ Dp:I >>> !D R @ Dwp
+:defensive_transition L
+46:50 Dwp->Clear => !M*T
+# 53:20
