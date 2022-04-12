@@ -601,3 +601,35 @@
 :set T: Freekick
 50:01 AM:SP->Long => !Dp*O
 :break
+:set T: ThrowIn
+50:48 M => M CR @ MDw
+50:52 MDw->Move => DMw
+50:54 DMw->BackPass => Gkr
+:pressure T
+50:56 Gkr->Long:FT => !M C @ MDd:HD >>> D L @ Dw
+:transition T
+51:11 Dw->Pass => AM R @ DMw:FT >> M CR @ DMw
+51:13 DMw->Move => MDw
+51:14 MDw->Pass:Open => AM C @ Mw:Fr
+51:17 Mw:Fr->Run => Ad
+:counter_attack T
+51:20 Ad->ParallelPass => M CL @ Ad:Fr
+51:22 Ad->Dribble => !D L @ Dpw:Ch
+:recovery L
+51:26 Dwp->Pass => F LC @ Dwp
+51:28 Dwp->Pass:FT => D L @ Dwp:Tck >>> DM*T
+:set L: ThrowIn
+51:55 DM => F LC @ MDw
+51:57 MDw->BackPass => D L @ DMw
+51:58 DMw->Long:FT => D R @ Mw:Fr
+:transition L
+52:04 Mw:Fr->Move => AMw
+52:06 AMw->Long => F LC @ Awp
+:attack L
+52:15 Awp->Pass => M LC @ Apw
+52:16 Apw->Pass:FT => F C @ Awp
+52:20 Awp->Pass => D L @ AMw
+52:22 AMw->Pass => M C @ AMd
+52:23 AMd->Move => A
+52:24 A->Shoot => !M CL @ D:Tck >> !Gkr:H
+
