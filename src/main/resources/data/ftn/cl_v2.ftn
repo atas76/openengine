@@ -560,7 +560,8 @@
 47:36 DM => Mw:HD >> !DMw:FT >> DMw:HD >> DMw
 47:43 DMw->Pass => DMw
 :transition L
-47:44 DMw->HighPass => !DMw:Cnt # allow 'instant' change of coordinates
+47:44 DMw->HighPass => !Mw:Cnt # allow 'instant' change of coordinates
+:transition T
 47:47 Mw->ForwardPass => !DM*T
 :set L: Throw-in
 48:00 DM => !Dw
