@@ -664,4 +664,18 @@
 54:34 Ad->ForwardPass => !D CR @ Dp:Clr >> DM*T
 :injury
 :break
-# 64:11
+:possession T
+56:02 Gkr->Long => !D CL @ DM:HD >>> AM R @ AMd
+:transition T
+56:16 AMd->Move => Apw
+:attack T
+56:22 Apw->Cross => !D L @ Dpw:B >> C
+:set T: Corner
+56:51 CK->Cross => !Gkr:Punch >> D L @ Apd
+56:55 Apd->Shoot:FT => !F RC @ Dp:B >> C
+:set T: Corner
+57:15 CK->Cross => D CL @ Apw
+57:17 Apw->HdSht => !GK
+:substitution
+:break
+# 66:47
