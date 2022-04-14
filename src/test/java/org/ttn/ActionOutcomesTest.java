@@ -53,4 +53,12 @@ public class ActionOutcomesTest {
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.FIRST_TOUCH));
     }
+
+    @Test
+    public void testAdvantageActionOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("54:31 Awp->Dribble => Awp:Adv >> AM L @ Awp");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.ADVANTAGE));
+    }
 }

@@ -75,6 +75,7 @@ public class ParserUtil {
             case "B" -> BLOCK;
             case "FT" -> FIRST_TOUCH;
             case "Hld" -> HOLD;
+            case "Adv" -> ADVANTAGE;
             default -> throw new ValueException("Could not map action context value");
         };
     }
