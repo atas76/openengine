@@ -632,4 +632,36 @@
 52:22 AMw->Pass => M C @ AMd
 52:23 AMd->Move => A
 52:24 A->Shoot => !M CL @ D:Tck >> !Gkr:H
-
+:possession T
+52:33 Gkr -> D CR @ D
+52:51 D->Long => D R @ MDw:Fr
+52:54 DMw:Fr->Move => Mw
+52:55 Mw->Long => !D CR @ DMd:HD >> !M LC @ MDd
+:transition L
+53:00 MDd->Long:Open => F CR @ Apd
+:attack L
+53:05 Apd->Shoot => D CL @ Dp:B >>> M CL @ A
+53:12 A->Pass => M CR @ Ad
+53:13 Ad->Pass:FT => M C @ AM
+53:14 AM->Pass => D L @ AMd:Fr
+53:17 AMd:Fr->Move => Ad
+53:19 Ad->Cross => !Gkr:H
+:break
+:possession T
+:possessor M CL
+53:34 MDd -> D R @ MDw
+53:39 MDw->ForwardPass => AM C @ Mw:Fr
+:attacking_possession T
+53:44 Mw->Long => AM R @ Ap:Cnt
+:attack T
+53:48 Ap->Shoot => !D R @ Dp:B >>> D CL @ DMw
+:possession T
+54:05 DMw -> D CR @ MDd
+54:23 MDd->Long => D L @ Awp
+:attack T
+54:31 Awp->Dribble => Awp:Adv >> AM L @ Awp
+54:33 Awp->Pass => AM C @ Ad
+54:34 Ad->ForwardPass => !D CR @ Dp:Clr >> DM*T
+:injury
+:break
+# 64:11
