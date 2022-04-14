@@ -123,4 +123,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.SwapSidePass, statement.getAction().getType());
     }
+
+    @Test
+    public void testHeaderAttemptAtGoalAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("57:17 Apw->HdSht => !GK");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.HdSht, statement.getAction().getType());
+    }
 }
