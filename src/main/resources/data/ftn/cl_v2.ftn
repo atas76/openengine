@@ -619,7 +619,7 @@
 52:54 DMw:Fr->Move => Mw
 52:55 Mw->Long => !DMd:HD >> !DMd
 :transition L
-53:00 DM->Long:Open => Apd
+53:00 DMd->Long:Open => Apd
 :counter-attack L
 53:05 Apd->Shoot => Dp:B >> A:Ch >> A
 53:12 A->Pass => Ad
