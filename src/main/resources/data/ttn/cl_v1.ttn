@@ -678,4 +678,40 @@
 57:17 Apw->HdSht => !GK
 :substitution
 :break
-# 66:47
+:pressure L
+:break
+:possession T
+:possessor D CR
+58:16 DMd -> Gkr
+:pressure T
+58:22 Gkr->Long => D L @ MDw:Cnt
+58:27 MDw->BackPass => D CL @ Dw
+58:30 Dw->Long => !D CR @ DMd >>> DM*T
+:set T: Throw-in
+58:44 DM => M CL @ DMw
+:possession T
+58:48 DMw->BackPass => D CR @ D
+58:51 D->Move => DMd
+58:56 DMd->Long => !D CL @ DMd:HD >> !D L @ DMw
+:transition L
+59:03 DMw->Long:Open => !Gkr:H
+:possession T
+59:27 Gkr->Long => D R @ DMw:FT >>> !F LC @ Md:Cnt
+:transition L
+59:39 MDd->Long => !D CR @ DM:I >>> !M CR @ DM
+:transition T
+59:49 DM->Pass => D L @ MDw
+59:53 MDw->Move => AMw
+59:59 AMw->BackPass => M CL @ Mw
+:attacking_possession T
+60:01 Mw -> AM C @ Md
+60:05 Md->Pass => M CL @ AMd:Mrk:Tck >> AM R @ AM
+60:07 AM->Pass:FT => AM C @ AMw
+60:10 AMw->ForwardPass => AM L @ Ad:FT >>> AM L @ Ad
+60:13 Ad->Pass => !D CR @ Dd:I >> AM C @ A
+:attack T
+60:17 A->Shoot => !D CL @ Dp:B >> D R @ Aw
+60:20 Aw->Pass:FT => AM C @ AMw
+60:23 AMw->Move => AMd
+60:24 AMd->ForwardPass => AM R @ A:FT >> !GK
+# 69:51
