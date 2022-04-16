@@ -707,9 +707,9 @@
 :possession L
 62:22 DM -> DMw
 62:36 DMw->ForwardPass => M
-62:38 M->Pass:FT => M
-62:40 M->Pass:FT => M
-62:41 M->Dribble:Open => !GK
+62:37 M->Pass:FT => M
+62:39 M->Pass:FT => M
+62:40 M->Dribble:Open => !GK
 :break
 :pressed T
 63:07 Dpw->ForwardPass => Dd
@@ -730,7 +730,7 @@
 64:05 DMd -> Gkr
 :possession T
 64:11 Gkr -> DMd
-64:19 DMd->Long => !DM:HD >> !DM:F
+64:19 DMd->Long => !DM:HD >> !DM*F
 :set L: Freekick
 64:41 DM:SP->Long => !DM*T
 :substitution
