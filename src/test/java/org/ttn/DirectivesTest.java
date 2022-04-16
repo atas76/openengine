@@ -150,4 +150,15 @@ public class DirectivesTest {
 
         assertEquals(COUNTER_ATTACK, directive.getType());
     }
+
+    @Test
+    public void testSubstitutionDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":substitution L: M LC");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(SUBSTITUTION, directive.getType());
+        assertEquals("L", directive.getTeam());
+        assertEquals(TacticalPosition.X.M, directive.getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, directive.getTacticalPosition().getY());
+    }
 }

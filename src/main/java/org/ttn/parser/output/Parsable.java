@@ -16,6 +16,7 @@ public interface Parsable {
         DEFENSIVE_TRANSITION,
         ATTACKING_TRANSITION,
         COUNTER_ATTACK,
+        SUBSTITUTION,
         BREAK_BALL_ACTION,
         ATTACK_ACTION,
         RELEASE_PRESSING_ACTION,

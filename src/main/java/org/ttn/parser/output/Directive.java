@@ -44,4 +44,9 @@ public class Directive implements Parsable {
         this(type, team);
         this.setPiece = setPiece;
     }
+
+    public Directive(DirectiveType type, String team, TacticalPosition tacticalPosition) {
+        this(type, team);
+        this.tacticalPosition = tacticalPosition;
+    }
 }

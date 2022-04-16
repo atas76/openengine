@@ -264,6 +264,12 @@ public class ParserUtil {
                 checkMissingTokens(tokensNumber, 4, "set piece keyword");
                 return new Directive(directiveType, tokens.get(2),
                         Parser.setPieceMapping.get(tokens.get(4)));
+            case "substitution":
+                checkMissingTokens(tokensNumber, 2, "team");
+                checkMissingTokens(tokensNumber, 3, "':'");
+                expectToken(":", tokens.get(3));
+                checkMissingTokens(tokensNumber, 4, "tactical position");
+                return new Directive(directiveType, tokens.get(2) , parseTacticalPosition(tokens.subList(4, tokens.size())));
             case "possessor":
                 checkMissingTokens(tokensNumber, 2, "tactical position");
                 return new Directive(directiveType, parseTacticalPosition(tokens.subList(2, tokens.size())));
@@ -292,6 +298,7 @@ public class ParserUtil {
             case "defensive_transition" -> DEFENSIVE_TRANSITION;
             case "attacking_transition" -> ATTACKING_TRANSITION;
             case "counter_attack" -> COUNTER_ATTACK;
+            case "substitution" -> SUBSTITUTION;
             case "break_ball_action" -> BREAK_BALL_ACTION;
             case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
