@@ -676,7 +676,7 @@
 :set T: Corner
 57:15 CK->Cross => D CL @ Apw
 57:17 Apw->HdSht => !GK
-:substitution
+:substitution L: F C
 :break
 :pressure L
 :break
@@ -687,7 +687,7 @@
 58:22 Gkr->Long => D L @ MDw:Cnt
 58:27 MDw->BackPass => D CL @ Dw
 58:30 Dw->Long => !D CR @ DMd >>> DM*T
-:set T: Throw-in
+:set T: ThrowIn
 58:44 DM => M CL @ DMw
 :possession T
 58:48 DMw->BackPass => D CR @ D
@@ -714,4 +714,40 @@
 60:20 Aw->Pass:FT => AM C @ AMw
 60:23 AMw->Move => AMd
 60:24 AMd->ForwardPass => AM R @ A:FT >> !GK
-# 69:51
+:pressure L
+60:53 GK->Long => !D L @ MDw:I >> M*T
+:set L: ThrowIn
+61:20 M => M RC @ Aw:Cnt >>> A*T
+:substitution L: M LC
+:set L: ThrowIn
+61:59 A => !D CL @ Dpw:Clr >>> Md*F
+:set L: Freekick
+62:19 Md:SP->BackPass => D CL @ DM
+:possession L
+62:22 DM -> D CR @ MDw
+62:36 DMw->ForwardPass => F C @ Md
+62:37 M->Pass:FT => M RC @ AMd
+62:39 M->Pass:FT => F C @ AMd
+62:40 AMd->Dribble:Open => !GK
+:break
+:pressure T
+:possessor D CL
+63:07 Dpw->ForwardPass => M CL @ Dd
+63:09 Dd->Move => Dw
+63:10 Dw->Dribble => Dw
+63:13 Dw->Pass => AM R @ DMd
+63:14 DMd->Pass => D L @ DMw
+63:17 DMw->Pass => AM R @ MDw:Fr
+:transition T
+63:20 MDw->ForwardPass:Open => !D CL @ Dp
+:pressure L
+63:23 Dp->Pass => Gkr
+63:24 Gkr->Long:FT => !D L @ Mw:HD >>> !D CL @ Dwp:Ch
+:possession T
+63:41 Dwp -> D CL @ DMd
+64:19 DMd->Long => !D CR @ DM:HD >> !DM*F
+:set L: Freekick
+64:41 DM:SP->Long => !DM*T
+:substitution T: M CL
+:set T: ThrowIn
+# 74:36
