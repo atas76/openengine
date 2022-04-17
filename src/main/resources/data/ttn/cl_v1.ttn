@@ -779,3 +779,22 @@
 67:00 A => F CL @ Awp
 67:03 Awp->BounceOff => D R @ Awp
 67:04 Awp->HighPass => !GK
+:pressure T
+67:18 GK->Long => D L @ MDw:HD >> M CL @ MDd:Cnt
+:transition T
+67:24 MDd->Move => MD
+67:27 DM->Pass => D R @ Mw
+67:30 Mw->HighPass => !Dw*T
+:set L: ThrowIn
+67:51 Dw => F C @ DMw:HD >> F LC @ MDd:Cnt
+67:57 MDd->Dribble => MD
+:transition L
+67:59 DM->Move => Mw
+68:04 Mw->Dribble => A
+:attack L
+68:07 A->Pass => F RC @ Ap
+68:08 Ap->Pass:FT => M LC @ Ap
+68:09 Ap->Shoot => !GK
+:break
+# 77:32
+
