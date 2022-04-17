@@ -750,4 +750,32 @@
 64:41 DM:SP->Long => !DM*T
 :substitution T: M CL
 :set T: ThrowIn
-# 74:36
+65:29 DM => AM C @ DMw
+65:30 DMw->Pass => D R @ DMw
+:transition T
+65:32 DMw->HighPass => AM L @ Mw:HD >> AM C @ MDw
+65:35 MDw->Pass => D R @ DMw
+:possession T
+65:39 DMw->Pass => AM C @ MDd
+65:42 MDd->ForwardPass => M CL @ Md:Cnt >> !D L @ DMw
+:recovery L
+65:45 DMw->BackPass => Gkr
+:pressure L
+65:48 Gkr->Pass => D L @ Dw
+65:50 Dw->Pass:FT => M C @ DMd
+65:52 DMd->Pass:FT => M LC @ DMw
+:transition L
+65:54 DMw->ForwardPass => F C @ Md:Cnt >> F LC @ Md
+65:59 Md:Hld->Move => M:Fr
+66:00 M:Fr->Pass => D R @ Mw:Fr
+66:01 Mw:Fr->Run => Ad
+:attack L
+66:05 Ad->Cross => !D CR @ Dp:HD >> C
+:set L: Corner
+66:35 CK->Cross => !AM L @ Dp:Clr >> A*T
+:set L: ThrowIn
+66:51 A => !D CL @ Dpw:Tck >> A*T
+:set L: ThrowIn
+67:00 A => F CL @ Awp
+67:03 Awp->BounceOff => D R @ Awp
+67:04 Awp->HighPass => !GK
