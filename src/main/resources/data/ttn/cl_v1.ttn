@@ -796,5 +796,32 @@
 68:08 Ap->Pass:FT => M LC @ Ap
 68:09 Ap->Shoot => !GK
 :break
-# 77:32
-
+:pressure T
+68:41 Gkr->Pass => D CR @ Dpw
+68:49 Dpw->SwapSidePass => D CL @ Dpw
+68:52 Dpw->Pass => AM C @ Dd
+68:55 Dd->Pass => D CL @ Dpd
+68:57 Dpd->Pass => D CR @ D
+:withdraw_pressure_action
+:possession T
+69:01 D->Long => !D R @ D:B >> AM C @ AM
+:transition T
+69:06 AM->Move => Apd
+:attack T
+69:11 Apd->Pass => D L @ Awp
+69:12 Awp->Cross:FT => !D CR @ Dp:B >>> D CL @ MDw
+:possession T
+69:26 MDw -> D R @ DMw
+69:35 DMw->Long => !D CL @ D:HD >> AM C @ M
+:transition T
+69:42 M->Pass => D R @ Mw
+:cool_down_action
+69:47 Mw->BackPass => D CR @ MDd
+:possession T
+69:51 MDd -> D CL @ MD
+69:55 MD->Long => D R @ Awp:Cnt >> D R @ Apw
+:attack T
+69:59 Apw->LowCross => D L @ Awp
+70:04 Awp->Cross => D R @ Awp
+70:08 Awp->Cross => !Gkr:H
+:possession L
