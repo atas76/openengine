@@ -2,9 +2,6 @@ package org.ttn;
 
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
-import org.ttn.engine.environment.ActionContext;
-import org.ttn.engine.environment.ActionOutcomeType;
-import org.ttn.engine.space.PitchPosition;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
@@ -13,7 +10,6 @@ import org.ttn.parser.output.Statement;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 
 public class ActionTypesTest {
@@ -131,5 +127,14 @@ public class ActionTypesTest {
         Statement statement = ParserUtil.parseStatement(tokens);
 
         assertEquals(ActionType.HdSht, statement.getAction().getType());
+    }
+
+    @Test
+    public void testCutbackAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("70:25 Apw->Cutback => !D CL @ Dp:B >>> M*T");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.Cutback, statement.getAction().getType());
     }
 }
