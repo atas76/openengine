@@ -819,7 +819,7 @@
 72:01 Gkr->Pass => Dp
 72:04 Dp->Move => D
 72:05 D->Pass => DMw
-:transition T
+:possession T
 72:08 DMw->ForwardPass => DM
 72:15 DM->Pass => DM
 72:16 DM->Pass => !DM
@@ -827,7 +827,7 @@
 72:18 DM->ForwardPass:Open:FT => !Gkr:H
 :possession T
 72:22 Gkr -> DM
-72:28 DM->ForwardPass >> M:FT >> M
+72:28 DM->ForwardPass => M:FT >> M
 :attacking-possession T
 72:32 M->Pass => A
 :attack T
