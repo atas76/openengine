@@ -839,16 +839,16 @@
 73:44 Gkr->Pass => D
 73:46 D->Move => DM
 :transition L
-73:47 DM->Pass => DMw
+73:47 DM->WidePass => DMw
 73:50 DMw->Pass => Mw
 73:53 Mw->ForwardPass:Open => !GK
 :break
 :pressed T
 74:15 Gkr->Pass => Dp
 74:19 Dp->Pass => Gkr
-74:22 Gkr->Long => DMw:Cnt >> !Mw:I >> !Mw:FT >> DMw
+74:22 Gkr->Long => DMw:Cnt >> !Mw:I >> !Mw:FT >> DMd
 :transition T
-74:30 DMw->Pass => DM
+74:30 DMd->Pass => DM
 74:32 DM->WidePass:Open => !DMw
 :transition L
 74:33 DMw->Move => Md:Fr
@@ -859,7 +859,7 @@
 74:47 DM->Pass => DM
 74:50 DM->ForwardPass:FT => M
 :counter-attack T
-74:52 M->Run => Ap >> !Dp:Ch >> C
+74:52 M->Run => !Dp:Ch >> C
 :set T: Corner
 75:05 CK->Pass => Apw
 :attack T
