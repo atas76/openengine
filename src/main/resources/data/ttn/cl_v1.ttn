@@ -852,4 +852,31 @@
 :attack T
 72:34 A->Pass => AM R @ Apd
 72:35 Apd->HighPass => !Gkr:H
-# 01:21:59
+:fair_play
+:substitution T: M CR
+:pressure L
+73:44 Gkr->Pass => M C @ D
+73:46 D->Move => M C @ DM
+:possession L
+73:47 DM->WidePass => D L @ MDw
+73:50 MDw->Pass => F LC @ Mw
+73:53 Mw->ForwardPass:Open => !GK
+:break
+:pressure T
+74:15 Gkr->Pass => D CL @ Dp
+74:19 Dp->Pass => Gkr
+74:22 Gkr->Long => D L @ MDw:Cnt >>> AM R @ MDd
+:transition T
+74:30 MDd->Pass => M CL @ MD
+74:32 MD->WidePass:Open => !D L @ MDw
+:transition L
+74:33 MDw->Move => AMd:Fr
+:counter_attack L
+74:38 AMd:Fr->ParallelPass => F RC @ Ad:Fr
+74:42 Ad->HighPass => !D CR @ Dp:HD >>> M CL @ DM
+:transition T
+74:47 DM->Pass => AM R @ DM
+74:50 DM->ForwardPass:FT => AM L @ M
+:counter_attack T
+74:52 M->Run => !D CL @ Dp:Ch >> C
+:set T: Corner
