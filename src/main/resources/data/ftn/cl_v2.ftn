@@ -876,9 +876,8 @@
 76:05 DM->ForwardPass => DM
 76:09 DM->Move => M
 76:12 M->Long => !Dd:HD >> !DM:HD >> !DMd
-:transition L
-76:20 DMd->BackPass => DMw
 :possession L
+76:20 DMd->BackPass => DMw
 76:24 DMw->Long => !Gkr:H
 :possession T
 76:30 Gkr -> DMw
