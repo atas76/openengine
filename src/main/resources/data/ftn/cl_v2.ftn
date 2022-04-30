@@ -920,6 +920,7 @@
 79:34 A->Shoot => !Gkr:S >> Apd #r=2
 79:38 Apd->Pass:FT => Ap
 79:39 Ap->Shoot => !Gkr:H       #r=2
+:break
 :possession L
 79:54 DMw->ForwardPass => DMw
 79:57 DMw->Pass => DMw
