@@ -137,4 +137,13 @@ public class ActionTypesTest {
 
         assertEquals(ActionType.Cutback, statement.getAction().getType());
     }
+
+    @Test
+    public void testHandPassAction() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("85:33 Gkr->HandPass => D L @ Mw");
+
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertEquals(ActionType.HandPass, statement.getAction().getType());
+    }
 }
