@@ -943,10 +943,11 @@
 80:30 DMw->ForwardPass:Open => !Dw
 :establish T
 80:34 Dw->BackPass:FT => !C
+:substitution
 :set L: Corner
 81:44 CK->Cross => !Dp:HD >> A:Cnt
 81:49 A->HighPass => !Dd:Clr >> M:HD >> !DM:HD >> M:Cnt >> A
-82:01 A->Shoot:FT => !GK    #r=0
+82:01 A->Shoot => !GK    #r=0
 :break
 :possession T
 82:10 DMw:Fr->Move => Mw
