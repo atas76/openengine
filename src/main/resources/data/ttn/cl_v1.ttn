@@ -962,4 +962,35 @@
 :attack T
 80:20 A->Shoot => !Gkr:H
 :break
-# 01:29:43
+:possession L
+:possessor M LC
+80:30 DMw->ForwardPass:Open => !D CL @ Dw
+:recovery L
+80:34 Dw->BackPass:FT => !C
+:substitution T: AM R
+:set L: Corner
+81:44 CK->Cross => !AM L Dp:HD >> F RC @ A:Cnt
+81:49 A->HighPass => !AM L @ Dd:Clr >>> M RC @ A
+82:01 A->Shoot => !GK
+:break
+:possession T
+:possessor D R
+82:10 DMw:Fr->Move => AMw
+:attacking_possession T
+82:15 AMw -> AM C @ Md
+82:32 Md->WidePass => D R @ Aw
+:attack T
+82:36 Aw->Cross => !D R @ Dp:HD >>> Awp*F
+:set T: Freekick
+84:05 Awp:SP->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => M LC @ Ap:B >> !Dp*O
+:break
+:possession T
+85:20 Gkr->Long => !Gkr:H
+:possession L
+85:33 Gkr->HandPass => D L @ Mw
+:attacking_possession L
+85:39 Mw->Move => AMw
+85:41 AMw->Cross => !D L @ Dp:Cnt >> C
+:set L: Corner
