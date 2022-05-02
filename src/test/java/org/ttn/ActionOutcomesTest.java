@@ -61,4 +61,12 @@ public class ActionOutcomesTest {
 
         assertTrue(statement.getActionOutcome().isOutcome(ActionContext.ADVANTAGE));
     }
+
+    @Test
+    public void textDiveActionOutcome() throws ScannerException, ParserException {
+        List<String> tokens = getTokens("90:58 Mw->Move => Apd:Dv >> !F CL @ Dpw");
+        Statement statement = ParserUtil.parseStatement(tokens);
+
+        assertTrue(statement.getActionOutcome().isOutcome(ActionContext.DIVE));
+    }
 }

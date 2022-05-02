@@ -15,5 +15,6 @@ public enum ActionContext {
     BLOCK,
     FIRST_TOUCH,
     ADVANTAGE,
-    HOLD
+    HOLD,
+    DIVE
 }
