@@ -966,7 +966,7 @@
 :possession L
 85:33 Gkr->HandPass => Mw
 :attacking-possession L
-85:41 Mw->Cross => !Dp:Cnt >> C
+85:41 Mw->Cross => !Dp:B >> C
 :set L: Corner
 86:46 CK->Cross => !Dp:HD >> !Dp:Ch >> !Dp:HD >> !Dp:HD >> Ap:FT >> Apd:Fr
 86:53 Apd->Shoot => G
@@ -974,7 +974,7 @@
 :transition T
 88:20 Mw->Move => Aw
 :attack T
-88:22 Aw->Cross => A:Cnt >> !GK
+88:22 Aw->Cross => A:B >> !GK
 :break
 :substitution
 :possession T
@@ -987,7 +987,7 @@
 90:09 Gkd->Long => A:HD >> !DM
 :establish L
 90:16 DM->Clear:FT => !M:B >> !DMw
-:transition T
+:possession T
 90:21 DMw->Pass:FT => DMw
 90:26 DMw->Pass => DMd
 90:30 DMd->Long => !Gkr:H
