@@ -992,5 +992,45 @@
 85:33 Gkr->HandPass => D L @ Mw
 :attacking_possession L
 85:39 Mw->Move => AMw
-85:41 AMw->Cross => !D L @ Dp:Cnt >> C
+85:41 AMw->Cross => !D L @ Dp:B >> C
 :set L: Corner
+86:46 CK->Cross => !AM L @ Dp:HD >>> F C @ Apd:Fr
+86:53 Apd->Shoot => G
+:break
+:transition T
+:possessor D L
+88:20 AMw->Move => Aw
+:attack T
+88:22 Aw->Cross => AM R @ A:B >> !GK
+:break
+:substitution L: F LC
+:possession T
+:possessor D R
+89:53 DMw->Long => !D R @ MDd:FT >> !F C @ M
+:transition L
+89:57 M->ForwardPass:FT:Open => !D R @ Dw
+:recovery T
+90:04 Dw->Pass => Gkd
+:possession T
+90:09 Gkd->Long => AM R @ A:HD >> !D R @ DMd
+:recovery L
+90:16 DMd->Clear:FT => !M CR @ Md:B >> !D CR @ DMw
+:recovery T
+90:21 DMw->Pass:FT => D L @ MDw
+:possession T
+90:26 MDw->Pass => M CR @ MDd
+90:30 MDd->Long => !Gkr:H
+:possession L
+90:48 Gkr->Long => !D CL @ DMd:HD >>> !F C @ Mw
+:transition T
+90:58 Mw->Move => Apd:Dv >> !F CL @ Dpw             # TODO
+:recovery L
+91:05 Dpw->Long => !D CR @ MDd:FT >>> !M CR @ M
+:recovery T
+91:14 M->Pass => D CL @ MDd
+:possession T
+91:16 MDd -> D L @ Mw
+:attacking_possession T
+91:19 Mw->Long => AM R @ Ad:HD >>> C
+:set T: Corner
+# 01:40:47
