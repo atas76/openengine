@@ -1008,9 +1008,9 @@
 91:50 Aw->Dribble => A
 91:52 A->Shoot => !Gkr:H    #r=1
 :possession L
-92:08 Gkr->Long => !DMw
+92:08 Gkr->Long => !Dw
 :transition T
-92:14 DMw->Long => M:HD >> M
+92:14 Dw->Long => M:HD >> M
 92:19 M->DiagonalPass:FT => Ad
 :attack T
 92:22 Ad->Move => Apd
@@ -1033,9 +1033,9 @@
 94:02 A => Aw
 :attack T
 94:05 Aw->Cross => !Dp:HD >> M
-94:11 M->Long => !DM
+94:11 M->Long:FT => !DM
 :establish L
-94:15 DM->ForwardPass => DM
+94:15 DM->ForwardPass => DM:Fr
 :transition L
 94:16 DM->Move => M
 94:17 M->Pass:Open => Aw
