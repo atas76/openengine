@@ -11,7 +11,7 @@ import org.ttn.parser.Parser;
 import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.Parsable;
+import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
 
 import java.util.List;
@@ -20,8 +20,8 @@ import static org.junit.Assert.*;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.engine.rules.SetPiece.CORNER_KICK;
-import static org.ttn.parser.output.Parsable.DirectiveType.*;
-import static org.ttn.parser.output.Parsable.StatementType.*;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
+import static org.ttn.parser.output.MatchDataElement.StatementType.*;
 
 public class ParserTest {
 
@@ -147,7 +147,7 @@ public class ParserTest {
         List<String> tokens = getTokens(":pressure T");
         Directive directive = (Directive) new Parser().parse(tokens);
 
-        assertEquals(Parsable.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals(MatchDataElement.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
         assertEquals("T", directive.getTeam());
     }
 

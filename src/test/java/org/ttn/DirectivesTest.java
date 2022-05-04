@@ -6,15 +6,15 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.Parsable;
+import org.ttn.parser.output.MatchDataElement;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.Parsable.DirectiveType.*;
-import static org.ttn.parser.output.Parsable.DirectiveType.ATTACKING_POSSESSION;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.ATTACKING_POSSESSION;
 
 public class DirectivesTest {
 
@@ -50,7 +50,7 @@ public class DirectivesTest {
         List<String> tokens = getTokens(":pressure T");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(Parsable.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals(MatchDataElement.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
         assertEquals("T", directive.getTeam());
     }
 

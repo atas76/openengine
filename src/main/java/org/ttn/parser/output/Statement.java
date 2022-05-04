@@ -9,9 +9,9 @@ import org.ttn.engine.rules.SetPiece;
 import org.ttn.engine.space.PitchPosition;
 
 import static java.util.Objects.nonNull;
-import static org.ttn.parser.output.Parsable.StatementType.STANDARD;
+import static org.ttn.parser.output.MatchDataElement.StatementType.STANDARD;
 
-public class Statement implements Parsable {
+public class Statement implements MatchDataElement {
     
     private int time;
     private PitchPosition pitchPosition;

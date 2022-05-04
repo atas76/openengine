@@ -3,7 +3,7 @@ package org.ttn.parser.output;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 
-public class Directive implements Parsable {
+public class Directive implements MatchDataElement {
 
     private final DirectiveType type;
     private String team;

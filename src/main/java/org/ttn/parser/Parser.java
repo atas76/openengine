@@ -2,7 +2,7 @@ package org.ttn.parser;
 
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.parser.exceptions.ParserException;
-import org.ttn.parser.output.Parsable;
+import org.ttn.parser.output.MatchDataElement;
 
 import java.util.List;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class Parser {
 
     public Parser() {}
 
-    public Parsable parse(List<String> tokens) throws ParserException {
+    public MatchDataElement parse(List<String> tokens) throws ParserException {
         ParserUtil.checkMissingTokens(tokens.size(), 0, "TTN statement or directive");
         if (":".equals(tokens.get(0))) {
             return ParserUtil.parseDirective(tokens);

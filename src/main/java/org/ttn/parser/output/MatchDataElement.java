@@ -1,6 +1,6 @@
 package org.ttn.parser.output;
 
-public interface Parsable {
+public interface MatchDataElement {
 
     enum DirectiveType {
         BUILDUP_PRESSURE_BLOCK,

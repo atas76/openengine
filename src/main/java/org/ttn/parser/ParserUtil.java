@@ -12,7 +12,7 @@ import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.Parsable;
+import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
 
 import java.util.ArrayList;
@@ -22,8 +22,8 @@ import java.util.List;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
-import static org.ttn.parser.output.Parsable.DirectiveType.*;
-import static org.ttn.parser.output.Parsable.StatementType.*;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
+import static org.ttn.parser.output.MatchDataElement.StatementType.*;
 
 public class ParserUtil {
 
@@ -201,7 +201,7 @@ public class ParserUtil {
         }
         final String actionDelimiter = tokens.get(currentIndex++);
         int outcomeDelimiterIndex;
-        Parsable.StatementType statementType;
+        MatchDataElement.StatementType statementType;
         if (tokens.contains(">>>")) {
             statementType = INDIRECT_OUTCOME;
             outcomeDelimiterIndex = tokens.indexOf("=>");
@@ -250,7 +250,7 @@ public class ParserUtil {
             throw new ParserException("Directives must start with ':'");
         }
         checkMissingTokens(tokensNumber, 1, "directive");
-        Parsable.DirectiveType directiveType = expectDirective(tokens.get(1));
+        MatchDataElement.DirectiveType directiveType = expectDirective(tokens.get(1));
         if (tokens.get(1).endsWith("_action")) { // Action directive
             return new Directive(directiveType);
         }
@@ -284,7 +284,7 @@ public class ParserUtil {
         if (tokenIndex > tokensNumber - 1) throw new MissingTokenException("Expected: " + expectedToken);
     }
 
-    private static Parsable.DirectiveType expectDirective(String directive) throws ParserException {
+    private static MatchDataElement.DirectiveType expectDirective(String directive) throws ParserException {
         return switch(directive) {
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
             case "possession" -> POSSESSION_CHAIN_BLOCK;

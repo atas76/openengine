@@ -21,8 +21,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static org.ttn.parser.output.Parsable.DirectiveType.*;
-import static org.ttn.parser.output.Parsable.StatementType.*;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
+import static org.ttn.parser.output.MatchDataElement.StatementType.*;
 
 public class ParserUtilitiesTest {
 
