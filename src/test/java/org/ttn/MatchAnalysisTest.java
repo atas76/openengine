@@ -23,7 +23,7 @@ public class MatchAnalysisTest {
     }
 
     @Test
-    public void testLoadMatchData() throws IOException {
+    public void testReadMatchData() throws IOException {
         List<String> matchData = Files.readAllLines(matchSampleResource);
 
         assertEquals(2, matchData.size());
