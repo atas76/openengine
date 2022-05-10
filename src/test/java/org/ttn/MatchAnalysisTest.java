@@ -39,14 +39,24 @@ public class MatchAnalysisTest {
     }
 
     @Test
-    public void testParseMatchData() throws IOException {
+    public void testParseMatchDataElements() throws IOException {
         List<MatchDataElement> matchDataElements = Files.lines(matchSampleResource).map(line -> {
             try {
-                return new Parser().parse(new Scanner(line).scan());
+                return new Parser().parseTokenList(new Scanner(line).scan());
             } catch (ScannerException | ParserException e) {
                 throw new RuntimeException(e);
             }
         }).collect(Collectors.toList());
+
+        assertEquals(2, matchDataElements.size());
+        assertTrue(matchDataElements.get(0) instanceof Directive);
+        assertTrue(matchDataElements.get(1) instanceof Statement);
+    }
+
+    @Test
+    public void testParseMatchFile() throws IOException, ParserException {
+        List<MatchDataElement> matchDataElements =
+                new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
         assertEquals(2, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive);
