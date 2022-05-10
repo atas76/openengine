@@ -1,6 +1,7 @@
 package org.ttn;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
@@ -32,6 +33,7 @@ public class MatchAnalysisTest {
     }
 
     @Test
+    @Ignore
     public void testReadMatchData() throws IOException {
         List<String> matchData = Files.readAllLines(matchSampleResource);
 
@@ -39,6 +41,7 @@ public class MatchAnalysisTest {
     }
 
     @Test
+    @Ignore
     public void testParseMatchDataElements() throws IOException {
         List<MatchDataElement> matchDataElements = Files.lines(matchSampleResource).map(line -> {
             try {
@@ -58,8 +61,30 @@ public class MatchAnalysisTest {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
-        assertEquals(2, matchDataElements.size());
-        assertTrue(matchDataElements.get(0) instanceof Directive);
-        assertTrue(matchDataElements.get(1) instanceof Statement);
+        assertEquals(41, matchDataElements.size());
+        assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
+        assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
+        assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
+        assertTrue(matchDataElements.get(3) instanceof Directive); // Interpretive directive
+        assertTrue(matchDataElements.get(4) instanceof Statement); // Long pass action
+        assertTrue(matchDataElements.get(6) instanceof Statement); // Action parameters
+        assertTrue(matchDataElements.get(7) instanceof Directive); // Attack
+        assertTrue(matchDataElements.get(8) instanceof Statement); // Bounceoff action
+        assertTrue(matchDataElements.get(9) instanceof Directive); // Set piece
+        assertTrue(matchDataElements.get(10) instanceof Statement); // Shot action
+        assertTrue(matchDataElements.get(11) instanceof Directive); // Break
+        assertTrue(matchDataElements.get(12) instanceof Directive); // Throw-in
+        assertTrue(matchDataElements.get(13) instanceof Statement); // In-play default action
+        assertTrue(matchDataElements.get(14) instanceof Statement); // Back pass action
+        assertTrue(matchDataElements.get(15) instanceof Statement); // Possession change
+        assertTrue(matchDataElements.get(17) instanceof Directive); // Pressing
+        assertTrue(matchDataElements.get(18) instanceof Directive); // Possessor
+        assertTrue(matchDataElements.get(19) instanceof Statement); // Parallel pass
+        assertTrue(matchDataElements.get(20) instanceof Statement); // Back pass to goalkeeper
+        assertTrue(matchDataElements.get(21) instanceof Statement); // Pass action
+        assertTrue(matchDataElements.get(22) instanceof Statement); // Diagonal pass
+        assertTrue(matchDataElements.get(28) instanceof Directive); // Transition
+        assertTrue(matchDataElements.get(29) instanceof Statement); // Move action
+        assertTrue(matchDataElements.get(40) instanceof Statement); // Intermediate action outcome
     }
 }

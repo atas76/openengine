@@ -1,2 +1,41 @@
 :set L: Kickoff
 00:00 KO => D CR @ DM
+:possession L
+:break_ball_action
+00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md
+:attack_action
+00:15 Md->Long:FT:Open => F LC @ Apd
+:attack L
+00:20 Apd->BounceOff => M C @ Ap*H
+:set L: Penalty
+01:47 Ap->Shoot => G
+:break
+:set L: ThrowIn
+03:18 DM => F LC @ MDw
+03:20 MDw->BackPass => D L @ DMw
+03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr
+:break
+:pressure T
+:possessor D CR
+03:58 Dp->ParallelPass => D CL @ Dp
+04:00 Dp->BackPass => Gkr
+04:02 Gkr->Pass:FT => D CR @ Dpw
+04:04 Dpw->DiagonalPass => D R @ Dwp
+04:06 Dwp->DiagonalPass => AM C @ Dd
+04:08 Dd->ParallelPass => M CL @ DM
+04:10 DM->BackPass => D CR @ Dpw
+:release_pressing_action
+04:12 Dpw->Long => D L @ DMw:Fr
+:transition T
+04:16 DMw->Move => MDw
+04:17 MDw->Pass => AM L @ Mw
+04:19 Mw->Move => MDw
+:cool_down_action
+04:21 MDw->BackPass => D CL @ DMw
+:possession T
+04:23 DMw->Pass => D CR @ DM
+:break_ball_action
+04:27 DM->Long => AM R @ Awp
+:attack T
+04:32 Awp->Move => Aw
+04:34 Aw->Pass => !M RC @ Dp:I >> C
