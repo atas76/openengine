@@ -35,7 +35,7 @@
 :possession T
 04:23 DMw->Pass => D CR @ DM
 :break_ball_action
-04:27 DM->Long => A R @ Awp
+04:27 DM->Long => AM R @ Awp
 :attack T
 04:32 Awp->Move => Aw
 04:34 Aw->Pass => !M RC @ Dp:I >> C
