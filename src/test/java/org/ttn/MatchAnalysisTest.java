@@ -61,7 +61,7 @@ public class MatchAnalysisTest {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
-        assertEquals(41, matchDataElements.size());
+        assertEquals(70, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
         assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
         assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
@@ -86,5 +86,17 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(28) instanceof Directive); // Transition
         assertTrue(matchDataElements.get(29) instanceof Statement); // Move action
         assertTrue(matchDataElements.get(40) instanceof Statement); // Intermediate action outcome
+        assertTrue(matchDataElements.get(41) instanceof Directive); // Corner kick
+        assertTrue(matchDataElements.get(42) instanceof Statement); // Cross action
+        assertTrue(matchDataElements.get(43) instanceof Statement); // Goalkeeper out of penalty area possession
+        assertTrue(matchDataElements.get(45) instanceof Statement); // Possession chain summary
+        assertTrue(matchDataElements.get(48) instanceof Statement); // Forward pass action
+        assertTrue(matchDataElements.get(49) instanceof Statement); // Action context
+        assertTrue(matchDataElements.get(51) instanceof Statement); // 'Wide pass' action
+        assertTrue(matchDataElements.get(54) instanceof Statement); // 'Double' possession change in both outcomes
+        assertTrue(matchDataElements.get(55) instanceof Directive); // Ball recovery
+        assertTrue(matchDataElements.get(56) instanceof Statement); // Throw-in action outcome
+        assertTrue(matchDataElements.get(59) instanceof Statement); // Dribble action
+        assertTrue(matchDataElements.get(69) instanceof Statement); // 'High pass' action
     }
 }

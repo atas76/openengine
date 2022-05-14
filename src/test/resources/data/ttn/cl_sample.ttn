@@ -39,3 +39,32 @@
 :attack T
 04:32 Awp->Move => Aw
 04:34 Aw->Pass => !M RC @ Dp:I >> C
+:set T: Corner
+05:15 CK->Cross => !D LC @ Dp:HD >> M CR @ AMd:Cnt
+05:22 AMd->BackPass => Gkd
+:possession T
+05:27 Gkd -> D R @ MDw
+05:45 MDw->DiagonalPass => !M C @ MDd
+:transition L
+05:47 MDd->ForwardPass => F LC @ AM
+05:50 AM:Mrk->Move => AM:Fr
+05:51 AM->BackPass => M RC @ AM
+05:53 AM->WidePass => F LC @ Ad
+:attack L
+05:58 Ad->Pass => F RC @ Apd:Pvt
+05:59 Apd->Pass => !AM L @ Dp:I >> !D RC @ Dp
+:recovery T
+06:02 Dp->Long:FT => !AM*T
+:break
+:transition T
+06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T
+:set T: ThrowIn
+06:53 M => MDw
+:possession T
+06:58 MDw->Pass => D RC @ MD
+07:01 MD -> D LC @ DMd
+07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
+:attack_action
+07:14 MDd:Fr->Move => M:Mrk
+07:16 M:Mrk->ForwardPass => AM C @ M
+07:17 M->HighPass => !D R @ Dwp
