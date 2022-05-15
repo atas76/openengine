@@ -61,7 +61,7 @@ public class MatchAnalysisTest {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
-        assertEquals(70, matchDataElements.size());
+        assertEquals(200, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
         assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
         assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
@@ -98,5 +98,14 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(56) instanceof Statement); // Throw-in action outcome
         assertTrue(matchDataElements.get(59) instanceof Statement); // Dribble action
         assertTrue(matchDataElements.get(69) instanceof Statement); // 'High pass' action
+        assertTrue(matchDataElements.get(72) instanceof Statement); // Clearance action
+        assertTrue(matchDataElements.get(89) instanceof Directive); // Attacking possession
+        assertTrue(matchDataElements.get(103) instanceof Statement); // Goalkick outcome
+        assertTrue(matchDataElements.get(124) instanceof Statement); // Foul outcome
+        assertTrue(matchDataElements.get(126) instanceof Directive); // Freekick
+        assertTrue(matchDataElements.get(130) instanceof Directive); // Defensive transition
+        assertTrue(matchDataElements.get(158) instanceof Statement); // 'Triangle' action
+        assertTrue(matchDataElements.get(190) instanceof Directive); // Counter attack
+        assertTrue(matchDataElements.get(192) instanceof Statement); // 'Run' action
     }
 }
