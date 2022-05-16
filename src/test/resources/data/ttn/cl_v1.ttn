@@ -198,7 +198,7 @@
 18:55 Dwp->WidePass => D R @ Dw
 18:56 Dw->BackPass:FT => D CR @ Dwp
 18:59 Dwp->Pass => D R @ Dwp
-:release_pressure_action
+:release_pressing_action
 19:01 Dwp->Long => F C @ DM:Cnt >> AM C @ DMd
 :transition T
 19:06 DMd->ForwardPass => AM L @ AM
@@ -233,7 +233,7 @@
 20:18 DMd->ForwardPass => M RC @ MDd
 20:21 MDd->Move => Md
 20:22 Md->WidePass => D R @ AMw
-:attacking-possession L
+:attacking_possession L
 20:24 AMw->Move => Aw
 :attack L
 20:27 Aw->Pass => F C @ Ad
@@ -250,7 +250,7 @@
 22:17 D => AM R @ Dwp:Cnt >>> !F C @ Awp
 :attack L
 22:20 Awp->Move => Apd
-22:22 Apd->Pass => !D CL @ Dp:Cl >>> D L @ AMw
+22:22 Apd->Pass => !D CL @ Dp:Clr >>> D L @ AMw
 22:28 AMw->ForwardPass:FT => F C @ Aw
 22:30 Aw->BackPass => F LC @ Aw
 22:32 Aw->BackHeelPass => M LC @ Awp
