@@ -277,7 +277,7 @@
 :possession T
 24:57 D -> Gkr
 :pressure T
-:release_pressure_action
+:release_pressing_action
 25:01 Gkr->Long => D R @ DMw:Cnt
 :transition T
 25:04 DMw->Pass => AM C @ MDw
