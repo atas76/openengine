@@ -254,3 +254,38 @@
 22:28 AMw->ForwardPass:FT => F C @ Aw
 22:30 Aw->BackPass => F LC @ Aw
 22:32 Aw->BackHeelPass => M LC @ Awp
+22:36 Awp->BackPass => D L @ Aw
+22:37 Aw->Cross:FT => !D L @ Dp:HD >> Ap*T
+:set L: ThrowIn
+23:03 Ap => M RC @ Awp:HD >>> !AM L @ Dwp:Cnt
+:defensive_transition T
+23:06 Dwp->ForwardPass => !M LC @ Ad
+:attack L
+23:10 Ad->BackPass => M C @ Ad
+23:11 Ad->ParallelHighPass => D L @ AM:Fr
+23:14 AM->Move => A
+23:15 A->WidePass => F LC @ Awp
+23:21 Awp->Move => Apw
+23:22 Apw->Cross => !D R @ Dp:I >> C
+:set L: Corner
+23:50 CK->Pass => M RC @ Apw
+23:51 Apw->BackPass:FT => D L @ Aw
+23:53 Aw->Cross:FT => !M CL @ Dp:HD >> !DMd*F
+:set T: Freekick
+:possessor D CR
+24:51 DMd:SP->Pass => D CL @ D
+:possession T
+24:57 D -> Gkr
+:pressure T
+:release_pressing_action
+25:01 Gkr->Long => D R @ DMw:Cnt
+:transition T
+25:04 DMw->Pass => AM C @ MDw
+:cool_down_action
+25:09 DMw->BackPass => D CR @ D
+:possession T
+25:11 D -> Gkr
+:break_ball_action
+25:31 Gkr->Long => !D CL @ DM:HD >>> !MD*T
+:set L: ThrowIn
+25:58 MD => !D R @ DM:HD >>> D R @ MD
