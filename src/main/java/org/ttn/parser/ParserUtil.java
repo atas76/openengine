@@ -257,6 +257,7 @@ public class ParserUtil {
         switch(tokens.get(1)) {
             case "break":
             case "HT":
+            case "injury":
                 return new Directive(directiveType);
             case "set":
                 checkMissingTokens(tokensNumber, 2, "team");
@@ -305,6 +306,7 @@ public class ParserUtil {
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
             case "cool_down_action" -> COOL_DOWN_ACTION;
             case "withdraw_pressure_action" -> WITHDRAW_PRESSURE_ACTION;
+            case "injury" -> INJURY;
             default -> throw new ParserException("Keyword expected");
         };
     }

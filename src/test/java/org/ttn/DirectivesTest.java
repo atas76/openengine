@@ -112,6 +112,14 @@ public class DirectivesTest {
     }
 
     @Test
+    public void testInjuryDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":injury");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INJURY, directive.getType());
+    }
+
+    @Test
     public void testHalfTimeDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":HT");
         Directive directive = ParserUtil.parseDirective(tokens);

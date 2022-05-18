@@ -12,6 +12,7 @@ public interface MatchDataElement {
         POSSESSOR_DEFINITION,
         BREAK,
         HALF_TIME,
+        INJURY,
         ATTACKING_POSSESSION,
         DEFENSIVE_TRANSITION,
         ATTACKING_TRANSITION,
