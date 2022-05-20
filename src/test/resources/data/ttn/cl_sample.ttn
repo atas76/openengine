@@ -600,3 +600,10 @@
 49:26 MD => AM C @ AMd:FT >> AM*F
 :set T: Freekick
 50:01 AM:SP->Long => !Dp*O
+:break
+:set T: ThrowIn
+50:48 M => M CR @ MDw
+50:52 MDw->Move => DMw
+50:54 DMw->BackPass => Gkr
+:pressure T
+50:56 Gkr->Long:FT => !M C @ MDd:HD >>> D L @ Dw
