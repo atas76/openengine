@@ -572,3 +572,31 @@
 :counter_attack T
 46:58 AMd->Move => Apd
 47:01 Apd->LowCross => !D*T
+:set L: ThrowIn
+47:26 D => !D R @ Mw:HD >> DM*T
+:set L: ThrowIn
+47:36 DM => F C @ Mw:HD >>> D L @ DMw
+:transition L
+47:43 DMw->Pass => M C @ DMw
+47:44 DMw->HighPass => !D R @ Mw:Cnt
+:transition T
+47:47 Mw->ForwardPass => !DM*T
+:set L: ThrowIn
+48:00 DM => !D CR @ Dw
+:pressure T
+48:04 Dw->BackPass:FT => Gkr
+48:08 Gkr->Pass => D CL @ Dpd
+48:15 Dpd->BackPass => Gkr
+48:17 Gkr->Pass => D CL @ Dpw
+48:20 Dpw->Pass => Gkr
+48:22 Gkr->Long:FT => !D CR @ Md:HD >> D CL @ Dd:Cnt
+48:29 Dd->Clear => !M*T
+:set L: ThrowIn
+48:53 M => !D CL @ Dpw
+48:58 Dpw->Clear => !M*T
+:set L: ThrowIn
+49:05 AM => F C @ Aw:HD >>> !DM*T
+:set T: ThrowIn
+49:26 MD => AM C @ AMd:FT >> AM*F
+:set T: Freekick
+50:01 AM:SP->Long => !Dp*O
