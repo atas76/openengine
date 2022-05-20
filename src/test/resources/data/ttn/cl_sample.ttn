@@ -443,3 +443,93 @@
 :set L: Corner
 38:28 CK->Cross => !AM L @ Dp:HD >> F RC @ A
 38:31 A->Shoot:FT => !GK
+:injury
+:possession T
+40:12 GK->Long => !D CL @ DM:HD >>> !M RC @ Md
+40:20 Md->Long:FT:Open => F LC @ Awp
+:attack L
+40:32 Awp->BackPass => D L @ AMw
+40:36 Mw->Pass => M LC @ Ad
+40:39 Ad->Pass => F RC @ Awp
+40:42 Awp->BackHeelPass => !M RC @ Dw:Ch >> M*T
+:set L: ThrowIn
+40:59 M => F C @ Aw:HD >> D L @ Aw
+:attack L
+41:03 Aw->Dribble => !AM L @ Dw:Ch >> !AM C @ Dw
+:defensive_transition T
+41:04 Dw->Move => !M C @ Mw:I >> AM L @ DMw
+41:06 Dw->Move => !M RC @ M:I
+:attacking_transition L
+41:09 M->Move => A
+:attack L
+41:10 A->Shoot => !D CL @ D:B >> F C @ A:Cnt
+41:14 A->Move => !AM R @ D:Ch >> M RC @ Ad
+41:15 Ad->Pass => D R @ Awp
+41:18 Awp->Cross => !D L @ Dwp:B >> C
+:set L: Corner
+41:45 CK->Cross => !F C @ Dp:HD >> F RC @ A:Cnt
+41:49 A->Shoot => !M CL @ D:B >> C
+:set L: Corner
+42:20 CK->Cross => !AM L @ Dp:Clr >> M*T
+:set L: ThrowIn
+42:40 M => D CL @ MDd
+:possession L
+42:43 MDd -> D CL @ MDd
+42:55 MDd->Long => D R @ AMw
+:transition L
+42:59 Mw->ForwardPass => !D RC @ D:I >>> !DM*H
+:set T: Freekick
+43:12 DM:SP->Long => !D RC @ DM:HD >>> F C @ AM
+43:17 M->Dribble => !D CL @ D:Ch >> !D CR @ D
+:recovery L
+43:20 D->BackPass => D R @ Dd:Fr
+:defensive_transition L
+43:22 Dd->Long:Open => !D CL @ Dpw
+:pressure T
+43:27 Dpw->BackPass:FT => Gkr
+43:28 Gkr->HighPass => D L @ Dw:HD >> D CL @ Dwp
+43:35 Dwp->Pass => D L @ Dwp
+43:36 Dwp->Move => Dw
+43:38 Dw->ForwardPass => AM R @ Mw:Fr
+:counter_attack T
+43:41 Mw:Fr->Run => Ad
+43:45 Ad->ForwardPass:Open => !Gkr:H
+:possession L
+43:51 Gkr -> D CR @ Dd
+:pressure L
+44:10 Dd->BackPass => Gkr
+44:12 Gkr->Pass:FT => D CL @ Dd
+44:16 Dd->BackPass => Gkr
+44:19 Gkr->Pass => D CR @ Dw
+44:22 Dw->Move => DMw
+:transition L
+44:23 DMw->Long:Open => !D R @ D:HD >> !Gkr:H
+:possession T
+44:29 Gkr -> D R @ MDw
+44:36 DMw->Long:Open => !D L @ Dw:Tck >> M*T
+:set T: ThrowIn
+44:58 M => AM C @ Mw:FT >> D R @ Mw
+44:59 Mw->HighPass => D CL @ M:HD >>> M CR @ MD
+:transition T
+45:07 MD->Move => M
+45:10 M->WidePass => AM L @ AMw
+45:13 AMw->Move => Ad
+:attack T
+45:14 Ad->Pass => AM R @ A
+45:15 A->Pass:FT => AM C @ A
+45:18 A->Shoot => !GK
+:possession L
+45:42 GK->Long => F LC @ Md:HD >>> !D L @ DMw
+:transition L
+45:53 DMw->Pass => M CL @ DMd
+45:56 DMw->Pass => D CR @ D
+:pressure T
+45:57 D->Pass => D CL @ Dpw
+46:00 Dpw->Pass => D CR @ Dp
+46:02 Dp->WidePass => D R @ DMw
+46:06 DMw->Long => !D CR @ DM:HD >>> M*T
+:set T: ThrowIn
+46:20 M => M CR @ Mw:FT >>> M CR @ Mw
+46:25 Mw->Pass => D CL @ M
+:attacking_possession T
+46:29 M -> D L @ Mw
