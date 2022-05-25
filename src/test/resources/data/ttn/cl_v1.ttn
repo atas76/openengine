@@ -832,7 +832,7 @@
 70:25 Apw->Cutback => !D CL @ Dp:B >>> M*T
 :set L: ThrowIn
 71:42 M => F LC @ Aw:HD >>> !D*T
-:set T: Throw-in
+:set T: ThrowIn
 71:56 D => D CL @ Dp
 :pressure T
 71:58 Dp->BackPass => Gkr
