@@ -832,3 +832,24 @@
 70:25 Apw->Cutback => !D CL @ Dp:B >>> M*T
 :set L: ThrowIn
 71:42 M => F LC @ Aw:HD >>> !D*T
+:set T: ThrowIn
+71:56 D => D CL @ Dp
+:pressure T
+71:58 Dp->BackPass => Gkr
+72:01 Gkr->Pass => D CL @ Dp
+72:04 Dp->Move => D
+72:05 D->Pass => D L @ DMw
+:possession T
+72:08 DMw->ForwardPass => M CL @ MD
+72:15 MD->Pass => M CR @ MD
+72:16 DM->Pass => !M C @ DM
+:transition L
+72:18 DM->ForwardPass:Open:FT => !Gkr:H
+:possession T
+72:22 Gkr -> AM C @ MD
+72:28 MD->ForwardPass => AM L @ M:FT >> F C @ AM
+:attacking_possession T
+72:32 AM->Pass => AM L @ A
+:attack T
+72:34 A->Pass => AM R @ Apd
+72:35 Apd->HighPass => !Gkr:H

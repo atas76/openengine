@@ -61,7 +61,7 @@ public class MatchAnalysisTest {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
-        assertEquals(834, matchDataElements.size());
+        assertEquals(855, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
         assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
         assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
