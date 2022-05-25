@@ -61,7 +61,7 @@ public class MatchAnalysisTest {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
-        assertEquals(800, matchDataElements.size());
+        assertEquals(834, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
         assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
         assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
@@ -118,5 +118,6 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(544) instanceof Directive); // Half time
         assertTrue(matchDataElements.get(677) instanceof Statement); // Attempt at goal with header
         assertTrue(matchDataElements.get(678) instanceof Directive); // Substitution
+        assertTrue(matchDataElements.get(831) instanceof Statement); // 'Cutback' action
     }
 }
