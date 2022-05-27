@@ -854,3 +854,68 @@
 72:34 A->Pass => AM R @ Apd
 72:35 Apd->HighPass => !Gkr:H
 :fair_play
+:substitution T: M CR
+:pressure L
+73:44 Gkr->Pass => M C @ D
+73:46 D->Move => M C @ DM
+:possession L
+73:47 DM->WidePass => D L @ MDw
+73:50 MDw->Pass => F LC @ Mw
+73:53 Mw->ForwardPass:Open => !GK
+:break
+:pressure T
+74:15 Gkr->Pass => D CL @ Dp
+74:19 Dp->Pass => Gkr
+74:22 Gkr->Long => D L @ MDw:Cnt >>> AM R @ MDd
+:transition T
+74:30 MDd->Pass => M CL @ MD
+74:32 MD->WidePass:Open => !D L @ MDw
+:transition L
+74:33 MDw->Move => AMd:Fr
+:counter_attack L
+74:38 AMd:Fr->ParallelPass => F RC @ Ad:Fr
+74:42 Ad->HighPass => !D CR @ Dp:HD >>> M CL @ DM
+:transition T
+74:47 DM->Pass => AM R @ DM
+74:50 DM->ForwardPass:FT => AM L @ M
+:counter_attack T
+74:52 M->Run => !D CL @ Dp:Ch >> C
+:set T: Corner
+75:05 CK->Pass => AM L @ Apw
+:attack T
+75:07 Apw->Pass => AM C @ Apd
+75:08 Apd->Pass => F C @ Awp
+75:09 Awp->Move => Apd
+75:12 Apd->Move => Apw
+75:13 Apw->Cross => !M LC @ Dp:B >> F C @ Apw
+75:16 Apw->Cross => !D CL @ Dp:HD >> D R @ Aw
+75:23 Aw->Pass => D CR @ AMw
+75:26 AMw->Long => !Apw*H
+:break
+:transition T
+:possessor D CL
+76:05 DM->ForwardPass => AM C @ MD
+76:09 MD->Move => Md
+76:12 Md->Long => !D L @ Dd:HD >>> !F CL @ MDd
+:possession L
+76:20 MDd->BackPass => D L @ DMw
+76:24 DMw->Long => !Gkr:H
+:possession T
+76:30 Gkr -> D CR @ MDw
+76:36 MDw->Long => !Gkr:H
+:possession L
+76:40 Gkr -> D R @ Mw
+76:51 Mw->ForwardPass => !D L @ MDw:B >> M*T
+:set L: ThrowIn
+77:11 M => !D CL @ Dw:HD >>> !D CR @ D
+:possession T
+77:22 D->Move => DM
+77:27 DM -> AM R @ Mw
+:attacking_possession T
+77:31 Mw -> Gkr
+:possession T
+77:52 Gkr -> D L @ AMw
+:attacking_possession T
+78:09 AMw->Pass => F C @ Aw
+78:10 Aw->Move => Mw
+78:13 Mw->Long => D R @ Awp
