@@ -853,3 +853,4 @@
 :attack T
 72:34 A->Pass => AM R @ Apd
 72:35 Apd->HighPass => !Gkr:H
+:fair_play

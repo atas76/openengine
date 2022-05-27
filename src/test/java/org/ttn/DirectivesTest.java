@@ -169,4 +169,12 @@ public class DirectivesTest {
         assertEquals(TacticalPosition.X.M, directive.getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.LC, directive.getTacticalPosition().getY());
     }
+
+    @Test
+    public void testFairPlayDirective() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":fair_play");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(FAIR_PLAY, directive.getType());
+    }
 }

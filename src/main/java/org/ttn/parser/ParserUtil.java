@@ -258,6 +258,7 @@ public class ParserUtil {
             case "break":
             case "HT":
             case "injury":
+            case "fair_play":
                 return new Directive(directiveType);
             case "set":
                 checkMissingTokens(tokensNumber, 2, "team");
@@ -301,6 +302,7 @@ public class ParserUtil {
             case "attacking_transition" -> ATTACKING_TRANSITION;
             case "counter_attack" -> COUNTER_ATTACK;
             case "substitution" -> SUBSTITUTION;
+            case "fair_play" -> FAIR_PLAY;
             case "break_ball_action" -> BREAK_BALL_ACTION;
             case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;

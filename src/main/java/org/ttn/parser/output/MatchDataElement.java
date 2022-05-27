@@ -18,6 +18,7 @@ public interface MatchDataElement {
         ATTACKING_TRANSITION,
         COUNTER_ATTACK,
         SUBSTITUTION,
+        FAIR_PLAY,
         BREAK_BALL_ACTION,
         ATTACK_ACTION,
         RELEASE_PRESSING_ACTION,
