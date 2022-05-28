@@ -919,3 +919,75 @@
 78:09 AMw->Pass => F C @ Aw
 78:10 Aw->Move => Mw
 78:13 Mw->Long => D R @ Awp
+78:18 Awp->Cross => AM R @ Ap
+78:20 Ap->HdSht => !GK
+:break
+:transition T
+:possessor AM L
+78:59 M->Pass => AM R @ AM:FT >> AM L @ AM
+79:01 AM->Move => !M RC @ D:Ch >>> !F C @ MD:Cnt
+:transition L
+79:08 MD->Move => M
+79:10 M->ForwardPass => !D CR @ DM
+:recovery T
+79:11 DM->Move => D
+:pressure T
+79:12 D->BackPass => Gkr
+79:14 Gkr->Pass:FT => D R @ Dpd
+:possession T
+79:17 Dpd -> AM R @ AMd
+:attacking_possession T
+79:31 AMd->ParallelPass => AM L @ AM:Fr
+79:33 AM->Move => A
+:attack T
+79:34 A->Shoot => !Gkr:S >> D L @ Apd
+79:38 Apd->Pass:FT => M CL @ Ap
+79:39 Ap->Shoot => !Gkr:H
+:break
+:possession L
+:possessor D L
+79:54 DMw->ForwardPass => F CL @ MDw
+79:57 MDw->Pass => D L @ MDw
+79:58 MDw->Pass:FT => F C @ Mw:Fr
+:attacking_possession L
+80:00 Mw->ForwardPass:Open => !D CR @ DMw
+:recovery T
+80:02 DMw->ForwardPass => AM L @ MDw
+:transition T
+80:05 MDw->Move => Md
+80:06 Md->Pass => AM C @ DM
+80:07 DM->DiagonalPass:FT => AM R @ Mw
+80:12 Mw->Move => M
+80:16 M->ForwardPass => AM L @ AM
+80:17 AM->Dribble => A
+:attack T
+80:20 A->Shoot => !Gkr:H
+:break
+:possession L
+:possessor M LC
+80:30 DMw->ForwardPass:Open => !D CL @ Dw
+:recovery L
+80:34 Dw->BackPass:FT => !C
+:substitution T: AM R
+:set L: Corner
+81:44 CK->Cross => !AM L @ Dp:HD >> F RC @ A:Cnt
+81:49 A->HighPass => !AM L @ Dd:Clr >>> M RC @ A
+82:01 A->Shoot => !GK
+:break
+:possession T
+:possessor D R
+82:10 DMw:Fr->Move => AMw
+:attacking_possession T
+82:15 AMw -> AM C @ Md
+82:32 Md->WidePass => D R @ Aw
+:attack T
+82:36 Aw->Cross => !D R @ Dp:HD >>> Awp*F
+:set T: Freekick
+84:05 Awp:SP->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => M LC @ Ap:B >> !Dp*O
+:break
+:possession T
+85:20 Gkr->Long => !Gkr:H
+:possession L
+85:33 Gkr->HandPass => D L @ Mw
