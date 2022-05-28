@@ -970,7 +970,7 @@
 80:34 Dw->BackPass:FT => !C
 :substitution T: AM R
 :set L: Corner
-81:44 CK->Cross => !AM L Dp:HD >> F RC @ A:Cnt
+81:44 CK->Cross => !AM L @ Dp:HD >> F RC @ A:Cnt
 81:49 A->HighPass => !AM L @ Dd:Clr >>> M RC @ A
 82:01 A->Shoot => !GK
 :break
