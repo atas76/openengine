@@ -1060,7 +1060,7 @@
 :attack T
 :possessor AM L
 93:56 Ad->ForwardPass => !D CR @ Dp:Clr >> A*T
-:set T: Throw-in
+:set T: ThrowIn
 94:02 A => AM C @ Aw
 :attack T
 94:05 Aw->Cross => !M C @ Dp:HD >> D CL @ Md
