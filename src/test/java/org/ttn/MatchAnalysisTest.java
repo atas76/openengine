@@ -33,15 +33,13 @@ public class MatchAnalysisTest {
     }
 
     @Test
-    @Ignore
     public void testReadMatchData() throws IOException {
         List<String> matchData = Files.readAllLines(matchSampleResource);
 
-        assertEquals(2, matchData.size());
+        assertEquals(1076, matchData.size());
     }
 
     @Test
-    @Ignore
     public void testParseMatchDataElements() throws IOException {
         List<MatchDataElement> matchDataElements = Files.lines(matchSampleResource).map(line -> {
             try {
@@ -51,7 +49,7 @@ public class MatchAnalysisTest {
             }
         }).collect(Collectors.toList());
 
-        assertEquals(2, matchDataElements.size());
+        assertEquals(1076, matchDataElements.size());
         assertTrue(matchDataElements.get(0) instanceof Directive);
         assertTrue(matchDataElements.get(1) instanceof Statement);
     }
