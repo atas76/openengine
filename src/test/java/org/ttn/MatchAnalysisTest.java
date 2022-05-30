@@ -2,6 +2,7 @@ package org.ttn;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.ttn.engine.agent.ActionType;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
@@ -18,9 +19,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
-import static org.ttn.engine.agent.ActionType.Default;
+import static org.ttn.engine.agent.ActionType.*;
 import static org.ttn.engine.rules.SetPiece.KICK_OFF;
-import static org.ttn.parser.output.MatchDataElement.DirectiveType.POSSESSION_CHAIN_BLOCK;
+import static org.ttn.engine.rules.SetPiece.THROW_IN;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class MatchAnalysisTest {
 
@@ -77,16 +79,45 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(3) instanceof Directive);
         Directive interpretiveDirective = (Directive) matchDataElements.get(3);
         assertTrue(interpretiveDirective.getType().toString().endsWith("ACTION"));
-        assertTrue(matchDataElements.get(4) instanceof Statement); // Long pass action
-        assertTrue(matchDataElements.get(6) instanceof Statement); // Action parameters
-        assertTrue(matchDataElements.get(7) instanceof Directive); // Attack
-        assertTrue(matchDataElements.get(8) instanceof Statement); // Bounceoff action
-        assertTrue(matchDataElements.get(9) instanceof Directive); // Set piece
-        assertTrue(matchDataElements.get(10) instanceof Statement); // Shot action
-        assertTrue(matchDataElements.get(11) instanceof Directive); // Break
-        assertTrue(matchDataElements.get(12) instanceof Directive); // Throw-in
-        assertTrue(matchDataElements.get(13) instanceof Statement); // In-play default action
-        assertTrue(matchDataElements.get(14) instanceof Statement); // Back pass action
+        // Long pass
+        assertTrue(matchDataElements.get(4) instanceof Statement);
+        Statement longPass = (Statement) matchDataElements.get(4);
+        assertEquals(ActionType.Long, longPass.getAction().getType());
+        // Action parameters
+        assertTrue(matchDataElements.get(6) instanceof Statement);
+        Statement parameterisedActionStmt = (Statement) matchDataElements.get(6);
+        assertTrue(parameterisedActionStmt.getAction().isFirstTouch());
+        assertTrue(parameterisedActionStmt.getAction().isOpenPass());
+        // Attack
+        assertTrue(matchDataElements.get(7) instanceof Directive);
+        Directive attackBlockDirective = (Directive) matchDataElements.get(7);
+        assertEquals(ATTACK_CHAIN_BLOCK, attackBlockDirective.getType());
+        // Bounceoff action
+        assertTrue(matchDataElements.get(8) instanceof Statement);
+        Statement bounceOff = (Statement) matchDataElements.get(8);
+        assertEquals(BounceOff, bounceOff.getAction().getType());
+        // Set piece execution block
+        assertTrue(matchDataElements.get(9) instanceof Directive);
+        Directive setPiece = (Directive) matchDataElements.get(9);
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, setPiece.getType());
+        // Shot action
+        assertTrue(matchDataElements.get(10) instanceof Statement);
+        Statement shotStmt = (Statement) matchDataElements.get(10);
+        assertEquals(Shoot, shotStmt.getAction().getType());
+        // Break
+        assertTrue(matchDataElements.get(11) instanceof Directive);
+        Directive flowBreak = (Directive) matchDataElements.get(11);
+        assertEquals(BREAK, flowBreak.getType());
+        // Throw-in
+        assertTrue(matchDataElements.get(12) instanceof Directive);
+        Directive throwIn = (Directive) matchDataElements.get(12);
+        assertEquals(THROW_IN, throwIn.getSetPiece());
+        //
+        assertTrue(matchDataElements.get(13) instanceof Statement);
+        // Back pass action
+        assertTrue(matchDataElements.get(14) instanceof Statement);
+        Statement backPassActionStmt = (Statement) matchDataElements.get(14);
+        assertEquals(BackPass, backPassActionStmt.getAction().getType());
         assertTrue(matchDataElements.get(15) instanceof Statement); // Possession change
         assertTrue(matchDataElements.get(17) instanceof Directive); // Pressing
         assertTrue(matchDataElements.get(18) instanceof Directive); // Possessor
