@@ -1,7 +1,6 @@
 package org.ttn;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
@@ -18,8 +17,10 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.ttn.engine.agent.ActionType.Default;
+import static org.ttn.engine.rules.SetPiece.KICK_OFF;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.POSSESSION_CHAIN_BLOCK;
 
 public class MatchAnalysisTest {
 
@@ -60,10 +61,22 @@ public class MatchAnalysisTest {
                 new Parser().parse(Files.lines(matchSampleResource).collect(Collectors.toList()));
 
         assertEquals(1076, matchDataElements.size());
-        assertTrue(matchDataElements.get(0) instanceof Directive); // Kick-off
-        assertTrue(matchDataElements.get(1) instanceof Statement); // Default action type
-        assertTrue(matchDataElements.get(2) instanceof Directive); // Possession
-        assertTrue(matchDataElements.get(3) instanceof Directive); // Interpretive directive
+        // Kick-off
+        assertTrue(matchDataElements.get(0) instanceof Directive);
+        Directive kickOff = (Directive) matchDataElements.get(0);
+        assertEquals(KICK_OFF, kickOff.getSetPiece());
+        // Default action type
+        assertTrue(matchDataElements.get(1) instanceof Statement);
+        Statement defaultActionStatement = (Statement) matchDataElements.get(1);
+        assertEquals(Default, defaultActionStatement.getAction().getType());
+        // Possession
+        assertTrue(matchDataElements.get(2) instanceof Directive);
+        Directive possessionDirective = (Directive) matchDataElements.get(2);
+        assertEquals(POSSESSION_CHAIN_BLOCK, possessionDirective.getType());
+        // Interpretive directive
+        assertTrue(matchDataElements.get(3) instanceof Directive);
+        Directive interpretiveDirective = (Directive) matchDataElements.get(3);
+        assertTrue(interpretiveDirective.getType().toString().endsWith("ACTION"));
         assertTrue(matchDataElements.get(4) instanceof Statement); // Long pass action
         assertTrue(matchDataElements.get(6) instanceof Statement); // Action parameters
         assertTrue(matchDataElements.get(7) instanceof Directive); // Attack
