@@ -3,6 +3,7 @@ package org.ttn;
 import org.junit.Before;
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.environment.ActionOutcomeType;
 import org.ttn.engine.input.TacticalPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
@@ -21,8 +22,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.agent.ActionType.*;
-import static org.ttn.engine.rules.SetPiece.KICK_OFF;
-import static org.ttn.engine.rules.SetPiece.THROW_IN;
+import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class MatchAnalysisTest {
@@ -140,12 +140,32 @@ public class MatchAnalysisTest {
         Statement gkrBackpass = (Statement) matchDataElements.get(20);
         assertEquals(BackPass, gkrBackpass.getAction().getType());
         assertEquals(TacticalPosition.Gk.Gkr, gkrBackpass.getActionOutcome().getTacticalPosition().getGk());
-        assertTrue(matchDataElements.get(21) instanceof Statement); // Pass action
-        assertTrue(matchDataElements.get(22) instanceof Statement); // Diagonal pass
-        assertTrue(matchDataElements.get(28) instanceof Directive); // Transition
-        assertTrue(matchDataElements.get(29) instanceof Statement); // Move action
-        assertTrue(matchDataElements.get(40) instanceof Statement); // Intermediate action outcome
-        assertTrue(matchDataElements.get(41) instanceof Directive); // Corner kick
+        // Pass action
+        assertTrue(matchDataElements.get(21) instanceof Statement);
+        Statement passAction = (Statement) matchDataElements.get(21);
+        assertEquals(Pass, passAction.getAction().getType());
+        // Diagonal pass
+        assertTrue(matchDataElements.get(22) instanceof Statement);
+        Statement diagonalPass = (Statement) matchDataElements.get(22);
+        assertEquals(DiagonalPass, diagonalPass.getAction().getType());
+        // Transition
+        assertTrue(matchDataElements.get(28) instanceof Directive);
+        Directive transitionDirective = (Directive) matchDataElements.get(28);
+        assertEquals(TRANSITION_CHAIN_BLOCK, transitionDirective.getType());
+        // Move action
+        assertTrue(matchDataElements.get(29) instanceof Statement);
+        Statement moveActionStmt = (Statement) matchDataElements.get(29);
+        assertEquals(Move, moveActionStmt.getAction().getType());
+        // Intermediate action outcome
+        assertTrue(matchDataElements.get(40) instanceof Statement);
+        Statement intermediateActionOutcomeStmt = (Statement) matchDataElements.get(40);
+        assertTrue(intermediateActionOutcomeStmt.getActionOutcome().isPossessionChange());
+        assertEquals(ActionOutcomeType.CORNER, intermediateActionOutcomeStmt.getRestingOutcome().getType());
+        // Corner kick
+        assertTrue(matchDataElements.get(41) instanceof Directive);
+        Directive cornerKickDirective = (Directive) matchDataElements.get(41);
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, cornerKickDirective.getType());
+        assertEquals(CORNER_KICK, cornerKickDirective.getSetPiece());
         assertTrue(matchDataElements.get(42) instanceof Statement); // Cross action
         assertTrue(matchDataElements.get(43) instanceof Statement); // Goalkeeper out of penalty area possession
         assertTrue(matchDataElements.get(45) instanceof Statement); // Possession chain summary
