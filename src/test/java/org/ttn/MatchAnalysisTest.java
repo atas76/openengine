@@ -3,6 +3,7 @@ package org.ttn;
 import org.junit.Before;
 import org.junit.Test;
 import org.ttn.engine.agent.ActionType;
+import org.ttn.engine.input.TacticalPosition;
 import org.ttn.lexan.Scanner;
 import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
@@ -118,11 +119,27 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(14) instanceof Statement);
         Statement backPassActionStmt = (Statement) matchDataElements.get(14);
         assertEquals(BackPass, backPassActionStmt.getAction().getType());
-        assertTrue(matchDataElements.get(15) instanceof Statement); // Possession change
-        assertTrue(matchDataElements.get(17) instanceof Directive); // Pressing
-        assertTrue(matchDataElements.get(18) instanceof Directive); // Possessor
-        assertTrue(matchDataElements.get(19) instanceof Statement); // Parallel pass
-        assertTrue(matchDataElements.get(20) instanceof Statement); // Back pass to goalkeeper
+        // Possession change
+        assertTrue(matchDataElements.get(15) instanceof Statement);
+        Statement possessionChangeStmt = (Statement) matchDataElements.get(15);
+        assertTrue(possessionChangeStmt.getActionOutcome().isPossessionChange());
+        // Pressing
+        assertTrue(matchDataElements.get(17) instanceof Directive);
+        Directive pressingDirective = (Directive) matchDataElements.get(17);
+        assertEquals(BUILDUP_PRESSURE_BLOCK, pressingDirective.getType());
+        // Possessor
+        assertTrue(matchDataElements.get(18) instanceof Directive);
+        Directive possessorDirective = (Directive) matchDataElements.get(18);
+        assertEquals(POSSESSOR_DEFINITION, possessorDirective.getType());
+        // Parallel pass
+        assertTrue(matchDataElements.get(19) instanceof Statement);
+        Statement parallelPassAction = (Statement) matchDataElements.get(19);
+        assertEquals(ParallelPass, parallelPassAction.getAction().getType());
+        // Back pass to goalkeeper
+        assertTrue(matchDataElements.get(20) instanceof Statement);
+        Statement gkrBackpass = (Statement) matchDataElements.get(20);
+        assertEquals(BackPass, gkrBackpass.getAction().getType());
+        assertEquals(TacticalPosition.Gk.Gkr, gkrBackpass.getActionOutcome().getTacticalPosition().getGk());
         assertTrue(matchDataElements.get(21) instanceof Statement); // Pass action
         assertTrue(matchDataElements.get(22) instanceof Statement); // Diagonal pass
         assertTrue(matchDataElements.get(28) instanceof Directive); // Transition
