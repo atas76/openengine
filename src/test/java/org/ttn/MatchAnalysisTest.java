@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.*;
 import static org.ttn.engine.agent.ActionType.*;
 import static org.ttn.engine.environment.ActionContext.MARKED;
+import static org.ttn.engine.environment.ActionOutcomeType.FOUL;
+import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
@@ -220,9 +222,19 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(89) instanceof Directive);
         Directive attackingPossession = (Directive) matchDataElements.get(89);
         assertEquals(ATTACKING_POSSESSION, attackingPossession.getType());
-        assertTrue(matchDataElements.get(103) instanceof Statement); // Goalkick outcome
-        assertTrue(matchDataElements.get(124) instanceof Statement); // Foul outcome
-        assertTrue(matchDataElements.get(126) instanceof Directive); // Freekick
+        // Goalkick outcome
+        assertTrue(matchDataElements.get(103) instanceof Statement);
+        Statement goalKick = (Statement) matchDataElements.get(103);
+        assertEquals(GOAL_KICK, goalKick.getActionOutcome().getType());
+        // Foul outcome
+        assertTrue(matchDataElements.get(124) instanceof Statement);
+        Statement foul = (Statement) matchDataElements.get(124);
+        assertEquals(FOUL, foul.getActionOutcome().getType());
+        // Freekick
+        assertTrue(matchDataElements.get(126) instanceof Directive);
+        Directive freeKickDirective = (Directive) matchDataElements.get(126);
+        assertEquals(SET_PIECE_EXECUTION_BLOCK, freeKickDirective.getType());
+        assertEquals(FREEKICK, freeKickDirective.getSetPiece());
         assertTrue(matchDataElements.get(130) instanceof Directive); // Defensive transition
         assertTrue(matchDataElements.get(158) instanceof Statement); // 'Triangle' action
         assertTrue(matchDataElements.get(190) instanceof Directive); // Counter attack
