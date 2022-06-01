@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static org.ttn.engine.agent.ActionType.*;
+import static org.ttn.engine.environment.ActionContext.MARKED;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
@@ -166,19 +167,59 @@ public class MatchAnalysisTest {
         Directive cornerKickDirective = (Directive) matchDataElements.get(41);
         assertEquals(SET_PIECE_EXECUTION_BLOCK, cornerKickDirective.getType());
         assertEquals(CORNER_KICK, cornerKickDirective.getSetPiece());
-        assertTrue(matchDataElements.get(42) instanceof Statement); // Cross action
-        assertTrue(matchDataElements.get(43) instanceof Statement); // Goalkeeper out of penalty area possession
-        assertTrue(matchDataElements.get(45) instanceof Statement); // Possession chain summary
-        assertTrue(matchDataElements.get(48) instanceof Statement); // Forward pass action
-        assertTrue(matchDataElements.get(49) instanceof Statement); // Action context
-        assertTrue(matchDataElements.get(51) instanceof Statement); // 'Wide pass' action
-        assertTrue(matchDataElements.get(54) instanceof Statement); // 'Double' possession change in both outcomes
-        assertTrue(matchDataElements.get(55) instanceof Directive); // Ball recovery
-        assertTrue(matchDataElements.get(56) instanceof Statement); // Throw-in action outcome
-        assertTrue(matchDataElements.get(59) instanceof Statement); // Dribble action
-        assertTrue(matchDataElements.get(69) instanceof Statement); // 'High pass' action
-        assertTrue(matchDataElements.get(72) instanceof Statement); // Clearance action
-        assertTrue(matchDataElements.get(89) instanceof Directive); // Attacking possession
+        // Cross action
+        assertTrue(matchDataElements.get(42) instanceof Statement);
+        Statement crossAction = (Statement) matchDataElements.get(42);
+        assertEquals(Cross, crossAction.getAction().getType());
+        // Goalkeeper out of penalty area possession
+        assertTrue(matchDataElements.get(43) instanceof Statement);
+        Statement gkdStmt = (Statement) matchDataElements.get(43);
+        assertEquals(TacticalPosition.Gk.Gkd, gkdStmt.getActionOutcome().getTacticalPosition().getGk());
+        // Possession chain summary
+        assertTrue(matchDataElements.get(45) instanceof Statement);
+        Statement possessionChainSummary = (Statement) matchDataElements.get(45);
+        assertEquals(Implicit, possessionChainSummary.getAction().getType());
+        // Forward pass action
+        assertTrue(matchDataElements.get(48) instanceof Statement);
+        Statement forwardPassAction = (Statement) matchDataElements.get(48);
+        assertEquals(ForwardPass, forwardPassAction.getAction().getType());
+        // Action context
+        assertTrue(matchDataElements.get(49) instanceof Statement);
+        Statement actionContextStmt = (Statement) matchDataElements.get(49);
+        assertEquals(MARKED, actionContextStmt.getActionContext());
+        // 'Wide pass' action
+        assertTrue(matchDataElements.get(51) instanceof Statement);
+        Statement widePass = (Statement) matchDataElements.get(51);
+        assertEquals(WidePass, widePass.getAction().getType());
+        // Possession change in both outcomes
+        assertTrue(matchDataElements.get(54) instanceof Statement);
+        Statement doublePossessionChange = (Statement) matchDataElements.get(54);
+        assertTrue(doublePossessionChange.getActionOutcome().isPossessionChange());
+        assertTrue(doublePossessionChange.getRestingOutcome().isPossessionChange());
+        // Ball recovery
+        assertTrue(matchDataElements.get(55) instanceof Directive);
+        Directive ballRecovery = (Directive) matchDataElements.get(55);
+        assertEquals(BALL_RECOVERY_BLOCK, ballRecovery.getType());
+        // Throw-in action outcome
+        assertTrue(matchDataElements.get(56) instanceof Statement);
+        Statement throwInOutcome = (Statement) matchDataElements.get(56);
+        assertEquals(ActionOutcomeType.THROW_IN, throwInOutcome.getActionOutcome().getType());
+        // Dribble action
+        assertTrue(matchDataElements.get(59) instanceof Statement);
+        Statement dribbleAction = (Statement) matchDataElements.get(59);
+        assertEquals(Dribble, dribbleAction.getAction().getType());
+        // 'High pass' action
+        assertTrue(matchDataElements.get(69) instanceof Statement);
+        Statement highPassAction = (Statement) matchDataElements.get(69);
+        assertEquals(HighPass, highPassAction.getAction().getType());
+        // Clearance action
+        assertTrue(matchDataElements.get(72) instanceof Statement);
+        Statement clearanceAction = (Statement) matchDataElements.get(72);
+        assertEquals(Clear, clearanceAction.getAction().getType());
+        // Attacking possession
+        assertTrue(matchDataElements.get(89) instanceof Directive);
+        Directive attackingPossession = (Directive) matchDataElements.get(89);
+        assertEquals(ATTACKING_POSSESSION, attackingPossession.getType());
         assertTrue(matchDataElements.get(103) instanceof Statement); // Goalkick outcome
         assertTrue(matchDataElements.get(124) instanceof Statement); // Foul outcome
         assertTrue(matchDataElements.get(126) instanceof Directive); // Freekick
