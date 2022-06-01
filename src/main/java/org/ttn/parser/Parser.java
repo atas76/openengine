@@ -18,6 +18,7 @@ public class Parser {
             entry("Kickoff", SetPiece.KICK_OFF),
             entry("Penalty", SetPiece.PENALTY),
             entry("ThrowIn", SetPiece.THROW_IN),
+            entry("Freekick", SetPiece.FREEKICK),
             entry("Corner", SetPiece.CORNER_KICK));
 
     public Parser() {}
