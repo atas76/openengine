@@ -303,7 +303,6 @@ public class ParserUtil {
         return switch(directive) {
             case "phase" -> INPLAY_PHASE;
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
-            case "possession" -> POSSESSION_CHAIN_BLOCK;
             case "recovery" -> BALL_RECOVERY_BLOCK;
             case "attack" -> ATTACK_CHAIN_BLOCK;
             case "pressure" -> BUILDUP_PRESSURE_BLOCK;

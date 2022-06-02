@@ -134,15 +134,6 @@ public class ParserTest {
     }
 
     @Test
-    public void testPossessionBlockDefinition() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":possession L");
-        Directive directive = (Directive) new Parser().parseTokenList(tokens);
-
-        assertEquals(POSSESSION_CHAIN_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-    }
-
-    @Test
     public void testPressureBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":pressure T");
         Directive directive = (Directive) new Parser().parseTokenList(tokens);

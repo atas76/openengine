@@ -30,15 +30,6 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":possession L");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(POSSESSION_CHAIN_BLOCK, directive.getType());
-        assertEquals("L", directive.getTeam());
-    }
-
-    @Test
     public void testParseBallRecoveryDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":recovery L");
         Directive directive = ParserUtil.parseDirective(tokens);

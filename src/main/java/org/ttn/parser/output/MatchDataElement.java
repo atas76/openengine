@@ -6,7 +6,6 @@ public interface MatchDataElement {
         INPLAY_PHASE,
         BUILDUP_PRESSURE_BLOCK,
         SET_PIECE_EXECUTION_BLOCK,
-        POSSESSION_CHAIN_BLOCK,
         BALL_RECOVERY_BLOCK,
         ATTACK_CHAIN_BLOCK,
         TRANSITION_CHAIN_BLOCK,
