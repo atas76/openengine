@@ -25,6 +25,8 @@ import static org.ttn.engine.agent.ActionType.*;
 import static org.ttn.engine.environment.ActionContext.MARKED;
 import static org.ttn.engine.environment.ActionOutcomeType.FOUL;
 import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
+import static org.ttn.engine.input.TacticalPosition.X.F;
+import static org.ttn.engine.input.TacticalPosition.Y.C;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
@@ -235,23 +237,76 @@ public class MatchAnalysisTest {
         Directive freeKickDirective = (Directive) matchDataElements.get(126);
         assertEquals(SET_PIECE_EXECUTION_BLOCK, freeKickDirective.getType());
         assertEquals(FREEKICK, freeKickDirective.getSetPiece());
-        assertTrue(matchDataElements.get(130) instanceof Directive); // Defensive transition
-        assertTrue(matchDataElements.get(158) instanceof Statement); // 'Triangle' action
-        assertTrue(matchDataElements.get(190) instanceof Directive); // Counter attack
-        assertTrue(matchDataElements.get(192) instanceof Statement); // 'Run' action
-        assertTrue(matchDataElements.get(192) instanceof Statement); // 'Run' action
-        assertTrue(matchDataElements.get(239) instanceof Statement); // '1-2 pass' action
-        assertTrue(matchDataElements.get(246) instanceof Statement); // 'Turn' action
-        assertTrue(matchDataElements.get(255) instanceof Statement); // 'Back heel pass' action
-        assertTrue(matchDataElements.get(264) instanceof Statement); // 'Parallel high pass' action
-        assertTrue(matchDataElements.get(336) instanceof Statement); // 'Wide high pass' action
-        assertTrue(matchDataElements.get(386) instanceof Statement); // Low cross
-        assertTrue(matchDataElements.get(439) instanceof Statement); // Pass swapping flank
-        assertTrue(matchDataElements.get(544) instanceof Directive); // Half time
-        assertTrue(matchDataElements.get(677) instanceof Statement); // Attempt at goal with header
-        assertTrue(matchDataElements.get(678) instanceof Directive); // Substitution
-        assertTrue(matchDataElements.get(831) instanceof Statement); // 'Cutback' action
-        assertTrue(matchDataElements.get(855) instanceof Directive); // Fair play
-        assertTrue(matchDataElements.get(992) instanceof Statement); // 'Hand pass' by goalkeeper
+        // Defensive transition
+        assertTrue(matchDataElements.get(130) instanceof Directive);
+        Directive defensiveTransition = (Directive) matchDataElements.get(130);
+        assertEquals(DEFENSIVE_TRANSITION, defensiveTransition.getType());
+        // 'Triangle' action
+        assertTrue(matchDataElements.get(158) instanceof Statement);
+        Statement triangleStmt = (Statement) matchDataElements.get(158);
+        assertEquals(Triangle, triangleStmt.getAction().getType());
+        // Counter attack
+        assertTrue(matchDataElements.get(190) instanceof Directive);
+        Directive counterAttack = (Directive) matchDataElements.get(190);
+        assertEquals(COUNTER_ATTACK, counterAttack.getType());
+        // 'Run' action
+        assertTrue(matchDataElements.get(192) instanceof Statement);
+        Statement runActionStmt = (Statement) matchDataElements.get(192);
+        assertEquals(Run, runActionStmt.getAction().getType());
+        // '1-2 pass' action
+        assertTrue(matchDataElements.get(239) instanceof Statement);
+        Statement oneTwoPassActionStmt = (Statement) matchDataElements.get(239);
+        assertEquals(OneTwoPass, oneTwoPassActionStmt.getAction().getType());
+        // 'Turn' action
+        assertTrue(matchDataElements.get(246) instanceof Statement);
+        Statement turnActionStmt = (Statement) matchDataElements.get(246);
+        assertEquals(Turn, turnActionStmt.getAction().getType());
+        // 'Back heel pass' action
+        assertTrue(matchDataElements.get(255) instanceof Statement);
+        Statement backHeelPassActionStmt = (Statement) matchDataElements.get(255);
+        assertEquals(BackHeelPass, backHeelPassActionStmt.getAction().getType());
+        // 'Parallel high pass' action
+        assertTrue(matchDataElements.get(264) instanceof Statement);
+        Statement parallelHighPassActionStmt = (Statement) matchDataElements.get(264);
+        assertEquals(ParallelHighPass, parallelHighPassActionStmt.getAction().getType());
+        // 'Wide high pass' action
+        assertTrue(matchDataElements.get(336) instanceof Statement);
+        Statement wideHighPassActionStmt = (Statement) matchDataElements.get(336);
+        assertEquals(WideHighPass, wideHighPassActionStmt.getAction().getType());
+        // Low cross
+        assertTrue(matchDataElements.get(386) instanceof Statement);
+        Statement lowCrossActionStmt = (Statement) matchDataElements.get(386);
+        assertEquals(LowCross, lowCrossActionStmt.getAction().getType());
+        // Pass swapping flank
+        assertTrue(matchDataElements.get(439) instanceof Statement);
+        Statement passSwappingFlankStmt = (Statement) matchDataElements.get(439);
+        assertEquals(SwapSidePass, passSwappingFlankStmt.getAction().getType());
+        // Half time
+        assertTrue(matchDataElements.get(544) instanceof Directive);
+        Directive halfTimeDirective = (Directive) matchDataElements.get(544);
+        assertEquals(HALF_TIME, halfTimeDirective.getType());
+        // Attempt at goal with header
+        assertTrue(matchDataElements.get(677) instanceof Statement);
+        Statement headAtGoalStmt = (Statement) matchDataElements.get(677);
+        assertEquals(HdSht, headAtGoalStmt.getAction().getType());
+        // Substitution
+        assertTrue(matchDataElements.get(678) instanceof Directive);
+        Directive substitutionDirective = (Directive) matchDataElements.get(678);
+        assertEquals(SUBSTITUTION, substitutionDirective.getType());
+        assertEquals("L", substitutionDirective.getTeam());
+        assertEquals(F, substitutionDirective.getTacticalPosition().getX());
+        assertEquals(C, substitutionDirective.getTacticalPosition().getY());
+        // 'Cutback' action
+        assertTrue(matchDataElements.get(831) instanceof Statement);
+        Statement cutBackActionStmt = (Statement) matchDataElements.get(831);
+        assertEquals(Cutback, cutBackActionStmt.getAction().getType());
+        // Fair play
+        assertTrue(matchDataElements.get(855) instanceof Directive);
+        Directive fairPlayDirective = (Directive) matchDataElements.get(855);
+        assertEquals(FAIR_PLAY, fairPlayDirective.getType());
+        // 'Hand pass' by goalkeeper
+        assertTrue(matchDataElements.get(992) instanceof Statement);
+        Statement handPassAction = (Statement) matchDataElements.get(992);
+        assertEquals(HandPass, handPassAction.getAction().getType());
     }
 }
