@@ -28,6 +28,7 @@ import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
 import static org.ttn.engine.input.TacticalPosition.X.F;
 import static org.ttn.engine.input.TacticalPosition.Y.C;
 import static org.ttn.engine.rules.SetPiece.*;
+import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class MatchAnalysisTest {
@@ -80,7 +81,8 @@ public class MatchAnalysisTest {
         // Possession
         assertTrue(matchDataElements.get(2) instanceof Directive);
         Directive possessionDirective = (Directive) matchDataElements.get(2);
-        assertEquals(POSSESSION_CHAIN_BLOCK, possessionDirective.getType());
+        assertEquals(INPLAY_PHASE, possessionDirective.getType());
+        assertEquals(POSSESSION, possessionDirective.getInPlayPhase());
         // Interpretive directive
         assertTrue(matchDataElements.get(3) instanceof Directive);
         Directive interpretiveDirective = (Directive) matchDataElements.get(3);
