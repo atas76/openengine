@@ -13,10 +13,21 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
+import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.ATTACKING_POSSESSION;
 
 public class DirectivesTest {
+
+    @Test
+    public void testPossessionInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase possession L");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(POSSESSION, directive.getInPlayPhase());
+        assertEquals("L", directive.getTeam());
+    }
 
     @Test
     public void testParsePossessionChainStartDirective() throws ScannerException, ParserException {

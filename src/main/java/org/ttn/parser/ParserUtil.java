@@ -12,6 +12,7 @@ import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
 import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.InPlayPhase;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
 
@@ -22,6 +23,7 @@ import java.util.List;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
+import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.StatementType.*;
 
@@ -260,6 +262,10 @@ public class ParserUtil {
             case "injury":
             case "fair_play":
                 return new Directive(directiveType);
+            case "phase":
+                InPlayPhase phase = expectInPlayPhase(tokens.get(2));
+                checkMissingTokens(tokensNumber, 3, "team");
+                return new Directive(phase, tokens.get(3));
             case "set":
                 checkMissingTokens(tokensNumber, 2, "team");
                 checkMissingTokens(tokensNumber, 3, "':'");
@@ -286,8 +292,16 @@ public class ParserUtil {
         if (tokenIndex > tokensNumber - 1) throw new MissingTokenException("Expected: " + expectedToken);
     }
 
+    private static InPlayPhase expectInPlayPhase(String phase) throws ParserException {
+        return switch(phase) {
+            case "possession" -> POSSESSION;
+            default -> throw new ParserException("In-play phase expected");
+        };
+    }
+
     private static MatchDataElement.DirectiveType expectDirective(String directive) throws ParserException {
         return switch(directive) {
+            case "phase" -> INPLAY_PHASE;
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
             case "possession" -> POSSESSION_CHAIN_BLOCK;
             case "recovery" -> BALL_RECOVERY_BLOCK;

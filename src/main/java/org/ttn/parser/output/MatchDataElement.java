@@ -3,6 +3,7 @@ package org.ttn.parser.output;
 public interface MatchDataElement {
 
     enum DirectiveType {
+        INPLAY_PHASE,
         BUILDUP_PRESSURE_BLOCK,
         SET_PIECE_EXECUTION_BLOCK,
         POSSESSION_CHAIN_BLOCK,
