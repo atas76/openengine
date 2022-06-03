@@ -298,6 +298,7 @@ public class ParserUtil {
             case "attack" -> ATTACK;
             case "pressure" -> PRESSURE;
             case "recovery" -> BALL_RECOVERY;
+            case "attacking_possession" -> InPlayPhase.ATTACKING_POSSESSION;
             default -> throw new ParserException("In-play phase expected");
         };
     }
@@ -310,7 +311,6 @@ public class ParserUtil {
             case "HT" -> HALF_TIME;
             case "possessor" -> POSSESSOR_DEFINITION;
             case "transition" -> TRANSITION_CHAIN_BLOCK;
-            case "attacking_possession" -> ATTACKING_POSSESSION;
             case "defensive_transition" -> DEFENSIVE_TRANSITION;
             case "attacking_transition" -> ATTACKING_TRANSITION;
             case "counter_attack" -> COUNTER_ATTACK;

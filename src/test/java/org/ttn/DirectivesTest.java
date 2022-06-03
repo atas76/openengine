@@ -6,6 +6,7 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.InPlayPhase;
 
 import java.util.List;
 
@@ -14,7 +15,6 @@ import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.InPlayPhase.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
-import static org.ttn.parser.output.MatchDataElement.DirectiveType.ATTACKING_POSSESSION;
 
 public class DirectivesTest {
 
@@ -142,11 +142,13 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testAttackingPossessionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attacking_possession T");
+    public void testAttackingPossessionInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase attacking_possession T");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(ATTACKING_POSSESSION, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(InPlayPhase.ATTACKING_POSSESSION, directive.getInPlayPhase());
+        assertEquals("T", directive.getTeam());
     }
 
     @Test

@@ -10,6 +10,7 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.InPlayPhase;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
 
@@ -228,7 +229,8 @@ public class MatchAnalysisTest {
         // Attacking possession
         assertTrue(matchDataElements.get(89) instanceof Directive);
         Directive attackingPossession = (Directive) matchDataElements.get(89);
-        assertEquals(ATTACKING_POSSESSION, attackingPossession.getType());
+        assertEquals(INPLAY_PHASE, attackingPossession.getType());
+        assertEquals(InPlayPhase.ATTACKING_POSSESSION, attackingPossession.getInPlayPhase());
         // Goalkick outcome
         assertTrue(matchDataElements.get(103) instanceof Statement);
         Statement goalKick = (Statement) matchDataElements.get(103);

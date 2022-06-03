@@ -87,7 +87,7 @@
 08:27 Mw:Mrk->ForwardPass => AM L @ Mw
 08:28 Mw->Pass:FT => AM R @ Mw
 08:29 Mw->BackPass:FT => D L @ Mw
-:attacking_possession T
+:phase attacking_possession T
 08:30 Mw->BackPass => D CL @ MDd
 08:33 MDd->Pass => D CR @ MD
 08:35 MD->Move => MDd
@@ -144,7 +144,7 @@
 13:30 Aw->Cross => !D R @ Dp:HD >> A*T
 :set T: ThrowIn
 13:46 A => M CL @ Mw
-:attacking_possession T
+:phase attacking_possession T
 13:47 Mw->BackPass => D CR @ DM
 13:53 DM -> D CR @ M
 :attack_action
@@ -174,7 +174,7 @@
 :set L: ThrowIn
 16:39 M => !M CL @ DMd:HD >>> M RC @ AM
 16:44 AM->Pass => D R @ AMd:Fr
-:attacking_possession L
+:phase attacking_possession L
 16:46 AMd:Fr->Move => Ad
 :phase attack L
 16:47 Ad->Shoot => !GK
@@ -208,7 +208,7 @@
 :defensive_transition L
 19:11 DM->Pass:FT => D R @ Dw
 19:15 Dw->ForwardPass => !M CR @ M:I >> !M CL @ M
-:attacking_possession T
+:phase attacking_possession T
 19:20 M->Triangle => M CR @ AM
 19:23 AM->WidePass => AM R @ Ad
 19:26 Ad->Pass => M CL @ AM
@@ -223,7 +223,7 @@
 19:44 Awp->Cross => !Gkr:H
 :phase possession L
 19:48 Gkr -> M CL @ Md
-:attacking_possession L
+:phase attacking_possession L
 19:58 Md -> D CL @ D
 :phase pressure L
 20:12 D->BackPass => Gkr
@@ -233,7 +233,7 @@
 20:18 DMd->ForwardPass => M RC @ MDd
 20:21 MDd->Move => Md
 20:22 Md->WidePass => D R @ AMw
-:attacking_possession L
+:phase attacking_possession L
 20:24 AMw->Move => Aw
 :phase attack L
 20:27 Aw->Pass => F C @ Ad
@@ -531,7 +531,7 @@
 :set T: ThrowIn
 46:20 M => M CR @ Mw:FT >>> M CR @ Mw
 46:25 Mw->Pass => D CL @ M
-:attacking_possession T
+:phase attacking_possession T
 46:29 M -> D L @ Mw
 46:31 Mw->WidePass => AM L @ Aw
 :phase attack T
@@ -557,7 +557,7 @@
 45:32 Mw->Long => !D L @ Dw:HD >>> M*T
 :set T: ThrowIn
 45:50 M => M CL @ Mw
-:attacking_possession T
+:phase attacking_possession T
 45:56 Mw->Pass => M RC @ Mw
 45:57 Mw->Pass => M CL @ MD
 46:01 MD -> D R @ MDw
@@ -651,7 +651,7 @@
 :possessor M CL
 53:34 MDd -> D R @ MDw
 53:39 MDw->ForwardPass => AM C @ Mw:Fr
-:attacking_possession T
+:phase attacking_possession T
 53:44 Mw->Long => AM R @ Ap:Cnt
 :phase attack T
 53:48 Ap->Shoot => !D R @ Dp:B >>> D CL @ DMw
@@ -704,7 +704,7 @@
 59:49 DM->Pass => D L @ MDw
 59:53 MDw->Move => AMw
 59:59 AMw->BackPass => M CL @ Mw
-:attacking_possession T
+:phase attacking_possession T
 60:01 Mw -> AM C @ Md
 60:05 Md->Pass => M CL @ AMd:Mrk:Tck >> AM R @ AM
 60:07 AM->Pass:FT => AM C @ AMw
@@ -848,7 +848,7 @@
 :phase possession T
 72:22 Gkr -> AM C @ MD
 72:28 MD->ForwardPass => AM L @ M:FT >> F C @ AM
-:attacking_possession T
+:phase attacking_possession T
 72:32 AM->Pass => AM L @ A
 :phase attack T
 72:34 A->Pass => AM R @ Apd
@@ -911,11 +911,11 @@
 :phase possession T
 77:22 D->Move => DM
 77:27 DM -> AM R @ Mw
-:attacking_possession T
+:phase attacking_possession T
 77:31 Mw -> Gkr
 :phase possession T
 77:52 Gkr -> D L @ AMw
-:attacking_possession T
+:phase attacking_possession T
 78:09 AMw->Pass => F C @ Aw
 78:10 Aw->Move => Mw
 78:13 Mw->Long => D R @ Awp
@@ -936,7 +936,7 @@
 79:14 Gkr->Pass:FT => D R @ Dpd
 :phase possession T
 79:17 Dpd -> AM R @ AMd
-:attacking_possession T
+:phase attacking_possession T
 79:31 AMd->ParallelPass => AM L @ AM:Fr
 79:33 AM->Move => A
 :phase attack T
@@ -949,7 +949,7 @@
 79:54 DMw->ForwardPass => F CL @ MDw
 79:57 MDw->Pass => D L @ MDw
 79:58 MDw->Pass:FT => F C @ Mw:Fr
-:attacking_possession L
+:phase attacking_possession L
 80:00 Mw->ForwardPass:Open => !D CR @ DMw
 :phase recovery T
 80:02 DMw->ForwardPass => AM L @ MDw
@@ -977,7 +977,7 @@
 :phase possession T
 :possessor D R
 82:10 DMw:Fr->Move => AMw
-:attacking_possession T
+:phase attacking_possession T
 82:15 AMw -> AM C @ Md
 82:32 Md->WidePass => D R @ Aw
 :phase attack T
@@ -991,7 +991,7 @@
 85:20 Gkr->Long => !Gkr:H
 :phase possession L
 85:33 Gkr->HandPass => D L @ Mw
-:attacking_possession L
+:phase attacking_possession L
 85:39 Mw->Move => AMw
 85:41 AMw->Cross => !D L @ Dp:B >> C
 :set L: Corner
@@ -1031,7 +1031,7 @@
 91:14 M->Pass => D CL @ MDd
 :phase possession T
 91:16 MDd -> D L @ Mw
-:attacking_possession T
+:phase attacking_possession T
 91:19 Mw->Long => AM R @ Ad:HD >>> C
 :set T: Corner
 91:44 CK->Cross => !D CR @ Dp:HD >> D L @ Aw
