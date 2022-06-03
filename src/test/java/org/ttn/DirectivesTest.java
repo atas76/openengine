@@ -29,11 +29,12 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testParseBallRecoveryDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":recovery L");
+    public void testBallRecoveryInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase recovery L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(BALL_RECOVERY_BLOCK, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(BALL_RECOVERY, directive.getInPlayPhase());
         assertEquals("L", directive.getTeam());
     }
 

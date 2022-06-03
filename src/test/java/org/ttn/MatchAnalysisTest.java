@@ -207,7 +207,8 @@ public class MatchAnalysisTest {
         // Ball recovery
         assertTrue(matchDataElements.get(55) instanceof Directive);
         Directive ballRecovery = (Directive) matchDataElements.get(55);
-        assertEquals(BALL_RECOVERY_BLOCK, ballRecovery.getType());
+        assertEquals(INPLAY_PHASE, ballRecovery.getType());
+        assertEquals(BALL_RECOVERY, ballRecovery.getInPlayPhase());
         // Throw-in action outcome
         assertTrue(matchDataElements.get(56) instanceof Statement);
         Statement throwInOutcome = (Statement) matchDataElements.get(56);

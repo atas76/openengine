@@ -1,5 +1,5 @@
 package org.ttn.parser.output;
 
 public enum InPlayPhase {
-    POSSESSION, ATTACK, PRESSURE
+    POSSESSION, ATTACK, PRESSURE, BALL_RECOVERY
 }

@@ -297,6 +297,7 @@ public class ParserUtil {
             case "possession" -> POSSESSION;
             case "attack" -> ATTACK;
             case "pressure" -> PRESSURE;
+            case "recovery" -> BALL_RECOVERY;
             default -> throw new ParserException("In-play phase expected");
         };
     }
@@ -305,7 +306,6 @@ public class ParserUtil {
         return switch(directive) {
             case "phase" -> INPLAY_PHASE;
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
-            case "recovery" -> BALL_RECOVERY_BLOCK;
             case "break" -> BREAK;
             case "HT" -> HALF_TIME;
             case "possessor" -> POSSESSOR_DEFINITION;
