@@ -6,15 +6,13 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.MatchDataElement;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.InPlayPhase.ATTACK;
-import static org.ttn.parser.output.InPlayPhase.POSSESSION;
+import static org.ttn.parser.output.InPlayPhase.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.ATTACKING_POSSESSION;
 
@@ -50,11 +48,12 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testBuildupPressureDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":pressure T");
+    public void testPressingInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase pressure T");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(MatchDataElement.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(PRESSURE, directive.getInPlayPhase());
         assertEquals("T", directive.getTeam());
     }
 

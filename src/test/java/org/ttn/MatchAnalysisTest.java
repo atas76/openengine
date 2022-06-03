@@ -28,8 +28,7 @@ import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
 import static org.ttn.engine.input.TacticalPosition.X.F;
 import static org.ttn.engine.input.TacticalPosition.Y.C;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.InPlayPhase.ATTACK;
-import static org.ttn.parser.output.InPlayPhase.POSSESSION;
+import static org.ttn.parser.output.InPlayPhase.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class MatchAnalysisTest {
@@ -135,7 +134,8 @@ public class MatchAnalysisTest {
         // Pressing
         assertTrue(matchDataElements.get(17) instanceof Directive);
         Directive pressingDirective = (Directive) matchDataElements.get(17);
-        assertEquals(BUILDUP_PRESSURE_BLOCK, pressingDirective.getType());
+        assertEquals(INPLAY_PHASE, pressingDirective.getType());
+        assertEquals(PRESSURE, pressingDirective.getInPlayPhase());
         // Possessor
         assertTrue(matchDataElements.get(18) instanceof Directive);
         Directive possessorDirective = (Directive) matchDataElements.get(18);

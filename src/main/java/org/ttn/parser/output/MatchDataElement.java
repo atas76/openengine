@@ -4,7 +4,6 @@ public interface MatchDataElement {
 
     enum DirectiveType {
         INPLAY_PHASE,
-        BUILDUP_PRESSURE_BLOCK,
         SET_PIECE_EXECUTION_BLOCK,
         BALL_RECOVERY_BLOCK,
         TRANSITION_CHAIN_BLOCK,

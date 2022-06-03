@@ -134,15 +134,6 @@ public class ParserTest {
     }
 
     @Test
-    public void testPressureBlockDefinition() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":pressure T");
-        Directive directive = (Directive) new Parser().parseTokenList(tokens);
-
-        assertEquals(MatchDataElement.DirectiveType.BUILDUP_PRESSURE_BLOCK, directive.getType());
-        assertEquals("T", directive.getTeam());
-    }
-
-    @Test
     public void testTransitionBlockDefinition() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":transition T");
         Directive directive = (Directive) new Parser().parseTokenList(tokens);
