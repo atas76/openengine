@@ -454,7 +454,7 @@ public class ParserTest {
 
     @Test(expected = MissingTokenException.class)
     public void teamMissing() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":possession");
+        List<String> tokens = getTokens(":phase possession");
         new Parser().parseTokenList(tokens);
     }
 
