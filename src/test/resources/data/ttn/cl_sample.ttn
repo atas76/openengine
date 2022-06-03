@@ -188,7 +188,7 @@
 18:20 Md->ForwardPass => !M RC @ DM:B >> !D C @ DM
 :phase defensive_transition L
 18:25 DM->Triangle => M RC @ MD
-:counter_attack L
+:phase counter_attack L
 18:28 MD->ParallelPass => D L @ MDw:Fr
 18:29 MDw:Fr->Run => Aw
 :phase attack L
@@ -202,7 +202,7 @@
 19:01 Dwp->Long => F C @ DM:Cnt >> AM C @ DMd
 :transition T
 19:06 DMd->ForwardPass => AM L @ AM
-:counter_attack T
+:phase counter_attack T
 19:09 M:Fr->Run => A
 19:10 A->Dribble => !D R @ D:I >> !M C @ DM
 :phase defensive_transition L
@@ -491,7 +491,7 @@
 43:35 Dwp->Pass => D L @ Dwp
 43:36 Dwp->Move => Dw
 43:38 Dw->ForwardPass => AM R @ Mw:Fr
-:counter_attack T
+:phase counter_attack T
 43:41 Mw:Fr->Run => Ad
 43:45 Ad->ForwardPass:Open => !Gkr:H
 :phase possession L
@@ -569,7 +569,7 @@
 46:35 DM -> Gkr
 :phase pressure T
 46:53 Gkr->Long => F C @ AMd:Cnt
-:counter_attack T
+:phase counter_attack T
 46:58 AMd->Move => Apd
 47:01 Apd->LowCross => !D*T
 :set L: ThrowIn
@@ -612,7 +612,7 @@
 51:13 DMw->Move => MDw
 51:14 MDw->Pass:Open => AM C @ Mw:Fr
 51:17 Mw:Fr->Run => Ad
-:counter_attack T
+:phase counter_attack T
 51:20 Ad->ParallelPass => M CL @ Ad:Fr
 51:22 Ad->Dribble => !D L @ Dpw:Ch
 :phase recovery L
@@ -872,13 +872,13 @@
 74:32 MD->WidePass:Open => !D L @ MDw
 :transition L
 74:33 MDw->Move => AMd:Fr
-:counter_attack L
+:phase counter_attack L
 74:38 AMd:Fr->ParallelPass => F RC @ Ad:Fr
 74:42 Ad->HighPass => !D CR @ Dp:HD >>> M CL @ DM
 :transition T
 74:47 DM->Pass => AM R @ DM
 74:50 DM->ForwardPass:FT => AM L @ M
-:counter_attack T
+:phase counter_attack T
 74:52 M->Run => !D CL @ Dp:Ch >> C
 :set T: Corner
 75:05 CK->Pass => AM L @ Apw

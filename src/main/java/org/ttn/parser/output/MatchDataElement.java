@@ -11,7 +11,6 @@ public interface MatchDataElement {
         HALF_TIME,
         INJURY,
         ATTACKING_TRANSITION,
-        COUNTER_ATTACK,
         SUBSTITUTION,
         FAIR_PLAY,
         BREAK_BALL_ACTION,

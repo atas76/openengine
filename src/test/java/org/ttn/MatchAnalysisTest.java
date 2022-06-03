@@ -256,7 +256,7 @@ public class MatchAnalysisTest {
         // Counter attack
         assertTrue(matchDataElements.get(190) instanceof Directive);
         Directive counterAttack = (Directive) matchDataElements.get(190);
-        assertEquals(COUNTER_ATTACK, counterAttack.getType());
+        assertEquals(INPLAY_PHASE, counterAttack.getType());
         // 'Run' action
         assertTrue(matchDataElements.get(192) instanceof Statement);
         Statement runActionStmt = (Statement) matchDataElements.get(192);

@@ -171,10 +171,12 @@ public class DirectivesTest {
 
     @Test
     public void testCounterAttackDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":counter_attack L");
+        List<String> tokens = getTokens(":phase counter_attack L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(COUNTER_ATTACK, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(InPlayPhase.COUNTER_ATTACK, directive.getInPlayPhase());
+        assertEquals("L", directive.getTeam());
     }
 
     @Test
