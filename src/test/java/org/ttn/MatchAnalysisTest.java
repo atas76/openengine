@@ -28,6 +28,7 @@ import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
 import static org.ttn.engine.input.TacticalPosition.X.F;
 import static org.ttn.engine.input.TacticalPosition.Y.C;
 import static org.ttn.engine.rules.SetPiece.*;
+import static org.ttn.parser.output.InPlayPhase.ATTACK;
 import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
@@ -99,7 +100,8 @@ public class MatchAnalysisTest {
         // Attack
         assertTrue(matchDataElements.get(7) instanceof Directive);
         Directive attackBlockDirective = (Directive) matchDataElements.get(7);
-        assertEquals(ATTACK_CHAIN_BLOCK, attackBlockDirective.getType());
+        assertEquals(INPLAY_PHASE, attackBlockDirective.getType());
+        assertEquals(ATTACK, attackBlockDirective.getInPlayPhase());
         // Bounceoff action
         assertTrue(matchDataElements.get(8) instanceof Statement);
         Statement bounceOff = (Statement) matchDataElements.get(8);

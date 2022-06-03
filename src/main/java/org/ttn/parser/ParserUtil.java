@@ -23,6 +23,7 @@ import java.util.List;
 import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
+import static org.ttn.parser.output.InPlayPhase.ATTACK;
 import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.StatementType.*;
@@ -295,6 +296,7 @@ public class ParserUtil {
     private static InPlayPhase expectInPlayPhase(String phase) throws ParserException {
         return switch(phase) {
             case "possession" -> POSSESSION;
+            case "attack" -> ATTACK;
             default -> throw new ParserException("In-play phase expected");
         };
     }
@@ -304,7 +306,6 @@ public class ParserUtil {
             case "phase" -> INPLAY_PHASE;
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
             case "recovery" -> BALL_RECOVERY_BLOCK;
-            case "attack" -> ATTACK_CHAIN_BLOCK;
             case "pressure" -> BUILDUP_PRESSURE_BLOCK;
             case "break" -> BREAK;
             case "HT" -> HALF_TIME;

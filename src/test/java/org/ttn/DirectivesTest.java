@@ -13,6 +13,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
+import static org.ttn.parser.output.InPlayPhase.ATTACK;
 import static org.ttn.parser.output.InPlayPhase.POSSESSION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.ATTACKING_POSSESSION;
@@ -39,11 +40,12 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testAttackChainDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attack L");
+    public void testAttackInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase attack L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(ATTACK_CHAIN_BLOCK, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(ATTACK, directive.getInPlayPhase());
         assertEquals("L", directive.getTeam());
     }
 
