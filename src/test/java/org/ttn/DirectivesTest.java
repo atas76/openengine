@@ -152,11 +152,13 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testDefensiveTransitionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":defensive_transition L");
+    public void testDefensiveTransitionInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase defensive_transition L");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(DEFENSIVE_TRANSITION, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(InPlayPhase.DEFENSIVE_TRANSITION, directive.getInPlayPhase());
+        assertEquals("L", directive.getTeam());
     }
 
     @Test

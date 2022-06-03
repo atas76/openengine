@@ -10,7 +10,6 @@ public interface MatchDataElement {
         BREAK,
         HALF_TIME,
         INJURY,
-        DEFENSIVE_TRANSITION,
         ATTACKING_TRANSITION,
         COUNTER_ATTACK,
         SUBSTITUTION,

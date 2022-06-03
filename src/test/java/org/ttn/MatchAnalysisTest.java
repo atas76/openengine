@@ -247,7 +247,8 @@ public class MatchAnalysisTest {
         // Defensive transition
         assertTrue(matchDataElements.get(130) instanceof Directive);
         Directive defensiveTransition = (Directive) matchDataElements.get(130);
-        assertEquals(DEFENSIVE_TRANSITION, defensiveTransition.getType());
+        assertEquals(INPLAY_PHASE, defensiveTransition.getType());
+        assertEquals(InPlayPhase.DEFENSIVE_TRANSITION, defensiveTransition.getInPlayPhase());
         // 'Triangle' action
         assertTrue(matchDataElements.get(158) instanceof Statement);
         Statement triangleStmt = (Statement) matchDataElements.get(158);
