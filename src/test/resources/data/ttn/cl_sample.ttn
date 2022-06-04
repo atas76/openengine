@@ -182,7 +182,7 @@
 :phase possession L
 18:08 Gkr -> D L @ DMw
 18:14 DMw->ForwardPass => !D R @ Mw:Ch >> !AM C @ Mw
-:attacking_transition T
+:phase attacking_transition T
 18:17 Mw->Pass:FT => AM R @ AMd
 18:19 AMd->BackPass => AM R @ Md
 18:20 Md->ForwardPass => !M RC @ DM:B >> !D C @ DM
@@ -344,7 +344,7 @@
 :phase pressure T
 30:45 Dd->BackPass => Gkr
 30:52 Gkr->Long => !D R @ Mw:HD >>> !D R @ Mw
-:attacking_transition L
+:phase attacking_transition L
 30:57 Mw->ForwardPass => F RC @ AMw
 31:00 AMw->ForwardPass:Open => !D CR @ Dpw
 :phase recovery T
@@ -364,7 +364,7 @@
 31:53 Mw->Pass => !M*T
 :set L: ThrowIn
 32:19 DM => M LC @ DM:FT >>> !M CR @ M
-:attacking_transition T
+:phase attacking_transition T
 32:25 M->Run => A
 :phase attack T
 32:27 A->ForwardPass => !D CL @ D:I >> M CL @ M
@@ -459,7 +459,7 @@
 :phase defensive_transition T
 41:04 Dw->Move => !M C @ Mw:I >> AM L @ DMw
 41:06 Dw->Move => !M RC @ M:I
-:attacking_transition L
+:phase attacking_transition L
 41:09 M->Move => A
 :phase attack L
 41:10 A->Shoot => !D CL @ D:B >> F C @ A:Cnt

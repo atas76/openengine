@@ -24,6 +24,7 @@ import static org.ttn.engine.agent.ActionType.Implicit;
 import static org.ttn.engine.environment.ActionContext.*;
 import static org.ttn.engine.environment.ActionOutcomeType.*;
 import static org.ttn.parser.output.InPlayPhase.*;
+import static org.ttn.parser.output.InPlayPhase.ATTACKING_TRANSITION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 import static org.ttn.parser.output.MatchDataElement.StatementType.*;
 
@@ -299,6 +300,7 @@ public class ParserUtil {
             case "pressure" -> PRESSURE;
             case "recovery" -> BALL_RECOVERY;
             case "attacking_possession" -> ATTACKING_POSSESSION;
+            case "attacking_transition" -> ATTACKING_TRANSITION;
             case "defensive_transition" -> DEFENSIVE_TRANSITION;
             case "counter_attack" -> InPlayPhase.COUNTER_ATTACK;
             default -> throw new ParserException("In-play phase expected");
@@ -313,7 +315,6 @@ public class ParserUtil {
             case "HT" -> HALF_TIME;
             case "possessor" -> POSSESSOR_DEFINITION;
             case "transition" -> TRANSITION_CHAIN_BLOCK;
-            case "attacking_transition" -> ATTACKING_TRANSITION;
             case "substitution" -> SUBSTITUTION;
             case "fair_play" -> FAIR_PLAY;
             case "break_ball_action" -> BREAK_BALL_ACTION;

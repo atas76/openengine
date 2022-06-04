@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.InPlayPhase.*;
+import static org.ttn.parser.output.InPlayPhase.ATTACKING_TRANSITION;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class DirectivesTest {
@@ -162,11 +163,13 @@ public class DirectivesTest {
     }
 
     @Test
-    public void testAttackingTransitionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attacking_transition T");
+    public void testAttackingTransitionInPlayPhase() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":phase attacking_transition T");
         Directive directive = ParserUtil.parseDirective(tokens);
 
-        assertEquals(ATTACKING_TRANSITION, directive.getType());
+        assertEquals(INPLAY_PHASE, directive.getType());
+        assertEquals(ATTACKING_TRANSITION, directive.getInPlayPhase());
+        assertEquals("T", directive.getTeam());
     }
 
     @Test
