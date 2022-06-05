@@ -11,10 +11,7 @@ import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.exceptions.MissingTokenException;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.exceptions.ValueException;
-import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.InPlayPhase;
-import org.ttn.parser.output.MatchDataElement;
-import org.ttn.parser.output.Statement;
+import org.ttn.parser.output.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -254,7 +251,7 @@ public class ParserUtil {
         }
         checkMissingTokens(tokensNumber, 1, "directive");
         MatchDataElement.DirectiveType directiveType = expectDirective(tokens.get(1));
-        if (tokens.get(1).endsWith("_action")) { // Action directive
+        if (tokens.get(1).endsWith("_action")) { // Action directive TODO remove
             return new Directive(directiveType);
         }
         switch(tokens.get(1)) {
@@ -267,6 +264,9 @@ public class ParserUtil {
                 InPlayPhase phase = expectInPlayPhase(tokens.get(2));
                 checkMissingTokens(tokensNumber, 3, "team");
                 return new Directive(phase, tokens.get(3));
+            case "intention":
+                Intention intention = expectIntentionDirective(tokens.get(2));
+                return new Directive(intention);
             case "set":
                 checkMissingTokens(tokensNumber, 2, "team");
                 checkMissingTokens(tokensNumber, 3, "':'");
@@ -307,9 +307,17 @@ public class ParserUtil {
         };
     }
 
+    private static Intention expectIntentionDirective(String intention) throws ParserException {
+        return switch(intention) {
+            case "break_ball" -> Intention.BREAK_BALL;
+            default -> throw new ParserException("Action intention keyword expected");
+        };
+    }
+
     private static MatchDataElement.DirectiveType expectDirective(String directive) throws ParserException {
         return switch(directive) {
             case "phase" -> INPLAY_PHASE;
+            case "intention" -> INTENTION;
             case "set" -> SET_PIECE_EXECUTION_BLOCK;
             case "break" -> BREAK;
             case "HT" -> HALF_TIME;
@@ -317,7 +325,6 @@ public class ParserUtil {
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "substitution" -> SUBSTITUTION;
             case "fair_play" -> FAIR_PLAY;
-            case "break_ball_action" -> BREAK_BALL_ACTION;
             case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
             case "cool_down_action" -> COOL_DOWN_ACTION;

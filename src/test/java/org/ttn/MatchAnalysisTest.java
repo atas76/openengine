@@ -86,8 +86,8 @@ public class MatchAnalysisTest {
         assertEquals(POSSESSION, possessionDirective.getInPlayPhase());
         // Interpretive directive
         assertTrue(matchDataElements.get(3) instanceof Directive);
-        Directive interpretiveDirective = (Directive) matchDataElements.get(3);
-        assertTrue(interpretiveDirective.getType().toString().endsWith("ACTION"));
+        Directive intention = (Directive) matchDataElements.get(3);
+        assertEquals(INTENTION, intention.getType());
         // Long pass
         assertTrue(matchDataElements.get(4) instanceof Statement);
         Statement longPass = (Statement) matchDataElements.get(4);

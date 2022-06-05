@@ -1,7 +1,7 @@
 :set L: Kickoff
 00:00 KO => D CR @ DM
 :phase possession L
-:break_ball_action
+:intention break_ball
 00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md
 :attack_action
 00:15 Md->Long:FT:Open => F LC @ Apd
@@ -34,7 +34,7 @@
 04:21 MDw->BackPass => D CL @ DMw
 :phase possession T
 04:23 DMw->Pass => D CR @ DM
-:break_ball_action
+:intention break_ball
 04:27 DM->Long => AM R @ Awp
 :phase attack T
 04:32 Awp->Move => Aw
@@ -111,13 +111,13 @@
 :withdraw_pressure_action
 :phase possession L
 09:34 Gkr -> D CL @ Dd
-:break_ball_action
+:intention break_ball
 09:37 Dd->Long:Open => !D R @ Dpw:I >> C
 :set L: Corner
 10:40 CK->Cross => !Gkr:Punch >>> Gkr:H
 :phase possession L
 11:04 Gkr -> D CR @ Dd
-:break_ball_action
+:intention break_ball
 11:08 Dd->Long => !D*T
 :set T: ThrowIn
 11:34 D => F C @ Mw:Pvt >> AM R @ Mw:Cnt
@@ -285,7 +285,7 @@
 25:09 DMw->BackPass => D CR @ D
 :phase possession T
 25:11 D -> Gkr
-:break_ball_action
+:intention break_ball
 25:31 Gkr->Long => !D CL @ DM:HD >>> !MD*T
 :set L: ThrowIn
 25:58 MD => !D R @ DM:HD >>> D R @ MD

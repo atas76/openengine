@@ -464,15 +464,7 @@ public class ParserUtilitiesTest {
         assertEquals(TacticalPosition.Y.CL, statement.getActionOutcome().getTacticalPosition().getY());
     }
 
-    // Action ('causal') directives
-
-    @Test
-    public void testBreakBallActionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":break_ball_action");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(BREAK_BALL_ACTION, directive.getType());
-    }
+    // Action ('causal') directives - TODO to be removed with their implementation
 
     @Test
     public void testAttackActionDirective() throws ScannerException, ParserException {

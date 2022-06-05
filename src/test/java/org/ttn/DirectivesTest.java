@@ -15,6 +15,7 @@ import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
 import static org.ttn.parser.output.InPlayPhase.*;
 import static org.ttn.parser.output.InPlayPhase.ATTACKING_TRANSITION;
+import static org.ttn.parser.output.Intention.BREAK_BALL;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class DirectivesTest {
@@ -199,5 +200,14 @@ public class DirectivesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(FAIR_PLAY, directive.getType());
+    }
+
+    @Test
+    public void testBreakBallIntention() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":intention break_ball");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INTENTION, directive.getType());
+        assertEquals(BREAK_BALL, directive.getIntention());
     }
 }
