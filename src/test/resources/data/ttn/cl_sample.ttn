@@ -3,7 +3,7 @@
 :phase possession L
 :intention break_ball
 00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md
-:attack_action
+:intention attack
 00:15 Md->Long:FT:Open => F LC @ Apd
 :phase attack L
 00:20 Apd->BounceOff => M C @ Ap*H
@@ -64,7 +64,7 @@
 06:58 MDw->Pass => D RC @ MD
 07:01 MD -> D LC @ DMd
 07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
-:attack_action
+:intention attack
 07:14 MDd:Fr->Move => M:Mrk
 07:16 M:Mrk->ForwardPass => AM C @ M
 07:17 M->HighPass => !D R @ Dwp
@@ -135,7 +135,7 @@
 12:56 Gkr->Long => !D R @ Mw:HD >>> AM L @ Mw
 :phase possession T
 13:08 Mw -> D CL @ DM
-:attack_action
+:intention attack
 13:17 DM->Long:Open => D R @ Awp
 :phase attack T
 13:23 Awp->BackPass => AM C @ Awp
@@ -147,7 +147,7 @@
 :phase attacking_possession T
 13:47 Mw->BackPass => D CR @ DM
 13:53 DM -> D CR @ M
-:attack_action
+:intention attack
 13:54 M->Long => !D*T
 :break
 :phase possession T
@@ -159,7 +159,7 @@
 15:06 MDd->Triangle => M CR @ DMd
 15:09 DMd->Pass => D CL @ DM
 :phase possession T
-:attack_action
+:intention attack
 15:13 DM->Long:Open => !GK
 :phase pressure L
 15:42 GK->ParallelPass => D CL @ Dwp
@@ -169,7 +169,7 @@
 15:52 Dpw->ParallelPass:FT => D CL @ Dpw
 :phase possession L
 15:56 Dpw -> D CR @ DMd
-:attack_action
+:intention attack
 16:13 DMd->Long => F LC @ A:Cnt >>> M*T
 :set L: ThrowIn
 16:39 M => !M CL @ DMd:HD >>> M RC @ AM
@@ -213,7 +213,7 @@
 19:23 AM->WidePass => AM R @ Ad
 19:26 Ad->Pass => M CL @ AM
 19:28 AM->Pass => AM R @ A
-:attack_action
+:intention attack
 19:30 A->ForwardPass => AM C @ A
 :phase attack T
 19:32 A->ForwardPass => !M RC @ Dp:Clr >> A*T

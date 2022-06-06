@@ -310,6 +310,7 @@ public class ParserUtil {
     private static Intention expectIntentionDirective(String intention) throws ParserException {
         return switch(intention) {
             case "break_ball" -> Intention.BREAK_BALL;
+            case "attack" -> Intention.ATTACK;
             default -> throw new ParserException("Action intention keyword expected");
         };
     }
@@ -325,7 +326,6 @@ public class ParserUtil {
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "substitution" -> SUBSTITUTION;
             case "fair_play" -> FAIR_PLAY;
-            case "attack_action" -> ATTACK_ACTION;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
             case "cool_down_action" -> COOL_DOWN_ACTION;
             case "withdraw_pressure_action" -> WITHDRAW_PRESSURE_ACTION;

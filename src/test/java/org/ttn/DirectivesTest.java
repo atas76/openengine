@@ -7,6 +7,7 @@ import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.InPlayPhase;
+import org.ttn.parser.output.Intention;
 
 import java.util.List;
 
@@ -209,5 +210,14 @@ public class DirectivesTest {
 
         assertEquals(INTENTION, directive.getType());
         assertEquals(BREAK_BALL, directive.getIntention());
+    }
+
+    @Test
+    public void testAttackIntention() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":intention attack");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INTENTION, directive.getType());
+        assertEquals(Intention.ATTACK, directive.getIntention());
     }
 }

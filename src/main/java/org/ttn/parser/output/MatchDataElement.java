@@ -13,7 +13,6 @@ public interface MatchDataElement {
         INJURY,
         SUBSTITUTION,
         FAIR_PLAY,
-        BREAK_BALL_ACTION,
         ATTACK_ACTION,
         RELEASE_PRESSING_ACTION,
         COOL_DOWN_ACTION,

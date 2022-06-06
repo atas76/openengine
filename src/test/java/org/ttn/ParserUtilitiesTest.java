@@ -467,14 +467,6 @@ public class ParserUtilitiesTest {
     // Action ('causal') directives - TODO to be removed with their implementation
 
     @Test
-    public void testAttackActionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":attack_action");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(ATTACK_ACTION, directive.getType());
-    }
-
-    @Test
     public void testReleaseFromPressingActionDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":release_pressing_action");
         Directive directive = ParserUtil.parseDirective(tokens);
