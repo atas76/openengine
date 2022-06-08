@@ -474,14 +474,6 @@ public class ParserUtilitiesTest {
         assertEquals(RELEASE_PRESSING_ACTION, directive.getType());
     }
 
-    @Test
-    public void testWithdrawFromPressureActionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":withdraw_pressure_action");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(WITHDRAW_PRESSURE_ACTION, directive.getType());
-    }
-
     // Gk position tests
 
     @Test

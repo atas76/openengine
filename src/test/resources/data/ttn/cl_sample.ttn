@@ -108,7 +108,7 @@
 09:26 Gkr->ForwardPass => M C @ D
 09:28 D->Move => DM
 09:31 DM->BackPass => Gkr
-:withdraw_pressure_action
+:intention withdraw_pressure
 :phase possession L
 09:34 Gkr -> D CL @ Dd
 :intention break_ball
@@ -303,7 +303,7 @@
 26:48 Dp->Move => Dd
 26:50 Dd->ParallelPass => M CR @ D
 26:52 Dd->Pass => D CL @ Dw
-:withdraw_pressure_action
+:intention withdraw_pressure
 :phase possession T
 26:56 Dw -> D CR @ Dp
 :phase pressure T
@@ -803,7 +803,7 @@
 68:52 Dpw->Pass => AM C @ Dd
 68:55 Dd->Pass => D CL @ Dpd
 68:57 Dpd->Pass => D CR @ D
-:withdraw_pressure_action
+:intention withdraw_pressure
 :phase possession T
 69:01 D->Long => !D R @ D:B >> AM C @ AM
 :transition T

@@ -312,6 +312,7 @@ public class ParserUtil {
             case "break_ball" -> Intention.BREAK_BALL;
             case "attack" -> Intention.ATTACK;
             case "cool_down" -> Intention.COOL_DOWN;
+            case "withdraw_pressure" -> Intention.WITHDRAW_PRESSURE;
             default -> throw new ParserException("Action intention keyword expected");
         };
     }
@@ -328,7 +329,6 @@ public class ParserUtil {
             case "substitution" -> SUBSTITUTION;
             case "fair_play" -> FAIR_PLAY;
             case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
-            case "withdraw_pressure_action" -> WITHDRAW_PRESSURE_ACTION;
             case "injury" -> INJURY;
             default -> throw new ParserException("Keyword expected");
         };
