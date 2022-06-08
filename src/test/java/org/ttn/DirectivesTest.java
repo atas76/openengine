@@ -220,4 +220,13 @@ public class DirectivesTest {
         assertEquals(INTENTION, directive.getType());
         assertEquals(Intention.ATTACK, directive.getIntention());
     }
+
+    @Test
+    public void testCoolDownIntention() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":intention cool_down");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INTENTION, directive.getType());
+        assertEquals(Intention.COOL_DOWN, directive.getIntention());
+    }
 }

@@ -30,7 +30,7 @@
 04:16 DMw->Move => MDw
 04:17 MDw->Pass => AM L @ Mw
 04:19 Mw->Move => MDw
-:cool_down_action
+:intention cool_down
 04:21 MDw->BackPass => D CL @ DMw
 :phase possession T
 04:23 DMw->Pass => D CR @ DM
@@ -281,7 +281,7 @@
 25:01 Gkr->Long => D R @ DMw:Cnt
 :transition T
 25:04 DMw->Pass => AM C @ MDw
-:cool_down_action
+:intention cool_down
 25:09 DMw->BackPass => D CR @ D
 :phase possession T
 25:11 D -> Gkr
@@ -816,7 +816,7 @@
 69:35 DMw->Long => !D CL @ D:HD >> AM C @ M
 :transition T
 69:42 M->Pass => D R @ Mw
-:cool_down_action
+:intention cool_down
 69:47 Mw->BackPass => D CR @ MDd
 :phase possession T
 69:51 MDd -> D CL @ MD

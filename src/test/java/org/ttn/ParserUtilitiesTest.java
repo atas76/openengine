@@ -475,14 +475,6 @@ public class ParserUtilitiesTest {
     }
 
     @Test
-    public void testCoolDownActionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":cool_down_action");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(COOL_DOWN_ACTION, directive.getType());
-    }
-
-    @Test
     public void testWithdrawFromPressureActionDirective() throws ScannerException, ParserException {
         List<String> tokens = getTokens(":withdraw_pressure_action");
         Directive directive = ParserUtil.parseDirective(tokens);
