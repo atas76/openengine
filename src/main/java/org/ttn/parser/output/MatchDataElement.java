@@ -12,9 +12,7 @@ public interface MatchDataElement {
         HALF_TIME,
         INJURY,
         SUBSTITUTION,
-        FAIR_PLAY,
-        RELEASE_PRESSING_ACTION,
-        WITHDRAW_PRESSURE_ACTION
+        FAIR_PLAY
     }
 
     enum StatementType {

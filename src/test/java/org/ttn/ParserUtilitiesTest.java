@@ -464,16 +464,6 @@ public class ParserUtilitiesTest {
         assertEquals(TacticalPosition.Y.CL, statement.getActionOutcome().getTacticalPosition().getY());
     }
 
-    // Action ('causal') directives - TODO to be removed with their implementation
-
-    @Test
-    public void testReleaseFromPressingActionDirective() throws ScannerException, ParserException {
-        List<String> tokens = getTokens(":release_pressing_action");
-        Directive directive = ParserUtil.parseDirective(tokens);
-
-        assertEquals(RELEASE_PRESSING_ACTION, directive.getType());
-    }
-
     // Gk position tests
 
     @Test

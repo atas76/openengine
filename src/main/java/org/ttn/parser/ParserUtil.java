@@ -251,9 +251,6 @@ public class ParserUtil {
         }
         checkMissingTokens(tokensNumber, 1, "directive");
         MatchDataElement.DirectiveType directiveType = expectDirective(tokens.get(1));
-        if (tokens.get(1).endsWith("_action")) { // Action directive TODO remove
-            return new Directive(directiveType);
-        }
         switch(tokens.get(1)) {
             case "break":
             case "HT":
@@ -313,6 +310,7 @@ public class ParserUtil {
             case "attack" -> Intention.ATTACK;
             case "cool_down" -> Intention.COOL_DOWN;
             case "withdraw_pressure" -> Intention.WITHDRAW_PRESSURE;
+            case "release_pressing" -> Intention.RELEASE_PRESSING;
             default -> throw new ParserException("Action intention keyword expected");
         };
     }
@@ -328,7 +326,6 @@ public class ParserUtil {
             case "transition" -> TRANSITION_CHAIN_BLOCK;
             case "substitution" -> SUBSTITUTION;
             case "fair_play" -> FAIR_PLAY;
-            case "release_pressing_action" -> RELEASE_PRESSING_ACTION;
             case "injury" -> INJURY;
             default -> throw new ParserException("Keyword expected");
         };

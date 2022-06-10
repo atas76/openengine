@@ -24,7 +24,7 @@
 04:06 Dwp->DiagonalPass => AM C @ Dd
 04:08 Dd->ParallelPass => M CL @ DM
 04:10 DM->BackPass => D CR @ Dpw
-:release_pressing_action
+:intention release_pressing
 04:12 Dpw->Long => D L @ DMw:Fr
 :transition T
 04:16 DMw->Move => MDw
@@ -198,7 +198,7 @@
 18:55 Dwp->WidePass => D R @ Dw
 18:56 Dw->BackPass:FT => D CR @ Dwp
 18:59 Dwp->Pass => D R @ Dwp
-:release_pressing_action
+:intention release_pressing
 19:01 Dwp->Long => F C @ DM:Cnt >> AM C @ DMd
 :transition T
 19:06 DMd->ForwardPass => AM L @ AM
@@ -277,7 +277,7 @@
 :phase possession T
 24:57 D -> Gkr
 :phase pressure T
-:release_pressing_action
+:intention release_pressing
 25:01 Gkr->Long => D R @ DMw:Cnt
 :transition T
 25:04 DMw->Pass => AM C @ MDw

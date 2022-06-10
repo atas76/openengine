@@ -238,4 +238,13 @@ public class DirectivesTest {
         assertEquals(INTENTION, directive.getType());
         assertEquals(Intention.WITHDRAW_PRESSURE, directive.getIntention());
     }
+
+    @Test
+    public void releasePressingIntention() throws ScannerException, ParserException {
+        List<String> tokens = getTokens(":intention release_pressing");
+        Directive directive = ParserUtil.parseDirective(tokens);
+
+        assertEquals(INTENTION, directive.getType());
+        assertEquals(Intention.RELEASE_PRESSING, directive.getIntention());
+    }
 }
