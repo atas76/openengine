@@ -13,17 +13,17 @@ import static org.ttn.parser.output.MatchDataElement.DirectiveType.SET_PIECE_EXE
 public class MatchRepresentation {
 
     private List<MatchPhase> matchPhases = new ArrayList<>();
+    private MatchPhase currentPhase;
 
     public MatchRepresentation(List<MatchDataElement> matchDataElements) throws InvalidPhaseException {
 
         MatchDataElement kickOffElement =  matchDataElements.get(0);
-        MatchPhase currentMatchPhase;
 
         if (kickOffElement instanceof Directive directive) {
             if (SET_PIECE_EXECUTION_BLOCK.equals(directive.getType())) {
                 if (KICK_OFF.equals(directive.getSetPiece())) {
-                    currentMatchPhase = new SetPieceExecutionPhase(KICK_OFF);
-                    matchPhases.add(currentMatchPhase);
+                    currentPhase = new SetPieceExecutionPhase(KICK_OFF);
+                    matchPhases.add(currentPhase);
                 } else {
                     throw new InvalidPhaseException("Match data should start with a kick-off");
                 }
@@ -35,7 +35,7 @@ public class MatchRepresentation {
         }
     }
 
-    public MatchPhase getMatchPhase(int index) {
-        return matchPhases.get(index);
+    public MatchPhase getCurrentPhase() {
+        return this.currentPhase;
     }
 }
