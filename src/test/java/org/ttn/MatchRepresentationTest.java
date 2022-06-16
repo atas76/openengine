@@ -45,6 +45,7 @@ public class MatchRepresentationTest {
 
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
         assertEquals(SetPiece.KICK_OFF, ((SetPieceExecutionPhase) kickOffPhase).getType());
+        assertEquals("L", matchRepresentation.getCurrentTeam());
     }
 
     @Test(expected = InvalidPhaseException.class)

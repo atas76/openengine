@@ -14,6 +14,7 @@ public class MatchRepresentation {
 
     private List<MatchPhase> matchPhases = new ArrayList<>();
     private MatchPhase currentPhase;
+    private String currentTeam;
 
     public MatchRepresentation(List<MatchDataElement> matchDataElements) throws InvalidPhaseException {
 
@@ -22,7 +23,8 @@ public class MatchRepresentation {
         if (kickOffElement instanceof Directive directive) {
             if (SET_PIECE_EXECUTION_BLOCK.equals(directive.getType())) {
                 if (KICK_OFF.equals(directive.getSetPiece())) {
-                    currentPhase = new SetPieceExecutionPhase(KICK_OFF);
+                    currentTeam = directive.getTeam();
+                    currentPhase = new SetPieceExecutionPhase(KICK_OFF, currentTeam);
                     matchPhases.add(currentPhase);
                 } else {
                     throw new InvalidPhaseException("Match data should start with a kick-off");
@@ -37,5 +39,9 @@ public class MatchRepresentation {
 
     public MatchPhase getCurrentPhase() {
         return this.currentPhase;
+    }
+
+    public String getCurrentTeam() {
+        return this.currentTeam;
     }
 }
