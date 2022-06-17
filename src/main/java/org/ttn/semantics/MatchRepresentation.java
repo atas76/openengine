@@ -3,6 +3,7 @@ package org.ttn.semantics;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.semantics.exceptions.InvalidPhaseException;
+import org.ttn.semantics.exceptions.InvalidPhaseStartException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +16,16 @@ public class MatchRepresentation {
     private List<MatchPhase> matchPhases = new ArrayList<>();
     private MatchPhase currentPhase;
     private String currentTeam;
+    private List<MatchDataElement> matchDataElements;
 
     public MatchRepresentation(List<MatchDataElement> matchDataElements) throws InvalidPhaseException {
+        this.matchDataElements = matchDataElements;
+        initializeKickOffPhase();
+    }
 
-        MatchDataElement kickOffElement =  matchDataElements.get(0);
+    @Deprecated
+    private void initializeKickOffPhase() throws InvalidPhaseException {
+        MatchDataElement kickOffElement = matchDataElements.get(0);
 
         if (kickOffElement instanceof Directive directive) {
             if (SET_PIECE_EXECUTION_BLOCK.equals(directive.getType())) {
@@ -34,6 +41,24 @@ public class MatchRepresentation {
             }
         } else {
             throw new InvalidPhaseException("Match data should start with a kick-off directive");
+        }
+    }
+
+    private void processPhase(int index) throws InvalidPhaseStartException, InvalidPhaseException {
+
+        MatchDataElement initialMatchElement = matchDataElements.get(index);
+
+        if (initialMatchElement instanceof Directive phaseDefinitionDirective) {
+            switch (phaseDefinitionDirective.getType()) {
+                case SET_PIECE_EXECUTION_BLOCK:
+                    matchPhases.add(new SetPieceExecutionPhase(phaseDefinitionDirective.getSetPiece(),
+                            phaseDefinitionDirective.getTeam()));
+                    break;
+                default:
+                    throw new InvalidPhaseException("Unsupported phase");
+            }
+        } else {
+            throw new InvalidPhaseStartException("Directive expected");
         }
     }
 

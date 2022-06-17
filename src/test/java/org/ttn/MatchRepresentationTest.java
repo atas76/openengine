@@ -50,7 +50,6 @@ public class MatchRepresentationTest {
 
     @Test(expected = InvalidPhaseException.class)
     public void testMatchDoesNotStartWithKickOff() throws InvalidPhaseException {
-        MatchRepresentation matchRepresentation =
-                new MatchRepresentation(List.of(new Directive(SET_PIECE_EXECUTION_BLOCK, "X", CORNER_KICK)));
+        new MatchRepresentation(List.of(new Directive(SET_PIECE_EXECUTION_BLOCK, "X", CORNER_KICK)));
     }
 }
