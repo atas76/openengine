@@ -11,6 +11,7 @@ import org.ttn.semantics.MatchPhase;
 import org.ttn.semantics.MatchRepresentation;
 import org.ttn.semantics.SetPieceExecutionPhase;
 import org.ttn.semantics.exceptions.InvalidPhaseException;
+import org.ttn.semantics.exceptions.InvalidPhaseDefinitionException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,8 +22,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.ttn.engine.rules.SetPiece.CORNER_KICK;
-import static org.ttn.parser.output.MatchDataElement.DirectiveType.SET_PIECE_EXECUTION_BLOCK;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.INPLAY_PHASE;
 
 public class MatchRepresentationTest {
 
@@ -36,7 +36,8 @@ public class MatchRepresentationTest {
     }
 
     @Test
-    public void testLoadMatchData() throws IOException, ParserException, InvalidPhaseException {
+    public void testLoadMatchData() throws IOException, ParserException,
+            InvalidPhaseException, InvalidPhaseDefinitionException {
         List<MatchDataElement> matchDataElements =
                 new Parser().parse(Files.lines(matchDataResource).collect(Collectors.toList()));
 
@@ -49,7 +50,7 @@ public class MatchRepresentationTest {
     }
 
     @Test(expected = InvalidPhaseException.class)
-    public void testMatchDoesNotStartWithKickOff() throws InvalidPhaseException {
-        new MatchRepresentation(List.of(new Directive(SET_PIECE_EXECUTION_BLOCK, "X", CORNER_KICK)));
+    public void testMatchDoesNotStartWithKickOff() throws InvalidPhaseDefinitionException, InvalidPhaseException {
+        new MatchRepresentation(List.of(new Directive(INPLAY_PHASE, "X")));
     }
 }
