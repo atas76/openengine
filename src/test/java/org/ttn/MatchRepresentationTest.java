@@ -53,4 +53,12 @@ public class MatchRepresentationTest {
     public void testMatchDoesNotStartWithKickOff() throws InvalidPhaseDefinitionException, InvalidPhaseException {
         new MatchRepresentation(List.of(new Directive(INPLAY_PHASE, "X")));
     }
+
+    @Test(expected = InvalidPhaseDefinitionException.class)
+    public void testMatchKickOffDefinitionMissing() throws IOException, ParserException,
+            InvalidPhaseException, InvalidPhaseDefinitionException {
+        new MatchRepresentation(new Parser()
+                .parse(Files.lines(Paths.get("src/test/resources/data/ttn/cl_test_kickoff_missing.ttn"))
+                .collect(Collectors.toList())));
+    }
 }
