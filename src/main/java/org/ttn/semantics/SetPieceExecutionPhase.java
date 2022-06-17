@@ -15,4 +15,8 @@ public class SetPieceExecutionPhase implements MatchPhase {
     public SetPiece getType() {
         return this.setPiece;
     }
+
+    public String getTeam() {
+        return this.team;
+    }
 }

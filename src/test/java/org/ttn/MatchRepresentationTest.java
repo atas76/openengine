@@ -41,11 +41,11 @@ public class MatchRepresentationTest {
                 new Parser().parse(Files.lines(matchDataResource).collect(Collectors.toList()));
 
         MatchRepresentation matchRepresentation = new MatchRepresentation(matchDataElements);
-        MatchPhase kickOffPhase = matchRepresentation.getCurrentPhase();
+        MatchPhase kickOffPhase = matchRepresentation.getPhase(0);
 
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
         assertEquals(SetPiece.KICK_OFF, ((SetPieceExecutionPhase) kickOffPhase).getType());
-        assertEquals("L", matchRepresentation.getCurrentTeam());
+        assertEquals("L", kickOffPhase.getTeam());
     }
 
     @Test(expected = InvalidPhaseException.class)

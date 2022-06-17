@@ -62,11 +62,7 @@ public class MatchRepresentation {
         }
     }
 
-    public MatchPhase getCurrentPhase() {
-        return this.currentPhase;
-    }
-
-    public String getCurrentTeam() {
-        return this.currentTeam;
+    public MatchPhase getPhase(int index) {
+        return this.matchPhases.get(index);
     }
 }
