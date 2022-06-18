@@ -1,10 +1,5 @@
 package org.ttn.semantics;
 
-public class InplayPhase implements MatchPhase {
+public class InplayPhase extends MatchPhase {
 
-    private String team;
-
-    public String getTeam() {
-        return this.team;
-    }
 }

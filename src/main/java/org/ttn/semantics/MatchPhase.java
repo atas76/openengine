@@ -1,5 +1,10 @@
 package org.ttn.semantics;
 
-public interface MatchPhase {
-    String getTeam();
+public abstract class MatchPhase {
+
+    String team;
+
+    public String getTeam() {
+        return this.team;
+    }
 }
