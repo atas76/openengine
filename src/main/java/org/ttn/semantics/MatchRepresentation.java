@@ -17,7 +17,10 @@ public class MatchRepresentation {
     public MatchRepresentation(List<MatchDataElement> matchDataElements)
             throws InvalidPhaseDefinitionException, InvalidPhaseException {
         this.matchDataElements = matchDataElements;
-        processPhase(0);
+        int index = 0;
+        while (index < this.matchDataElements.size()) {
+            index = processPhase(index);
+        }
         checkKickOff();
     }
 
@@ -32,7 +35,7 @@ public class MatchRepresentation {
         }
     }
 
-    private void processPhase(int index) throws InvalidPhaseDefinitionException, InvalidPhaseException {
+    private int processPhase(int index) throws InvalidPhaseDefinitionException, InvalidPhaseException {
 
         MatchDataElement initialMatchElement = matchDataElements.get(index);
 
@@ -48,6 +51,15 @@ public class MatchRepresentation {
         } else {
             throw new InvalidPhaseDefinitionException("Directive expected");
         }
+        index++;
+        while (index < matchDataElements.size()) {
+            index = processEvent(index);
+        }
+        return index;
+    }
+
+    private int processEvent(int index) {
+        return ++index;
     }
 
     public MatchPhase getPhase(int index) {
