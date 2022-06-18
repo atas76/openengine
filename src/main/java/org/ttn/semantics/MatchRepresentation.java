@@ -1,5 +1,6 @@
 package org.ttn.semantics;
 
+import org.ttn.engine.rules.SetPiece;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.semantics.exceptions.InvalidPhaseException;
@@ -11,19 +12,24 @@ import java.util.List;
 public class MatchRepresentation {
 
     private List<MatchPhase> matchPhases = new ArrayList<>();
-    private MatchPhase currentPhase;
-    private String currentTeam;
     private List<MatchDataElement> matchDataElements;
 
     public MatchRepresentation(List<MatchDataElement> matchDataElements)
             throws InvalidPhaseDefinitionException, InvalidPhaseException {
         this.matchDataElements = matchDataElements;
-        initializeKickOffPhase();
+        processPhase(0);
+        checkKickOff();
     }
 
-    @Deprecated
-    private void initializeKickOffPhase() throws InvalidPhaseDefinitionException, InvalidPhaseException {
-        processPhase(0);
+    private void checkKickOff() throws InvalidPhaseException {
+        MatchPhase initialMatchPhase = matchPhases.get(0);
+        if (initialMatchPhase instanceof SetPieceExecutionPhase setPiecePhase) {
+            if (!setPiecePhase.getType().equals(SetPiece.KICK_OFF)) {
+                throw new InvalidPhaseException("Kick-off exception");
+            }
+        } else {
+            throw new InvalidPhaseException("Kick-off phase expected");
+        }
     }
 
     private void processPhase(int index) throws InvalidPhaseDefinitionException, InvalidPhaseException {

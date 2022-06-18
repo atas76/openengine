@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.INPLAY_PHASE;
+import static org.ttn.parser.output.MatchDataElement.DirectiveType.SET_PIECE_EXECUTION_BLOCK;
 
 public class MatchRepresentationTest {
 
@@ -50,7 +51,7 @@ public class MatchRepresentationTest {
     }
 
     @Test(expected = InvalidPhaseException.class)
-    public void testMatchDoesNotStartWithKickOff() throws InvalidPhaseDefinitionException, InvalidPhaseException {
+    public void testMatchDoesNotStartWithKickOff_InPlay() throws InvalidPhaseDefinitionException, InvalidPhaseException {
         new MatchRepresentation(List.of(new Directive(INPLAY_PHASE, "X")));
     }
 
@@ -60,5 +61,10 @@ public class MatchRepresentationTest {
         new MatchRepresentation(new Parser()
                 .parse(Files.lines(Paths.get("src/test/resources/data/ttn/cl_test_kickoff_missing.ttn"))
                 .collect(Collectors.toList())));
+    }
+
+    @Test(expected = InvalidPhaseException.class)
+    public void testMatchDoesNotStartWithKickOff_SetPiece() throws InvalidPhaseDefinitionException, InvalidPhaseException {
+        new MatchRepresentation(List.of(new Directive(SET_PIECE_EXECUTION_BLOCK, "X", SetPiece.CORNER_KICK)));
     }
 }
