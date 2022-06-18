@@ -2,11 +2,14 @@ package org.ttn;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
+import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.Parser;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.MatchDataElement;
+import org.ttn.parser.output.Statement;
 import org.ttn.semantics.MatchPhase;
 import org.ttn.semantics.MatchRepresentation;
 import org.ttn.semantics.SetPieceExecutionPhase;
@@ -44,10 +47,17 @@ public class MatchRepresentationTest {
 
         MatchRepresentation matchRepresentation = new MatchRepresentation(matchDataElements);
         MatchPhase kickOffPhase = matchRepresentation.getPhase(0);
+        Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
 
+        // Kick-off phase
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
         assertEquals(SetPiece.KICK_OFF, ((SetPieceExecutionPhase) kickOffPhase).getType());
         assertEquals("L", kickOffPhase.getTeam());
+        assertEquals(0, kickOffExecution.getTime());
+        assertEquals(PitchPosition.KO, kickOffExecution.getPitchPosition());
+        assertEquals(PitchPosition.DM, kickOffExecution.getActionOutcome().getPitchPosition());
+        assertEquals(TacticalPosition.X.D, kickOffExecution.getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.CR, kickOffExecution.getActionOutcome().getTacticalPosition().getY());
     }
 
     @Test(expected = InvalidPhaseException.class)

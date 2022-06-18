@@ -3,6 +3,7 @@ package org.ttn.semantics;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.MatchDataElement;
+import org.ttn.parser.output.Statement;
 import org.ttn.semantics.exceptions.InvalidPhaseException;
 import org.ttn.semantics.exceptions.InvalidPhaseDefinitionException;
 
@@ -53,13 +54,17 @@ public class MatchRepresentation {
         }
         index++;
         while (index < matchDataElements.size()) {
-            index = processEvent(index);
+            index = readEvent(index);
         }
         return index;
     }
 
-    private int processEvent(int index) {
-        return ++index;
+    private int readEvent(int index) {
+        if (matchDataElements.get(index) instanceof Statement event) {
+            this.matchPhases.get(matchPhases.size() - 1).addEvent(event);
+            return ++index;
+        }
+        return index;
     }
 
     public MatchPhase getPhase(int index) {
