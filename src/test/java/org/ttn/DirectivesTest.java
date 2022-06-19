@@ -6,7 +6,7 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.ParserUtil;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.InPlayPhase;
+import org.ttn.parser.output.InPlayPhaseType;
 import org.ttn.parser.output.Intention;
 
 import java.util.List;
@@ -14,8 +14,8 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.ttn.ParserUtilitiesTest.getTokens;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.InPlayPhase.*;
-import static org.ttn.parser.output.InPlayPhase.ATTACKING_TRANSITION;
+import static org.ttn.parser.output.InPlayPhaseType.*;
+import static org.ttn.parser.output.InPlayPhaseType.ATTACKING_TRANSITION;
 import static org.ttn.parser.output.Intention.BREAK_BALL;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
@@ -150,7 +150,7 @@ public class DirectivesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(INPLAY_PHASE, directive.getType());
-        assertEquals(InPlayPhase.ATTACKING_POSSESSION, directive.getInPlayPhase());
+        assertEquals(InPlayPhaseType.ATTACKING_POSSESSION, directive.getInPlayPhase());
         assertEquals("T", directive.getTeam());
     }
 
@@ -160,7 +160,7 @@ public class DirectivesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(INPLAY_PHASE, directive.getType());
-        assertEquals(InPlayPhase.DEFENSIVE_TRANSITION, directive.getInPlayPhase());
+        assertEquals(InPlayPhaseType.DEFENSIVE_TRANSITION, directive.getInPlayPhase());
         assertEquals("L", directive.getTeam());
     }
 
@@ -180,7 +180,7 @@ public class DirectivesTest {
         Directive directive = ParserUtil.parseDirective(tokens);
 
         assertEquals(INPLAY_PHASE, directive.getType());
-        assertEquals(InPlayPhase.COUNTER_ATTACK, directive.getInPlayPhase());
+        assertEquals(InPlayPhaseType.COUNTER_ATTACK, directive.getInPlayPhase());
         assertEquals("L", directive.getTeam());
     }
 

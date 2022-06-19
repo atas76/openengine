@@ -8,7 +8,7 @@ public class Directive implements MatchDataElement {
     private final DirectiveType type;
     private String team;
     private SetPiece setPiece;
-    private InPlayPhase phase;
+    private InPlayPhaseType phase;
     private Intention intention;
     private TacticalPosition tacticalPosition;
 
@@ -28,7 +28,7 @@ public class Directive implements MatchDataElement {
         return tacticalPosition;
     }
 
-    public InPlayPhase getInPlayPhase() {
+    public InPlayPhaseType getInPlayPhase() {
         return this.phase;
     }
 
@@ -40,7 +40,7 @@ public class Directive implements MatchDataElement {
         this.type = type;
     }
 
-    public Directive(InPlayPhase phase, String team) {
+    public Directive(InPlayPhaseType phase, String team) {
         this.type = DirectiveType.INPLAY_PHASE;
         this.phase = phase;
         this.team = team;

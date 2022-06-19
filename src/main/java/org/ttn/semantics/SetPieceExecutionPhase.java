@@ -4,14 +4,14 @@ import org.ttn.engine.rules.SetPiece;
 
 public class SetPieceExecutionPhase extends MatchPhase {
 
-    private SetPiece setPiece;
+    private SetPiece type;
 
-    public SetPieceExecutionPhase(SetPiece setPiece, String team) {
-        this.setPiece = setPiece;
+    public SetPieceExecutionPhase(SetPiece type, String team) {
+        this.type = type;
         this.team = team;
     }
 
     public SetPiece getType() {
-        return this.setPiece;
+        return this.type;
     }
 }

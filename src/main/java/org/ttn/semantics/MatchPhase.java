@@ -21,4 +21,8 @@ public abstract class MatchPhase {
     public String getTeam() {
         return this.team;
     }
+
+    public int getEventsNumber() {
+        return this.events.size();
+    }
 }

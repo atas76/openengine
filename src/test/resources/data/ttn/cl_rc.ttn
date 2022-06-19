@@ -1,2 +1,5 @@
 :set L: Kickoff
 00:00 KO => D CR @ DM
+:phase possession L
+00:02 DM->Long => !D R @ DMw:HD >>> M RC @ Md
+00:15 Md->Long:FT:Open => F LC @ Apd

@@ -10,7 +10,7 @@ import org.ttn.lexan.exceptions.ScannerException;
 import org.ttn.parser.Parser;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
-import org.ttn.parser.output.InPlayPhase;
+import org.ttn.parser.output.InPlayPhaseType;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
 
@@ -29,7 +29,7 @@ import static org.ttn.engine.environment.ActionOutcomeType.GOAL_KICK;
 import static org.ttn.engine.input.TacticalPosition.X.F;
 import static org.ttn.engine.input.TacticalPosition.Y.C;
 import static org.ttn.engine.rules.SetPiece.*;
-import static org.ttn.parser.output.InPlayPhase.*;
+import static org.ttn.parser.output.InPlayPhaseType.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.*;
 
 public class MatchAnalysisTest {
@@ -230,7 +230,7 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(89) instanceof Directive);
         Directive attackingPossession = (Directive) matchDataElements.get(89);
         assertEquals(INPLAY_PHASE, attackingPossession.getType());
-        assertEquals(InPlayPhase.ATTACKING_POSSESSION, attackingPossession.getInPlayPhase());
+        assertEquals(InPlayPhaseType.ATTACKING_POSSESSION, attackingPossession.getInPlayPhase());
         // Goalkick outcome
         assertTrue(matchDataElements.get(103) instanceof Statement);
         Statement goalKick = (Statement) matchDataElements.get(103);
@@ -248,7 +248,7 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(130) instanceof Directive);
         Directive defensiveTransition = (Directive) matchDataElements.get(130);
         assertEquals(INPLAY_PHASE, defensiveTransition.getType());
-        assertEquals(InPlayPhase.DEFENSIVE_TRANSITION, defensiveTransition.getInPlayPhase());
+        assertEquals(InPlayPhaseType.DEFENSIVE_TRANSITION, defensiveTransition.getInPlayPhase());
         // 'Triangle' action
         assertTrue(matchDataElements.get(158) instanceof Statement);
         Statement triangleStmt = (Statement) matchDataElements.get(158);

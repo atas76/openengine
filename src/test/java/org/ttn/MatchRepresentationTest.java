@@ -8,8 +8,10 @@ import org.ttn.engine.space.PitchPosition;
 import org.ttn.parser.Parser;
 import org.ttn.parser.exceptions.ParserException;
 import org.ttn.parser.output.Directive;
+import org.ttn.parser.output.InPlayPhaseType;
 import org.ttn.parser.output.MatchDataElement;
 import org.ttn.parser.output.Statement;
+import org.ttn.semantics.InPlayPhase;
 import org.ttn.semantics.MatchPhase;
 import org.ttn.semantics.MatchRepresentation;
 import org.ttn.semantics.SetPieceExecutionPhase;
@@ -46,7 +48,9 @@ public class MatchRepresentationTest {
                 new Parser().parse(Files.lines(matchDataResource).collect(Collectors.toList()));
 
         MatchRepresentation matchRepresentation = new MatchRepresentation(matchDataElements);
+        // Phases
         MatchPhase kickOffPhase = matchRepresentation.getPhase(0);
+        MatchPhase possessionPhase = matchRepresentation.getPhase(1);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
 
         // Kick-off phase
@@ -58,6 +62,13 @@ public class MatchRepresentationTest {
         assertEquals(PitchPosition.DM, kickOffExecution.getActionOutcome().getPitchPosition());
         assertEquals(TacticalPosition.X.D, kickOffExecution.getActionOutcome().getTacticalPosition().getX());
         assertEquals(TacticalPosition.Y.CR, kickOffExecution.getActionOutcome().getTacticalPosition().getY());
+        // Possession phase
+        assertTrue(possessionPhase instanceof InPlayPhase);
+        assertEquals(InPlayPhaseType.POSSESSION, ((InPlayPhase) possessionPhase).getType());
+        assertEquals("L", possessionPhase.getTeam());
+        assertEquals(2, possessionPhase.getEventsNumber());
+        assertEquals(TacticalPosition.X.F, possessionPhase.getEventByIndex(1).getActionOutcome().getTacticalPosition().getX());
+        assertEquals(TacticalPosition.Y.LC, possessionPhase.getEventByIndex(1).getActionOutcome().getTacticalPosition().getY());
     }
 
     @Test(expected = InvalidPhaseException.class)

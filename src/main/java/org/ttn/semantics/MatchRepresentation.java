@@ -46,6 +46,10 @@ public class MatchRepresentation {
                     matchPhases.add(new SetPieceExecutionPhase(phaseDefinitionDirective.getSetPiece(),
                             phaseDefinitionDirective.getTeam()));
                     break;
+                case INPLAY_PHASE:
+                    matchPhases.add(new InPlayPhase(phaseDefinitionDirective.getInPlayPhase(),
+                            phaseDefinitionDirective.getTeam()));
+                    break;
                 default:
                     throw new InvalidPhaseException("Unsupported phase");
             }
@@ -54,7 +58,12 @@ public class MatchRepresentation {
         }
         index++;
         while (index < matchDataElements.size()) {
-            index = readEvent(index);
+            if (matchDataElements.get(index) instanceof Statement event) {
+                this.matchPhases.get(matchPhases.size() - 1).addEvent(event);
+                index++;
+            } else {
+                break;
+            }
         }
         return index;
     }
