@@ -52,6 +52,7 @@ public class MatchRepresentationTest {
         MatchPhase kickOffPhase = matchRepresentation.getPhase(0);
         MatchPhase possessionPhase = matchRepresentation.getPhase(1);
         MatchPhase attackPhase = matchRepresentation.getPhase(2);
+        MatchPhase penaltyPhase = matchRepresentation.getPhase(3);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
 
         // Kick-off phase
@@ -75,6 +76,11 @@ public class MatchRepresentationTest {
         assertEquals(InPlayPhaseType.ATTACK, ((InPlayPhase) attackPhase).getType());
         assertEquals("L", attackPhase.getTeam());
         assertEquals(1, attackPhase.getEventsNumber());
+        // Penalty phase
+        assertTrue(penaltyPhase instanceof SetPieceExecutionPhase);
+        assertEquals(SetPiece.PENALTY, ((SetPieceExecutionPhase) penaltyPhase).getType());
+        assertEquals("L", kickOffPhase.getTeam());
+        assertEquals(1, penaltyPhase.getEventsNumber());
     }
 
     @Test(expected = InvalidPhaseException.class)
