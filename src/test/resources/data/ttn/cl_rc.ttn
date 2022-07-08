@@ -7,3 +7,8 @@
 00:20 Apd->BounceOff => M C @ Ap*H
 :set L: Penalty
 01:47 Ap->Shoot => G
+:break
+:set L: ThrowIn
+03:18 DM => F LC @ MDw
+03:20 MDw->BackPass => D L @ DMw
+03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr

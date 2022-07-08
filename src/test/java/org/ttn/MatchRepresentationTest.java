@@ -81,6 +81,8 @@ public class MatchRepresentationTest {
         assertEquals(SetPiece.PENALTY, ((SetPieceExecutionPhase) penaltyPhase).getType());
         assertEquals("L", kickOffPhase.getTeam());
         assertEquals(1, penaltyPhase.getEventsNumber());
+        // Break
+        assertEquals(5, matchRepresentation.getNumberOfPhases());
     }
 
     @Test(expected = InvalidPhaseException.class)

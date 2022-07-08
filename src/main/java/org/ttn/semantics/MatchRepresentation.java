@@ -20,6 +20,11 @@ public class MatchRepresentation {
         this.matchDataElements = matchDataElements;
         int index = 0;
         while (index < this.matchDataElements.size()) {
+            if (matchDataElements.get(index) instanceof Directive nextDirective
+                    && MatchDataElement.DirectiveType.BREAK.equals(nextDirective.getType())) {
+                ++index;
+                continue;
+            }
             index = processPhase(index);
         }
         checkKickOff();
@@ -42,16 +47,12 @@ public class MatchRepresentation {
 
         if (initialMatchElement instanceof Directive phaseDefinitionDirective) {
             switch (phaseDefinitionDirective.getType()) {
-                case SET_PIECE_EXECUTION_BLOCK:
-                    matchPhases.add(new SetPieceExecutionPhase(phaseDefinitionDirective.getSetPiece(),
-                            phaseDefinitionDirective.getTeam()));
-                    break;
-                case INPLAY_PHASE:
-                    matchPhases.add(new InPlayPhase(phaseDefinitionDirective.getInPlayPhase(),
-                            phaseDefinitionDirective.getTeam()));
-                    break;
-                default:
-                    throw new InvalidPhaseException("Unsupported phase");
+                case SET_PIECE_EXECUTION_BLOCK ->
+                        matchPhases.add(new SetPieceExecutionPhase(phaseDefinitionDirective.getSetPiece(),
+                                phaseDefinitionDirective.getTeam()));
+                case INPLAY_PHASE -> matchPhases.add(new InPlayPhase(phaseDefinitionDirective.getInPlayPhase(),
+                        phaseDefinitionDirective.getTeam()));
+                default -> throw new InvalidPhaseException("Unsupported phase");
             }
         } else {
             throw new InvalidPhaseDefinitionException("Directive expected");
@@ -78,5 +79,9 @@ public class MatchRepresentation {
 
     public MatchPhase getPhase(int index) {
         return this.matchPhases.get(index);
+    }
+
+    public int getNumberOfPhases() {
+        return this.matchPhases.size();
     }
 }
