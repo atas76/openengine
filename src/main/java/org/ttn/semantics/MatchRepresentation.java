@@ -22,6 +22,7 @@ public class MatchRepresentation {
         while (index < this.matchDataElements.size()) {
             if (matchDataElements.get(index) instanceof Directive nextDirective
                     && MatchDataElement.DirectiveType.BREAK.equals(nextDirective.getType())) {
+                this.matchPhases.get(matchPhases.size() - 1).setFlowBreak();
                 ++index;
                 continue;
             }

@@ -83,6 +83,7 @@ public class MatchRepresentationTest {
         assertEquals(1, penaltyPhase.getEventsNumber());
         // Break
         assertEquals(5, matchRepresentation.getNumberOfPhases());
+        assertTrue(penaltyPhase.isFlowBroken()); // Flow is broken after last phase
     }
 
     @Test(expected = InvalidPhaseException.class)

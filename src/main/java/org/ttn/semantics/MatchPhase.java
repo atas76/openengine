@@ -9,6 +9,7 @@ public abstract class MatchPhase {
 
     String team;
     private List<Statement> events = new ArrayList<>();
+    private boolean flowBroken = false;
 
     public void addEvent(Statement event) {
         this.events.add(event);
@@ -24,5 +25,13 @@ public abstract class MatchPhase {
 
     public int getEventsNumber() {
         return this.events.size();
+    }
+
+    public void setFlowBreak() {
+        this.flowBroken = true;
+    }
+
+    public boolean isFlowBroken() {
+        return this.flowBroken;
     }
 }
