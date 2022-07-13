@@ -25,8 +25,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.INPLAY_PHASE;
 import static org.ttn.parser.output.MatchDataElement.DirectiveType.SET_PIECE_EXECUTION_BLOCK;
 
@@ -55,6 +54,7 @@ public class MatchRepresentationTest {
         MatchPhase penaltyPhase = matchRepresentation.getPhase(3);
         MatchPhase throwInPhase = matchRepresentation.getPhase(4);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
+        assertEquals(6, matchRepresentation.getNumberOfPhases());
 
         // Kick-off phase
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
@@ -77,19 +77,20 @@ public class MatchRepresentationTest {
         assertEquals(InPlayPhaseType.ATTACK, ((InPlayPhase) attackPhase).getType());
         assertEquals("L", attackPhase.getTeam());
         assertEquals(1, attackPhase.getEventsNumber());
+        assertFalse(attackPhase.isFlowBroken());
         // Penalty phase
         assertTrue(penaltyPhase instanceof SetPieceExecutionPhase);
         assertEquals(SetPiece.PENALTY, ((SetPieceExecutionPhase) penaltyPhase).getType());
         assertEquals("L", kickOffPhase.getTeam());
         assertEquals(1, penaltyPhase.getEventsNumber());
         // Break
-        assertEquals(5, matchRepresentation.getNumberOfPhases());
         assertTrue(penaltyPhase.isFlowBroken()); // Flow is broken after last phase
         // Throw-in phase
         assertTrue(throwInPhase instanceof SetPieceExecutionPhase);
         assertEquals(SetPiece.THROW_IN, ((SetPieceExecutionPhase) throwInPhase).getType());
         assertEquals("L", throwInPhase.getTeam());
         assertEquals(3, throwInPhase.getEventsNumber());
+        assertTrue(throwInPhase.isFlowBroken());
     }
 
     @Test(expected = InvalidPhaseException.class)
