@@ -1,5 +1,6 @@
 package org.ttn.semantics;
 
+import org.ttn.engine.input.TacticalPosition;
 import org.ttn.engine.rules.SetPiece;
 import org.ttn.parser.output.Directive;
 import org.ttn.parser.output.MatchDataElement;
@@ -20,11 +21,13 @@ public class MatchRepresentation {
         this.matchDataElements = matchDataElements;
         int index = 0;
         while (index < this.matchDataElements.size()) {
-            if (matchDataElements.get(index) instanceof Directive nextDirective
-                    && MatchDataElement.DirectiveType.BREAK.equals(nextDirective.getType())) {
-                this.matchPhases.get(matchPhases.size() - 1).setFlowBreak();
-                ++index;
-                continue;
+            if (matchDataElements.get(index) instanceof Directive directive) {
+                switch (directive.getType()) {
+                    case BREAK:
+                        this.matchPhases.get(matchPhases.size() - 1).setFlowBreak();
+                        ++index; // TODO remove duplication
+                        continue;
+                }
             }
             index = processPhase(index);
         }
@@ -60,6 +63,14 @@ public class MatchRepresentation {
         }
         index++;
         while (index < matchDataElements.size()) {
+            if (matchDataElements.get(index) instanceof Directive directive &&
+                    directive.getType().equals(MatchDataElement.DirectiveType.POSSESSOR_DEFINITION)) {
+                TacticalPosition directiveTacticalPosition = directive.getTacticalPosition();
+                MatchPhase.TacticalPosition matchPhaseTacticalPosition =
+                        new MatchPhase.TacticalPosition(directiveTacticalPosition.getX(), directiveTacticalPosition.getY());
+                this.matchPhases.get(matchPhases.size() - 1).setInitialPossessor(matchPhaseTacticalPosition);
+                index++; // TODO remove duplication
+            }
             if (matchDataElements.get(index) instanceof Statement event) {
                 this.matchPhases.get(matchPhases.size() - 1).addEvent(event);
                 index++;

@@ -14,3 +14,5 @@
 03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr
 :break
 :phase pressure T
+:possessor D CR
+03:58 Dp->ParallelPass => D CL @ Dp
