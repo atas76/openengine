@@ -97,6 +97,7 @@ public class MatchRepresentationTest {
         assertEquals(InPlayPhaseType.PRESSURE, ((InPlayPhase) pressurePhase).getType());
         assertEquals(new MatchPhase.TacticalPosition(TacticalPosition.X.D, TacticalPosition.Y.CR),
                 pressurePhase.getInitialPossessor());
+        assertEquals(7, pressurePhase.getEventsNumber());
     }
 
     @Test(expected = InvalidPhaseException.class)
