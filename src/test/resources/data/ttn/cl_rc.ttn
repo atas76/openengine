@@ -22,3 +22,9 @@
 04:06 Dwp->DiagonalPass => AM C @ Dd
 04:08 Dd->ParallelPass => M CL @ DM
 04:10 DM->BackPass => D CR @ Dpw
+04:12 Dpw->Long => D L @ DMw:Fr
+:phase transition T
+04:16 DMw->Move => MDw
+04:17 MDw->Pass => AM L @ Mw
+04:19 Mw->Move => MDw
+04:21 MDw->BackPass => D CL @ DMw

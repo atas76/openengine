@@ -296,10 +296,11 @@ public class ParserUtil {
             case "attack" -> ATTACK;
             case "pressure" -> PRESSURE;
             case "recovery" -> BALL_RECOVERY;
+            case "transition" -> TRANSITION;
             case "attacking_possession" -> ATTACKING_POSSESSION;
             case "attacking_transition" -> ATTACKING_TRANSITION;
             case "defensive_transition" -> DEFENSIVE_TRANSITION;
-            case "counter_attack" -> InPlayPhaseType.COUNTER_ATTACK;
+            case "counter_attack" -> COUNTER_ATTACK;
             default -> throw new ParserException("In-play phase expected");
         };
     }
