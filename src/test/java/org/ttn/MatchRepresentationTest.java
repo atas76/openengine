@@ -58,8 +58,10 @@ public class MatchRepresentationTest {
         MatchPhase cornerPhase = matchRepresentation.getPhase(9);
         MatchPhase ballRecoveryPhase = matchRepresentation.getPhase(13);
         MatchPhase attackingPossessionPhase = matchRepresentation.getPhase(22);
+        MatchPhase freeKickPhase = matchRepresentation.getPhase(29);
+        MatchPhase defensiveTransitionPhase = matchRepresentation.getPhase(31);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
-        assertEquals(23, matchRepresentation.getNumberOfPhases());
+        assertEquals(35, matchRepresentation.getNumberOfPhases());
 
         // Kick-off phase
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
@@ -120,6 +122,18 @@ public class MatchRepresentationTest {
         assertTrue(attackingPossessionPhase instanceof InPlayPhase);
         assertEquals(InPlayPhaseType.ATTACKING_POSSESSION, ((InPlayPhase) attackingPossessionPhase).getType());
         assertEquals(8, attackingPossessionPhase.getEventsNumber());
+        // Free kick phase
+        assertTrue(freeKickPhase instanceof SetPieceExecutionPhase);
+        assertEquals(SetPiece.FREEKICK, ((SetPieceExecutionPhase) freeKickPhase).getType());
+        assertEquals("T", freeKickPhase.getTeam());
+        assertEquals(1, freeKickPhase.getEventsNumber());
+        assertEquals(new MatchPhase.TacticalPosition(TacticalPosition.X.AM, TacticalPosition.Y.R),
+                freeKickPhase.getInitialPossessor());
+        // Defensive transition phase
+        assertTrue(defensiveTransitionPhase instanceof InPlayPhase);
+        assertEquals(InPlayPhaseType.DEFENSIVE_TRANSITION, ((InPlayPhase) defensiveTransitionPhase).getType());
+        assertEquals(1, defensiveTransitionPhase.getEventsNumber());
+        assertTrue(defensiveTransitionPhase.isFlowBroken());
     }
 
     @Test(expected = InvalidPhaseException.class)
