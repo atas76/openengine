@@ -28,3 +28,65 @@
 04:17 MDw->Pass => AM L @ Mw
 04:19 Mw->Move => MDw
 04:21 MDw->BackPass => D CL @ DMw
+:phase possession T
+04:23 DMw->Pass => D CR @ DM
+04:27 DM->Long => AM R @ Awp
+:phase attack T
+04:32 Awp->Move => Aw
+04:34 Aw->Pass => !M RC @ Dp:I >> C
+:set T: Corner
+05:15 CK->Cross => !D LC @ Dp:HD >> M CR @ AMd:Cnt
+05:22 AMd->BackPass => Gkd
+:phase possession T
+05:27 Gkd -> D R @ MDw
+05:45 MDw->DiagonalPass => !M C @ MDd
+:phase transition L
+05:47 MDd->ForwardPass => F LC @ AM
+05:50 AM:Mrk->Move => AM:Fr
+05:51 AM->BackPass => M RC @ AM
+05:53 AM->WidePass => F LC @ Ad
+:phase attack L
+05:58 Ad->Pass => F RC @ Apd:Pvt
+05:59 Apd->Pass => !AM L @ Dp:I >> !D RC @ Dp
+:phase recovery T
+06:02 Dp->Long:FT => !AM*T
+:break
+:phase transition T
+06:40 Aw:Mrk->Dribble => !D L @ Dwp:Clr >> Mw*T
+:set T: ThrowIn
+06:53 M => MDw
+:phase possession T
+06:58 MDw->Pass => D RC @ MD
+07:01 MD -> D LC @ DMd
+07:12 DMd:Pr->ForwardPass => M CL @ MDd:Fr
+07:14 MDd:Fr->Move => M:Mrk
+07:16 M:Mrk->ForwardPass => AM C @ M
+07:17 M->HighPass => !D R @ Dwp
+:phase pressure L
+07:21 Dwp->BackPass:FT => Gkr
+07:22 Gkr->Clear => !A*T
+:set T: ThrowIn
+07:32 A => M CL @ AMd
+07:34 AMd->BackPass => M CR @ AM
+07:37 AM->WidePass:FT => D R @ Aw
+:phase attack T
+07:40 Aw->BackPass => M CR @ AMd
+07:43 AMd->BackPass:FT => D RC @ Md
+07:45 Md->Long => D L @ Aw:Cnt >> !Dwp*T
+:set L: ThrowIn
+08:12 Dp => !M CL @ Mw:Cnt >>> D L @ DM
+08:18 DM->Long:FT => !M C @ DMd:HD >> !D L @ MDw:Cnt
+:phase transition T
+08:25 MDw->Move => Mw
+08:27 Mw:Mrk->ForwardPass => AM L @ Mw
+08:28 Mw->Pass:FT => AM R @ Mw
+08:29 Mw->BackPass:FT => D L @ Mw
+:phase attacking_possession T
+08:30 Mw->BackPass => D CL @ MDd
+08:33 MDd->Pass => D CR @ MD
+08:35 MD->Move => MDd
+08:40 MDd->Pass => D CL @ MDd
+08:43 MDd:Pr->ForwardPass => M CL @ MD
+08:45 MD->Move => MDd:Fr
+08:46 MDd->WidePass => AM L @ AMw
+08:49 AMw->Move => Aw

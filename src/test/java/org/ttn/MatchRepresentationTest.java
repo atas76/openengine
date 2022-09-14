@@ -55,8 +55,11 @@ public class MatchRepresentationTest {
         MatchPhase throwInPhase = matchRepresentation.getPhase(4);
         MatchPhase pressurePhase = matchRepresentation.getPhase(5);
         MatchPhase transitionPhase = matchRepresentation.getPhase(6);
+        MatchPhase cornerPhase = matchRepresentation.getPhase(9);
+        MatchPhase ballRecoveryPhase = matchRepresentation.getPhase(13);
+        MatchPhase attackingPossessionPhase = matchRepresentation.getPhase(22);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
-        assertEquals(7, matchRepresentation.getNumberOfPhases());
+        assertEquals(23, matchRepresentation.getNumberOfPhases());
 
         // Kick-off phase
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);
@@ -92,7 +95,7 @@ public class MatchRepresentationTest {
         assertEquals(SetPiece.THROW_IN, ((SetPieceExecutionPhase) throwInPhase).getType());
         assertEquals("L", throwInPhase.getTeam());
         assertEquals(3, throwInPhase.getEventsNumber());
-        assertTrue(throwInPhase.isFlowBroken());
+        assertTrue(throwInPhase.isFlowBroken()); // for the subsequent break
         // Pressure phase
         assertTrue(pressurePhase instanceof InPlayPhase);
         assertEquals(InPlayPhaseType.PRESSURE, ((InPlayPhase) pressurePhase).getType());
@@ -103,6 +106,20 @@ public class MatchRepresentationTest {
         assertTrue(transitionPhase instanceof InPlayPhase);
         assertEquals(InPlayPhaseType.TRANSITION, ((InPlayPhase) transitionPhase).getType());
         assertEquals(4, transitionPhase.getEventsNumber());
+        // Corner kick phase
+        assertTrue(cornerPhase instanceof SetPieceExecutionPhase);
+        assertEquals(SetPiece.CORNER_KICK, ((SetPieceExecutionPhase) cornerPhase).getType());
+        assertEquals("T", cornerPhase.getTeam());
+        assertEquals(2, cornerPhase.getEventsNumber());
+        // Ball recovery phase
+        assertTrue(ballRecoveryPhase instanceof InPlayPhase);
+        assertEquals(InPlayPhaseType.BALL_RECOVERY, ((InPlayPhase) ballRecoveryPhase).getType());
+        assertEquals(1, ballRecoveryPhase.getEventsNumber());
+        assertTrue(ballRecoveryPhase.isFlowBroken());
+        // Attacking possession phase
+        assertTrue(attackingPossessionPhase instanceof InPlayPhase);
+        assertEquals(InPlayPhaseType.ATTACKING_POSSESSION, ((InPlayPhase) attackingPossessionPhase).getType());
+        assertEquals(8, attackingPossessionPhase.getEventsNumber());
     }
 
     @Test(expected = InvalidPhaseException.class)
