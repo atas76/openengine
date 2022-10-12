@@ -24,6 +24,7 @@ public class MatchRepresentation {
             if (matchDataElements.get(index) instanceof Directive directive) {
                 switch (directive.getType()) {
                     case BREAK:
+                    case HALF_TIME: // At the moment, we are not registering to check for specific semantics
                         this.matchPhases.get(matchPhases.size() - 1).setFlowBreak();
                         ++index; // TODO remove duplication
                         continue;

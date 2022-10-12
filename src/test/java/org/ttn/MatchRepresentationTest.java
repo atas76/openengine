@@ -61,6 +61,7 @@ public class MatchRepresentationTest {
         MatchPhase freeKickPhase = matchRepresentation.getPhase(29);
         MatchPhase defensiveTransitionPhase = matchRepresentation.getPhase(31);
         MatchPhase counterAttackPhase = matchRepresentation.getPhase(48);
+        MatchPhase firstHalfLastPhase = matchRepresentation.getPhase(154);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
         assertEquals(155, matchRepresentation.getNumberOfPhases());
 
@@ -139,6 +140,8 @@ public class MatchRepresentationTest {
         assertTrue(counterAttackPhase instanceof InPlayPhase);
         assertEquals(InPlayPhaseType.COUNTER_ATTACK, ((InPlayPhase) counterAttackPhase).getType());
         assertEquals(2, counterAttackPhase.getEventsNumber());
+        // Half-time final whistle
+        assertTrue(firstHalfLastPhase.isFlowBroken());
     }
 
     @Test(expected = InvalidPhaseException.class)
