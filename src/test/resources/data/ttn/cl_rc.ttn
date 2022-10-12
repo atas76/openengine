@@ -522,3 +522,5 @@
 :phase defensive_transition L
 46:50 Dwp->Clear => !M*T
 :HT
+:set T: Kickoff
+45:04 DM->Long => !D*T
