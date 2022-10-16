@@ -838,3 +838,208 @@
 74:15 Gkr->Pass => D CL @ Dp
 74:19 Dp->Pass => Gkr
 74:22 Gkr->Long => D L @ MDw:Cnt >>> AM R @ MDd
+:phase transition T
+74:30 MDd->Pass => M CL @ MD
+74:32 MD->WidePass:Open => !D L @ MDw
+:phase transition L
+74:33 MDw->Move => AMd:Fr
+:phase counter_attack L
+74:38 AMd:Fr->ParallelPass => F RC @ Ad:Fr
+74:42 Ad->HighPass => !D CR @ Dp:HD >>> M CL @ DM
+:phase transition T
+74:47 DM->Pass => AM R @ DM
+74:50 DM->ForwardPass:FT => AM L @ M
+:phase counter_attack T
+74:52 M->Run => !D CL @ Dp:Ch >> C
+:set T: Corner
+75:05 CK->Pass => AM L @ Apw
+:phase attack T
+75:07 Apw->Pass => AM C @ Apd
+75:08 Apd->Pass => F C @ Awp
+75:09 Awp->Move => Apd
+75:12 Apd->Move => Apw
+75:13 Apw->Cross => !M LC @ Dp:B >> F C @ Apw
+75:16 Apw->Cross => !D CL @ Dp:HD >> D R @ Aw
+75:23 Aw->Pass => D CR @ AMw
+75:26 AMw->Long => !Apw*H
+:break
+:phase transition T
+:possessor D CL
+76:05 DM->ForwardPass => AM C @ MD
+76:09 MD->Move => Md
+76:12 Md->Long => !D L @ Dd:HD >>> !F CL @ MDd
+:phase possession L
+76:20 MDd->BackPass => D L @ DMw
+76:24 DMw->Long => !Gkr:H
+:phase possession T
+76:30 Gkr -> D CR @ MDw
+76:36 MDw->Long => !Gkr:H
+:phase possession L
+76:40 Gkr -> D R @ Mw
+76:51 Mw->ForwardPass => !D L @ MDw:B >> M*T
+:set L: ThrowIn
+77:11 M => !D CL @ Dw:HD >>> !D CR @ D
+:phase possession T
+77:22 D->Move => DM
+77:27 DM -> AM R @ Mw
+:phase attacking_possession T
+77:31 Mw -> Gkr
+:phase possession T
+77:52 Gkr -> D L @ AMw
+:phase attacking_possession T
+78:09 AMw->Pass => F C @ Aw
+78:10 Aw->Move => Mw
+78:13 Mw->Long => D R @ Awp
+78:18 Awp->Cross => AM R @ Ap
+78:20 Ap->HdSht => !GK
+:break
+:phase transition T
+:possessor AM L
+78:59 M->Pass => AM R @ AM:FT >> AM L @ AM
+79:01 AM->Move => !M RC @ D:Ch >>> !F C @ MD:Cnt
+:phase transition L
+79:08 MD->Move => M
+79:10 M->ForwardPass => !D CR @ DM
+:phase recovery T
+79:11 DM->Move => D
+:phase pressure T
+79:12 D->BackPass => Gkr
+79:14 Gkr->Pass:FT => D R @ Dpd
+:phase possession T
+79:17 Dpd -> AM R @ AMd
+:phase attacking_possession T
+79:31 AMd->ParallelPass => AM L @ AM:Fr
+79:33 AM->Move => A
+:phase attack T
+79:34 A->Shoot => !Gkr:S >> D L @ Apd
+79:38 Apd->Pass:FT => M CL @ Ap
+79:39 Ap->Shoot => !Gkr:H
+:break
+:phase possession L
+:possessor D L
+79:54 DMw->ForwardPass => F CL @ MDw
+79:57 MDw->Pass => D L @ MDw
+79:58 MDw->Pass:FT => F C @ Mw:Fr
+:phase attacking_possession L
+80:00 Mw->ForwardPass:Open => !D CR @ DMw
+:phase recovery T
+80:02 DMw->ForwardPass => AM L @ MDw
+:phase transition T
+80:05 MDw->Move => Md
+80:06 Md->Pass => AM C @ DM
+80:07 DM->DiagonalPass:FT => AM R @ Mw
+80:12 Mw->Move => M
+80:16 M->ForwardPass => AM L @ AM
+80:17 AM->Dribble => A
+:phase attack T
+80:20 A->Shoot => !Gkr:H
+:break
+:phase possession L
+:possessor M LC
+80:30 DMw->ForwardPass:Open => !D CL @ Dw
+:phase recovery L
+80:34 Dw->BackPass:FT => !C
+:set L: Corner
+81:44 CK->Cross => !AM L @ Dp:HD >> F RC @ A:Cnt
+81:49 A->HighPass => !AM L @ Dd:Clr >>> M RC @ A
+82:01 A->Shoot => !GK
+:break
+:phase possession T
+:possessor D R
+82:10 DMw:Fr->Move => AMw
+:phase attacking_possession T
+82:15 AMw -> AM C @ Md
+82:32 Md->WidePass => D R @ Aw
+:phase attack T
+82:36 Aw->Cross => !D R @ Dp:HD >>> Awp*F
+:set T: Freekick
+84:05 Awp:SP->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => M LC @ Ap:B >> !Dp*O
+:break
+:phase possession T
+85:20 Gkr->Long => !Gkr:H
+:phase possession L
+85:33 Gkr->HandPass => D L @ Mw
+:phase attacking_possession L
+85:39 Mw->Move => AMw
+85:41 AMw->Cross => !D L @ Dp:B >> C
+:set L: Corner
+86:46 CK->Cross => !AM L @ Dp:HD >>> F C @ Apd:Fr
+86:53 Apd->Shoot => G
+:break
+:phase transition T
+:possessor D L
+88:20 AMw->Move => Aw
+:phase attack T
+88:22 Aw->Cross => AM R @ A:B >> !GK
+:break
+:phase possession T
+:possessor D R
+89:53 DMw->Long => !D R @ MDd:FT >> !F C @ M
+:phase transition L
+89:57 M->ForwardPass:FT:Open => !D R @ Dw
+:phase recovery T
+90:04 Dw->Pass => Gkd
+:phase possession T
+90:09 Gkd->Long => AM R @ A:HD >> !D R @ DMd
+:phase recovery L
+90:16 DMd->Clear:FT => !M CR @ Md:B >> !D CR @ DMw
+:phase recovery T
+90:21 DMw->Pass:FT => D L @ MDw
+:phase possession T
+90:26 MDw->Pass => M CR @ MDd
+90:30 MDd->Long => !Gkr:H
+:phase possession L
+90:48 Gkr->Long => !D CL @ DMd:HD >>> !F C @ Mw
+:phase transition T
+90:58 Mw->Move => Apd:Dv >> !F CL @ Dpw
+:phase recovery L
+91:05 Dpw->Long => !D CR @ MDd:FT >>> !M CR @ M
+:phase recovery T
+91:14 M->Pass => D CL @ MDd
+:phase possession T
+91:16 MDd -> D L @ Mw
+:phase attacking_possession T
+91:19 Mw->Long => AM R @ Ad:HD >>> C
+:set T: Corner
+91:44 CK->Cross => !D CR @ Dp:HD >> D L @ Aw
+91:50 Aw->Dribble => Ad
+91:52 Ad->Shoot => !Gkr:H
+:phase possession L
+92:08 Gkr->Long => !D R @ Dw
+:phase transition T
+92:14 Dw->Long => AM R @ M:HD >> F C @ AM
+92:19 AM->DiagonalPass:FT => AM L @ Ad
+:phase attack T
+92:22 Ad->Move => Apd
+92:23 Apd->Shoot => !Gkr:S >> C
+:set T: Corner
+92:41 CK->Cross => !D CR @ Dp:HD >>> D L @ AM
+:phase attack T
+92:49 AM->ForwardPass => F C @ Ad
+92:51 Ad->Move => Apd
+92:52 Apd->Shoot => !Gkr:H
+:phase possession L
+93:13 Gkr->Long => !Gkr:H
+:phase possession T
+93:19 Gkr -> D CL @ DMd
+93:24 DMd->Long => AM R @ AMd:HD >>> !DM*T
+:break
+:phase attack T
+:possessor AM L
+93:56 Ad->ForwardPass => !D CR @ Dp:Clr >> A*T
+:set T: ThrowIn
+94:02 A => AM C @ Aw
+:phase attack T
+94:05 Aw->Cross => !M C @ Dp:HD >> D CL @ Md
+94:11 Md->Long:FT => !M C @ DM
+:phase recovery L
+94:15 DM->ForwardPass => F C @ MDd:Fr
+:phase transition L
+94:16 MDd:Fr->Move => Md
+94:17 Md->Pass:Open => F CR @ Aw
+:phase attack L
+94:23 Aw->Move => Ad
+94:26 Ad->Pass => F C @ Ad
+94:27 Ad->HighPass => !GK
