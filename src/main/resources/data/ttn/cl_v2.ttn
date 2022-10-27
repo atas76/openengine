@@ -13,7 +13,7 @@
 03:21 DMw->Long => !D L @ DM:Tck >>> !Gkr
 :break
 :phase pressure T
-03:58 Dp => D CL @ DMw
+03:58 Dp -> D CL @ DMw
 :phase possession T
 04:23 DMw->Pass => D CR @ DM
 04:27 DM->Long => AM R @ Awp >>> C
@@ -76,13 +76,13 @@
 08:58 Apd->Dribble => !D CR @ Dp:I >> M CR @ A
 09:02 A->Shoot => !GK
 :phase pressure L
-09:20 GK => Gkr
+09:20 GK -> Gkr
 :possession L
 09:34 Gkr -> D CL @ Dd
 09:37 Dd->Long:Open => !D R @ Dpw:I >> C
 :set L: Corner
 10:40 CK->Cross => !Gkr:Punch >>> Gkr:H
-:phase pressure L
+:phase defensive_transition L
 11:04 Gkr->HandPass => D CR @ Dd
 11:08 Dd->Long => !D*T
 :set T: ThrowIn
@@ -97,8 +97,7 @@
 12:17 Dw->Long:Open => !DMw*T
 :break
 :phase pressure T
-12:56 Gkr->Long => !D R @ Mw:HD >>> AM L @ Mw
-13:08 Mw->BackPass => D CL @ DM
+12:56 Gkr -> Long => D CL @ DM
 :phase possession T
 13:17 DM->Long:Open => D R @ Awp
 :phase attack T
@@ -123,7 +122,7 @@
 15:09 DMd->Pass => D CL @ DM
 15:13 DM->Long:Open => !GK
 :phase pressure L
-15:42 GK => D CL @ Dd
+15:42 GK -> D CL @ Dd
 :phase possession L
 16:01 D CL -> D CR @ DMd
 16:13 DMd->Long => F LC @ A:Cnt >>> M*T
@@ -134,3 +133,48 @@
 :phase attacking_transition L
 16:47 Ad->Shoot => !GK
 :break
+:phase pressure L
+18:08 Gkr -> !AM R @ Md
+:phase attacking_possession T
+18:20 Md->ForwardPass => !M RC @ DM:B >> !D C @ DM
+:phase transition L
+18:25 DM->Triangle => M RC @ MD
+18:28 MD->ParallelPass => D L @ MDw:Fr
+18:29 MDw:Fr->Run => Aw
+:phase attacking_transition L
+18:34 Aw:Mrk->Move => !GK
+:phase pressure T
+18:53 GK -> AM L @ AM
+:phase counter_attack T
+19:09 M:Fr->Run => A
+19:10 A->Dribble => !D R @ D:I >> !M C @ DM
+:phase defensive_transition L
+19:11 DM->Pass:FT => D R @ Dw
+19:15 Dw->ForwardPass => !M CR @ M:I >> !M CL @ M
+:phase transition T
+19:20 M->Triangle => M CR @ AM
+:phase attacking_possession T
+19:23 AM->WidePass => AM R @ Ad
+19:26 Ad->Pass => M CL @ AM
+19:28 AM->Pass => AM R @ A
+19:30 A->ForwardPass => AM C @ A
+:phase attack T
+19:32 A->ForwardPass => !M RC @ Dp:Clr >> A*T
+:set T: ThrowIn
+19:40 A => AM R @ Aw:FT >> AM C @ Awp
+:phase attack T
+19:44 Awp->Cross => !Gkr:H
+:phase defensive_transition L
+19:48 Gkr -> M CL @ Md
+19:58 Md->BackPass => D L @ MDw
+:phase possession L
+20:06 D L -> Gkr
+:phase pressure L
+20:14 Gkr -> M RC @ Md
+:phase transition L
+20:22 Md->WidePass => D R @ AMw
+20:24 AMw->Move => Aw
+:phase attacking_transition L
+20:27 Aw->Pass => F C @ Ad
+20:29 A->OneTwoPass => F RC @ A
+20:30 A->Shoot => !D CR @ D:B >> C
