@@ -440,6 +440,7 @@
 37:39 Dd->SwapSidePass => D L @ MDw:Fr
 :transition L
 37:42 MDw:Fr->Run => Ad
+37:47 Ad->Shoot => !Gkr:S >> C
 :set L: Corner
 38:28 CK->Cross => !AM L @ Dp:HD >> F RC @ A
 38:31 A->Shoot:FT => !GK #r=0
