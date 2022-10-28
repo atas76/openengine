@@ -178,3 +178,29 @@
 20:27 Aw->Pass => F C @ Ad
 20:29 A->OneTwoPass => F RC @ A
 20:30 A->Shoot => !D CR @ D:B >> C
+:set L: Corner
+21:11 CK->Cross => !Gkr:Punch >> A*T
+:set L: ThrowIn
+21:47 A => F RC @ Awp:Pvt
+21:51 Awp->Turn => Apw
+21:52 Apw->Shoot => !D*T
+:set T: ThrowIn
+22:17 D => AM R @ Dwp:Cnt >>> !F C @ Awp
+22:20 Awp->Move => Apd
+22:22 Apd->Pass => !D CL @ Dp:Clr >>> D L @ AMw
+22:28 AMw->ForwardPass:FT => F C @ Aw
+22:30 Aw->BackPass => F LC @ Aw
+:phase attack L
+22:32 Aw->BackHeelPass => M LC @ Awp
+22:36 Awp->BackPass => D L @ Aw
+22:37 Aw->Cross:FT => !D L @ Dp:HD >> Ap*T
+:set L: ThrowIn
+23:03 Ap => M RC @ Awp:HD >>> !AM L @ Dwp:Cnt
+23:06 Dwp->ForwardPass => !M LC @ Ad
+23:10 Ad->BackPass => M C @ Ad
+:phase attack L
+23:11 Ad->ParallelHighPass => D L @ AM:Fr
+23:14 AM->Move => A
+23:15 A->WidePass => F LC @ Awp
+23:21 Awp->Move => Apw
+23:22 Apw->Cross => !D R @ Dp:I >> C
