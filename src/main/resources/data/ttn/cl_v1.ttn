@@ -521,7 +521,7 @@
 45:18 A->Shoot => !GK #r=0
 :possession L
 45:42 GK->Long => F LC @ Md:HD >>> !D L @ DMw
-:transition L
+:transition T
 45:53 DMw->Pass => M CL @ DMd
 45:56 DMw->Pass => D CR @ D
 :pressure T
