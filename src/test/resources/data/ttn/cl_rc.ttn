@@ -573,6 +573,7 @@
 48:29 Dd->Clear => !M*T
 :set L: ThrowIn
 48:53 M => !D CL @ Dpw
+:phase defensive_transition T
 48:58 Dpw->Clear => !M*T
 :set L: ThrowIn
 49:05 AM => F C @ Aw:HD >>> !DM*T
