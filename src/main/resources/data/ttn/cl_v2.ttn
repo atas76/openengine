@@ -796,3 +796,76 @@
 :phase attack T
 78:18 Awp->Cross => AM R @ Ap
 78:20 Ap->HdSht => !GK
+:break
+:phase transition T
+78:59 M->Pass => AM R @ AM:FT >> AM L @ AM
+79:01 AM->Move => !M RC @ D:Ch >>> !F C @ MD:Cnt
+:phase transition L
+79:08 MD->Move => M
+79:10 M->ForwardPass => !D CR @ DM
+:phase recovery T
+79:11 DM->Move => D
+:phase defensive_transition T
+79:12 D->BackPass => Gkr
+79:14 Gkr->Pass:FT => D R @ Dpd
+79:17 Dpd -> AM R @ AMd
+79:31 AMd->ParallelPass => AM L @ AM:Fr
+79:33 AM->Move => A
+:phase attacking_transition T
+79:34 A->Shoot => !Gkr:S >> D L @ Apd
+79:38 Apd->Pass:FT => M CL @ Ap
+79:39 Ap->Shoot => !Gkr:H
+:break
+:phase counter_attack L
+79:54 DMw->ForwardPass => F CL @ MDw
+79:57 MDw->Pass => D L @ MDw
+79:58 MDw->Pass:FT => F C @ Mw:Fr
+80:00 Mw->ForwardPass:Open => !D CR @ DMw
+:phase transition T
+80:02 DMw->ForwardPass => AM L @ MDw
+80:05 MDw->Move => Md
+80:06 Md->Pass => AM C @ DM
+80:07 DM->DiagonalPass:FT => AM R @ Mw
+80:12 Mw->Move => M
+80:16 M->ForwardPass => AM L @ AM
+80:17 AM->Dribble => A
+:phase attacking_transition T
+80:20 A->Shoot => !Gkr:H
+:break
+:phase possession L
+80:30 DMw->ForwardPass:Open => !D CL @ Dw
+:phase defensive_transition T
+80:34 Dw->BackPass:FT => !C
+:set L: Corner
+81:44 CK->Cross => !AM L @ Dp:HD >> F RC @ A:Cnt
+81:49 A->HighPass => !AM L @ Dd:Clr >>> M RC @ A
+82:01 A->Shoot => !GK
+:break
+:phase possession T
+82:10 DMw:Fr->Move => AMw
+82:15 AMw -> AM C @ Md
+82:32 Md->WidePass => D R @ Aw
+:phase attack T
+82:36 Aw->Cross => !D R @ Dp:HD >>> Awp*F
+:set T: Freekick
+84:05 Awp:SP->Shoot => !Gkr:S >> C
+:set T: Corner
+84:37 CK->Cross => M LC @ Ap:B >> !Dp*O
+:break
+:phase possession T
+85:20 Gkr->Long => !Gkr:H
+:phase counter_attack T
+85:20 Gkr->Long => !Gkr:H
+:phase counter_attack L
+85:33 Gkr->HandPass => D L @ Mw
+85:39 Mw->Move => AMw
+85:41 AMw->Cross => !D L @ Dp:B >> C
+:set L: Corner
+86:46 CK->Cross => !AM L @ Dp:HD >>> F C @ Apd:Fr
+86:53 Apd->Shoot => G
+:break
+:phase transition T
+88:20 AMw->Move => Aw
+:phase attacking_transition T
+88:22 Aw->Cross => AM R @ A:B >> !GK
+:break
