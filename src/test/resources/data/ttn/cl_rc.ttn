@@ -847,7 +847,7 @@
 74:33 MDw->Move => AMd:Fr
 :phase counter_attack L
 74:38 AMd:Fr->ParallelPass => F RC @ Ad:Fr
-74:42 Ad->HighPass => !D CR @ Dp:HD >>> M CL @ DM
+74:42 Ad->HighPass => !D CR @ Dp:HD >>> !M CL @ DM
 :phase transition T
 74:47 DM->Pass => AM R @ DM
 74:50 DM->ForwardPass:FT => AM L @ M
@@ -892,6 +892,7 @@
 78:09 AMw->Pass => F C @ Aw
 78:10 Aw->Move => Mw
 78:13 Mw->Long => D R @ Awp
+:phase attack T
 78:18 Awp->Cross => AM R @ Ap
 78:20 Ap->HdSht => !GK
 :break
