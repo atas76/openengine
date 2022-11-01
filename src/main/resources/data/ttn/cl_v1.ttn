@@ -968,7 +968,7 @@
 :possession L
 :possessor M LC
 80:30 DMw->ForwardPass:Open => !D CL @ Dw
-:recovery L
+:recovery T
 80:34 Dw->BackPass:FT => !C
 :substitution T: AM R
 :set L: Corner

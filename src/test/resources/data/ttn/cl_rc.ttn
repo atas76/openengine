@@ -940,7 +940,7 @@
 :phase possession L
 :possessor M LC
 80:30 DMw->ForwardPass:Open => !D CL @ Dw
-:phase recovery L
+:phase recovery T
 80:34 Dw->BackPass:FT => !C
 :set L: Corner
 81:44 CK->Cross => !AM L @ Dp:HD >> F RC @ A:Cnt
