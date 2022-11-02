@@ -897,3 +897,40 @@
 91:44 CK->Cross => !D CR @ Dp:HD >> D L @ Aw
 91:50 Aw->Dribble => Ad
 91:52 Ad->Shoot => !Gkr:H
+:phase possession L
+93:13 Gkr->Long => !Gkr:H
+:phase possession L
+92:08 Gkr->Long => !D R @ Dw
+:phase defensive_transition T
+92:14 Dw->Long => AM R @ M:HD >> F C @ AM
+92:19 AM->DiagonalPass:FT => AM L @ Ad
+:phase attacking_transition T
+92:22 Ad->Move => Apd
+92:23 Apd->Shoot => !Gkr:S >> C
+:set T: Corner
+92:41 CK->Cross => !D CR @ Dp:HD >>> D L @ AM
+:phase attack T
+92:49 AM->ForwardPass => F C @ Ad
+92:51 Ad->Move => Apd
+92:52 Apd->Shoot => !Gkr:H
+:phase possession L
+93:13 Gkr->Long => !Gkr:H
+:phase counter_attack T
+93:19 Gkr -> D CL @ DMd
+93:24 DMd->Long => AM R @ AMd:HD >>> !DM*T
+:break
+:phase attack T
+93:56 Ad->ForwardPass => !D CR @ Dp:Clr >> A*T
+:set T: ThrowIn
+94:02 A => AM C @ Aw
+:phase attack T
+94:05 Aw->Cross => !M C @ Dp:HD >> D CL @ Md
+94:11 Md->Long:FT => !M C @ DM
+:phase counter_attack L
+94:15 DM->ForwardPass => F C @ MDd:Fr
+94:16 MDd:Fr->Move => Md
+94:17 Md->Pass:Open => F CR @ Aw
+94:23 Aw->Move => Ad
+94:26 Ad->Pass => F C @ Ad
+:phase attack L
+94:27 Ad->HighPass => !GK
