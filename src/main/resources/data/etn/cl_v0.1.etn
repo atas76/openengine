@@ -1,0 +1,32 @@
+00:00 :set L: Kickoff
+00:02 :phase possession L
+00:20 :phase attacking_transition L
+01:47 :set L: Penalty
+:break(G)
+03:18 :set L: ThrowIn
+:break(!Gkr)
+03:58 :phase pressure T
+04:23 :phase possession T
+05:15 :set T: Corner
+05:27 :phase possession T
+05:47 :phase transition L
+05:53 :phase attacking_possession L
+05:58 :phase attack L
+:break(*T)
+06:53 :set T: ThrowIn
+06:58 :phase possession T
+07:21 :phase transition L
+07:32 :set T: ThrowIn
+07:45 :phase possession T
+08:12 :set L: ThrowIn
+08:25 :phase transition T
+08:30 :phase attacking_possession T
+08:50 :phase attack T
+09:20 :phase pressure L
+09:34 :phase possession L
+10:40 :set L: Corner
+11:04 :phase possession L
+11:34 :set T: ThrowIn
+12:11 :set T: Freekick
+12:17 :phase defensive_transition L
+:break
