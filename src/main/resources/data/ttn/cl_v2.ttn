@@ -186,11 +186,11 @@
 21:52 Apw->Shoot => !D*T
 :set T: ThrowIn
 22:17 D => AM R @ Dwp:Cnt >>> !F C @ Awp
+:phase attack L
 22:20 Awp->Move => Apd
 22:22 Apd->Pass => !D CL @ Dp:Clr >>> D L @ AMw
 22:28 AMw->ForwardPass:FT => F C @ Aw
 22:30 Aw->BackPass => F LC @ Aw
-:phase attack L
 22:32 Aw->BackHeelPass => M LC @ Awp
 22:36 Awp->BackPass => D L @ Aw
 22:37 Aw->Cross:FT => !D L @ Dp:HD >> Ap*T
@@ -218,7 +218,7 @@
 25:09 DMw->BackPass => D CR @ D
 :phase possession T
 25:11 D -> Gkr
-:phase pressure
+:phase pressure T
 25:31 Gkr->Long => !D CL @ DM:HD >>> !MD*T
 :set L: ThrowIn
 25:58 MD => !D R @ DM:HD >>> D R @ MD
@@ -351,7 +351,7 @@
 :set T: ThrowIn
 37:24 D => M CR @ DMd:Cnt
 37:27 DMd->Long:Open => !Gkr
-:pressure L
+:phase pressure L
 37:35 Gkr->Pass => D CR @ Dd
 37:39 Dd->SwapSidePass => D L @ MDw:Fr
 :phase counter_attack L
@@ -463,7 +463,7 @@
 45:56 Mw->Pass => M RC @ Mw
 45:57 Mw->Pass => M CL @ MD
 46:01 MD -> D CR @ Dd
-:possession T
+:phase possession T
 46:11 Dd->WidePass => D R @ MDw
 46:15 MDw->ForwardPass:Open => AM L @ Awp
 :phase attack T
