@@ -86,17 +86,16 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 25:31 :phase pressure T
 25:58 :set L: ThrowIn
 :break(GK)
-# !!!
 26:43 :phase pressure T
 27:00 :phase possession T
 27:08 :phase pressure T
-:break
+:break(*T)
 27:31 :phase possession T
-:break
+:break(*O)
 28:17 :phase possession L
 29:01 :set L: Freekick
 29:20 :phase pressure T
-:break
+:break(*F)
 29:50 :phase possession T
 30:00 :phase pressure T
 30:10 :phase defensive_transition L
@@ -104,8 +103,10 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 30:31 :set T: ThrowIn
 30:37 :phase possession T
 30:45 :phase pressure T
+30:55 :interception L
+30:59 :transition L
 31:03 :phase defensive_transition T
-:break
+:break(*O)
 31:20 :phase possession T
 31:39 :phase pressure T
 31:53 :phase counter_attack T
@@ -134,6 +135,9 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 37:42 :phase counter_attack L
 38:28 :set L: Corner
 40:12 :phase possession T
+40:16 :phase interception L
+40:20 :phase transition L
+40:26 :phase attacking_transition L
 40:36 :phase attacking_possession L
 40:39 :phase attack L
 40:59 :set L: ThrowIn
