@@ -170,3 +170,145 @@
 49:26 :set T: ThrowIn
 50:01 :set T: Freekick
 :break
+50:48 :set T: ThrowIn
+50:56 :phase pressure T
+51:17 :phase counter_attack T
+51:26 :phase defensive_transition L
+51:55 :set L: ThrowIn
+52:15 :phase attacking_transition L
+52:20 :phase attack L
+52:33 :phase possession T
+53:05 :phase attacking_transition L
+53:14 :phase attacking_possession L
+53:19 :phase attack L
+:break
+53:34 :phase possession T
+53:48 :phase attack T
+54:05 :phase possession T
+54:31 :phase attack T
+:break
+56:02 :phase possession T
+56:16 :phase attacking_transition T
+56:51 :set T: Corner
+57:15 :set T: Corner
+:break
+58:03 :phase pressure L
+:break
+58:16 :phase possession T
+58:22 :phase pressure T
+58:44 :set T: ThrowIn
+58:48 :phase possession T
+59:27 :phase pressure T
+59:49 :phase possession T
+60:15 :phase attacking_possession T
+60:17 :phase attack T
+60:53 :phase pressure L
+61:20 :set L: ThrowIn
+61:59 :set L: ThrowIn
+62:19 :set L: Freekick
+62:22 :phase possession L
+:break
+63:07 :phase pressure T
+63:23 :phase pressure L
+63:57 :phase possession T
+64:41 :set L: Freekick
+65:29 :set T: ThrowIn
+65:39 :phase possession T
+65:48 :phase pressure L
+65:59 :phase counter_attack L
+66:35 :set L: Corner
+66:51 :set L: ThrowIn
+67:00 :set L: ThrowIn
+67:18 :phase possession T
+67:24 :phase transition T
+67:51 :set L: ThrowIn
+68:07 :phase attacking_transition L
+:break
+68:41 :phase pressure T
+69:01 :phase possession T
+69:06 :phase attacking_possession T
+69:11 :phase attack T
+69:26 :phase attacking_possession T
+69:29 :phase possession T
+69:42 :phase attacking_possession T
+69:59 :phase attack T
+70:17 :phase counter_attack L
+71:42 :set L: ThrowIn
+71:56 :set T: ThrowIn
+71:58 :phase pressure T
+72:18 :phase transition L
+72:22 :phase possession T
+72:34 :phase attack T
+73:44 :phase pressure L
+73:50 :phase transition L
+:break
+74:15 :phase pressure T
+74:32 :phase possession T
+74:33 :phase transition L
+74:38 :phase attacking_transition L
+74:47 :phase transition T
+74:52 :phase attacking_transition T
+75:05 :set T: Corner
+75:07 :phase attack T
+:break
+76:05 :phase possession T
+76:24 :phase possession L
+76:30 :phase counter_attack T
+76:40 :phase possession L
+77:11 :set L: ThrowIn
+77:22 :phase transition T
+77:31 :phase attacking_possession T
+77:52 :phase possession T
+78:18 :phase attack T
+:break
+78:59 :phase transition T
+79:08 :phase transition L
+79:11 :phase recovery T
+79:12 :phase defensive_transition T
+79:34 :phase attacking_transition T
+:break
+79:54 :phase counter_attack L
+80:02 :phase transition T
+80:20 :phase attacking_transition T
+:break
+80:30 :phase possession L
+80:34 :phase defensive_transition T
+81:44 :set L: Corner
+:break
+82:10 :phase possession T
+82:36 :phase attack T
+84:05 :set T: Freekick
+84:37 :set T: Corner
+:break
+85:20 :phase possession T
+85:20 :phase counter_attack T
+85:33 :phase counter_attack L
+86:46 :set L: Corner
+:break
+88:20 :phase transition T
+88:22 :phase attacking_transition T
+:break
+89:53 :phase possession T
+89:57 :phase transition L
+90:04 :phase possession T
+90:16 :phase transition L
+90:21 :phase transition T
+90:30 :phase possession T
+90:48 :phase possession L
+90:58 :phase transition T
+91:05 :phase defensive_transition L
+91:14 :phase attacking_possession T
+91:44 :set T: Corner
+92:08 :phase possession L
+92:14 :phase defensive_transition T
+92:22 :phase attacking_transition T
+92:41 :set T: Corner
+92:49 :phase attack T
+93:13 :phase possession L
+93:19 :phase counter_attack T
+:break
+93:56 :phase attack T
+94:02 :set T: ThrowIn
+94:05 :phase attack T
+94:15 :phase counter_attack L
+94:27 :phase attack L
