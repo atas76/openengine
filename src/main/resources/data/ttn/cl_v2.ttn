@@ -781,7 +781,7 @@
 :phase possession L
 76:40 Gkr -> D R @ Mw
 76:51 Mw->ForwardPass => !D L @ MDw:B >> M*T
-:set L: Throw-in
+:set L: ThrowIn
 77:11 M => !D CL @ Dw:HD >>> !D CR @ D
 :phase transition T
 77:22 D->Move => DM
@@ -897,8 +897,6 @@
 91:44 CK->Cross => !D CR @ Dp:HD >> D L @ Aw
 91:50 Aw->Dribble => Ad
 91:52 Ad->Shoot => !Gkr:H
-:phase possession L
-93:13 Gkr->Long => !Gkr:H
 :phase possession L
 92:08 Gkr->Long => !D R @ Dw
 :phase defensive_transition T
