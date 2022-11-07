@@ -1,9 +1,18 @@
 00:00 :set L: Kickoff
 00:02 :phase possession L
+00:04 :interception T
+# DM->Long => !D R @ DMw:HD >>> M LC @ Mw
+00:15 :phase transition L
 00:20 :phase attacking_transition L
 01:47 :set L: Penalty
 :break(G)
 03:18 :set L: ThrowIn
+# Not really needed for this version
+DM => F LC @ MDw
+MDw->BackPass => D L @ DMw
+DMw->Long => !D L @ DM:Tck >>> D R @ DMw
+#
+03:32 :phase transition L
 :break(!Gkr)
 03:58 :phase pressure T
 04:23 :phase possession T
@@ -29,14 +38,14 @@
 11:34 :set T: ThrowIn
 12:11 :set T: Freekick
 12:17 :phase defensive_transition L
-:break
+:break(*T)
 12:56 :phase pressure T
 13:17 :phase possession T
 13:23 :phase attack T
 13:46 :set T: ThrowIn
 13:47 :phase attack T
 13:53 :phase attacking_possession T
-:break
+:break(*T)
 14:59 :phase possession T
 15:04 :phase transition L
 15:06 :phase possession T
@@ -44,8 +53,9 @@
 16:01 :phase possession L
 16:39 :set L: ThrowIn
 16:47 :phase attacking_transition L
-:break
+:break(GK)
 18:08 :phase pressure L
+18:16 :transition T
 18:20 :phase attacking_possession T
 18:25 :phase transition L
 18:34 :phase attacking_transition L
@@ -57,7 +67,7 @@
 19:32 :phase attack T
 19:40 :set T: ThrowIn
 19:44 :phase attack T
-19:48 :phase defensive_transition L
+19:48 :phase counter_attack L
 20:06 :phase possession L
 20:14 :phase pressure L
 20:22 :phase transition L
@@ -75,7 +85,8 @@
 25:11 :phase possession T
 25:31 :phase pressure T
 25:58 :set L: ThrowIn
-:break
+:break(GK)
+# !!!
 26:43 :phase pressure T
 27:00 :phase possession T
 27:08 :phase pressure T
