@@ -554,7 +554,7 @@
 53:44 Mw->Long => AM R @ Ap:Cnt
 :phase attack T
 53:48 Ap->Shoot => !D R @ Dp:B >>> D CL @ DMw
-:phase possession T
+:phase attacking_possession T
 54:05 DMw -> D CR @ MDd
 54:23 MDd->Long => D L @ Awp
 :phase attack T
@@ -630,7 +630,7 @@
 63:14 DMd->Pass => D L @ DMw
 63:17 DMw->Pass => AM R @ MDw:Fr
 63:20 MDw->ForwardPass:Open => !D CL @ Dp
-:phase pressure L
+:phase defensive_transition L
 63:23 Dp->Pass => Gkr
 63:24 Gkr->Long:FT => !D L @ Mw:HD >>> D CR @ DM
 :phase possession T
