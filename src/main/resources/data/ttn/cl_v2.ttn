@@ -803,9 +803,8 @@
 :phase transition L
 79:08 MD->Move => M
 79:10 M->ForwardPass => !D CR @ DM
-:phase recovery T
-79:11 DM->Move => D
 :phase defensive_transition T
+79:11 DM->Move => D
 79:12 D->BackPass => Gkr
 79:14 Gkr->Pass:FT => D R @ Dpd
 79:17 Dpd -> AM R @ AMd
@@ -852,8 +851,6 @@
 :set T: Corner
 84:37 CK->Cross => M LC @ Ap:B >> !Dp*O
 :break
-:phase possession T
-85:20 Gkr->Long => !Gkr:H
 :phase counter_attack T
 85:20 Gkr->Long => !Gkr:H
 :phase counter_attack L
