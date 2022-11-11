@@ -134,6 +134,7 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 37:35 :phase pressure L
 37:42 :phase counter_attack L
 38:28 :set L: Corner
+38:31 :injury
 40:12 :phase possession T
 40:16 :phase interception L
 40:20 :phase transition L
@@ -202,6 +203,7 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 53:48 :phase attack T
 54:05 :phase attacking_possession T
 54:31 :phase attack T
+54:34 :injury
 :break(*T)
 56:02 :phase possession T
 56:05 :interception L
