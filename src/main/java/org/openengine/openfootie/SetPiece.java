@@ -1,6 +1,6 @@
 package org.openengine.openfootie;
 
-public enum SetPiece implements MatchDataElement {
+public enum SetPiece implements MatchDataElementType {
     KICK_OFF,
     PENALTY,
     THROW_IN,
