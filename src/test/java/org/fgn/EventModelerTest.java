@@ -13,7 +13,7 @@ import org.fgn.schema.StateContext;
 import org.fgn.schema.data.Schema;
 import org.junit.Before;
 import org.junit.Test;
-import org.openfootie.openengine.util.fgn.EventModeler;
+import org.openengine.prototype.util.fgn.EventModeler;
 
 import java.io.IOException;
 import java.util.List;
