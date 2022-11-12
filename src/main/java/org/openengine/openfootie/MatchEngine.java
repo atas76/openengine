@@ -1,6 +1,5 @@
 package org.openengine.openfootie;
 
-import java.util.OptionalInt;
 import java.util.Random;
 
 public class MatchEngine {
