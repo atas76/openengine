@@ -65,5 +65,31 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchDataElement[]{
                         new MatchDataElement(GOAL, false, 91, 91, 0)
                 }));
+        L_CLF19.addRow(THROW_IN,
+                new MatchSequence(new MatchDataElement[]{
+                        new MatchDataElement(POSSESSION, true, 29, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 35, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 2, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 3, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 11, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 20, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 18, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 5, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 49, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 6, 0, 0),
+                        new MatchDataElement(TRANSITION, false, 5, 0, 0),
+                        new MatchDataElement(TRANSITION, false, 9, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 81, 81, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 5, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 34, 34, 0),
+                        new MatchDataElement(POSSESSION, false, 23, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 13, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 6, 0, 0),
+                        new MatchDataElement(ATTACK, true, 39, 0, 0),
+                        new MatchDataElement(TRANSITION, true, 26, 26, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, false, 12, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, false, 14, 0, 0),
+                        new MatchDataElement(FREE_KICK, true, 3, 0, 0)
+                }));
     }
 }
