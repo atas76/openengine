@@ -97,5 +97,12 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(ATTACK, true, 20, 0, 0),
                         new MatchDataElement(ATTACK, true, 15, 15, 0),
                 }));
+        L_CLF19.addRow(ATTACK,
+                new MatchSequence(new MatchDataElement[]{
+                        new MatchDataElement(CORNER_KICK, true, 61, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 5, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 8, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 32, 0, 0),
+                }));
     }
 }
