@@ -26,6 +26,7 @@ public class MatchFlowMatrixTest {
         MatchSequence homeTeamAttackingTransitionSequence = homeTeamMatchFlow.getRow(ATTACKING_TRANSITION);
         MatchSequence homeTeamPenaltySequence = homeTeamMatchFlow.getRow(PENALTY);
         MatchSequence homeTeamThrowInSequence = homeTeamMatchFlow.getRow(THROW_IN);
+        MatchSequence homeTeamAttackingPossessionSequence = homeTeamMatchFlow.getRow(ATTACKING_POSSESSION);
 
         MatchDataElement homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
         MatchDataElement homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
@@ -33,6 +34,7 @@ public class MatchFlowMatrixTest {
         MatchDataElement homeTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingTransitionSequence, 4);
         MatchDataElement homeTeamAttackingPenaltySequenceElement = matchEngine.getNextSequenceElement(homeTeamPenaltySequence, 0);
         MatchDataElement homeTeamThrowInSequenceElement = matchEngine.getNextSequenceElement(homeTeamThrowInSequence, 15);
+        MatchDataElement homeTeamAttackingPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingPossessionSequence, 0);
 
         assertEquals(POSSESSION, homeTeamKickOffSequenceElement.type());
         assertTrue(homeTeamKickOffSequenceElement.retainPossession());
@@ -59,5 +61,10 @@ public class MatchFlowMatrixTest {
         assertEquals(POSSESSION, homeTeamThrowInSequenceElement.type());
         assertFalse(homeTeamThrowInSequenceElement.retainPossession());
         assertEquals(23, homeTeamThrowInSequenceElement.duration());
+        //
+        assertEquals(ATTACK, homeTeamAttackingPossessionSequenceElement.type());
+        assertTrue(homeTeamAttackingPossessionSequenceElement.retainPossession());
+        assertEquals(55, homeTeamAttackingPossessionSequenceElement.duration());
+        assertEquals(55, homeTeamAttackingPossessionSequenceElement.breakTime());
     }
 }
