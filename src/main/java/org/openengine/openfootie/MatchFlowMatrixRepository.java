@@ -32,5 +32,21 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(COUNTER_ATTACK, false, 37, 37, 0), // for now duration = breakTime
                         new MatchDataElement(TRANSITION, false, 7, 0, 0),
                 }));
+        L_CLF19.addRow(TRANSITION,
+                new MatchSequence(new MatchDataElement[]{
+                        new MatchDataElement(THROW_IN, false, 13, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 17, 17, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 23, 0, 0),
+                        new MatchDataElement(TRANSITION, false, 9, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 87, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 19, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 44, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 10, 0, 0),
+                        new MatchDataElement(ATTACKING_TRANSITION, true, 9, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, true, 5, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 36, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 12, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 12, 0, 0)
+                }));
     }
 }
