@@ -1,6 +1,7 @@
 package org.openengine.openfootie;
 
-import static org.openengine.openfootie.MatchPhase.POSSESSION;
+import static org.openengine.openfootie.MatchEvent.INTERCEPTION;
+import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
 
 public class MatchFlowMatrixRepository {
@@ -11,6 +12,25 @@ public class MatchFlowMatrixRepository {
         L_CLF19.addRow(KICK_OFF,
                 new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(POSSESSION, true, 2, 0, 0)
+                }));
+        L_CLF19.addRow(POSSESSION,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(INTERCEPTION, false, 11, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 24, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 37, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 7, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 8, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 11, 0, 0),
+                        new MatchDataElement(PRESSURE, true, 8, 0, 0),
+                        new MatchDataElement(PRESSURE, true, 19, 0, 0),
+                        new MatchDataElement(FREE_KICK, true, 19, 0, 0),
+                        new MatchDataElement(FREE_KICK, false, 10, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 15, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 10, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 8, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, false, 10, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, false, 37, 37, 0), // for now duration = breakTime
+                        new MatchDataElement(TRANSITION, false, 7, 0, 0),
                 }));
     }
 }

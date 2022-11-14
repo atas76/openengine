@@ -3,8 +3,8 @@ package org.openengine.openfootie;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.openengine.openfootie.MatchPhase.DEFENSIVE_TRANSITION;
 import static org.openengine.openfootie.MatchPhase.POSSESSION;
 import static org.openengine.openfootie.SetPiece.*;
 
@@ -20,12 +20,18 @@ public class MatchFlowMatrixTest {
 
     @Test
     public void testMatchFlowMatrix() {
-        MatchSequence homeTeamSequence = homeTeamMatchFlow.getRow(KICK_OFF);
+        MatchSequence homeTeamKickOffSequence = homeTeamMatchFlow.getRow(KICK_OFF);
+        MatchSequence homeTeamPossessionSequence = homeTeamMatchFlow.getRow(POSSESSION);
 
-        MatchDataElement matchDataElement = matchEngine.getNextSequenceElement(homeTeamSequence, 0);
+        MatchDataElement homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
+        MatchDataElement homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
 
-        assertEquals(POSSESSION, matchDataElement.type());
-        assertTrue(matchDataElement.retainPossession());
-        assertEquals(2, matchDataElement.duration());
+        assertEquals(POSSESSION, homeTeamKickOffSequenceElement.type());
+        assertTrue(homeTeamKickOffSequenceElement.retainPossession());
+        assertEquals(2, homeTeamKickOffSequenceElement.duration());
+        //
+        assertEquals(DEFENSIVE_TRANSITION, homeTeamPossessionSequenceElement.type());
+        assertFalse(homeTeamPossessionSequenceElement.retainPossession());
+        assertEquals(8, homeTeamPossessionSequenceElement.duration());
     }
 }
