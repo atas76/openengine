@@ -1,6 +1,6 @@
 package org.openengine.openfootie;
 
-import static org.openengine.openfootie.MatchEvent.INTERCEPTION;
+import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
 
@@ -56,10 +56,14 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(TRANSITION, false, 5, 0, 0),
                         new MatchDataElement(ATTACKING_POSSESSION, true, 3, 0, 0),
                         new MatchDataElement(ATTACKING_POSSESSION, true, 5, 0, 0),
-                        new MatchDataElement(PENALTY, true, 91, 91, 0),
+                        new MatchDataElement(PENALTY, true, 0, 0, 0),
                         new MatchDataElement(PRESSURE, false, 16, 0, 0),
                         new MatchDataElement(PRESSURE, false, 10, 0, 0),
                         new MatchDataElement(ATTACK, true, 13, 0, 0)
+                }));
+        L_CLF19.addRow(PENALTY,
+                new MatchSequence(new MatchDataElement[]{
+                        new MatchDataElement(GOAL, false, 91, 91, 0)
                 }));
     }
 }
