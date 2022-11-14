@@ -168,7 +168,7 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 :set T: Kickoff
 45:04 :phase possession T
 45:10 :set L: ThrowIn
-45:27 :possession T
+45:27 :phase possession T
 45:50 :set T: ThrowIn
 45:56 :phase attacking_possession T
 46:11 :phase possession T
