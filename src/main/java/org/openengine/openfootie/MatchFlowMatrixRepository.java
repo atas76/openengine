@@ -1,5 +1,7 @@
 package org.openengine.openfootie;
 
+import org.openengine.prototype.engine.Match;
+
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
@@ -33,7 +35,7 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(TRANSITION, false, 7, 0, 0),
                 }));
         L_CLF19.addRow(TRANSITION,
-                new MatchSequence(new MatchDataElement[]{
+                new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(THROW_IN, false, 13, 0, 0),
                         new MatchDataElement(DEFENSIVE_TRANSITION, false, 17, 17, 0),
                         new MatchDataElement(DEFENSIVE_TRANSITION, false, 23, 0, 0),
@@ -49,7 +51,7 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(POSSESSION, false, 12, 0, 0)
                 }));
         L_CLF19.addRow(ATTACKING_TRANSITION,
-                new MatchSequence(new MatchDataElement[]{
+                new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(CORNER_KICK, true, 36, 0, 0),
                         new MatchDataElement(CORNER_KICK, true, 35, 0, 0),
                         new MatchDataElement(THROW_IN, false, 11, 0, 0),
@@ -62,11 +64,11 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(ATTACK, true, 13, 0, 0)
                 }));
         L_CLF19.addRow(PENALTY,
-                new MatchSequence(new MatchDataElement[]{
+                new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(GOAL, false, 91, 91, 0)
                 }));
         L_CLF19.addRow(THROW_IN,
-                new MatchSequence(new MatchDataElement[]{
+                new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(POSSESSION, true, 29, 0, 0),
                         new MatchDataElement(THROW_IN, false, 35, 0, 0),
                         new MatchDataElement(THROW_IN, false, 2, 0, 0),
@@ -92,7 +94,7 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(FREE_KICK, true, 3, 0, 0)
                 }));
         L_CLF19.addRow(ATTACKING_POSSESSION,
-                new MatchSequence(new MatchDataElement[]{
+                new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(ATTACK, true, 55, 55, 0),
                         new MatchDataElement(ATTACK, true, 20, 0, 0),
                         new MatchDataElement(ATTACK, true, 15, 15, 0),
@@ -103,6 +105,18 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(THROW_IN, true, 5, 0, 0),
                         new MatchDataElement(THROW_IN, true, 8, 0, 0),
                         new MatchDataElement(POSSESSION, false, 32, 0, 0),
+                }));
+        L_CLF19.addRow(PRESSURE,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(POSSESSION, true, 66, 0, 0),
+                        new MatchDataElement(POSSESSION, true, 38, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 39, 0, 0),
+                        new MatchDataElement(TRANSITION, false, 4, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 29, 0, 0),
+                        new MatchDataElement(TRANSITION, true, 25, 25, 0),
+                        new MatchDataElement(TRANSITION, true, 5, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, true, 46, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, true, 36, 0, 0)
                 }));
     }
 }
