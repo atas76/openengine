@@ -5,6 +5,7 @@
 00:15 :phase transition L
 00:20 :phase attacking_transition L
 01:47 :set L: Penalty
+01:47 :goal L
 :break(G)
 03:18 :set L: ThrowIn
 # Not really needed for this version
@@ -304,6 +305,7 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 85:20 :phase counter_attack T
 85:33 :phase counter_attack L
 86:46 :set L: Corner
+86:53 :goal L
 :break(G)
 88:20 :phase transition T
 88:22 :phase attacking_transition T
