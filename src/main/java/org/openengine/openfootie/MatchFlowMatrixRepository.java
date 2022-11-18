@@ -138,5 +138,15 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(POSSESSION, false, 44, 0, 0),
                         new MatchDataElement(ATTACKING_POSSESSION, false, 30, 0, 0),
                 }));
+        L_CLF19.addRow(COUNTER_ATTACK,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(POSSESSION, true, 8, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 3, 0, 41),
+                        new MatchDataElement(CORNER_KICK, true, 16, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 7, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 14, 0, 0),
+                        new MatchDataElement(TRANSITION, false, 18, 0, 0),
+                        new MatchDataElement(ATTACK, true, 4, 0, 0)
+                }));
     }
 }
