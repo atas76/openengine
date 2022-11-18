@@ -165,7 +165,7 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 46:29 :phase attacking_possession T
 46:43 :phase attack T
 46:50 :phase defensive_transition L
-:HT
+46:52 :HT
 :set T: Kickoff
 45:04 :phase possession T
 45:10 :set L: ThrowIn
@@ -333,4 +333,5 @@ DMw->Long => !D L @ DM:Tck >>> D R @ DMw
 94:02 :set T: ThrowIn
 94:05 :phase attack T
 94:15 :phase counter_attack L
-94:27 :phase attack L
+94:26 :phase attack L
+94:30 :FT
