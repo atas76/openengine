@@ -8,6 +8,7 @@ import static org.openengine.openfootie.MatchEvent.GOAL;
 import static org.openengine.openfootie.MatchEvent.INTERCEPTION;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
+import static org.openengine.openfootie.Special.MAIN;
 
 public class MatchFlowMatrixTest {
 
@@ -26,6 +27,7 @@ public class MatchFlowMatrixTest {
 
     @Test
     public void testMatchFlowMatrixHomeTeam() {
+        MatchSequence homeTeamInitialSequence = homeTeamMatchFlow.getRow(MAIN);
         MatchSequence homeTeamKickOffSequence = homeTeamMatchFlow.getRow(KICK_OFF);
         MatchSequence homeTeamPossessionSequence = homeTeamMatchFlow.getRow(POSSESSION);
         MatchSequence homeTeamTransitionSequence = homeTeamMatchFlow.getRow(TRANSITION);
@@ -41,6 +43,7 @@ public class MatchFlowMatrixTest {
         MatchSequence homeTeamFreeKickSequence = homeTeamMatchFlow.getRow(FREE_KICK);
         MatchSequence homeTeamInterceptionSequence = homeTeamMatchFlow.getRow(INTERCEPTION);
 
+        MatchDataElement homeTeamInitialSequenceElement = matchEngine.getNextSequenceElement(homeTeamInitialSequence, 0);
         MatchDataElement homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
         MatchDataElement homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
         MatchDataElement homeTeamTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamTransitionSequence, 1);
@@ -56,6 +59,10 @@ public class MatchFlowMatrixTest {
         MatchDataElement homeTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamFreeKickSequence, 2);
         MatchDataElement homeTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(homeTeamInterceptionSequence, 1);
 
+        assertEquals(KICK_OFF, homeTeamInitialSequenceElement.type());
+        assertTrue(homeTeamInitialSequenceElement.retainPossession());
+        assertEquals(2, homeTeamInitialSequenceElement.duration());
+        //
         assertEquals(POSSESSION, homeTeamKickOffSequenceElement.type());
         assertTrue(homeTeamKickOffSequenceElement.retainPossession());
         assertEquals(2, homeTeamKickOffSequenceElement.duration());

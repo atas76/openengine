@@ -3,6 +3,7 @@ package org.openengine.openfootie;
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
+import static org.openengine.openfootie.Special.MAIN;
 
 public class MatchFlowMatrixRepository {
 
@@ -19,6 +20,10 @@ public class MatchFlowMatrixRepository {
     }
 
     public static void loadHomeTeam() {
+        L_CLF19.addRow(MAIN,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(KICK_OFF, true, 2, 0, 0)
+                }));
         L_CLF19.addRow(KICK_OFF,
                 new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(POSSESSION, true, 2, 0, 0)
