@@ -20,7 +20,12 @@ public class MatchFlowMatrixTest {
     }
 
     @Test
-    public void testMatchFlowMatrix() {
+    public void testMatchFlowMatrixAwayTeam() {
+
+    }
+
+    @Test
+    public void testMatchFlowMatrixHomeTeam() {
         MatchSequence homeTeamKickOffSequence = homeTeamMatchFlow.getRow(KICK_OFF);
         MatchSequence homeTeamPossessionSequence = homeTeamMatchFlow.getRow(POSSESSION);
         MatchSequence homeTeamTransitionSequence = homeTeamMatchFlow.getRow(TRANSITION);

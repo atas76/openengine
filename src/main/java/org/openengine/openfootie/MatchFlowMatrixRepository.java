@@ -7,8 +7,18 @@ import static org.openengine.openfootie.SetPiece.*;
 public class MatchFlowMatrixRepository {
 
     public static final MatchFlowMatrix L_CLF19 = new MatchFlowMatrix();
+    public static final MatchFlowMatrix T_CLF19 = new MatchFlowMatrix();
 
     public static void load() {
+        loadHomeTeam();
+        loadAwayTeam();
+    }
+
+    public static void loadAwayTeam() {
+
+    }
+
+    public static void loadHomeTeam() {
         L_CLF19.addRow(KICK_OFF,
                 new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(POSSESSION, true, 2, 0, 0)
