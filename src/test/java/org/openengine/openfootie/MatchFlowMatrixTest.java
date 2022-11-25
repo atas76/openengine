@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import static org.openengine.openfootie.MatchEvent.GOAL;
+import static org.openengine.openfootie.MatchEvent.INTERCEPTION;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
 
@@ -33,6 +34,7 @@ public class MatchFlowMatrixTest {
         MatchSequence homeTeamDefensiveTransitionSequence = homeTeamMatchFlow.getRow(DEFENSIVE_TRANSITION);
         MatchSequence homeTeamCounterAttackSequence = homeTeamMatchFlow.getRow(COUNTER_ATTACK);
         MatchSequence homeTeamFreeKickSequence = homeTeamMatchFlow.getRow(FREE_KICK);
+        MatchSequence homeTeamInterceptionSequence = homeTeamMatchFlow.getRow(INTERCEPTION);
 
         MatchDataElement homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
         MatchDataElement homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
@@ -47,6 +49,7 @@ public class MatchFlowMatrixTest {
         MatchDataElement homeTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamDefensiveTransitionSequence, 4);
         MatchDataElement homeTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(homeTeamCounterAttackSequence, 0);
         MatchDataElement homeTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamFreeKickSequence, 2);
+        MatchDataElement homeTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(homeTeamInterceptionSequence, 1);
 
         assertEquals(POSSESSION, homeTeamKickOffSequenceElement.type());
         assertTrue(homeTeamKickOffSequenceElement.retainPossession());
@@ -104,5 +107,9 @@ public class MatchFlowMatrixTest {
         assertFalse(homeTeamFreeKickSequenceElement.retainPossession());
         assertEquals(30, homeTeamFreeKickSequenceElement.duration());
         assertEquals(30, homeTeamFreeKickSequenceElement.breakTime());
+        //
+        assertEquals(TRANSITION, homeTeamInterceptionSequenceElement.type());
+        assertTrue(homeTeamInterceptionSequenceElement.retainPossession());
+        assertEquals(4, homeTeamInterceptionSequenceElement.duration());
     }
 }

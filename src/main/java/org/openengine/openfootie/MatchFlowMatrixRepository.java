@@ -1,7 +1,5 @@
 package org.openengine.openfootie;
 
-import org.openengine.prototype.engine.Match;
-
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
@@ -153,6 +151,14 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(POSSESSION, true, 45, 45, 0),
                         new MatchDataElement(THROW_IN, false, 10, 0, 0),
                         new MatchDataElement(PRESSURE, false, 30, 30, 0)
+                }));
+        L_CLF19.addRow(INTERCEPTION,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(TRANSITION, false, 1, 0, 0),
+                        new MatchDataElement(TRANSITION, true, 4, 0, 0),
+                        new MatchDataElement(TRANSITION, true, 6, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, false, 5, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, false, 17, 0, 0),
                 }));
     }
 }
