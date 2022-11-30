@@ -24,6 +24,10 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(POSSESSION, true, 6, 0, 0)
                 }));
+        T_CLF19.addRow(INTERCEPTION,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(TRANSITION, false, 5, 0, 0)
+                }));
     }
 
     public static void loadHomeTeam() {
