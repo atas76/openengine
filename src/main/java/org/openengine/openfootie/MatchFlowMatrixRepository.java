@@ -16,7 +16,10 @@ public class MatchFlowMatrixRepository {
     }
 
     public static void loadAwayTeam() {
-
+        T_CLF19.addRow(MAIN,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(KICK_OFF, true, 4, 0, 0)
+                }));
     }
 
     public static void loadHomeTeam() {

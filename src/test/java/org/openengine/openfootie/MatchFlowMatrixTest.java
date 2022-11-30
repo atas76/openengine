@@ -13,6 +13,7 @@ import static org.openengine.openfootie.Special.MAIN;
 public class MatchFlowMatrixTest {
 
     private MatchFlowMatrix homeTeamMatchFlow = MatchFlowMatrixRepository.L_CLF19;
+    private MatchFlowMatrix awayTeamMatchFlow = MatchFlowMatrixRepository.T_CLF19;
     private MatchEngine matchEngine = new MatchEngine();
 
     @BeforeClass
@@ -22,7 +23,13 @@ public class MatchFlowMatrixTest {
 
     @Test
     public void testMatchFlowMatrixAwayTeam() {
+        MatchSequence awayTeamInitialSequence = awayTeamMatchFlow.getRow(MAIN);
 
+        MatchDataElement awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
+
+        assertEquals(KICK_OFF, awayTeamInitialSequenceElement.type());
+        assertTrue(awayTeamInitialSequenceElement.retainPossession());
+        assertEquals(4, awayTeamInitialSequenceElement.duration());
     }
 
     @Test
