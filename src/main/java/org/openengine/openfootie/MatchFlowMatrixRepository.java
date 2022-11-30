@@ -20,6 +20,10 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchDataElement[] {
                         new MatchDataElement(KICK_OFF, true, 4, 0, 0)
                 }));
+        T_CLF19.addRow(KICK_OFF,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(POSSESSION, true, 6, 0, 0)
+                }));
     }
 
     public static void loadHomeTeam() {

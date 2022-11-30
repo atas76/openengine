@@ -24,12 +24,18 @@ public class MatchFlowMatrixTest {
     @Test
     public void testMatchFlowMatrixAwayTeam() {
         MatchSequence awayTeamInitialSequence = awayTeamMatchFlow.getRow(MAIN);
+        MatchSequence awayTeamKickOffSequence = awayTeamMatchFlow.getRow(KICK_OFF);
 
         MatchDataElement awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
+        MatchDataElement awayTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(awayTeamKickOffSequence, 0);
 
         assertEquals(KICK_OFF, awayTeamInitialSequenceElement.type());
         assertTrue(awayTeamInitialSequenceElement.retainPossession());
         assertEquals(4, awayTeamInitialSequenceElement.duration());
+        //
+        assertEquals(POSSESSION, awayTeamKickOffSequenceElement.type());
+        assertTrue(awayTeamKickOffSequenceElement.retainPossession());
+        assertEquals(6, awayTeamKickOffSequenceElement.duration());
     }
 
     @Test
