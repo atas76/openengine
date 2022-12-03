@@ -96,6 +96,15 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(FREE_KICK, false, 48, 0, 0),
                         new MatchDataElement(TRANSITION, true, 27, 0, 0)
                 }));
+        T_CLF19.addRow(CORNER_KICK,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(POSSESSION, true, 20, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 48, 48, 0),
+                        new MatchDataElement(ATTACK, true, 58, 58, 0),
+                        new MatchDataElement(ATTACK, true, 24, 0, 0),
+                        new MatchDataElement(ATTACK, true, 25, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 6, 0, 0)
+                }));
     }
 
     public static void loadHomeTeam() {
