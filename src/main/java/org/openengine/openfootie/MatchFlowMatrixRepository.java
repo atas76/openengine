@@ -161,6 +161,28 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(ATTACK, true, 8, 0, 0),
                         new MatchDataElement(ATTACK, true, 36, 0, 0),
                 }));
+        T_CLF19.addRow(ATTACK,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(POSSESSION, true, 18, 0, 0),
+                        new MatchDataElement(THROW_IN, false, 8, 0, 0),
+                        new MatchDataElement(DEFENSIVE_TRANSITION, false, 2, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 3, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 1, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 4, 0, 0),
+                        new MatchDataElement(THROW_IN, true, 15, 0, 0),
+                        new MatchDataElement(PRESSURE, false, 27, 0, 0),
+                        new MatchDataElement(PRESSURE, false, 6, 0, 0),
+                        new MatchDataElement(PRESSURE, false, 14, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 15, 0, 0),
+                        new MatchDataElement(POSSESSION, false, 6, 0, 0),
+                        new MatchDataElement(FREE_KICK, true, 32, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, true, 6, 6, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, true, 26, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, true, 3, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, false, 25, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, false, 11, 0, 0),
+                        new MatchDataElement(COUNTER_ATTACK, false, 18, 0, 0),
+                }));
     }
 
     public static void loadHomeTeam() {
