@@ -36,6 +36,7 @@ public class MatchFlowMatrixTest {
         MatchSequence awayTeamFreeKickSequence = awayTeamMatchFlow.getRow(FREE_KICK);
         MatchSequence awayTeamCounterAttackSequence = awayTeamMatchFlow.getRow(COUNTER_ATTACK);
         MatchSequence awayTeamDefensiveTransitionSequence = awayTeamMatchFlow.getRow(DEFENSIVE_TRANSITION);
+        MatchSequence awayTeamAttackingTransitionSequence = awayTeamMatchFlow.getRow(ATTACKING_TRANSITION);
 
         MatchDataElement awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
         MatchDataElement awayTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(awayTeamKickOffSequence, 0);
@@ -50,6 +51,7 @@ public class MatchFlowMatrixTest {
         MatchDataElement awayTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamFreeKickSequence, 3);
         MatchDataElement awayTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamCounterAttackSequence, 1);
         MatchDataElement awayTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamDefensiveTransitionSequence, 3);
+        MatchDataElement awayTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackingTransitionSequence, 3);
 
         assertEquals(KICK_OFF, awayTeamInitialSequenceElement.type());
         assertTrue(awayTeamInitialSequenceElement.retainPossession());
@@ -103,6 +105,10 @@ public class MatchFlowMatrixTest {
         assertEquals(ATTACKING_TRANSITION, awayTeamDefensiveTransitionSequenceElement.type());
         assertFalse(awayTeamDefensiveTransitionSequenceElement.retainPossession());
         assertEquals(35, awayTeamDefensiveTransitionSequenceElement.duration());
+        //
+        assertEquals(ATTACKING_POSSESSION, awayTeamAttackingTransitionSequenceElement.type());
+        assertTrue(awayTeamAttackingTransitionSequenceElement.retainPossession());
+        assertEquals(7, awayTeamAttackingTransitionSequenceElement.duration());
     }
 
     @Test

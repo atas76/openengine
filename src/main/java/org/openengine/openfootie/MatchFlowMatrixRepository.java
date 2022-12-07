@@ -211,6 +211,13 @@ public class MatchFlowMatrixRepository {
                         new MatchDataElement(ATTACKING_TRANSITION, true, 19, 0, 0),
                         new MatchDataElement(CORNER_KICK, false, 26, 26, 0)
                 }));
+        T_CLF19.addRow(ATTACKING_TRANSITION,
+                new MatchSequence(new MatchDataElement[] {
+                        new MatchDataElement(CORNER_KICK, true, 8, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 24, 0, 0),
+                        new MatchDataElement(CORNER_KICK, true, 2, 0, 0),
+                        new MatchDataElement(ATTACKING_POSSESSION, true, 7, 0, 0)
+                }));
     }
 
     public static void loadHomeTeam() {
