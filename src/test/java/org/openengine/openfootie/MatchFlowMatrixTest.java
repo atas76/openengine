@@ -35,6 +35,7 @@ public class MatchFlowMatrixTest {
         MatchSequence awayTeamAttackSequence = awayTeamMatchFlow.getRow(ATTACK);
         MatchSequence awayTeamFreeKickSequence = awayTeamMatchFlow.getRow(FREE_KICK);
         MatchSequence awayTeamCounterAttackSequence = awayTeamMatchFlow.getRow(COUNTER_ATTACK);
+        MatchSequence awayTeamDefensiveTransitionSequence = awayTeamMatchFlow.getRow(DEFENSIVE_TRANSITION);
 
         MatchDataElement awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
         MatchDataElement awayTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(awayTeamKickOffSequence, 0);
@@ -48,6 +49,7 @@ public class MatchFlowMatrixTest {
         MatchDataElement awayTeamAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackSequence, 6);
         MatchDataElement awayTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamFreeKickSequence, 3);
         MatchDataElement awayTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamCounterAttackSequence, 1);
+        MatchDataElement awayTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamDefensiveTransitionSequence, 3);
 
         assertEquals(KICK_OFF, awayTeamInitialSequenceElement.type());
         assertTrue(awayTeamInitialSequenceElement.retainPossession());
@@ -97,6 +99,10 @@ public class MatchFlowMatrixTest {
         assertEquals(THROW_IN, awayTeamCounterAttackSequenceElement.type());
         assertFalse(awayTeamCounterAttackSequenceElement.retainPossession());
         assertEquals(10, awayTeamCounterAttackSequenceElement.duration());
+        //
+        assertEquals(ATTACKING_TRANSITION, awayTeamDefensiveTransitionSequenceElement.type());
+        assertFalse(awayTeamDefensiveTransitionSequenceElement.retainPossession());
+        assertEquals(35, awayTeamDefensiveTransitionSequenceElement.duration());
     }
 
     @Test
