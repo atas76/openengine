@@ -15,6 +15,7 @@ public class MatchEngine {
     private static final int DURATION = 60 * 45; // duration in seconds
 
     private int currentTime = 0;
+    private Team initialKickOffTeam;
     private Team possessionTeam;
 
     public static void main(String [] args) {
@@ -42,41 +43,44 @@ public class MatchEngine {
         this.awayTeam = awayTeam;
     }
 
-    private MatchDataElement getKickOffDataElement() {
+    private void tossCoin() {
         boolean homeTeamKicksOff = rnd.nextBoolean();
-        possessionTeam = homeTeamKicksOff ? homeTeam : awayTeam;
+        initialKickOffTeam = homeTeamKicksOff ? homeTeam : awayTeam;
+        possessionTeam = initialKickOffTeam;
+    }
+
+    private MatchDataElement getKickOffDataElement() {
         MatchSequence kickOffSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(MAIN);
         return getNextSequenceElement(kickOffSequence);
     }
 
-    public MatchDataElement getKickOffDataElement(Team team) {
-        return getNextSequenceElement(team.getMatchFlowMatrix().getMatchSequence(MAIN));
-    }
-
     public void start() {
+
+        tossCoin();
 
         MatchDataElement currentDataElement = getKickOffDataElement();
 
         while (currentTime < DURATION) {
             if (currentDataElement.type().equals(GOAL)) {
-                currentDataElement = getKickOffDataElement(this.possessionTeam);
+                currentDataElement = getKickOffDataElement();
             }
             MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.type());
             currentDataElement = getNextSequenceElement(currentMatchSequence);
             System.out.println(currentDataElement);
-            updateMatchState(currentDataElement);
+            currentDataElement = updateMatchState(currentDataElement);
             displayMatchState();
         }
     }
 
-    private void updateMatchState(MatchDataElement currentDataElement) {
+    private MatchDataElement updateMatchState(MatchDataElement currentDataElement) {
         currentTime += currentDataElement.duration();
         if (currentDataElement.type().equals(GOAL)) {
             possessionTeam.score();
             changePossession();
-            return;
+            return getKickOffDataElement();
         }
         updatePossession(currentDataElement.retainPossession());
+        return currentDataElement;
     }
 
     private void updatePossession(boolean retainPossession) {
