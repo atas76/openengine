@@ -1,6 +1,8 @@
 package org.openengine.openfootie;
 
 import java.util.Random;
+
+import static org.openengine.openfootie.MatchEvent.GOAL;
 import static org.openengine.openfootie.Special.MAIN;
 
 public class MatchEngine {
@@ -10,7 +12,7 @@ public class MatchEngine {
     private Team homeTeam;
     private Team awayTeam;
 
-    private static int DURATION = 60 * 45; // duration in seconds
+    private static final int DURATION = 60 * 45; // duration in seconds
 
     private int currentTime = 0;
     private Team possessionTeam;
@@ -27,6 +29,10 @@ public class MatchEngine {
 
         MatchEngine matchEngine = new MatchEngine(homeTeam, awayTeam);
         matchEngine.start();
+
+        System.out.println();
+        System.out.println("Final score: " + homeTeam + " - " + awayTeam + " "
+                + homeTeam.getGoalsScored() + " - " + awayTeam.getGoalsScored());
     }
 
     public MatchEngine() {}
@@ -36,11 +42,15 @@ public class MatchEngine {
         this.awayTeam = awayTeam;
     }
 
-    MatchDataElement getKickOffDataElement() {
+    private MatchDataElement getKickOffDataElement() {
         boolean homeTeamKicksOff = rnd.nextBoolean();
         possessionTeam = homeTeamKicksOff ? homeTeam : awayTeam;
         MatchSequence kickOffSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(MAIN);
         return getNextSequenceElement(kickOffSequence);
+    }
+
+    public MatchDataElement getKickOffDataElement(Team team) {
+        return getNextSequenceElement(team.getMatchFlowMatrix().getMatchSequence(MAIN));
     }
 
     public void start() {
@@ -48,6 +58,9 @@ public class MatchEngine {
         MatchDataElement currentDataElement = getKickOffDataElement();
 
         while (currentTime < DURATION) {
+            if (currentDataElement.type().equals(GOAL)) {
+                currentDataElement = getKickOffDataElement(this.possessionTeam);
+            }
             MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.type());
             currentDataElement = getNextSequenceElement(currentMatchSequence);
             System.out.println(currentDataElement);
@@ -58,6 +71,11 @@ public class MatchEngine {
 
     private void updateMatchState(MatchDataElement currentDataElement) {
         currentTime += currentDataElement.duration();
+        if (currentDataElement.type().equals(GOAL)) {
+            possessionTeam.score();
+            changePossession();
+            return;
+        }
         updatePossession(currentDataElement.retainPossession());
     }
 
