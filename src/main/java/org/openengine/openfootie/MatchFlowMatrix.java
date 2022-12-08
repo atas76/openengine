@@ -14,4 +14,8 @@ public class MatchFlowMatrix {
     public MatchSequence getRow(MatchDataElementType type) {
         return flowMatrixMap.get(type);
     }
+
+    public MatchSequence getMatchSequence(MatchDataElementType dataElementType) {
+        return flowMatrixMap.get(dataElementType);
+    }
 }

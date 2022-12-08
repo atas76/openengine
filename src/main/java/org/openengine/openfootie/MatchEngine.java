@@ -1,13 +1,84 @@
 package org.openengine.openfootie;
 
 import java.util.Random;
+import static org.openengine.openfootie.Special.MAIN;
 
 public class MatchEngine {
 
     private static Random rnd = new Random();
 
+    private Team homeTeam;
+    private Team awayTeam;
+
+    private static int DURATION = 60 * 45; // duration in seconds
+
+    private int currentTime = 0;
+    private Team possessionTeam;
+
+    public static void main(String [] args) {
+
+        MatchFlowMatrixRepository.load();
+
+        MatchFlowMatrix homeTeamFlowMatrix = MatchFlowMatrixRepository.L_CLF19;
+        MatchFlowMatrix awayTeamFlowMatrix = MatchFlowMatrixRepository.T_CLF19;
+
+        Team homeTeam = new Team("Liverpool", homeTeamFlowMatrix);
+        Team awayTeam = new Team("Tottenham", awayTeamFlowMatrix);
+
+        MatchEngine matchEngine = new MatchEngine(homeTeam, awayTeam);
+        matchEngine.start();
+    }
+
+    public MatchEngine() {}
+
+    public MatchEngine(Team homeTeam, Team awayTeam) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+    }
+
+    MatchDataElement getKickOffDataElement() {
+        boolean homeTeamKicksOff = rnd.nextBoolean();
+        possessionTeam = homeTeamKicksOff ? homeTeam : awayTeam;
+        MatchSequence kickOffSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(MAIN);
+        return getNextSequenceElement(kickOffSequence);
+    }
+
+    public void start() {
+
+        MatchDataElement currentDataElement = getKickOffDataElement();
+
+        while (currentTime < DURATION) {
+            MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.type());
+            currentDataElement = getNextSequenceElement(currentMatchSequence);
+            System.out.println(currentDataElement);
+            updateMatchState(currentDataElement);
+            displayMatchState();
+        }
+    }
+
+    private void updateMatchState(MatchDataElement currentDataElement) {
+        currentTime += currentDataElement.duration();
+        updatePossession(currentDataElement.retainPossession());
+    }
+
+    private void updatePossession(boolean retainPossession) {
+        if (!retainPossession) {
+            changePossession();
+        }
+    }
+
+    private void changePossession() {
+        possessionTeam = (possessionTeam == homeTeam) ? awayTeam : homeTeam;
+    }
+
     public MatchDataElement getNextSequenceElement(MatchSequence sequence) {
         return sequence.matchDataElements()[rnd.nextInt(sequence.matchDataElements().length)];
+    }
+
+    public void displayMatchState() {
+        System.out.println("Time: " + currentTime);
+        System.out.println(possessionTeam);
+        System.out.println();
     }
 
     /**
