@@ -155,7 +155,7 @@ public class MatchFlowMatrixTest {
         //
         assertEquals(DEFENSIVE_TRANSITION, homeTeamPossessionSequenceElement.outcomeType());
         assertFalse(homeTeamPossessionSequenceElement.retainPossession());
-        assertEquals(8, homeTeamPossessionSequenceElement.duration());
+        assertEquals(6, homeTeamPossessionSequenceElement.duration());
         //
         assertEquals(DEFENSIVE_TRANSITION, homeTeamTransitionSequenceElement.outcomeType());
         assertFalse(homeTeamTransitionSequenceElement.retainPossession());
