@@ -223,7 +223,7 @@ public class MatchFlowMatrixRepository {
     public static void loadHomeTeam() {
         L_CLF19.addRow(MAIN,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(KICK_OFF, true, 2, 0, 0)
+                        new MatchPhaseTransition(KICK_OFF, true, 0, 0, 0)
                 }));
         L_CLF19.addRow(KICK_OFF,
                 new MatchSequence(new MatchPhaseTransition[] {
