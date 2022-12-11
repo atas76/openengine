@@ -61,6 +61,8 @@ public class MatchEngine {
         tossCoin();
 
         MatchPhaseTransition currentDataElement = getKickOffDataElement();
+        System.out.println(currentDataElement);
+        displayMatchState();
 
         while (currentTime < DURATION) {
             if (currentDataElement.outcomeType().equals(GOAL)) {
@@ -100,8 +102,7 @@ public class MatchEngine {
     }
 
     public void displayMatchState() {
-        System.out.println("Time: " + Util.convertForTimer(currentTime));
-        System.out.println(possessionTeam);
+        System.out.println(Util.convertForTimer(currentTime) + ", " + possessionTeam);
         System.out.println();
     }
 
