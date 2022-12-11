@@ -75,7 +75,7 @@ public class MatchAnalysisTest {
         assertTrue(matchDataElements.get(0) instanceof Directive);
         Directive kickOff = (Directive) matchDataElements.get(0);
         assertEquals(KICK_OFF, kickOff.getSetPiece());
-        // Default action type
+        // Default action outcomeType
         assertTrue(matchDataElements.get(1) instanceof Statement);
         Statement defaultActionStatement = (Statement) matchDataElements.get(1);
         assertEquals(Default, defaultActionStatement.getAction().getType());

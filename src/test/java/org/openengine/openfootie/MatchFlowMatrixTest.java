@@ -38,75 +38,75 @@ public class MatchFlowMatrixTest {
         MatchSequence awayTeamDefensiveTransitionSequence = awayTeamMatchFlow.getRow(DEFENSIVE_TRANSITION);
         MatchSequence awayTeamAttackingTransitionSequence = awayTeamMatchFlow.getRow(ATTACKING_TRANSITION);
 
-        MatchDataElement awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
-        MatchDataElement awayTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(awayTeamKickOffSequence, 0);
-        MatchDataElement awayTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(awayTeamInterceptionSequence, 0);
-        MatchDataElement awayTeamPressureSequenceElement = matchEngine.getNextSequenceElement(awayTeamPressureSequence, 6);
-        MatchDataElement awayTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(awayTeamPossessionSequence, 21);
-        MatchDataElement awayTeamCornerKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamCornerKickSequence, 4);
-        MatchDataElement awayTeamThrowInSequenceElement = matchEngine.getNextSequenceElement(awayTeamThrowInSequence, 2);
-        MatchDataElement awayTeamTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamTransitionSequence, 5);
-        MatchDataElement awayTeamAttackingPossessionSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackingPossessionSequence, 0);
-        MatchDataElement awayTeamAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackSequence, 6);
-        MatchDataElement awayTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamFreeKickSequence, 3);
-        MatchDataElement awayTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamCounterAttackSequence, 1);
-        MatchDataElement awayTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamDefensiveTransitionSequence, 3);
-        MatchDataElement awayTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackingTransitionSequence, 3);
+        MatchPhaseTransition awayTeamInitialSequenceElement = matchEngine.getNextSequenceElement(awayTeamInitialSequence, 0);
+        MatchPhaseTransition awayTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(awayTeamKickOffSequence, 0);
+        MatchPhaseTransition awayTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(awayTeamInterceptionSequence, 0);
+        MatchPhaseTransition awayTeamPressureSequenceElement = matchEngine.getNextSequenceElement(awayTeamPressureSequence, 6);
+        MatchPhaseTransition awayTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(awayTeamPossessionSequence, 21);
+        MatchPhaseTransition awayTeamCornerKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamCornerKickSequence, 4);
+        MatchPhaseTransition awayTeamThrowInSequenceElement = matchEngine.getNextSequenceElement(awayTeamThrowInSequence, 2);
+        MatchPhaseTransition awayTeamTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamTransitionSequence, 5);
+        MatchPhaseTransition awayTeamAttackingPossessionSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackingPossessionSequence, 0);
+        MatchPhaseTransition awayTeamAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackSequence, 6);
+        MatchPhaseTransition awayTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(awayTeamFreeKickSequence, 3);
+        MatchPhaseTransition awayTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(awayTeamCounterAttackSequence, 1);
+        MatchPhaseTransition awayTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamDefensiveTransitionSequence, 3);
+        MatchPhaseTransition awayTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(awayTeamAttackingTransitionSequence, 3);
 
-        assertEquals(KICK_OFF, awayTeamInitialSequenceElement.type());
+        assertEquals(KICK_OFF, awayTeamInitialSequenceElement.outcomeType());
         assertTrue(awayTeamInitialSequenceElement.retainPossession());
         assertEquals(4, awayTeamInitialSequenceElement.duration());
         //
-        assertEquals(POSSESSION, awayTeamKickOffSequenceElement.type());
+        assertEquals(POSSESSION, awayTeamKickOffSequenceElement.outcomeType());
         assertTrue(awayTeamKickOffSequenceElement.retainPossession());
         assertEquals(6, awayTeamKickOffSequenceElement.duration());
         //
-        assertEquals(TRANSITION, awayTeamInterceptionSequenceElement.type());
+        assertEquals(TRANSITION, awayTeamInterceptionSequenceElement.outcomeType());
         assertFalse(awayTeamInterceptionSequenceElement.retainPossession());
         assertEquals(5, awayTeamInterceptionSequenceElement.duration());
         //
-        assertEquals(POSSESSION, awayTeamPressureSequenceElement.type());
+        assertEquals(POSSESSION, awayTeamPressureSequenceElement.outcomeType());
         assertTrue(awayTeamPressureSequenceElement.retainPossession());
         assertEquals(23, awayTeamPressureSequenceElement.duration());
         //
-        assertEquals(ATTACK, awayTeamPossessionSequenceElement.type());
+        assertEquals(ATTACK, awayTeamPossessionSequenceElement.outcomeType());
         assertTrue(awayTeamPossessionSequenceElement.retainPossession());
         assertEquals(17, awayTeamPossessionSequenceElement.duration());
         //
-        assertEquals(ATTACK, awayTeamCornerKickSequenceElement.type());
+        assertEquals(ATTACK, awayTeamCornerKickSequenceElement.outcomeType());
         assertTrue(awayTeamCornerKickSequenceElement.retainPossession());
         assertEquals(25, awayTeamCornerKickSequenceElement.duration());
         //
-        assertEquals(POSSESSION, awayTeamThrowInSequenceElement.type());
+        assertEquals(POSSESSION, awayTeamThrowInSequenceElement.outcomeType());
         assertTrue(awayTeamThrowInSequenceElement.retainPossession());
         assertEquals(23, awayTeamThrowInSequenceElement.duration());
         //
-        assertEquals(ATTACKING_POSSESSION, awayTeamTransitionSequenceElement.type());
+        assertEquals(ATTACKING_POSSESSION, awayTeamTransitionSequenceElement.outcomeType());
         assertTrue(awayTeamTransitionSequenceElement.retainPossession());
         assertEquals(5, awayTeamTransitionSequenceElement.duration());
         //
-        assertEquals(TRANSITION, awayTeamAttackingPossessionSequenceElement.type());
+        assertEquals(TRANSITION, awayTeamAttackingPossessionSequenceElement.outcomeType());
         assertFalse(awayTeamAttackingPossessionSequenceElement.retainPossession());
         assertEquals(9, awayTeamAttackingPossessionSequenceElement.duration());
         //
-        assertEquals(THROW_IN, awayTeamAttackSequenceElement.type());
+        assertEquals(THROW_IN, awayTeamAttackSequenceElement.outcomeType());
         assertTrue(awayTeamAttackSequenceElement.retainPossession());
         assertEquals(15, awayTeamAttackSequenceElement.duration());
         //
-        assertEquals(CORNER_KICK, awayTeamFreeKickSequenceElement.type());
+        assertEquals(CORNER_KICK, awayTeamFreeKickSequenceElement.outcomeType());
         assertTrue(awayTeamFreeKickSequenceElement.retainPossession());
         assertEquals(43, awayTeamFreeKickSequenceElement.duration());
         assertEquals(43, awayTeamFreeKickSequenceElement.breakTime());
         //
-        assertEquals(THROW_IN, awayTeamCounterAttackSequenceElement.type());
+        assertEquals(THROW_IN, awayTeamCounterAttackSequenceElement.outcomeType());
         assertFalse(awayTeamCounterAttackSequenceElement.retainPossession());
         assertEquals(10, awayTeamCounterAttackSequenceElement.duration());
         //
-        assertEquals(ATTACKING_TRANSITION, awayTeamDefensiveTransitionSequenceElement.type());
+        assertEquals(ATTACKING_TRANSITION, awayTeamDefensiveTransitionSequenceElement.outcomeType());
         assertFalse(awayTeamDefensiveTransitionSequenceElement.retainPossession());
         assertEquals(35, awayTeamDefensiveTransitionSequenceElement.duration());
         //
-        assertEquals(ATTACKING_POSSESSION, awayTeamAttackingTransitionSequenceElement.type());
+        assertEquals(ATTACKING_POSSESSION, awayTeamAttackingTransitionSequenceElement.outcomeType());
         assertTrue(awayTeamAttackingTransitionSequenceElement.retainPossession());
         assertEquals(7, awayTeamAttackingTransitionSequenceElement.duration());
     }
@@ -129,84 +129,84 @@ public class MatchFlowMatrixTest {
         MatchSequence homeTeamFreeKickSequence = homeTeamMatchFlow.getRow(FREE_KICK);
         MatchSequence homeTeamInterceptionSequence = homeTeamMatchFlow.getRow(INTERCEPTION);
 
-        MatchDataElement homeTeamInitialSequenceElement = matchEngine.getNextSequenceElement(homeTeamInitialSequence, 0);
-        MatchDataElement homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
-        MatchDataElement homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
-        MatchDataElement homeTeamTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamTransitionSequence, 1);
-        MatchDataElement homeTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingTransitionSequence, 4);
-        MatchDataElement homeTeamAttackingPenaltySequenceElement = matchEngine.getNextSequenceElement(homeTeamPenaltySequence, 0);
-        MatchDataElement homeTeamThrowInSequenceElement = matchEngine.getNextSequenceElement(homeTeamThrowInSequence, 15);
-        MatchDataElement homeTeamAttackingPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingPossessionSequence, 0);
-        MatchDataElement homeTeamAttackSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackSequence, 2);
-        MatchDataElement homeTeamPressureSequenceElement = matchEngine.getNextSequenceElement(homeTeamPressureSequence, 5);
-        MatchDataElement homeTeamCornerKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamCornerKickSequence, 3);
-        MatchDataElement homeTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamDefensiveTransitionSequence, 4);
-        MatchDataElement homeTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(homeTeamCounterAttackSequence, 0);
-        MatchDataElement homeTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamFreeKickSequence, 2);
-        MatchDataElement homeTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(homeTeamInterceptionSequence, 1);
+        MatchPhaseTransition homeTeamInitialSequenceElement = matchEngine.getNextSequenceElement(homeTeamInitialSequence, 0);
+        MatchPhaseTransition homeTeamKickOffSequenceElement = matchEngine.getNextSequenceElement(homeTeamKickOffSequence, 0);
+        MatchPhaseTransition homeTeamPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamPossessionSequence, 12);
+        MatchPhaseTransition homeTeamTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamTransitionSequence, 1);
+        MatchPhaseTransition homeTeamAttackingTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingTransitionSequence, 4);
+        MatchPhaseTransition homeTeamAttackingPenaltySequenceElement = matchEngine.getNextSequenceElement(homeTeamPenaltySequence, 0);
+        MatchPhaseTransition homeTeamThrowInSequenceElement = matchEngine.getNextSequenceElement(homeTeamThrowInSequence, 15);
+        MatchPhaseTransition homeTeamAttackingPossessionSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackingPossessionSequence, 0);
+        MatchPhaseTransition homeTeamAttackSequenceElement = matchEngine.getNextSequenceElement(homeTeamAttackSequence, 2);
+        MatchPhaseTransition homeTeamPressureSequenceElement = matchEngine.getNextSequenceElement(homeTeamPressureSequence, 5);
+        MatchPhaseTransition homeTeamCornerKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamCornerKickSequence, 3);
+        MatchPhaseTransition homeTeamDefensiveTransitionSequenceElement = matchEngine.getNextSequenceElement(homeTeamDefensiveTransitionSequence, 4);
+        MatchPhaseTransition homeTeamCounterAttackSequenceElement = matchEngine.getNextSequenceElement(homeTeamCounterAttackSequence, 0);
+        MatchPhaseTransition homeTeamFreeKickSequenceElement = matchEngine.getNextSequenceElement(homeTeamFreeKickSequence, 2);
+        MatchPhaseTransition homeTeamInterceptionSequenceElement = matchEngine.getNextSequenceElement(homeTeamInterceptionSequence, 1);
 
-        assertEquals(KICK_OFF, homeTeamInitialSequenceElement.type());
+        assertEquals(KICK_OFF, homeTeamInitialSequenceElement.outcomeType());
         assertTrue(homeTeamInitialSequenceElement.retainPossession());
         assertEquals(2, homeTeamInitialSequenceElement.duration());
         //
-        assertEquals(POSSESSION, homeTeamKickOffSequenceElement.type());
+        assertEquals(POSSESSION, homeTeamKickOffSequenceElement.outcomeType());
         assertTrue(homeTeamKickOffSequenceElement.retainPossession());
         assertEquals(2, homeTeamKickOffSequenceElement.duration());
         //
-        assertEquals(DEFENSIVE_TRANSITION, homeTeamPossessionSequenceElement.type());
+        assertEquals(DEFENSIVE_TRANSITION, homeTeamPossessionSequenceElement.outcomeType());
         assertFalse(homeTeamPossessionSequenceElement.retainPossession());
         assertEquals(8, homeTeamPossessionSequenceElement.duration());
         //
-        assertEquals(DEFENSIVE_TRANSITION, homeTeamTransitionSequenceElement.type());
+        assertEquals(DEFENSIVE_TRANSITION, homeTeamTransitionSequenceElement.outcomeType());
         assertFalse(homeTeamTransitionSequenceElement.retainPossession());
         assertEquals(17, homeTeamTransitionSequenceElement.duration());
         assertEquals(17, homeTeamTransitionSequenceElement.breakTime());
         //
-        assertEquals(ATTACKING_POSSESSION, homeTeamAttackingTransitionSequenceElement.type());
+        assertEquals(ATTACKING_POSSESSION, homeTeamAttackingTransitionSequenceElement.outcomeType());
         assertTrue(homeTeamAttackingTransitionSequenceElement.retainPossession());
         assertEquals(3, homeTeamAttackingTransitionSequenceElement.duration());
         //
-        assertEquals(GOAL, homeTeamAttackingPenaltySequenceElement.type());
+        assertEquals(GOAL, homeTeamAttackingPenaltySequenceElement.outcomeType());
         assertFalse(homeTeamAttackingPenaltySequenceElement.retainPossession());
         assertEquals(91, homeTeamAttackingPenaltySequenceElement.duration());
         assertEquals(91, homeTeamAttackingPenaltySequenceElement.breakTime());
         //
-        assertEquals(POSSESSION, homeTeamThrowInSequenceElement.type());
+        assertEquals(POSSESSION, homeTeamThrowInSequenceElement.outcomeType());
         assertFalse(homeTeamThrowInSequenceElement.retainPossession());
         assertEquals(23, homeTeamThrowInSequenceElement.duration());
         //
-        assertEquals(ATTACK, homeTeamAttackingPossessionSequenceElement.type());
+        assertEquals(ATTACK, homeTeamAttackingPossessionSequenceElement.outcomeType());
         assertTrue(homeTeamAttackingPossessionSequenceElement.retainPossession());
         assertEquals(55, homeTeamAttackingPossessionSequenceElement.duration());
         assertEquals(55, homeTeamAttackingPossessionSequenceElement.breakTime());
         //
-        assertEquals(THROW_IN, homeTeamAttackSequenceElement.type());
+        assertEquals(THROW_IN, homeTeamAttackSequenceElement.outcomeType());
         assertTrue(homeTeamAttackSequenceElement.retainPossession());
         assertEquals(8, homeTeamAttackSequenceElement.duration());
         //
-        assertEquals(TRANSITION, homeTeamPressureSequenceElement.type());
+        assertEquals(TRANSITION, homeTeamPressureSequenceElement.outcomeType());
         assertTrue(homeTeamPressureSequenceElement.retainPossession());
         assertEquals(25, homeTeamPressureSequenceElement.duration());
         assertEquals(25, homeTeamPressureSequenceElement.breakTime());
         //
-        assertEquals(THROW_IN, homeTeamCornerKickSequenceElement.type());
+        assertEquals(THROW_IN, homeTeamCornerKickSequenceElement.outcomeType());
         assertTrue(homeTeamCornerKickSequenceElement.retainPossession());
         assertEquals(9, homeTeamCornerKickSequenceElement.duration());
         //
-        assertEquals(POSSESSION, homeTeamDefensiveTransitionSequenceElement.type());
+        assertEquals(POSSESSION, homeTeamDefensiveTransitionSequenceElement.outcomeType());
         assertFalse(homeTeamDefensiveTransitionSequenceElement.retainPossession());
         assertEquals(44, homeTeamDefensiveTransitionSequenceElement.duration());
         //
-        assertEquals(POSSESSION, homeTeamCounterAttackSequenceElement.type());
+        assertEquals(POSSESSION, homeTeamCounterAttackSequenceElement.outcomeType());
         assertTrue(homeTeamCounterAttackSequenceElement.retainPossession());
         assertEquals(8, homeTeamCounterAttackSequenceElement.duration());
         //
-        assertEquals(PRESSURE, homeTeamFreeKickSequenceElement.type());
+        assertEquals(PRESSURE, homeTeamFreeKickSequenceElement.outcomeType());
         assertFalse(homeTeamFreeKickSequenceElement.retainPossession());
         assertEquals(30, homeTeamFreeKickSequenceElement.duration());
         assertEquals(30, homeTeamFreeKickSequenceElement.breakTime());
         //
-        assertEquals(TRANSITION, homeTeamInterceptionSequenceElement.type());
+        assertEquals(TRANSITION, homeTeamInterceptionSequenceElement.outcomeType());
         assertTrue(homeTeamInterceptionSequenceElement.retainPossession());
         assertEquals(4, homeTeamInterceptionSequenceElement.duration());
     }

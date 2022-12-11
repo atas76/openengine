@@ -51,7 +51,7 @@ public class MatchEngine {
         possessionTeam = initialKickOffTeam;
     }
 
-    private MatchDataElement getKickOffDataElement() {
+    private MatchPhaseTransition getKickOffDataElement() {
         MatchSequence kickOffSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(MAIN);
         return getNextSequenceElement(kickOffSequence);
     }
@@ -60,13 +60,13 @@ public class MatchEngine {
 
         tossCoin();
 
-        MatchDataElement currentDataElement = getKickOffDataElement();
+        MatchPhaseTransition currentDataElement = getKickOffDataElement();
 
         while (currentTime < DURATION) {
-            if (currentDataElement.type().equals(GOAL)) {
+            if (currentDataElement.outcomeType().equals(GOAL)) {
                 currentDataElement = getKickOffDataElement();
             }
-            MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.type());
+            MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.outcomeType());
             currentDataElement = getNextSequenceElement(currentMatchSequence);
             System.out.println(currentDataElement);
             currentDataElement = updateMatchState(currentDataElement);
@@ -74,9 +74,9 @@ public class MatchEngine {
         }
     }
 
-    private MatchDataElement updateMatchState(MatchDataElement currentDataElement) {
+    private MatchPhaseTransition updateMatchState(MatchPhaseTransition currentDataElement) {
         currentTime += currentDataElement.duration();
-        if (currentDataElement.type().equals(GOAL)) {
+        if (currentDataElement.outcomeType().equals(GOAL)) {
             possessionTeam.score();
             changePossession();
             return getKickOffDataElement();
@@ -95,8 +95,8 @@ public class MatchEngine {
         possessionTeam = (possessionTeam == homeTeam) ? awayTeam : homeTeam;
     }
 
-    public MatchDataElement getNextSequenceElement(MatchSequence sequence) {
-        return sequence.matchDataElements()[rnd.nextInt(sequence.matchDataElements().length)];
+    public MatchPhaseTransition getNextSequenceElement(MatchSequence sequence) {
+        return sequence.matchPhaseTransitions()[rnd.nextInt(sequence.matchPhaseTransitions().length)];
     }
 
     public void displayMatchState() {
@@ -113,7 +113,7 @@ public class MatchEngine {
      * @param sequenceIndex
      * @return
      */
-    public MatchDataElement getNextSequenceElement(MatchSequence sequence, int sequenceIndex) {
-        return sequence.matchDataElements()[sequenceIndex];
+    public MatchPhaseTransition getNextSequenceElement(MatchSequence sequence, int sequenceIndex) {
+        return sequence.matchPhaseTransitions()[sequenceIndex];
     }
 }

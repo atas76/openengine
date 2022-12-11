@@ -1,3 +1,3 @@
 package org.openengine.openfootie;
 
-public record MatchSequence (MatchDataElement [] matchDataElements) { }
+public record MatchSequence (MatchPhaseTransition[] matchPhaseTransitions) { }
