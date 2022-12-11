@@ -1,5 +1,7 @@
 package org.openengine.openfootie;
 
+import org.openengine.openfootie.util.Util;
+
 import java.util.Random;
 
 import static org.openengine.openfootie.MatchEvent.GOAL;
@@ -98,7 +100,7 @@ public class MatchEngine {
     }
 
     public void displayMatchState() {
-        System.out.println("Time: " + currentTime);
+        System.out.println("Time: " + Util.convertForTimer(currentTime));
         System.out.println(possessionTeam);
         System.out.println();
     }
