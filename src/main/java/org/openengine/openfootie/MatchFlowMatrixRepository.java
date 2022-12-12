@@ -18,7 +18,7 @@ public class MatchFlowMatrixRepository {
     public static void loadAwayTeam() {
         T_CLF19.addRow(MAIN,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(KICK_OFF, true, 4, 0, 0)
+                        new MatchPhaseTransition(KICK_OFF, true, 0, 0, 0)
                 }));
         T_CLF19.addRow(KICK_OFF,
                 new MatchSequence(new MatchPhaseTransition[] {
