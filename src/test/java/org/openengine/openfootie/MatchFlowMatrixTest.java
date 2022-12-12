@@ -63,7 +63,7 @@ public class MatchFlowMatrixTest {
         //
         assertEquals(TRANSITION, awayTeamInterceptionSequenceElement.outcomeType());
         assertFalse(awayTeamInterceptionSequenceElement.retainPossession());
-        assertEquals(5, awayTeamInterceptionSequenceElement.duration());
+        assertEquals(11, awayTeamInterceptionSequenceElement.duration());
         //
         assertEquals(POSSESSION, awayTeamPressureSequenceElement.outcomeType());
         assertTrue(awayTeamPressureSequenceElement.retainPossession());

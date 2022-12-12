@@ -26,7 +26,7 @@ public class MatchFlowMatrixRepository {
                 }));
         T_CLF19.addRow(INTERCEPTION,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(TRANSITION, false, 5, 0, 0)
+                        new MatchPhaseTransition(TRANSITION, false, 11, 0, 0)
                 }));
         T_CLF19.addRow(PRESSURE,
                 new MatchSequence(new MatchPhaseTransition[] {
