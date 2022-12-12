@@ -322,15 +322,15 @@ public class MatchFlowMatrixRepository {
                 }));
         L_CLF19.addRow(PRESSURE,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(POSSESSION, true, 66, 0, 0),
-                        new MatchPhaseTransition(POSSESSION, true, 38, 0, 0),
-                        new MatchPhaseTransition(THROW_IN, true, 39, 0, 0),
-                        new MatchPhaseTransition(TRANSITION, false, 4, 0, 0),
-                        new MatchPhaseTransition(POSSESSION, false, 29, 0, 0),
-                        new MatchPhaseTransition(TRANSITION, true, 25, 25, 0),
-                        new MatchPhaseTransition(TRANSITION, true, 5, 0, 0),
-                        new MatchPhaseTransition(COUNTER_ATTACK, true, 46, 0, 0),
-                        new MatchPhaseTransition(COUNTER_ATTACK, true, 36, 0, 0)
+                        new MatchPhaseTransition(POSSESSION, true, 14, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 19, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 27, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 8, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, false, 19, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, true, 6, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, true, 8, 0, 0),
+                        new MatchPhaseTransition(COUNTER_ATTACK, true, 7, 0, 0),
+                        new MatchPhaseTransition(COUNTER_ATTACK, true, 11, 0, 0)
                 }));
         L_CLF19.addRow(CORNER_KICK,
                 new MatchSequence(new MatchPhaseTransition[] {
