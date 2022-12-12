@@ -309,9 +309,9 @@ public class MatchFlowMatrixRepository {
                 }));
         L_CLF19.addRow(ATTACKING_POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(ATTACK, true, 55, 55, 0),
-                        new MatchPhaseTransition(ATTACK, true, 20, 0, 0),
-                        new MatchPhaseTransition(ATTACK, true, 15, 15, 0),
+                        new MatchPhaseTransition(ATTACK, true, 5, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 3, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 5, 0, 0),
                 }));
         L_CLF19.addRow(ATTACK,
                 new MatchSequence(new MatchPhaseTransition[]{
