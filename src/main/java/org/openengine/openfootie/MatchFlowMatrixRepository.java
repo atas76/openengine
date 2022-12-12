@@ -348,7 +348,7 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(THROW_IN, false, 12, 0, 0),
                         new MatchPhaseTransition(THROW_IN, true, 29, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 5, 0, 0),
-                        new MatchPhaseTransition(TRANSITION, false, 3, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 9, 0, 0),
                         new MatchPhaseTransition(POSSESSION, false, 34, 0, 0),
                         new MatchPhaseTransition(ATTACKING_POSSESSION, false, 9, 0, 0),
                 }));
