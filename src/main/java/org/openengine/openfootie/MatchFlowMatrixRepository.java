@@ -129,18 +129,18 @@ public class MatchFlowMatrixRepository {
                 }));
         T_CLF19.addRow(TRANSITION,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(TRANSITION, false, 3, 0, 0),
-                        new MatchPhaseTransition(POSSESSION, true, 18, 0, 0),
-                        new MatchPhaseTransition(THROW_IN, false, 16, 0, 0),
-                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 9, 0, 0),
-                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 20, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 9, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 9, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, false, 27, 0, 0),
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 7, 0, 0),
                         new MatchPhaseTransition(ATTACKING_POSSESSION, true, 5, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 4, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 3, 0, 0),
                         new MatchPhaseTransition(ATTACKING_POSSESSION, true, 9, 0, 0),
-                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 21, 0, 0),
-                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 10, 10, 0),
-                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 31, 31, 0),
-                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 35, 0, 0),
-                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 13, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 18, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 2, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 5, 0, 0),
                 }));
         T_CLF19.addRow(ATTACKING_POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
