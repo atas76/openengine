@@ -95,8 +95,8 @@ public class MatchFlowMatrixTest {
         //
         assertEquals(CORNER_KICK, awayTeamFreeKickSequenceElement.outcomeType());
         assertTrue(awayTeamFreeKickSequenceElement.retainPossession());
-        assertEquals(43, awayTeamFreeKickSequenceElement.duration());
-        assertEquals(43, awayTeamFreeKickSequenceElement.breakTime());
+        assertEquals(32, awayTeamFreeKickSequenceElement.duration());
+        assertEquals(0, awayTeamFreeKickSequenceElement.breakTime());
         //
         assertEquals(THROW_IN, awayTeamCounterAttackSequenceElement.outcomeType());
         assertFalse(awayTeamCounterAttackSequenceElement.retainPossession());
