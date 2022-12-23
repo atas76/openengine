@@ -131,3 +131,24 @@
 35:13 :phase attacking_transition L
 35:42 :set T: GoalKick
 35:49 :phase possession T
+36:00 :phase keeper_possession L
+36:14 :phase long_ball L
+36:25 :set T: ThrowIn
+36:42 :phase pressure T
+36:52 :phase attacking_transition L
+37:24 :set T: ThrowIn
+37:35 :phase pressure L
+37:43 :phase counter_attack L
+37:47 :goal_attempt L
+38:28 :set L: Corner
+38:32 :goal_attempt L
+38:40 :injury
+40:12 :set T: GoalKick
+40:18 :phase transition L
+40:26 :phase attacking_transition L
+40:33 :phase attacking_possession L
+40:59 :set L: ThrowIn
+41:00 :phase attack L
+41:10 :goal_attempt L
+41:11 :phase attack L
+41:45 :set L: Corner
