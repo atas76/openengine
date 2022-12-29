@@ -270,3 +270,34 @@
 64:41 :set L: Freekick
 64:53 :phase substitution T
 65:28 :set T: ThrowIn
+65:31 :phase possession T
+65:47 :phase defensive_transition L
+65:57 :phase counter_attack L
+66:35 :set L: Corner
+66:51 :set L: ThrowIn
+67:00 :set L: ThrowIn
+67:01 :phase attack L
+67:18 :set T: GoalKick
+67:28 :phase attacking_possession T
+67:51 :set L: ThrowIn
+68:07 :phase attacking_transition L
+68:09 :goal_attempt L
+:break(!GK)
+68:41 :phase pressure T
+68:59 :phase buildup T #TODO buildup - long ball sequences
+69:01 :phase long_ball T
+69:08 :phase attack T
+69:23 :phase attacking_possession T
+69:28 :phase possession T
+69:41 :phase attacking_possession T
+69:59 :phase attack T
+70:10 :phase goalkeeper_possession L
+70:15 :phase fast_break L
+71:42 :set L: ThrowIn
+71:56 :set T: ThrowIn
+72:00 :phase pressure T
+72:06 :phase possession T
+72:20 :phase goalkeeper_possession T
+72:24 :phase fast_break T
+72:35 :goal_attempt T
+72:37 :phase goalkeeper_possession L
