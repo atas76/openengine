@@ -340,3 +340,41 @@
 :break(!Gkr:H)
 79:53 :phase fast_break L #TODO consistent fast breaks timing
 80:03 :phase transition T
+80:18 :phase attacking_transition T
+80:19 :goal_attempt T
+:break(!Gkr:H)
+80:27 :phase buildup L
+81:13 :substitution T
+81:44 :set L: Corner
+81:49 :phase attack L
+82:01 :goal_attempt L
+:break(!GK)
+82:10 :phase fast_break T
+82:16 :phase attacking_possession T
+82:35 :phase attack T
+84:05 :set T: Freekick:goal_attempt
+84:37 :set T: Corner
+:break(!*O)
+85:20 :phase long_ball T
+85:25 :phase goalkeeper_possession L
+85:38 :phase fast_break L
+86:46 :set L: Corner
+86:52 :phase attack L
+86:53 :goal_attempt L
+86:53 :goal L
+:break(G)
+88:20 :phase attacking_possession T
+88:22 :phase attack T
+89:34 :substitution L
+:break(!GK)
+89:51 :phase buildup T
+89:57 :phase counter_attack L
+90:04 :phase possession T
+90:06 :phase buildup T
+90:09 :phase long_ball T
+90:23 :phase possession T
+90:33 :phase goalkeeper_possession L
+90:48 :phase long_ball L
+90:58 :phase attacking_transition T
+91:13 :phase attacking_possession T
+91:44 :set T: Corner
