@@ -6,6 +6,7 @@
 :break(G)
 03:18 :set L: ThrowIn
 03:36 :phase contest T
+03:39 :phase transition L
 :break(!Gkr)
 03:58 :phase pressure T
 04:18 :phase possession T
@@ -22,6 +23,7 @@
 07:32 :set T: ThrowIn
 07:45 :phase possession T
 08:12 :set L: ThrowIn
+08:15 :phase contest T
 08:24 :phase transition T
 08:29 :phase attacking_possession T
 08:49 :phase attack T
@@ -34,6 +36,7 @@
 11:05 :phase buildup L
 11:08 :long_ball L
 11:34 :set T: ThrowIn
+11:39 :phase contest L
 12:11 :set T: Freekick
 12:12 :phase attack T
 :break(!*T)
@@ -45,7 +48,8 @@
 13:45 :set T: ThrowIn
 13:46 :phase attacking_possession T
 :break(!*T)
-14:36 :phase possession T
+14:32 :phase attacking_transition T
+14:35 :phase possession T
 15:05 :phase contest L
 15:06 :phase possession T
 15:42 :set L: GoalKick
@@ -56,8 +60,8 @@
 16:45 :phase attacking_transition L
 16:47 :goal_attempt L
 :break(!GK)
-17:14 :phase contest L
-:break(resume)
+17:13 :phase contest L
+:interruption
 18:07 :phase buildup L
 18:19 :phase attacking_transition T
 18:20 :phase attacking_possession T
@@ -77,7 +81,7 @@
 20:12 :phase pressure L
 20:22 :phase counter_attack L
 20:29 :goal_attempt L
-21:11 :set L: Corner
+21:11 :set L: Corner    # TODO
 21:47 :set L: ThrowIn
 21:50 :phase attack L
 21:52 :goal_attempt L
