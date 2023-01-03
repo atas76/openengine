@@ -164,7 +164,7 @@
 43:28 :phase defensive_transition T
 43:41 :phase counter_attack T
 43:46 :phase goalkeeper_possession L
-43:54 :phase buildup L                  # TODO: buildup - possession
+43:54 :phase buildup L
 44:12 :phase pressure L
 44:28 :phase goalkeeper_possession T
 44:32 :phase fast_break T
@@ -396,6 +396,6 @@
 93:52 :phase attacking_possession T
 94:02 :set T: ThrowIn
 94:03 :phase attack T
-94:15 :phase counter_attack L # TODO attack - counter_attack sequences
+94:15 :phase counter_attack L
 94:26 :phase attack L
 94:30 :FT
