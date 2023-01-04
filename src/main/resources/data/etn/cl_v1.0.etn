@@ -81,7 +81,7 @@
 20:12 :phase pressure L
 20:22 :phase counter_attack L
 20:29 :goal_attempt L
-21:11 :set L: Corner    # TODO
+21:11 :set L: Corner
 21:47 :set L: ThrowIn
 21:50 :phase attack L
 21:52 :goal_attempt L
@@ -117,7 +117,9 @@
 30:31 :set T: ThrowIn
 30:34 :phase buildup T
 30:47 :phase pressure T
-30:59 :phase attacking_transition L
+30:58 :phase attacking_transition L
+31:03 :phase clearance T
+31:07 :phase contest L
 :break(*O)
 31:24 :phase possession T
 32:19 :set L: ThrowIn
@@ -177,7 +179,8 @@
 45:16 :phase attack T
 45:18 :goal_attempt T
 45:43 :set L: GoalKick
-45:55 :phase transition T
+45:53 :phase transition T
+45:59 :phase pressure T
 46:11 :phase contest L
 46:20 :set T: ThrowIn
 46:26 :phase possession T
