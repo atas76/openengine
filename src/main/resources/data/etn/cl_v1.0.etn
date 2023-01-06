@@ -13,13 +13,13 @@
 04:34 :phase attack T
 05:15 :set T: Corner
 05:27 :phase possession T
-05:47 :possession L
+05:47 :phase possession L
 05:52 :phase attacking_possession L
 05:56 :phase attack L
 :break(*T)
 06:53 :set T: ThrowIn
 06:58 :phase possession T
-07:22 :clearance L
+07:22 :phase clearance L
 07:32 :set T: ThrowIn
 07:45 :phase possession T
 08:12 :set L: ThrowIn
@@ -28,14 +28,14 @@
 08:29 :phase attacking_possession T
 08:49 :phase attack T
 09:03 :goal_attempt T
-09:21 :set T: GoalKick
+09:21 :set L: GoalKick
 09:25 :phase pressure L
 09:34 :phase possession L
 10:40 :set L: Corner
 10:51 :phase goalkeeper_possession L
 11:05 :phase buildup L
 11:08 :long_ball L
-11:34 :set T: ThrowIn
+11:34 :set T: ThrowIn   # TODO
 11:39 :phase contest L
 12:11 :set T: Freekick
 12:12 :phase attack T

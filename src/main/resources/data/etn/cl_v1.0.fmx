@@ -1,0 +1,55 @@
+L
+    Attack
+        Penalty, true, 87, 0, 0
+    AttackingPossession
+        Attack, true, 4, 0, 0
+    Buildup
+        LongBall, true, 3, 0, 0
+    Clearance
+        ThrowIn, false, 10, 0, 0
+    Corner
+        GoalkeeperPossession, true, 11, 0, 0
+    GoalkeeperPossession
+        Buildup, true, 14, 0, 0
+    GoalKick
+        Pressure, true, 4, 0, 0
+    KickOff
+        Possession, true, 2, 0, 0
+    LongBall
+        ThrowIn, false, 26, 0, 0
+    Penalty
+        Goal, false, 91, 91, 0
+    Possession
+        Attack, true, 18, 0, 0
+        AttackingPossession, true, 5, 0, 0
+        Corner, true, 66, 0, 0
+    Pressure
+        Possession, true, 9, 0, 0
+    ThrowIn
+        Contest, false, 18, 0, 0
+        Contest, false, 3, 0, 0
+T
+    Attack
+        Corner, true, 41, 0, 0
+        GoalAttempt, true, 14, 0, 0
+    AttackingPossession
+        Attack, true, 20, 0, 0
+    Contest
+        Transition, false, 19, 19, 0
+        Transition, true, 9, 0, 0
+    Corner
+        Possession, true, 12, 0, 0
+    GoalAttempt
+        GoalKick, false, 18, 0, 0
+    Possession
+            Attack, true, 16, 0, 0
+            Clearance, false, 24, 0, 0
+            Possession, false, 22, 0, 0
+            ThrowIn, false, 27, 0, 0
+    Pressure
+        Possession, true, 20, 0, 0
+    ThrowIn
+        Possession, true, 5, 0, 0
+        Possession, true, 13, 0, 0
+    Transition
+        AttackingPossession, true, 5, 0, 0
