@@ -1,18 +1,29 @@
 L
     Attack
         Penalty, true, 87, 0, 0
+        ThrowIn, false, 57, 57, 0
     AttackingPossession
         Attack, true, 4, 0, 0
+    AttackingTransition
+        GoalAttempt, true, 5, 0, 0
     Buildup
+        AttackingTransition, false, 12, 0, 0
         LongBall, true, 3, 0, 0
+        ThrowIn, true, 43, 0, 0
     Clearance
         ThrowIn, false, 10, 0, 0
+    Contest
+        FreeKick, false, 32, 0, 0
+        Possession, false, 1, 0, 0
     Corner
         GoalkeeperPossession, true, 11, 0, 0
+    GoalAttempt
+        GoalKick, false, 26, 26, 0
     GoalkeeperPossession
         Buildup, true, 14, 0, 0
     GoalKick
         Pressure, true, 4, 0, 0
+        Pressure, true, 5, 0, 0
     KickOff
         Possession, true, 2, 0, 0
     LongBall
@@ -24,31 +35,54 @@ L
         AttackingPossession, true, 5, 0, 0
         Corner, true, 66, 0, 0
     Pressure
+        BuildUp, true, 9, 0, 0
         Possession, true, 9, 0, 0
     ThrowIn
         Contest, false, 18, 0, 0
         Contest, false, 3, 0, 0
+        Contest, false, 3, 0, 0
+    Transition
+        Possession, true, 5, 0, 0
 T
     Attack
         Corner, true, 41, 0, 0
         GoalAttempt, true, 14, 0, 0
+        ThrowIn, true, 22, 0, 0
+        ThrowIn, true, 21, 21, 0
     AttackingPossession
         Attack, true, 20, 0, 0
+        ThrowIn, false, 46, 46, 0
+        Transition, false, 2, 0, 0
+    AttackingTransition
+        AttackingPossession, 1, 0, 0
+        Possession, 3, 0, 0
+    BuildUp
+        Pressure, true, 18, 0, 0
     Contest
-        Transition, false, 19, 19, 0
+        AttackingTransition, false, 3, 0, 0
+        Transition, false, 19, 0, 0
         Transition, true, 9, 0, 0
     Corner
         Possession, true, 12, 0, 0
+    FreeKick
+        Attack, true, 1, 0, 0
     GoalAttempt
         GoalKick, false, 18, 0, 0
     Possession
             Attack, true, 16, 0, 0
+            Attack, true, 16, 0, 0
             Clearance, false, 24, 0, 0
+            Contest, false, 30, 0, 0
+            GoalKick, false, 36, 0, 0
             Possession, false, 22, 0, 0
             ThrowIn, false, 27, 0, 0
     Pressure
         Possession, true, 20, 0, 0
+        Possession, true, 16, 0, 0
     ThrowIn
+        AttackingPossession, true, 1, 0, 0
+        AttackingTransition, true, 3, 0, 0
+        Contest, false, 5, 0, 0
         Possession, true, 5, 0, 0
         Possession, true, 13, 0, 0
     Transition
