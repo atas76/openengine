@@ -120,7 +120,7 @@
 31:03 :phase clearance T
 31:07 :phase contest L
 :break(!*O)
-31:23 :phase possession T              # TODO
+31:23 :phase possession T
 32:19 :set L: ThrowIn
 32:25 :phase attacking_transition T
 32:34 :phase attacking_possession T
@@ -136,8 +136,8 @@
 34:40 :phase possession T
 34:55 :phase pressure T
 35:13 :phase attacking_transition L
-35:42 :set T: GoalKick
-35:49 :phase possession T
+35:42 :set T: GoalKick                  # TODO goal kick sequences
+35:43 :phase buildup T
 36:00 :phase goalkeeper_possession L
 36:14 :long_ball L
 36:25 :set T: ThrowIn
@@ -151,6 +151,7 @@
 38:32 :goal_attempt L
 38:40 :injury
 40:12 :set T: GoalKick
+40:12 :long_ball T
 40:18 :phase transition L
 40:26 :phase attacking_transition L
 40:33 :phase attacking_possession L
@@ -160,7 +161,7 @@
 41:11 :phase attack L
 41:45 :set L: Corner
 41:49 :goal_attempt L
-42:20 :set L: Corner
+42:20 :set L: Corner                    # TODO
 42:40 :set L: ThrowIn
 42:43 :phase possession L
 43:03 :phase contest T
