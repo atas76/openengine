@@ -161,9 +161,9 @@
 41:11 :phase attack L
 41:45 :set L: Corner
 41:49 :goal_attempt L
-42:20 :set L: Corner                    # TODO
+42:20 :set L: Corner
 42:40 :set L: ThrowIn
-42:43 :phase possession L
+42:44 :phase possession L
 43:03 :phase contest T
 43:12 :set T: Freekick
 43:20 :phase defensive_transition L
@@ -178,7 +178,8 @@
 45:07 :phase possession T
 45:16 :phase attack T
 45:18 :goal_attempt T
-45:43 :set L: GoalKick
+45:42 :set L: GoalKick
+45:42 :long_ball L
 45:53 :phase transition T
 45:59 :phase pressure T
 46:11 :phase contest L
@@ -191,7 +192,7 @@
 45:04 :phase possession T
 45:10 :set L: ThrowIn
 45:22 :phase transition T
-45:25 :phase possession T
+45:24 :phase possession T
 45:31 :phase attacking_possession T
 45:50 :set T: ThrowIn
 46:01 :phase possession T
@@ -201,7 +202,7 @@
 46:53 :long_ball T
 46:57 :phase attacking_possession T
 47:00 :phase attack T
-47:26 :set L: ThrowIn
+47:26 :set L: ThrowIn                   # TODO
 47:36 :set L: ThrowIn
 47:47 :phase attacking_transition T
 48:00 :set L: ThrowIn
