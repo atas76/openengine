@@ -93,17 +93,20 @@ L
         Contest, false, 3, 0, 0
         Possession, true, 4, 0, 0
         Transition, false, 10, 0, 0
+        Transition, false, 12, 0, 0
     Transition
         AttackingTransition, true, 8, 0, 0
         GoalKick, false, 21, 21, 0
         Possession, true, 5, 0, 0
 T
     Attack
+        AttackingPossession, true, 17, 0, 0
         Corner, true, 41, 0, 0
         GoalAttempt, true, 14, 0, 0
         GoalAttempt, true, 2, 0, 0
         GoalkeeperPossession, false, 4, 0, 0
         ThrowIn, false, 40, 0, 0
+        ThrowIn, false, 26, 0, 0
         ThrowIn, true, 22, 0, 0
         ThrowIn, true, 21, 21, 0
         ThrowIn, true, 9, 0, 0
@@ -113,7 +116,10 @@ T
         Attack, true, 14, 0, 0
         Attack, true, 8, 0, 0
         Attack, true, 2, 0, 0
+        Attack, true, 3, 0, 0
+        BuildUp, true, 10, 0, 0
         ThrowIn, false, 46, 46, 0
+        ThrowIn, true, 19, 0, 0
         Transition, false, 2, 0, 0
     AttackingTransition
         AttackingPossession, true, 1, 0, 0
@@ -124,6 +130,7 @@ T
     BuildUp
         GoalkeeperPossession, false, 17, 0, 0
         LongBall, true, 22, 0, 0
+        LongBall, true, 7, 0, 0
         Pressure, true, 18, 0, 0
         Pressure, true, 13, 0, 0
     Clearance
@@ -161,14 +168,19 @@ T
         LongBall, true, 0, 0, 0
         Pressure, true, 5, 0, 0
         Pressure, true, 4, 0, 0
+    KickOff
+        Possession, true, 4, 0, 0
     LongBall
+        AttackingPossession, true, 4, 0, 0
         ThrowIn, false, 26, 0, 0
         Transition, false, 6, 0, 0
     Possession
         Attack, true, 16, 0, 0
         Attack, true, 16, 0, 0
         Attack, true, 9, 0, 0
+        Attack, true, 18, 0, 0
         AttackingPossession, true, 13, 0, 0
+        AttackingPossession, true, 7, 0, 0
         Clearance, false, 24, 0, 0
         Contest, false, 30, 0, 0
         GoalKick, false, 36, 0, 0
@@ -179,6 +191,7 @@ T
         Pressure, true, 15, 0, 0
         ThrowIn, false, 27, 0, 0
         ThrowIn, false, 56, 0, 0
+        ThrowIn, false, 6, 0, 0
     Pressure
         AttackingTransition, false, 11, 0, 0
         AttackingTransition, false, 18, 0, 0
@@ -204,11 +217,13 @@ T
         Possession, true, 13, 0, 0
         Possession, true, 9, 0, 0
         Possession, true, 6, 0, 0
+        Possession, true, 11, 0, 0
         Pressure, false, 17, 0, 0
         Pressure, false, 11, 0, 0
         ThrowIn, true, 9, 0, 0
         ThrowIn, true, 15, 0, 0
     Transition
         AttackingPossession, true, 5, 0, 0
+        Possession, true, 4, 0, 0
         Pressure, true, 6, 0, 0
         Transition, false, 16, 0, 0
