@@ -288,7 +288,7 @@
 67:00 :set L: ThrowIn
 67:01 :phase attack L
 67:18 :set T: GoalKick
-67:28 :phase attacking_possession T     # TODO
+67:28 :phase attacking_possession T
 67:51 :set L: ThrowIn
 68:07 :phase attacking_transition L
 68:09 :goal_attempt L
@@ -306,16 +306,16 @@
 71:42 :set L: ThrowIn
 71:56 :set T: ThrowIn
 72:00 :phase pressure T
-72:06 :phase possession T
 72:20 :phase goalkeeper_possession T
 72:23 :phase buildup T
+72:33 :phase attacking_transition
 72:35 :goal_attempt T
 72:37 :phase goalkeeper_possession L
 :fair_play
 73:15 :substitution T
 73:41 :phase buildup L
 :break(!GK)
-74:15 :phase buildup T
+74:15 :phase buildup T                  # TODO
 74:21 :phase pressure T
 74:28 :phase attacking_transition L
 74:30 :phase transition T
