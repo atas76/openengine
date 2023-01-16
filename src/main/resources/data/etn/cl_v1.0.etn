@@ -240,7 +240,7 @@
 54:41 :injury
 :break(*T)
 55:58 :phase buildup T
-56:02 :long_ball T                      # TODO
+56:02 :long_ball T
 56:08 :phase contest L
 56:15 :phase attacking_transition T
 56:51 :set T: Corner
@@ -255,8 +255,8 @@
 58:28 :phase pressure T
 58:44 :set T: ThrowIn
 58:46 :phase possession T
-58:49 :buildup T
-59:01 :transition L
+58:49 :phase buildup T
+59:01 :phase transition L
 59:06 :phase goalkeeper_possession T
 59:12 :phase buildup T
 59:39 :phase attacking_transition L
@@ -288,7 +288,7 @@
 67:00 :set L: ThrowIn
 67:01 :phase attack L
 67:18 :set T: GoalKick
-67:28 :phase attacking_possession T
+67:28 :phase attacking_possession T     # TODO
 67:51 :set L: ThrowIn
 68:07 :phase attacking_transition L
 68:09 :goal_attempt L
