@@ -28,6 +28,7 @@ L
         ThrowIn, false, 32, 0, 0
         ThrowIn, true, 20, 0, 0
         Transition, false, 8, 0, 0
+        Transition, false, 2, 0, 0
     Buildup
         AttackingTransition, false, 12, 0, 0
         GoalKick, false, 34, 34, 0
@@ -44,6 +45,7 @@ L
         FreeKick, false, 32, 0, 0
         Offside, false, 17, 17, 0
         Possession, false, 1, 0, 0
+        Possession, true, 5, 0, 0
         ThrowIn, false, 9, 0, 0
     Corner
         FreeKick, false, 60, 0, 0
@@ -54,10 +56,13 @@ L
         ThrowIn, true, 16, 0, 0
     CounterAttack
         GoalAttempt, true, 7, 0, 0
+        Clearance, false, 10, 0, 0
     DefensiveTransition
         AttackingPossession, false, 4, 0, 0
         DefensiveTransition, false, 8, 0, 0
         ThrowIn, true, 29, 0, 0
+    FastBreak
+        ThrowIn, true, 30, 0, 0
     FreeKick
         GoalKick, false, 19, 0, 0
         Possession, true, 2, 0, 0
@@ -77,6 +82,7 @@ L
         Buildup, true, 14, 0, 0
         Buildup, true, 6, 0, 0
         Buildup, true, 8, 0, 0
+        FastBreak, true, 3, 0, 0
         LongBall, true, 14, 0, 0
     GoalKick
         Pressure, true, 4, 0, 0
@@ -96,6 +102,7 @@ L
         AttackingPossession, true, 5, 0, 0
         Contest, false, 19, 0, 0
         Corner, true, 66, 0, 0
+        GoalkeeperPossession, false, 7, 0, 0
         GoalKick, false, 26, 0, 0
         GoalKick, false, 40, 40, 0
         Pressure, true, 7, 0, 0
@@ -145,6 +152,7 @@ T
         AttackingPossession, true, 15, 0, 0
         AttackingPossession, true, 15, 0, 0
         Corner, true, 41, 0, 0
+        FreeKick, false, 58, 58, 0
         GoalAttempt, true, 14, 0, 0
         GoalAttempt, true, 2, 0, 0
         GoalAttempt, true, 1, 0, 0
@@ -192,10 +200,12 @@ T
         Possession, true, 10, 0, 0
         Pressure, true, 18, 0, 0
         Pressure, true, 13, 0, 0
+        Pressure, true, 6, 0, 0
         Transition, false, 23, 0, 0
         Transition, false, 12, 0, 0
     Clearance
         Contest, false, 4, 0, 0
+        DefensiveTransition, true, 2, 0, 0
     Contest
         AttackingTransition, false, 3, 0, 0
         FreeKick, true, 9, 0, 0
@@ -204,6 +214,7 @@ T
         Transition, true, 9, 0, 0
     Corner
         Attack, true, 1, 0, 0
+        Attack, true, 1, 0, 0
         GoalAttempt, true, 4, 0, 0
         GoalAttempt, true, 4, 0, 0
         GoalAttempt, true, 2, 0, 0
@@ -211,14 +222,17 @@ T
     CounterAttack
         DefensiveTransition, false, 5, 0, 0
         DefensiveTransition, false, 9, 0, 0
+        Corner, true, 14, 0, 0
         GoalAttempt, true, 4, 0, 0
         GoalkeeperPossession, false, 5, 0, 0
     DefensiveTransition
         AttackingTransition, false, 2, 0, 0
         CounterAttack, true, 13, 0, 0
         CounterAttack, true, 9, 0, 0
+        CounterAttack, true, 4, 0, 0
         Pressure, true, 10, 0, 0
     FastBreak
+        GoalkeeperPossession, false, 6, 0, 0
         ThrowIn, true, 26, 0, 0
     FreeKick
         Attack, true, 1, 0, 0
@@ -237,6 +251,7 @@ T
         Buildup, true, 9, 0, 0
         Buildup, true, 6, 0, 0
         Buildup, true, 3, 0, 0
+        FastBreak, true, 4, 0, 0
         FastBreak, true, 4, 0, 0
     GoalKick
         AttackingPossession, true, 10, 0, 0
@@ -265,6 +280,8 @@ T
         Clearance, false, 24, 0, 0
         Contest, false, 30, 0, 0
         Contest, false, 44, 0, 0
+        Contest, false, 12, 0, 0
+        CounterAttack, false, 4, 0, 0
         GoalKick, false, 36, 0, 0
         Offside, false, 32, 32, 0
         Possession, false, 22, 0, 0
@@ -280,6 +297,7 @@ T
         AttackingTransition, false, 11, 0, 0
         AttackingTransition, false, 18, 0, 0
         AttackingTransition, false, 10, 0, 0
+        AttackingTransition, false, 7, 0, 0
         Buildup, true, 10, 0, 0
         Buildup, true, 18, 0, 0
         Contest, false, 12, 0, 0
@@ -320,5 +338,6 @@ T
         AttackingPossession, true, 5, 0, 0
         AttackingPossession, true, 13, 0, 0
         Possession, true, 4, 0, 0
+        Possession, true, 2, 0, 0
         Pressure, true, 6, 0, 0
         Transition, false, 16, 0, 0
