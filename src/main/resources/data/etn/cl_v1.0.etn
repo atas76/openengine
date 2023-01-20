@@ -30,7 +30,7 @@
 09:03 :goal_attempt T
 09:21 :set L: GoalKick
 09:25 :phase pressure L
-09:34 :phase possession L
+09:34 :phase buildup L
 10:40 :set L: Corner
 10:51 :phase goalkeeper_possession L
 11:05 :phase buildup L
@@ -94,7 +94,7 @@
 23:50 :set L: Corner
 24:50 :set T: Freekick
 24:54 :phase possession T
-25:00 :phase pressure T         # TODO verify sequence after pressure (possession/buildup)
+25:00 :phase pressure T
 25:10 :phase buildup T
 25:32 :long_ball T
 25:58 :set L: ThrowIn
@@ -103,7 +103,7 @@
 :break(!GK)
 26:45 :phase pressure T
 :break(*T)
-27:29 :phase buildup T       # TODO buildup vs. possession
+27:29 :phase buildup T      
 :break(!*O)
 29:01 :set L: Freekick
 29:20 :set T: GoalKick
