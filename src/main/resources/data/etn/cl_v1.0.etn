@@ -390,7 +390,7 @@
 90:48 :long_ball L
 90:58 :phase attacking_transition T
 91:13 :phase attacking_possession T
-91:44 :set T: Corner                    # TODO
+91:44 :set T: Corner
 91:49 :phase attack T
 91:52 :goal_attempt T
 91:53 :phase goalkeeper_possession L
