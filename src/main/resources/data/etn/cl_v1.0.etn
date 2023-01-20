@@ -103,7 +103,7 @@
 :break(!GK)
 26:45 :phase pressure T
 :break(*T)
-27:29 :phase buildup T      
+27:29 :phase buildup T
 :break(!*O)
 29:01 :set L: Freekick
 29:20 :set T: GoalKick

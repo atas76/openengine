@@ -130,10 +130,10 @@ L
         Pressure, true, 7, 0, 0
     Pressure
         BuildUp, true, 9, 0, 0
+        Buildup, true, 9, 0, 0
         Contest, false, 8, 0, 0
         CounterAttack, true, 10, 0, 0
         GoalkeeperPossession, false, 16, 0, 0
-        Possession, true, 9, 0, 0
         ThrowIn, false, 12, 0, 0
         ThrowIn, false, 14, 14, 0
     ThrowIn
