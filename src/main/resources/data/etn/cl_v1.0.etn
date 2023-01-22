@@ -140,7 +140,7 @@
 34:40 :phase possession T
 34:55 :phase pressure T
 35:13 :phase attacking_transition L
-35:42 :set T: GoalKick                  
+35:42 :set T: GoalKick
 35:43 :phase buildup T
 36:00 :phase goalkeeper_possession L
 36:14 :long_ball L
