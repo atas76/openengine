@@ -64,7 +64,7 @@ public class MatchRepresentationTest {
         MatchPhase firstHalfLastPhase = matchRepresentation.getPhase(154);
         MatchPhase secondHalfKickOffPhase = matchRepresentation.getPhase(155);
         Statement kickOffExecution = kickOffPhase.getEventByIndex(0);
-        assertEquals(321, matchRepresentation.getNumberOfPhases());
+        assertEquals(323, matchRepresentation.getNumberOfPhases());
 
         // Kick-off phase
         assertTrue(kickOffPhase instanceof SetPieceExecutionPhase);

@@ -12,8 +12,8 @@ import static org.openengine.openfootie.Special.MAIN;
 
 public class MatchFlowMatrixTest {
 
-    private MatchFlowMatrix homeTeamMatchFlow = MatchFlowMatrixRepository.L_CLF19;
-    private MatchFlowMatrix awayTeamMatchFlow = MatchFlowMatrixRepository.T_CLF19;
+    private MatchFlowMatrix homeTeamMatchFlow = MatchFlowMatrixRepository.L_CLF19_DEPRECATED;
+    private MatchFlowMatrix awayTeamMatchFlow = MatchFlowMatrixRepository.T_CLF19_DEPRECATED;
     private MatchEngine matchEngine = new MatchEngine();
 
     @BeforeClass
