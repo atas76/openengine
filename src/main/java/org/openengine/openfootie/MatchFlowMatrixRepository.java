@@ -10,6 +10,9 @@ public class MatchFlowMatrixRepository {
     public static final MatchFlowMatrix L_CLF19_DEPRECATED = new MatchFlowMatrix();
     public static final MatchFlowMatrix T_CLF19_DEPRECATED = new MatchFlowMatrix();
 
+    public static final MatchFlowMatrix L_CLF19 = new MatchFlowMatrix();
+    public static final MatchFlowMatrix T_CLF19 = new MatchFlowMatrix();
+
     public static void load() {
         loadHomeTeamDeprecated();
         loadAwayTeamDeprecated();
@@ -216,6 +219,28 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(CORNER_KICK, true, 35, 0, 0),
                         new MatchPhaseTransition(CORNER_KICK, true, 13, 0, 0),
                         new MatchPhaseTransition(ATTACKING_POSSESSION, true, 12, 0, 0)
+                }));
+    }
+
+    public static void loadHomeTeam() {
+        L_CLF19.addRow(MAIN,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(KICK_OFF, true, 0, 0, 0)
+                }));
+        L_CLF19.addRow(KICK_OFF,
+                new MatchSequence((new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(POSSESSION, true, 2, 0, 0)
+                })));
+        L_CLF19.addRow(POSSESSION,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACK, true, 18, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 5, 0, 0),
+                        new MatchPhaseTransition(CONTEST, false, 19, 0, 0),
+                        new MatchPhaseTransition(CORNER_KICK, true, 66, 0, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 7, 0, 0),
+                        new MatchPhaseTransition(GOAL_KICK, false, 26, 0, 0),
+                        new MatchPhaseTransition(GOAL_KICK, false, 40, 40, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 7, 0, 0),
                 }));
     }
 
