@@ -231,6 +231,27 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence((new MatchPhaseTransition[] {
                         new MatchPhaseTransition(POSSESSION, true, 2, 0, 0)
                 })));
+        L_CLF19.addRow(ATTACKING_TRANSITION,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACK, true, 3, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 6, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 7, 0, 0),
+                        new MatchPhaseTransition(CLEARANCE, false, 5, 0, 0),
+                        new MatchPhaseTransition(CORNER_KICK, true, 30, 0, 0),
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 6, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 5, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
+                        new MatchPhaseTransition(GOAL_KICK, false, 29, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, false, 32, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 20, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 8, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 2, 0, 0)
+                }));
+        L_CLF19.addRow(PENALTY,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(GOAL, false, 91, 91, 0)
+                }));
         L_CLF19.addRow(POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACK, true, 18, 0, 0),
@@ -241,6 +262,33 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(GOAL_KICK, false, 26, 0, 0),
                         new MatchPhaseTransition(GOAL_KICK, false, 40, 40, 0),
                         new MatchPhaseTransition(PRESSURE, true, 7, 0, 0)
+                }));
+        L_CLF19.addRow(THROW_IN,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACK, true, 3, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 7, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 2, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 16, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 16, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 6, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 6, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 11, 0, 0),
+                        new MatchPhaseTransition(CONTEST, false, 18, 0, 0),
+                        new MatchPhaseTransition(CONTEST, false, 3, 0, 0),
+                        new MatchPhaseTransition(CONTEST, false, 3, 0, 0),
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 7, 0, 0),
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 4, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 4, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 10, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 12, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 10, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 12, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 21, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 39, 0, 23),
+                        new MatchPhaseTransition(THROW_IN, true, 9, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, false, 14, 0, 0)
                 }));
         L_CLF19.addRow(TRANSITION,
                 new MatchSequence(new MatchPhaseTransition[] {
