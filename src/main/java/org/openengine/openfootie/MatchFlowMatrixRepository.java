@@ -1,5 +1,7 @@
 package org.openengine.openfootie;
 
+import org.openengine.prototype.engine.Match;
+
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
@@ -231,6 +233,22 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence((new MatchPhaseTransition[] {
                         new MatchPhaseTransition(POSSESSION, true, 2, 0, 0)
                 })));
+        L_CLF19.addRow(ATTACK,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(CORNER_KICK, true, 40, 0, 0),
+                        new MatchPhaseTransition(CORNER_KICK, true, 34, 0, 0),
+                        new MatchPhaseTransition(FREE_KICK, true, 18, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 10, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 7, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 12, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 1, 0, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 8, 8, 0),
+                        new MatchPhaseTransition(GOAL_KICK, false, 17, 0, 0),
+                        new MatchPhaseTransition(PENALTY, true, 87, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 32, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, false, 57, 57, 0),
+                }));
         L_CLF19.addRow(ATTACKING_POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACK, true, 4, 0, 0),
