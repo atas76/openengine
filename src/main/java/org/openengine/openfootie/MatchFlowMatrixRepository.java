@@ -1,7 +1,5 @@
 package org.openengine.openfootie;
 
-import org.openengine.prototype.engine.Match;
-
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
