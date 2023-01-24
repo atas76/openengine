@@ -231,6 +231,12 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence((new MatchPhaseTransition[] {
                         new MatchPhaseTransition(POSSESSION, true, 2, 0, 0)
                 })));
+        L_CLF19.addRow(ATTACKING_POSSESSION,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACK, true, 4, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 26, 0, 0)
+
+                }));
         L_CLF19.addRow(ATTACKING_TRANSITION,
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACK, true, 3, 0, 0),
