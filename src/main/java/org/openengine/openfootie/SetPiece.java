@@ -6,5 +6,6 @@ public enum SetPiece implements MatchDataElementType {
     THROW_IN,
     CORNER_KICK,
     FREE_KICK,
+    INDIRECT_FREE_KICK,
     GOAL_KICK
 }
