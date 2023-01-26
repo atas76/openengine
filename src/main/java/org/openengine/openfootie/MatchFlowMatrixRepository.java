@@ -287,7 +287,7 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(THROW_IN, false, 10, 0, 0)
                 }));
-        L_CLF19.addRow(CONTEST,
+        L_CLF19.addRow(CONTESTED_BALL,
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACKING_TRANSITION, false, 3, 0, 0),
                         new MatchPhaseTransition(ATTACKING_TRANSITION, false, 7, 0, 0),
@@ -336,7 +336,7 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACK, true, 18, 0, 0),
                         new MatchPhaseTransition(ATTACKING_POSSESSION, true, 5, 0, 0),
-                        new MatchPhaseTransition(CONTEST, false, 19, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 19, 0, 0),
                         new MatchPhaseTransition(CORNER_KICK, true, 66, 0, 0),
                         new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 7, 0, 0),
                         new MatchPhaseTransition(GOAL_KICK, false, 26, 0, 0),
@@ -347,7 +347,7 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(BUILDUP, true, 9, 0, 0),
                         new MatchPhaseTransition(BUILDUP, true, 9, 0, 0),
-                        new MatchPhaseTransition(CONTEST, false, 8, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 8, 0, 0),
                         new MatchPhaseTransition(COUNTER_ATTACK, true, 10, 0, 0),
                         new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 16, 0, 0),
                         new MatchPhaseTransition(THROW_IN, false, 12, 0, 0),
@@ -365,9 +365,9 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(ATTACKING_TRANSITION, false, 6, 0, 0),
                         new MatchPhaseTransition(ATTACKING_TRANSITION, false, 6, 0, 0),
                         new MatchPhaseTransition(ATTACKING_TRANSITION, false, 11, 0, 0),
-                        new MatchPhaseTransition(CONTEST, false, 18, 0, 0),
-                        new MatchPhaseTransition(CONTEST, false, 3, 0, 0),
-                        new MatchPhaseTransition(CONTEST, false, 3, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 18, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 3, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 3, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 7, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 4, 0, 0),
                         new MatchPhaseTransition(POSSESSION, true, 4, 0, 0),

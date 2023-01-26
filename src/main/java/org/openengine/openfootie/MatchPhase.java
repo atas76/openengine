@@ -12,5 +12,5 @@ public enum MatchPhase implements MatchDataElementType {
     TRANSITION,
     ATTACKING_TRANSITION,
     COUNTER_ATTACK,
-    CONTEST
+    CONTESTED_BALL
 }
