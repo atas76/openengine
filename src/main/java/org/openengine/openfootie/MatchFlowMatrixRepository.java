@@ -18,6 +18,13 @@ public class MatchFlowMatrixRepository {
         loadAwayTeamDeprecated();
     }
 
+    public static void loadAwayTeam() {
+        T_CLF19.addRow(MAIN,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(KICK_OFF, true, 0, 0, 0)
+                }));
+    }
+
     public static void loadAwayTeamDeprecated() {
         T_CLF19_DEPRECATED.addRow(MAIN,
                 new MatchSequence(new MatchPhaseTransition[] {
