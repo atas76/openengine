@@ -1,5 +1,7 @@
 package org.openengine.openfootie;
 
+import org.fgn.domain.Match;
+
 import static org.openengine.openfootie.MatchEvent.*;
 import static org.openengine.openfootie.MatchPhase.*;
 import static org.openengine.openfootie.SetPiece.*;
@@ -86,6 +88,26 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(POSSESSION, true, 3, 0, 0),
                         new MatchPhaseTransition(POSSESSION, true, 7, 0, 0),
                         new MatchPhaseTransition(TRANSITION, false, 10, 0, 0)
+                }));
+        T_CLF19.addRow(BUILDUP,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 10, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 27, 0, 0),
+                        new MatchPhaseTransition(COUNTER_ATTACK, false, 6, 0, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 17, 0, 0),
+                        new MatchPhaseTransition(LONG_BALL, true, 22, 0, 0),
+                        new MatchPhaseTransition(LONG_BALL, true, 7, 0, 0),
+                        new MatchPhaseTransition(LONG_BALL, true, 4, 0, 0),
+                        new MatchPhaseTransition(LONG_BALL, true, 2, 0, 0),
+                        new MatchPhaseTransition(LONG_BALL, true, 3, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 10, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 18, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 13, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 6, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 4, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 2, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 23, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 12, 0, 0)
                 }));
     }
 
