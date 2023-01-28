@@ -134,6 +134,14 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(INDIRECT_FREE_KICK, false, 43, 43, 0),
                         new MatchPhaseTransition(POSSESSION, true, 12, 0, 0)
                 }));
+        T_CLF19.addRow(COUNTER_ATTACK,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 5, 0, 0),
+                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 9, 0, 0),
+                        new MatchPhaseTransition(CORNER_KICK, true, 14, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 4, 0, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 5, 0, 0)
+                }));
     }
 
     public static void loadAwayTeamDeprecated() {
