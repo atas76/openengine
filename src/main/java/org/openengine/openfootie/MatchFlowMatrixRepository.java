@@ -152,6 +152,12 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(GOAL_ATTEMPT, true, 22, 0, 0),
                         new MatchPhaseTransition(PRESSURE, true, 10, 0, 0)
                 }));
+        T_CLF19.addRow(FAST_BREAK,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 6, 0, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 6, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 26, 0, 0)
+                }));
     }
 
     public static void loadAwayTeamDeprecated() {
