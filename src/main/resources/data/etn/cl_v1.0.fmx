@@ -297,6 +297,8 @@ T
         Attack, true, 3, 0, 0
         Corner, true, 32, 0, 0
         Corner, true, 18, 0, 0
+        Corner, true, 41, 0, 0
+        Corner, true, 20, 0, 0
         GoalkeeperPossession, false, 2, 0, 0
         GoalkeeperPossession, false, 1, 0, 0
         GoalkeeperPossession, false, 2, 0, 0
@@ -306,8 +308,6 @@ T
         GoalKick, false, 25, 0, 0
         GoalKick, false, 45, 0, 34
         GoalKick, false, 37, 37, 0
-        Corner, true, 41, 0, 0
-        Corner, true, 20, 0, 0
     GoalkeeperPossession
         Buildup, true, 9, 0, 0
         Buildup, true, 6, 0, 0
