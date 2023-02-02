@@ -248,6 +248,27 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(THROW_IN, false, 6, 0, 0),
                         new MatchPhaseTransition(TRANSITION, false, 15, 0, 0)
                 }));
+        T_CLF19.addRow(PRESSURE,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 11, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 18, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 10, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 7, 0, 0),
+                        new MatchPhaseTransition(BUILDUP, true, 10, 0, 0),
+                        new MatchPhaseTransition(BUILDUP, true, 18, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 12, 0, 0),
+                        new MatchPhaseTransition(COUNTER_ATTACK, true, 10, 0, 0),
+                        new MatchPhaseTransition(COUNTER_ATTACK, true, 8, 0, 0),
+                        new MatchPhaseTransition(FREE_KICK, true, 23, 23, 0),
+                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, true, 20, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 20, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 16, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, false, 8, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, false, 22, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 44, 44, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 16, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, false, 36, 0, 0),
+                }));
     }
 
     public static void loadAwayTeamDeprecated() {
