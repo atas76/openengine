@@ -269,6 +269,31 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(THROW_IN, true, 16, 0, 0),
                         new MatchPhaseTransition(THROW_IN, false, 36, 0, 0),
                 }));
+        T_CLF19.addRow(THROW_IN,
+                new MatchSequence(new MatchPhaseTransition[] {
+                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_POSSESSION, true, 1, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, true, 3, 0, 0),
+                        new MatchPhaseTransition(ATTACKING_TRANSITION, false, 3, 0, 0),
+                        new MatchPhaseTransition(BUILDUP, true, 3, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 5, 0, 0),
+                        new MatchPhaseTransition(CONTESTED_BALL, false, 4, 0, 0),
+                        new MatchPhaseTransition(FREE_KICK, false, 82, 82, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 5, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 13, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 9, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 6, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 11, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 2, 0, 0),
+                        new MatchPhaseTransition(POSSESSION, true, 3, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, false, 17, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, false, 11, 0, 0),
+                        new MatchPhaseTransition(PRESSURE, true, 4, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 9, 0, 0),
+                        new MatchPhaseTransition(THROW_IN, true, 15, 0, 0),
+                        new MatchPhaseTransition(TRANSITION, false, 14, 0, 0)
+                }));
     }
 
     public static void loadAwayTeamDeprecated() {
