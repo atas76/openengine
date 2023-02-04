@@ -24,8 +24,8 @@ public class MatchEngine {
 
         MatchFlowMatrixRepository.load();
 
-        MatchFlowMatrix homeTeamFlowMatrix = MatchFlowMatrixRepository.L_CLF19_DEPRECATED;
-        MatchFlowMatrix awayTeamFlowMatrix = MatchFlowMatrixRepository.T_CLF19_DEPRECATED;
+        MatchFlowMatrix homeTeamFlowMatrix = MatchFlowMatrixRepository.L_CLF19;
+        MatchFlowMatrix awayTeamFlowMatrix = MatchFlowMatrixRepository.T_CLF19;
 
         Team homeTeam = new Team("Liverpool", homeTeamFlowMatrix);
         Team awayTeam = new Team("Tottenham", awayTeamFlowMatrix);

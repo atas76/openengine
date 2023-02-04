@@ -77,8 +77,8 @@ L
         Transition, false, 9, 0, 0
     FreeKick
         GoalKick, false, 19, 0, 0
-        Possession, true, 2, 0, 0
-        ThrowIn, false, 47, 0, 35
+        Possession, true, 2, 0, 0   #I
+        ThrowIn, false, 47, 0, 35   #I
     GoalAttempt
         Attack, true, 1, 0, 0
         Attack, true, 5, 0, 0
@@ -287,10 +287,10 @@ T
         GoalkeeperPossession, false, 6, 0, 0
         ThrowIn, true, 26, 0, 0
     FreeKick
-        Attack, true, 1, 0, 0
-        DefensiveTransition, false, 8, 0, 0
+        Attack, true, 1, 0, 0                   #I
+        DefensiveTransition, false, 8, 0, 0     #I
         GoalAttempt, true, 0, 0, 0
-        Possession, true, 4, 0, 0
+        Possession, true, 4, 0, 0               #I
     GoalAttempt
         Attack, true, 1, 0, 0
         Attack, true, 4, 0, 0
