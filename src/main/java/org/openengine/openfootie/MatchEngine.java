@@ -65,9 +65,6 @@ public class MatchEngine {
         displayMatchState();
 
         while (currentTime < DURATION) {
-            if (currentDataElement.outcomeType().equals(GOAL)) {
-                currentDataElement = getKickOffDataElement();
-            }
             MatchSequence currentMatchSequence = possessionTeam.getMatchFlowMatrix().getMatchSequence(currentDataElement.outcomeType());
             currentDataElement = getNextSequenceElement(currentMatchSequence);
             System.out.println(currentDataElement);
@@ -78,10 +75,19 @@ public class MatchEngine {
 
     private MatchPhaseTransition updateMatchState(MatchPhaseTransition currentDataElement) {
         currentTime += currentDataElement.duration();
-        if (currentDataElement.outcomeType().equals(GOAL)) {
-            possessionTeam.score();
-            changePossession();
-            return getKickOffDataElement();
+        if (currentDataElement.outcomeType() instanceof GoalAttemptOutcome goalAttemptOutcome) {
+            MatchDataElementType outcomeType = goalAttemptOutcome.finalOutcome();
+            if (GOAL.equals(outcomeType)) {
+                displayGoal();
+                possessionTeam.score();
+                changePossession();
+                return getKickOffDataElement();
+            } else {
+                updatePossession(currentDataElement.retainPossession());
+                currentDataElement = getNextSequenceElement(possessionTeam.getMatchFlowMatrix().getMatchSequence(outcomeType));
+                System.out.println(currentDataElement);
+                return currentDataElement;
+            }
         }
         updatePossession(currentDataElement.retainPossession());
         return currentDataElement;
@@ -99,6 +105,10 @@ public class MatchEngine {
 
     public MatchPhaseTransition getNextSequenceElement(MatchSequence sequence) {
         return sequence.matchPhaseTransitions()[rnd.nextInt(sequence.matchPhaseTransitions().length)];
+    }
+
+    private void displayGoal() {
+        System.out.println(possessionTeam + ": GOAL");
     }
 
     public void displayMatchState() {

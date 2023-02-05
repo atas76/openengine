@@ -157,27 +157,26 @@ public class MatchFlowMatrixRepository {
                 new MatchSequence(new MatchPhaseTransition[] {
                         new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 8, 0, 0),
-                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 0, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.05, CORNER_KICK), true, 0, 0, 0),
                         new MatchPhaseTransition(POSSESSION, true, 4, 0, 0)
                 }));
         T_CLF19.addRow(GOAL_ATTEMPT,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
-                        new MatchPhaseTransition(ATTACK, true, 4, 0, 0),
-                        new MatchPhaseTransition(ATTACK, true, 3, 0, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 32, 0, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 18, 0, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 41, 0, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 20, 0, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 2, 0, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 1, 0, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 2, 0, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 1, 0, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION, false, 1, 0, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 18, 0, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 25, 0, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 45, 0, 34),
-                        new MatchPhaseTransition(GOAL_KICK, false, 37, 37, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.12, ATTACK), true, 1, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, ATTACK), true, 4, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, ATTACK), true, 3, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, CORNER_KICK), true, 20, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.05, CORNER_KICK), true, 32, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.04, CORNER_KICK), true, 18, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.05, GOALKEEPER_POSSESSION), false, 2, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.08, GOALKEEPER_POSSESSION), false, 1, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.05, GOALKEEPER_POSSESSION), false, 2, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.04, GOALKEEPER_POSSESSION), false, 1, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOALKEEPER_POSSESSION), false, 1, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOAL_KICK), false, 18, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.04, GOAL_KICK), false, 25, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOAL_KICK), false, 45, 0, 34),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.08, GOAL_KICK), false, 37, 37, 0),
                 }));
         T_CLF19.addRow(GOALKEEPER_POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
@@ -421,17 +420,18 @@ public class MatchFlowMatrixRepository {
                 }));
         L_CLF19.addRow(GOAL_ATTEMPT,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(ATTACK, true, 1, 0, 0),
-                        new MatchPhaseTransition(ATTACK, true, 5, 0, 0),
-                        new MatchPhaseTransition(GOAL, false, 84, 84, 0),
-                        new MatchPhaseTransition(GOALKEEPER_POSSESSION,false, 2, 0, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 26, 26, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 40, 0, 32),
-                        new MatchPhaseTransition(GOAL_KICK, false, 32, 32, 0),
-                        new MatchPhaseTransition(GOAL_KICK, false, 9, 9, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 42, 0, 0),
-                        new MatchPhaseTransition(CORNER_KICK, true, 31, 0, 0),
-                        new MatchPhaseTransition(THROW_IN, false, 25, 0, 0)
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, ATTACK), true, 1, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.11, ATTACK), true, 5, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.04, GOALKEEPER_POSSESSION), false, 84, 84, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOALKEEPER_POSSESSION),false, 2, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.02, GOAL_KICK), false, 26, 26, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOAL_KICK), false, 40, 0, 32),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.05, GOAL_KICK), false, 32, 32, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, GOAL_KICK), false, 9, 9, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, CORNER_KICK), true, 42, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.03, CORNER_KICK), true, 41, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.02, CORNER_KICK), true, 31, 0, 0),
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.04, THROW_IN), false, 25, 0, 0)
                 }));
         L_CLF19.addRow(GOALKEEPER_POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {
@@ -472,7 +472,7 @@ public class MatchFlowMatrixRepository {
                 }));
         L_CLF19.addRow(PENALTY,
                 new MatchSequence(new MatchPhaseTransition[] {
-                        new MatchPhaseTransition(GOAL, false, 91, 91, 0)
+                        new MatchPhaseTransition(new GoalAttemptOutcome(0.79, ATTACK), true, 91, 91, 0)
                 }));
         L_CLF19.addRow(POSSESSION,
                 new MatchSequence(new MatchPhaseTransition[] {

@@ -369,7 +369,7 @@
 82:16 :phase attacking_possession T
 82:35 :phase attack T
 84:05 :set T: Freekick
-84:05 :goal_attempt
+84:05 :goal_attempt T
 84:37 :set T: Corner
 :break(!*O)
 85:20 :long_ball T
