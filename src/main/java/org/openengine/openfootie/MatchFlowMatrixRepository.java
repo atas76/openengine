@@ -345,7 +345,7 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(CLEARANCE, false, 5, 0, 0),
                         new MatchPhaseTransition(CORNER_KICK, true, 30, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 6, 0, 0),
-                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 5, 0, 0),
+                        new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
                         new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
                         new MatchPhaseTransition(GOAL_ATTEMPT, true, 2, 0, 0),
                         new MatchPhaseTransition(GOAL_KICK, false, 29, 0, 0),

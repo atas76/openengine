@@ -1,0 +1,41 @@
+L
+    Attack
+        Corner, true, 40, 0, 0
+        Corner, true, 34, 0, 0
+        FreeKick, true, 18, 0, 0
+        GoalAttempt, true, 2, 0, 0
+        GoalAttempt, true, 10, 0, 0
+        GoalAttempt, true, 7, 0, 0
+        GoalAttempt, true, 12, 0, 0
+        GoalAttempt, true, 1, 0, 0
+        GoalkeeperPossession, false, 8, 8, 0
+        GoalKick, false, 17, 0, 0
+        Penalty, true, 87, 0, 0
+        ThrowIn, true, 32, 0, 0
+        ThrowIn, false, 57, 57, 0
+    AttackingPossession
+        Attack, true, 4, 0, 0
+        ThrowIn, true, 26, 0, 0
+    AttackingTransition
+        :GoalkeeperPossession = 1
+            ThrowIn, true, 20, 0, 0
+        :ThrowIn = 2
+            Attack, true, 6, 0, 0
+            GoalAttempt, true, 2, 0, 0
+        :Transition = 3
+            AttackingPossession, true, 7, 0, 0
+            GoalAttempt, true, 2, 0, 0
+            Corner, true, 30, 0, 0
+        !Buildup = 1
+            Transition, false, 8, 0, 0
+        !Contest = 1
+            GoalAttempt, true, 2, 0, 0
+        !DefensiveTransition = 1
+            Attack, true, 3, 0, 0
+        !Pressure = 4
+            Clearance, false, 5, 0, 0
+            GoalKick, false, 29, 0, 0
+            ThrowIn, false, 32, 0, 0
+            Transition, false, 2, 0, 0
+        !ThrowIn = 1
+            DefensiveTransition, false, 6, 0, 0

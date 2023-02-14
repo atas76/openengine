@@ -21,9 +21,9 @@ L
         Attack, true, 6, 0, 0
         AttackingPossession, true, 7, 0, 0
         Clearance, false, 5, 0, 0
-        Corner, 30, 0, 0
+        Corner, true, 30, 0, 0
         DefensiveTransition, false, 6, 0, 0
-        GoalAttempt, true, 5, 0, 0
+        GoalAttempt, true, 2, 0, 0
         GoalAttempt, true, 2, 0, 0
         GoalAttempt, true, 2, 0, 0
         GoalKick, false, 29, 0, 0
