@@ -1,0 +1,9 @@
+tactics T:
+D: R, C2, L
+M: C2
+AM: R, C, L
+F: C
+tactics L:
+D: R, C2, L
+M: RC, C, LC
+F: RC, C, LC
