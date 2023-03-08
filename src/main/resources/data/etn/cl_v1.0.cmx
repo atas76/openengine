@@ -16,26 +16,60 @@ L
     AttackingPossession
         Attack, true, 4, 0, 0
         ThrowIn, true, 26, 0, 0
-    AttackingTransition
-        :GoalkeeperPossession = 1
-            ThrowIn, true, 20, 0, 0
-        :ThrowIn = 2
-            Attack, true, 6, 0, 0
-            GoalAttempt, true, 2, 0, 0
-        :Transition = 3
-            AttackingPossession, true, 7, 0, 0
-            GoalAttempt, true, 2, 0, 0
-            Corner, true, 30, 0, 0
-        !Buildup = 1
-            Transition, false, 8, 0, 0
-        !Contest = 1
-            GoalAttempt, true, 2, 0, 0
-        !DefensiveTransition = 1
-            Attack, true, 3, 0, 0
-        !Pressure = 4
-            Clearance, false, 5, 0, 0
-            GoalKick, false, 29, 0, 0
-            ThrowIn, false, 32, 0, 0
-            Transition, false, 2, 0, 0
-        !ThrowIn = 1
-            DefensiveTransition, false, 6, 0, 0
+    Buildup
+        AttackingPossession, false, 13, 0, 0; entropy = 1
+        CornerKick, true, 77, 0, 31
+        GoalKick, false, 34, 34, 0
+        LongBall, true, 3, 0, 0
+        Possession, true, 4, 0, 0
+        Pressure, true, 18, 0, 0
+        Pressure, true, 3, 0, 0
+        Pressure, true, 4, 0, 0
+        ThrowIn, true, 43, 0, 0
+        ThrowIn, false, 31, 31, 0
+    Clearance
+        ThrowIn, false, 10, 0, 0
+    CornerKick
+        Attack, true, 5, 0, 0
+        Attack, true, 6, 0, 0
+        FreeKick, false, 60, 0, 0
+        GoalAttempt, true, 4, 0, 0
+        GoalkeeperPossession, true, 11, 0, 0
+        ThrowIn, true, 36, 0, 0
+        ThrowIn, true, 20, 0, 0
+        ThrowIn, true, 16, 0, 0
+    FastBreak
+        CornerKick, true, 8, 0, 0
+        ThrowIn, true, 30, 0, 0
+        GoalAttempt, false, 26, 0, 0; entropy = 2
+    FreeKick
+        GoalKick, false, 19, 0, 0
+        Possession, true, 2, 0, 0
+        ThrowIn, false, 47, 0, 35
+    GoalAttempt
+        Attack, true, 1, 0, 0; xG = 0.03
+        Attack, true, 5, 0, 0; xG = 0.11
+        GoalkeeperPossession, false, 84, 84, 0; xG = 0.04
+        GoalkeeperPossession, false, 2, 0, 0; xG = 0.03
+        GoalKick, false, 26, 26, 0; xG = 0.02
+        GoalKick, false, 40, 0, 32; xG = 0.03
+        GoalKick, false, 32, 32, 0; xG = 0.05
+        GoalKick, false, 9, 9, 0; xG = 0.03
+        CornerKick, true, 42, 0, 0; xG = 0.03
+        CornerKick, true, 41, 0, 0; xG = 0.03
+        CornerKick, true, 31, 0, 0; xG = 0.02
+        ThrowIn, false, 25, 0, 0; xG = 0.04
+    GoalkeeperPossession
+        ThrowIn, true, 32, 0, 0; entropy = 1
+        Buildup, true, 14, 0, 0
+        Buildup, true, 6, 0, 0
+        Buildup, true, 8, 0, 0
+        Buildup, true, 6, 6, 0
+        Buildup, true, 3, 0, 0
+        FastBreak, true, 3, 0, 0
+        FastBreak, true, 13, 13, 0
+        FastBreak, true, 13, 0, 0
+        LongBall, true, 14, 0, 0
+        LongBall, true, 15, 0, 0
+        LongBall, true, 15, 0, 0
+        LongBall, true, 20, 0, 0
