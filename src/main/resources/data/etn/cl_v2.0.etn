@@ -34,60 +34,57 @@
 09:34 :phase buildup L, position: Gkr
 10:40 :set L: Corner
 10:51 :phase goalkeeper_possession L
-# !!!
-11:05 :phase buildup L
-11:08 :long_ball L
-11:34 :set T: ThrowIn
-11:39 :phase contest L
-12:11 :set T: Freekick
-12:12 :phase attack T
+11:05 :phase buildup L, position: Dd
+11:08 :long_ball L, position: Dd
+11:34 :set T: ThrowIn, position: DM
+12:11 :set T: Freekick, position: AMw
+12:12 :phase attack T, position: AMw
 :break(*T)
-12:33 :phase buildup T
-12:51 :phase pressure T
-13:07 :phase possession T
-13:23 :phase attack T
-13:45 :set T: ThrowIn
-13:46 :phase attacking_possession T
+12:33 :phase buildup T, position: Gkr
+12:53 :phase pressure T, position: Gkr
+13:07 :phase possession T, position: Mw
+13:23 :phase attack T, position: Awp
+13:45 :set T: ThrowIn, position: A
+13:46 :phase attacking_possession T, position: AMw
 :break(!*T)
-14:32 :phase attacking_transition T
-14:35 :phase possession T
-15:05 :phase contest L
-15:06 :phase possession T
+14:32 :phase attacking_transition T, position: Md
+14:35 :phase possession T, position: Md
+15:05 :phase contest L, position: MDd
+15:06 :phase possession T, position: MDd
 15:42 :set L: GoalKick
-15:43 :phase buildup L
-15:47 :phase pressure L
-15:56 :phase buildup L
-16:39 :set L: ThrowIn
-16:42 :phase contest T
-16:45 :phase attacking_transition L
-16:47 :goal_attempt L
+15:43 :phase buildup L, position: Dwp
+15:47 :phase pressure L, position: Gkr
+15:56 :phase buildup L, position: DMw
+16:39 :set L: ThrowIn, position: AMw
+16:42 :phase contest T, position: DMd
+16:45 :phase attacking_transition L, position: AMd
+16:47 :goal_attempt L, position: Ad
 :break(!GK)
-17:13 :phase contest L
+17:13 :phase contest L, position: Mw
 :interruption
-18:07 :phase buildup L
-18:19 :phase attacking_transition T
-18:20 :phase attacking_possession T
-18:22 :phase transition L
-18:27 :phase possession L
+18:07 :phase buildup L, position: Gkr
+18:18 :phase attacking_transition T, position: AMd
+18:22 :phase transition L, position: DM
+18:27 :phase possession L, position: MD
 18:53 :set T: GoalKick
-18:54 :phase buildup T
-18:58 :phase pressure T
-19:08 :phase counter_attack T
-19:13 :phase defensive_transition L
-19:17 :phase attacking_possession T
-19:31 :phase attack T
-19:40 :set T: ThrowIn
-19:41 :phase attack T
+18:54 :phase buildup T, position: Dwp
+18:58 :phase pressure T, position: Dwp
+19:08 :phase counter_attack T, position: AM
+19:13 :phase defensive_transition L, position: DM
+19:17 :phase attacking_possession T, position: M
+19:31 :phase attack T, position: A
+19:40 :set T: ThrowIn, position: A
+19:41 :phase attack T, position: Aw
 19:45 :phase goalkeeper_possession L
-19:51 :phase buildup L
-20:05 :phase possession L
-20:12 :phase pressure L
-20:22 :phase counter_attack L
-20:29 :goal_attempt L
+19:51 :phase buildup L, position: Dd
+20:05 :phase possession L, position: MDw
+20:29 :phase attack L, position: A
+20:29 :goal_attempt L, position: A
 21:11 :set L: Corner
-21:47 :set L: ThrowIn
-21:50 :phase attack L
-21:52 :goal_attempt L
+21:47 :set L: ThrowIn, position: A
+21:50 :phase attack L, position: Awp
+21:52 :goal_attempt L, position: Apw
+# !!!
 22:17 :set T: ThrowIn
 22:20 :phase attacking_transition L
 22:26 :phase defensive_transition T
