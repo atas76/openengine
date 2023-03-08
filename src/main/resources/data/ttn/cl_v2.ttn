@@ -87,7 +87,7 @@
 11:04 Gkr->HandPass => D CR @ Dd
 11:08 Dd->Long => !D*T
 :set T: ThrowIn
-11:34 D => F C @ Mw:Pvt >> AM R @ Mw:Cnt
+11:34 DM => F C @ Mw:Pvt >> AM R @ Mw:Cnt
 11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ AMw
 11:40 AMw->Dribble => Mw*F
 :set T: Freekick
