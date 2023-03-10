@@ -84,60 +84,60 @@
 21:47 :set L: ThrowIn, position: A
 21:50 :phase attack L, position: Awp
 21:52 :goal_attempt L, position: Apw
-# !!!
-22:17 :set T: ThrowIn
-22:20 :phase attacking_transition L
-22:26 :phase defensive_transition T
-22:28 :phase attacking_transition L
-22:31 :phase attack L
-23:03 :set L: ThrowIn
-23:10 :phase attack L
+22:17 :set T: ThrowIn, position: D
+22:20 :phase attacking_transition L, position: Awp
+22:25 :phase defensive_transition T, position: Dw
+22:28 :phase attacking_transition L, position: AMw
+22:31 :phase attack L, position: Aw
+23:03 :set L: ThrowIn, position: A
+23:10 :phase attack L, position: Aw
 23:50 :set L: Corner
-24:50 :set T: Freekick
-24:54 :phase possession T
-25:00 :phase pressure T
-25:10 :phase buildup T
-25:32 :long_ball T
-25:58 :set L: ThrowIn
-26:08 :phase transition T
-26:24 :phase transition L
+24:50 :set T: Freekick, position: DMw
+24:53 :phase possession T, position: D
+25:00 :phase pressure T, position: Gkr
+25:10 :phase buildup T, position: Dd
+25:31 :long_ball T, position: Gkr
+25:58 :set L: ThrowIn, position: MD
+26:08 :phase transition T, position: MDd
+26:24 :phase transition L, position: MDd
 :break(!GK)
-26:45 :phase pressure T
+26:45 :phase pressure T, position: Dp
 :break(*T)
-27:29 :phase buildup T
+27:29 :phase buildup T, position: Dd
 :break(!*O)
-29:01 :set L: Freekick
+29:01 :set L: Freekick, position: AM
 29:20 :set T: GoalKick
-29:21 :phase buildup T
-29:23 :phase pressure T
+29:21 :phase buildup T, position: D
+29:25 :phase pressure T, position: Dpw
 :break(*F)
-29:47 :phase possession T
-30:02 :phase pressure T
-30:10 :phase pressure L
-30:22 :set T: ThrowIn
-30:31 :set T: ThrowIn
-30:34 :phase buildup T
-30:47 :phase pressure T
-30:58 :phase attacking_transition L
-31:03 :phase clearance T
-31:07 :phase contest L
+29:47 :phase possession T, position: DM
+30:02 :long_ball T, position: Gkr
+30:10 :phase defensive_transition L, position: D
+30:22 :set T: ThrowIn, position: AM
+30:31 :set T: ThrowIn, position: DM
+30:34 :phase buildup T, position: Gkr
+30:47 :phase pressure T, position: Gkr
+30:58 :phase attacking_transition L, position: Mw
+31:03 :phase clearance T, position: Dpw
+31:07 :phase contest L, position: AMd
 :break(!*O)
-31:23 :phase possession T
-32:19 :set L: ThrowIn
-32:25 :phase attacking_transition T
-32:34 :phase attacking_possession T
-32:42 :phase attack T
-33:22 :set L: ThrowIn
-33:28 :phase attacking_transition T
+31:23 :phase possession T, position: MDw
+32:19 :set L: ThrowIn, position: DM
+32:25 :phase attacking_transition T, position: AM
+32:34 :phase attacking_possession T, position: M
+32:42 :phase attack T, position: Aw
+33:22 :set L: ThrowIn, position: D
+33:28 :phase attacking_transition T, position: Aw
 33:42 :set T: Corner
-33:43 :phase attack T
-34:11 :set T: ThrowIn
-34:26 :set T: ThrowIn
-34:30 :phase contest L
-34:33 :phase attacking_transition T
-34:40 :phase possession T
-34:55 :phase pressure T
-35:13 :phase attacking_transition L
+33:43 :phase attack T, position: Awp
+34:11 :set T: ThrowIn, position: A
+34:26 :set T: ThrowIn, position: Ap
+34:30 :phase contest L, position: Dwp
+34:33 :phase attacking_transition T, position: Aw
+34:40 :phase possession T, position: DM
+34:55 :phase pressure T, position: Gkr
+35:15 :phase attacking_transition L, position: Awp
+# !!!
 35:42 :set T: GoalKick
 35:43 :phase buildup T
 36:00 :phase goalkeeper_possession L
