@@ -73,3 +73,38 @@ L
         LongBall, true, 15, 0, 0
         LongBall, true, 15, 0, 0
         LongBall, true, 20, 0, 0
+    GoalKick
+        Buildup, true, 1, 0, 0
+        Buildup, true, 1, 0, 0
+        LongBall, true, 0, 0, 0
+        ThrowIn, false, 0, 0, 0
+    IndirectFreeKick
+        Possession, true, 2, 0, 0
+        ThrowIn, false, 47, 0, 35
+    LongBall
+        AttackingPossession, false, 25, 0, 0; entropy = 1
+        GoalkeeperPossession, false, 5, 0, 0
+        Possession, false, 5, 0, 0
+        ThrowIn, false, 26, 0, 0
+        ThrowIn, false, 11, 0, 0
+        ThrowIn, false, 11, 0, 0
+    Penalty
+        GoalAttempt, true, 91, 91, 0; xG = 0.79
+    Possession
+        Attack, true, 18, 0, 0
+        AttackingPossession, true, 5, 0, 0
+        FreeKick, false, 28, 0, 0; entropy = 1
+        CornerKick, true, 66, 0, 0
+        GoalkeeperPossession, false, 7, 0, 0
+        GoalKick, false, 26, 0, 0
+        GoalKick, false, 40, 40, 0
+        Pressure, true, 7, 0, 0
+    Pressure
+        Buildup, true, 9, 0, 0
+        Buildup, true, 9, 0, 0
+        Possession, false, 16, 0, 0; entropy = 1
+        GoalAttempt, true, 12, 0, 0; entropy = 1, xG = 0.03
+        GoalkeeperPossession, false, 16, 0, 0
+        ThrowIn, false, 12, 0, 0
+        ThrowIn, false, 14, 14, 0
+        
