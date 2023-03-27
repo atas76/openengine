@@ -131,4 +131,31 @@ L
         ThrowIn, true, 39, 0, 0
         ThrowIn, true, 9, 0, 0
         ThrowIn, true, 14, 0, 0
-    
+T
+    Attack
+        AttackingPossession, true, 17, 0, 0
+        AttackingPossession, true, 15, 0, 0
+        AttackingPossession, true, 15, 0, 0
+        CornerKick, true, 41, 0, 0
+        Attack, false, 23, 0, 0; entropy = 1
+        FreeKick, false, 58, 58, 0
+        FreeKick, true, 90, 0, 0
+        GoalAttempt, true, 14, 0, 0; xG = 0.03
+        GoalAttempt, true, 2, 0, 0; xG = 0.04
+        GoalAttempt, true, 1, 0, 0; xG = 0.12
+        GoalAttempt, true, 1, 0, 0; xG = 0.08
+        GoalAttempt, true, 2, 0, 0; xG = 0.03
+        GoalAttempt, true, 3, 0, 0; xG = 0.04
+        GoalAttempt, true, 2, 0, 0; xG = 0.04
+        GoalAttempt, true, 4, 0, 0; xG = 0.03
+        GoalkeeperPossession, false, 4, 0, 0
+        GoalkeeperPossession, false, 11, 0, 0
+        GoalKick, false, 31, 0, 0
+        GoalKick, false, 89, 17, 72
+        ThrowIn, false, 40, 0, 0
+        ThrowIn, false, 26, 0, 0
+        ThrowIn, true, 22, 0, 0
+        ThrowIn, true, 21, 21, 0
+        ThrowIn, true, 9, 0, 0
+        ThrowIn, true, 28, 0, 0
+        ThrowIn, true, 55, 41, 14
