@@ -107,4 +107,28 @@ L
         GoalkeeperPossession, false, 16, 0, 0
         ThrowIn, false, 12, 0, 0
         ThrowIn, false, 14, 14, 0
-        
+    ThrowIn
+        Attack, true, 3, 0, 0
+        Attack, true, 7, 0, 0
+        Attack, true, 1, 0, 0
+        Attack, true, 2, 0, 0
+        Attack, true, 1, 0, 0
+        Attack, true, 22, 0, 0; entropy = 1
+        GoalAttempt, true, 18, 0, 0; entropy = 1, xG = 0.05
+        AttackingPossession, false, 15, 0, 0; entropy = 1
+        CornerKick, false, 20, 0, 0; entropy = 1
+        ThrowIn, true, 24, 0, 0; entropy = 1
+        GoalkeeperPossession, false, 32, 0, 0; entropy = 2
+        AttackingPossession, false, 17, 0, 0; entropy = 2
+        GoalAttempt, true, 8, 0, 0; entropy = 2, xG = 0.02
+        AttackingPossession, false, 24, 0, 0; entropy = 1
+        Possession, true, 4, 0, 0
+        GoalKick, false, 47, 14, 0; entropy = 2
+        Possession, false, 14, 0, 0; entropy = 1
+        ThrowIn, true, 10, 0, 0
+        ThrowIn, true, 12, 0, 0
+        ThrowIn, true, 21, 0, 0
+        ThrowIn, true, 39, 0, 0
+        ThrowIn, true, 9, 0, 0
+        ThrowIn, true, 14, 0, 0
+    
