@@ -510,7 +510,6 @@ public class MatchFlowMatrixRepository {
                         new MatchPhaseTransition(CONTESTED_BALL, false, 18, 0, 0),
                         new MatchPhaseTransition(CONTESTED_BALL, false, 3, 0, 0),
                         new MatchPhaseTransition(CONTESTED_BALL, false, 3, 0, 0),
-                        new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 7, 0, 0),
                         new MatchPhaseTransition(DEFENSIVE_TRANSITION, false, 4, 0, 0),
                         new MatchPhaseTransition(POSSESSION, true, 4, 0, 0),
                         new MatchPhaseTransition(TRANSITION, false, 10, 0, 0),
