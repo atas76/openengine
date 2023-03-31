@@ -159,3 +159,52 @@ T
         ThrowIn, true, 9, 0, 0
         ThrowIn, true, 28, 0, 0
         ThrowIn, true, 55, 41, 14
+    AttackingPossession
+        Attack, true, 20, 0, 0
+        Attack, true, 14, 0, 0
+        Attack, true, 8, 0, 0
+        Attack, true, 2, 0, 0
+        Attack, true, 3, 0, 0
+        Attack, true, 24, 0, 0
+        Attack, true, 18, 0, 0
+        Attack, true, 19, 0, 0
+        Attack, true, 5, 0, 0
+        Buildup, true, 10, 0, 0
+        CornerKick, true, 31, 0, 0
+        GoalAttempt, true, 17, 0, 0
+        Possession, true, 5, 0, 0
+        Possession, true, 16, 0, 0
+        ThrowIn, false, 46, 46, 0
+        ThrowIn, false, 23, 0, 0
+        ThrowIn, true, 19, 0, 0
+        ThrowIn, true, 10, 0, 0
+    Buildup
+        GoalAttempt, true, 12, 0, 0; entropy = 1, xG = 0.05
+        AttackingPossession, true, 38, 0, 0; entropy = 2
+        Possession, true, 13, 0, 0; entropy = 1
+        GoalkeeperPossession, false, 17, 0, 0
+        LongBall, true, 22, 0, 0
+        LongBall, true, 7, 0, 0
+        LongBall, true, 4, 0, 0
+        LongBall, true, 2, 0, 0
+        LongBall, true, 3, 0, 0
+        Possession, true, 10, 0, 0
+        Pressure, true, 18, 0, 0
+        Pressure, true, 13, 0, 0
+        Pressure, true, 6, 0, 0
+        Pressure, true, 4, 0, 0
+        Pressure, true, 2, 0, 0
+        GoalAttempt, false, 30, 0, 0; entropy = 2, xG = 0.11
+        GoalkeeperPossession, true, 17, 0, 0; entropy = 1
+    Clearance
+        Possession, true, 20, 16, 0; entropy = 1
+        CornerKick, true, 20, 0, 0; entropy = 2
+    CornerKick
+        Attack, true, 1, 0, 0
+        Attack, true, 1, 0, 0
+        Attack, true, 5, 0, 0
+        Attack, true, 7, 0, 0
+        GoalAttempt, true, 4, 0, 0; xG = 0.03
+        GoalAttempt, true, 2, 0, 0; xG = 0.03
+        Offside, false, 43, 43, 0
+        Possession, true, 12, 0, 0
