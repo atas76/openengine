@@ -308,7 +308,7 @@
 72:00 :phase pressure T
 72:20 :phase goalkeeper_possession T
 72:23 :phase buildup T
-72:33 :phase attacking_transition
+72:33 :phase attacking_transition T
 72:35 :goal_attempt T
 72:37 :phase goalkeeper_possession L
 :fair_play
