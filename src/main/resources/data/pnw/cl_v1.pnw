@@ -10,7 +10,9 @@ tactics:
         F: RC, C, LC
 #
 :set L: Kickoff
-00:00 KO => D CR >>> M LC
+00:00 KO => D CR
+:phase possession L
+00:02 D CR->Long => !D R >>> M LC
 00:14 M LC->Pass:FT => M RC
 00:15 M RC->Pass:High:Open => F LC
 00:21 F LC->Cross => !M CR:H
@@ -36,8 +38,8 @@ tactics:
 04:17 D L->Pass => AM L
 :phase possession T
 04:21 AM L->Pass:Back => D CL
-04:23 D CL->Pass => D CR >>> AM R
-04:34 AM R->Pass => AM L >> C
+04:27 D CR->Long => AM R
+04:34 AM R->Pass => AM L:Ch >> C
 :set T: Corner
 05:15 CK->Cross => !D CL:HD >> M CR
 05:22 M CR->Pass:Back => Gkd
