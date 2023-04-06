@@ -1,0 +1,38 @@
+team L
+
+Attack {
+    Aw {
+        ThrowIn, true, 32, 0, 0; position = A
+        Corner, true, 40, 0, 0
+        GoalAttempt, true, 10, 0, 0; position = A
+        }
+    Ad {
+        ThrowIn, false, 57, 57, 0; position = AM
+       }
+    A {
+        GoalAttempt, true, 0, 0, 0; position = A
+        GoalAttempt, true, 12, 0, 0; position = Ad
+        Corner, true, 34, 0, 0
+        GoalkeeperPossession, false, 18, 8, 0
+        }
+    Awp {
+        GoalAttempt, true, 2, 0, 0; position = Apw
+        GoalAttempt, true, 7, 0, 0; position = A
+        GoalKick, false, 17, 0, 0
+        }
+    Apw {
+        FreeKick, true, 18, 0, 0; position = Md
+        }
+    Apd {
+        Penalty, true, 87, 0, 0
+        GoalAttempt, true, 1, 0, 0; position = Apd
+        }
+}
+AttackingPossession {
+    AM {
+        Attack, true, 4, 0, 0; position = Ad
+        }
+    Aw {
+        ThrowIn, true, 26, 0, 0; position = A
+        }
+}

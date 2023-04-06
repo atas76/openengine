@@ -1,21 +1,22 @@
 L
     Attack
-        Corner, true, 40, 0, 0
-        Corner, true, 34, 0, 0
-        FreeKick, true, 18, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 10, 0, 0
-        GoalAttempt, true, 7, 0, 0
-        GoalAttempt, true, 12, 0, 0
-        GoalAttempt, true, 1, 0, 0
-        GoalkeeperPossession, false, 8, 8, 0
-        GoalKick, false, 17, 0, 0
-        Penalty, true, 87, 0, 0
-        ThrowIn, true, 32, 0, 0
-        ThrowIn, false, 57, 57, 0
+        Corner, true, 40, 0, 0                  ##
+        Corner, true, 34, 0, 0                  ##
+        FreeKick, true, 18, 0, 0                ##
+        GoalAttempt, true, 0, 0, 0              ##
+        GoalAttempt, true, 2, 0, 0              ##
+        GoalAttempt, true, 10, 0, 0             ##
+        GoalAttempt, true, 7, 0, 0              ##
+        GoalAttempt, true, 12, 0, 0             ##
+        GoalAttempt, true, 1, 0, 0              ##
+        GoalkeeperPossession, false, 18, 8, 0   ##
+        GoalKick, false, 17, 0, 0               ##
+        Penalty, true, 87, 0, 0                 ##
+        ThrowIn, true, 32, 0, 0                 ##
+        ThrowIn, false, 57, 57, 0               ##
     AttackingPossession
-        Attack, true, 4, 0, 0
-        ThrowIn, true, 26, 0, 0
+        Attack, true, 4, 0, 0                   ##
+        ThrowIn, true, 26, 0, 0                 ##
     AttackingTransition
         Attack, true, 3, 0, 0
         Attack, true, 6, 0, 0
