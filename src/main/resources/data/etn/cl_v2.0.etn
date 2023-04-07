@@ -55,7 +55,7 @@
 15:43 :phase buildup L, position: Dwp
 15:47 :phase pressure L, position: Gkr
 15:56 :phase buildup L, position: DMw
-16:39 :set L: ThrowIn, position: AMw
+16:39 :set L: ThrowIn, position: AM
 16:42 :phase contest T, position: DMd
 16:45 :phase attacking_transition L, position: AMd
 16:47 :goal_attempt L, position: Ad
