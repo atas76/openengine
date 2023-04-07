@@ -18,20 +18,19 @@ L
         Attack, true, 4, 0, 0                   ##
         ThrowIn, true, 26, 0, 0                 ##
     AttackingTransition
-        Attack, true, 3, 0, 0
-        Attack, true, 6, 0, 0
-        AttackingPossession, true, 7, 0, 0
-        Clearance, false, 5, 0, 0
-        Corner, true, 30, 0, 0
-        DefensiveTransition, false, 6, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalKick, false, 29, 0, 0
-        ThrowIn, false, 32, 0, 0
-        ThrowIn, true, 20, 0, 0
-        Transition, false, 8, 0, 0
-        Transition, false, 2, 0, 0
+        Attack, true, 3, 0, 0                   #
+        Attack, true, 6, 0, 0                   #
+        AttackingPossession, true, 7, 0, 0      #
+        Clearance, false, 5, 0, 0               #
+        DefensiveTransition, false, 6, 0, 0     #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalKick, false, 29, 0, 0               #
+        ThrowIn, false, 33, 0, 0                #
+        ThrowIn, true, 20, 0, 0                 #
+        Transition, false, 8, 0, 0              #
+        Transition, false, 2, 0, 0              #
     Buildup
         AttackingTransition, false, 12, 0, 0
         Corner, true, 77, 0, 31
