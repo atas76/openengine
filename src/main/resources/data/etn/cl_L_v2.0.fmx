@@ -65,3 +65,26 @@ AttackingTransition {
         GoalAttempt, true, 2, 0, 0; position = Ap
     }
 }
+Buildup {
+    Gkr {
+        Corner, true, 46, 0, 0
+        AttackingTransition, false, 11, 0, 0; position = AMd
+    }
+    Dpw {
+        Pressure, true, 3, 0, 0; position = Gkr
+    }
+    Dwp {
+        Pressure, true, 4, 0, 0; position = Gkr
+    }
+    Dw {
+        Corner, true, 77, 0, 31
+    }
+    Dd {
+        LongBall, true, 3, 0, 0; position = Dd
+        Possession, true, 14, 0, 0; position = MDw
+        Pressure, true, 24, 0, 0; position = Gkr
+    }
+    DMw {
+        ThrowIn, true, 43, 0, 0; position = AMw
+    }
+}
