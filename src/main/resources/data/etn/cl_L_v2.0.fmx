@@ -36,3 +36,32 @@ AttackingPossession {
         ThrowIn, true, 26, 0, 0; position = A
         }
 }
+AttackingTransition {
+    MDd {
+        Transition, false, 8, 0, 0; position = DMd
+    }
+    Mw {
+        Clearance, false, 5, 0, 0; position = Dpw
+    }
+    AMw {
+        Attack, true, 3, 0, 0; position = Aw
+        Transition, false, 2, 0, 0; position = MDdclea
+    }
+    AMd {
+        GoalAttempt, true, 2, 0, 0; position = Ad
+    }
+    A {
+        GoalAttempt, true, 2, 0, 0; position = Ap
+    }
+    Awp {
+        DefensiveTransition, false, 6, 0, 0; position = Dw
+        GoalKick, false, 29, 0, 0
+        ThrowIn, false, 33, 0, 0; position = D
+        AttackingPossession, true, 7, 0, 0; position = Aw
+        Attack, true, 6, 0, 0; position = Awp
+        ThrowIn, true, 20, 0, 0; position = AM
+    }
+    Apd {
+        GoalAttempt, true, 2, 0, 0; position = Ap
+    }
+}
