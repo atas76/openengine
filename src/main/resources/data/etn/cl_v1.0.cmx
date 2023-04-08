@@ -3,12 +3,12 @@ L
         Corner, true, 40, 0, 0
         Corner, true, 34, 0, 0
         FreeKick, true, 18, 0, 0
-        GoalAttempt, true, 0, 0, 0; minute = 21, xG = 0.03
-        GoalAttempt, true, 2, 0, 0; minute = 22, xG = 0.04
-        GoalAttempt, true, 10, 0, 0; minute = 42, id = 1, xG = 0.03
-        GoalAttempt, true, 7, 0, 0; minute = 53, xG = 0.03
-        GoalAttempt, true, 12, 0, 0; minute = 83, xG = 0.03
-        GoalAttempt, true, 1, 0, 0; minute = 87, xG = 0.04
+        GoalAttempt, true, 0, 0, 0; minute = 21
+        GoalAttempt, true, 2, 0, 0; minute = 22
+        GoalAttempt, true, 10, 0, 0; minute = 42, id = 1
+        GoalAttempt, true, 7, 0, 0; minute = 53
+        GoalAttempt, true, 12, 0, 0; minute = 83
+        GoalAttempt, true, 1, 0, 0; minute = 87
         GoalkeeperPossession, false, 8, 8, 0
         GoalKick, false, 17, 0, 0
         Penalty, true, 87, 0, 0
@@ -34,7 +34,7 @@ L
         Attack, true, 5, 0, 0
         Attack, true, 6, 0, 0
         FreeKick, false, 60, 0, 0
-        GoalAttempt, true, 4, 0, 0; minute = 39, xG = 0.03
+        GoalAttempt, true, 4, 0, 0; minute = 39
         GoalkeeperPossession, true, 11, 0, 0
         ThrowIn, true, 36, 0, 0
         ThrowIn, true, 20, 0, 0
@@ -42,24 +42,25 @@ L
     FastBreak
         CornerKick, true, 8, 0, 0
         ThrowIn, true, 30, 0, 0
-        GoalAttempt, false, 26, 0, 0; minute = 81, xG = 0.05, entropy = 2
+        GoalAttempt, false, 26, 0, 0; minute = 81, entropy = 2
     FreeKick
         GoalKick, false, 19, 0, 0
         Possession, true, 2, 0, 0
         ThrowIn, false, 47, 0, 35
     GoalAttempt
-        Attack, true, 1, 0, 0; minute = 42, id = 1
-        Attack, true, 5, 0, 0; minute = 54
-        Goal, false, 88, 88, 0; minute = 87
-        GoalkeeperPossession, false, 2, 0, 0; minute = 53
-        GoalKick, false, 26, 26, 0; minute = 17
-        GoalKick, false, 40, 0, 32; minute = 39
-        GoalKick, false, 31, 31, 0; minute = 69
-        GoalKick, false, 9, 9, 0; minute = 83
-        CornerKick, true, 42, 0, 0; minute = 21
-        CornerKick, true, 41, 0, 0; minute = 38
-        CornerKick, true, 31, 0, 0; minute = 42, id = 2
-        ThrowIn, false, 25, 0, 0; minute = 22
+        Attack, true, 1, 0, 0; minute = 42, id = 1, xG = 0.03
+        Attack, true, 5, 0, 0; minute = 54, xG = 0.11
+        Goal, false, 91, 91, 0; minute = 2, xG = 0.79
+        Goal, false, 88, 88, 0; minute = 87, xG = 0.04
+        GoalkeeperPossession, false, 2, 0, 0; minute = 53, xG = 0.03
+        GoalKick, false, 26, 26, 0; minute = 17, xG = 0.02
+        GoalKick, false, 40, 0, 32; minute = 39, xG = 0.03
+        GoalKick, false, 31, 31, 0; minute = 69, xG = 0.05
+        GoalKick, false, 9, 9, 0; minute = 83, xG = 0.03
+        CornerKick, true, 42, 0, 0; minute = 21, xG = 0.03
+        CornerKick, true, 41, 0, 0; minute = 38, xG = 0.03
+        CornerKick, true, 31, 0, 0; minute = 42, id = 2, xG = 0.02
+        ThrowIn, false, 25, 0, 0; minute = 22, xG = 0.04
     GoalkeeperPossession
         ThrowIn, true, 32, 0, 0; entropy = 1
         Buildup, true, 14, 0, 0
@@ -90,7 +91,7 @@ L
         ThrowIn, false, 11, 0, 0
         ThrowIn, false, 11, 0, 0
     Penalty
-        GoalAttempt, true, 91, 91, 0; minute = 2, xG = 0.79
+        GoalAttempt, true, 91, 91, 0; minute = 2
     Possession
         Attack, true, 18, 0, 0
         AttackingPossession, true, 5, 0, 0
@@ -104,7 +105,7 @@ L
         Buildup, true, 9, 0, 0
         Buildup, true, 9, 0, 0
         Possession, false, 16, 0, 0; entropy = 1
-        GoalAttempt, true, 12, 0, 0; minute = 38, entropy = 1, xG = 0.03
+        GoalAttempt, true, 12, 0, 0; minute = 38, entropy = 1
         GoalkeeperPossession, false, 16, 0, 0
         ThrowIn, false, 12, 0, 0
         ThrowIn, false, 14, 14, 0
@@ -115,13 +116,13 @@ L
         Attack, true, 2, 0, 0
         Attack, true, 1, 0, 0
         Attack, true, 22, 0, 0; entropy = 1
-        GoalAttempt, true, 18, 0, 0; minute = 69, entropy = 1, xG = 0.05
+        GoalAttempt, true, 18, 0, 0; minute = 69, entropy = 1
         AttackingPossession, false, 15, 0, 0; entropy = 1
         CornerKick, false, 20, 0, 0; entropy = 1
         ThrowIn, true, 24, 0, 0; entropy = 1
         GoalkeeperPossession, false, 32, 0, 0; entropy = 2
         AttackingPossession, false, 17, 0, 0; entropy = 2
-        GoalAttempt, true, 8, 0, 0; minute = 17, entropy = 2, xG = 0.02
+        GoalAttempt, true, 8, 0, 0; minute = 17, entropy = 2
         AttackingPossession, false, 24, 0, 0; entropy = 1
         Possession, true, 4, 0, 0
         GoalKick, false, 47, 14, 0; entropy = 2
@@ -141,14 +142,14 @@ T
         Attack, false, 23, 0, 0; entropy = 1
         FreeKick, false, 58, 58, 0
         FreeKick, true, 90, 0, 0
-        GoalAttempt, true, 14, 0, 0; xG = 0.03, minute = 10
-        GoalAttempt, true, 2, 0, 0; xG = 0.04, minute = 46
-        GoalAttempt, true, 1, 0, 0; xG = 0.12, minute = 54
-        GoalAttempt, true, 1, 0, 0; xG = 0.08, minute = 79
-        GoalAttempt, true, 2, 0, 0; xG = 0.03, minute = 80
-        GoalAttempt, true, 3, 0, 0; xG = 0.04, minute = 92
-        GoalAttempt, true, 2, 0, 0; xG = 0.04, minute = 93, id = 1
-        GoalAttempt, true, 4, 0, 0; xG = 0.03, minute = 93, id = 2
+        GoalAttempt, true, 14, 0, 0; minute = 10
+        GoalAttempt, true, 2, 0, 0; minute = 46
+        GoalAttempt, true, 1, 0, 0; minute = 54
+        GoalAttempt, true, 1, 0, 0; minute = 79
+        GoalAttempt, true, 2, 0, 0; minute = 80
+        GoalAttempt, true, 3, 0, 0; minute = 92
+        GoalAttempt, true, 2, 0, 0; minute = 93, id = 1
+        GoalAttempt, true, 4, 0, 0; minute = 93, id = 2
         GoalkeeperPossession, false, 4, 0, 0
         GoalkeeperPossession, false, 11, 0, 0
         GoalKick, false, 31, 0, 0
@@ -180,7 +181,7 @@ T
         ThrowIn, true, 19, 0, 0
         ThrowIn, true, 10, 0, 0
     Buildup
-        GoalAttempt, true, 12, 0, 0; entropy = 1, xG = 0.05, minute = 73
+        GoalAttempt, true, 12, 0, 0; entropy = 1, minute = 73
         AttackingPossession, true, 38, 0, 0; entropy = 2
         Possession, true, 13, 0, 0; entropy = 1
         GoalkeeperPossession, false, 17, 0, 0
@@ -195,7 +196,7 @@ T
         Pressure, true, 6, 0, 0
         Pressure, true, 4, 0, 0
         Pressure, true, 2, 0, 0
-        GoalAttempt, false, 30, 0, 0; entropy = 2, xG = 0.11, minute = 54
+        GoalAttempt, false, 30, 0, 0; entropy = 2, minute = 54
         GoalkeeperPossession, true, 17, 0, 0; entropy = 1
     Clearance
         Possession, true, 20, 16, 0; entropy = 1
@@ -205,8 +206,8 @@ T
         Attack, true, 1, 0, 0
         Attack, true, 5, 0, 0
         Attack, true, 7, 0, 0
-        GoalAttempt, true, 4, 0, 0; xG = 0.03, minute = 57
-        GoalAttempt, true, 2, 0, 0; xG = 0.03, minute = 58
+        GoalAttempt, true, 4, 0, 0; minute = 57
+        GoalAttempt, true, 2, 0, 0; minute = 58
         Offside, false, 43, 43, 0
         Possession, true, 12, 0, 0
     FastBreak
@@ -216,21 +217,21 @@ T
     FreeKick
         Attack, true, 1, 0, 0
         GoalkeeperPossession, false, 34, 0, 0; entropy = 3
-        GoalAttempt, true, 0, 0, 0; xG = 0.05, minute = 85
+        GoalAttempt, true, 0, 0, 0; minute = 85
         Possession, true, 4, 0, 0
     GoalAttempt
-        Attack, true, 1, 0, 0; minute = 54
-        Attack, true, 4, 0, 0; minute = 61
-        Attack, true, 3, 0, 0; minute = 80, id = 1
-        Corner, true, 20, 0, 0; minute = 57
-        Corner, true, 32, 0, 0; minute = 85
-        Corner, true, 18, 0, 0; minute = 93, id = 1
-        GoalkeeperPossession, false, 2, 0, 0; minute = 73
-        GoalkeeperPossession, false, 1, 0, 0; minute = 80, id = 2
-        GoalkeeperPossession, false, 2, 0, 0; minute = 81
-        GoalkeeperPossession, false, 1, 0, 0; minute = 92
-        GoalkeeperPossession, false, 1, 0, 0; minute = 93, id = 2
-        GoalKick, false, 18, 0, 0; minute = 10
-        GoalKick, false, 24, 0, 0; minute = 46
-        GoalKick, false, 45, 0, 34; minute = 58
-        GoalKick, false, 37, 37, 0; minute = 79
+        Attack, true, 1, 0, 0; minute = 54, xG = 0.12
+        Attack, true, 4, 0, 0; minute = 61, xG = 0.03
+        Attack, true, 3, 0, 0; minute = 80, id = 1, xG = 0.03
+        Corner, true, 20, 0, 0; minute = 57, xG = 0.03
+        Corner, true, 32, 0, 0; minute = 85, xG = 0.05
+        Corner, true, 18, 0, 0; minute = 93, id = 1, xG = 0.04
+        GoalkeeperPossession, false, 2, 0, 0; minute = 73, xG = 0.05
+        GoalkeeperPossession, false, 1, 0, 0; minute = 80, id = 2, xG = 0.08
+        GoalkeeperPossession, false, 2, 0, 0; minute = 81, xG = 0.05
+        GoalkeeperPossession, false, 1, 0, 0; minute = 92, xG = 0.04
+        GoalkeeperPossession, false, 1, 0, 0; minute = 93, id = 2, xG = 0.03
+        GoalKick, false, 18, 0, 0; minute = 10, xG = 0.03
+        GoalKick, false, 24, 0, 0; minute = 46, xG = 0.04
+        GoalKick, false, 45, 0, 34; minute = 58, xG = 0.03
+        GoalKick, false, 37, 37, 0; minute = 79, xG = 0.08
