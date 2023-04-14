@@ -62,4 +62,39 @@ tactics:
 :possession T
 :break
 :set T: ThrowIn
-
+06:53 AM L => D CL
+:phase possession T
+06:58 D CL->Pass => D CR
+07:01 D CR->Pass => D CL
+07:07 D CL->Pass => D CR
+07:10 D CR->Pass => D CL
+07:12 D CL->Pass => M CR
+07:16 M CR->Pass => AM C
+07:17 AM C->Pass:FT => !D R >> !Gkr
+:phase defensive_transition L
+07:22 Gkr->Clear => !A*T
+:set T: ThrowIn
+07:32 A => M CL
+07:34 M CL->Pass:FT:Wd => D R
+07:40 D R->Pass => M CR
+07:43 M CR->Pass:FT:Back => D CR
+:phase possession T
+07:45 D CR->Long => !Dwp*T
+:set L: ThrowIn
+08:12 Dp => !M CL >> D L
+08:18 D L->Long:FT => !D CR:HD >> !D L
+:phase transition T
+08:27 D L->Pass => AM L
+08:28 AM L->Pass:FT => AM R
+08:28 AM R->Pass:FT => D L
+:phase attacking_possession T
+08:31 D L->Pass:Back => D CL
+08:32 D CL->Pass => D CR
+08:40 D CR->Pass => D CL
+08:43 D CL->Pass => M CL
+08:46 M CL->Pass:Wide => AM L
+:phase attack T
+08:54 AM L->Pass => !M RC >>> AM C
+08:57 AM C->Pass => AM L >>> M CR
+09:03 M CR->Shoot => !GK
+09:21 :set L: GoalKick
