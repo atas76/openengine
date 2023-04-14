@@ -75,7 +75,7 @@
 08:53 Ad->ForwardPass => !M RC @ D:I >>> AM C @ Ad
 08:56 Ad->Pass => AM L @ Apd
 08:58 Apd->Dribble => !D CR @ Dp:I >> M CR @ A
-09:02 A->Shoot => !GK
+09:03 A->Shoot => !GK
 :phase pressure L
 09:20 GK -> Gkr
 :possession L
