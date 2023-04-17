@@ -1,4 +1,4 @@
-team L # TODO add minutes in goal attempts
+team L # TODO add xG in goal attempts
 
 Attack {
     Aw {
@@ -45,7 +45,7 @@ AttackingTransition {
     }
     AMw {
         Attack, true, 3, 0, 0; position = Aw
-        Transition, false, 2, 0, 0; position = MDdclea
+        Transition, false, 2, 0, 0; position = MDd
     }
     AMd {
         GoalAttempt, true, 2, 0, 0; position = Ad
@@ -86,5 +86,27 @@ Buildup {
     }
     DMw {
         ThrowIn, true, 43, 0, 0; position = AMw
+    }
+}
+Clearance {
+    Gkr {
+        ThrowIn, false, 10, 0, 0; position = AM
+    }
+}
+ContestedBall {
+    Dwp {
+        AttackingTransition, false, 3, 0, 0; position = Aw
+    }
+    DM {
+        ThrowIn, false, 9, 0, 0; position = AM
+        Possession, true, 5, 0, 0; position = DMw
+    }
+    MDd {
+        Possession, false, 1, 0, 0; position = MDd
+        AttackingTransition, false, 8, 0, 0; position = AMd
+        FreeKick, true, 18, 0, 0; position = MDd
+    }
+    AMd {
+        Offside, false, 16, 16, 0; position = DMd
     }
 }
