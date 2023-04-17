@@ -44,23 +44,23 @@ L
     Clearance
         ThrowIn, false, 10, 0, 0
     Contest
-        AttackingTransition, false, 3, 0, 0
-        AttackingTransition, false, 7, 0, 0
-        FreeKick, true, 18, 0, 0
-        FreeKick, false, 32, 0, 0
-        Offside, false, 17, 17, 0
-        Possession, false, 1, 0, 0
-        Possession, true, 5, 0, 0
-        ThrowIn, false, 9, 0, 0
+        AttackingTransition, false, 3, 0, 0     #
+        AttackingTransition, false, 8, 0, 0     #
+        FreeKick, true, 18, 0, 0                #
+        Offside, false, 16, 16, 0               #
+        Possession, false, 1, 0, 0              #
+        Possession, true, 5, 0, 0               #
+        ThrowIn, false, 9, 0, 0                 #
     Corner
-        Attack, true, 5, 0, 0
-        Attack, true, 6, 0, 0
-        FreeKick, false, 60, 0, 0
-        GoalAttempt, true, 4, 0, 0
-        GoalkeeperPossession, true, 11, 0, 0
-        ThrowIn, true, 36, 0, 0
-        ThrowIn, true, 20, 0, 0
-        ThrowIn, true, 16, 0, 0
+        Attack, true, 5, 0, 0                   #
+        Attack, true, 6, 0, 0                   #
+        FreeKick, false, 60, 0, 0               #
+        GoalAttempt, true, 4, 0, 0              #
+        GoalAttempt, true, 4, 0, 0              #
+        GoalkeeperPossession, true, 11, 0, 0    #
+        ThrowIn, true, 36, 0, 0                 #
+        ThrowIn, true, 20, 0, 0                 #
+        ThrowIn, true, 16, 0, 0                 #
     CounterAttack
         Attack, true, 11, 0, 0
         GoalAttempt, true, 7, 0, 0
