@@ -110,3 +110,14 @@ ContestedBall {
         Offside, false, 16, 16, 0; position = DMd
     }
 }
+Corner {
+    Attack, true, 5, 0, 0; position = A
+    Attack, true, 6, 0, 0; position = Apd
+    FreeKick, false, 60, 0, 0; position = DMw
+    GoalAttempt, true, 4, 0, 0; position = A
+    GoalAttempt, true, 4, 0, 0; position = A
+    GoalkeeperPossession, true, 11, 0, 0
+    ThrowIn, true, 36, 0, 0; position = A
+    ThrowIn, true, 20, 0, 0; position = AM
+    ThrowIn, true, 16, 0, 0; position = Ap
+}
