@@ -70,7 +70,8 @@
 18:54 :phase buildup T, position: Dwp
 18:58 :phase pressure T, position: Dwp
 19:08 :phase counter_attack T, position: AM
-19:13 :phase defensive_transition L, position: DM
+19:13 :phase transition L, position: DM
+19:14 :phase pressure L, position: Dw
 19:17 :phase attacking_possession T, position: M
 19:31 :phase attack T, position: A
 19:40 :set T: ThrowIn, position: A
