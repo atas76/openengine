@@ -137,3 +137,15 @@ CounterAttack {
         Possession, false, 7, 0, 0; position = Dw
     }
 }
+DefensiveTransition {
+    Gkr {
+        ContestedBall, false, 8, 0, 0; position = AMd
+    }
+    Dwp {
+        ThrowIn, true, 29, 0, 0; position = DM
+    }
+    D {
+        ThrowIn, false, 12, 0, 0; position = AM
+        DefensiveTransition, false, 8, 0, 0; position = Gkr
+    }
+}
