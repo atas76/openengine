@@ -121,3 +121,19 @@ Corner {
     ThrowIn, true, 20, 0, 0; position = AM
     ThrowIn, true, 16, 0, 0; position = Ap
 }
+CounterAttack {
+    DM {
+        Attack, true, 11, 0, 0; position = Ad
+    }
+    Mw {
+        GoalAttempt, true, 4, 0, 0; position = Ad
+        GoalKick, false, 19, 19, 0
+    }
+    Md {
+        Corner, true, 19, 0, 0
+        Clearance, false, 10, 0, 0; position = D
+    }
+    M {
+        Possession, false, 7, 0, 0; position = Dw
+    }
+}
