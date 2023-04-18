@@ -62,18 +62,21 @@ L
         ThrowIn, true, 20, 0, 0                 #
         ThrowIn, true, 16, 0, 0                 #
     CounterAttack
-        Attack, true, 11, 0, 0
-        GoalAttempt, true, 7, 0, 0
-        Clearance, false, 10, 0, 0
-        Possession, false, 7, 0, 0
+        Attack, true, 11, 0, 0                  #
+        Corner, true, 19, 0, 0                  #
+        GoalKick, false, 19, 19, 0              #
+        GoalAttempt, true, 4, 0, 0              #
+        Clearance, false, 10, 0, 0              #
+        Possession, false, 7, 0, 0              #
     DefensiveTransition
-        AttackingPossession, false, 4, 0, 0
-        DefensiveTransition, false, 8, 0, 0
-        ThrowIn, true, 29, 0, 0
+        ThrowIn, false, 12, 0, 0                #
+        DefensiveTransition, false, 8, 0, 0     #
+        ThrowIn, true, 29, 0, 0                 #
+        Contest, false, 8, 0, 0                 #
     FastBreak
-        Corner, true, 8, 0, 0
-        ThrowIn, true, 30, 0, 0
-        Transition, false, 9, 0, 0
+        Corner, true, 8, 0, 0                   #
+        ThrowIn, true, 30, 0, 0                 #
+        Transition, false, 9, 0, 0              #
     FreeKick
         GoalKick, false, 19, 0, 0
         Possession, true, 2, 0, 0   #I
