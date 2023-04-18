@@ -149,3 +149,14 @@ DefensiveTransition {
         DefensiveTransition, false, 8, 0, 0; position = Gkr
     }
 }
+FastBreak {
+    DMw {
+        Transition, false, 9, 0, 0; position = DMw
+    }
+    DMd {
+        ThrowIn, true, 30, 0, 0; position = M
+    }
+    Mw {
+        Corner, true, 8, 0, 0
+    }
+}
