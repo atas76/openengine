@@ -1,4 +1,4 @@
-team L # TODO add xG in goal attempts
+team L # TODO add ids (minutes) in goal attempts
 
 Attack {
     Aw {
@@ -169,5 +169,29 @@ FreeKick {
     }
     AM {
         GoalKick, false, 19, 0, 0
+    }
+}
+GoalAttempt {
+    Ad {
+        GoalKick, false, 26, 26, 0; minute = 17, xG = 0.02
+        Corner, true, 41, 0, 0; minute = 38, xG = 0.03
+        GoalKick, false, 9, 9, 0; minute = 83, xG = 0.03
+    }
+    A {
+        Corner, true, 42, 0, 0; minute = 21, xG = 0.03
+        GoalKick, false, 40, 0, 32; minute = 39, xG = 0.03
+        Attack, true, 1, 0, 0; position = A, minute = 42, id = 1, xG = 0.03
+        Corner, true, 31, 0, 0; minute = 42, id = 2, xG = 0.02
+        GoalkeeperPossession, false, 2, 0, 0; minute = 53, xG = 0.03
+    }
+    Apw {
+        ThrowIn, false, 25, 0, 0; position = D, minute = 22, xG = 0.04
+    }
+    Apd {
+        Goal, false, 84, 84, 0; minute = 87, xG = 0.04
+    }
+    Ap {
+        Attack, true, 5, 0, 0; position = A, minute = 54, xG = 0.11
+        GoalKick, false, 31, 31, 0; minute = 69, xG = 0.05
     }
 }
