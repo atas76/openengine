@@ -160,3 +160,14 @@ FastBreak {
         Corner, true, 8, 0, 0
     }
 }
+FreeKick {
+    MDd {
+        ThrowIn, false, 47, 0, 35; position = DM
+    }
+    Md {
+        Possession, true, 2, 0, 0; position = DM
+    }
+    AM {
+        GoalKick, false, 19, 0, 0
+    }
+}
