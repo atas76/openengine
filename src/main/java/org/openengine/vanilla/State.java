@@ -20,4 +20,8 @@ public class State {
     public void setPossessionPlayer(Player possessionPlayer) {
         this.possessionPlayer = possessionPlayer;
     }
+
+    public State execute(Action action) {
+        return new State();
+    }
 }

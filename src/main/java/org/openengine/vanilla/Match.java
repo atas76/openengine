@@ -8,9 +8,12 @@ public class Match {
     private static Random rnd = new Random();
 
     private int currentTime = 0; // Actions played so far
-    private State state;
-    private Team homeTeam;
-    private Team awayTeam;
+    private State state = new State();
+    private Team homeTeam = new Team();
+    private Team awayTeam = new Team();
+
+    private int homeTeamScore;
+    private int awayTeamScore;
 
     public static void main(String[] args) {
         new Match().play();
@@ -26,7 +29,18 @@ public class Match {
         while (currentTime < DURATION) {
             kickOff();
             Action action = state.getPossessionPlayer().decide();
+            this.state = state.execute(action);
+            updateStats(state);
             ++currentTime;
         }
+        displayScore();
+    }
+
+    private void displayScore() {
+        System.out.println(homeTeam + " - " + awayTeam + " " + this.homeTeamScore + " - " + this.awayTeamScore);
+    }
+
+    private void updateStats(State state) {
+
     }
 }
