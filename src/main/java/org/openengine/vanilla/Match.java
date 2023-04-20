@@ -9,8 +9,8 @@ public class Match {
 
     private int currentTime = 0; // Actions played so far
     private State state = new State();
-    private Team homeTeam = new Team();
-    private Team awayTeam = new Team();
+    private Team homeTeam = new Team("Reds");
+    private Team awayTeam = new Team("Blues");
 
     private int homeTeamScore;
     private int awayTeamScore;
