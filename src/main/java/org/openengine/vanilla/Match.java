@@ -9,8 +9,8 @@ public class Match {
 
     private int currentTime = 0; // Actions played so far
     private State state = new State();
-    private Team homeTeam = new Team("Reds");
-    private Team awayTeam = new Team("Blues");
+    private Team homeTeam = new Team("Reds", Tactics._4_4_2);
+    private Team awayTeam = new Team("Blues", Tactics._4_4_2);
 
     private int homeTeamScore;
     private int awayTeamScore;
@@ -27,7 +27,6 @@ public class Match {
     public void play() {
         kickOff();
         while (currentTime < DURATION) {
-            kickOff();
             Action action = state.getPossessionPlayer().decide();
             this.state = state.execute(action);
             updateStats(state);
