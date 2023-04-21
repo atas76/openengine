@@ -1,10 +1,19 @@
 package org.openengine.vanilla;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class Player {
 
     private String name;
     private Position position;
     private int shirtNo;
+    private Team team;
+    
+    private static Random rnd = new Random();
+    
+    private List<Action> allowedActions = new ArrayList<>();
 
     public Player() {
 
@@ -16,6 +25,10 @@ public class Player {
         this.shirtNo = shirtNo;
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
     public String getName() {
         return this.name;
     }
@@ -25,6 +38,8 @@ public class Player {
     }
 
     public Action decide() {
-        return new Action();
+        if (allowedActions.isEmpty()) return new Action(); // Fail fast
+        return allowedActions.size() > 1 ?
+                allowedActions.get(rnd.nextInt(allowedActions.size())) : allowedActions.get(0);
     }
 }

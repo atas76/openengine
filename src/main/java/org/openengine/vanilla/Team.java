@@ -1,9 +1,6 @@
 package org.openengine.vanilla;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Team {
 
@@ -14,6 +11,19 @@ public class Team {
     public Team(String name, Tactics tactics) {
         this.name = name;
         initializeFormation(tactics);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return name.equals(team.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     private void initializeFormation(Tactics tactics) {

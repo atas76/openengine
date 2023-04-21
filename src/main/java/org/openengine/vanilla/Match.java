@@ -28,18 +28,54 @@ public class Match {
         kickOff();
         while (currentTime < DURATION) {
             Action action = state.getPossessionPlayer().decide();
-            this.state = state.execute(action);
-            updateStats(state);
+            ActionOutcome actionOutcome = state.execute(action);
+            updateStats(actionOutcome);
+            updateState(actionOutcome);
             ++currentTime;
         }
         displayScore();
     }
 
-    private void displayScore() {
+    void displayScore() {
         System.out.println(homeTeam + " - " + awayTeam + " " + this.homeTeamScore + " - " + this.awayTeamScore);
     }
 
-    private void updateStats(State state) {
+    void updateState(ActionOutcome actionOutcome) {
+        if (actionOutcome.isPossessionChange()) {
+            changePossession();
+        }
+        if (actionOutcome.getPossessionPlayer() != null) {
+            this.state.setPossessionPlayer(actionOutcome.getPossessionPlayer());
+        }
+    }
 
+    private void changePossession() {
+        this.state.setPossessionTeam(this.state.getPossessionTeam().equals(this.homeTeam) ?
+                this.awayTeam : this.homeTeam);
+    }
+
+    void updateStats(ActionOutcome actionOutcome) {
+        actionOutcome.getEvent().ifPresent(event -> {
+            if (event.getType().equals(EventType.GOAL_SCORED)) {
+                if (this.state.getPossessionTeam().equals(this.homeTeam)) {
+                    ++homeTeamScore;
+                } else {
+                    ++awayTeamScore;
+                }
+            }
+        });
+    }
+
+    public Team getHomeTeam() {
+        return homeTeam;
+    }
+
+    public Team getAwayTeam() {
+        return awayTeam;
+    }
+
+    public State getState() {
+        return state;
     }
 }
+
