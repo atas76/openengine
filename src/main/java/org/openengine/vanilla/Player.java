@@ -10,6 +10,7 @@ public class Player {
     private Position position;
     private int shirtNo;
     private Team team;
+    private Player marker;
     
     private static Random rnd = new Random();
     
@@ -41,5 +42,13 @@ public class Player {
         if (allowedActions.isEmpty()) return new Action(); // Fail fast
         return allowedActions.size() > 1 ?
                 allowedActions.get(rnd.nextInt(allowedActions.size())) : allowedActions.get(0);
+    }
+
+    public Player getMarker() {
+        return this.marker;
+    }
+
+    public void setMarker(Player player) {
+        this.marker = player;
     }
 }

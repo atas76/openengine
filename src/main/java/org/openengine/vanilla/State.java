@@ -8,6 +8,7 @@ public class State {
     private Team possessionTeam;
 
     private final double xG = 0.5; // Use arbitrary probabilities for now
+    private final double xP = 0.5; // Expected pass
     private static Random rnd = new Random();
 
     public Player getPossessionPlayer() {
@@ -48,7 +49,16 @@ public class State {
     }
 
     public ActionOutcome passEval(Action action) {
-        return new ActionOutcome();
+        ActionOutcome actionOutcome = new ActionOutcome();
+        double outcome = rnd.nextDouble();
+        if (outcome < xP) {
+            actionOutcome.setPossessionChange(false);
+            actionOutcome.setPossessionPlayer(action.getTarget());
+        } else {
+            actionOutcome.setPossessionChange(true);
+            actionOutcome.setPossessionPlayer(action.getTarget().getMarker());
+        }
+        return actionOutcome;
     }
 
     @Override

@@ -21,4 +21,20 @@ public class ActionTest {
         match.displayScore();
         System.out.println(match.getState());
     }
+
+    @Test
+    public void testPass() {
+        Match match = new Match();
+        match.getState().setPossessionTeam(match.getHomeTeam());
+        Player passTarget = match.getHomeTeam().getPlayerByPosition(Position.M_CR);
+        passTarget.setMarker(match.getAwayTeam().getPlayerByPosition(Position.M_CL));
+        Action pass = new Action(match.getHomeTeam().getPlayerByPosition(Position.M_R), passTarget, ActionType.Pass);
+
+        ActionOutcome outcome = match.getState().execute(pass);
+        match.updateStats(outcome);
+        match.updateState(outcome);
+
+        System.out.println(outcome);
+        System.out.println(match.getState());
+    }
 }

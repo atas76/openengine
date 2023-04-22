@@ -5,7 +5,7 @@ import java.util.Optional;
 public class ActionOutcome {
 
     private Event event;
-    private boolean possessionChange;
+    private boolean possessionChange = false;
     private Player possessionPlayer;
 
     public void setEvent(Event event) {
