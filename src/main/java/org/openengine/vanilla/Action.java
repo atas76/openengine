@@ -21,4 +21,13 @@ public class Action {
     public Player getTarget() {
         return target;
     }
+
+    @Override
+    public String toString() {
+        return "Action{" +
+                "actor=" + actor.getName() +
+                ", target=" + (target != null ? target.getName() : "none") +
+                ", type=" + type +
+                '}';
+    }
 }

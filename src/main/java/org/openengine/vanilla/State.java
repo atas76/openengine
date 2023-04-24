@@ -54,7 +54,7 @@ public class State {
     public ActionOutcome passEval(Action action) {
         ActionOutcome actionOutcome = new ActionOutcome();
         double outcome = rnd.nextDouble();
-        if (outcome < xP) {
+        if (outcome < xP || action.getTarget().getMarker() == null) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
         } else {
