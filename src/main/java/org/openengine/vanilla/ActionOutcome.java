@@ -37,7 +37,7 @@ public class ActionOutcome {
         return "ActionOutcome{" +
                 "event = " + (event != null ? event.getType().name() : "no event") +
                 ", possessionChange = " + possessionChange +
-                ", possessionPlayer = " + possessionPlayer.getName() +
+                ", possessionPlayer = " + (possessionPlayer != null ? possessionPlayer.getName() : "none") +
                 '}';
     }
 }

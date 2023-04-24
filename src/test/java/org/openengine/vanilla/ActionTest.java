@@ -8,10 +8,7 @@ public class ActionTest {
     public void testShoot() {
         Match match = new Match();
         match.getState().setPossessionTeam(match.getHomeTeam());
-        Action shoot = new Action(match.getHomeTeam().getPlayerByPosition(Position.F_CR),
-                        match.getAwayTeam().getGoalkeeper(),
-                        ActionType.Shoot);
-
+        Action shoot = new Action(match.getHomeTeam().getPlayerByPosition(Position.F_CR), null, ActionType.Shoot);
 
         ActionOutcome outcome = match.getState().execute(shoot);
         match.updateStats(outcome);

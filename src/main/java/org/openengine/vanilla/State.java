@@ -27,13 +27,17 @@ public class State {
         this.possessionPlayer = possessionPlayer;
     }
 
+    public void setDefaultPossessionPlayer() {
+        this.possessionPlayer = possessionTeam.getGoalkeeper();
+    }
+
     public ActionOutcome execute(Action action) {
         if (action.getType() == null) {
             return new ActionOutcome();
         }
         return switch (action.getType()) {
             case Shoot -> this.shootEval(action);
-            case Pass ->  this.passEval(action);
+            case Pass -> this.passEval(action);
         };
     }
 
@@ -44,7 +48,6 @@ public class State {
             actionOutcome.setEvent(new Event(EventType.GOAL_SCORED));
         }
         actionOutcome.setPossessionChange(true);
-        actionOutcome.setPossessionPlayer(action.getTarget());
         return actionOutcome;
     }
 

@@ -6,11 +6,13 @@ public class Team {
 
     private String name;
     private List<Player> lineup = new ArrayList<>();
+    // TODO represent formations in a (5x7) tactics matrix, from which permissible actions and markers can be deduced
     private Map<Position, Player> formation = new TreeMap<>();
 
     public Team(String name, Tactics tactics) {
         this.name = name;
         initializeFormation(tactics);
+        initializeInstructions(tactics);
     }
 
     @Override
@@ -24,6 +26,80 @@ public class Team {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    private void initializeInstructions(Tactics tactics) {
+        switch(tactics) {
+            case _4_4_2 -> {
+                Player goalkeeper = formation.get(Position.GK);
+                goalkeeper.setPermissibleActions(Arrays.asList(
+                        new Action(goalkeeper, this.formation.get(Position.D_R), ActionType.Pass),
+                        new Action(goalkeeper, this.formation.get(Position.D_CR), ActionType.Pass),
+                        new Action(goalkeeper, this.formation.get(Position.D_CL), ActionType.Pass),
+                        new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass)
+                ));
+
+                Player rightBack = formation.get(Position.D_R);
+                rightBack.setPermissibleActions(Arrays.asList(
+                        new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass)
+                ));
+
+                Player leftBack = formation.get(Position.D_L);
+                leftBack.setPermissibleActions(Arrays.asList(
+                        new Action(leftBack, this.formation.get(Position.M_L), ActionType.Pass)
+                ));
+
+                Player centreRightBack = formation.get(Position.D_CR);
+                centreRightBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.M_CR), ActionType.Pass)
+                ));
+
+                Player centreLeftBack = formation.get(Position.D_CL);
+                centreLeftBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftBack, this.formation.get(Position.D_CL), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass)
+                ));
+
+                Player rightMidfielder = formation.get(Position.M_R);
+                rightMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(rightMidfielder, this.formation.get(Position.M_CR), ActionType.Pass)
+                ));
+
+                Player leftMidfielder = formation.get(Position.M_L);
+                leftMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(leftMidfielder, this.formation.get(Position.M_CL), ActionType.Pass)
+                ));
+
+                Player centreRightMidfielder = formation.get(Position.M_CR);
+                centreRightMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightMidfielder, this.formation.get(Position.M_R), ActionType.Pass),
+                        new Action(centreRightMidfielder, this.formation.get(Position.M_CL), ActionType.Pass),
+                        new Action(centreRightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass)
+                ));
+
+                Player centreLeftMidfielder = formation.get(Position.M_CL);
+                centreLeftMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftMidfielder, this.formation.get(Position.M_L), ActionType.Pass),
+                        new Action(centreLeftMidfielder, this.formation.get(Position.M_CR), ActionType.Pass),
+                        new Action(centreLeftMidfielder, this.formation.get(Position.F_CL), ActionType.Pass)
+                ));
+
+                Player centreRightForward = formation.get(Position.F_CR);
+                centreRightForward.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightForward, this.formation.get(Position.F_CL), ActionType.Pass),
+                        new Action(centreRightForward, null, ActionType.Shoot)
+                ));
+
+                Player centreLeftForward = formation.get(Position.F_CL);
+                centreLeftForward.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftForward, this.formation.get(Position.F_CR), ActionType.Pass),
+                        new Action(centreLeftForward, null, ActionType.Shoot)
+                ));
+            }
+        }
     }
 
     private void initializeFormation(Tactics tactics) {

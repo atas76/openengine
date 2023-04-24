@@ -15,6 +15,10 @@ public class Match {
     private int homeTeamScore;
     private int awayTeamScore;
 
+    public Match() {
+        initializeMarkings();
+    }
+
     public static void main(String[] args) {
         new Match().play();
     }
@@ -22,6 +26,23 @@ public class Match {
     public void kickOff() {
         state.setPossessionTeam(rnd.nextBoolean() ? homeTeam : awayTeam);
         state.setPossessionPlayer(state.getPossessionTeam().getGoalkeeper()); // keep things simple for now
+    }
+
+    public void initializeMarkings() {
+        // Hardcoding for now
+        init442Markings(homeTeam, awayTeam);
+        init442Markings(awayTeam, homeTeam);
+    }
+
+    private void init442Markings(Team attackingTeam, Team defendingTeam) {
+        attackingTeam.getPlayerByPosition(Position.D_CR).setMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
+        attackingTeam.getPlayerByPosition(Position.D_CL).setMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
+        attackingTeam.getPlayerByPosition(Position.M_R).setMarker(defendingTeam.getPlayerByPosition(Position.M_L));
+        attackingTeam.getPlayerByPosition(Position.M_CR).setMarker(defendingTeam.getPlayerByPosition(Position.M_CL));
+        attackingTeam.getPlayerByPosition(Position.M_CL).setMarker(defendingTeam.getPlayerByPosition(Position.M_CR));
+        attackingTeam.getPlayerByPosition(Position.M_L).setMarker(defendingTeam.getPlayerByPosition(Position.M_R));
+        attackingTeam.getPlayerByPosition(Position.F_CR).setMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
+        attackingTeam.getPlayerByPosition(Position.F_CL).setMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
     }
 
     public void play() {
@@ -46,6 +67,8 @@ public class Match {
         }
         if (actionOutcome.getPossessionPlayer() != null) {
             this.state.setPossessionPlayer(actionOutcome.getPossessionPlayer());
+        } else {
+            this.state.setDefaultPossessionPlayer();
         }
     }
 
@@ -78,4 +101,3 @@ public class Match {
         return state;
     }
 }
-

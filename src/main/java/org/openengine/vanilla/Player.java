@@ -14,7 +14,7 @@ public class Player {
     
     private static Random rnd = new Random();
     
-    private List<Action> allowedActions = new ArrayList<>();
+    private List<Action> permissibleActions = new ArrayList<>();
 
     public Player() {
 
@@ -39,9 +39,9 @@ public class Player {
     }
 
     public Action decide() {
-        if (allowedActions.isEmpty()) return new Action(); // Fail fast
-        return allowedActions.size() > 1 ?
-                allowedActions.get(rnd.nextInt(allowedActions.size())) : allowedActions.get(0);
+        if (permissibleActions.isEmpty()) return new Action(); // Fail fast
+        return permissibleActions.size() > 1 ?
+                permissibleActions.get(rnd.nextInt(permissibleActions.size())) : permissibleActions.get(0);
     }
 
     public Player getMarker() {
@@ -50,5 +50,9 @@ public class Player {
 
     public void setMarker(Player player) {
         this.marker = player;
+    }
+
+    public void setPermissibleActions(List<Action> permissibleActions) {
+        this.permissibleActions = permissibleActions;
     }
 }
