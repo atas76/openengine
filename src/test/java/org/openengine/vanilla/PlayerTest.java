@@ -22,9 +22,13 @@ public class PlayerTest {
 
     @Test
     public void testRightBackActions() {
+        testPlayerBehaviourByPosition(Position.D_R);
+    }
+
+    private static void testPlayerBehaviourByPosition(Position position) {
         Match match = new Match();
         match.getState().setPossessionTeam(match.getHomeTeam());
-        match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(Position.D_R));
+        match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(position));
         Player player = match.getState().getPossessionPlayer();
 
         Action action = player.decide();
