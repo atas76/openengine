@@ -25,6 +25,21 @@ public class PlayerTest {
         testPlayerBehaviourByPosition(Position.D_R);
     }
 
+    @Test
+    public void testCentreRightBackActions() {
+        testPlayerBehaviourByPosition(Position.D_CR);
+    }
+
+    @Test
+    public void testCentreLeftBackActions() {
+        testPlayerBehaviourByPosition(Position.D_CL);
+    }
+
+    @Test
+    public void testLeftBackActions() {
+        testPlayerBehaviourByPosition(Position.D_L);
+    }
+
     private static void testPlayerBehaviourByPosition(Position position) {
         Match match = new Match();
         match.getState().setPossessionTeam(match.getHomeTeam());

@@ -52,14 +52,12 @@ public class Team {
                 Player centreRightBack = formation.get(Position.D_CR);
                 centreRightBack.setPermissibleActions(Arrays.asList(
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.M_CR), ActionType.Pass)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);
                 centreLeftBack.setPermissibleActions(Arrays.asList(
-                        new Action(centreLeftBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass)
                 ));
 
@@ -76,14 +74,12 @@ public class Team {
                 Player centreRightMidfielder = formation.get(Position.M_CR);
                 centreRightMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(centreRightMidfielder, this.formation.get(Position.M_R), ActionType.Pass),
-                        new Action(centreRightMidfielder, this.formation.get(Position.M_CL), ActionType.Pass),
                         new Action(centreRightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass)
                 ));
 
                 Player centreLeftMidfielder = formation.get(Position.M_CL);
                 centreLeftMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(centreLeftMidfielder, this.formation.get(Position.M_L), ActionType.Pass),
-                        new Action(centreLeftMidfielder, this.formation.get(Position.M_CR), ActionType.Pass),
                         new Action(centreLeftMidfielder, this.formation.get(Position.F_CL), ActionType.Pass)
                 ));
 
