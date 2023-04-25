@@ -40,6 +40,16 @@ public class PlayerTest {
         testPlayerBehaviourByPosition(Position.D_L);
     }
 
+    @Test
+    public void testCentreRightForwardActions() {
+        testPlayerBehaviourByPosition(Position.F_CR);
+    }
+
+    @Test
+    public void testCentreLeftForwardActions() {
+        testPlayerBehaviourByPosition(Position.F_CL);
+    }
+
     private static void testPlayerBehaviourByPosition(Position position) {
         Match match = new Match();
         match.getState().setPossessionTeam(match.getHomeTeam());
