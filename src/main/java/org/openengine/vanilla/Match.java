@@ -78,12 +78,14 @@ public class Match {
     }
 
     void updateStats(ActionOutcome actionOutcome) {
-        actionOutcome.getEvent().ifPresent(event -> {
-            if (event.getType().equals(EventType.GOAL_SCORED)) {
-                if (this.state.getPossessionTeam().equals(this.homeTeam)) {
-                    ++homeTeamScore;
-                } else {
-                    ++awayTeamScore;
+        actionOutcome.getEvents().forEach(event -> {
+            switch (event.getType()) {
+                case GOAL_SCORED -> {
+                    if (this.state.getPossessionTeam().equals(this.homeTeam)) {
+                        ++homeTeamScore;
+                    } else {
+                        ++awayTeamScore;
+                    }
                 }
             }
         });

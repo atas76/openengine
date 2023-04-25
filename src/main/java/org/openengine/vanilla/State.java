@@ -45,7 +45,7 @@ public class State {
         ActionOutcome actionOutcome = new ActionOutcome();
         double outcome = rnd.nextDouble();
         if (outcome < xG) {
-            actionOutcome.setEvent(new Event(EventType.GOAL_SCORED));
+            actionOutcome.addEvent(new Event(EventType.GOAL_SCORED));
         }
         actionOutcome.setPossessionChange(true);
         return actionOutcome;
