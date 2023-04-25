@@ -41,6 +41,26 @@ public class PlayerTest {
     }
 
     @Test
+    public void testRightMidfielderActions() {
+        testPlayerBehaviourByPosition(Position.M_R);
+    }
+
+    @Test
+    public void testCentreRightMidfielderActions() {
+        testPlayerBehaviourByPosition(Position.M_CR);
+    }
+
+    @Test
+    public void testCenterLeftMidfielderActions() {
+        testPlayerBehaviourByPosition(Position.M_CL);
+    }
+
+    @Test
+    public void testLeftMidfielderActions() {
+        testPlayerBehaviourByPosition(Position.M_L);
+    }
+
+    @Test
     public void testCentreRightForwardActions() {
         testPlayerBehaviourByPosition(Position.F_CR);
     }
