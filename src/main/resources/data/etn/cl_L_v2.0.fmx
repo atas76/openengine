@@ -223,3 +223,17 @@ GoalkeeperPossession {
         AttackingTransition, true, 12, 0, 0
     }
 }
+GoalKick {
+    GK {
+        LongBall, true, 0, 0, 0
+    }
+    Dwp {
+        Buildup, true, 1, 0, 0
+    }
+    Dpw {
+        Buildup, true, 1, 0, 0
+    }
+    M {
+        ThrowIn, true, 28, 0, 0
+    }
+}
