@@ -43,6 +43,7 @@ public class State {
 
     public ActionOutcome shootEval(Action action) {
         ActionOutcome actionOutcome = new ActionOutcome();
+        actionOutcome.addEvent(new Event(EventType.SHOT));
         double outcome = rnd.nextDouble();
         if (outcome < xG) {
             actionOutcome.addEvent(new Event(EventType.GOAL_SCORED));

@@ -1,5 +1,6 @@
 package org.openengine.vanilla;
 
+import java.util.Map;
 import java.util.Random;
 
 public class Match {
@@ -11,6 +12,8 @@ public class Match {
     private State state = new State();
     private Team homeTeam = new Team("Reds", Tactics._4_4_2);
     private Team awayTeam = new Team("Blues", Tactics._4_4_2);
+
+    private Map<Team, TeamStats> stats = Map.of(homeTeam, new TeamStats(), awayTeam, new TeamStats());
 
     private int homeTeamScore;
     private int awayTeamScore;
@@ -55,10 +58,18 @@ public class Match {
             ++currentTime;
         }
         displayScore();
+        System.out.println();
+        displayStats();
     }
 
     void displayScore() {
         System.out.println(homeTeam + " - " + awayTeam + " " + this.homeTeamScore + " - " + this.awayTeamScore);
+    }
+
+    private void displayStats() {
+        System.out.println("Shots at goal: " +
+                this.getTeamStats(this.homeTeam).getShotsAtGoal() + " - " +
+                this.getTeamStats(this.awayTeam).getShotsAtGoal());
     }
 
     void updateState(ActionOutcome actionOutcome) {
@@ -87,6 +98,7 @@ public class Match {
                         ++awayTeamScore;
                     }
                 }
+                case SHOT -> stats.get(this.state.getPossessionTeam()).addShotAtGoal();
             }
         });
     }
@@ -101,5 +113,9 @@ public class Match {
 
     public State getState() {
         return state;
+    }
+
+    public TeamStats getTeamStats(Team team) {
+        return this.stats.get(team);
     }
 }

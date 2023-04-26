@@ -2,6 +2,8 @@ package org.openengine.vanilla;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class ActionTest {
 
     @Test
@@ -14,6 +16,7 @@ public class ActionTest {
         match.updateStats(outcome);
         match.updateState(outcome);
 
+        assertEquals(1, match.getTeamStats(match.getHomeTeam()).getShotsAtGoal());
         System.out.println(outcome);
         match.displayScore();
         System.out.println(match.getState());
