@@ -195,3 +195,31 @@ GoalAttempt {
         GoalKick, false, 31, 31, 0; minute = 69, xG = 0.05
     }
 }
+GoalkeeperPossession {
+    Gkr {
+        LongBall, true, 14, 0, 0
+        LongBall, true, 15, 0, 0
+        LongBall, true, 15, 0, 0
+        LongBall, true, 20, 0, 0
+    }
+    Dw {
+        Buildup, true, 6, 0, 0
+    }
+    Dd {
+        Buildup, true, 14, 0, 0
+        Buildup, true, 6, 0, 0
+        Buildup, true, 8, 0, 0
+    }
+    DMw {
+        FastBreak, true, 13, 13, 0
+    }
+    DMd {
+        FastBreak, true, 3, 0, 0
+    }
+    Mw {
+        FastBreak, true, 13, 0, 0
+    }
+    Awp {
+        AttackingTransition, true, 12, 0, 0
+    }
+}
