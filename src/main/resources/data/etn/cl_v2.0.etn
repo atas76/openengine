@@ -355,7 +355,6 @@
 80:18 :phase attacking_transition T, position: A
 80:19 :goal_attempt T, position: A
 80:21 :phase goalkeeper_possession L
-:break(!Gkr:H)
 80:27 :phase buildup L, position: Dw
 81:13 :substitution T
 81:44 :set L: Corner
