@@ -95,24 +95,23 @@ L
         Corner, true, 31, 0, 0                  #
         ThrowIn, false, 25, 0, 0                #
     GoalkeeperPossession
-        AttackingTransition, true, 12, 0, 0
-        Buildup, true, 14, 0, 0
-        Buildup, true, 6, 0, 0
-        Buildup, true, 8, 0, 0
-        Buildup, true, 6, 6, 0
-        Buildup, true, 3, 0, 0
-        FastBreak, true, 3, 0, 0
-        FastBreak, true, 13, 13, 0
-        FastBreak, true, 13, 0, 0
-        LongBall, true, 14, 0, 0
-        LongBall, true, 15, 0, 0
-        LongBall, true, 15, 0, 0
-        LongBall, true, 20, 0, 0
+        AttackingTransition, true, 12, 0, 0     #
+        Buildup, true, 14, 0, 0                 #
+        Buildup, true, 6, 0, 0                  #
+        Buildup, true, 8, 0, 0                  #
+        Buildup, true, 6, 0, 0                  #
+        FastBreak, true, 3, 0, 0                #
+        FastBreak, true, 13, 13, 0              #
+        FastBreak, true, 13, 0, 0               #
+        LongBall, true, 14, 0, 0                #
+        LongBall, true, 15, 0, 0                #
+        LongBall, true, 15, 0, 0                #
+        LongBall, true, 20, 0, 0                #
     GoalKick
-        Buildup, true, 1, 0, 0
-        Buildup, true, 1, 0, 0
-        LongBall, true, 0, 0, 0
-        ThrowIn, false, 28, 0, 0
+        Buildup, true, 1, 0, 0                  #
+        Buildup, true, 1, 0, 0                  #
+        LongBall, true, 0, 0, 0                 #
+        ThrowIn, true, 28, 0, 0                 #
     KickOff
         Possession, true, 2, 0, 0
     LongBall
