@@ -196,46 +196,24 @@ GoalAttempt {
     }
 }
 GoalkeeperPossession {
-    Gkr {
-        LongBall, true, 14, 0, 0
-        LongBall, true, 15, 0, 0
-        LongBall, true, 15, 0, 0
-        LongBall, true, 20, 0, 0
-    }
-    Dw {
-        Buildup, true, 6, 0, 0
-    }
-    Dd {
-        Buildup, true, 14, 0, 0
-        Buildup, true, 6, 0, 0
-        Buildup, true, 8, 0, 0
-    }
-    DMw {
-        FastBreak, true, 13, 13, 0
-    }
-    DMd {
-        FastBreak, true, 3, 0, 0
-    }
-    Mw {
-        FastBreak, true, 13, 0, 0
-    }
-    Awp {
-        AttackingTransition, true, 12, 0, 0
-    }
+    LongBall, true, 14, 0, 0; position = Gkr
+    LongBall, true, 15, 0, 0; position = Gkr
+    LongBall, true, 15, 0, 0; position = Gkr
+    LongBall, true, 20, 0, 0; position = Gkr
+    Buildup, true, 6, 0, 0; position = Dw
+    Buildup, true, 14, 0, 0; position = Dd
+    Buildup, true, 6, 0, 0; position = Dd
+    Buildup, true, 8, 0, 0; position = Dd
+    FastBreak, true, 13, 13, 0; position = DMw
+    FastBreak, true, 3, 0, 0; position = DMd
+    FastBreak, true, 13, 0, 0; position = Mw
+    AttackingTransition, true, 12, 0, 0; position = Awp
 }
 GoalKick {
-    GK {
-        LongBall, true, 0, 0, 0
-    }
-    Dwp {
-        Buildup, true, 1, 0, 0
-    }
-    Dpw {
-        Buildup, true, 1, 0, 0
-    }
-    M {
-        ThrowIn, true, 28, 0, 0
-    }
+    LongBall, true, 0, 0, 0; position = GK
+    Buildup, true, 1, 0, 0; position = Dwp
+    Buildup, true, 1, 0, 0; position = Dpw
+    ThrowIn, true, 28, 0, 0; position = M
 }
 KickOff {
     Possession, true, 2, 0, 0; position = DM
