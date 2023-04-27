@@ -232,3 +232,25 @@ LongBall {
         ThrowIn, false, 26, 0, 0; position = DM
     }
 }
+Penalty {
+    Goal, false, 91, 91, 0
+}
+Possession {
+    DMw {
+        GoalkeeperPossession, false, 7, 0, 0
+    }
+    DM {
+        Attack, true, 18, 0, 0; position = Apd
+        Contest, false, 18, 0, 0; position = DM
+        GoalKick, false, 39, 39, 0
+    }
+    MDw {
+        Attack, true, 24, 0, 0; position = A
+    }
+    MDd {
+        AttackingPossession, true, 5, 0, 0; position = AM
+    }
+    MD {
+         GoalKick, false, 26, 0, 0
+    }
+}
