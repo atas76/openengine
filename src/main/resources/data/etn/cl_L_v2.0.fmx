@@ -237,3 +237,20 @@ GoalKick {
         ThrowIn, true, 28, 0, 0
     }
 }
+KickOff {
+    Possession, true, 2, 0, 0; position = DM
+}
+LongBall {
+    GK {
+        Transition, false, 11, 0, 0; position = DMw
+    }
+    Gkr {
+        ThrowIn, false, 11, 0, 0; position = DM
+        AttackingTransition, false, 10, 0, 0; position = AMw
+        Possession, false, 5, 0, 0; position = DMw
+        GoalkeeperPossession, false, 5, 0, 0
+    }
+    Dd {
+        ThrowIn, false, 26, 0, 0; position = DM
+    }
+}
