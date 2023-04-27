@@ -113,25 +113,24 @@ L
         LongBall, true, 0, 0, 0                 #
         ThrowIn, true, 28, 0, 0                 #
     KickOff
-        Possession, true, 2, 0, 0
+        Possession, true, 2, 0, 0               #
     LongBall
-        AttackingTransition, false, 10, 0, 0
-        GoalkeeperPossession, false, 5, 0, 0
-        Possession, false, 5, 0, 0
-        ThrowIn, false, 26, 0, 0
-        ThrowIn, false, 11, 0, 0
-        Transition, false, 11, 0, 0
+        AttackingTransition, false, 10, 0, 0    #
+        GoalkeeperPossession, false, 5, 0, 0    #
+        Possession, false, 5, 0, 0              #
+        ThrowIn, false, 26, 0, 0                #
+        ThrowIn, false, 11, 0, 0                #
+        Transition, false, 11, 0, 0             #
     Penalty
-        Goal, false, 91, 91, 0
+        Goal, false, 91, 91, 0                  #
     Possession
-        Attack, true, 18, 0, 0
-        AttackingPossession, true, 5, 0, 0
-        Contest, false, 19, 0, 0
-        Corner, true, 66, 0, 0
-        GoalkeeperPossession, false, 7, 0, 0
-        GoalKick, false, 26, 0, 0
-        GoalKick, false, 40, 40, 0
-        Pressure, true, 7, 0, 0
+        Attack, true, 18, 0, 0                  #
+        Attack, true, 24, 0, 0                  !
+        AttackingPossession, true, 5, 0, 0      #
+        Contest, false, 18, 0, 0                #
+        GoalkeeperPossession, false, 7, 0, 0    #
+        GoalKick, false, 26, 0, 0               #
+        GoalKick, false, 39, 39, 0              #
     Pressure
         BuildUp, true, 9, 0, 0
         Buildup, true, 9, 0, 0
