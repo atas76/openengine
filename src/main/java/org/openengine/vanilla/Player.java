@@ -11,6 +11,7 @@ public class Player {
     private int shirtNo;
     private Team team;
     private Player marker;
+    private List<Player> markers = new ArrayList<>();
     
     private static Random rnd = new Random();
     
@@ -44,12 +45,16 @@ public class Player {
                 permissibleActions.get(rnd.nextInt(permissibleActions.size())) : permissibleActions.get(0);
     }
 
-    public Player getMarker() {
-        return this.marker;
+    public void addMarker(Player player) {
+        this.markers.add(player);
     }
 
-    public void setMarker(Player player) {
-        this.marker = player;
+    public int getMarkersNumber() {
+        return markers.size();
+    }
+
+    public Player getChallengeMarker() {
+        return markers.get(rnd.nextInt(markers.size()));
     }
 
     public void setPermissibleActions(List<Action> permissibleActions) {

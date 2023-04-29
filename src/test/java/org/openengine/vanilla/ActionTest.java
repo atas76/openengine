@@ -27,7 +27,7 @@ public class ActionTest {
         Match match = new Match();
         match.getState().setPossessionTeam(match.getHomeTeam());
         Player passTarget = match.getHomeTeam().getPlayerByPosition(Position.M_CR);
-        passTarget.setMarker(match.getAwayTeam().getPlayerByPosition(Position.M_CL));
+        passTarget.addMarker(match.getAwayTeam().getPlayerByPosition(Position.M_CL));
         Action pass = new Action(match.getHomeTeam().getPlayerByPosition(Position.M_R), passTarget, ActionType.Pass);
 
         ActionOutcome outcome = match.getState().execute(pass);

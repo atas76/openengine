@@ -38,14 +38,16 @@ public class Match {
     }
 
     private void init442Markings(Team attackingTeam, Team defendingTeam) {
-        attackingTeam.getPlayerByPosition(Position.D_CR).setMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
-        attackingTeam.getPlayerByPosition(Position.D_CL).setMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
-        attackingTeam.getPlayerByPosition(Position.M_R).setMarker(defendingTeam.getPlayerByPosition(Position.M_L));
-        attackingTeam.getPlayerByPosition(Position.M_CR).setMarker(defendingTeam.getPlayerByPosition(Position.M_CL));
-        attackingTeam.getPlayerByPosition(Position.M_CL).setMarker(defendingTeam.getPlayerByPosition(Position.M_CR));
-        attackingTeam.getPlayerByPosition(Position.M_L).setMarker(defendingTeam.getPlayerByPosition(Position.M_R));
-        attackingTeam.getPlayerByPosition(Position.F_CR).setMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
-        attackingTeam.getPlayerByPosition(Position.F_CL).setMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
+        attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
+        attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
+        attackingTeam.getPlayerByPosition(Position.M_R).addMarker(defendingTeam.getPlayerByPosition(Position.M_L));
+        attackingTeam.getPlayerByPosition(Position.M_CR).addMarker(defendingTeam.getPlayerByPosition(Position.M_CL));
+        attackingTeam.getPlayerByPosition(Position.M_CL).addMarker(defendingTeam.getPlayerByPosition(Position.M_CR));
+        attackingTeam.getPlayerByPosition(Position.M_L).addMarker(defendingTeam.getPlayerByPosition(Position.M_R));
+        attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
+        attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_L));
+        attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
+        attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_R));
     }
 
     public void play() {

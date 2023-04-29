@@ -36,12 +36,12 @@ public class State {
             return new ActionOutcome();
         }
         return switch (action.getType()) {
-            case Shoot -> this.shootEval(action);
+            case Shoot -> this.shootEval();
             case Pass -> this.passEval(action);
         };
     }
 
-    public ActionOutcome shootEval(Action action) {
+    public ActionOutcome shootEval() {
         ActionOutcome actionOutcome = new ActionOutcome();
         actionOutcome.addEvent(new Event(EventType.SHOT));
         double outcome = rnd.nextDouble();
@@ -54,13 +54,15 @@ public class State {
 
     public ActionOutcome passEval(Action action) {
         ActionOutcome actionOutcome = new ActionOutcome();
+        int pressureFactor = action.getTarget().getMarkersNumber();
         double outcome = rnd.nextDouble();
-        if (outcome < xP || action.getTarget().getMarker() == null) {
+        // System.out.println("Outcome: " + outcome);
+        if (outcome * pressureFactor < xP) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
         } else {
             actionOutcome.setPossessionChange(true);
-            actionOutcome.setPossessionPlayer(action.getTarget().getMarker());
+            actionOutcome.setPossessionPlayer(action.getTarget().getChallengeMarker());
         }
         return actionOutcome;
     }
