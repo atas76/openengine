@@ -85,7 +85,7 @@
 10:40 CK->Cross => !Gkr:Punch >>> Gkr:H
 :phase possession L
 11:04 Gkr->HandPass => D CR @ Dd
-11:08 Dd->Long => !D*T
+11:08 Dd->Long => !DM*T
 :set T: ThrowIn
 11:34 DM => F C @ Mw:Pvt >> AM R @ Mw:Cnt
 11:38 Mw->Dribble => !D CR @ DMw:Tck >> F C @ AMw
@@ -97,7 +97,7 @@
 12:17 Dw->Long:Open => !DMw*T
 :break
 :phase pressure T
-12:56 Gkr -> Long => D CL @ DM
+12:56 Gkr->Long => D CL @ DM
 :phase possession T
 13:17 DM->Long:Open => D R @ Awp
 :phase attack T
