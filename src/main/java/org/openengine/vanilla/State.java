@@ -8,7 +8,7 @@ public class State {
     private Team possessionTeam;
 
     private final double xG = 0.1; // Use average probabilities
-    private final double xP = 0.8; // Expected pass
+    private final double xP = 0.4; // Expected pass
     private static Random rnd = new Random();
 
     public Player getPossessionPlayer() {
@@ -54,10 +54,11 @@ public class State {
 
     public ActionOutcome passEval(Action action) {
         ActionOutcome actionOutcome = new ActionOutcome();
-        int pressureFactor = action.getTarget().getMarkersNumber();
+        double markingFactor = action.getTarget().getWeightedMarkersNumber();
         double outcome = rnd.nextDouble();
         // System.out.println("Outcome: " + outcome);
-        if (outcome * pressureFactor < xP) {
+        // System.out.println("Marking factor: " + markingFactor);
+        if (outcome * markingFactor < xP) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
         } else {

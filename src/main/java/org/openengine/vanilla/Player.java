@@ -1,8 +1,6 @@
 package org.openengine.vanilla;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Player {
 
@@ -10,7 +8,7 @@ public class Player {
     private Position position;
     private int shirtNo;
     private Team team;
-    private List<Player> markers = new ArrayList<>();
+    private Map<Player, Double> weightedMarkers = new HashMap<>();
     
     private static Random rnd = new Random();
     
@@ -45,15 +43,28 @@ public class Player {
     }
 
     public void addMarker(Player player) {
-        this.markers.add(player);
+        this.weightedMarkers.put(player, 1.0);
     }
 
-    public int getMarkersNumber() {
-        return markers.size();
+    public void addMarker(Player player, double markingFactor) {
+        this.weightedMarkers.put(player, markingFactor);
+    }
+
+    public double getWeightedMarkersNumber() {
+        return weightedMarkers.values().stream().reduce(0.0, Double::sum);
     }
 
     public Player getChallengeMarker() {
-        return markers.get(rnd.nextInt(markers.size()));
+        double challengeFactor = rnd.nextDouble(getWeightedMarkersNumber());
+        // System.out.println("Challenge factor: " + challengeFactor);
+        double sum = 0.0;
+        for (Map.Entry<Player, Double> weightedMarker: weightedMarkers.entrySet()) {
+            sum += weightedMarker.getValue();
+            if (challengeFactor < sum) {
+                return weightedMarker.getKey();
+            }
+        }
+        return weightedMarkers.keySet().stream().findAny().get();
     }
 
     public void setPermissibleActions(List<Action> permissibleActions) {
