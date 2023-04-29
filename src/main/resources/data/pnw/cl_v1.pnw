@@ -98,3 +98,82 @@ tactics:
 08:57 AM C->Pass => AM L >>> M CR
 09:03 M CR->Shoot => !GK
 09:21 :set L: GoalKick
+09:21 GK->Pass => D CL
+09:23 D CL->Pass => Gkr
+:phase pressure L
+09:26 Gkr->Pass => M C
+09:31 M C->Pass => Gkr
+:phase buildup L
+09:34 Gkr->Pass => D CL
+09:37 D CL->Long => !D R >> C
+:set L: Corner
+10:40 CK->Cross => !Gkr:Punch >>> Gkr
+:phase goalkeeper_possession L
+11:04 Gkr->HandPass => D R
+:phase buildup L
+11:08 D R->Long => !D*T
+:set T: ThrowIn
+11:34 DM => F C >>> Foul
+:set T: Freekick
+12:11 AM L->Pass => AM R >> !D L
+:phase defensive_transition L
+12:17 D L->Long:Open => !DMw*T
+:break
+:phase pressure T
+12:56 Gkr -> Long => !D R:Hd >>> AM L
+:phase possession T
+13:09 AM L->Pass => D CL
+13:12 D CL->Pass => D CR
+13:14 D CR->Pass => D CL
+13:17 D CL->Long:Open => D R
+:phase attack T
+13:23 D R->Pass => AM C
+13:26 AM C->Pass => M CR
+13:28 M CR->Pass => AM C
+13:32 AM C->Cross => !D R >> A*T
+:set T: ThrowIn
+13:46 A => M CL
+:phase attack T
+13:47 M CL->Pass => D CR
+:phase attacking_possession T
+13:54 D CR->Long => !D*T
+:break
+:phase possession T
+14:38 D L->Pass => M CL
+14:39 M CL->Pass:FT => Gkr
+14:44 Gkr->Pass => D CL
+14:47 D CL->Pass => D CR
+14:51 D CR->Pass => D CL
+14:54 D CL->Pass => M CL
+14:57 M CL->Pass => M CR
+14:59 M CR->Pass => AM R
+15:00 AM R->Pass:FT => !D L >>> D R
+:phase possession T
+15:06 D R->Pass => M CL
+15:07 M CL->Pass:FT => M CR
+15:09 M CR->Pass => D CL
+15:13 D CL->Long:Open => !GK
+:set L: GoalKick
+15:42 GK->Pass => D CL
+:phase buildup L
+15:45 D CL->Pass => Gkr
+:pressure L
+15:47 Gkr->Pass => M C
+15:51 M C->Pass => D CR
+15:52 D CR->Pass:FT => D CL
+15:55 D CL->Pass => D L
+15:58 D L->Pass => D CL
+:phase buildup L
+16:01 D CL->Pass => D CR
+16:07 D CR->Pass => D CL
+16:09 D CL->Pass => D CR
+16:13 D CR->Long => F LC >>> M*T
+:set L: ThrowIn
+16:39 M => !M CL:Hd >>> M RC
+:phase attacking_transition L
+16:44 M RC->Pass:FT => D R
+16:47 D R->Shoot => !GK
+:break
+:phase buildup L
+18:08 Gkr->Pass => D CL
+# TODO When it's over, cross-check with TTN and ETN files
