@@ -10,7 +10,6 @@ public class Player {
     private Position position;
     private int shirtNo;
     private Team team;
-    private Player marker;
     private List<Player> markers = new ArrayList<>();
     
     private static Random rnd = new Random();
