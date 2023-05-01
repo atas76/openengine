@@ -1,7 +1,6 @@
 package org.openengine.vanilla;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.openengine.vanilla.util.Logger;
 
 import java.util.*;
 
@@ -59,7 +58,7 @@ public class Player {
 
     public Player getChallengeMarker() {
         double challengeFactor = rnd.nextDouble(getWeightedMarkersNumber());
-        // logger.debug("Challenge factor: " + challengeFactor);
+        Logger.log("Challenge factor: " + challengeFactor);
         double sum = 0.0;
         for (Map.Entry<Player, Double> weightedMarker: weightedMarkers.entrySet()) {
             sum += weightedMarker.getValue();

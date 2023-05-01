@@ -1,7 +1,6 @@
 package org.openengine.vanilla;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.openengine.vanilla.util.Logger;
 
 import java.util.Random;
 
@@ -59,8 +58,8 @@ public class State {
         ActionOutcome actionOutcome = new ActionOutcome();
         double markingFactor = action.getTarget().getWeightedMarkersNumber();
         double outcome = rnd.nextDouble();
-        // logger.debug("Outcome: " + outcome);
-        // logger.debug("Marking factor: " + markingFactor);
+        Logger.log("Outcome: " + outcome);
+        Logger.log("Marking factor: " + markingFactor);
         if (outcome * markingFactor < xP) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());

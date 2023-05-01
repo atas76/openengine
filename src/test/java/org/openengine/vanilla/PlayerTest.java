@@ -1,8 +1,15 @@
 package org.openengine.vanilla;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.openengine.vanilla.util.Flags;
 
 public class PlayerTest {
+
+    @Before
+    public void setUp() {
+        Flags.LOGGING = false;
+    }
 
     @Test
     public void testGoalkeeperActions() {
