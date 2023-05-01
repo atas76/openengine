@@ -12,8 +12,6 @@ public class Player {
     private int shirtNo;
     private Team team;
     private Map<Player, Double> weightedMarkers = new HashMap<>();
-
-    private static final Logger logger = LogManager.getLogger(Player.class);
     
     private static Random rnd = new Random();
     
@@ -61,7 +59,7 @@ public class Player {
 
     public Player getChallengeMarker() {
         double challengeFactor = rnd.nextDouble(getWeightedMarkersNumber());
-        logger.debug("Challenge factor: " + challengeFactor);
+        // logger.debug("Challenge factor: " + challengeFactor);
         double sum = 0.0;
         for (Map.Entry<Player, Double> weightedMarker: weightedMarkers.entrySet()) {
             sum += weightedMarker.getValue();

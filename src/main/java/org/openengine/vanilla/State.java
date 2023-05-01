@@ -10,8 +10,6 @@ public class State {
     private Player possessionPlayer;
     private Team possessionTeam;
 
-    private static final Logger logger = LogManager.getLogger(State.class);
-
     private final double xG = 0.1; // Use average probabilities
     private final double xP = 0.5; // Expected pass
     private static Random rnd = new Random();
@@ -61,8 +59,8 @@ public class State {
         ActionOutcome actionOutcome = new ActionOutcome();
         double markingFactor = action.getTarget().getWeightedMarkersNumber();
         double outcome = rnd.nextDouble();
-        logger.debug("Outcome: " + outcome);
-        logger.debug("Marking factor: " + markingFactor);
+        // logger.debug("Outcome: " + outcome);
+        // logger.debug("Marking factor: " + markingFactor);
         if (outcome * markingFactor < xP) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
