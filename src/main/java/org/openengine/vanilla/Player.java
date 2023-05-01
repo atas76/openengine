@@ -1,5 +1,8 @@
 package org.openengine.vanilla;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.*;
 
 public class Player {
@@ -9,6 +12,8 @@ public class Player {
     private int shirtNo;
     private Team team;
     private Map<Player, Double> weightedMarkers = new HashMap<>();
+
+    private static final Logger logger = LogManager.getLogger(Player.class);
     
     private static Random rnd = new Random();
     
@@ -56,7 +61,7 @@ public class Player {
 
     public Player getChallengeMarker() {
         double challengeFactor = rnd.nextDouble(getWeightedMarkersNumber());
-        // System.out.println("Challenge factor: " + challengeFactor);
+        logger.debug("Challenge factor: " + challengeFactor);
         double sum = 0.0;
         for (Map.Entry<Player, Double> weightedMarker: weightedMarkers.entrySet()) {
             sum += weightedMarker.getValue();
