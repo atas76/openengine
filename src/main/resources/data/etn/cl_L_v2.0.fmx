@@ -254,3 +254,17 @@ Possession {
          GoalKick, false, 26, 0, 0
     }
 }
+Pressure {
+    Gkr {
+        BuildUp, true, 9, 0, 0; position = Gkr
+        BuildUp, true, 9, 0, 0; position = DMw
+        CounterAttack, true, 8, 0, 0; position = Mw
+        CounterAttack, true, 10, 0, 0; position = Md
+        CounterAttack, true, 11, 0, 0; position = Mw
+        GoalkeeperPossession, false, 10, 0, 0
+        ThrowIn, false, 14, 14, 0; position = MD
+    }
+    Dw {
+        AttackingPossession, false, 3, 0, 0; position = M
+    }
+}
