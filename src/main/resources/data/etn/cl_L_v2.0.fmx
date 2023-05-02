@@ -268,3 +268,43 @@ Pressure {
         AttackingPossession, false, 3, 0, 0; position = M
     }
 }
+ThrowIn {
+    D {
+        Contest, false, 3, 0, 0; position = AMd
+        AttackingTransition, false, 6, 0, 0; position = Aw
+        AttackingTransition, true, 16, 0, 0; position = A
+        Transition, false, 12, 0, 0; position = DM
+        ThrowIn, true, 10, 0, 0; position = MD
+    }
+    DM {
+        Contest, false, 18, 0, 0; position=Md
+        AttackingTransition, false, 6, 0, 0; position = AM
+        AttackingTransition, true, 16, 0, 0; position = Awp
+    }
+    MD {
+        Transition, false, 10, 0, 0; position = MDd
+        AttackingTransition, false, 11, 0, 0; position = Mw
+        Pressure, false, 7, 0, 0; position = Gkr
+    }
+    M {
+        ThrowIn, true, 12, 0, 0; position = AM
+        DefensiveTransition, false, 4, 0, 0; position = Dw
+    }
+    AM {
+        Contest, false, 3, 0, 0; position = DMd
+        Possession, true, 4, 0, 0; position = MD
+        ThrowIn, true, 21, 0, 0; position= MD
+        ThrowIn, true, 39, 0, 23; position = A
+        ThrowIn, false, 14, 0, 0; position = D
+    }
+    A {
+        Attack, true, 3, 0, 0; position = Awp
+        Attack, true, 7, 0, 0; position = Aw
+        Attack, true, 1, 0, 0; position = Aw
+        Attack, true, 2, 0, 0; position = Awp
+    }
+    Ap {
+        ThrowIn, true, 9, 0, 0; position = Ap
+        Attack, true, 1, 0, 0; position = Awp
+    }
+}
