@@ -132,38 +132,39 @@ L
         GoalKick, false, 26, 0, 0               #
         GoalKick, false, 39, 39, 0              #
     Pressure
-        BuildUp, true, 9, 0, 0
-        Buildup, true, 9, 0, 0
-        Contest, false, 8, 0, 0
-        CounterAttack, true, 10, 0, 0
-        GoalkeeperPossession, false, 16, 0, 0
-        ThrowIn, false, 12, 0, 0
-        ThrowIn, false, 14, 14, 0
+        AttackingPossession, false, 3, 0, 0     !
+        BuildUp, true, 9, 0, 0                  #
+        Buildup, true, 9, 0, 0                  #
+        CounterAttack, true, 8, 0, 0            !
+        CounterAttack, true, 10, 0, 0           #
+        CounterAttack, true, 11, 0, 0           !
+        GoalkeeperPossession, false, 10, 0, 0   ?
+        ThrowIn, false, 14, 14, 0               #
     ThrowIn
-        Attack, true, 3, 0, 0
-        Attack, true, 7, 0, 0
-        Attack, true, 1, 0, 0
-        Attack, true, 2, 0, 0
-        Attack, true, 1, 0, 0
-        AttackingTransition, true, 16, 0, 0
-        AttackingTransition, true, 16, 0, 0
-        AttackingTransition, false, 6, 0, 0
-        AttackingTransition, false, 6, 0, 0
-        AttackingTransition, false, 11, 0, 0
-        DefensiveTransition, false, 7, 0, 0
-        DefensiveTransition, false, 4, 0, 0
-        Contest, false, 18, 0, 0
-        Contest, false, 3, 0, 0
-        Contest, false, 3, 0, 0
-        Possession, true, 4, 0, 0
-        Transition, false, 10, 0, 0
-        Transition, false, 12, 0, 0
-        ThrowIn, true, 10, 0, 0
-        ThrowIn, true, 12, 0, 0
-        ThrowIn, true, 21, 0, 0
-        ThrowIn, true, 39, 0, 23
-        ThrowIn, true, 9, 0, 0
-        ThrowIn, false, 14, 0, 0
+        Attack, true, 3, 0, 0                   #
+        Attack, true, 7, 0, 0                   #
+        Attack, true, 1, 0, 0                   #
+        Attack, true, 2, 0, 0                   #
+        Attack, true, 1, 0, 0                   #
+        AttackingTransition, true, 16, 0, 0     #
+        AttackingTransition, true, 16, 0, 0     #
+        AttackingTransition, false, 6, 0, 0     #
+        AttackingTransition, false, 6, 0, 0     #
+        AttackingTransition, false, 11, 0, 0    #
+        DefensiveTransition, false, 4, 0, 0     #
+        Contest, false, 18, 0, 0                #
+        Contest, false, 3, 0, 0                 #
+        Contest, false, 3, 0, 0                 #
+        Possession, true, 4, 0, 0               #
+        Pressure, false, 7, 0, 0                <
+        Transition, false, 10, 0, 0             #
+        Transition, false, 12, 0, 0             #
+        ThrowIn, true, 10, 0, 0                 #
+        ThrowIn, true, 12, 0, 0                 #
+        ThrowIn, true, 21, 0, 0                 #
+        ThrowIn, true, 39, 0, 23                #
+        ThrowIn, true, 9, 0, 0                  #
+        ThrowIn, false, 14, 0, 0                #
     Transition
         AttackingTransition, true, 8, 0, 0
         AttackingTransition, true, 5, 0, 0
