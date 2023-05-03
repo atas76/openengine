@@ -56,6 +56,7 @@ public class State {
 
     public ActionOutcome passEval(Action action) {
         ActionOutcome actionOutcome = new ActionOutcome();
+        Logger.log(action.toString());
         double markingFactor = action.getTarget().getWeightedMarkersNumber();
         double outcome = rnd.nextDouble();
         Logger.log("Outcome: " + outcome);
