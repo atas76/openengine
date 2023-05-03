@@ -12,16 +12,33 @@ public class Match {
 
     private int currentTime = 0; // Actions played so far
     private State state = new State();
-    private Team homeTeam = new Team("Reds", Tactics._4_3_3);
-    private Team awayTeam = new Team("Blues", Tactics._4_3_3);
+    private Team homeTeam;
+    private Team awayTeam;
 
-    private Map<Team, TeamStats> stats = Map.of(homeTeam, new TeamStats(), awayTeam, new TeamStats());
+    private Map<Team, TeamStats> stats;
 
     private int homeTeamScore;
     private int awayTeamScore;
 
+    public Match(Tactics homeTactics, Tactics awayTactics) {
+        this.homeTeam = new Team("Reds", homeTactics);
+        this.awayTeam = new Team("Blue", awayTactics);
+        switch (homeTactics) {
+            case _4_4_2 -> init442Markings(homeTeam, awayTeam);
+            case _4_3_3 -> init433Markings(homeTeam, awayTeam);
+        }
+        switch (awayTactics) {
+            case _4_4_2 -> init442Markings(awayTeam, homeTeam);
+            case _4_3_3 -> init433Markings(awayTeam, homeTeam);
+        }
+        stats = Map.of(homeTeam, new TeamStats(), awayTeam, new TeamStats());
+    }
+
     public Match() {
-        initializeMarkings();
+        this.homeTeam = new Team("Reds", Tactics._4_4_2);
+        this.awayTeam = new Team("Blue", Tactics._4_4_2);
+        initializeMarkings442();
+        stats = Map.of(homeTeam, new TeamStats(), awayTeam, new TeamStats());
     }
 
     public static void main(String[] args) {
@@ -34,14 +51,9 @@ public class Match {
         state.setPossessionPlayer(state.getPossessionTeam().getGoalkeeper()); // keep things simple for now
     }
 
-    public void initializeMarkings() {
-        // 4-4-2 vs. 4-4-2
-        // init442Markings(homeTeam, awayTeam);
-        // init442Markings(awayTeam, homeTeam);
-
-        // 4-3-3 vs. 4-3-3
-        init433Markings(homeTeam, awayTeam);
-        init433Markings(awayTeam, homeTeam);
+    private void initializeMarkings442() {
+        init442Markings(homeTeam, awayTeam);
+        init442Markings(awayTeam, homeTeam);
     }
 
     private void init442Markings(Team attackingTeam, Team defendingTeam) {
