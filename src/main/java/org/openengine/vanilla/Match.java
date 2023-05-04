@@ -76,9 +76,9 @@ public class Match {
         attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
         attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
         attackingTeam.getPlayerByPosition(Position.D_L).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_C), 0.5);
-        attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC), 0.5);
+        attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC));
+        attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_C));
+        attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC));
         attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.5);
         attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
         attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);

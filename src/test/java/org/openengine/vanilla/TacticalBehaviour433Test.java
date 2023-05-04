@@ -26,4 +26,39 @@ public class TacticalBehaviour433Test {
         System.out.println(outcome);
         System.out.println(match.getState());
     }
+
+    @Test
+    public void testRightBackActions() {
+        testPlayerBehaviourByPosition(Position.D_R);
+    }
+
+    @Test
+    public void testCentreRightBackActions() {
+        testPlayerBehaviourByPosition(Position.D_CR);
+    }
+
+    @Test
+    public void testCentreLeftBackActions() {
+        testPlayerBehaviourByPosition(Position.D_CL);
+    }
+
+    @Test
+    public void testLeftBackActions() {
+        testPlayerBehaviourByPosition(Position.D_L);
+    }
+
+    private static void testPlayerBehaviourByPosition(Position position) {
+        Match match = new Match(Tactics._4_3_3, Tactics._4_3_3);
+        match.getState().setPossessionTeam(match.getHomeTeam());
+        match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(position));
+        Player player = match.getState().getPossessionPlayer();
+
+        Action action = player.decide();
+        ActionOutcome outcome = match.getState().execute(action);
+        match.updateState(outcome);
+
+        System.out.println(action);
+        System.out.println(outcome);
+        System.out.println(match.getState());
+    }
 }
