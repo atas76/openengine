@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openengine.vanilla.util.Flags;
 
-public class TacticalBehaviourTest_442 {
+public class TacticalBehaviour442Test {
 
     @Before
     public void setUp() {
