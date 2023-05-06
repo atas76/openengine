@@ -62,6 +62,21 @@ public class TacticalBehaviour433Test {
         testPlayerBehaviourByPosition(Position.M_LC);
     }
 
+    @Test
+    public void testRightCentreForwardAction() {
+        testPlayerBehaviourByPosition(Position.F_RC);
+    }
+
+    @Test
+    public void testCentreForwardAction() {
+        testPlayerBehaviourByPosition(Position.F_C);
+    }
+
+    @Test
+    public void testLeftCentreForwardAction() {
+        testPlayerBehaviourByPosition(Position.F_LC);
+    }
+
     private static void testPlayerBehaviourByPosition(Position position) {
         Match match = new Match(Tactics._4_3_3, Tactics._4_3_3);
         match.getState().setPossessionTeam(match.getHomeTeam());

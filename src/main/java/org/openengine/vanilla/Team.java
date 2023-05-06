@@ -152,7 +152,7 @@ public class Team {
 
                 Player leftCentreForward = formation.get(Position.F_LC);
                 leftCentreForward.setPermissibleActions(Arrays.asList(
-                        new Action(leftCentreForward, this.formation.get(Position.F_LC), ActionType.Pass),
+                        new Action(leftCentreForward, this.formation.get(Position.F_C), ActionType.Pass),
                         new Action(leftCentreForward, null, ActionType.Shoot)
                 ));
             }
