@@ -308,3 +308,25 @@ ThrowIn {
         Attack, true, 1, 0, 0; position = Awp
     }
 }
+Transition {
+    DMw {
+        GoalkeeperPossession, false, 5, 0, 0
+    }
+    DMd {
+        GoalkeeperPossession, false, 5, 0, 0
+        Pressure, false, 19, 19, 0; position = Dp
+    }
+    DM {
+        Possession, true, 5, 0, 0; position = MD
+        Pressure, true, 1, 0, 0; position = Dw
+    }
+    MDw {
+        DefensiveTransition, false, 6, 0, 0; position = Dwp
+    }
+    MDd {
+        GoalKick, false, 21, 21, 0
+        AttackingTransition, true, 8, 0, 0; position = Awp
+        AttackingTransition, true, 5, 0, 0; position = Apd
+        DefensiveTransition, false, 6, 0, 0; position = D
+    }
+}
