@@ -166,14 +166,15 @@ L
         ThrowIn, true, 9, 0, 0                  #
         ThrowIn, false, 14, 0, 0                #
     Transition
-        AttackingTransition, true, 8, 0, 0
-        AttackingTransition, true, 5, 0, 0
-        AttackingTransition, true, 19, 0, 0
-        DefensiveTransition, false, 6, 0, 0
-        DefensiveTransition, false, 6, 0, 0
-        GoalkeeperPossession, false, 5, 0, 0
-        GoalKick, false, 21, 21, 0
-        Possession, true, 5, 0, 0
+        AttackingTransition, true, 8, 0, 0      #
+        AttackingTransition, true, 5, 0, 0      #
+        DefensiveTransition, false, 6, 0, 0     #
+        DefensiveTransition, false, 6, 0, 0     #
+        GoalkeeperPossession, false, 5, 0, 0    #
+        GoalKick, false, 21, 21, 0              #
+        Possession, true, 5, 0, 0               #
+        Pressure, false, 19, 19, 0              !
+        Pressure, true, 1, 0, 0                 !
 T
     Attack
         AttackingPossession, true, 17, 0, 0
