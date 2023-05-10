@@ -44,7 +44,7 @@ public class Match {
     public static void main(String[] args) {
         Flags.LOGGING = false;
         // new Match().play();
-        new Match(Tactics._4_3_3, Tactics._4_3_3).play();
+        new Match(Tactics._4_4_2, Tactics._4_3_3).play();
     }
 
     public void kickOff() {
@@ -58,34 +58,76 @@ public class Match {
     }
 
     private void init442Markings(Team attackingTeam, Team defendingTeam) {
-        attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
-        attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
-        attackingTeam.getPlayerByPosition(Position.M_R).addMarker(defendingTeam.getPlayerByPosition(Position.M_L));
-        attackingTeam.getPlayerByPosition(Position.M_CR).addMarker(defendingTeam.getPlayerByPosition(Position.M_CL));
-        attackingTeam.getPlayerByPosition(Position.M_CL).addMarker(defendingTeam.getPlayerByPosition(Position.M_CR));
-        attackingTeam.getPlayerByPosition(Position.M_L).addMarker(defendingTeam.getPlayerByPosition(Position.M_R));
-        attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
-        attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.33);
-        attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
-        attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.33);
+        switch(defendingTeam.getTactics()) {
+            case _4_4_2 -> {
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
+                attackingTeam.getPlayerByPosition(Position.M_R).addMarker(defendingTeam.getPlayerByPosition(Position.M_L));
+                attackingTeam.getPlayerByPosition(Position.M_CR).addMarker(defendingTeam.getPlayerByPosition(Position.M_CL));
+                attackingTeam.getPlayerByPosition(Position.M_CL).addMarker(defendingTeam.getPlayerByPosition(Position.M_CR));
+                attackingTeam.getPlayerByPosition(Position.M_L).addMarker(defendingTeam.getPlayerByPosition(Position.M_R));
+                attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
+                attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.33);
+                attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
+                attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.33);
+            }
+            case _4_3_3 -> {
+                attackingTeam.getPlayerByPosition(Position.D_R).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_L).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_R).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_L).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_CR).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_CR).addMarker(defendingTeam.getPlayerByPosition(Position.M_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_CL).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_CL).addMarker(defendingTeam.getPlayerByPosition(Position.M_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL));
+                attackingTeam.getPlayerByPosition(Position.F_CR).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.33);
+                attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR));
+                attackingTeam.getPlayerByPosition(Position.F_CL).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.33);
+            }
+        }
     }
 
     private void init433Markings(Team attackingTeam, Team defendingTeam) {
-        attackingTeam.getPlayerByPosition(Position.D_R).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
-        attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
-        attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.D_L).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
-        attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC));
-        attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_C));
-        attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC));
-        attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.5);
-        attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
-        attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
-        attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
-        attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
-        attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.5);
+        switch (defendingTeam.getTactics()) {
+            case _4_3_3 -> {
+                attackingTeam.getPlayerByPosition(Position.D_R).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_LC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_C), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.D_L).addMarker(defendingTeam.getPlayerByPosition(Position.F_RC), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_LC));
+                attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_C));
+                attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_RC));
+                attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.5);
+            }
+            case _4_4_2 -> {
+                attackingTeam.getPlayerByPosition(Position.D_CR).addMarker(defendingTeam.getPlayerByPosition(Position.F_CL));
+                attackingTeam.getPlayerByPosition(Position.D_CL).addMarker(defendingTeam.getPlayerByPosition(Position.F_CR));
+                attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_L), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_RC).addMarker(defendingTeam.getPlayerByPosition(Position.M_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_C).addMarker(defendingTeam.getPlayerByPosition(Position.M_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.M_LC).addMarker(defendingTeam.getPlayerByPosition(Position.M_R), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_L), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_RC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_C).addMarker(defendingTeam.getPlayerByPosition(Position.D_CL), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_CR), 0.5);
+                attackingTeam.getPlayerByPosition(Position.F_LC).addMarker(defendingTeam.getPlayerByPosition(Position.D_R), 0.5);
+            }
+        }
     }
 
     public void play() {

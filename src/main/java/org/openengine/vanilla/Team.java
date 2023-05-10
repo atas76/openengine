@@ -8,11 +8,13 @@ public class Team {
     private List<Player> lineup = new ArrayList<>();
     // TODO represent formations in a (5x7) tactics matrix, from which permissible actions and markers can be deduced
     private Map<Position, Player> formation = new TreeMap<>();
+    private Tactics tactics;
 
     public Team(String name, Tactics tactics) {
         this.name = name;
         initializeFormation(tactics);
         initializeInstructions(tactics);
+        this.tactics = tactics;
     }
 
     @Override
@@ -226,6 +228,10 @@ public class Team {
 
     public Player getPlayerByPosition(Position position) {
         return formation.get(position);
+    }
+
+    public Tactics getTactics() {
+        return this.tactics;
     }
 
     @Override
