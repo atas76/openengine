@@ -22,7 +22,7 @@ public class Match {
 
     public Match(Tactics homeTactics, Tactics awayTactics) {
         this.homeTeam = new Team("Reds", homeTactics);
-        this.awayTeam = new Team("Blue", awayTactics);
+        this.awayTeam = new Team("Blues", awayTactics);
         switch (homeTactics) {
             case _4_4_2 -> init442Markings(homeTeam, awayTeam);
             case _4_3_3 -> init433Markings(homeTeam, awayTeam);
@@ -43,7 +43,8 @@ public class Match {
 
     public static void main(String[] args) {
         Flags.LOGGING = false;
-        new Match().play();
+        // new Match().play();
+        new Match(Tactics._4_3_3, Tactics._4_3_3).play();
     }
 
     public void kickOff() {
@@ -109,6 +110,9 @@ public class Match {
         System.out.println("Shots at goal: " +
                 this.getTeamStats(this.homeTeam).getShotsAtGoal() + " - " +
                 this.getTeamStats(this.awayTeam).getShotsAtGoal());
+        System.out.println("Attacking touches: " +
+                this.getTeamStats(this.homeTeam).getAttackingTouches() + " - " +
+                this.getTeamStats(this.awayTeam).getAttackingTouches());
     }
 
     void updateState(ActionOutcome actionOutcome) {
@@ -138,6 +142,7 @@ public class Match {
                     }
                 }
                 case SHOT -> stats.get(this.state.getPossessionTeam()).addShotAtGoal();
+                case ATTACKING_TOUCH -> stats.get(actionOutcome.getPossessionPlayer().getTeam()).addAttackingTouch();
             }
         });
     }

@@ -61,12 +61,15 @@ public class State {
         double outcome = rnd.nextDouble();
         Logger.log("Outcome: " + outcome);
         Logger.log("Marking factor: " + markingFactor);
-        if (outcome * markingFactor < xP) {
+        if (outcome * markingFactor * action.getGeometryFactor() < xP) {
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
         } else {
             actionOutcome.setPossessionChange(true);
             actionOutcome.setPossessionPlayer(action.getTarget().getChallengeMarker());
+        }
+        if (actionOutcome.getPossessionPlayer().getPosition().toString().startsWith("F")) {
+            actionOutcome.addEvent(new Event(EventType.ATTACKING_TOUCH));
         }
         return actionOutcome;
     }

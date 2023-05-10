@@ -20,10 +20,11 @@ public class Player {
 
     }
 
-    public Player(Position position, int shirtNo) {
+    public Player(Position position, int shirtNo, Team team) {
         this.position = position;
         this.name = position.name();
         this.shirtNo = shirtNo;
+        this.team = team;
     }
 
     public Team getTeam() {
@@ -71,5 +72,9 @@ public class Player {
 
     public void setPermissibleActions(List<Action> permissibleActions) {
         this.permissibleActions = permissibleActions;
+    }
+
+    public Position getPosition() {
+        return position;
     }
 }

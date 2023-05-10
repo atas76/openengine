@@ -41,23 +41,31 @@ public class Team {
 
                 Player rightBack = formation.get(Position.D_R);
                 rightBack.setPermissibleActions(Arrays.asList(
+                        new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
+                        new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
                 leftBack.setPermissibleActions(Arrays.asList(
+                        new Action(leftBack, this.formation.get(Position.GK), ActionType.Pass),
+                        new Action(leftBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(leftBack, this.formation.get(Position.M_L), ActionType.Pass)
                 ));
 
                 Player centreRightBack = formation.get(Position.D_CR);
                 centreRightBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.M_CR), ActionType.Pass)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);
                 centreLeftBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass)
                 ));
 
@@ -73,11 +81,15 @@ public class Team {
 
                 Player centreRightMidfielder = formation.get(Position.M_CR);
                 centreRightMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightMidfielder, this.formation.get(Position.M_R), ActionType.Pass),
+                        new Action(centreRightMidfielder, this.formation.get(Position.M_CL), ActionType.Pass),
                         new Action(centreRightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass)
                 ));
 
                 Player centreLeftMidfielder = formation.get(Position.M_CL);
                 centreLeftMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftMidfielder, this.formation.get(Position.M_L), ActionType.Pass),
+                        new Action(centreLeftMidfielder, this.formation.get(Position.M_CR), ActionType.Pass),
                         new Action(centreLeftMidfielder, this.formation.get(Position.F_CL), ActionType.Pass)
                 ));
 
@@ -104,38 +116,50 @@ public class Team {
 
                 Player rightBack = formation.get(Position.D_R);
                 rightBack.setPermissibleActions(Arrays.asList(
-                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass)
+                        new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
+                        new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
+                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass, 1.4)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
                 leftBack.setPermissibleActions(Arrays.asList(
-                        new Action(leftBack, this.formation.get(Position.M_LC), ActionType.Pass)
+                        new Action(leftBack, this.formation.get(Position.GK), ActionType.Pass),
+                        new Action(leftBack, this.formation.get(Position.D_CL), ActionType.Pass),
+                        new Action(leftBack, this.formation.get(Position.M_LC), ActionType.Pass, 1.4)
                 ));
 
                 Player centreRightBack = formation.get(Position.D_CR);
                 centreRightBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreRightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.M_C), ActionType.Pass)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);
                 centreLeftBack.setPermissibleActions(Arrays.asList(
+                        new Action(centreLeftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.M_C), ActionType.Pass)
                 ));
 
                 Player rightCentreMidfielder = formation.get(Position.M_RC);
                 rightCentreMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(rightCentreMidfielder, this.formation.get(Position.M_C), ActionType.Pass),
                         new Action(rightCentreMidfielder, this.formation.get(Position.F_RC), ActionType.Pass)
                 ));
 
                 Player centreMidfielder = formation.get(Position.M_C);
                 centreMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(centreMidfielder, this.formation.get(Position.M_RC), ActionType.Pass),
+                        new Action(centreMidfielder, this.formation.get(Position.M_LC), ActionType.Pass),
                         new Action(centreMidfielder, this.formation.get(Position.F_C), ActionType.Pass)
                 ));
 
                 Player leftCentreMidfielder = formation.get(Position.M_LC);
                 leftCentreMidfielder.setPermissibleActions(Arrays.asList(
+                        new Action(leftCentreMidfielder, this.formation.get(Position.M_C), ActionType.Pass),
                         new Action(leftCentreMidfielder, this.formation.get(Position.F_LC), ActionType.Pass)
                 ));
 
@@ -147,7 +171,9 @@ public class Team {
 
                 Player centreForward = formation.get(Position.F_C);
                 centreForward.setPermissibleActions(Arrays.asList(
-                        new Action(centreForward, null, ActionType.Shoot)
+                        new Action(centreForward, null, ActionType.Shoot),
+                        new Action(centreForward, this.formation.get(Position.F_RC), ActionType.Pass),
+                        new Action(centreForward, this.formation.get(Position.F_LC), ActionType.Pass)
                 ));
 
                 Player leftCentreForward = formation.get(Position.F_LC);
@@ -163,32 +189,32 @@ public class Team {
         switch(tactics) {
             case _4_4_2 -> {
                 if (lineup.isEmpty()) { // create dummy players
-                    formation.put(Position.GK, new Player(Position.GK, 1));
-                    formation.put(Position.D_R, new Player(Position.D_R, 2));
-                    formation.put(Position.D_L, new Player(Position.D_L, 3));
-                    formation.put(Position.D_CR, new Player(Position.D_CR, 4));
-                    formation.put(Position.D_CL, new Player(Position.D_CL, 5));
-                    formation.put(Position.M_R, new Player(Position.M_R, 7));
-                    formation.put(Position.M_L, new Player(Position.M_L, 11));
-                    formation.put(Position.M_CR, new Player(Position.M_CR, 8));
-                    formation.put(Position.M_CL, new Player(Position.M_CL, 6));
-                    formation.put(Position.F_CR, new Player(Position.F_CR, 9));
-                    formation.put(Position.F_CL, new Player(Position.F_CL, 10));
+                    formation.put(Position.GK, new Player(Position.GK, 1, this));
+                    formation.put(Position.D_R, new Player(Position.D_R, 2, this));
+                    formation.put(Position.D_L, new Player(Position.D_L, 3, this));
+                    formation.put(Position.D_CR, new Player(Position.D_CR, 4, this));
+                    formation.put(Position.D_CL, new Player(Position.D_CL, 5, this));
+                    formation.put(Position.M_R, new Player(Position.M_R, 7, this));
+                    formation.put(Position.M_L, new Player(Position.M_L, 11, this));
+                    formation.put(Position.M_CR, new Player(Position.M_CR, 8, this));
+                    formation.put(Position.M_CL, new Player(Position.M_CL, 6, this));
+                    formation.put(Position.F_CR, new Player(Position.F_CR, 9, this));
+                    formation.put(Position.F_CL, new Player(Position.F_CL, 10, this));
                 }
             }
             case _4_3_3 -> {
                 if (lineup.isEmpty()) {
-                    formation.put(Position.GK, new Player(Position.GK, 1));
-                    formation.put(Position.D_R, new Player(Position.D_R, 2));
-                    formation.put(Position.D_L, new Player(Position.D_L, 3));
-                    formation.put(Position.D_CR, new Player(Position.D_CR, 4));
-                    formation.put(Position.D_CL, new Player(Position.D_CL, 6));
-                    formation.put(Position.M_RC, new Player(Position.M_RC, 7));
-                    formation.put(Position.M_C, new Player(Position.M_C, 5));
-                    formation.put(Position.M_LC, new Player(Position.M_LC, 11));
-                    formation.put(Position.F_RC, new Player(Position.F_RC, 10));
-                    formation.put(Position.F_C, new Player(Position.F_C, 9));
-                    formation.put(Position.F_LC, new Player(Position.F_LC, 11));
+                    formation.put(Position.GK, new Player(Position.GK, 1, this));
+                    formation.put(Position.D_R, new Player(Position.D_R, 2, this));
+                    formation.put(Position.D_L, new Player(Position.D_L, 3, this));
+                    formation.put(Position.D_CR, new Player(Position.D_CR, 4, this));
+                    formation.put(Position.D_CL, new Player(Position.D_CL, 6, this));
+                    formation.put(Position.M_RC, new Player(Position.M_RC, 7, this));
+                    formation.put(Position.M_C, new Player(Position.M_C, 5, this));
+                    formation.put(Position.M_LC, new Player(Position.M_LC, 11, this));
+                    formation.put(Position.F_RC, new Player(Position.F_RC, 10, this));
+                    formation.put(Position.F_C, new Player(Position.F_C, 9, this));
+                    formation.put(Position.F_LC, new Player(Position.F_LC, 11, this));
                 }
             }
         }
