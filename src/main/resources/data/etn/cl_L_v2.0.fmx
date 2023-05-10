@@ -1,32 +1,32 @@
-team L # TODO add ids (minutes) in goal attempts
+team L
 
 Attack {
     Aw {
         ThrowIn, true, 32, 0, 0; position = A
         Corner, true, 40, 0, 0
-        GoalAttempt, true, 10, 0, 0; position = A
-        }
+        GoalAttempt, true, 10, 0, 0; position = A, minute = 42
+    }
     Ad {
         ThrowIn, false, 57, 57, 0; position = AM
-       }
+    }
     A {
-        GoalAttempt, true, 0, 0, 0; position = A
-        GoalAttempt, true, 12, 0, 0; position = Ad
+        GoalAttempt, true, 0, 0, 0; position = A, minute = 21
+        GoalAttempt, true, 12, 0, 0; position = Ad, minute = 83
         Corner, true, 34, 0, 0
         GoalkeeperPossession, false, 18, 8, 0
-        }
+    }
     Awp {
-        GoalAttempt, true, 2, 0, 0; position = Apw
-        GoalAttempt, true, 7, 0, 0; position = A
+        GoalAttempt, true, 2, 0, 0; position = Apw, minute = 22
+        GoalAttempt, true, 7, 0, 0; position = A, minute = 53
         GoalKick, false, 17, 0, 0
-        }
+    }
     Apw {
         FreeKick, true, 18, 0, 0; position = Md
-        }
+    }
     Apd {
         Penalty, true, 87, 0, 0
-        GoalAttempt, true, 1, 0, 0; position = Apd
-        }
+        GoalAttempt, true, 1, 0, 0; position = Apd, minute = 87
+    }
 }
 AttackingPossession {
     AM {
@@ -48,10 +48,11 @@ AttackingTransition {
         Transition, false, 2, 0, 0; position = MDd
     }
     AMd {
-        GoalAttempt, true, 2, 0, 0; position = Ad
+        GoalAttempt, true, 2, 0, 0; position = Ad, minute = 17
     }
     A {
-        GoalAttempt, true, 2, 0, 0; position = Ap
+        GoalAttempt, true, 2, 0, 0; position = Ap, minute = 21
+        GoalAttempt, true, 2, 0, 0; position = Ap, minute = 69
     }
     Awp {
         DefensiveTransition, false, 6, 0, 0; position = Dw
@@ -62,7 +63,7 @@ AttackingTransition {
         ThrowIn, true, 20, 0, 0; position = AM
     }
     Apd {
-        GoalAttempt, true, 2, 0, 0; position = Ap
+        GoalAttempt, true, 2, 0, 0; position = Ap, minute = 54
     }
 }
 Buildup {
@@ -111,11 +112,11 @@ ContestedBall {
     }
 }
 Corner {
-    Attack, true, 5, 0, 0; position = A
+    Attack, true, 4, 0, 0; position = A
     Attack, true, 6, 0, 0; position = Apd
     FreeKick, false, 60, 0, 0; position = DMw
-    GoalAttempt, true, 4, 0, 0; position = A
-    GoalAttempt, true, 4, 0, 0; position = A
+    GoalAttempt, true, 4, 0, 0; position = A, minute = 39
+    GoalAttempt, true, 4, 0, 0; position = A, minute = 42
     GoalkeeperPossession, true, 11, 0, 0
     ThrowIn, true, 36, 0, 0; position = A
     ThrowIn, true, 20, 0, 0; position = AM
@@ -126,7 +127,7 @@ CounterAttack {
         Attack, true, 11, 0, 0; position = Ad
     }
     Mw {
-        GoalAttempt, true, 4, 0, 0; position = Ad
+        GoalAttempt, true, 4, 0, 0; position = Ad, minute = 38
         GoalKick, false, 19, 19, 0
     }
     Md {
@@ -180,8 +181,8 @@ GoalAttempt {
     A {
         Corner, true, 42, 0, 0; minute = 21, xG = 0.03
         GoalKick, false, 40, 0, 32; minute = 39, xG = 0.03
-        Attack, true, 1, 0, 0; position = A, minute = 42, id = 1, xG = 0.03
-        Corner, true, 31, 0, 0; minute = 42, id = 2, xG = 0.02
+        Attack, true, 1, 0, 0; position = A, minute = 42, xG = 0.03
+        Corner, true, 31, 0, 0; minute = 42, xG = 0.02
         GoalkeeperPossession, false, 2, 0, 0; minute = 53, xG = 0.03
     }
     Apw {
