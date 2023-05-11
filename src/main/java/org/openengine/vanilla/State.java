@@ -81,4 +81,8 @@ public class State {
                 ", possessionTeam=" + possessionTeam +
                 '}';
     }
+
+    public double getXP() {
+        return xP;
+    }
 }
