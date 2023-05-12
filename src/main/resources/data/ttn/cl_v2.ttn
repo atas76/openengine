@@ -767,7 +767,7 @@
 75:13 Apw->Cross => !M LC @ Dp:B >> F C @ Apw
 75:16 Apw->Cross => !D CL @ Dp:HD >> D R @ Aw
 75:23 Aw->Pass => D CR @ AMw
-75:26 AMw->Long => !Apw*H
+75:26 AMw->Long => !Dpw*H
 :break
 :phase possession T
 76:05 DM->ForwardPass => AM C @ MD
