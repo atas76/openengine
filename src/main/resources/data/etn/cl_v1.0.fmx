@@ -177,32 +177,32 @@ L
         Pressure, true, 1, 0, 0                 !
 T
     Attack
-        AttackingPossession, true, 17, 0, 0
-        AttackingPossession, true, 15, 0, 0
-        AttackingPossession, true, 15, 0, 0
-        Corner, true, 41, 0, 0
-        CounterAttack, false, 12, 0, 0
-        FreeKick, false, 58, 58, 0
-        FreeKick, true, 90, 0, 0
-        GoalAttempt, true, 14, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 1, 0, 0
-        GoalAttempt, true, 1, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 3, 0, 0
-        GoalAttempt, true, 2, 0, 0
-        GoalAttempt, true, 4, 0, 0
-        GoalkeeperPossession, false, 4, 0, 0
-        GoalkeeperPossession, false, 11, 0, 0
-        GoalKick, false, 31, 0, 0
-        GoalKick, false, 89, 17, 72
-        ThrowIn, false, 40, 0, 0
-        ThrowIn, false, 26, 0, 0
-        ThrowIn, true, 22, 0, 0
-        ThrowIn, true, 21, 21, 0
-        ThrowIn, true, 9, 0, 0
-        ThrowIn, true, 28, 0, 0
-        ThrowIn, true, 55, 41, 14
+        AttackingPossession, true, 17, 0, 0     #
+        AttackingPossession, true, 15, 0, 0     #
+        AttackingPossession, true, 15, 0, 0     #
+        Corner, true, 41, 0, 0                  #
+        CounterAttack, false, 12, 0, 0          #
+        FreeKick, false, 58, 58, 0              #
+        FreeKick, true, 90, 0, 0                #
+        GoalAttempt, true, 14, 0, 0             #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalAttempt, true, 1, 0, 0              #
+        GoalAttempt, true, 1, 0, 0              #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalAttempt, true, 3, 0, 0              #
+        GoalAttempt, true, 2, 0, 0              #
+        GoalAttempt, true, 4, 0, 0              #
+        GoalkeeperPossession, false, 4, 0, 0    #
+        GoalkeeperPossession, false, 11, 0, 0   #
+        GoalKick, false, 31, 0, 0               #
+        GoalKick, false, 89, 17, 72             #
+        ThrowIn, false, 40, 0, 0                #
+        ThrowIn, false, 26, 0, 0                #
+        ThrowIn, true, 22, 0, 0                 #
+        ThrowIn, true, 21, 21, 0                #
+        ThrowIn, true, 9, 0, 0                  #
+        ThrowIn, true, 28, 0, 0                 #
+        ThrowIn, true, 55, 41, 14               #
     AttackingPossession
         Attack, true, 20, 0, 0
         Attack, true, 14, 0, 0
