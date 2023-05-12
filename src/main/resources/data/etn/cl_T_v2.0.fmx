@@ -1,0 +1,48 @@
+team T
+
+Attack {
+    AMw {
+        ThrowIn, true, 21, 21, 0; position = DM
+    }
+    AM {
+        GoalAttempt, true, 4, 0, 0; position = Apd
+    }
+    Aw {
+        GoalAttempt, true, 14, 0, 0; position = A
+        GoalkeeperPossession, false, 4, 0, 0
+        ThrowIn, false, 40, 0, 0; position = D
+        FreeKick, true, 90, 0, 0; position = Awp
+        GoalKick, false, 89, 17, 72
+        GoalAttempt, true, 3, 0, 0; position = Ad
+        CounterAttack, false, 12, 0, 0; position = DM
+    }
+    Ad {
+        ThrowIn, false, 26, 0, 0; position = D
+        GoalKick, false, 31, 0, 0
+        AttackingPossession, true, 15, 0, 0; position = MDw
+        GoalAttempt, true, 2, 0, 0; position = Apd
+    }
+    A {
+        ThrowIn, true, 9, 0, 0; position = A
+        GoalAttempt, true, 2, 0, 0; position = A
+    }
+    Awp {
+        ThrowIn, true, 22, 0, 0; position = A
+        ThrowIn, true, 28, 0, 0; position = A
+        AttackingPossession, true, 17, 0, 0; position = DM
+        ThrowIn, true, 55, 41, 14; position = DM
+        GoalAttempt, true, 1, 0, 0; position = Ap
+    }
+    Apd {
+        Corner, true, 41, 0, 0
+        GoalAttempt, true, 2, 0, 0; position = Ap
+    }
+    Apw {
+        GoalkeeperPossession, false, 11, 0, 0
+        FreeKick, false, 58, 58, 0; position = Dpw
+    }
+    Ap {
+        GoalAttempt, true, 1, 0, 0; position = Ap
+        AttackingPossession, true, 15, 0, 0; position = DMw
+    }
+}
