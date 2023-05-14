@@ -32,7 +32,8 @@ public class TacticalBehaviour442Test {
         System.out.println(match.getState());
     }
 
-    private final int SAMPLE_SIZE = 100;
+    private final static int SAMPLE_SIZE = 100;
+
     @Test
     public void testGoalkeeperActionsProbabilisticAssertions() {
 
@@ -67,8 +68,8 @@ public class TacticalBehaviour442Test {
         assertEquals(0.25, actionOutcomes.get(Position.D_L) / (double) SAMPLE_SIZE, 0.1);
         assertEquals(0.25 * xP, actionOutcomes.get(Position.D_CR) / (double) SAMPLE_SIZE, 0.1);
         assertEquals(0.25 * xP, actionOutcomes.get(Position.D_CL) / (double) SAMPLE_SIZE, 0.1);
-        assertEquals(0.25 * xP, actionOutcomes.get(Position.F_CR) / (double) SAMPLE_SIZE, 0.1);
-        assertEquals(0.25 * xP, actionOutcomes.get(Position.F_CL) / (double) SAMPLE_SIZE, 0.1);
+        assertEquals(0.25 * (1 - xP), actionOutcomes.get(Position.F_CR) / (double) SAMPLE_SIZE, 0.1);
+        assertEquals(0.25 * (1 - xP), actionOutcomes.get(Position.F_CL) / (double) SAMPLE_SIZE, 0.1);
         assertEquals(0.5 + 0.5 * xP, matchStates.get(homeTeam) / (double) SAMPLE_SIZE, 0.1);
         assertEquals(0.5 * (1 - xP), matchStates.get(awayTeam) / (double) SAMPLE_SIZE, 0.1);
     }
@@ -77,6 +78,22 @@ public class TacticalBehaviour442Test {
     public void testRightBackActions() {
         testPlayerBehaviourByPosition(Position.D_R);
     }
+
+    @Test
+    public void testRightBackActionsProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput();
+
+        testOutput.runTest(Position.D_R);
+
+        assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_R), 0.1);
+        assertEquals(0.33 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.F_CL), 0.1);
+        assertEquals(0.33 + 0.66 * xP, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
 
     @Test
     public void testCentreRightBackActions() {
