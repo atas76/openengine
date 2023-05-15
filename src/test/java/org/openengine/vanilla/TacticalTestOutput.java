@@ -12,9 +12,22 @@ public class TacticalTestOutput {
     private Map<Position, Integer> actionOutcomes = new HashMap<>();
     private Map<Team, Integer> matchStates = new HashMap<>();
 
+    private Tactics homeTactics;
+    private Tactics awayTactics;
+
+    public TacticalTestOutput() {
+        this.homeTactics = Tactics._4_4_2;
+        this.awayTactics = Tactics._4_4_2;
+    }
+
+    public TacticalTestOutput(Tactics homeTactics, Tactics awayTactics) {
+        this.homeTactics = homeTactics;
+        this.awayTactics = awayTactics;
+    }
+
     public void runTest(Position position) {
         for (int i = 0; i < SAMPLE_SIZE; i++) {
-            Match match = new Match();
+            Match match = new Match(this.homeTactics, this.awayTactics);
             match.getState().setPossessionTeam(match.getHomeTeam());
             match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(position));
             Player player = match.getState().getPossessionPlayer();
