@@ -36,7 +36,7 @@ public class Match {
 
     public Match() {
         this.homeTeam = new Team("Reds", Tactics._4_4_2);
-        this.awayTeam = new Team("Blue", Tactics._4_4_2);
+        this.awayTeam = new Team("Blues", Tactics._4_4_2);
         initializeMarkings442();
         stats = Map.of(homeTeam, new TeamStats(), awayTeam, new TeamStats());
     }
