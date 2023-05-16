@@ -1,8 +1,6 @@
 package org.openengine.vanilla;
 
 import org.junit.Test;
-import org.openengine.vanilla.util.Flags;
-import org.openengine.vanilla.util.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -98,6 +96,25 @@ public class TacticalBehaviour442vs433Test {
         assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
         assertEquals(0.25 * xP * 2, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
         assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_CR), 0.1);
+        assertEquals(xP + 0.25, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
+    @Test
+    public void testCentreLeftBackActionsProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_3_3);
+
+        testOutput.runTest(Position.D_CL);
+
+        assertEquals(0.25, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.25 * xP * 2, testOutput.getPossessionOutcomeByPosition(Position.D_L), 0.1);
+        assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_CL), 0.1);
+        assertEquals(0.25 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.F_LC), 0.1);
+        assertEquals(0.25 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.F_C), 0.1);
+        assertEquals(0.25 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.M_RC), 0.1);
+        assertEquals(0.25 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.M_C), 0.1);
         assertEquals(xP + 0.25, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
     }
 }
