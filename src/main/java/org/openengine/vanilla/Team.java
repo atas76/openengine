@@ -67,7 +67,7 @@ public class Team {
                 centreLeftBack.setPermissibleActions(Arrays.asList(
                         new Action(centreLeftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
-                        new Action(centreLeftBack, this.formation.get(Position.D_CL), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass)
                 ));
 
