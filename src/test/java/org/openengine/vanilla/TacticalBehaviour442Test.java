@@ -115,6 +115,22 @@ public class TacticalBehaviour442Test {
     }
 
     @Test
+    public void testCentreRightBackProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput();
+
+        testOutput.runTest(Position.D_CR);
+
+        assertEquals(0.25, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.25, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
+        assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+        assertEquals(0.25 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_CR), 0.1);
+        assertEquals(0.25 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.F_CR), 0.1);
+        assertEquals(0.5 + 0.5 * xP, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
+    @Test
     public void testCentreLeftBackActions() {
         testPlayerBehaviourByPosition(Position.D_CL);
     }
