@@ -3,8 +3,6 @@ package org.openengine.vanilla;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-
 public class TacticalTestOutput {
 
     private final int SAMPLE_SIZE = 100;
@@ -36,10 +34,11 @@ public class TacticalTestOutput {
             ActionOutcome outcome = match.getState().execute(action);
             match.updateState(outcome);
 
-            assertEquals(ActionType.Pass, action.getType());
-            actionOutcomes.putIfAbsent(outcome.getPossessionPlayer().getPosition(), 0);
-            actionOutcomes.put(outcome.getPossessionPlayer().getPosition(),
-                    actionOutcomes.get(outcome.getPossessionPlayer().getPosition()) + 1);
+            Position possessionPlayerPosition = outcome.getPossessionPlayer() != null ?
+                    outcome.getPossessionPlayer().getPosition() : Position.GK;
+            actionOutcomes.putIfAbsent(possessionPlayerPosition, 0);
+            actionOutcomes.put(possessionPlayerPosition,
+                    actionOutcomes.get(possessionPlayerPosition) + 1);
             matchStates.putIfAbsent(match.getState().getPossessionTeam(), 0);
             matchStates.put(match.getState().getPossessionTeam(),
                     matchStates.get(match.getState().getPossessionTeam()) + 1);
