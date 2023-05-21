@@ -195,4 +195,17 @@ public class TacticalBehaviour442vs433Test {
         assertEquals(0.5, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
         assertEquals(0.5 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
     }
+
+    @Test
+    public void testCentreLeftForwardActionsProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_3_3);
+
+        testOutput.runTest(Position.F_CL);
+
+        assertEquals(0.5 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_CR), 0.1);
+        assertEquals(0.5, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.5 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+    }
 }
