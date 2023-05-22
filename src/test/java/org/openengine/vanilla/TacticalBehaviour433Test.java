@@ -4,11 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openengine.vanilla.util.Flags;
 
+import static org.junit.Assert.assertEquals;
+
 public class TacticalBehaviour433Test {
 
     @Before
     public void setUp() {
-        Flags.LOGGING = true;
+        // Flags.LOGGING = true;
     }
 
     @Test
@@ -30,6 +32,21 @@ public class TacticalBehaviour433Test {
     @Test
     public void testRightBackActions() {
         testPlayerBehaviourByPosition(Position.D_R);
+    }
+
+    @Test
+    public void testRightBackActionsProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
+
+        testOutput.runTest(Position.D_R);
+
+        assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.33 * xP / 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_RC), 0.1);
+        assertEquals(0.33 * (1 - xP) * 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_LC), 0.1);
+        assertEquals(0.33 + 0.33 * xP + 0.33 * xP / 1.4, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
     }
 
     @Test
