@@ -20,6 +20,7 @@ public class TacticalBehaviour433vs442Test {
         assertEquals(0.33 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.F_CL), 0.1);
         assertEquals(0.33 * (1 - xP) * 0.5 * 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_L), 0.1);
         assertEquals(0.33 * (1 - xP) * 0.5 * 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_CL), 0.1);
+        assertEquals(0.33 + 0.33 * xP + 0.33 * xP / 1.4, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
     }
 
     @Test
@@ -36,5 +37,6 @@ public class TacticalBehaviour433vs442Test {
         assertEquals(0.33 * (1 - xP), testOutput.getPossessionOutcomeByPosition(Position.F_CR), 0.1);
         assertEquals(0.33 * (1 - xP) * 0.5 * 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_R), 0.1);
         assertEquals(0.33 * (1 - xP) * 0.5 * 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_CR), 0.1);
+        assertEquals(0.33 + 0.33 * xP + 0.33 * xP / 1.4, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
     }
  }
