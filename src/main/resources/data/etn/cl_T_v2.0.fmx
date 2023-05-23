@@ -46,3 +46,38 @@ Attack {
         AttackingPossession, true, 15, 0, 0; position = DMw
     }
 }
+AttackingPossession {
+    DMw {
+        Attack, true, 24, 0, 0; position = Awp
+    }
+    DM {
+        Possession, true, 10, 0, 0; position = Gkr
+    }
+    MDw {
+        Possession, true, 5, 0, 0; position = Gkd
+    }
+    Mw {
+        Attack, true, 20, 0, 0; position = Aw
+        ThrowIn, true, 19, 0, 0; position = AM
+        GoalAttempt, true, 17, 0, 0; position = A
+        ThrowIn, false, 23, 0, 0; position = D
+        Attack, true, 19, 0, 0; position = Aw
+    }
+    Md {
+        Possession, true, 16, 0, 0; position = Gkd
+    }
+    M {
+        Attack, true, 14, 0, 0; position = A
+        Attack, true, 8, 0, 0; position = Aw
+        Attack, true, 18, 0, 0; position = Apw
+        Corner, true, 31, 0, 0
+    }
+    AMw {
+        ThrowIn, false, 46, 46, 0; position = A
+        Attack, true, 2, 0, 0; position = Aw
+    }
+    AMd {
+        Attack, true, 3, 0, 0; position = Ad
+        ThrowIn, true, 10, 0, 0; position = A
+    }
+}
