@@ -124,4 +124,22 @@ public class TacticalBehaviour433vs442Test {
         assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
         assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
     }
- }
+
+    @Test
+    public void testCentreForwardActionsProbabilisticAssertions() {
+        Match sampleMatch = new Match();
+        double xP = sampleMatch.getState().getXP();
+        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_4_2);
+
+        testOutput.runTest(Position.F_C);
+
+        assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_RC), 0.1);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_LC), 0.1);
+        assertEquals(0.33 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.33 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+        assertEquals(0.33 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
+        assertEquals(0.33 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_L), 0.1);
+        assertEquals(0.33 * xP * 2, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+  }
