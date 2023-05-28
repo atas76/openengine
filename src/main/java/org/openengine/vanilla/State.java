@@ -10,7 +10,7 @@ public class State {
     private Team possessionTeam;
 
     private final double xG = 0.1; // Use average probabilities
-    private final double xP = 0.5; // Expected pass
+    private double xP = 0.5; // Expected pass
     private static Random rnd = new Random();
 
     public Player getPossessionPlayer() {
@@ -84,5 +84,9 @@ public class State {
 
     public double getXP() {
         return xP;
+    }
+
+    public void setXP(double xP) {
+        this.xP = xP;
     }
 }
