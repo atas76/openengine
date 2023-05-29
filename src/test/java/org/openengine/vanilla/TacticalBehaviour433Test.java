@@ -133,6 +133,17 @@ public class TacticalBehaviour433Test {
     }
 
     @Test
+    public void testLeftCentreMidfielderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.M_LC);
+
+        assertEquals(xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), 0.1); // Covers both teams
+        assertEquals(0.5 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_LC), 0.1);
+        assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
+        assertEquals(xP, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
+    @Test
     public void testCentralMidfielderActions() {
         testPlayerBehaviourByPosition(Position.M_C);
     }
