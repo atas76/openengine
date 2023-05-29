@@ -8,9 +8,16 @@ import static org.junit.Assert.assertEquals;
 
 public class TacticalBehaviour433Test {
 
+    private Match sampleMatch;
+    private final double xP = 0.5;
+    private TacticalTestOutput testOutput;
+
     @Before
     public void setUp() {
-        // Flags.LOGGING = true;
+        Flags.LOGGING = false;
+        sampleMatch = new Match();
+        sampleMatch.getState().setXP(xP);
+        testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
     }
 
     @Test
@@ -36,10 +43,6 @@ public class TacticalBehaviour433Test {
 
     @Test
     public void testRightBackActionsProbabilisticAssertions() {
-        Match sampleMatch = new Match();
-        double xP = sampleMatch.getState().getXP();
-        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
-
         testOutput.runTest(Position.D_R);
 
         assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
@@ -51,10 +54,6 @@ public class TacticalBehaviour433Test {
 
     @Test
     public void testLeftBackActionsProbabilisticAssertions() {
-        Match sampleMatch = new Match();
-        double xP = sampleMatch.getState().getXP();
-        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
-
         testOutput.runTest(Position.D_L);
 
         assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
@@ -71,10 +70,6 @@ public class TacticalBehaviour433Test {
 
     @Test
     public void testCentreRightBackActionsProbabilisticAssertions() {
-        Match sampleMatch = new Match();
-        double xP = sampleMatch.getState().getXP();
-        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
-
         testOutput.runTest(Position.D_CR);
 
         assertEquals(0.25, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
@@ -93,10 +88,6 @@ public class TacticalBehaviour433Test {
 
     @Test
     public void testCentreLeftBackActionsProbabilisticAssertions() {
-        Match sampleMatch = new Match();
-        double xP = sampleMatch.getState().getXP();
-        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
-
         testOutput.runTest(Position.D_CL);
 
         assertEquals(0.25, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
@@ -120,10 +111,6 @@ public class TacticalBehaviour433Test {
 
     @Test
     public void testCentreMidfielderActionsProbabilisticAssertions() {
-        Match sampleMatch = new Match();
-        double xP = sampleMatch.getState().getXP();
-        TacticalTestOutput testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3);
-
         testOutput.runTest(Position.M_C);
 
         assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.M_RC), 0.1); // Covers both teams
