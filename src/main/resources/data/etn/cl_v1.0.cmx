@@ -235,3 +235,19 @@ T
         GoalKick, false, 24, 0, 0; minute = 46, xG = 0.04
         GoalKick, false, 45, 0, 34; minute = 58, xG = 0.03
         GoalKick, false, 37, 37, 0; minute = 79, xG = 0.08
+    GoalkeeperPossession
+        Buildup, true, 9, 0, 0
+        Buildup, true, 6, 0, 0
+        Buildup, true, 3, 0, 0
+        FastBreak, true, 4, 0, 0
+        FastBreak, true, 4, 0, 0
+    GoalKick
+        AttackingPossession, true, 10, 0, 0
+        Buildup, true, 1, 0, 0
+        Buildup, true, 1, 0, 0
+        Buildup, true, 1, 0, 0
+        LongBall, true, 0, 0, 0
+        Pressure, true, 5, 0, 0
+        Pressure, true, 4, 0, 0
+    IndirectFreeKick
+        Attack, true, 1, 0, 0
