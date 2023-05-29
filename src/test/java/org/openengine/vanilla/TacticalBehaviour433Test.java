@@ -110,7 +110,7 @@ public class TacticalBehaviour433Test {
     }
 
     @Test
-    public void testCentreMidfielderActionsProbabilisticAssertions() {
+    public void testCentralMidfielderActionsProbabilisticAssertions() {
         testOutput.runTest(Position.M_C);
 
         assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.M_RC), 0.1); // Covers both teams
@@ -118,6 +118,17 @@ public class TacticalBehaviour433Test {
         assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_C), 0.1);
         assertEquals(0.33 * xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
         assertEquals(0.33 * xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+        assertEquals(xP, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
+    @Test
+    public void testRightCentreMidfielderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.M_RC);
+
+        assertEquals(xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), 0.1); // Covers both teams
+        assertEquals(0.5 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_RC), 0.1);
+        assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+        assertEquals(0.5 * (1 - xP) * 0.5, testOutput.getPossessionOutcomeByPosition(Position.D_L), 0.1);
         assertEquals(xP, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
     }
 
