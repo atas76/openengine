@@ -154,17 +154,31 @@ public class TacticalBehaviour433Test {
     }
 
     @Test
-    public void testRightCentreForwardAction() {
+    public void testRightCentreForwardActions() {
         testPlayerBehaviourByPosition(Position.F_RC);
     }
 
     @Test
-    public void testCentreForwardAction() {
+    public void testCentreForwardActions() {
         testPlayerBehaviourByPosition(Position.F_C);
     }
 
     @Test
-    public void testLeftCentreForwardAction() {
+    public void testCentreForwardActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.F_C);
+
+        assertEquals(xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.F_RC), 0.1);
+        assertEquals(xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.F_LC), 0.1);
+        assertEquals(0.33, testOutput.getPossessionOutcomeByPosition(Position.GK), 0.1);
+        assertEquals(0.5 * xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.D_CR), 0.1);
+        assertEquals(0.5 * xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.D_R), 0.1);
+        assertEquals(0.5 * xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.D_CL), 0.1);
+        assertEquals(0.5 * xP * 0.33, testOutput.getPossessionOutcomeByPosition(Position.D_L), 0.1);
+        assertEquals(2 * xP * 0.33, testOutput.getPossessionOutcomeByTeam(sampleMatch.getHomeTeam()), 0.1);
+    }
+
+    @Test
+    public void testLeftCentreForwardActions() {
         testPlayerBehaviourByPosition(Position.F_LC);
     }
 
