@@ -11,7 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class TacticalBehaviour433GlobalPassingTest {
 
-    private Match sampleMatch;
     private final double xP = 0.7;
     private TacticalTestOutput testOutput;
     private final double DELTA = 0.15;
@@ -20,9 +19,7 @@ public class TacticalBehaviour433GlobalPassingTest {
     @Before
     public void setUp() {
         Flags.LOGGING = false;
-        sampleMatch = new Match(Tactics._4_3_3, Tactics._4_3_3);
-        sampleMatch.getState().setXP(xP);
-        testOutput = new TacticalTestOutput();
+        testOutput = new TacticalTestOutput(Tactics._4_3_3, Tactics._4_3_3, xP);
     }
 
     @Test
@@ -33,6 +30,7 @@ public class TacticalBehaviour433GlobalPassingTest {
 
         for (int i = 0; i < SAMPLE_SIZE; i++) {
             Match match = new Match(Tactics._4_3_3, Tactics._4_3_3);
+            match.getState().setXP(xP);
             match.getState().setPossessionTeam(match.getHomeTeam());
             match.getState().setPossessionPlayer(match.getHomeTeam().getGoalkeeper());
             Player goalkeeper = match.getState().getPossessionPlayer();

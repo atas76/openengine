@@ -11,7 +11,6 @@ import static org.junit.Assert.assertEquals;
 
 public class TacticalBehaviour442GlobalPassingTest {
 
-    private Match sampleMatch;
     private final double xP = 0.7;
     private TacticalTestOutput testOutput;
     private final double DELTA = 0.15;
@@ -20,9 +19,7 @@ public class TacticalBehaviour442GlobalPassingTest {
     @Before
     public void setUp() {
         Flags.LOGGING = false;
-        sampleMatch = new Match();
-        sampleMatch.getState().setXP(xP);
-        testOutput = new TacticalTestOutput();
+        testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_4_2, xP);
     }
 
     @Test

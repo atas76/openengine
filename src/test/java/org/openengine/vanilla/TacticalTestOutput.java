@@ -12,20 +12,18 @@ public class TacticalTestOutput {
 
     private Tactics homeTactics;
     private Tactics awayTactics;
+    private double xP;
 
-    public TacticalTestOutput() {
-        this.homeTactics = Tactics._4_4_2;
-        this.awayTactics = Tactics._4_4_2;
-    }
-
-    public TacticalTestOutput(Tactics homeTactics, Tactics awayTactics) {
+    public TacticalTestOutput(Tactics homeTactics, Tactics awayTactics, double xP) {
         this.homeTactics = homeTactics;
         this.awayTactics = awayTactics;
+        this.xP = xP;
     }
 
     public void runTest(Position position) {
         for (int i = 0; i < SAMPLE_SIZE; i++) {
             Match match = new Match(this.homeTactics, this.awayTactics);
+            match.getState().setXP(xP);
             match.getState().setPossessionTeam(match.getHomeTeam());
             match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(position));
             Player player = match.getState().getPossessionPlayer();
@@ -47,9 +45,5 @@ public class TacticalTestOutput {
 
     public double getPossessionOutcomeByPosition(Position position) {
         return actionOutcomes.get(position) / (double) SAMPLE_SIZE;
-    }
-
-    public double getPossessionOutcomeByTeam(Team team) {
-        return matchStates.get(team) / (double) SAMPLE_SIZE;
     }
 }
