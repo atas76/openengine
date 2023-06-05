@@ -144,4 +144,20 @@ public class TacticalBehaviour442vs433GlobalPassingTest {
         assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_CR), DELTA);
         assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
+
+    @Test
+    public void testCentreRightForwardActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.F_CR);
+
+        assertEquals(xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(0.5, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
+    }
+
+    @Test
+    public void testCentreLeftForwardActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.F_CL);
+
+        assertEquals(xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
+        assertEquals(0.5, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
+    }
 }
