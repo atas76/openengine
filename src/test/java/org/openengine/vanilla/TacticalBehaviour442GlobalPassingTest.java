@@ -28,9 +28,6 @@ public class TacticalBehaviour442GlobalPassingTest {
     @Test
     public void testGoalkeeperActionsProbabilisticAssertions() {
 
-        Match sampleMatch = new Match();
-        sampleMatch.getState().setXP(xP);
-
         Map<Position, Integer> actionOutcomes = new HashMap<>();
         Map<Team, Integer> matchStates = new HashMap<>();
 

@@ -129,7 +129,13 @@ public class Team {
                         new Action(goalkeeper, this.formation.get(Position.D_R), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass)
+                        new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass),
+                        new Action(goalkeeper, this.formation.get(Position.M_RC), ActionType.Pass, 2.0),
+                        new Action(goalkeeper, this.formation.get(Position.M_C), ActionType.Pass, 2.0),
+                        new Action(goalkeeper, this.formation.get(Position.M_LC), ActionType.Pass, 2.0),
+                        new Action(goalkeeper, this.formation.get(Position.F_RC), ActionType.Pass, 3.0),
+                        new Action(goalkeeper, this.formation.get(Position.F_C), ActionType.Pass, 3.0),
+                        new Action(goalkeeper, this.formation.get(Position.F_LC), ActionType.Pass, 3.0)
                 ));
 
                 Player rightBack = formation.get(Position.D_R);
