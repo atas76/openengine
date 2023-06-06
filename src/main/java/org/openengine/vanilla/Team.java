@@ -142,14 +142,20 @@ public class Team {
                 rightBack.setPermissibleActions(Arrays.asList(
                         new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass, 1.4)
+                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass, 1.4),
+                        new Action(rightBack, this.formation.get(Position.M_C), ActionType.Pass, 2.1),
+                        new Action(rightBack, this.formation.get(Position.F_RC), ActionType.Pass, 2 * 1.4),
+                        new Action(rightBack, this.formation.get(Position.F_C), ActionType.Pass, 2 * 2.1)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
                 leftBack.setPermissibleActions(Arrays.asList(
                         new Action(leftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(leftBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(leftBack, this.formation.get(Position.M_LC), ActionType.Pass, 1.4)
+                        new Action(leftBack, this.formation.get(Position.M_LC), ActionType.Pass, 1.4),
+                        new Action(leftBack, this.formation.get(Position.M_C), ActionType.Pass, 2.1),
+                        new Action(leftBack, this.formation.get(Position.F_LC), ActionType.Pass, 2 * 1.4),
+                        new Action(leftBack, this.formation.get(Position.F_C), ActionType.Pass, 2 * 2.1)
                 ));
 
                 Player centreRightBack = formation.get(Position.D_CR);
@@ -157,7 +163,10 @@ public class Team {
                         new Action(centreRightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.M_C), ActionType.Pass)
+                        new Action(centreRightBack, this.formation.get(Position.M_C), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.M_RC), ActionType.Pass),
+                        new Action(centreRightBack, this.formation.get(Position.F_RC), ActionType.Pass, 2),
+                        new Action(centreRightBack, this.formation.get(Position.F_C), ActionType.Pass, 2)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);

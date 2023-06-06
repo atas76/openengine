@@ -33,4 +33,41 @@ public class TacticalBehaviour433GlobalPassingTest {
         assertEquals(0.033 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
         assertEquals(0.033 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
     }
+
+    @Test
+    public void testRightDefenderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.D_R);
+
+        assertEquals(0.17, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
+        assertEquals(0.17 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), DELTA);
+        assertEquals(0.17 * xP / 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
+        assertEquals(0.17 * xP / 2.1, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.17 * xP / (2 * 1.4), testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.17 * xP / (2 * 2.1), testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+    }
+
+    @Test
+    public void testLeftDefenderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.D_L);
+
+        assertEquals(0.17, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
+        assertEquals(0.17 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
+        assertEquals(0.17 * xP / 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_LC), DELTA);
+        assertEquals(0.17 * xP / 2.1, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.17 * xP / (2 * 1.4), testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
+        assertEquals(0.17 * xP / (2 * 2.1), testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+    }
+
+    @Test
+    public void testCentreRightDefenderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.D_CR);
+
+        assertEquals(0.14, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
+        assertEquals(0.14 * xP * 2.0, testOutput.getPossessionOutcomeByPosition(Position.D_R), DELTA);
+        assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
+        assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
+        assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+    }
 }
