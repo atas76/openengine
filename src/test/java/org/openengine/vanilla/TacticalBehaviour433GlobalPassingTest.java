@@ -83,4 +83,13 @@ public class TacticalBehaviour433GlobalPassingTest {
         assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
         assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
     }
+
+    @Test
+    public void testRightCentreMidfielderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.M_RC);
+
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.33 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.33 * xP / 1.4, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+    }
 }
