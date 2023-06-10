@@ -174,7 +174,10 @@ public class Team {
                         new Action(centreLeftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(centreLeftBack, this.formation.get(Position.M_C), ActionType.Pass)
+                        new Action(centreLeftBack, this.formation.get(Position.M_C), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.M_LC), ActionType.Pass),
+                        new Action(centreLeftBack, this.formation.get(Position.F_LC), ActionType.Pass, 2),
+                        new Action(centreLeftBack, this.formation.get(Position.F_C), ActionType.Pass, 2)
                 ));
 
                 Player rightCentreMidfielder = formation.get(Position.M_RC);
