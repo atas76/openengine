@@ -43,8 +43,8 @@ public class Team {
                         new Action(goalkeeper, this.formation.get(Position.M_CR), ActionType.Pass, 2.0),
                         new Action(goalkeeper, this.formation.get(Position.M_CL), ActionType.Pass, 2.0),
                         new Action(goalkeeper, this.formation.get(Position.M_L), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, 3.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, 3.0)
+                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, 4.0),
+                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, 4.0)
                 ));
 
                 Player rightBack = formation.get(Position.D_R);
