@@ -51,9 +51,9 @@ public class Team {
                 rightBack.setPermissibleActions(Arrays.asList(
                         new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_CR), ActionType.Pass, 1.4),
-                        new Action(rightBack, this.formation.get(Position.F_CR), ActionType.Pass, 2.0 * 1.4)
+                        new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass, 2.0),
+                        new Action(rightBack, this.formation.get(Position.M_CR), ActionType.Pass, 2.0 * 1.4),
+                        new Action(rightBack, this.formation.get(Position.F_CR), ActionType.Pass, 4.0 * 1.4)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
