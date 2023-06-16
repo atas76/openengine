@@ -70,9 +70,9 @@ public class Team {
                         new Action(centreRightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.M_CR), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.M_R), ActionType.Pass, 1.4),
-                        new Action(centreRightBack, this.formation.get(Position.F_CR), ActionType.Pass, 2.0)
+                        new Action(centreRightBack, this.formation.get(Position.M_CR), ActionType.Pass, 2.0),
+                        new Action(centreRightBack, this.formation.get(Position.M_R), ActionType.Pass, 2.0),
+                        new Action(centreRightBack, this.formation.get(Position.F_CR), ActionType.Pass, 4.0)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);
