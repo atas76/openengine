@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TacticalTestOutput {
 
-    private final int SAMPLE_SIZE = 100;
+    private final int SAMPLE_SIZE = 200;
 
     private Map<Position, Integer> actionOutcomes = new HashMap<>();
     private Map<Team, Integer> matchStates = new HashMap<>();
