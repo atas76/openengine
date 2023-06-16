@@ -51,9 +51,9 @@ public class TacticalBehaviour442GlobalPassingTest {
 
         assertEquals(0.2, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
         assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
-        assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_L), DELTA);
-        assertEquals(0.2 * xP / 1.4, testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
-        assertEquals(0.2 * xP / 2.8, testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(0.2 * xP / 2.0, testOutput.getPossessionOutcomeByPosition(Position.M_L), DELTA);
+        assertEquals(0.2 * xP / 2.8, testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
+        assertEquals(0.2 * xP / 5.6, testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
 
     @Test
