@@ -10,8 +10,10 @@ public class State {
     private Team possessionTeam;
 
     private final double xG = 0.1; // Use average probabilities
-    private double xP = 0.5; // Expected pass
+    private double xP = 0.9; // Expected pass
     private static Random rnd = new Random();
+    public static double VERTICAL_DISTANCE_FACTOR = 1.5;
+    public static double HORIZONTAL_DISTANCE_FACTOR = 1.4;
 
     public Player getPossessionPlayer() {
         return possessionPlayer;
