@@ -2,6 +2,9 @@ package org.openengine.vanilla;
 
 import java.util.*;
 
+import static org.openengine.vanilla.State.VERTICAL_DISTANCE_FACTOR;
+import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_FACTOR;
+
 public class Team {
 
     private String name;
@@ -39,12 +42,12 @@ public class Team {
                         new Action(goalkeeper, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass),
-                        new Action(goalkeeper, this.formation.get(Position.M_R), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.M_CR), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.M_CL), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.M_L), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, 4.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, 4.0)
+                        new Action(goalkeeper, this.formation.get(Position.M_R), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_CR), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_CL), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, VERTICAL_DISTANCE_FACTOR * 2),
+                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, VERTICAL_DISTANCE_FACTOR * 2)
                 ));
 
                 Player rightBack = formation.get(Position.D_R);
