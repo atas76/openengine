@@ -101,7 +101,7 @@ public class Team {
                 centreRightMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(centreRightMidfielder, this.formation.get(Position.M_R), ActionType.Pass),
                         new Action(centreRightMidfielder, this.formation.get(Position.M_CL), ActionType.Pass),
-                        new Action(centreRightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass)
+                        new Action(centreRightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass, 2.0)
                 ));
 
                 Player centreLeftMidfielder = formation.get(Position.M_CL);
