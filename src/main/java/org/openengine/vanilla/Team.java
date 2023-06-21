@@ -65,9 +65,11 @@ public class Team {
                 leftBack.setPermissibleActions(Arrays.asList(
                         new Action(leftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(leftBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(leftBack, this.formation.get(Position.M_L), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_CL), ActionType.Pass, 2.0 * 1.4),
-                        new Action(rightBack, this.formation.get(Position.F_CL), ActionType.Pass, 4.0 * 1.4)
+                        new Action(leftBack, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.M_CL), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.F_CL), ActionType.Pass,
+                                2.0 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
                 ));
 
                 Player centreRightBack = formation.get(Position.D_CR);
