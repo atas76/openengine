@@ -2,8 +2,8 @@ package org.openengine.vanilla;
 
 import java.util.*;
 
-import static org.openengine.vanilla.State.VERTICAL_DISTANCE_FACTOR;
 import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_FACTOR;
+import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class Team {
 
@@ -42,21 +42,23 @@ public class Team {
                         new Action(goalkeeper, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass),
-                        new Action(goalkeeper, this.formation.get(Position.M_R), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
-                        new Action(goalkeeper, this.formation.get(Position.M_CR), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
-                        new Action(goalkeeper, this.formation.get(Position.M_CL), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
-                        new Action(goalkeeper, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_FACTOR),
-                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, VERTICAL_DISTANCE_FACTOR * 2),
-                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, VERTICAL_DISTANCE_FACTOR * 2)
+                        new Action(goalkeeper, this.formation.get(Position.M_R), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_CR), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_CL), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.F_CR), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * 2),
+                        new Action(goalkeeper, this.formation.get(Position.F_CL), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * 2)
                 ));
 
                 Player rightBack = formation.get(Position.D_R);
                 rightBack.setPermissibleActions(Arrays.asList(
                         new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass, 2.0),
-                        new Action(rightBack, this.formation.get(Position.M_CR), ActionType.Pass, 2.0 * 1.4),
-                        new Action(rightBack, this.formation.get(Position.F_CR), ActionType.Pass, 4.0 * 1.4)
+                        new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.M_CR), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.F_CR), ActionType.Pass,
+                                2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
