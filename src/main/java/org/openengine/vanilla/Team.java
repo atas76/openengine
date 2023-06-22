@@ -87,9 +87,9 @@ public class Team {
                         new Action(centreLeftBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_L), ActionType.Pass),
                         new Action(centreLeftBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass, 2.0),
-                        new Action(centreRightBack, this.formation.get(Position.M_L), ActionType.Pass, 2.0),
-                        new Action(centreRightBack, this.formation.get(Position.F_CL), ActionType.Pass, 4.0)
+                        new Action(centreLeftBack, this.formation.get(Position.M_CL), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(centreRightBack, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(centreRightBack, this.formation.get(Position.F_CL), ActionType.Pass, 2 * VERTICAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player rightMidfielder = formation.get(Position.M_R);
