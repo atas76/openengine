@@ -43,8 +43,8 @@ public class Match {
 
     public static void main(String[] args) {
         Flags.LOGGING = false;
-        // new Match().play();
-        new Match(Tactics._4_4_2, Tactics._4_3_3).play();
+        new Match().play();
+        // new Match(Tactics._4_3_3, Tactics._4_3_3).play();
     }
 
     public void kickOff() {
