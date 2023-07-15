@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.openengine.vanilla.util.Flags;
 
 import static org.junit.Assert.assertEquals;
+import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class TacticalBehaviour433GlobalPassingTest {
 
@@ -26,12 +27,18 @@ public class TacticalBehaviour433GlobalPassingTest {
         assertEquals(0.1 * xP * 2.0, testOutput.getPossessionOutcomeByPosition(Position.D_L), DELTA);
         assertEquals(0.1 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), DELTA);
         assertEquals(0.1 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
-        assertEquals(0.05 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
-        assertEquals(0.05 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
-        assertEquals(0.05 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_LC), DELTA);
-        assertEquals(0.033 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
-        assertEquals(0.033 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
-        assertEquals(0.033 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
+        assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
+        assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.M_LC), DELTA);
+        assertEquals(0.1 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.1 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+        assertEquals(0.1 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
     }
 
     @Test

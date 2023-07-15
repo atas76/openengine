@@ -137,12 +137,12 @@ public class Team {
                         new Action(goalkeeper, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(goalkeeper, this.formation.get(Position.D_L), ActionType.Pass),
-                        new Action(goalkeeper, this.formation.get(Position.M_RC), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.M_C), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.M_LC), ActionType.Pass, 2.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_RC), ActionType.Pass, 3.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_C), ActionType.Pass, 3.0),
-                        new Action(goalkeeper, this.formation.get(Position.F_LC), ActionType.Pass, 3.0)
+                        new Action(goalkeeper, this.formation.get(Position.M_RC), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_C), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.M_LC), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(goalkeeper, this.formation.get(Position.F_RC), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * 2),
+                        new Action(goalkeeper, this.formation.get(Position.F_C), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * 2),
+                        new Action(goalkeeper, this.formation.get(Position.F_LC), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * 2)
                 ));
 
                 Player rightBack = formation.get(Position.D_R);
