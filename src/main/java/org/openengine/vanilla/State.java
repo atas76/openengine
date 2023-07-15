@@ -13,7 +13,7 @@ public class State {
     private double xP = 0.9; // Expected pass
     private static Random rnd = new Random();
     public static double VERTICAL_DISTANCE_UNIT_FACTOR = 1.2;
-    public static double HORIZONTAL_DISTANCE_FACTOR = 1.4;
+    public static double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
 
     public Player getPossessionPlayer() {
         return possessionPlayer;

@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.openengine.vanilla.util.Flags;
 
 import static org.junit.Assert.assertEquals;
-import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_FACTOR;
+import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_UNIT_FACTOR;
 import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class TacticalBehaviour442GlobalPassingTest {
@@ -43,9 +43,9 @@ public class TacticalBehaviour442GlobalPassingTest {
         assertEquals(0.2, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
         assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), DELTA);
         assertEquals(0.2 * xP / VERTICAL_DISTANCE_UNIT_FACTOR, testOutput.getPossessionOutcomeByPosition(Position.M_R), DELTA);
-        assertEquals(0.2 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+        assertEquals(0.2 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR),
                 testOutput.getPossessionOutcomeByPosition(Position.M_CR), DELTA);
-        assertEquals(0.2 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+        assertEquals(0.2 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR),
                 testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
     }
 
@@ -56,8 +56,8 @@ public class TacticalBehaviour442GlobalPassingTest {
         assertEquals(0.2, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
         assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
         assertEquals(0.2 * xP / VERTICAL_DISTANCE_UNIT_FACTOR, testOutput.getPossessionOutcomeByPosition(Position.M_L), DELTA);
-        assertEquals(0.2 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
-        assertEquals(0.2 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(0.2 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
+        assertEquals(0.2 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class TacticalBehaviour442GlobalPassingTest {
         testOutput.runTest(Position.M_R);
 
         assertEquals(xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.M_CR), DELTA);
-        assertEquals(xP * 0.5 / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
+        assertEquals(xP * 0.5 / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
     }
 
     @Test
@@ -97,7 +97,7 @@ public class TacticalBehaviour442GlobalPassingTest {
         testOutput.runTest(Position.M_L);
 
         assertEquals(xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
-        assertEquals(xP * 0.5 / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(xP * 0.5 / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
 
     @Test
