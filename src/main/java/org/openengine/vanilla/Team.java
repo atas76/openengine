@@ -2,7 +2,7 @@ package org.openengine.vanilla;
 
 import java.util.*;
 
-import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_FACTOR;
+import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_UNIT_FACTOR;
 import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class Team {
@@ -56,9 +56,9 @@ public class Team {
                         new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.M_R), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
                         new Action(rightBack, this.formation.get(Position.M_CR), ActionType.Pass,
-                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR),
                         new Action(rightBack, this.formation.get(Position.F_CR), ActionType.Pass,
-                                2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
+                                2 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
@@ -67,9 +67,9 @@ public class Team {
                         new Action(leftBack, this.formation.get(Position.D_CL), ActionType.Pass),
                         new Action(leftBack, this.formation.get(Position.M_L), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR),
                         new Action(rightBack, this.formation.get(Position.M_CL), ActionType.Pass,
-                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR),
+                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR),
                         new Action(rightBack, this.formation.get(Position.F_CL), ActionType.Pass,
-                                2.0 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
+                                2.0 * VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player centreRightBack = formation.get(Position.D_CR);
@@ -95,13 +95,13 @@ public class Team {
                 Player rightMidfielder = formation.get(Position.M_R);
                 rightMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(rightMidfielder, this.formation.get(Position.M_CR), ActionType.Pass),
-                        new Action(rightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
+                        new Action(rightMidfielder, this.formation.get(Position.F_CR), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player leftMidfielder = formation.get(Position.M_L);
                 leftMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(leftMidfielder, this.formation.get(Position.M_CL), ActionType.Pass),
-                        new Action(rightMidfielder, this.formation.get(Position.F_CL), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_FACTOR)
+                        new Action(rightMidfielder, this.formation.get(Position.F_CL), ActionType.Pass, VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player centreRightMidfielder = formation.get(Position.M_CR);
@@ -149,10 +149,14 @@ public class Team {
                 rightBack.setPermissibleActions(Arrays.asList(
                         new Action(rightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(rightBack, this.formation.get(Position.D_CR), ActionType.Pass),
-                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass, 1.4),
-                        new Action(rightBack, this.formation.get(Position.M_C), ActionType.Pass, 2.1),
-                        new Action(rightBack, this.formation.get(Position.F_RC), ActionType.Pass, 2 * 1.4),
-                        new Action(rightBack, this.formation.get(Position.F_C), ActionType.Pass, 2 * 2.1)
+                        new Action(rightBack, this.formation.get(Position.M_RC), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.M_C), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR * 1.5),
+                        new Action(rightBack, this.formation.get(Position.F_RC), ActionType.Pass,
+                                2 * HORIZONTAL_DISTANCE_UNIT_FACTOR * VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(rightBack, this.formation.get(Position.F_C), ActionType.Pass,
+                                2 * HORIZONTAL_DISTANCE_UNIT_FACTOR * VERTICAL_DISTANCE_UNIT_FACTOR * 1.5)
                 ));
 
                 Player leftBack = formation.get(Position.D_L);
