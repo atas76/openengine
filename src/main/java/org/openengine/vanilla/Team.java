@@ -178,10 +178,14 @@ public class Team {
                         new Action(centreRightBack, this.formation.get(Position.GK), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_R), ActionType.Pass),
                         new Action(centreRightBack, this.formation.get(Position.D_CL), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.M_C), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.M_RC), ActionType.Pass),
-                        new Action(centreRightBack, this.formation.get(Position.F_RC), ActionType.Pass, 2),
-                        new Action(centreRightBack, this.formation.get(Position.F_C), ActionType.Pass, 2)
+                        new Action(centreRightBack, this.formation.get(Position.M_C), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(centreRightBack, this.formation.get(Position.M_RC), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(centreRightBack, this.formation.get(Position.F_RC), ActionType.Pass,
+                                2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(centreRightBack, this.formation.get(Position.F_C), ActionType.Pass,
+                                2 * VERTICAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player centreLeftBack = formation.get(Position.D_CL);

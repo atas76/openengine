@@ -79,12 +79,16 @@ public class TacticalBehaviour433GlobalPassingTest {
         testOutput.runTest(Position.D_CR);
 
         assertEquals(0.14, testOutput.getPossessionOutcomeByPosition(Position.GK), DELTA);
-        assertEquals(0.14 * xP * 2.0, testOutput.getPossessionOutcomeByPosition(Position.D_R), DELTA);
+        assertEquals(0.14 * xP * 2, testOutput.getPossessionOutcomeByPosition(Position.D_R), DELTA);
         assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
-        assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
-        assertEquals(0.14 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
-        assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
-        assertEquals(0.14 * xP / 2, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+        assertEquals(0.14 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
+        assertEquals(0.14 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
+        assertEquals(0.14 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.14 * xP / (2 * VERTICAL_DISTANCE_UNIT_FACTOR),
+                testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
     }
 
     @Test
