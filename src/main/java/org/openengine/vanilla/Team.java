@@ -227,8 +227,10 @@ public class Team {
                 Player leftCentreMidfielder = formation.get(Position.M_LC);
                 leftCentreMidfielder.setPermissibleActions(Arrays.asList(
                         new Action(leftCentreMidfielder, this.formation.get(Position.M_C), ActionType.Pass),
-                        new Action(leftCentreMidfielder, this.formation.get(Position.F_LC), ActionType.Pass),
-                        new Action(leftCentreMidfielder, this.formation.get(Position.F_C), ActionType.Pass, 1.4)
+                        new Action(leftCentreMidfielder, this.formation.get(Position.F_LC), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR),
+                        new Action(leftCentreMidfielder, this.formation.get(Position.F_C), ActionType.Pass,
+                                VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR)
                 ));
 
                 Player rightCentreForward = formation.get(Position.F_RC);
