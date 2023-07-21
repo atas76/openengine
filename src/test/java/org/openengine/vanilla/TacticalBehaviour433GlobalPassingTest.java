@@ -10,7 +10,7 @@ import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class TacticalBehaviour433GlobalPassingTest {
 
-    private final double xP = 0.7;
+    private final double xP = State.xP;
     private TacticalTestOutput testOutput;
     private final double DELTA = 0.15;
 
