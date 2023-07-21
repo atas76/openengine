@@ -10,8 +10,8 @@ public class State {
     private Team possessionTeam;
 
     private final double xG = 0.1; // Use average probabilities
-    private double xP = 0.9; // Expected pass
-    private static Random rnd = new Random();
+    public static final double xP = 0.9; // Expected pass
+    private static final Random rnd = new Random();
     public static double VERTICAL_DISTANCE_UNIT_FACTOR = 1.2;
     public static double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
 
@@ -82,13 +82,5 @@ public class State {
                 "possessionPlayer=" + possessionPlayer.getName() +
                 ", possessionTeam=" + possessionTeam +
                 '}';
-    }
-
-    public double getXP() {
-        return xP;
-    }
-
-    public void setXP(double xP) {
-        this.xP = xP;
     }
 }

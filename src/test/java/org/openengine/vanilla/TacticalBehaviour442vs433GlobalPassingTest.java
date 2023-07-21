@@ -15,7 +15,7 @@ public class TacticalBehaviour442vs433GlobalPassingTest {
     @Before
     public void setUp() {
         Flags.LOGGING = false;
-        testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_3_3, xP);
+        testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_3_3);
     }
 
     @Test

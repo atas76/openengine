@@ -10,14 +10,14 @@ import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
 
 public class TacticalBehaviour442GlobalPassingTest {
 
-    private final double xP = 0.7;
+    private final double xP = 0.9;
     private TacticalTestOutput testOutput;
     private final double DELTA = 0.15;
 
     @Before
     public void setUp() {
         Flags.LOGGING = false;
-        testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_4_2, xP);
+        testOutput = new TacticalTestOutput(Tactics._4_4_2, Tactics._4_4_2);
     }
 
     @Test
