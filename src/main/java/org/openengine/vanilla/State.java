@@ -64,9 +64,11 @@ public class State {
         Logger.log("Outcome: " + outcome);
         Logger.log("Marking factor: " + markingFactor);
         if (outcome * markingFactor * action.getGeometryFactor() < xP) {
+            Logger.log("SUCCESS");
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
         } else {
+            Logger.log("FAIL");
             actionOutcome.setPossessionChange(true);
             actionOutcome.setPossessionPlayer(action.getTarget().getChallengeMarker());
         }

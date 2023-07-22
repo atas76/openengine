@@ -1,5 +1,7 @@
 package org.openengine.vanilla;
 
+import org.openengine.vanilla.util.Logger;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +26,8 @@ public class TacticalTestOutput {
             match.getState().setPossessionTeam(match.getHomeTeam());
             match.getState().setPossessionPlayer(match.getHomeTeam().getPlayerByPosition(position));
             Player player = match.getState().getPossessionPlayer();
+
+            Logger.log("Running for player: " + player.getPosition().toString());
 
             Action action = player.decide();
             ActionOutcome outcome = match.getState().execute(action);
