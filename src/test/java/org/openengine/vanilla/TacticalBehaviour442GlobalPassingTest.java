@@ -5,8 +5,7 @@ import org.junit.Test;
 import org.openengine.vanilla.util.Flags;
 
 import static org.junit.Assert.assertEquals;
-import static org.openengine.vanilla.State.HORIZONTAL_DISTANCE_UNIT_FACTOR;
-import static org.openengine.vanilla.State.VERTICAL_DISTANCE_UNIT_FACTOR;
+import static org.openengine.vanilla.State.*;
 
 public class TacticalBehaviour442GlobalPassingTest {
 
@@ -32,8 +31,10 @@ public class TacticalBehaviour442GlobalPassingTest {
         assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR, testOutput.getPossessionOutcomeByPosition(Position.M_CR), DELTA);
         assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR, testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
         assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR, testOutput.getPossessionOutcomeByPosition(Position.M_L), DELTA);
-        assertEquals(0.1 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * 2), testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
-        assertEquals(0.1 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * 2), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(0.1 * xP / (getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 1.33) * 2),
+                testOutput.getPossessionOutcomeByPosition(Position.F_CR), DELTA);
+        assertEquals(0.1 * xP / (getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 1.33) * 2),
+                testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
 
     @Test
