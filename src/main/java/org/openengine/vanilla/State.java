@@ -12,8 +12,14 @@ public class State {
     private final double xG = 0.1; // Use average probabilities
     public static final double xP = 0.9; // Expected pass
     private static final Random rnd = new Random();
-    public static double VERTICAL_DISTANCE_UNIT_FACTOR = 1.2;
-    public static double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
+    public static final double VERTICAL_DISTANCE_UNIT_FACTOR = 1.2;
+    public static final double VERTICAL_DISTANCE_WEIGHT = 0.2;
+    public static final double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
+    public static final double HORIZONTAL_DISTANCE_WEIGHT = 0.4;
+
+    public static double getUnitFactor(double weight) {
+        return 1.0 + weight;
+    }
 
     public Player getPossessionPlayer() {
         return possessionPlayer;
@@ -63,7 +69,7 @@ public class State {
         double outcome = rnd.nextDouble();
         Logger.log("Outcome: " + outcome);
         Logger.log("Marking factor: " + markingFactor);
-        if (outcome * markingFactor * action.getGeometryFactor() < xP) {
+        if (outcome * (((action.getGeometryFactor() - 1.0) * markingFactor) + 1.0) < xP || markingFactor == 0.0) {
             Logger.log("SUCCESS");
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
