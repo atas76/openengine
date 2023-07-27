@@ -103,7 +103,8 @@ public class TacticalBehaviour442GlobalPassingTest {
         testOutput.runTest(Position.M_L);
 
         assertEquals(xP * 0.5, testOutput.getPossessionOutcomeByPosition(Position.M_CL), DELTA);
-        assertEquals(xP * 0.5 / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR), testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
+        assertEquals(xP * 0.5 / (getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 1.33) * getUnitFactor(HORIZONTAL_DISTANCE_WEIGHT * 1.33)),
+                testOutput.getPossessionOutcomeByPosition(Position.F_CL), DELTA);
     }
 
     @Test
