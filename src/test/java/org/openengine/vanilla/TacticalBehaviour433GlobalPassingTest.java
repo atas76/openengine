@@ -23,11 +23,13 @@ public class TacticalBehaviour433GlobalPassingTest {
     public void testGoalkeeperActionsProbabilisticAssertions() {
         testOutput.runTest(Position.GK);
 
-        assertEquals(0.1 * xP * 2.0, testOutput.getPossessionOutcomeByPosition(Position.D_R), DELTA);
-        assertEquals(0.1 * xP * 2.0, testOutput.getPossessionOutcomeByPosition(Position.D_L), DELTA);
+        assertEquals(0.1 * xP / getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 0.5),
+                testOutput.getPossessionOutcomeByPosition(Position.D_R), DELTA);
+        assertEquals(0.1 * xP / getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 0.5),
+                testOutput.getPossessionOutcomeByPosition(Position.D_L), DELTA);
         assertEquals(0.1 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CR), DELTA);
         assertEquals(0.1 * xP, testOutput.getPossessionOutcomeByPosition(Position.D_CL), DELTA);
-        assertEquals(0.1 * xP / getUnitFactor(VERTICAL_DISTANCE_WEIGHT * 0.5),
+        assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
                 testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
         assertEquals(0.1 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
                 testOutput.getPossessionOutcomeByPosition(Position.M_C), DELTA);
