@@ -112,4 +112,18 @@ public class TacticalBehaviour433vs442GlobalPassingTest {
         assertEquals(0.33 * xP / (VERTICAL_DISTANCE_UNIT_FACTOR * HORIZONTAL_DISTANCE_UNIT_FACTOR),
                 testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
     }
+
+    @Test
+    public void testMidfielderActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.M_C);
+
+        assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_RC), DELTA);
+        assertEquals(0.2 * xP, testOutput.getPossessionOutcomeByPosition(Position.M_LC), DELTA);
+        assertEquals(0.2 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+        assertEquals(0.2 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.F_RC), DELTA);
+        assertEquals(0.2 * xP / VERTICAL_DISTANCE_UNIT_FACTOR,
+                testOutput.getPossessionOutcomeByPosition(Position.F_LC), DELTA);
+    }
 }
