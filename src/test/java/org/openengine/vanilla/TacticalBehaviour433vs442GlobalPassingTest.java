@@ -152,4 +152,11 @@ public class TacticalBehaviour433vs442GlobalPassingTest {
 
         assertEquals(0.5 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
     }
+
+    @Test
+    public void testLeftCentreForwardActionsProbabilisticAssertions() {
+        testOutput.runTest(Position.F_LC);
+
+        assertEquals(0.5 * xP, testOutput.getPossessionOutcomeByPosition(Position.F_C), DELTA);
+    }
 }
