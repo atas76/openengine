@@ -12,10 +12,10 @@ public class State {
     private final double xG = 0.1; // Use average probabilities
     public static final double xP = 0.9; // Expected pass
     private static final Random rnd = new Random();
-    public static final double VERTICAL_DISTANCE_UNIT_FACTOR = 1.2;
-    public static final double VERTICAL_DISTANCE_WEIGHT = 0.2;
+    public static final double VERTICAL_DISTANCE_UNIT_FACTOR = 1.5;
+    public static final double VERTICAL_DISTANCE_WEIGHT = VERTICAL_DISTANCE_UNIT_FACTOR - 1.0;
     public static final double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
-    public static final double HORIZONTAL_DISTANCE_WEIGHT = 0.4;
+    public static final double HORIZONTAL_DISTANCE_WEIGHT = HORIZONTAL_DISTANCE_UNIT_FACTOR - 1.0;
 
     public static double getUnitFactor(double weight) {
         return 1.0 + weight;
@@ -66,10 +66,14 @@ public class State {
         ActionOutcome actionOutcome = new ActionOutcome();
         Logger.log(action.toString());
         double markingFactor = action.getTarget().getWeightedMarkersNumber();
-        double outcome = rnd.nextDouble();
-        Logger.log("Outcome: " + outcome);
+        double randomFactor = rnd.nextDouble();
+        Logger.log("Random factor: " + randomFactor);
         Logger.log("Marking factor: " + markingFactor);
-        if (outcome * (((action.getGeometryFactor() - 1.0) * markingFactor) + 1.0) < xP || markingFactor == 0.0) {
+        Logger.log("Geometry factor: " + action.getGeometryFactor());
+        double passOutcomeScore = randomFactor * (((action.getGeometryFactor() - 1.0) * markingFactor) + 1.0);
+        Logger.log("Pass outcome score: " + passOutcomeScore);
+        // if (outcome * markingFactor * action.getGeometryFactor() < xP) {
+        if (passOutcomeScore < xP || markingFactor == 0.0) {
             Logger.log("SUCCESS");
             actionOutcome.setPossessionChange(false);
             actionOutcome.setPossessionPlayer(action.getTarget());
