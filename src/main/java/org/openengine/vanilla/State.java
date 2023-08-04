@@ -72,7 +72,6 @@ public class State {
         Logger.log("Geometry factor: " + action.getGeometryFactor());
         double passOutcomeScore = randomFactor * (((action.getGeometryFactor() - 1.0) * markingFactor) + 1.0);
         Logger.log("Pass outcome score: " + passOutcomeScore);
-        // if (outcome * markingFactor * action.getGeometryFactor() < xP) {
         if (passOutcomeScore < xP || markingFactor == 0.0) {
             Logger.log("SUCCESS");
             actionOutcome.setPossessionChange(false);
