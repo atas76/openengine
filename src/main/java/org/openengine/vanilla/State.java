@@ -12,7 +12,7 @@ public class State {
     private final double xG = 0.1; // Use average probabilities
     public static final double xP = 0.9; // Expected pass
     private static final Random rnd = new Random();
-    public static final double VERTICAL_DISTANCE_UNIT_FACTOR = 1.5;
+    public static final double VERTICAL_DISTANCE_UNIT_FACTOR = 1.6;
     public static final double VERTICAL_DISTANCE_WEIGHT = VERTICAL_DISTANCE_UNIT_FACTOR - 1.0;
     public static final double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
     public static final double HORIZONTAL_DISTANCE_WEIGHT = HORIZONTAL_DISTANCE_UNIT_FACTOR - 1.0;
