@@ -20,6 +20,11 @@ public class Team {
         this.tactics = tactics;
     }
 
+    public Team(String name, Tactic tactic) {
+        this.name = name;
+        initializeFormation(tactic);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -31,6 +36,10 @@ public class Team {
     @Override
     public int hashCode() {
         return Objects.hash(name);
+    }
+
+    private void initializeInstructions(Tactic tactic) {
+
     }
 
     private void initializeInstructions(Tactics tactics) {
@@ -255,6 +264,15 @@ public class Team {
         }
     }
 
+    private void initializeFormation(Tactic tactic) {
+        formation.put(Position.GK, new Player(Position.GK, 1, this));
+        List<Integer> tacticPositionIndices = tactic.getPlayerPositionsIndices();
+        tacticPositionIndices.forEach(index -> {
+            Position position = Position.values()[index];
+            formation.put(position, new Player(position, position.ordinal() + 2, this));
+        });
+    }
+
     private void initializeFormation(Tactics tactics) {
         switch(tactics) {
             case _4_4_2 -> {
@@ -296,6 +314,10 @@ public class Team {
 
     public Player getPlayerByPosition(Position position) {
         return formation.get(position);
+    }
+
+    public int getPlayersNumberInFormation() {
+        return this.formation.size();
     }
 
     public Tactics getTactics() {
