@@ -2,6 +2,8 @@ package org.openengine.vanilla;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -39,5 +41,18 @@ public class TeamTest {
         assertNotNull(team.getPlayerByPosition(Position.M_L));
         assertNotNull(team.getPlayerByPosition(Position.F_CR));
         assertNotNull(team.getPlayerByPosition(Position.F_CL));
+    }
+
+    @Test
+    public void testGoalkeeperActions442() {
+        Team team = new Team("", TacticsLibrary.tacticsRepository.get(Tactics._4_4_2));
+        Player goalkeeper = team.getGoalkeeper();
+
+        List<Action> actions = goalkeeper.getPermissibleActions();
+        Action rightDefenderPass = actions.get(0);
+
+        assertEquals(10, actions.size());
+        assertEquals(1.0, rightDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_R, rightDefenderPass.getTarget().getPosition());
     }
 }

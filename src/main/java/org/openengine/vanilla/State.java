@@ -2,6 +2,7 @@ package org.openengine.vanilla;
 
 import org.openengine.vanilla.util.Logger;
 
+import java.util.Map;
 import java.util.Random;
 
 public class State {
@@ -16,6 +17,10 @@ public class State {
     public static final double VERTICAL_DISTANCE_WEIGHT = VERTICAL_DISTANCE_UNIT_FACTOR - 1.0;
     public static final double HORIZONTAL_DISTANCE_UNIT_FACTOR = 1.4;
     public static final double HORIZONTAL_DISTANCE_WEIGHT = HORIZONTAL_DISTANCE_UNIT_FACTOR - 1.0;
+
+    public static Map<Integer, Double> DISTANCE_UNIT_FACTORS = Map.of(
+            0, 1.0, 1, 1.3, 2, 1.6, 3, 2.4, 4, 3.2
+    );
 
     public static double getUnitFactor(double weight) {
         return 1.0 + weight;
@@ -40,6 +45,7 @@ public class State {
     public void setDefaultPossessionPlayer() {
         this.possessionPlayer = possessionTeam.getGoalkeeper();
     }
+
 
     public ActionOutcome execute(Action action) {
         if (action.getType() == null) {

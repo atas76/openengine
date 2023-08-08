@@ -74,6 +74,10 @@ public class Player {
         this.permissibleActions = permissibleActions;
     }
 
+    public List<Action> getPermissibleActions() {
+        return new ArrayList<>(this.permissibleActions);
+    }
+
     public Position getPosition() {
         return position;
     }

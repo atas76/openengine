@@ -23,6 +23,7 @@ public class Team {
     public Team(String name, Tactic tactic) {
         this.name = name;
         initializeFormation(tactic);
+        initializeInstructions(tactic);
     }
 
     @Override
@@ -39,7 +40,13 @@ public class Team {
     }
 
     private void initializeInstructions(Tactic tactic) {
-
+        Player goalkeeper = formation.get(Position.GK);
+        List<Integer> positionIndices = tactic.getPlayerPositionsIndices();
+        List<Action> actions = new ArrayList<>();
+        positionIndices.forEach(index ->
+                actions.add(new Action(goalkeeper, this.formation.get(Position.values()[index]), ActionType.Pass,
+                        Tactic.computeDistanceUnitFactor(-1, index))));
+        goalkeeper.setPermissibleActions(actions);
     }
 
     private void initializeInstructions(Tactics tactics) {
