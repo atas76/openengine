@@ -45,7 +45,7 @@ public class Team {
         List<Action> actions = new ArrayList<>();
         positionIndices.forEach(index ->
                 actions.add(new Action(goalkeeper, this.formation.get(Position.values()[index]), ActionType.Pass,
-                        Tactic.computeDistanceUnitFactor(-1, index))));
+                        Tactic.computeDistanceUnitFactor(-1, index - 1))));
         goalkeeper.setPermissibleActions(actions);
     }
 
