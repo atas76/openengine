@@ -27,7 +27,7 @@ public class TeamTest {
 
     @Test
     public void testTeamFormation442() {
-        Team team = new Team("", TacticsLibrary.tacticsRepository.get(Tactics._4_4_2));
+        Team team = new Team("", TacticsRepository.get(Tactics._4_4_2));
 
         assertEquals(11, team.getPlayersNumberInFormation());
         assertNotNull(team.getPlayerByPosition(Position.GK));
@@ -45,7 +45,7 @@ public class TeamTest {
 
     @Test
     public void testGoalkeeperActions442() {
-        Team team = new Team("", TacticsLibrary.tacticsRepository.get(Tactics._4_4_2));
+        Team team = new Team("", TacticsRepository.get(Tactics._4_4_2));
         Player goalkeeper = team.getGoalkeeper();
 
         List<Action> actions = goalkeeper.getPermissibleActions();

@@ -4,9 +4,9 @@ import java.util.Map;
 
 import static org.openengine.vanilla.Tactics._4_4_2;
 
-public class TacticsLibrary {
+public class TacticsRepository {
 
-    public static Map<Tactics, Tactic> tacticsRepository = Map.of(
+    private static Map<Tactics, Tactic> tacticsRepository = Map.of(
             _4_4_2, new Tactic(new boolean [][]
                     {
                             new boolean[] {true, false, true, false, true, false, true},
@@ -16,4 +16,8 @@ public class TacticsLibrary {
                             new boolean[] {false, false, true, false, true, false, false},
                     }
     ));
+
+    public static Tactic get(Tactics tactics) {
+        return tacticsRepository.get(tactics);
+    }
 }
