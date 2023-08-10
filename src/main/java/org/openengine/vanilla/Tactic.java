@@ -1,9 +1,12 @@
 package org.openengine.vanilla;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Tactic {
+    private static final int X_SIZE = 5;
     private static final int Y_SIZE = 7;
 
     private boolean [][] positionalMatrix;
@@ -24,6 +27,40 @@ public class Tactic {
         }
 
         return playerPositions;
+    }
+
+    public record Distance (int verticalDistance, int horizontalDistance) {}
+
+    public Map<Integer, Distance> getAdjacentPlayersPositions(int index) {
+        int x = getXFromIndex(index);
+        int y = getYFromIndex(index);
+        Map<Integer, Distance> retVal = new HashMap<>();
+
+        for (int j = y + 1; j < Y_SIZE; j++) {
+            if (positionalMatrix[x][j]) {
+                retVal.put(x * Y_SIZE + j + 1, new Distance(0, 0));
+                break;
+            }
+        }
+        for (int j = y - 1; j >= 0; j--) {
+            if (positionalMatrix[x][j]) {
+                retVal.put(x * Y_SIZE + j + 1, new Distance(0, 0));
+                break;
+            }
+        }
+        for (int i = x + 1; i < X_SIZE; i++) {
+            for (int j = y; j < Y_SIZE / 2; j++) {
+                if (positionalMatrix[i][j]) {
+                    retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, j - y));
+                }
+            }
+            for (int j = y - 1; j >= 0; j--) {
+                if (positionalMatrix[i][j]) {
+                    retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, y - j));
+                }
+            }
+        }
+        return retVal;
     }
 
     private static int getXFromIndex(int index) {

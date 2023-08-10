@@ -3,8 +3,10 @@ package org.openengine.vanilla;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TacticTest {
 
@@ -33,5 +35,26 @@ public class TacticTest {
         assertEquals(21, playerPositionsIndices.get(7).intValue());
         assertEquals(31, playerPositionsIndices.get(8).intValue());
         assertEquals(33, playerPositionsIndices.get(9).intValue());
+    }
+
+    @Test
+    public void testAdjacentPlayersPositions_442_D_R() {
+        Tactic tactic442 = TacticsRepository.get(Tactics._4_4_2);
+
+        Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic442.getAdjacentPlayersPositions(0);
+
+        assertEquals(4, adjacentPlayersPositions.size());
+        assertTrue(adjacentPlayersPositions.containsKey(3));
+        assertTrue(adjacentPlayersPositions.containsKey(15));
+        assertTrue(adjacentPlayersPositions.containsKey(17));
+        assertTrue(adjacentPlayersPositions.containsKey(31));
+        assertEquals(0, adjacentPlayersPositions.get(3).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(3).horizontalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(15).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(15).horizontalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(17).verticalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(17).horizontalDistance());
+        assertEquals(4, adjacentPlayersPositions.get(31).verticalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(31).horizontalDistance());
     }
 }
