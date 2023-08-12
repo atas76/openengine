@@ -8,23 +8,15 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class TacticTest {
+public class Tactic442Test {
+
+    private Tactic tactic = TacticsRepository.get(Tactics._4_4_2);
 
     @Test
     public void testReadWriteTactic() {
-        Tactic tactic442 = new Tactic(new boolean [][]
-                {
-                        new boolean[] {true, false, true, false, true, false, true},
-                        new boolean[] {false, false, false, false, false, false, false},
-                        new boolean[] {true, false, true, false, true, false, true},
-                        new boolean[] {false, false, false, false, false, false, false},
-                        new boolean[] {false, false, true, false, true, false, false},
-                }
-        );
+        List<Integer> playerPositionsIndices = tactic.getPlayerPositionsIndices();
 
-        List<Integer> playerPositionsIndices = tactic442.getPlayerPositionsIndices();
-
-        assertEquals(10, tactic442.getPlayerPositionsIndices().size());
+        assertEquals(10, tactic.getPlayerPositionsIndices().size());
         assertEquals(1, playerPositionsIndices.get(0).intValue());
         assertEquals(3, playerPositionsIndices.get(1).intValue());
         assertEquals(5, playerPositionsIndices.get(2).intValue());
@@ -38,10 +30,8 @@ public class TacticTest {
     }
 
     @Test
-    public void testAdjacentPlayersPositions_442_D_R() {
-        Tactic tactic442 = TacticsRepository.get(Tactics._4_4_2);
-
-        Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic442.getAdjacentPlayersPositions(0);
+    public void testAdjacentPlayersPositions_D_R() {
+        Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic.getAdjacentPlayersPositions(0);
 
         assertEquals(4, adjacentPlayersPositions.size());
         assertTrue(adjacentPlayersPositions.containsKey(3));
@@ -56,5 +46,27 @@ public class TacticTest {
         assertEquals(2, adjacentPlayersPositions.get(17).horizontalDistance());
         assertEquals(4, adjacentPlayersPositions.get(31).verticalDistance());
         assertEquals(2, adjacentPlayersPositions.get(31).horizontalDistance());
+    }
+
+    @Test
+    public void testAdjacentPlayersPositions_D_CR() {
+        Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic.getAdjacentPlayersPositions(2);
+
+        assertEquals(5, adjacentPlayersPositions.size());
+        assertTrue(adjacentPlayersPositions.containsKey(1));
+        assertTrue(adjacentPlayersPositions.containsKey(5));
+        assertTrue(adjacentPlayersPositions.containsKey(15));
+        assertTrue(adjacentPlayersPositions.containsKey(17));
+        assertTrue(adjacentPlayersPositions.containsKey(31));
+        assertEquals(0, adjacentPlayersPositions.get(1).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(1).horizontalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(5).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(5).horizontalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(15).verticalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(15).horizontalDistance());
+        assertEquals(2, adjacentPlayersPositions.get(17).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(17).horizontalDistance());
+        assertEquals(4, adjacentPlayersPositions.get(31).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(31).horizontalDistance());
     }
 }
