@@ -7,12 +7,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TeamTest {
+public class TeamTest442 {
+
+    private Team team = new Team("", Tactics._4_4_2);
 
     @Test
     public void testTeamFormation() {
-        Team team = new Team("", Tactics._4_4_2);
-
         Player goalkeeper = team.getPlayerByPosition(Position.GK);
         Player leftMidfielder = team.getPlayerByPosition(Position.M_L);
         Player centralMidfielder = team.getPlayerByPosition(Position.M_CR);
@@ -27,8 +27,6 @@ public class TeamTest {
 
     @Test
     public void testTeamFormation442() {
-        Team team = new Team("", TacticsRepository.get(Tactics._4_4_2));
-
         assertEquals(11, team.getPlayersNumberInFormation());
         assertNotNull(team.getPlayerByPosition(Position.GK));
         assertNotNull(team.getPlayerByPosition(Position.D_R));
@@ -45,7 +43,6 @@ public class TeamTest {
 
     @Test
     public void testGoalkeeperActions442() {
-        Team team = new Team("", TacticsRepository.get(Tactics._4_4_2));
         Player goalkeeper = team.getGoalkeeper();
 
         List<Action> actions = goalkeeper.getPermissibleActions();
@@ -81,5 +78,13 @@ public class TeamTest {
         assertEquals(Position.F_CR, centreRightForwardPass.getTarget().getPosition());
         assertEquals(State.DISTANCE_UNIT_FACTORS.get(4), centreLeftForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_CL, centreLeftForwardPass.getTarget().getPosition());
+    }
+
+    @Test
+    public void testRightDefenderActions() {
+        Player rightDefender = team.getPlayerByPosition(Position.D_R);
+
+        List<Action> actions = rightDefender.getPermissibleActions();
+        assertEquals(5, actions.size());
     }
 }

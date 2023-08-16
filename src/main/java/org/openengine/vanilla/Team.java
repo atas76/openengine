@@ -53,11 +53,24 @@ public class Team {
                 .forEach(position -> {
                     Player player = formation.get(position);
                     List<Action> actions = new ArrayList<>();
-                    // TODO default passes
                     Map<Integer, Tactic.Distance> adjacentPlayerPositions = tactic.getAdjacentPlayersPositions(position.ordinal() - 1);
 
                     // TODO discriminators
-                    // player is defender -> passes to goalkeeper
+                    // player is defender
+                    if (position.ordinal() <= Tactic.Y_SIZE) {
+                        // passes to goalkeeper
+                        adjacentPlayerPositions.put(Position.GK.ordinal(), new Tactic.Distance(0, 0));
+                    }
+                    // add passing actions
+                    adjacentPlayerPositions.forEach((targetPlayerPosition, distance) -> {
+                        double geometryFactor = 1.0;
+                        geometryFactor *= State.DISTANCE_UNIT_FACTORS.get(distance.verticalDistance());
+                        if (distance.horizontalDistance() == 1) geometryFactor *= HORIZONTAL_DISTANCE_UNIT_FACTOR;
+                        if (distance.horizontalDistance() > 1) geometryFactor *= HORIZONTAL_DISTANCE_UNIT_FACTOR * 1.5;
+                        actions.add(new Action(player, this.formation.get(Position.values()[targetPlayerPosition]),
+                                ActionType.Pass, geometryFactor));
+                    });
+                    player.setPermissibleActions(actions);
                     // player is in shooting range -> player can shoot
                 });
     }

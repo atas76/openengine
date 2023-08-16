@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Tactic {
-    private static final int X_SIZE = 5;
-    private static final int Y_SIZE = 7;
+    public static final int X_SIZE = 5;
+    public static final int Y_SIZE = 7;
 
     private boolean [][] positionalMatrix;
 
