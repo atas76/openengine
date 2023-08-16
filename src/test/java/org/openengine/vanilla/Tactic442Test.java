@@ -170,12 +170,22 @@ public class Tactic442Test {
     }
 
     @Test
-    public void testAdjacentPlayersPositions_F_C() {
+    public void testAdjacentPlayersPositions_F_CR() {
         Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic.getAdjacentPlayersPositions(30);
 
         assertEquals(1, adjacentPlayersPositions.size());
         assertTrue(adjacentPlayersPositions.containsKey(33));
         assertEquals(0, adjacentPlayersPositions.get(33).verticalDistance());
         assertEquals(0, adjacentPlayersPositions.get(33).horizontalDistance());
+    }
+
+    @Test
+    public void testAdjacentPlayersPositions_F_CL() {
+        Map<Integer, Tactic.Distance> adjacentPlayersPositions = tactic.getAdjacentPlayersPositions(Position.F_CL.ordinal() - 1);
+
+        assertEquals(1, adjacentPlayersPositions.size());
+        assertTrue(adjacentPlayersPositions.containsKey(Position.F_CR.ordinal()));
+        assertEquals(0, adjacentPlayersPositions.get(Position.F_CR.ordinal()).verticalDistance());
+        assertEquals(0, adjacentPlayersPositions.get(Position.F_CR.ordinal()).horizontalDistance());
     }
 }
