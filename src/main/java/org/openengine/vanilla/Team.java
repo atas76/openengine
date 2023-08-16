@@ -40,13 +40,26 @@ public class Team {
     }
 
     private void initializeInstructions(Tactic tactic) {
-        Player goalkeeper = formation.get(Position.GK);
         List<Integer> positionIndices = tactic.getPlayerPositionsIndices();
-        List<Action> actions = new ArrayList<>();
+        Player goalkeeper = formation.get(Position.GK);
+        List<Action> goalkeeperActions = new ArrayList<>();
         positionIndices.forEach(index ->
-                actions.add(new Action(goalkeeper, this.formation.get(Position.values()[index]), ActionType.Pass,
+                goalkeeperActions.add(new Action(goalkeeper, this.formation.get(Position.values()[index]), ActionType.Pass,
                         Tactic.computeDistanceUnitFactor(-1, index - 1))));
-        goalkeeper.setPermissibleActions(actions);
+        goalkeeper.setPermissibleActions(goalkeeperActions);
+
+        Arrays.stream(Position.values())
+                .filter(position -> position != Position.GK && formation.get(position) != null)
+                .forEach(position -> {
+                    Player player = formation.get(position);
+                    List<Action> actions = new ArrayList<>();
+                    // TODO default passes
+                    Map<Integer, Tactic.Distance> adjacentPlayerPositions = tactic.getAdjacentPlayersPositions(position.ordinal() - 1);
+
+                    // TODO discriminators
+                    // player is defender -> passes to goalkeeper
+                    // player is in shooting range -> player can shoot
+                });
     }
 
     private void initializeInstructions(Tactics tactics) {
