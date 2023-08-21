@@ -1,9 +1,6 @@
 package org.openengine.vanilla;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Tactic {
     public static final int X_SIZE = 5;
@@ -34,7 +31,7 @@ public class Tactic {
     public Map<Integer, Distance> getAdjacentPlayersPositions(int index) {
         int x = getXFromIndex(index);
         int y = getYFromIndex(index);
-        Map<Integer, Distance> retVal = new HashMap<>();
+        Map<Integer, Distance> retVal = new TreeMap<>();
 
         for (int j = y + 1; j < Y_SIZE; j++) {
             if (positionalMatrix[x][j]) {
@@ -57,13 +54,13 @@ public class Tactic {
                 }
                 for (int j = y - 1; j >= 0; j--) {
                     if (positionalMatrix[i][j]) {
-                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, y - j));
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
                     }
                 }
             } else {
                 for (int j = y + 1; j < Y_SIZE; j++) {
                     if (positionalMatrix[i][j]) {
-                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, j - y));
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
                     }
                 }
                 for (int j = y; j >= Y_SIZE / 2; j--) {
