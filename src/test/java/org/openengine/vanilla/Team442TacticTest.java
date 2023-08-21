@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class TeamTest442 {
+public class Team442TacticTest {
 
     private Team team = new Team("", TacticsRepository.get(Tactics._4_4_2));
 
