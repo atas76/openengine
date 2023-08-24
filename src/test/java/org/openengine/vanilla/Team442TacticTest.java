@@ -93,6 +93,32 @@ public class Team442TacticTest {
     }
 
     @Test
+    public void testLeftDefenderActions() {
+        Player leftDefender = team.getPlayerByPosition(Position.D_L);
+
+        List<Action> actions = leftDefender.getPermissibleActions();
+        Action goalkeeperPass = actions.get(0);
+        Action centreLeftDefenderPass = actions.get(1);
+        Action centreLeftMidfielderPass = actions.get(2);
+        Action leftMidfielderPass = actions.get(3);
+        Action centreLeftForwardPass = actions.get(4);
+
+        assertEquals(5, actions.size());
+        assertEquals(1.0, goalkeeperPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.GK, goalkeeperPass.getTarget().getPosition());
+        assertEquals(1.0, centreLeftDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_CL, centreLeftDefenderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2), leftMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_L, leftMidfielderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR * 1.5,
+                centreLeftMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_CL, centreLeftMidfielderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR * 1.5,
+                centreLeftForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_CL, centreLeftForwardPass.getTarget().getPosition());
+    }
+
+    @Test
     public void testCentreRightDefenderActions() {
         Player centreRightDefender = team.getPlayerByPosition(Position.D_CR);
 
