@@ -251,4 +251,16 @@ public class Team442TacticTest {
         assertEquals(1.0, centreLeftForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_CL, centreLeftForwardPass.getTarget().getPosition());
     }
+
+    @Test
+    public void testCentreLeftForwardActions() {
+        Player centreLeftForward = team.getPlayerByPosition(Position.F_CL);
+
+        List<Action> actions = centreLeftForward.getPermissibleActions();
+        Action centreRightForwardPass = actions.get(0);
+
+        assertEquals(1, actions.size());
+        assertEquals(1.0, centreRightForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_CR, centreRightForwardPass.getTarget().getPosition());
+    }
 }
