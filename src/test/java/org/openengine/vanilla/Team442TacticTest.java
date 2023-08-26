@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class Team442TacticTest {
 
@@ -246,10 +245,12 @@ public class Team442TacticTest {
 
         List<Action> actions = centreRightForward.getPermissibleActions();
         Action centreLeftForwardPass = actions.get(0);
+        Action shootingAction = actions.get(1);
 
-        assertEquals(1, actions.size());
+        assertEquals(2, actions.size());
         assertEquals(1.0, centreLeftForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_CL, centreLeftForwardPass.getTarget().getPosition());
+        assertEquals(ActionType.Shoot, shootingAction.getType());
     }
 
     @Test
@@ -258,9 +259,11 @@ public class Team442TacticTest {
 
         List<Action> actions = centreLeftForward.getPermissibleActions();
         Action centreRightForwardPass = actions.get(0);
+        Action shootingAction = actions.get(1);
 
-        assertEquals(1, actions.size());
+        assertEquals(2, actions.size());
         assertEquals(1.0, centreRightForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_CR, centreRightForwardPass.getTarget().getPosition());
+        assertEquals(ActionType.Shoot, shootingAction.getType());
     }
 }

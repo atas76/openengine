@@ -70,8 +70,11 @@ public class Team {
                         actions.add(new Action(player, this.formation.get(Position.values()[targetPlayerPosition]),
                                 ActionType.Pass, geometryFactor));
                     });
+                    // add shooting actions
+                    if (Tactic.isWithinShootingRange((position.ordinal() - 1) / Tactic.Y_SIZE)) {
+                        actions.add(new Action(player, null, ActionType.Shoot));
+                    }
                     player.setPermissibleActions(actions);
-                    // player is in shooting range -> player can shoot
                 });
     }
 

@@ -6,6 +6,8 @@ public class Tactic {
     public static final int X_SIZE = 5;
     public static final int Y_SIZE = 7;
 
+    private static final int SHOOTING_RANGE = 2;
+
     private boolean [][] positionalMatrix;
 
     public Tactic(boolean [][] positionalMatrix) {
@@ -99,5 +101,9 @@ public class Tactic {
         };
 
         return verticalDistanceFactor * horizontalDistanceFactor;
+    }
+
+    public static boolean isWithinShootingRange(int position) {
+        return position >= Tactic.X_SIZE - Tactic.SHOOTING_RANGE;
     }
 }
