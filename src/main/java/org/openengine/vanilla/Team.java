@@ -14,9 +14,7 @@ public class Team {
     private Tactics tactics;
 
     public Team(String name, Tactics tactics) {
-        this.name = name;
-        initializeFormation(tactics);
-        initializeInstructions(tactics);
+        this(name, TacticsRepository.get(tactics));
         this.tactics = tactics;
     }
 
