@@ -51,9 +51,9 @@ public class Team {
                 .forEach(position -> {
                     Player player = formation.get(position);
                     List<Action> actions = new ArrayList<>();
-                    Map<Integer, Tactic.Distance> adjacentPlayerPositions = tactic.getAdjacentPlayersPositions(position.ordinal() - 1);
+                    Map<Integer, Tactic.Distance> adjacentPlayerPositions =
+                            tactic.getAdjacentPlayersPositions(position.ordinal() - 1);
 
-                    // TODO discriminators
                     // player is defender
                     if (position.ordinal() <= Tactic.Y_SIZE) {
                         // passes to goalkeeper
