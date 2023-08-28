@@ -49,7 +49,7 @@ public class Tactic {
         }
         for (int i = x + 1; i < X_SIZE; i++) {
             if (y <= Y_SIZE / 2) {
-                for (int j = y; j < Y_SIZE / 2; j++) {
+                for (int j = y; j <= Y_SIZE / 2; j++) {
                     if (positionalMatrix[i][j]) {
                         retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, j - y));
                     }
