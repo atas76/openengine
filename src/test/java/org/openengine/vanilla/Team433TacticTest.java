@@ -2,6 +2,8 @@ package org.openengine.vanilla;
 
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -23,5 +25,44 @@ public class Team433TacticTest {
         assertNotNull(team.getPlayerByPosition(Position.F_RC));
         assertNotNull(team.getPlayerByPosition(Position.F_C));
         assertNotNull(team.getPlayerByPosition(Position.F_LC));
+    }
+
+    @Test
+    public void testGoalkeeperActions433() {
+        Player goalkeeper = team.getGoalkeeper();
+
+        List<Action> actions = goalkeeper.getPermissibleActions();
+        Action rightDefenderPass = actions.get(0);
+        Action centreRightDefenderPass = actions.get(1);
+        Action centreLeftDefenderPass = actions.get(2);
+        Action leftDefenderPass = actions.get(3);
+        Action rightCentreMidfielderPass = actions.get(4);
+        Action centreMidfielderPass = actions.get(5);
+        Action leftCentreMidfielderPass = actions.get(6);
+        Action rightCentreForwardPass = actions.get(7);
+        Action centreForwardPass = actions.get(8);
+        Action leftCentreForwardPass = actions.get(9);
+
+        assertEquals(10, actions.size());
+        assertEquals(1.0, rightDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_R, rightDefenderPass.getTarget().getPosition());
+        assertEquals(1.0, centreRightDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_CR, centreRightDefenderPass.getTarget().getPosition());
+        assertEquals(1.0, centreLeftDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_CL, centreLeftDefenderPass.getTarget().getPosition());
+        assertEquals(1.0, leftDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_L, leftDefenderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2), rightCentreMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_RC, rightCentreMidfielderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2), centreMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_C, centreMidfielderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2), leftCentreMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_LC, leftCentreMidfielderPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4), rightCentreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_RC, rightCentreForwardPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4), centreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_C, centreForwardPass.getTarget().getPosition());
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4), leftCentreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_LC, leftCentreForwardPass.getTarget().getPosition());
     }
 }
