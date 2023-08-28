@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class Team433TacticTest {
 
@@ -64,5 +63,41 @@ public class Team433TacticTest {
         assertEquals(Position.F_C, centreForwardPass.getTarget().getPosition());
         assertEquals(State.DISTANCE_UNIT_FACTORS.get(4), leftCentreForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_LC, leftCentreForwardPass.getTarget().getPosition());
+    }
+
+    @Test
+    public void testRightDefenderActions() {
+        Player rightDefender = team.getPlayerByPosition(Position.D_R);
+
+        List<Action> actions = rightDefender.getPermissibleActions();
+        Action goalkeeperPass = actions.get(0);
+        Action centreRightDefenderPass = actions.get(1);
+        Action rightCentreMidfielderPass = actions.get(2);
+        Action centreMidfielderPass = actions.get(3);
+        Action rightCentreForwardPass = actions.get(4);
+        Action centreForwardPass = actions.get(5);
+
+        assertEquals(6, actions.size());
+        assertEquals(1.0, goalkeeperPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.GK, goalkeeperPass.getTarget().getPosition());
+        //
+        assertEquals(1.0, centreRightDefenderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.D_CR, centreRightDefenderPass.getTarget().getPosition());
+        //
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR,
+                rightCentreMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_RC, rightCentreMidfielderPass.getTarget().getPosition());
+        //
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(2) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR * 1.5,
+                centreMidfielderPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.M_C, centreMidfielderPass.getTarget().getPosition());
+        //
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR,
+                rightCentreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_RC, rightCentreForwardPass.getTarget().getPosition());
+        //
+        assertEquals(State.DISTANCE_UNIT_FACTORS.get(4) * State.HORIZONTAL_DISTANCE_UNIT_FACTOR * 1.5,
+                centreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_C, centreForwardPass.getTarget().getPosition());
     }
 }
