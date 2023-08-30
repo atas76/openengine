@@ -48,7 +48,7 @@ public class Tactic {
             }
         }
         for (int i = x + 1; i < X_SIZE; i++) {
-            if (y <= Y_SIZE / 2) {
+            if (y < Y_SIZE / 2) {
                 for (int j = y; j <= Y_SIZE / 2; j++) {
                     if (positionalMatrix[i][j]) {
                         retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, j - y));
@@ -59,7 +59,28 @@ public class Tactic {
                         retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
                     }
                 }
+            } else if (y > Y_SIZE / 2) {
+                for (int j = y + 1; j < Y_SIZE; j++) {
+                    if (positionalMatrix[i][j]) {
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
+                    }
+                }
+                for (int j = y; j >= Y_SIZE / 2; j--) {
+                    if (positionalMatrix[i][j]) {
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, y - j));
+                    }
+                }
             } else {
+                for (int j = y; j <= Y_SIZE / 2; j++) {
+                    if (positionalMatrix[i][j]) {
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
+                    }
+                }
+                for (int j = y - 1; j >= 0; j--) {
+                    if (positionalMatrix[i][j]) {
+                        retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
+                    }
+                }
                 for (int j = y + 1; j < Y_SIZE; j++) {
                     if (positionalMatrix[i][j]) {
                         retVal.put(i * Y_SIZE + j + 1, new Distance(i - x, 0));
