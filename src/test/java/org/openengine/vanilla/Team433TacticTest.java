@@ -305,4 +305,20 @@ public class Team433TacticTest {
         //
         assertEquals(ActionType.Shoot, shootingAction.getType());
     }
+
+    @Test
+    public void testRightCentreForwardActions() {
+        Player centreRightForward = team.getPlayerByPosition(Position.F_RC);
+
+        List<Action> actions = centreRightForward.getPermissibleActions();
+        Action centreForwardPass = actions.get(0);
+        Action shootingAction = actions.get(1);
+
+        assertEquals(2, actions.size());
+        //
+        assertEquals(1.0, centreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_C, centreForwardPass.getTarget().getPosition());
+        //
+        assertEquals(ActionType.Shoot, shootingAction.getType());
+    }
 }
