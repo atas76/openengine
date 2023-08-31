@@ -285,4 +285,24 @@ public class Team433TacticTest {
         assertEquals(State.DISTANCE_UNIT_FACTORS.get(2), leftCentreForwardPass.getGeometryFactor(), 0.0);
         assertEquals(Position.F_LC, leftCentreForwardPass.getTarget().getPosition());
     }
+
+    @Test
+    public void testCentreForwardActions() {
+        Player centreForward = team.getPlayerByPosition(Position.F_C);
+
+        List<Action> actions = centreForward.getPermissibleActions();
+        Action rightCentreForwardPass = actions.get(0);
+        Action leftCentreForwardPass = actions.get(1);
+        Action shootingAction = actions.get(2);
+
+        assertEquals(3, actions.size());
+        //
+        assertEquals(1.0, rightCentreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_RC, rightCentreForwardPass.getTarget().getPosition());
+        //
+        assertEquals(1.0, leftCentreForwardPass.getGeometryFactor(), 0.0);
+        assertEquals(Position.F_LC, leftCentreForwardPass.getTarget().getPosition());
+        //
+        assertEquals(ActionType.Shoot, shootingAction.getType());
+    }
 }
