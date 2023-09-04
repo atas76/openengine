@@ -2,8 +2,8 @@ L: 00:00 KO -> Attack
 L: 00:19 => 00:21 Attack -> Penalty
 L: 01:47 Penalty -> Goal
 L: 03:18 ThrowIn:DM -> !Transition
-T: 03:37 Transition -> GK
-T: 03:50 GK -> Buildup
+T: 03:37 Transition -> Goalkeeper
+T: 03:50 Goalkeeper -> Buildup
 T: 03:58 Buildup -> Pressing
 T: 04:11 Pressing -> Transition
 T: 04:18 Transition -> Possession
@@ -28,4 +28,58 @@ T: 08:27 Transition -> AttackingPossession
 T: 08:29 AttackingPossession -> Attack
 T: 08:50 Attack -> GoalAttempt
 T: 09:03 GoalAttempt -> OffTarget; xG = 0.03
-L: 09:20 GoalKick ->
+L: 09:20 GoalKick -> Buildup
+L: 09:22 Buildup -> Pressing
+L: 09:25 Pressing -> Buildup
+L: 09:33 Buildup -> LongBall
+L: 09:37 => 09:43 LongBall -> Corner
+L: 10:40 Corner -> Goalkeeper
+L: 10:51 Goalkeeper -> Buildup
+L: 11:05 Buildup -> LongBall
+L: 11:08 => 11:12 LongBall -> !ThrowIn:DM
+T: 11:34 => 11:40 ThrowIn:DM -> Foul:AMd
+T: 12:11 FreeKick:AMd -> Attack
+T: 12:12 => 12:20 Attack -> ThrowIn:DM
+T: 12:33 Buildup -> Pressing
+T: 12:54 Pressing -> Transition
+T: 13:07 Transition -> Possession
+T: 13:11 Possession -> Attack
+T: 13:24 => 13:38 Attack -> ThrowIn:AM
+T: 13:45 ThrowIn:AM -> AttackingPossession
+T: 13:46 => 13:57 AttackingPossession -> !ThrowIn:D
+L: 14:29 DefensiveTransition -> Transition
+T: 14:32 Transition -> Possession
+T: 14:35 Possession -> !DefensiveTransition
+L: 15:04 DefensiveTransition -> !DefensiveTransition
+T: 15:07 DefensiveTransition -> Possession
+T: 15:08 => 15:20 Possession -> !GoalKick
+L: 15:42 GoalKick -> Buildup
+L: 15:45 Buildup -> Pressing
+L: 15:47 Pressing -> Buildup
+L: 16:00 => 16:21 Buildup -> ThrowIn:M
+L: 16:39 ThrowIn:M -> GoalAttempt
+L: 16:47 GoalAttempt -> OffTarget; xG = 0.02
+L: 18:06 Buildup -> !Transition
+T: 18:18 Transition -> !DefensiveTransition
+L: 18:22 DefensiveTransition -> RunningPossession
+L: 18:27 => 18:40 RunningPossession -> !GoalKick
+T: 18:53 GoalKick -> Buildup
+T: 18:54 Buildup -> Pressing
+T: 18:58 Pressing -> CounterAttack
+T: 19:08 CounterAttack -> !DefensiveTransition
+L: 19:03 DefensiveTransition -> Pressing
+L: 19:04 Pressing -> !Transition
+T: 19:17 Transition -> AttackingPossession
+T: 19:22 => 19:36 AttackingPossession -> ThrowIn:AM
+T: 19:40 ThrowIn:AM -> Attack
+T: 19:41 Attack -> Goalkeeper
+L: 19:45 Goalkeeper -> Buildup
+L: 19:51 Buildup -> Possession
+L: 20:06 Possession -> Attack
+L: 20:29 Attack -> GoalAttempt
+L: 20:29 GoalAttempt -> Corner; xG = 0.03
+L: 21:11 => 21:16 Corner -> ThrowIn:AM
+L: 21:47 ThrowIn:AM -> Attack
+L: 21:50 Attack -> GoalAttempt
+L: 21:52 GoalAttempt -> OffTarget; xG = 0.04
+T: 22:17 ThrowIn:D -> 
