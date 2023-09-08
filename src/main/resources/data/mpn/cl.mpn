@@ -103,4 +103,29 @@ T: 27:06 ThrowIn:DM -> Buildup
 T: 27:29 => 27:44 Buildup -> !Offside
 L: 28:59 => 29:03 FreeKick:AM -> !GoalKick
 T: 29:20 => 29:40 GoalKick -> Foul:DMd
-T: 29:47 Possession
+T: 29:47 Possession -> !DefensiveTransition
+L: 30:10 => 30:13 DefensiveTransition -> !ThrowIn:M
+T: 30:21 => 30:28 ThrowIn:M -> ThrowIn:DM
+T: 30:31 ThrowIn:DM -> Buildup
+T: 30:35 Buildup -> Pressing
+T: 30:47 Pressing -> !Transition
+L: 30:59 => 31:10 Transition -> !Offside
+T: 31:13 FreeKick:Dd -> Buildup
+T: 31:15 Buildup -> Pressing
+T: 31:34 Pressing -> CounterAttack
+T: 31:52 => 31:54 CounterAttack -> !ThrowIn:DM
+L: 32:19 ThrowIn:DM -> !Transition
+T: 32:25 Transition -> AttackingPossession
+T: 32:34 AttackingPossession -> Attack
+T: 32:42 => 33:05 Attack -> !ThrowIn:D
+L: 33:22 ThrowIn:D -> !AttackingTransition
+T: 33:28 => 33:35 AttackingTransition -> Corner
+T: 33:42 Corner -> Attack
+T: 33:43 => 33:50 Attack -> ThrowIn:AM
+T: 34:11 ThrowIn:AM -> Attack
+T: 34:13 => 34:15 Attack -> ThrowIn:A
+T: 34:26 ThrowIn:A -> AttackingPossession
+T: 34:39 AttackingPossession -> Pressing
+T: 34:55 Pressing -> !AttackingTransition
+L: 35:14 => 35:17 AttackingTransition -> !GoalKick
+T: 35:41 GoalKick
