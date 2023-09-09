@@ -1,4 +1,4 @@
-L: 00:00 KO -> Attack
+L: 00:00 KickOff -> Attack
 L: 00:19 => 00:21 Attack -> Penalty
 L: 01:47 Penalty -> Goal
 L: 03:18 ThrowIn:DM -> !Transition
@@ -141,4 +141,44 @@ L: 37:43 CounterAttack -> GoalAttempt
 L: 37:47 GoalAttempt -> Save => Corner; xG = 0.03
 L: 38:28 Corner -> GoalAttempt
 L: 38:21 GoalAttempt -> OffTarget; xG = 0.03
-T: 40:12 GoalKick
+T: 40:12 GoalKick -> !Transition
+L: 40:19 Transition -> AttackingTransition
+L: 40:26 AttackingTransition -> AttackingPossession
+L: 40:33 AttackingPossession -> Attack
+L: 40:40 => 40:45 Attack -> ThrowIn:AM
+L: 40:59 ThrowIn:AM -> Attack
+L: 41:01 Attack -> !DefensiveTransition
+T: 41:06 DefensiveTransition -> !AttackingTransition
+L: 41:09 AttackingTransition -> GoalAttempt
+L: 41:10 GoalAttempt -> Block => Attack; xG = 0.03
+L: 41:11 => 41:20 Attack -> Corner
+L: 41:45 Corner -> GoalAttempt
+L: 41:50 GoalAttempt -> Block => Corner; xG = 0.02
+L: 42:20 => 42:27 Corner -> ThrowIn:M
+L: 42:39 ThrowIn:M -> Possession
+L: 42:44 Possession -> !DefensiveTransition
+T: 43:03 => 43:04 DefensiveTransition -> Foul:DM
+T: 43:12 FreeKick:DM -> !DefensiveTransition
+L: 43:20 DefensiveTransition -> Pressing
+L: 43:21 Pressing -> !DefensiveTransition
+T: 43:28 DefensiveTransition -> Pressing
+T: 43:33 Pressing -> CounterAttack
+T: 43:41 CounterAttack -> !Goalkeeper
+L: 43:46 Goalkeeper -> Buildup
+L: 43:53 Buildup -> Pressing
+L: 44:18 Pressing -> !Goalkeeper
+T: 44:28 Goalkeeper -> Buildup
+T: 44:33 => 44:40 Buildup -> ThrowIn:M
+T: 44:58 ThrowIn:M -> Attack
+T: 45+00:17 Attack -> GoalAttempt
+T: 45+00:18 GoalAttempt -> OffTarget; xG =0.04
+L: 45+00:43 GoalKick -> LongBall
+L: 45+00:43 LongBall -> !DefensiveTransition
+T: 45+00:55 DefensiveTransition -> Pressing
+T: 45+00:59 Pressing -> Buildup
+T: 45+01:05 Buildup -> !DefensiveTransition
+L: 45+01:11 => 45+01:14 DefensiveTransition -> !ThrowIn:M
+T: 45+01:20 ThrowIn:M -> Possession
+T: 45+01:26 Possession -> AttackingPossession
+T: 45+01:36 AttackingPossession -> Attack
+T: 45+01:41 => 45+01:52 Attack -> ThrowIn:M
