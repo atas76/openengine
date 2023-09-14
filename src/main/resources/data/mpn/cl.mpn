@@ -249,4 +249,32 @@ T: 60:00 AttackingPossession -> Attack
 T: 60:17 Attack -> GoalAttempt
 T: 60:17 GoalAttempt -> Block => Attack; xG = 0.03
 T: 60:20 => 60:27 Attack -> !GoalKick
-L: 60:52 GoalKick
+L: 60:52 GoalKick -> LongBall
+L: 60:52 => 60:56 LongBall -> ThrowIn:M
+L: 61:20 => 61:26 ThrowIn:M -> ThrowIn:AM
+L: 62:00 ThrowIn:AM -> Attack
+L: 62:01 => 62:06 Attack -> Foul:Mw
+L: 62:19 FreeKick:Mw -> Possession
+L: 62:21 => 62:44 Possession -> !GoalKick
+T: 63:03 Pressing -> !DefensiveTransition
+L: 63:24 DefensiveTransition -> !Transition
+T: 63:30 Transition -> Possession
+T: 63:40 Possession -> Buildup
+T: 64:08 Buildup -> !DefensiveTransition
+L: 64:23 => 64:24 DefensiveTransition -> Foul:MDd
+L: 64:41 => 64:44 FreeKick:MDd -> !ThrowIn:DM
+T: 65:29 ThrowIn:DM -> Possession
+T: 65:36 Possession -> !Pressing
+L: 65:47 Pressing -> Transition
+L: 65:56 Transition -> AttackingTransition
+L: 66:05 => 66:06 AttackingTransition -> Corner
+L: 66:35 => 66:39 Corner -> ThrowIn:A
+L: 66:51 => 66:54 ThrowIn:A -> ThrowIn:A
+L: 66:59 ThrowIn:A -> Attack
+L: 67:01 => 67:06 Attack -> !GoalKick
+T: 67:18 GoalKick -> LongBall
+T: 67:18 => 67:32 LongBall -> !ThrowIn:D
+L: 67:51 ThrowIn:D -> AttackingTransition
+L: 68:07 AttackingTransition -> GoalAttempt
+L: 68:09 GoalAttempt -> OffTarget; xG = 0.05
+T: 68:40 Pressing
