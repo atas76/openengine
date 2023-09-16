@@ -277,4 +277,23 @@ T: 67:18 => 67:32 LongBall -> !ThrowIn:D
 L: 67:51 ThrowIn:D -> AttackingTransition
 L: 68:07 AttackingTransition -> GoalAttempt
 L: 68:09 GoalAttempt -> OffTarget; xG = 0.05
-T: 68:40 Pressing
+T: 68:40 Pressing -> CounterAttack
+T: 69:06 CounterAttack -> !DefensiveTransition
+L: 69:14 DefensiveTransition -> !DefensiveTransition
+T: 69:23 DefensiveTransition -> Buildup
+T: 69:28 Buildup -> AttackingPossession
+T: 69:41 AttackingPossession -> Attack
+T: 69:59 Attack -> !Goalkeeper
+L: 70:10 Goalkeeper -> FastBreak
+L: 70:14 FastBreak -> Attack
+L: 70:23 => 70:31 Attack -> ThrowIn:M
+L: 71:42 => 71:46 ThrowIn:M -> !ThrowIn:D
+T: 71:56 ThrowIn:D -> Pressing
+T: 71:59 Pressing -> Goalkeeper
+T: 72:20 Goalkeeper -> Buildup
+T: 72:23 Buildup -> Attack
+T: 72:34 Attack -> GoalAttempt
+T: 72:35 GoalAttempt -> Save => Goalkeeper; xG = 0.05
+L: 73:41 Goalkeeper -> Buildup
+L: 73:45 => 73:59 Buildup -> !GoalKick
+T: 74:12 Pressing
