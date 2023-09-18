@@ -293,7 +293,45 @@ T: 71:59 Pressing -> Goalkeeper
 T: 72:20 Goalkeeper -> Buildup
 T: 72:23 Buildup -> Attack
 T: 72:34 Attack -> GoalAttempt
-T: 72:35 GoalAttempt -> Save => Goalkeeper; xG = 0.05
+T: 72:35 GoalAttempt -> Save; xG = 0.05
 L: 73:41 Goalkeeper -> Buildup
 L: 73:45 => 73:59 Buildup -> !GoalKick
-T: 74:12 Pressing
+T: 74:12 Pressing -> !Transition
+L: 74:29 Transition -> !RunningPossession
+T: 74:31 RunningPossession -> !Transition
+L: 74:35 Transition -> AttackingTransition
+L: 74:41 AttackingTransition -> !DefensiveTransition
+T: 74:45 DefensiveTransition -> CounterAttack
+T: 74:51 => 74:56  CounterAttack -> Corner
+T: 75:05 Corner -> Attack
+T: 75:06 => 75:29 Attack -> !Foul:D
+T: 76:03 DefensiveTransition -> Possession
+T: 76:04 Possession -> !DefensiveTransition
+L: 76:15 DefensiveTransition -> Possession
+L: 76:21 Possession -> !Goalkeeper
+T: 76:28 Goalkeeper -> FastBreak
+T: 76:32 FastBreak -> !Goalkeeper
+L: 76:38 Goalkeeper -> FastBreak
+L: 76:41 => 76:51 FastBreak -> ThrowIn:M
+L: 77:11 ThrowIn:M -> !DefensiveTransition
+T: 77:15 DefensiveTransition -> Transition
+T: 77:29 Transition -> AttackingPossession
+T: 77:35 AttackingPossession -> Possession
+T: 77:51 Possession -> Attack
+T: 78:18 Attack -> GoalAttempt
+T: 78:19 GoalAttempt -> OffTarget; xG = 0.08
+T: 78:56 Transition -> !DefensiveTransition
+L: 79:04 DefensiveTransition -> CounterAttack
+L: 79:08 CounterAttack -> !DefensiveTransition
+T: 79:14 DefensiveTransition -> Transition
+T: 79:26 Transition -> AttackingTransition
+T: 79:34 AttackingTransition -> GoalAttempt
+T: 79:34 GoalAttempt -> Save => Attack; xG = 0.03
+T: 79:37 Attack -> GoalAttempt
+T: 79:39 GoalAttempt -> Save; xG = 0.08
+L: 79:53 FastBreak -> !DefensiveTransition
+T: 80:03 DefensiveTransition -> Transition
+T: 80:09 Transition -> AttackingTransition
+T: 80:19 AttackingTransition -> GoalAttempt
+T: 80:19 GoalAttempt -> Save; xG = 0.05
+L: 80:27 Buildup
