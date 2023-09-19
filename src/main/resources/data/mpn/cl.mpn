@@ -1,6 +1,6 @@
 L: 00:00 KickOff -> Attack
 L: 00:19 => 00:21 Attack -> Penalty
-L: 01:47 Penalty -> Goal
+L: 01:47 Penalty -> Goal; xG = 0.79, default = Corner
 L: 03:18 ThrowIn:DM -> !Transition
 T: 03:37 Transition -> Goalkeeper
 T: 03:50 Goalkeeper -> Buildup
@@ -334,4 +334,23 @@ T: 80:03 DefensiveTransition -> Transition
 T: 80:09 Transition -> AttackingTransition
 T: 80:19 AttackingTransition -> GoalAttempt
 T: 80:19 GoalAttempt -> Save; xG = 0.05
-L: 80:27 Buildup
+L: 80:27 => 80:36 Buildup -> Corner
+L: 81:44 Corner -> Attack
+L: 81:49 Attack -> GoalAttempt
+L: 82:01 GoalAttempt -> OffTarget; xG = 0.03
+T: 82:09 FastBreak -> AttackingPossession
+T: 82:16 AttackingPossession -> Attack
+T: 82:36 => 82:40 Attack -> Foul:Apw
+T: 84:05 FreeKick:Apw -> GoalAttempt
+T: 84:05 GoalAttempt -> Save => Corner; xG = 0.05
+T: 84:37 => 84:38 Corner -> !Offside
+T: 85:19 Goalkeeper -> LongBall
+T: 85:20 LongBall -> !Goalkeeper
+L: 85:25 Goalkeeper -> FastBreak
+L: 85:38 => 85:43 FastBreak -> Corner
+L: 86:46 Corner -> GoalAttempt
+L: 86:48 GoalAttempt -> Block => !DefensiveTransition; xG = 0.05
+T: 86:50 DefensiveTransition -> !AttackingTransition
+L: 86:52 AttackingTransition -> GoalAttempt
+L: 86:53 GoalAttempt -> Goal; xG = 0.04, default = Corner
+T: 88:20 AttackingTransition
