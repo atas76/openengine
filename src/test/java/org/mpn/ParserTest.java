@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class ParserTest {
 
     @Test
-    public void testKickoff() {
+    public void testKickoff() throws Exception {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 00:00 KickOff -> Attack");
