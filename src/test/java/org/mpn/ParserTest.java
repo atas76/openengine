@@ -33,4 +33,17 @@ public class ParserTest {
         }
         fail("Exception expected");
     }
+
+    @Test
+    public void testSyntaxErrorIncorrectTimeFormat() throws Exception {
+        Parser parser = new Parser();
+
+        try {
+            parser.parse("L: 00 KickOff -> Attack");
+        } catch (SyntaxErrorException syntaxErrorException) {
+            assertEquals("Expected ':' at position 3", syntaxErrorException.getMessage());
+            return;
+        }
+        fail("Exception expected");
+    }
 }
