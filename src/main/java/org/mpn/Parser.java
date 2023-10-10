@@ -14,7 +14,7 @@ public class Parser {
         tokens = lexan.scan(line);
         expect(":", 1);
         expect(":", 3);
-        return new Statement(getTeamKey(), getMinutes(), getSeconds(), null, null);
+        return new Statement(getTeamKey(), getMinutes(), getSeconds(), getInitialState(), null);
     }
 
     private String getTeamKey() {
@@ -33,5 +33,9 @@ public class Parser {
 
     private int getSeconds() {
         return Integer.parseInt(tokens.get(4));
+    }
+
+    private State getInitialState() {
+        return State.createFromName(tokens.get(5));
     }
 }
