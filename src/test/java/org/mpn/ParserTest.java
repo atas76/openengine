@@ -46,4 +46,17 @@ public class ParserTest {
         }
         fail("Exception expected");
     }
+
+    @Test
+    public void testSyntaxErrorInvalidStateSeparator() throws Exception {
+        Parser parser = new Parser();
+
+        try {
+            parser.parse("L: 00:00 KickOff Attack");
+        } catch (SyntaxErrorException syntaxErrorException) {
+            assertEquals("Expected '->' at position 6", syntaxErrorException.getMessage());
+            return;
+        }
+        fail("Exception expected");
+    }
 }
