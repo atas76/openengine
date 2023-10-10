@@ -1,1 +1,2 @@
 statement := <string>: <string>:<string> <string> -> <string>
+statement := <string>: <string>:<string> => <string>:<string> <string> -> <string>
