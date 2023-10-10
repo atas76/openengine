@@ -13,7 +13,8 @@ public class Parser {
     public Statement parse(String line) throws Exception {
         tokens = lexan.scan(line);
         expect(":", 1);
-        return new Statement(getTeamKey(), getMinutes(), -1, null, null);
+        expect(":", 3);
+        return new Statement(getTeamKey(), getMinutes(), getSeconds(), null, null);
     }
 
     private String getTeamKey() {
@@ -28,5 +29,9 @@ public class Parser {
 
     private int getMinutes() {
         return Integer.parseInt(tokens.get(2));
+    }
+
+    private int getSeconds() {
+        return Integer.parseInt(tokens.get(4));
     }
 }
