@@ -18,7 +18,7 @@ public class ParserTest {
         assertEquals(0, statement.getMinutes());
         assertEquals(0, statement.getSeconds());
         assertEquals(State.KICK_OFF, statement.getInitialState());
-        // assertEquals(State.ATTACK, statement.getEndState());
+        assertEquals(State.ATTACK, statement.getEndState());
     }
 
     @Test
