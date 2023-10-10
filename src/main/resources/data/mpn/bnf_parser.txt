@@ -1,1 +1,2 @@
-<statement> := <team>: <number>:<number> <state> -> <state>
+<statement> := <team>: <time> <state> -> <state>
+<time> := <number>:<number>
