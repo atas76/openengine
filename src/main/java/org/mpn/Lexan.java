@@ -39,6 +39,14 @@ public class Lexan {
                 throw new RuntimeException("Syntax error: expected '->'");
             }
         }
+        if (expression.charAt(0) == '=') {
+            if (expression.charAt(1) == '>') {
+                tokens.add("=>");
+                index += 2;
+            } else {
+                throw new RuntimeException("Syntax error: expected '=>'");
+            }
+        }
         String tail = expression.substring(index);
         if (index > 0 && index < expression.length()) tokens.addAll(scan(tail));
         return tokens;
