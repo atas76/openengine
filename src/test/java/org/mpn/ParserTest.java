@@ -21,6 +21,13 @@ public class ParserTest {
         assertEquals(State.ATTACK, statement.getEndState());
     }
 
+    public void testTimeSpan() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 00:19 => 00:21 Attack -> Penalty");
+
+    }
+
     @Test
     public void testSyntaxErrorMissingTeamSeparator() throws Exception {
         Parser parser = new Parser();
