@@ -2,17 +2,19 @@ package org.mpn;
 
 public class Statement {
 
+    record Time(int minutes, int seconds) {}
+
     private String teamKey;
-    private int minutes;
-    private int seconds;
+
+    private Time startTime;
+    private Time endTime;
 
     private State initialState;
     private State endState;
 
     public Statement(String teamKey, int minutes, int seconds, State initialState, State endState) {
         this.teamKey = teamKey;
-        this.minutes = minutes;
-        this.seconds = seconds;
+        this.startTime = new Time(minutes, seconds);
         this.initialState = initialState;
         this.endState = endState;
     }
@@ -22,11 +24,11 @@ public class Statement {
     }
 
     public int getMinutes() {
-        return minutes;
+        return startTime.minutes;
     }
 
     public int getSeconds() {
-        return seconds;
+        return startTime.seconds;
     }
 
     public State getInitialState() {
