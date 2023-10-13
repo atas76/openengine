@@ -9,38 +9,50 @@ public class Parser {
 
     private Lexan lexan = new Lexan();
     private List<String> tokens = new ArrayList<>();
+    private int index;
 
     public Statement parse(String line) throws Exception {
+
         tokens = lexan.scan(line);
-        expect(":", 1);
-        expect(":", 3);
-        expect("->", 6);
-        return new Statement(getTeamKey(), getMinutes(), getSeconds(), getInitialState(), getEndState());
+
+        index = 0;
+        String teamKey = getTeamKey();
+        expect(":");
+        Time startTime = getTime();
+        Time endTime = null;
+        if (tokens.contains("=>")) {
+            expect("=>");
+            endTime = getTime();
+        }
+        State initialState = getInitialState();
+        expect("->");
+        State endState = getEndState();
+
+        return new Statement(teamKey, startTime, endTime, initialState, endState);
     }
 
     private String getTeamKey() {
-        return tokens.get(0);
+        return tokens.get(index++);
     }
 
-    private void expect(String token, int index) throws SyntaxErrorException {
-        if (!token.equals(tokens.get(index))) {
-            throw new SyntaxErrorException(token, index);
+    private void expect(String token) throws SyntaxErrorException {
+        if (!token.equals(tokens.get(index++))) {
+            throw new SyntaxErrorException(token, index - 1);
         }
     }
 
-    private int getMinutes() {
-        return Integer.parseInt(tokens.get(2));
-    }
-
-    private int getSeconds() {
-        return Integer.parseInt(tokens.get(4));
+    private Time getTime() throws Exception {
+        int minutes = Integer.parseInt(tokens.get(index++));
+        expect(":");
+        int seconds = Integer.parseInt(tokens.get(index++));
+        return new Time(minutes, seconds);
     }
 
     private State getInitialState() {
-        return State.createFromName(tokens.get(5));
+        return State.createFromName(tokens.get(index++));
     }
 
     private State getEndState() {
-        return State.createFromName(tokens.get(7));
+        return State.createFromName(tokens.get(index++));
     }
 }
