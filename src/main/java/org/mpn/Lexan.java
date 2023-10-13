@@ -15,9 +15,11 @@ public class Lexan {
             }
             tokens.add(expression.substring(0, index));
         }
-        if (expression.charAt(0) == ':') {
-            ++index;
-            tokens.add(String.valueOf(expression.charAt(0)));
+        switch (expression.charAt(0)) {
+            case ':', ';', ',' -> {
+                ++index;
+                tokens.add(String.valueOf(expression.charAt(0)));
+            }
         }
         if (Character.isWhitespace(expression.charAt(0))) {
             while (Character.isWhitespace(expression.charAt(index))) {
@@ -25,7 +27,7 @@ public class Lexan {
             }
         }
         if (Character.isDigit(expression.charAt(0))) {
-            while (Character.isDigit(expression.charAt(index))) {
+            while (Character.isDigit(expression.charAt(index)) || expression.charAt(index) == '.') {
                 ++index;
             }
             tokens.add(expression.substring(0, index));
@@ -44,7 +46,8 @@ public class Lexan {
                 tokens.add("=>");
                 index += 2;
             } else {
-                throw new RuntimeException("Syntax error: expected '=>'");
+                tokens.add("=");
+                ++index;
             }
         }
         String tail = expression.substring(index);
