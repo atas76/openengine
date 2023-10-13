@@ -10,19 +10,11 @@ public class Statement {
     private State initialState;
     private State endState;
 
-    public Statement(String teamKey, int minutes, int seconds, State initialState, State endState) {
-        this(teamKey, new Time(minutes, seconds), initialState, endState);
-    }
-
-    public Statement(String teamKey, Time startTime, State initialState, State endState) {
+    public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState) {
         this.teamKey = teamKey;
         this.startTime = startTime;
         this.initialState = initialState;
         this.endState = endState;
-    }
-
-    public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState) {
-        this(teamKey, startTime, initialState, endState);
         this.endTime = endTime;
     }
 
