@@ -30,6 +30,14 @@ public class Statement {
         return startTime.seconds();
     }
 
+    public int getEndMinutes() {
+        return endTime != null ? endTime.minutes() : startTime.minutes();
+    }
+
+    public int getEndSeconds() {
+        return endTime != null ? endTime.seconds() : startTime.seconds();
+    }
+
     public State getInitialState() {
         return initialState;
     }
