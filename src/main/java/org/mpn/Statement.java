@@ -1,6 +1,21 @@
 package org.mpn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Statement {
+
+    public enum ParameterName {
+        xG, defaultEndState;
+        public static ParameterName createFromName(String name) {
+            return switch (name) {
+                case "xG" -> xG;
+                case "default" -> defaultEndState;
+                default -> null;
+            };
+        }
+    }
+    public record Parameters(Double xG, State defaultEndState) {}
 
     private String teamKey;
 
@@ -10,12 +25,20 @@ public class Statement {
     private State initialState;
     private State endState;
 
-    public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState) {
+    private Parameters parameters;
+
+    public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState,
+                     Map<String, String> argumentList) {
         this.teamKey = teamKey;
         this.startTime = startTime;
         this.initialState = initialState;
         this.endState = endState;
         this.endTime = endTime;
+        Map<ParameterName, String> argumentAssignments = new HashMap<>();
+        argumentList.forEach((k, v) -> argumentAssignments.put(ParameterName.createFromName(k), v));
+        this.parameters = new Parameters(
+                argumentAssignments.get(ParameterName.xG) != null ? Double.parseDouble(argumentAssignments.get(ParameterName.xG)) : null,
+                argumentAssignments.get(ParameterName.defaultEndState) != null ? State.createFromName(argumentAssignments.get(ParameterName.defaultEndState)) : null);
     }
 
     public String getTeamKey() {
@@ -45,4 +68,9 @@ public class Statement {
     public State getEndState() {
         return endState;
     }
+
+    public Parameters getParameters() {
+        return this.parameters;
+    }
+
 }

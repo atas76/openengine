@@ -3,13 +3,17 @@ package org.mpn;
 import org.mpn.exceptions.SyntaxErrorException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Parser {
 
     private Lexan lexan = new Lexan();
     private List<String> tokens = new ArrayList<>();
     private int index;
+
+    private Map<String, String> argumentList = new HashMap<>();
 
     public Statement parse(String line) throws Exception {
 
@@ -27,8 +31,14 @@ public class Parser {
         State initialState = getInitialState();
         expect("->");
         State endState = getEndState();
+        if (index < tokens.size()) {
+            expect(";");
+        }
+        while (index < tokens.size()) {
+            addArgumentAssignment();
+        }
 
-        return new Statement(teamKey, startTime, endTime, initialState, endState);
+        return new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
     }
 
     private String getTeamKey() {
@@ -38,6 +48,16 @@ public class Parser {
     private void expect(String token) throws SyntaxErrorException {
         if (!token.equals(tokens.get(index++))) {
             throw new SyntaxErrorException(token, index - 1);
+        }
+    }
+
+    private void addArgumentAssignment() throws Exception {
+        String key = tokens.get(index++);
+        expect("=");
+        String value = tokens.get(index++);
+        argumentList.put(key, value);
+        if (index < tokens.size()) {
+            expect(",");
         }
     }
 

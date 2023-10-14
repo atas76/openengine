@@ -38,6 +38,28 @@ public class ParserTest {
     }
 
     @Test
+    public void testParameterizedStatement() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 01:47 Penalty -> Goal; xG = 0.79, default = Corner");
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(1, statement.getMinutes());
+        assertEquals(47, statement.getSeconds());
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.GOAL, statement.getEndState());
+        assertEquals(0.79, statement.getParameters().xG(), 0.1);
+        assertEquals(State.CORNER, statement.getParameters().defaultEndState());
+    }
+
+    @Test
+    public void smokeTest() throws Exception {
+        Parser parser = new Parser();
+
+        final String CURRENT_STATEMENT = "L: 00:19 => 00:21 Attack -> Penalty";
+        parser.parse(CURRENT_STATEMENT);
+    }
+
+    @Test
     public void testSyntaxErrorMissingTeamSeparator() throws Exception {
         Parser parser = new Parser();
 
