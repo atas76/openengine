@@ -67,4 +67,23 @@ public class LexanTest {
         assertEquals("=", tokens.get(14));
         assertEquals("Corner", tokens.get(15));
     }
+
+    @Test
+    public void testPossessionChangeOperator() throws Exception {
+        Lexan lexan = new Lexan();
+
+        List<String> tokens = lexan.scan("L: 03:18 ThrowIn:DM -> !Transition");
+
+        assertEquals("L", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("03", tokens.get(2));
+        assertEquals(":", tokens.get(3));
+        assertEquals("18", tokens.get(4));
+        assertEquals("ThrowIn", tokens.get(5));
+        assertEquals(":", tokens.get(6));
+        assertEquals("DM", tokens.get(7));
+        assertEquals("->", tokens.get(8));
+        assertEquals("!", tokens.get(9));
+        assertEquals("Transition", tokens.get(10));
+    }
 }

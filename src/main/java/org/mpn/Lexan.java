@@ -16,7 +16,7 @@ public class Lexan {
             tokens.add(expression.substring(0, index));
         }
         switch (expression.charAt(0)) {
-            case ':', ';', ',' -> {
+            case ':', ';', ',', '!' -> {
                 ++index;
                 tokens.add(String.valueOf(expression.charAt(0)));
             }
