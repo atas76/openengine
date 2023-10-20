@@ -25,7 +25,10 @@ public class Statement {
     private State initialState;
     private State endState;
 
+    private PitchPosition initialPitchPosition;
+
     private Parameters parameters;
+
 
     public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState,
                      Map<String, String> argumentList) {
@@ -39,6 +42,10 @@ public class Statement {
         this.parameters = new Parameters(
                 argumentAssignments.get(ParameterName.xG) != null ? Double.parseDouble(argumentAssignments.get(ParameterName.xG)) : null,
                 argumentAssignments.get(ParameterName.defaultEndState) != null ? State.createFromName(argumentAssignments.get(ParameterName.defaultEndState)) : null);
+    }
+
+    public void addOptionalElements(PitchPosition initialPitchPosition) {
+        this.initialPitchPosition = initialPitchPosition;
     }
 
     public String getTeamKey() {
@@ -67,6 +74,10 @@ public class Statement {
 
     public State getEndState() {
         return endState;
+    }
+
+    public PitchPosition getInitialPitchPosition() {
+        return this.initialPitchPosition;
     }
 
     public Parameters getParameters() {

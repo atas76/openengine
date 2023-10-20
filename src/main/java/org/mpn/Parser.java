@@ -19,6 +19,9 @@ public class Parser {
 
         tokens = lexan.scan(line);
 
+        // Optional elements
+        PitchPosition initialPitchPosition = null;
+
         index = 0;
         String teamKey = getTeamKey();
         expect(":");
@@ -28,9 +31,19 @@ public class Parser {
             expect("=>");
             endTime = getTime();
         }
-        State initialState = getInitialState();
-        expect("->");
-        State endState = getEndState();
+        State initialState = parseState();
+        switch(lookahead()) {
+            case ":":
+                initialPitchPosition = parsePitchPosition();
+                expect("->");
+                break;
+            case "->":
+               break;
+            default:
+                throw new SyntaxErrorException(index - 1);
+        }
+
+        State endState = parseState();
         if (index < tokens.size()) {
             expect(";");
         }
@@ -38,7 +51,9 @@ public class Parser {
             addArgumentAssignment();
         }
 
-        return new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
+        Statement statement = new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
+        statement.addOptionalElements(initialPitchPosition);
+        return statement;
     }
 
     private String getTeamKey() {
@@ -49,6 +64,10 @@ public class Parser {
         if (!token.equals(tokens.get(index++))) {
             throw new SyntaxErrorException(token, index - 1);
         }
+    }
+
+    private String lookahead() {
+        return tokens.get(index++);
     }
 
     private void addArgumentAssignment() throws Exception {
@@ -68,11 +87,11 @@ public class Parser {
         return new Time(minutes, seconds);
     }
 
-    private State getInitialState() {
-        return State.createFromName(tokens.get(index++));
+    private PitchPosition parsePitchPosition() {
+        return PitchPosition.valueOf(tokens.get(index++));
     }
 
-    private State getEndState() {
+    private State parseState() {
         return State.createFromName(tokens.get(index++));
     }
 }

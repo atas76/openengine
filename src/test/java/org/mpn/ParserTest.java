@@ -52,6 +52,19 @@ public class ParserTest {
     }
 
     @Test
+    public void testParameterizedState() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 03:18 ThrowIn:DM -> Transition");
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(3, statement.getMinutes());
+        assertEquals(18, statement.getSeconds());
+        assertEquals(State.THROW_IN, statement.getInitialState());
+        assertEquals(PitchPosition.DM, statement.getInitialPitchPosition());
+        assertEquals(State.TRANSITION, statement.getEndState());
+    }
+
+    @Test
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
 
@@ -92,7 +105,7 @@ public class ParserTest {
         try {
             parser.parse("L: 00:00 KickOff Attack");
         } catch (SyntaxErrorException syntaxErrorException) {
-            assertEquals("Expected '->' at position 6", syntaxErrorException.getMessage());
+            assertEquals("Unexpected token at position 6", syntaxErrorException.getMessage());
             return;
         }
         fail("Exception expected");
