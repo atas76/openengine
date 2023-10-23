@@ -3,8 +3,7 @@ package org.mpn;
 import org.junit.Test;
 import org.mpn.exceptions.SyntaxErrorException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 public class ParserTest {
 
@@ -28,6 +27,7 @@ public class ParserTest {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 00:19 => 00:21 Attack -> Penalty");
+
         assertEquals("L", statement.getTeamKey());
         assertEquals(0, statement.getMinutes());
         assertEquals(19, statement.getSeconds());
@@ -42,6 +42,7 @@ public class ParserTest {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 01:47 Penalty -> Goal; xG = 0.79, default = Corner");
+
         assertEquals("L", statement.getTeamKey());
         assertEquals(1, statement.getMinutes());
         assertEquals(47, statement.getSeconds());
@@ -56,12 +57,28 @@ public class ParserTest {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 03:18 ThrowIn:DM -> Transition");
+
         assertEquals("L", statement.getTeamKey());
         assertEquals(3, statement.getMinutes());
         assertEquals(18, statement.getSeconds());
         assertEquals(State.THROW_IN, statement.getInitialState());
         assertEquals(PitchPosition.DM, statement.getInitialPitchPosition());
         assertEquals(State.TRANSITION, statement.getEndState());
+    }
+
+    @Test
+    public void testPossessionChange() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 03:18 ThrowIn:DM -> !Transition");
+
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(3, statement.getMinutes());
+        assertEquals(18, statement.getSeconds());
+        assertEquals(State.THROW_IN, statement.getInitialState());
+        assertEquals(PitchPosition.DM, statement.getInitialPitchPosition());
+        assertEquals(State.TRANSITION, statement.getEndState());
+        assertFalse(statement.isPossessionRetained());
     }
 
     @Test

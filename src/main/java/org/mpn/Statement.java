@@ -27,6 +27,8 @@ public class Statement {
 
     private PitchPosition initialPitchPosition;
 
+    private boolean retainPossession = true;
+
     private Parameters parameters;
 
 
@@ -44,8 +46,9 @@ public class Statement {
                 argumentAssignments.get(ParameterName.defaultEndState) != null ? State.createFromName(argumentAssignments.get(ParameterName.defaultEndState)) : null);
     }
 
-    public void addOptionalElements(PitchPosition initialPitchPosition) {
+    public void addOptionalElements(PitchPosition initialPitchPosition, boolean keepPossession) {
         this.initialPitchPosition = initialPitchPosition;
+        this.retainPossession = keepPossession;
     }
 
     public String getTeamKey() {
@@ -84,4 +87,7 @@ public class Statement {
         return this.parameters;
     }
 
+    public boolean isPossessionRetained() {
+        return this.retainPossession;
+    }
 }

@@ -21,6 +21,7 @@ public class Parser {
 
         // Optional elements
         PitchPosition initialPitchPosition = null;
+        boolean keepPossession = true;
 
         index = 0;
         String teamKey = getTeamKey();
@@ -43,6 +44,11 @@ public class Parser {
                 throw new SyntaxErrorException(index - 1);
         }
 
+        if ("!".equals(peek())) {
+            keepPossession = false;
+            lookahead();
+        }
+
         State endState = parseState();
         if (index < tokens.size()) {
             expect(";");
@@ -52,7 +58,7 @@ public class Parser {
         }
 
         Statement statement = new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
-        statement.addOptionalElements(initialPitchPosition);
+        statement.addOptionalElements(initialPitchPosition, keepPossession);
         return statement;
     }
 
@@ -68,6 +74,10 @@ public class Parser {
 
     private String lookahead() {
         return tokens.get(index++);
+    }
+
+    private String peek() {
+        return tokens.get(index);
     }
 
     private void addArgumentAssignment() throws Exception {
