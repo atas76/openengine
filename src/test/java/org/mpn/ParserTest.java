@@ -64,6 +64,7 @@ public class ParserTest {
         assertEquals(State.THROW_IN, statement.getInitialState());
         assertEquals(PitchPosition.DM, statement.getInitialPitchPosition());
         assertEquals(State.TRANSITION, statement.getEndState());
+        assertTrue(statement.isPossessionRetained());
     }
 
     @Test
