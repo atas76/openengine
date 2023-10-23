@@ -1,6 +1,7 @@
 package org.mpn;
 
 import org.mpn.exceptions.SyntaxErrorException;
+import org.mpn.exceptions.UnknownStateException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,7 +102,7 @@ public class Parser {
         return PitchPosition.valueOf(tokens.get(index++));
     }
 
-    private State parseState() {
+    private State parseState() throws UnknownStateException {
         return State.createFromName(tokens.get(index++));
     }
 }

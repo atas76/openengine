@@ -1,9 +1,11 @@
 package org.mpn;
 
-public enum State {
-    KICK_OFF, ATTACK, PENALTY, GOAL, CORNER, THROW_IN, TRANSITION;
+import org.mpn.exceptions.UnknownStateException;
 
-    public static State createFromName(String name) {
+public enum State {
+    KICK_OFF, ATTACK, PENALTY, GOAL, CORNER, THROW_IN, TRANSITION, GOALKEEPER;
+
+    public static State createFromName(String name) throws UnknownStateException {
         return switch (name) {
             case "KickOff" -> KICK_OFF;
             case "Attack" -> ATTACK;
@@ -12,7 +14,8 @@ public enum State {
             case "Corner" -> CORNER;
             case "ThrowIn" -> THROW_IN;
             case "Transition" -> TRANSITION;
-            default -> null;
+            case "Goalkeeper" -> GOALKEEPER;
+            default -> throw new UnknownStateException();
         };
     }
 }

@@ -1,5 +1,7 @@
 package org.mpn;
 
+import org.mpn.exceptions.UnknownStateException;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +35,7 @@ public class Statement {
 
 
     public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState,
-                     Map<String, String> argumentList) {
+                     Map<String, String> argumentList) throws UnknownStateException {
         this.teamKey = teamKey;
         this.startTime = startTime;
         this.initialState = initialState;

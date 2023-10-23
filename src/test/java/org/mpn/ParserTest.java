@@ -2,6 +2,7 @@ package org.mpn;
 
 import org.junit.Test;
 import org.mpn.exceptions.SyntaxErrorException;
+import org.mpn.exceptions.UnknownStateException;
 
 import static org.junit.Assert.*;
 
@@ -86,8 +87,20 @@ public class ParserTest {
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
 
-        final String CURRENT_STATEMENT = "L: 00:19 => 00:21 Attack -> Penalty";
+        final String CURRENT_STATEMENT = "T: 03:37 Transition -> Goalkeeper";
         parser.parse(CURRENT_STATEMENT);
+    }
+
+    @Test
+    public void testUnknownState() throws Exception {
+        Parser parser = new Parser();
+
+        try {
+            parser.parse("T: 03:37 Transition -> UnknownState");
+        } catch (UnknownStateException exception) {
+            return;
+        }
+        fail("UnknownStateException expected");
     }
 
     @Test
