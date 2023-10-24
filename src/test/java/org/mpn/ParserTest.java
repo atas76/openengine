@@ -84,10 +84,26 @@ public class ParserTest {
     }
 
     @Test
+    public void testParameterizedOutcomeState() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("T: 06:40 => 06:45 AttackingTransition -> ThrowIn:M");
+
+        assertEquals("T", statement.getTeamKey());
+        assertEquals(6, statement.getMinutes());
+        assertEquals(40, statement.getSeconds());
+        assertEquals(6, statement.getEndMinutes());
+        assertEquals(45, statement.getEndSeconds());
+        assertEquals(State.ATTACKING_TRANSITION, statement.getInitialState());
+        assertEquals(State.THROW_IN, statement.getEndState());
+        assertEquals(PitchPosition.M, statement.getOutcomePitchPosition());
+    }
+
+    @Test
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
 
-        final String CURRENT_STATEMENT = "T: 03:37 Transition -> Goalkeeper";
+        final String CURRENT_STATEMENT = "T: 06:40 => 06:45 AttackingTransition -> ThrowIn:M";
         parser.parse(CURRENT_STATEMENT);
     }
 

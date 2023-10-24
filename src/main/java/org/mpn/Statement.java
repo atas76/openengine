@@ -28,6 +28,7 @@ public class Statement {
     private State endState;
 
     private PitchPosition initialPitchPosition;
+    private PitchPosition outcomePitchPosition;
 
     private boolean retainPossession = true;
 
@@ -48,8 +49,9 @@ public class Statement {
                 argumentAssignments.get(ParameterName.defaultEndState) != null ? State.createFromName(argumentAssignments.get(ParameterName.defaultEndState)) : null);
     }
 
-    public void addOptionalElements(PitchPosition initialPitchPosition, boolean keepPossession) {
+    public void addOptionalElements(PitchPosition initialPitchPosition, PitchPosition outcomePitchPosition, boolean keepPossession) {
         this.initialPitchPosition = initialPitchPosition;
+        this.outcomePitchPosition = outcomePitchPosition;
         this.retainPossession = keepPossession;
     }
 
@@ -83,6 +85,10 @@ public class Statement {
 
     public PitchPosition getInitialPitchPosition() {
         return this.initialPitchPosition;
+    }
+
+    public PitchPosition getOutcomePitchPosition() {
+        return this.outcomePitchPosition;
     }
 
     public Parameters getParameters() {

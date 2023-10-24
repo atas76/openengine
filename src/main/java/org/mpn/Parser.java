@@ -22,6 +22,7 @@ public class Parser {
 
         // Optional elements
         PitchPosition initialPitchPosition = null;
+        PitchPosition outcomePitchPosition = null;
         boolean keepPossession = true;
 
         index = 0;
@@ -52,14 +53,22 @@ public class Parser {
 
         State endState = parseState();
         if (index < tokens.size()) {
-            expect(";");
-        }
-        while (index < tokens.size()) {
-            addArgumentAssignment();
+            switch(lookahead()) {
+                case ":":
+                    outcomePitchPosition = parsePitchPosition();
+                    break;
+                case ";":
+                    while (index < tokens.size()) {
+                        addArgumentAssignment();
+                    }
+                    break;
+                default:
+                    throw new SyntaxErrorException(index - 1);
+            }
         }
 
         Statement statement = new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
-        statement.addOptionalElements(initialPitchPosition, keepPossession);
+        statement.addOptionalElements(initialPitchPosition, outcomePitchPosition, keepPossession);
         return statement;
     }
 
