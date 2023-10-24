@@ -1,3 +1,3 @@
 <statement> := <team>: <time> <state> -> <state>
-<statement> := <team>: <time> => <time> <state>[:<pitch_position>] -> [!]<state>
+<statement> := <team>: <time> => <time> <state>[:<pitch_position>] -> [!]<state>[:<pitch_position>][; <arguments-assignment-commalist>]
 <time> := <number>:<number>
