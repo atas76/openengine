@@ -15,7 +15,10 @@ public enum State {
     PRESSING,
     POSSESSION,
     DEFENSIVE_TRANSITION,
-    ATTACKING_TRANSITION
+    ATTACKING_TRANSITION,
+    ATTACKING_POSSESSION,
+    GOAL_ATTEMPT,
+    OFF_TARGET
     ;
 
     public static State createFromName(String name) throws UnknownStateException {
@@ -33,6 +36,9 @@ public enum State {
             case "Possession" -> POSSESSION;
             case "DefensiveTransition" -> DEFENSIVE_TRANSITION;
             case "AttackingTransition" -> ATTACKING_TRANSITION;
+            case "AttackingPossession" -> ATTACKING_POSSESSION;
+            case "GoalAttempt" -> GOAL_ATTEMPT;
+            case "OffTarget" -> OFF_TARGET;
             default -> throw new UnknownStateException();
         };
     }
