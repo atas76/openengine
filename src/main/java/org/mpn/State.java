@@ -4,6 +4,9 @@ import org.mpn.exceptions.UnknownStateException;
 
 public enum State {
     KICK_OFF,
+    FREEKICK,
+    GOAL_KICK,
+    FOUL,
     ATTACK,
     PENALTY,
     GOAL,
@@ -18,12 +21,16 @@ public enum State {
     ATTACKING_TRANSITION,
     ATTACKING_POSSESSION,
     GOAL_ATTEMPT,
-    OFF_TARGET
+    OFF_TARGET,
+    LONG_BALL
     ;
 
     public static State createFromName(String name) throws UnknownStateException {
         return switch (name) {
             case "KickOff" -> KICK_OFF;
+            case "FreeKick" -> FREEKICK;
+            case "GoalKick" -> GOAL_KICK;
+            case "Foul" -> FOUL;
             case "Attack" -> ATTACK;
             case "Penalty" -> PENALTY;
             case "Goal" -> GOAL;
@@ -39,6 +46,7 @@ public enum State {
             case "AttackingPossession" -> ATTACKING_POSSESSION;
             case "GoalAttempt" -> GOAL_ATTEMPT;
             case "OffTarget" -> OFF_TARGET;
+            case "LongBall" -> LONG_BALL;
             default -> throw new UnknownStateException();
         };
     }
