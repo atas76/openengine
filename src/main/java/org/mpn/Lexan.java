@@ -27,7 +27,8 @@ public class Lexan {
             }
         }
         if (Character.isDigit(expression.charAt(0))) {
-            while (Character.isDigit(expression.charAt(index)) || expression.charAt(index) == '.') {
+            while (index < expression.length() &&
+                    (Character.isDigit(expression.charAt(index)) || expression.charAt(index) == '.')) {
                 ++index;
             }
             tokens.add(expression.substring(0, index));
