@@ -39,7 +39,21 @@ public class ParserTest {
     }
 
     @Test
-    public void testParameterizedStatement() throws Exception {
+    public void testParameterizedStatementSingle() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("T: 09:03 GoalAttempt -> OffTarget; xG = 0.03");
+
+        assertEquals("T", statement.getTeamKey());
+        assertEquals(9, statement.getMinutes());
+        assertEquals(3, statement.getSeconds());
+        assertEquals(State.GOAL_ATTEMPT, statement.getInitialState());
+        assertEquals(State.OFF_TARGET, statement.getEndState());
+        assertEquals(0.03, statement.getParameters().xG(), 0.0);
+    }
+
+    @Test
+    public void testParameterizedStatementMultiple() throws Exception {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 01:47 Penalty -> Goal; xG = 0.79, default = Corner");
@@ -103,7 +117,7 @@ public class ParserTest {
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
 
-        final String CURRENT_STATEMENT = "T: 06:40 => 06:45 AttackingTransition -> ThrowIn:M";
+        final String CURRENT_STATEMENT = "T: 09:03 GoalAttempt -> OffTarget; xG = 0.03";
         parser.parse(CURRENT_STATEMENT);
     }
 
