@@ -7,7 +7,9 @@ public enum State {
     FREEKICK,
     GOAL_KICK,
     FOUL,
+    OFFSIDE,
     ATTACK,
+    COUNTER_ATTACK,
     PENALTY,
     GOAL,
     CORNER,
@@ -17,6 +19,7 @@ public enum State {
     BUILDUP,
     PRESSING,
     POSSESSION,
+    RUNNING_POSSESSION,
     DEFENSIVE_TRANSITION,
     ATTACKING_TRANSITION,
     ATTACKING_POSSESSION,
@@ -31,7 +34,9 @@ public enum State {
             case "FreeKick" -> FREEKICK;
             case "GoalKick" -> GOAL_KICK;
             case "Foul" -> FOUL;
+            case "Offside" -> OFFSIDE;
             case "Attack" -> ATTACK;
+            case "CounterAttack" -> COUNTER_ATTACK;
             case "Penalty" -> PENALTY;
             case "Goal" -> GOAL;
             case "Corner" -> CORNER;
@@ -41,6 +46,7 @@ public enum State {
             case "Buildup" -> BUILDUP;
             case "Pressing" -> PRESSING;
             case "Possession" -> POSSESSION;
+            case "RunningPossession" -> RUNNING_POSSESSION;
             case "DefensiveTransition" -> DEFENSIVE_TRANSITION;
             case "AttackingTransition" -> ATTACKING_TRANSITION;
             case "AttackingPossession" -> ATTACKING_POSSESSION;
