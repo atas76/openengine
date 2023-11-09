@@ -47,7 +47,7 @@ public class Parser {
                 throw new SyntaxErrorException(index - 1);
         }
 
-        if ("!".equals(peek())) {
+        if (isNext("!")) {
             keepPossession = false;
             lookahead();
         }
