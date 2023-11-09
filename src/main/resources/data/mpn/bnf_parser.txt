@@ -1,3 +1,7 @@
-<statement> := <team>: <time> <state> -> <state>
-<statement> := <team>: <time> => <time> <state>[:<pitch_position>] -> [!]<state>[:<pitch_position>][; <arguments-assignment-commalist>]
+<statement> := <team>: (<time> || <time-span>) <initial-state> -> <end-state> [; <arguments-assignment-commalist>]
+<time-span> := <time> => <time>
+<initial-state> := <state>[:<pitch_position>]
+<end-state> := [!]<state>[:<pitch_position>][=> state]
+<arguments-assignment-commalist> := <assignment>(,assignment)*
+<assignment> := <variable> '=' <value>
 <time> := <number>:<number>
