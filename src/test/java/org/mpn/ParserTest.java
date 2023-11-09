@@ -114,10 +114,39 @@ public class ParserTest {
     }
 
     @Test
-    public void smokeTest() throws Exception {
+    public void testGoalOutcomeState() throws Exception {
         Parser parser = new Parser();
 
-        final String CURRENT_STATEMENT = "T: 09:03 GoalAttempt -> OffTarget; xG = 0.03";
+        Statement statement = parser.parse("L: 37:47 GoalAttempt -> Save => Corner");
+
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(37, statement.getMinutes());
+        assertEquals(47, statement.getSeconds());
+        assertEquals(State.GOAL_ATTEMPT, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.CORNER, statement.getGoalAttemptOutcome());
+    }
+
+    @Test
+    public void testMultipleOptionalElements() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 37:47 GoalAttempt -> Save => Corner; xG = 0.03");
+
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(37, statement.getMinutes());
+        assertEquals(47, statement.getSeconds());
+        assertEquals(State.GOAL_ATTEMPT, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.CORNER, statement.getGoalAttemptOutcome());
+        assertEquals(0.03, statement.getParameters().xG(), 0.0);
+    }
+
+    @Test
+    public void smokeTest() throws Exception {
+        Parser parser = new Parser();
+        final String CURRENT_STATEMENT = "L: 37:47 GoalAttempt -> Save => Corner; xG = 0.03";
+
         parser.parse(CURRENT_STATEMENT);
     }
 

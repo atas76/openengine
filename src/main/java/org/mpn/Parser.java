@@ -24,14 +24,15 @@ public class Parser {
         PitchPosition initialPitchPosition = null;
         PitchPosition outcomePitchPosition = null;
         boolean keepPossession = true;
+        State goalAttemptOutcome = null;
 
         index = 0;
         String teamKey = getTeamKey();
         expect(":");
         Time startTime = getTime();
         Time endTime = null;
-        if (tokens.contains("=>")) {
-            expect("=>");
+        if (isNext("=>")) {
+            lookahead();
             endTime = getTime();
         }
         State initialState = parseState();
@@ -52,6 +53,7 @@ public class Parser {
         }
 
         State endState = parseState();
+        // TODO use loop
         if (index < tokens.size()) {
             switch(lookahead()) {
                 case ":":
@@ -62,13 +64,17 @@ public class Parser {
                         addArgumentAssignment();
                     }
                     break;
+                case "=>":
+                    // TODO write unit test
+                    goalAttemptOutcome = parseState();
+                    break;
                 default:
                     throw new SyntaxErrorException(index - 1);
             }
         }
 
         Statement statement = new Statement(teamKey, startTime, endTime, initialState, endState, argumentList);
-        statement.addOptionalElements(initialPitchPosition, outcomePitchPosition, keepPossession);
+        statement.addOptionalElements(initialPitchPosition, outcomePitchPosition, keepPossession, goalAttemptOutcome);
         return statement;
     }
 
@@ -86,8 +92,14 @@ public class Parser {
         return tokens.get(index++);
     }
 
+    // TODO replace
+    @Deprecated
     private String peek() {
         return tokens.get(index);
+    }
+
+    private boolean isNext(String token) {
+        return ((tokens.get(index).equals(token)));
     }
 
     private void addArgumentAssignment() throws Exception {

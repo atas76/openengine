@@ -25,6 +25,7 @@ public enum State {
     ATTACKING_POSSESSION,
     GOAL_ATTEMPT,
     OFF_TARGET,
+    SAVE,
     LONG_BALL
     ;
 
@@ -52,6 +53,7 @@ public enum State {
             case "AttackingPossession" -> ATTACKING_POSSESSION;
             case "GoalAttempt" -> GOAL_ATTEMPT;
             case "OffTarget" -> OFF_TARGET;
+            case "Save" -> SAVE;
             case "LongBall" -> LONG_BALL;
             default -> throw new UnknownStateException();
         };
