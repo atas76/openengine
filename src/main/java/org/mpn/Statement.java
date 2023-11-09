@@ -27,6 +27,8 @@ public class Statement {
     private State initialState;
     private State endState;
 
+    private State goalAttemptOutcome;
+
     private PitchPosition initialPitchPosition;
     private PitchPosition outcomePitchPosition;
 
@@ -49,10 +51,15 @@ public class Statement {
                 argumentAssignments.get(ParameterName.defaultEndState) != null ? State.createFromName(argumentAssignments.get(ParameterName.defaultEndState)) : null);
     }
 
-    public void addOptionalElements(PitchPosition initialPitchPosition, PitchPosition outcomePitchPosition, boolean keepPossession) {
+    public void addOptionalElements(
+            PitchPosition initialPitchPosition,
+            PitchPosition outcomePitchPosition,
+            boolean keepPossession,
+            State goalAttemptOutcome) {
         this.initialPitchPosition = initialPitchPosition;
         this.outcomePitchPosition = outcomePitchPosition;
         this.retainPossession = keepPossession;
+        this.goalAttemptOutcome = goalAttemptOutcome;
     }
 
     public String getTeamKey() {
@@ -81,6 +88,10 @@ public class Statement {
 
     public State getEndState() {
         return endState;
+    }
+
+    public State getGoalAttemptOutcome() {
+        return goalAttemptOutcome;
     }
 
     public PitchPosition getInitialPitchPosition() {

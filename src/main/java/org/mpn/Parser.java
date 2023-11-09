@@ -53,8 +53,7 @@ public class Parser {
         }
 
         State endState = parseState();
-        // TODO use loop
-        if (index < tokens.size()) {
+        while (index < tokens.size()) {
             switch(lookahead()) {
                 case ":":
                     outcomePitchPosition = parsePitchPosition();
@@ -65,7 +64,6 @@ public class Parser {
                     }
                     break;
                 case "=>":
-                    // TODO write unit test
                     goalAttemptOutcome = parseState();
                     break;
                 default:
