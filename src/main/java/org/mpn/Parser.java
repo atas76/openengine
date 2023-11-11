@@ -64,6 +64,10 @@ public class Parser {
                     }
                     break;
                 case "=>":
+                    if (isNext("!")) {
+                        keepPossession = false;
+                        lookahead();
+                    }
                     goalAttemptOutcome = parseState();
                     break;
                 default:

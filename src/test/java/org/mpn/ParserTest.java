@@ -114,7 +114,7 @@ public class ParserTest {
     }
 
     @Test
-    public void testGoalOutcomeState() throws Exception {
+    public void testGoalAttemptOutcomeState() throws Exception {
         Parser parser = new Parser();
 
         Statement statement = parser.parse("L: 37:47 GoalAttempt -> Save => Corner");
@@ -143,9 +143,25 @@ public class ParserTest {
     }
 
     @Test
+    public void testGoalAttemptOutcomePossessionChange() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement = parser.parse("L: 52:24 GoalAttempt -> Block => !Goalkeeper; xG = 0.03");
+
+        assertEquals("L", statement.getTeamKey());
+        assertEquals(52, statement.getMinutes());
+        assertEquals(24, statement.getSeconds());
+        assertEquals(State.GOAL_ATTEMPT, statement.getInitialState());
+        assertEquals(State.BLOCK, statement.getEndState());
+        assertFalse(statement.isPossessionRetained());
+        assertEquals(State.GOALKEEPER, statement.getGoalAttemptOutcome());
+        assertEquals(0.03, statement.getParameters().xG(), 0.0);
+    }
+
+    @Test
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
-        final String CURRENT_STATEMENT = "L: 37:47 GoalAttempt -> Save => Corner; xG = 0.03";
+        final String CURRENT_STATEMENT = "L: 52:24 GoalAttempt -> Block => !Goalkeeper; xG = 0.03";
 
         parser.parse(CURRENT_STATEMENT);
     }
