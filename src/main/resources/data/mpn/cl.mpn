@@ -102,7 +102,7 @@ T: 27:07 => 27:12 Pressing -> ThrowIn:DM
 T: 27:06 ThrowIn:DM -> Buildup
 T: 27:29 => 27:44 Buildup -> !Offside
 L: 28:59 => 29:03 FreeKick:AM -> !GoalKick
-T: 29:20 => 29:40 GoalKick -> Foul:DMd              #
+T: 29:20 => 29:40 GoalKick -> Foul:DMd
 T: 29:47 Possession -> !DefensiveTransition
 L: 30:10 => 30:13 DefensiveTransition -> !ThrowIn:M
 T: 30:21 => 30:28 ThrowIn:M -> ThrowIn:DM
@@ -170,18 +170,18 @@ L: 44:18 Pressing -> !Goalkeeper
 T: 44:28 Goalkeeper -> Buildup
 T: 44:33 => 44:40 Buildup -> ThrowIn:M
 T: 44:58 ThrowIn:M -> Attack
-T: 45+00:17 Attack -> GoalAttempt
-T: 45+00:18 GoalAttempt -> OffTarget; xG =0.04
-L: 45+00:43 GoalKick -> LongBall
-L: 45+00:43 LongBall -> !DefensiveTransition
-T: 45+00:55 DefensiveTransition -> Pressing
-T: 45+00:59 Pressing -> Buildup
-T: 45+01:05 Buildup -> !DefensiveTransition
-L: 45+01:11 => 45+01:14 DefensiveTransition -> !ThrowIn:M
-T: 45+01:20 ThrowIn:M -> Possession
-T: 45+01:26 Possession -> AttackingPossession
-T: 45+01:36 AttackingPossession -> Attack
-T: 45+01:41 => 45+01:52 Attack -> ThrowIn:M
+T: 45:17 Attack -> GoalAttempt
+T: 45:18 GoalAttempt -> OffTarget; xG =0.04
+L: 45:43 GoalKick -> LongBall
+L: 45:43 LongBall -> !DefensiveTransition
+T: 45:55 DefensiveTransition -> Pressing
+T: 45:59 Pressing -> Buildup
+T: 45:05 Buildup -> !DefensiveTransition
+L: 45:11 => 45:14 DefensiveTransition -> !ThrowIn:M
+T: 45:20 ThrowIn:M -> Possession
+T: 45:26 Possession -> AttackingPossession
+T: 45:36 AttackingPossession -> Attack
+T: 45:41 => 46:52 Attack -> ThrowIn:M
 T: 45:00 => 45:05 KickOff -> !ThrowIn:D
 L: 45:11 ThrowIn:D -> !DefensiveTransition
 T: 45:22 DefensiveTransition -> RunningPossession
@@ -356,32 +356,32 @@ L: 86:53 GoalAttempt -> Goal; xG = 0.04, default = Corner
 T: 88:20 => 88:24 AttackingTransition -> !GoalKick
 T: 89:52 FastBreak -> !Transition
 L: 89:57 Transition -> !Buildup
-T: 90+00:07 Buildup -> LongBall
-T: 90+00:09 LongBall -> Possession
-T: 90+00:29 -> !Goalkeeper
-L: 90+00:33 Goalkeeper -> LongBall
-L: 90+00:48 LongBall -> !Transition
-T: 90+00:58 Transition -> AttackingTransition
-T: 90+01:00 AttackingTransition -> Possession
-T: 90+01:15 => +01:25 Possession -> Corner
-T: 90+01:43 Corner -> Attack
-T: 90+01:49 Attack -> GoalAttempt
-T: 90+01:52 GoalAttempt -> Save; xG = 0.04
-L: 90+01:52 Goalkeeper -> LongBall
-L: 90+02:08 LongBall -> !Transition
-T: 90+02:17 Transition -> AttackingTransition
-T: 90+02:20 AttackingTransition -> GoalAttempt
-T: 90+02:23 GoalAttempt -> Save => Corner; xG = 0.04
-T: 90+02:42 Corner -> Attack
-T: 90+02:48 Attack -> GoalAttempt
-T: 90+02:52 GoalAttempt -> Save; xG = 0.03
-L: 90+02:52 Goalkeeper -> LongBall
-L: 90+03:13 LongBall -> !Goalkeeper
-T: 90+03:18 Goalkeeper -> Buildup
-T: 90+03:21 => +03:33 Buildup -> ThrowIn:DM
-T: 90+04:02 ThrowIn:AM -> Attack
-T: 90+04:03 Attack -> !DefensiveTransition
-L: 90+04:16 DefensiveTransition -> Transition
-L: 90+04:17 Transition -> AttackingTransition
-L: 90+04:22 AttackingTransition -> Attack
-L: 90+04:26 => +04:30 Attack -> !GoalKick
+T: 90:07 Buildup -> LongBall
+T: 90:09 LongBall -> Possession
+T: 90:29 Possession -> !Goalkeeper
+L: 90:33 Goalkeeper -> LongBall
+L: 90:48 LongBall -> !Transition
+T: 90:58 Transition -> AttackingTransition
+T: 91:00 AttackingTransition -> Possession
+T: 91:15 => 91:25 Possession -> Corner
+T: 91:43 Corner -> Attack
+T: 91:49 Attack -> GoalAttempt
+T: 91:52 GoalAttempt -> Save; xG = 0.04
+L: 91:52 Goalkeeper -> LongBall
+L: 92:08 LongBall -> !Transition
+T: 92:17 Transition -> AttackingTransition
+T: 92:20 AttackingTransition -> GoalAttempt
+T: 92:23 GoalAttempt -> Save => Corner; xG = 0.04
+T: 92:42 Corner -> Attack
+T: 92:48 Attack -> GoalAttempt
+T: 92:52 GoalAttempt -> Save; xG = 0.03
+L: 92:52 Goalkeeper -> LongBall
+L: 93:13 LongBall -> !Goalkeeper
+T: 93:18 Goalkeeper -> Buildup
+T: 93:21 => 93:33 Buildup -> ThrowIn:DM
+T: 94:02 ThrowIn:AM -> Attack
+T: 94:03 Attack -> !DefensiveTransition
+L: 94:16 DefensiveTransition -> Transition
+L: 94:17 Transition -> AttackingTransition
+L: 94:22 AttackingTransition -> Attack
+L: 94:26 => 94:30 Attack -> !GoalKick
