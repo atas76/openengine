@@ -1,5 +1,5 @@
 package org.mpn;
 
 public enum PitchPosition {
-    D, Dd, DM, DMd, DMw, M, AM, AMd, AMw, A
+    D, Dd, DM, DMd, DMw, MDd, M, Mw, AM, AMd, AMw, A, Apw
 }
