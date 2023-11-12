@@ -17,6 +17,7 @@ public enum State {
     TRANSITION,
     GOALKEEPER,
     BUILDUP,
+    FAST_BREAK,
     PRESSING,
     POSSESSION,
     RUNNING_POSSESSION,
@@ -46,6 +47,7 @@ public enum State {
             case "Transition" -> TRANSITION;
             case "Goalkeeper" -> GOALKEEPER;
             case "Buildup" -> BUILDUP;
+            case "FastBreak" -> FAST_BREAK;
             case "Pressing" -> PRESSING;
             case "Possession" -> POSSESSION;
             case "RunningPossession" -> RUNNING_POSSESSION;
