@@ -161,7 +161,7 @@ public class ParserTest {
     @Test
     public void smokeTest() throws Exception {
         Parser parser = new Parser();
-        final String CURRENT_STATEMENT = "L: 52:24 GoalAttempt -> Block => !Goalkeeper; xG = 0.03";
+        final String CURRENT_STATEMENT = "L: 94:26 => 94:30 Attack -> !GoalKick";
 
         parser.parse(CURRENT_STATEMENT);
     }
