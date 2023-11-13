@@ -1,6 +1,6 @@
 L: 00:00 KickOff -> Possession:DM
-L: 00:02 Possession:DM -> Attack:B1w
-L: 00:19 => 00:21 Attack:B1w -> Penalty
+L: 00:02 Possession:DM -> Attack:BwF
+L: 00:19 => 00:21 Attack:BwF -> Penalty
 L: 01:47 Penalty -> Goal; xG = 0.79, default = Corner
 L: 03:18 ThrowIn:DM -> !Transition:Mh
 T: 03:37 Transition -> Goalkeeper
