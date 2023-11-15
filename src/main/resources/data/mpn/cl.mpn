@@ -69,7 +69,7 @@ L: 19:04 Pressing -> !Transition
 T: 19:17 Transition -> AttackingPossession
 T: 19:22 => 19:36 AttackingPossession -> ThrowIn:AM
 T: 19:40 ThrowIn:AM -> Attack
-T: 19:41 Attack -> Goalkeeper
+T: 19:41 Attack -> !Goalkeeper
 L: 19:45 Goalkeeper -> Buildup
 L: 19:51 Buildup -> Possession
 L: 20:06 Possession -> Attack
