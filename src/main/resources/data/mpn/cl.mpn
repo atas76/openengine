@@ -99,7 +99,7 @@ T: 26:38 GoalKick -> Pressing
 T: 26:45 Pressing -> Buildup
 T: 27:00 Buildup -> Pressing
 T: 27:07 => 27:12 Pressing -> ThrowIn:DM
-T: 27:06 ThrowIn:DM -> Buildup
+T: 27:26 ThrowIn:DM -> Buildup
 T: 27:29 => 27:44 Buildup -> !Offside
 L: 28:59 => 29:03 FreeKick:AM -> !GoalKick
 T: 29:20 => 29:40 GoalKick -> Foul:DMd
