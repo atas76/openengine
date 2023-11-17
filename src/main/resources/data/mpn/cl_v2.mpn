@@ -142,4 +142,4 @@ L: 37:35 Pressing:G -> CounterAttack:Mw
 L: 37:43 CounterAttack:Mw -> GoalAttempt:Ah
 L: 37:47 GoalAttempt:Ah -> Save => Corner; xG = 0.03
 L: 38:28 Corner -> GoalAttempt:A
-L: 38:21 GoalAttempt:A -> OffTarget; xG = 0.03
+L: 38:31 GoalAttempt:A -> OffTarget; xG = 0.03

@@ -140,7 +140,7 @@ L: 37:35 Pressing -> CounterAttack
 L: 37:43 CounterAttack -> GoalAttempt
 L: 37:47 GoalAttempt -> Save => Corner; xG = 0.03
 L: 38:28 Corner -> GoalAttempt
-L: 38:21 GoalAttempt -> OffTarget; xG = 0.03
+L: 38:31 GoalAttempt -> OffTarget; xG = 0.03
 T: 40:12 GoalKick -> !Transition
 L: 40:19 Transition -> AttackingTransition
 L: 40:26 AttackingTransition -> AttackingPossession
