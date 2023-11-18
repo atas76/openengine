@@ -16,7 +16,7 @@ T: 05:35 Buildup:G -> !Transition:DMh
 L: 05:47 DefensiveTransition:DMh -> Possession:AMh
 L: 05:54 Possession:AMh -> Attack:Ah
 L: 05:56 => 6:05 Attack:Ah -> ThrowIn:AM
-#!
+#! BREAK
 T: 06:53 ThrowIn:AM -> Possession:DMw
 T: 06:56 Possession:DMw -> !Transition:G
 L: 07:22 => 07:25 DefensiveTransition -> !ThrowIn:A
@@ -37,7 +37,7 @@ L: 11:05 => 11:12 Buildup:Dh -> !ThrowIn:DM
 T: 11:34 => 11:40 ThrowIn:DM -> Foul:AMw
 T: 12:11 FreeKick:AMw -> Attack:Ah
 T: 12:12 => 12:19 Attack -> ThrowIn:DM
-#!
+#! BREAK
 T: 12:33 Buildup:G -> Pressing:G
 T: 12:54 Pressing:G -> Transition:Mw
 T: 13:07 Transition:Mw -> Possession:DM
@@ -45,7 +45,7 @@ T: 13:11 Possession:DM -> Attack:AB
 T: 13:24 => 13:38 Attack:AB -> ThrowIn:A
 T: 13:45 ThrowIn:A -> Possession:DM
 T: 13:50 => 13:57 Possession:DM -> !ThrowIn:D
-#!
+#! BREAK
 T: 14:32 Transition:Mh -> Possession:DM
 T: 14:35 Possession:DM -> Buildup:G
 T: 14:42 Buildup:G -> !Transition:DMh
@@ -58,7 +58,7 @@ L: 15:47 Pressing:G -> Buildup:Dh
 L: 16:00 => 16:21 Buildup:Dh -> ThrowIn:AM
 L: 16:39 ThrowIn:AM -> GoalAttempt:Ah
 L: 16:47 GoalAttempt:Ah -> OffTarget; xG = 0.02
-#!
+#! BREAK
 L: 18:06 Buildup:G -> !Transition:Mw
 T: 18:18 Transition:Mw -> !Transition:DM
 L: 18:22 Transition:DM -> Possession:DM
@@ -102,7 +102,7 @@ T: 27:00 Buildup:Dw -> Pressing:D
 T: 27:07 => 27:12 Pressing:D -> ThrowIn:DM
 T: 27:26 ThrowIn:DM -> Buildup:Dh
 T: 27:29 => 27:44 Buildup:Dh -> !Offside:DMh
-#!
+#! BREAK
 L: 28:59 => 29:03 FreeKick:AM -> !GoalKick
 T: 29:20 => 29:40 GoalKick -> Foul:DMh
 T: 29:44 FreeKick:DMh -> Possession:DM
@@ -170,3 +170,25 @@ L: 43:53 Buildup:Dh -> Pressing:G
 L: 44:18 Pressing:G -> !Goalkeeper
 T: 44:28 Goalkeeper -> Buildup:DMw
 T: 44:33 => 44:40 Buildup:DMw -> ThrowIn:AM
+T: 44:58 ThrowIn:AM -> Attack:A
+T: 45:17 Attack:A -> GoalAttempt:A
+T: 45:18 GoalAttempt:A -> OffTarget; xG = 0.04
+L: 45:43 GoalKick -> !Transition:DMw
+T: 45:55 Transition:DMw -> Pressing:B
+T: 45:59 Pressing:B -> Buildup:DMw
+T: 46:05 Buildup:DMw -> !Transition:DM
+L: 46:11 => 45:14 Transition:DM -> !ThrowIn:AM
+T: 46:20 ThrowIn:AM -> Possession:DM
+T: 46:26 Possession:DM -> Attack:Aw
+T: 46:41 => 46:52 Attack:Aw -> ThrowIn:AM
+#! HT
+T: 45:00 => 45:05 KickOff -> !ThrowIn:D
+L: 45:11 ThrowIn:D -> !Transition:DM
+T: 45:22 Transition:DM -> Possession:DM
+T: 45:25 => 45:37 Possession:DM -> ThrowIn:M
+T: 45:50 ThrowIn:M -> Possession:Mw
+T: 45:54 Possession:Mw -> Attack:AB
+T: 46:19 Attack:AB -> Possession:DM
+T: 46:35 Possession:DM -> Buildup:G
+T: 46:46 Buildup:G -> Attack:Ah
+T: 47:00 => 47:06 Attack:Ah -> !ThrowIn:D
