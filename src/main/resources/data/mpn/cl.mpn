@@ -196,7 +196,7 @@ T: 46:46 Possession -> Attack
 T: 47:00 => 47:06 Attack -> !ThrowIn:D
 L: 47:26 => 47:30 ThrowIn:D -> ThrowIn:DM
 L: 47:36 => 47:47 ThrowIn:DM -> ThrowIn:DM
-L: 48:00 ThrowIn:DM -> Pressing
+L: 48:00 ThrowIn:DM -> !Pressing
 T: 48:07 => 48:33 Pressing -> !ThrowIn:M
 L: 48:53 => 49:00 ThrowIn:M -> ThrowIn:M
 L: 49:05 => 49:10 ThrowIn:M -> !ThrowIn:DM
