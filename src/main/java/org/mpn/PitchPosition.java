@@ -1,6 +1,8 @@
 package org.mpn;
 
 public enum PitchPosition {
+    G,
+    GD,
     D,
     Dh,
     DM,
@@ -12,5 +14,9 @@ public enum PitchPosition {
     AM,
     AMh,
     AMw,
-    A
+    A,
+    Ah,
+    Aw,
+    B,
+    BwF
 }
