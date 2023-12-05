@@ -94,12 +94,6 @@ public class Parser {
         return tokens.get(index++);
     }
 
-    // TODO replace
-    @Deprecated
-    private String peek() {
-        return tokens.get(index);
-    }
-
     private boolean isNext(String token) {
         return ((tokens.get(index).equals(token)));
     }
