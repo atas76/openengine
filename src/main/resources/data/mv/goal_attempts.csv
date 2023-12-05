@@ -1,0 +1,20 @@
+# xG, xGOT, outcome, player_attribute, player_position
+0.02, -1, off, 55, Mw
+0.03, 0.10, on, 63, AM
+0.57, 0.62, goal, 69, ST
+0.04, 0.1, on
+0.1, 0.02, on
+0.02, -1, block
+0.02, -1, off
+0.01, -1, off
+0.04, -1, block
+0.79, 0.99, goal
+0.04, -1, off
+0.03, -1, off
+0.04, 0.05, on
+0.01, -1, block
+0.09, 0.14, on
+0.01, -1, block
+0.11, 0.14, on
+0.01, -1, off
+0.15, 0.25, goal
