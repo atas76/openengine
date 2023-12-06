@@ -5,6 +5,7 @@ public enum PitchPosition {
     GD,
     D,
     Dh,
+    Dw,
     DM,
     DMh,
     DMw,
@@ -17,6 +18,8 @@ public enum PitchPosition {
     A,
     Ah,
     Aw,
+    AB,
     B,
-    BwF
+    BwF,
+    BwM
 }
