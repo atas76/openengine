@@ -20,6 +20,8 @@ public enum PitchPosition {
     Aw,
     AB,
     B,
+    BhF,
+    BhM,
     BwF,
     BwM
 }
