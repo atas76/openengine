@@ -275,15 +275,14 @@ L: 67:51 ThrowIn:D -> Attack:BF
 L: 68:08 Attack:BF -> GoalAttempt:BF
 L: 68:09 GoalAttempt:BF -> OffTarget; xG = 0.05
 #! BREAK
-T: 68:40 Pressing:G  -> CounterAttack:AM
-T: 69:06 CounterAttack:AM -> !Transition:DB
-L: 69:14 Transition:DB -> !Transition:DMw
+T: 68:40 Pressing:G -> CounterAttack:AM
+T: 69:06 CounterAttack:AM -> !Transition:B
+L: 69:14 Transition:B -> !Transition:DMw
 T: 69:23 Transition:DMw -> Buildup:GD
 T: 69:28 Buildup:GD -> Possession:DMh
 T: 69:49 Possession:DMh -> Attack:BwN
 T: 69:59 Attack:BwN -> !Goalkeeper
-L: 70:09 Goalkeeper -> FastBreak
-L: 70:14 FastBreak -> Attack:AB
+L: 70:09 Goalkeeper -> Attack:AB
 L: 70:23 => 70:31 Attack:AB -> ThrowIn:AM
 L: 71:42 => 71:46 ThrowIn:AM -> !ThrowIn:D
 T: 71:56 ThrowIn:D -> Pressing:G
@@ -375,7 +374,7 @@ T: 92:49 Attack:AM -> GoalAttempt:BhF
 T: 92:52 GoalAttempt -> Save => !Goalkeeper; xG = 0.03
 L: 92:52 Goalkeeper -> !Goalkeeper
 T: 93:18 Goalkeeper -> Buildup:Dw
-T: 93:21 => 93:33 Buildup:Dw  -> ThrowIn:DM
+T: 93:21 => 93:33 Buildup:Dw -> ThrowIn:DM
 #! BREAK
 T: 94:02 ThrowIn:AM -> Attack:Aw
 T: 94:03 Attack:Aw -> !Transition:DMh
