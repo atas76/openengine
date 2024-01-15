@@ -18,13 +18,13 @@ public enum PitchPosition {
     A,
     Ah,
     Aw,
-    AB,
+    Bw,
     B,
-    BhF,
-    BhM,
-    BwF,
-    BwM,
-    BwN,
-    BF,
-    BN
+    B21,
+    B11,
+    B22,
+    B12,
+    B02,
+    B20,
+    B00
 }
