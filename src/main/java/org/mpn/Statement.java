@@ -5,7 +5,7 @@ import org.mpn.exceptions.UnknownStateException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Statement {
+public class Statement implements ProcessUnit {
 
     public enum ParameterName {
         xG, defaultEndState;
