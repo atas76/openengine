@@ -86,4 +86,24 @@ public class LexanTest {
         assertEquals("!", tokens.get(9));
         assertEquals("Transition", tokens.get(10));
     }
+
+    @Test
+    public void testUseNumericalDigitsInNames() throws Exception {
+        Lexan lexan = new Lexan();
+
+        List<String> tokens = lexan.scan("L: 00:02 Possession:DM -> Attack:B22");
+
+        assertEquals("L", tokens.get(0));
+        assertEquals(":", tokens.get(1));
+        assertEquals("00", tokens.get(2));
+        assertEquals(":", tokens.get(3));
+        assertEquals("02", tokens.get(4));
+        assertEquals("Possession", tokens.get(5));
+        assertEquals(":", tokens.get(6));
+        assertEquals("DM", tokens.get(7));
+        assertEquals("->", tokens.get(8));
+        assertEquals("Attack", tokens.get(9));
+        assertEquals(":", tokens.get(10));
+        assertEquals("B22", tokens.get(11));
+    }
 }

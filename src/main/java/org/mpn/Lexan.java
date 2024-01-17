@@ -10,7 +10,8 @@ public class Lexan {
         List<String> tokens = new ArrayList<>();
         int index = 0;
         if (Character.isAlphabetic(expression.charAt(0))) {
-            while (index < expression.length() && Character.isAlphabetic(expression.charAt(index))) {
+            while (index < expression.length() &&
+                    (Character.isAlphabetic(expression.charAt(index)) || Character.isDigit(expression.charAt(index)))) {
                 ++index;
             }
             tokens.add(expression.substring(0, index));

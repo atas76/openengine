@@ -11,7 +11,7 @@ T: 04:18 Transition:Mw -> Possession:DMh
 T: 04:22 Possession:DMh -> Attack:B22
 T: 04:35 => 04:36 Attack:B22 -> Corner
 T: 05:15 Corner -> Possession:GD
-T: 05:26 Possession:DG -> Buildup:G
+T: 05:26 Possession:GD -> Buildup:G
 T: 05:35 Buildup:G -> !Transition:DMh
 L: 05:47 Transition:DMh -> Possession:AMh
 L: 05:54 Possession:AMh -> Attack:Ah
