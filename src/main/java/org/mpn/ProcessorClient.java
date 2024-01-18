@@ -9,7 +9,8 @@ public class ProcessorClient {
     private static Processor processor = new Processor();
 
     public static void main(String[] args) {
-        List<ProcessUnit> dataset = processor.process(Paths.get(datasource));
+        List<ProcessUnit> data = processor.process(Paths.get(datasource));
+        Dataset dataset = new Dataset(data);
 
         System.out.println("Raw dataset size: " + dataset.size());
     }
