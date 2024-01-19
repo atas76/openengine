@@ -33,10 +33,16 @@ public class Dataset {
 
     }
 
-    public List<Statement> getStatements() {
+    public List<Statement> getStateTransitions() {
         return getByProcessUnitType(Statement.class).stream()
                 .map(Statement.class::cast)
                 .toList();
+    }
+
+    public List<Statement> getStateTransitionsByTeam(String teamKey) {
+        return getStateTransitions().stream()
+                .filter(s -> s.getTeamKey().equals(teamKey))
+                .collect(Collectors.toList());
     }
 
     public int size() {
