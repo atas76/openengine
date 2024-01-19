@@ -19,6 +19,5 @@ public class ProcessorClient {
         System.out.println("BREAK directive locations: " + dataset.getDirectiveLocations(Directive.BREAK));
         System.out.println("Half time directive location: " + dataset.getDirectiveLocations(Directive.HT));
         System.out.println("Number of statements: " + dataset.getStatements().size());
-
     }
 }
