@@ -45,6 +45,16 @@ public class Dataset {
                 .collect(Collectors.toList());
     }
 
+    public List<Statement> getByDurationGreaterOrEqual(int seconds) {
+        return getStateTransitions().stream().filter(s -> s.getDuration() >= seconds).collect(Collectors.toList());
+    }
+
+    public List<Statement> getDurationLessOrEqual(int seconds) {
+        return getStateTransitions().stream()
+                .filter(s -> s.getDuration() <= seconds && s.getDuration() >= 0)
+                .collect(Collectors.toList());
+    }
+
     public int size() {
         return data.size();
     }

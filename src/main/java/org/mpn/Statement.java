@@ -36,7 +36,6 @@ public class Statement implements ProcessUnit {
 
     private Parameters parameters;
 
-
     public Statement(String teamKey, Time startTime, Time endTime, State initialState, State endState,
                      Map<String, String> argumentList) throws UnknownStateException {
         this.teamKey = teamKey;
@@ -80,6 +79,13 @@ public class Statement implements ProcessUnit {
 
     public int getEndSeconds() {
         return endTime != null ? endTime.seconds() : startTime.seconds();
+    }
+
+    public int getDuration() {
+        if (endTime == null) {
+            return -1;
+        }
+        return endTime.getAbsoluteTime() - startTime.getAbsoluteTime();
     }
 
     public State getInitialState() {

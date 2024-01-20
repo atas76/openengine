@@ -26,5 +26,14 @@ public class ProcessorClient {
         System.out.println("Liverpool sample value: " + stateTransitionsL.get(0).getTeamKey());
         System.out.println("Tottenham state transitions number: " + stateTransitionsT.size());
         System.out.println("Tottenham sample value: " + stateTransitionsT.get(0).getTeamKey());
+        System.out.println();
+        List<Statement> longPhases = dataset.getByDurationGreaterOrEqual(5);
+        System.out.println("Number of long phases: " + longPhases.size());
+        System.out.println("Long phase example: " + longPhases.get(38).getDuration());
+        List<Statement> shortPhases = dataset.getDurationLessOrEqual(3);
+        System.out.println("Number of short phases: " + shortPhases.size());
+        System.out.println("Short phase example: " + shortPhases.get(13).getDuration());
+        // TODO set implied end times in statement objects
+        // TODO implement chaining
     }
 }
