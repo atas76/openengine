@@ -18,10 +18,10 @@ public class ProcessorClient {
         System.out.println("Number of half time directives: " + dataset.countDirectives(Directive.HT));
         System.out.println("BREAK directive locations: " + dataset.getDirectiveLocations(Directive.BREAK));
         System.out.println("Half time directive location: " + dataset.getDirectiveLocations(Directive.HT));
-        System.out.println("Number of statements: " + dataset.getStateTransitions().size());
+        System.out.println("Number of statements: " + dataset.getStateTransitionsList().size());
         System.out.println();
-        List<Statement> stateTransitionsL = dataset.getStateTransitionsByTeam("L");
-        List<Statement> stateTransitionsT = dataset.getStateTransitionsByTeam("T");
+        List<Statement> stateTransitionsL = dataset.getStateTransitionsByTeamList("L");
+        List<Statement> stateTransitionsT = dataset.getStateTransitionsByTeamList("T");
         System.out.println("Liverpool state transitions number: " + stateTransitionsL.size());
         System.out.println("Liverpool sample value: " + stateTransitionsL.get(0).getTeamKey());
         System.out.println("Tottenham state transitions number: " + stateTransitionsT.size());
@@ -34,15 +34,36 @@ public class ProcessorClient {
                         System.out.println(stateTransition.getStartTime() + ": " + stateTransition.getDuration()));
          */
 
-        List<Statement> longPhases = dataset.getByDurationGreaterOrEqual(5);
+        List<Statement> longPhases = dataset.getByDurationGreaterOrEqualList(5);
         System.out.println("Number of long phases: " + longPhases.size());
         System.out.println("Long phase example: " + longPhases.get(38).getDuration());
-        List<Statement> shorterPhases = dataset.getDurationLessOrEqual(4);
+        List<Statement> shorterPhases = dataset.getByDurationLessOrEqualList(4);
         System.out.println("Number of shorter phases: " + shorterPhases.size());
-        List<Statement> shortPhases = dataset.getDurationLessOrEqual(3);
+        List<Statement> shortPhases = dataset.getByDurationLessOrEqualList(3);
         System.out.println("Number of short phases: " + shortPhases.size());
         System.out.println("Short phase example: " + shortPhases.get(13).getDuration());
 
-        // TODO implement chaining
+        Dataset liverpoolLongPhases =
+                dataset.getStateTransitionsByTeam("L").getByDurationGreaterOrEqual(5);
+        Dataset liverpoolShortPhases =
+                dataset.getStateTransitionsByTeam("L").getDurationLessOrEqual(4);
+        Dataset liverpoolVeryLongPhases =
+                dataset.getStateTransitionsByTeam("L").getByDurationGreaterOrEqual(10);
+        Dataset tottenhamLongPhases =
+                dataset.getStateTransitionsByTeam("T").getByDurationGreaterOrEqual(5);
+        Dataset tottenhamShortPhases =
+                dataset.getStateTransitionsByTeam("T").getDurationLessOrEqual(4);
+        Dataset tottenhamVeryLongPhases =
+                dataset.getStateTransitionsByTeam("T").getByDurationGreaterOrEqual(10);
+
+        System.out.println();
+        System.out.println("Liverpool long phases #: " + liverpoolLongPhases.size());
+        System.out.println("Liverpool short phases #: " + liverpoolShortPhases.size());
+        System.out.println("Liverpool very long phases #: " + liverpoolVeryLongPhases.size());
+        System.out.println("Tottenham long phases #: " + tottenhamLongPhases.size());
+        System.out.println("Tottenham short phases #: " + tottenhamShortPhases.size());
+        System.out.println("Tottenham very long phases #: " + tottenhamVeryLongPhases.size());
+        System.out.println("Both teams' very long phases #: " +
+                dataset.getStateTransitions().getByDurationGreaterOrEqual(10).size());
     }
 }

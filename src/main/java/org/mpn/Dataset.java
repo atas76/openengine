@@ -6,9 +6,9 @@ import java.util.stream.IntStream;
 
 public class Dataset {
 
-    private final List<ProcessUnit> data;
+    private final List<? extends ProcessUnit> data;
 
-    public Dataset(List<ProcessUnit> data) {
+    public Dataset(List<? extends ProcessUnit> data) {
         this.data = data;
         setEndTimesFromContext();
     }
@@ -48,26 +48,42 @@ public class Dataset {
 
     }
 
-    public List<Statement> getStateTransitions() {
+    public List<Statement> getStateTransitionsList() {
         return getByProcessUnitType(Statement.class).stream()
                 .map(Statement.class::cast)
                 .toList();
     }
 
-    public List<Statement> getStateTransitionsByTeam(String teamKey) {
-        return getStateTransitions().stream()
+    public Dataset getStateTransitions() {
+        return new Dataset(getStateTransitionsList());
+    }
+
+    public List<Statement> getStateTransitionsByTeamList(String teamKey) {
+        return getStateTransitionsList().stream()
                 .filter(s -> s.getTeamKey().equals(teamKey))
                 .collect(Collectors.toList());
     }
 
-    public List<Statement> getByDurationGreaterOrEqual(int seconds) {
-        return getStateTransitions().stream().filter(s -> s.getDuration() >= seconds).collect(Collectors.toList());
+    public Dataset getStateTransitionsByTeam(String teamKey) {
+        return new Dataset(getStateTransitionsByTeamList(teamKey));
     }
 
-    public List<Statement> getDurationLessOrEqual(int seconds) {
-        return getStateTransitions().stream()
+    public List<Statement> getByDurationGreaterOrEqualList(int seconds) {
+        return getStateTransitionsList().stream().filter(s -> s.getDuration() >= seconds).collect(Collectors.toList());
+    }
+
+    public Dataset getByDurationGreaterOrEqual(int seconds) {
+        return new Dataset(getByDurationGreaterOrEqualList(seconds));
+    }
+
+    public List<Statement> getByDurationLessOrEqualList(int seconds) {
+        return getStateTransitionsList().stream()
                 .filter(s -> s.getDuration() <= seconds && s.getDuration() >= 0)
                 .collect(Collectors.toList());
+    }
+
+    public Dataset getDurationLessOrEqual(int seconds) {
+        return new Dataset(getByDurationLessOrEqualList(seconds));
     }
 
     public int size() {
