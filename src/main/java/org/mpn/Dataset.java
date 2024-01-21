@@ -1,16 +1,25 @@
 package org.mpn;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Dataset {
 
     private final List<? extends ProcessUnit> data;
+    private String homeTeam;
+    private String awayTeam;
 
     public Dataset(List<? extends ProcessUnit> data) {
         this.data = data;
         setEndTimesFromContext();
+    }
+
+    public Dataset(List<? extends ProcessUnit> data, String homeTeam, String awayTeam) {
+        this(data);
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
     }
 
     private void setEndTimesFromContext() {
@@ -84,6 +93,16 @@ public class Dataset {
 
     public Dataset getDurationLessOrEqual(int seconds) {
         return new Dataset(getByDurationLessOrEqualList(seconds));
+    }
+
+    public int [] getBallPossession() {
+        int homeTeamSeconds = getStateTransitionsByTeamList("L").stream().mapToInt(Statement::getDuration).sum();
+        int awayTeamSeconds = getStateTransitionsByTeamList("T").stream().mapToInt(Statement::getDuration).sum();
+
+        int homeTeamPercentage = (int) Math.round((double) homeTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));
+        int awayTeamPercentage = (int) Math.round((double) awayTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));
+
+        return new int [] {homeTeamPercentage, awayTeamPercentage};
     }
 
     public int size() {

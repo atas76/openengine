@@ -65,5 +65,13 @@ public class ProcessorClient {
         System.out.println("Tottenham very long phases #: " + tottenhamVeryLongPhases.size());
         System.out.println("Both teams' very long phases #: " +
                 dataset.getStateTransitions().getByDurationGreaterOrEqual(10).size());
+
+        System.out.println();
+        Dataset statsDataset = new Dataset(data, "L", "T");
+        var possession = statsDataset.getBallPossession();
+
+        System.out.println("Team possession: Liverpool - Tottenham " + possession[0] + " - " + possession[1]);
+
+        // TODO Load data directly from file
     }
 }
