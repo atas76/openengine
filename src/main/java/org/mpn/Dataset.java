@@ -1,5 +1,6 @@
 package org.mpn;
 
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -11,7 +12,13 @@ public class Dataset {
     private String homeTeam;
     private String awayTeam;
 
+    public Dataset(String datasource) {
+        this(new Processor().process(Paths.get(datasource)));
+    }
 
+    public Dataset(String datasource, String homeTeam, String awayTeam) {
+        this(new Processor().process(Paths.get(datasource)), homeTeam, awayTeam);
+    }
 
     public Dataset(List<? extends ProcessUnit> data) {
         this.data = data;

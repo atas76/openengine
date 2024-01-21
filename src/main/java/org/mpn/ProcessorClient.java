@@ -71,7 +71,5 @@ public class ProcessorClient {
         var possession = statsDataset.getBallPossession();
 
         System.out.println("Team possession: Liverpool - Tottenham " + possession[0] + " - " + possession[1]);
-
-        // TODO Load data directly from file
     }
 }
