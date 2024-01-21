@@ -61,8 +61,16 @@ public class Statement implements ProcessUnit {
         this.goalAttemptOutcome = goalAttemptOutcome;
     }
 
+    public void setEndTime(Time endTime) {
+        this.endTime = endTime;
+    }
+
     public String getTeamKey() {
         return teamKey;
+    }
+
+    public Time getStartTime() {
+        return this.startTime;
     }
 
     public int getMinutes() {

@@ -10,6 +10,21 @@ public class Dataset {
 
     public Dataset(List<ProcessUnit> data) {
         this.data = data;
+        setEndTimesFromContext();
+    }
+
+    private void setEndTimesFromContext() {
+        for (int i = 0; i < this.data.size(); i++) {
+            if (data.get(i) instanceof Statement currentStatement) {
+                if (currentStatement.getDuration() < 0) {
+                    if (i + 1 < this.data.size() && data.get(i + 1) instanceof Statement nextStatement) {
+                        currentStatement.setEndTime(nextStatement.getStartTime());
+                    } else {
+                        currentStatement.setEndTime(currentStatement.getStartTime());
+                    }
+                }
+            }
+        }
     }
 
     public List<Directive> getDirectives() {
