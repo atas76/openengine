@@ -11,6 +11,8 @@ public class Dataset {
     private String homeTeam;
     private String awayTeam;
 
+
+
     public Dataset(List<? extends ProcessUnit> data) {
         this.data = data;
         setEndTimesFromContext();
@@ -96,8 +98,8 @@ public class Dataset {
     }
 
     public int [] getBallPossession() {
-        int homeTeamSeconds = getStateTransitionsByTeamList("L").stream().mapToInt(Statement::getDuration).sum();
-        int awayTeamSeconds = getStateTransitionsByTeamList("T").stream().mapToInt(Statement::getDuration).sum();
+        int homeTeamSeconds = getStateTransitionsByTeamList(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
+        int awayTeamSeconds = getStateTransitionsByTeamList(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();
 
         int homeTeamPercentage = (int) Math.round((double) homeTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));
         int awayTeamPercentage = (int) Math.round((double) awayTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));
