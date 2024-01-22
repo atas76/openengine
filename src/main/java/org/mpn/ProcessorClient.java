@@ -88,5 +88,12 @@ public class ProcessorClient {
                 " - " +
                 dataset.getStateTransitionsByTeam("T").getStateTransitionsByEndState(GOAL).size()
         );
+        System.out.println();
+        Dataset samplePitchPositionA = dataset.getStateTransitionsByInitialPitchPosition(PitchPosition.Bw);
+        System.out.println("Number of states with 'Bw' initial pitch position: " + samplePitchPositionA.size());
+        System.out.println("Liverpool sample states Bw: " +
+                samplePitchPositionA.getStateTransitionsByTeam("L").size());
+        System.out.println("Tottenham sample states Bw: " +
+                samplePitchPositionA.getStateTransitionsByTeam("T").size());
     }
 }
