@@ -3,6 +3,9 @@ package org.mpn;
 import java.nio.file.Paths;
 import java.util.List;
 
+import static org.mpn.State.GOAL;
+import static org.mpn.State.GOAL_ATTEMPT;
+
 public class ProcessorClient {
 
     private static String datasource = "src/main/resources/data/mpn/cl_v2.mpn";
@@ -73,11 +76,17 @@ public class ProcessorClient {
         System.out.println("Team possession: Liverpool - Tottenham " + possession[0] + " - " + possession[1]);
 
         System.out.println();
-        Dataset goalAttemptsDataset = dataset.getStateTransitionsByInitialState(State.GOAL_ATTEMPT);
+        Dataset goalAttemptsDataset = dataset.getStateTransitionsByInitialState(GOAL_ATTEMPT);
         System.out.println("Number of goal attempts: " + goalAttemptsDataset.size());
-        Dataset liverpoolGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("L");
-        Dataset tottenhamGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("T");
-        System.out.println("Number of Liverpool goal attempts: " + liverpoolGoalAttempts.size());
-        System.out.println("Number of Tottenham goal attempts: " + tottenhamGoalAttempts.size());
+        Dataset liverpoolOpenPlayGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("L");
+        Dataset tottenhamOpenPlayGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("T");
+        System.out.println("Number of Liverpool open play goal attempts: " + liverpoolOpenPlayGoalAttempts.size());
+        System.out.println("Number of Tottenham open play goal attempts: " + tottenhamOpenPlayGoalAttempts.size());
+        System.out.println();
+        System.out.println("Match score: Liverpool - Tottenham: " +
+                dataset.getStateTransitionsByTeam("L").getStateTransitionsByEndState(GOAL).size() +
+                " - " +
+                dataset.getStateTransitionsByTeam("T").getStateTransitionsByEndState(GOAL).size()
+        );
     }
 }
