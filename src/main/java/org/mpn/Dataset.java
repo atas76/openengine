@@ -2,7 +2,6 @@ package org.mpn;
 
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -76,55 +75,55 @@ public class Dataset {
         return new Dataset(getStateTransitionsList());
     }
 
-    public List<Statement> getStateTransitionsByTeamList(String teamKey) {
+    public List<Statement> listStateTransitionsByTeam(String teamKey) {
         return getStateTransitionsList().stream()
                 .filter(s -> s.getTeamKey().equals(teamKey))
                 .collect(Collectors.toList());
     }
 
     public Dataset getStateTransitionsByTeam(String teamKey) {
-        return new Dataset(getStateTransitionsByTeamList(teamKey));
+        return new Dataset(listStateTransitionsByTeam(teamKey));
     }
 
-    public List<Statement> getByDurationGreaterOrEqualList(int seconds) {
+    public List<Statement> listByDurationGreaterOrEqual(int seconds) {
         return getStateTransitionsList().stream().filter(s -> s.getDuration() >= seconds).collect(Collectors.toList());
     }
 
     public Dataset getByDurationGreaterOrEqual(int seconds) {
-        return new Dataset(getByDurationGreaterOrEqualList(seconds));
+        return new Dataset(listByDurationGreaterOrEqual(seconds));
     }
 
-    public List<Statement> getByDurationLessOrEqualList(int seconds) {
+    public List<Statement> listByDurationLessOrEqual(int seconds) {
         return getStateTransitionsList().stream()
                 .filter(s -> s.getDuration() <= seconds && s.getDuration() >= 0)
                 .collect(Collectors.toList());
     }
 
     public Dataset getDurationLessOrEqual(int seconds) {
-        return new Dataset(getByDurationLessOrEqualList(seconds));
+        return new Dataset(listByDurationLessOrEqual(seconds));
     }
 
-    public List<Statement> getStateTransitionsListByInitialState(State initialState) {
+    public List<Statement> listStateTransitionsByInitialState(State initialState) {
         return getStateTransitionsList().stream()
                 .filter(s -> initialState.equals(s.getInitialState())).toList();
     }
 
     public Dataset getStateTransitionsByInitialState(State initialState) {
-        return new Dataset(getStateTransitionsListByInitialState(initialState));
+        return new Dataset(listStateTransitionsByInitialState(initialState));
     }
 
-    public List<Statement> getStateTransitionsListByEndState(State endState) {
+    public List<Statement> listStateTransitionsByEndState(State endState) {
         return getStateTransitionsList().stream()
                 .filter(s -> endState.equals(s.getEndState())).toList();
     }
 
     public Dataset getStateTransitionsByEndState(State endState) {
-        return new Dataset(getStateTransitionsListByEndState(endState));
+        return new Dataset(listStateTransitionsByEndState(endState));
     }
 
     public int [] getBallPossession() {
-        int homeTeamSeconds = getStateTransitionsByTeamList(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
-        int awayTeamSeconds = getStateTransitionsByTeamList(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();
+        int homeTeamSeconds = listStateTransitionsByTeam(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
+        int awayTeamSeconds = listStateTransitionsByTeam(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();
 
         int homeTeamPercentage = (int) Math.round((double) homeTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));
         int awayTeamPercentage = (int) Math.round((double) awayTeamSeconds * 100 / (homeTeamSeconds + awayTeamSeconds));

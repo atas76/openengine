@@ -23,8 +23,8 @@ public class ProcessorClient {
         System.out.println("Half time directive location: " + dataset.getDirectiveLocations(Directive.HT));
         System.out.println("Number of statements: " + dataset.getStateTransitionsList().size());
         System.out.println();
-        List<Statement> stateTransitionsL = dataset.getStateTransitionsByTeamList("L");
-        List<Statement> stateTransitionsT = dataset.getStateTransitionsByTeamList("T");
+        List<Statement> stateTransitionsL = dataset.listStateTransitionsByTeam("L");
+        List<Statement> stateTransitionsT = dataset.listStateTransitionsByTeam("T");
         System.out.println("Liverpool state transitions number: " + stateTransitionsL.size());
         System.out.println("Liverpool sample value: " + stateTransitionsL.get(0).getTeamKey());
         System.out.println("Tottenham state transitions number: " + stateTransitionsT.size());
@@ -37,12 +37,12 @@ public class ProcessorClient {
                         System.out.println(stateTransition.getStartTime() + ": " + stateTransition.getDuration()));
          */
 
-        List<Statement> longPhases = dataset.getByDurationGreaterOrEqualList(5);
+        List<Statement> longPhases = dataset.listByDurationGreaterOrEqual(5);
         System.out.println("Number of long phases: " + longPhases.size());
         System.out.println("Long phase example: " + longPhases.get(38).getDuration());
-        List<Statement> shorterPhases = dataset.getByDurationLessOrEqualList(4);
+        List<Statement> shorterPhases = dataset.listByDurationLessOrEqual(4);
         System.out.println("Number of shorter phases: " + shorterPhases.size());
-        List<Statement> shortPhases = dataset.getByDurationLessOrEqualList(3);
+        List<Statement> shortPhases = dataset.listByDurationLessOrEqual(3);
         System.out.println("Number of short phases: " + shortPhases.size());
         System.out.println("Short phase example: " + shortPhases.get(13).getDuration());
 
