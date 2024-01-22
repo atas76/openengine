@@ -71,5 +71,13 @@ public class ProcessorClient {
         var possession = statsDataset.getBallPossession();
 
         System.out.println("Team possession: Liverpool - Tottenham " + possession[0] + " - " + possession[1]);
+
+        System.out.println();
+        Dataset goalAttemptsDataset = dataset.getStateTransitionsByInitialState(State.GOAL_ATTEMPT);
+        System.out.println("Number of goal attempts: " + goalAttemptsDataset.size());
+        Dataset liverpoolGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("L");
+        Dataset tottenhamGoalAttempts = goalAttemptsDataset.getStateTransitionsByTeam("T");
+        System.out.println("Number of Liverpool goal attempts: " + liverpoolGoalAttempts.size());
+        System.out.println("Number of Tottenham goal attempts: " + tottenhamGoalAttempts.size());
     }
 }

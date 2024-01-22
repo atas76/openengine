@@ -104,6 +104,15 @@ public class Dataset {
         return new Dataset(getByDurationLessOrEqualList(seconds));
     }
 
+    public List<Statement> getStateTransitionsListByInitialState(State initialState) {
+        return getStateTransitionsList().stream()
+                .filter(s -> initialState.equals(s.getInitialState())).toList();
+    }
+
+    public Dataset getStateTransitionsByInitialState(State initialState) {
+        return new Dataset(getStateTransitionsListByInitialState(initialState));
+    }
+
     public int [] getBallPossession() {
         int homeTeamSeconds = getStateTransitionsByTeamList(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
         int awayTeamSeconds = getStateTransitionsByTeamList(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();
