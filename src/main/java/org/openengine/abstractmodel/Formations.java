@@ -17,7 +17,7 @@ public class Formations {
 
     public static TacticalPosition [] formation_4_2_3_1 = {
             D_R, D_CR, D_CL, D_L,
-            M_CR, M_LC,
+            M_CR, M_CL,
             AM_R, AM_C, AM_L,
             F_C
     };
