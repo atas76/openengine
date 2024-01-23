@@ -88,12 +88,26 @@ public class ProcessorClient {
                 " - " +
                 dataset.getStateTransitionsByTeam("T").getStateTransitionsByEndState(GOAL).size()
         );
+
         System.out.println();
-        Dataset samplePitchPositionA = dataset.getStateTransitionsByInitialPitchPosition(PitchPosition.Bw);
-        System.out.println("Number of states with 'Bw' initial pitch position: " + samplePitchPositionA.size());
-        System.out.println("Liverpool sample states Bw: " +
-                samplePitchPositionA.getStateTransitionsByTeam("L").size());
-        System.out.println("Tottenham sample states Bw: " +
-                samplePitchPositionA.getStateTransitionsByTeam("T").size());
+        Dataset initialPitchPositionA = dataset.getStateTransitionsByInitialPitchPosition(PitchPosition.Bw);
+        System.out.println("Number of state transitions with 'Bw' initial pitch position: " +
+                initialPitchPositionA.size());
+        System.out.println("Liverpool initial states in Bw: " +
+                initialPitchPositionA.getStateTransitionsByTeam("L").size());
+        System.out.println("Tottenham initial states in Bw: " +
+                initialPitchPositionA.getStateTransitionsByTeam("T").size());
+
+        // TODO Expand on example to take into account possession change, when filtering by it is implemented
+        System.out.println();
+        Dataset outcomePitchPositionGK = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.G);
+        System.out.println("Number of state transitions with goalkeeper possession as outcome: " +
+                outcomePitchPositionGK.size());
+        System.out.println("Liverpool outcome states with goalkeeper possession: " +
+                outcomePitchPositionGK.getStateTransitionsByTeam("L").size());
+        System.out.println("Tottenham outcome states with goalkeeper possession: " +
+                outcomePitchPositionGK.getStateTransitionsByTeam("T").size());
+
+        // TODO Rename goalkeeper 'pitch position' to GK
     }
 }

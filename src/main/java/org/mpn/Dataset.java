@@ -130,6 +130,15 @@ public class Dataset {
         return new Dataset(listStateTransitionsByInitialPitchPosition(pitchPosition));
     }
 
+    public List<Statement> listStateTransitionsByOutcomePitchPosition(PitchPosition pitchPosition) {
+        return getStateTransitionsList().stream()
+                .filter(s -> pitchPosition.equals(s.getOutcomePitchPosition())).toList();
+    }
+
+    public Dataset getStateTransitionsByOutcomePitchPosition(PitchPosition pitchPosition) {
+        return new Dataset(listStateTransitionsByOutcomePitchPosition(pitchPosition));
+    }
+
     public int [] getBallPossession() {
         int homeTeamSeconds = listStateTransitionsByTeam(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
         int awayTeamSeconds = listStateTransitionsByTeam(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();
