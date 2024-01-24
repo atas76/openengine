@@ -1,5 +1,8 @@
 package org.openengine.abstractmodel;
 
+import org.openengine.abstractmodel.util.Point;
+import org.openengine.abstractmodel.util.TacticalPitchCalculations;
+
 public class Tactic {
 
     private static final int PITCH_SIZE_X = 5;
@@ -24,7 +27,7 @@ public class Tactic {
     }
 
     public static String getWeightLayoutRepresentationByPosition(TacticalPosition tacticalPosition) {
-        return getWeightLayoutRepresentation(getWeightLayoutByPosition(tacticalPosition));
+        return getWeightLayoutRepresentation(calculateWeightLayoutByPosition(tacticalPosition));
     }
 
     private static String getWeightLayoutRepresentation(double [][] weightLayout) {
@@ -51,10 +54,19 @@ public class Tactic {
         return sb.toString();
     }
 
-    private static double [][] getWeightLayoutByPosition(TacticalPosition tacticalPosition) {
+    private static double [][] calculateWeightLayoutByPosition(TacticalPosition tacticalPosition) {
         double [][] weightLayout = new double[PITCH_SIZE_X][PITCH_SIZE_Y];
 
         weightLayout[tacticalPosition.getX()][tacticalPosition.getY()] = 1.0;
+
+        Point referencePoint = new Point(tacticalPosition.getX(), tacticalPosition.getY());
+
+        for (int i = 0; i < PITCH_SIZE_X; i++) {
+            for (int j = 0; j < PITCH_SIZE_Y; j++) {
+                int distance = TacticalPitchCalculations.getDistance(referencePoint, new Point(i, j));
+                weightLayout[i][j] = 1 / Math.pow(2, distance);
+            }
+        }
 
         return weightLayout;
     }

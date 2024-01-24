@@ -24,6 +24,7 @@ public class TacticsClient {
         System.out.println(Tactic.getTacticalLayoutByPosition(TacticalPosition.D_R));
 
         System.out.println();
+        System.out.println("Tactical layout");
         System.out.println(Tactic.getWeightLayoutRepresentationByPosition(TacticalPosition.D_R));
     }
 }
