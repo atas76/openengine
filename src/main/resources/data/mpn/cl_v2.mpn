@@ -11,15 +11,15 @@ T: 04:18 Transition:Mw -> Possession:DMh
 T: 04:22 Possession:DMh -> Attack:B22
 T: 04:35 => 04:36 Attack:B22 -> Corner
 T: 05:15 Corner -> Possession:GD
-T: 05:26 Possession:GD -> Buildup:G
-T: 05:35 Buildup:G -> !Transition:DMh
+T: 05:26 Possession:GD -> Buildup:GK
+T: 05:35 Buildup:GK -> !Transition:DMh
 L: 05:47 Transition:DMh -> Possession:AMh
 L: 05:54 Possession:AMh -> Attack:Ah
 L: 05:56 => 6:05 Attack:Ah -> ThrowIn:AM
 #! BREAK
 T: 06:53 ThrowIn:AM -> Possession:DMw
-T: 06:56 Possession:DMw -> !Transition:G
-L: 07:22 => 07:25 Transition:G -> !ThrowIn:A
+T: 06:56 Possession:DMw -> !Transition:GK
+L: 07:22 => 07:25 Transition:GK -> !ThrowIn:A
 T: 07:31 ThrowIn:A -> Possession:Mh
 T: 07:44 => 07:50 Possession:Mh -> !ThrowIn:B
 L: 08:13 ThrowIn:B -> !Transition:DMw
@@ -28,9 +28,9 @@ T: 08:32 Possession:DMh -> Attack:Aw
 T: 08:50 Attack:Aw -> GoalAttempt:A
 T: 09:03 GoalAttempt:A -> OffTarget; xG = 0.03
 L: 09:20 GoalKick -> Buildup:B
-L: 09:21 Buildup:B -> Pressing:G
-L: 09:25 Pressing:G -> Buildup:G
-L: 09:33 => 09:43 Buildup:G -> Corner
+L: 09:21 Buildup:B -> Pressing:GK
+L: 09:25 Pressing:GK -> Buildup:GK
+L: 09:33 => 09:43 Buildup:GK -> Corner
 L: 10:40 Corner -> Goalkeeper
 L: 10:51 Goalkeeper -> Buildup:Dh
 L: 11:05 => 11:12 Buildup:Dh -> !ThrowIn:DM
@@ -38,8 +38,8 @@ T: 11:34 => 11:40 ThrowIn:DM -> Foul:AMw
 T: 12:11 FreeKick:AMw -> Attack:Ah
 T: 12:12 => 12:19 Attack -> ThrowIn:DM
 #! BREAK
-T: 12:33 Buildup:G -> Pressing:G
-T: 12:54 Pressing:G -> Transition:Mw
+T: 12:33 Buildup:GK -> Pressing:GK
+T: 12:54 Pressing:GK -> Transition:Mw
 T: 13:07 Transition:Mw -> Possession:DM
 T: 13:11 Possession:DM -> Attack:Bw
 T: 13:24 => 13:38 Attack:Bw -> ThrowIn:A
@@ -47,19 +47,19 @@ T: 13:45 ThrowIn:A -> Possession:DM
 T: 13:50 => 13:57 Possession:DM -> !ThrowIn:D
 #! BREAK
 T: 14:32 Transition:Mh -> Possession:DM
-T: 14:35 Possession:DM -> Buildup:G
-T: 14:42 Buildup:G -> !Transition:DMh
+T: 14:35 Possession:DM -> Buildup:GK
+T: 14:42 Buildup:GK -> !Transition:DMh
 L: 15:04 Transition:DMh -> !Transition:DM
 T: 15:07 Transition:DM -> Possession:DMh
 T: 15:08 => 15:20 Possession:DMh -> !GoalKick
 L: 15:42 GoalKick -> Buildup:B
-L: 15:44 Buildup:B -> Pressing:G
-L: 15:47 Pressing:G -> Buildup:Dh
+L: 15:44 Buildup:B -> Pressing:GK
+L: 15:47 Pressing:GK -> Buildup:Dh
 L: 16:00 => 16:21 Buildup:Dh -> ThrowIn:AM
 L: 16:39 ThrowIn:AM -> GoalAttempt:Ah
 L: 16:47 GoalAttempt:Ah -> OffTarget; xG = 0.02
 #! BREAK
-L: 18:06 Buildup:G -> !Transition:Mw
+L: 18:06 Buildup:GK -> !Transition:Mw
 T: 18:18 Transition:Mw -> !Transition:DM
 L: 18:22 Transition:DM -> Possession:DM
 L: 18:27 => 18:40 Possession:DM -> !GoalKick
@@ -88,12 +88,12 @@ L: 23:02 ThrowIn:A -> Attack:Bw
 L: 23:03 => 23:21 Attack:Bw -> Corner
 L: 23:50 => 23:58 Corner -> !Foul:DMw
 T: 24:51 FreeKick:DMw -> Buildup:D
-T: 24:53 Buildup:D -> Pressing:G
-T: 25:00 Pressing:G -> Buildup:Dh
+T: 24:53 Buildup:D -> Pressing:GK
+T: 25:00 Pressing:GK -> Buildup:Dh
 T: 25:10 => 25:40 Buildup:Dh -> !ThrowIn:DM
 L: 25:58 ThrowIn:DM -> !Transition:DMh
-T: 26:08 Transition:DMh -> Buildup:G
-T: 26:13 Buildup:G -> !Transition:DMh
+T: 26:08 Transition:DMh -> Buildup:GK
+T: 26:13 Buildup:GK -> !Transition:DMh
 L: 26:24 => 26:31 Transition:DMh -> !GoalKick
 T: 26:38 GoalKick -> Buildup:Dh
 T: 26:39 Buildup:Dh -> Pressing:B
@@ -109,13 +109,13 @@ T: 29:44 FreeKick:DMh -> Possession:DM
 T: 29:47 Possession:DM -> !Transition:D
 L: 30:10 => 30:13 Transition:D -> !ThrowIn:AM
 T: 30:21 => 30:28 ThrowIn:AM -> ThrowIn:DM
-T: 30:31 ThrowIn:DM -> Buildup:G
-T: 30:34 Buildup:G -> Pressing:G
+T: 30:31 ThrowIn:DM -> Buildup:GK
+T: 30:34 Buildup:GK -> Pressing:GK
 T: 30:47 Pressing -> !Transition:AMh
 L: 30:59 => 31:10 Transition:AMh -> !Offside:Dh
 T: 31:13 FreeKick:Dh -> Buildup:Dh
-T: 31:15 Buildup:Dh -> Pressing:G
-T: 31:34 Pressing:G  -> CounterAttack:Mw
+T: 31:15 Buildup:Dh -> Pressing:GK
+T: 31:34 Pressing:GK  -> CounterAttack:Mw
 T: 31:52 => 31:54 CounterAttack:Mw -> !ThrowIn:DM
 L: 32:19 ThrowIn:DM -> !Transition:AM
 T: 32:25 Transition:AM -> Possession:M
@@ -128,17 +128,17 @@ T: 33:43 => 33:50 Attack:Bw -> ThrowIn:AM
 T: 34:11 ThrowIn:AM -> Attack:Bw
 T: 34:13 => 34:15 Attack:Bw -> ThrowIn:A
 T: 34:26 ThrowIn:A -> Possession:DM
-T: 34:39 Possession:DM -> Pressing:G
-T: 34:55 Pressing:G -> !Attack:Bw
+T: 34:39 Possession:DM -> Pressing:GK
+T: 34:55 Pressing:GK -> !Attack:Bw
 L: 35:14 => 35:17 Attack:Bw -> !GoalKick
 T: 35:41 GoalKick -> Buildup:DMw
 T: 35:49 Buildup:DMw -> !Goalkeeper
 L: 36:00 => 36:18 Goalkeeper -> !ThrowIn:DM
-T: 36:25 ThrowIn:DM -> Pressing:G
-T: 36:31 Pressing:G -> !Transition:AMw
+T: 36:25 ThrowIn:DM -> Pressing:GK
+T: 36:31 Pressing:GK -> !Transition:AMw
 L: 36:52 => 37:00 Transition:AMw -> !ThrowIn:D
-T: 37:24 ThrowIn:D -> !Pressing:G
-L: 37:35 Pressing:G -> CounterAttack:Mw
+T: 37:24 ThrowIn:D -> !Pressing:GK
+L: 37:35 Pressing:GK -> CounterAttack:Mw
 L: 37:43 CounterAttack:Mw -> GoalAttempt:Ah
 L: 37:47 GoalAttempt:Ah -> Save => Corner; xG = 0.03
 L: 38:28 Corner -> GoalAttempt:A
@@ -161,13 +161,13 @@ L: 42:44 Possession:DM -> !Transition:DM
 T: 43:03 => 43:04 Transition:DM -> Foul:DM
 T: 43:12 FreeKick:DM -> !Transition:D
 L: 43:20 Transition:D -> Pressing:Dh
-L: 43:21 Pressing:Dh -> !Transition:G
-T: 43:28 Transition:G -> Pressing:B
+L: 43:21 Pressing:Dh -> !Transition:GK
+T: 43:28 Transition:GK -> Pressing:B
 T: 43:33 Pressing:B -> CounterAttack:Mw
 T: 43:41 CounterAttack:Mw -> !Goalkeeper
 L: 43:46 Goalkeeper -> Buildup:Dh
-L: 43:53 Buildup:Dh -> Pressing:G
-L: 44:18 Pressing:G -> !Goalkeeper
+L: 43:53 Buildup:Dh -> Pressing:GK
+L: 44:18 Pressing:GK -> !Goalkeeper
 T: 44:28 Goalkeeper -> Buildup:DMw
 T: 44:33 => 44:40 Buildup:DMw -> ThrowIn:AM
 T: 44:58 ThrowIn:AM -> Attack:A
@@ -189,13 +189,13 @@ T: 45:25 => 45:37 Possession:DM -> ThrowIn:M
 T: 45:50 ThrowIn:M -> Possession:Mw
 T: 45:54 Possession:Mw -> Attack:Bw
 T: 46:19 Attack:Bw -> Possession:DM
-T: 46:35 Possession:DM -> Buildup:G
-T: 46:46 Buildup:G -> Attack:Ah
+T: 46:35 Possession:DM -> Buildup:GK
+T: 46:46 Buildup:GK -> Attack:Ah
 T: 47:00 => 47:06 Attack:Ah -> !ThrowIn:D
 L: 47:26 => 47:30 ThrowIn:D -> ThrowIn:DM
 L: 47:36 => 47:47 ThrowIn:DM -> ThrowIn:DM
-L: 48:00 ThrowIn:DM -> !Pressing:G
-T: 48:07 => 48:33 Pressing:G -> !ThrowIn:M
+L: 48:00 ThrowIn:DM -> !Pressing:GK
+T: 48:07 => 48:33 Pressing:GK -> !ThrowIn:M
 L: 48:53 => 49:00 ThrowIn:M -> ThrowIn:AM
 L: 49:05 => 49:10 ThrowIn:AM -> !ThrowIn:DM
 T: 49:26 => 49:31 ThrowIn:DM -> Foul:AM
@@ -223,7 +223,7 @@ T: 53:48 GoalAttempt:B11 -> Block => Possession:DMw; xG = 0.12
 T: 54:03 Possession:DMw -> Attack:Bw
 T: 54:28 => 54:41 Attack:Bw -> ThrowIn:DM
 #! BREAK
-T: 55:58 Buildup:G -> !Transition:DMh
+T: 55:58 Buildup:GK -> !Transition:DMh
 L: 56:07 Transition:DMh -> !Transition:AMh
 T: 56:15 Transition:AMh -> Attack:B22
 T: 56:19 => 56:23 Attack:B22 -> Corner
@@ -234,8 +234,8 @@ T: 57:18 GoalAttempt:B11 -> OffTarget; xG = 0.03
 #! BREAK
 L: 58:02 => 58:06 Pressing -> !ThrowIn:DM
 T: 58:11 ThrowIn:DM -> Possession:DMh
-T: 58:13 Possession:DMh -> Pressing:G
-T: 58:20 Pressing:G -> Transition:DMh
+T: 58:13 Possession:DMh -> Pressing:GK
+T: 58:20 Pressing:GK -> Transition:DMh
 T: 58:35 => 58:37 Transition:DMh -> ThrowIn:DM
 T: 58:44 ThrowIn:DM -> Possession:DMw
 T: 58:45 Possession:DMw -> Buildup:D
@@ -255,16 +255,16 @@ L: 62:01 => 62:06 Attack:B22 -> Foul:Mw
 L: 62:19 FreeKick:Mw -> Possession:DM
 L: 62:21 => 62:44 Possession:DM -> !GoalKick
 #! BREAK
-T: 63:03 Pressing:G -> !Transition:G
-L: 63:24 Transition:G -> !Transition:AMh
+T: 63:03 Pressing:GK -> !Transition:GK
+L: 63:24 Transition:GK -> !Transition:AMh
 T: 63:30 Transition:AMh -> Possession:DM
-T: 63:40 Possession:DM -> Buildup:G
-T: 64:08 Buildup:G -> !Transition:DM
+T: 63:40 Possession:DM -> Buildup:GK
+T: 64:08 Buildup:GK -> !Transition:DM
 L: 64:23 => 64:24 Transition:DM -> Foul:DM
 L: 64:41 => 64:44 FreeKick:DM -> !ThrowIn:DM
 T: 65:29 ThrowIn:DM -> Possession:DMw
-T: 65:36 Possession:DMw -> !Pressing:G
-L: 65:47 Pressing:G -> CounterAttack:Mh
+T: 65:36 Possession:DMw -> !Pressing:GK
+L: 65:47 Pressing:GK -> CounterAttack:Mh
 L: 65:55 => 66:06 CounterAttack:Mh -> Corner
 L: 66:35 => 66:39 Corner -> ThrowIn:B
 L: 66:51 => 66:54 ThrowIn:B -> ThrowIn:B
@@ -275,7 +275,7 @@ L: 67:51 ThrowIn:D -> Attack:B20
 L: 68:08 Attack:B20 -> GoalAttempt:B20
 L: 68:09 GoalAttempt:B20 -> OffTarget; xG = 0.05
 #! BREAK
-T: 68:40 Pressing:G -> CounterAttack:AM
+T: 68:40 Pressing:GK -> CounterAttack:AM
 T: 69:06 CounterAttack:AM -> !Transition:B
 L: 69:14 Transition:B -> !Transition:DMw
 T: 69:23 Transition:DMw -> Buildup:GD
@@ -285,8 +285,8 @@ T: 69:59 Attack:B02 -> !Goalkeeper
 L: 70:09 Goalkeeper -> Attack:Bw
 L: 70:23 => 70:31 Attack:Bw -> ThrowIn:AM
 L: 71:42 => 71:46 ThrowIn:AM -> !ThrowIn:D
-T: 71:56 ThrowIn:D -> Pressing:G
-T: 71:59 Pressing:G -> Buildup:DMw
+T: 71:56 ThrowIn:D -> Pressing:GK
+T: 71:59 Pressing:GK -> Buildup:DMw
 T: 72:08 Buildup:DMw -> Goalkeeper
 T: 72:20 Goalkeeper -> Buildup:Dh
 T: 72:23 Buildup:Dh -> Attack:A
@@ -295,7 +295,7 @@ T: 72:35 GoalAttempt:B22 -> Save; xG = 0.05
 L: 73:41 Goalkeeper -> Buildup:D
 L: 73:45 => 73:59 Buildup:D -> !GoalKick
 #! BREAK
-T: 74:12 Pressing:G -> !Transition:AMw
+T: 74:12 Pressing:GK -> !Transition:AMw
 L: 74:29 Transition:AMw -> !Possession:DMh
 T: 74:31 Possession:DMh -> !Transition:Mw
 L: 74:35 Transition:Mw -> Attack:Ah
@@ -314,15 +314,15 @@ L: 76:38 Goalkeeper -> FastBreak:DMh
 L: 76:41 => 76:51 FastBreak:DMh -> ThrowIn:M
 L: 77:11 ThrowIn:M -> !Transition:Dw
 T: 77:15 Transition:Dw -> Possession:Mh
-T: 77:35 Possession:Mh -> Buildup:G
-T: 77:51 Buildup:G -> Attack:Bw
+T: 77:35 Possession:Mh -> Buildup:GK
+T: 77:51 Buildup:GK -> Attack:Bw
 T: 78:18 Attack:Bw -> GoalAttempt
 T: 78:19 GoalAttempt -> OffTarget; xG = 0.08
 #! BREAK
 T: 78:56 Transition:Mh -> !Transition:D
 L: 79:04 Transition:D  -> CounterAttack:M
-L: 79:08 CounterAttack:M  -> !Transition:G
-T: 79:14 Transition:G -> GoalAttempt:A
+L: 79:08 CounterAttack:M  -> !Transition:GK
+T: 79:14 Transition:GK -> GoalAttempt:A
 T: 79:34 GoalAttempt:A -> Save => Attack:B22; xG = 0.03
 T: 79:37 Attack:B22 -> GoalAttempt:B20
 T: 79:39 GoalAttempt:B20 -> Save => !Goalkeeper; xG = 0.08

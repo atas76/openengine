@@ -100,7 +100,7 @@ public class ProcessorClient {
 
         // TODO Expand on example to take into account possession change, when filtering by it is implemented
         System.out.println();
-        Dataset outcomePitchPositionGK = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.G);
+        Dataset outcomePitchPositionGK = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.GK);
         System.out.println("Number of state transitions with goalkeeper possession as outcome: " +
                 outcomePitchPositionGK.size());
         System.out.println("Liverpool outcome states with goalkeeper possession: " +
@@ -108,6 +108,6 @@ public class ProcessorClient {
         System.out.println("Tottenham outcome states with goalkeeper possession: " +
                 outcomePitchPositionGK.getStateTransitionsByTeam("T").size());
 
-        // TODO Rename goalkeeper 'pitch position' to GK
+        
     }
 }
