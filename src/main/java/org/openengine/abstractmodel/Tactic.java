@@ -2,9 +2,12 @@ package org.openengine.abstractmodel;
 
 public class Tactic {
 
+    private static final int PITCH_SIZE_X = 5;
+    private static final int PITCH_SIZE_Y = 7;
+
     private final TacticalPosition [] positions = new TacticalPosition[10];
     private boolean [][] tacticalLayout = new boolean[5][7];
-    private TacticalRegionHeatmap [][] weightLayout = new TacticalRegionHeatmap[5][7];
+    private TacticalRegionHeatmap [][] weightLayout = new TacticalRegionHeatmap[PITCH_SIZE_X][PITCH_SIZE_Y];
 
     public Tactic(TacticalPosition [] positions) {
         for (int i = 0; i < 10; i++) {
@@ -15,16 +18,29 @@ public class Tactic {
 
     @Override
     public String toString() {
-         StringBuilder sb = new StringBuilder();
-         for (int i = 0; i < weightLayout.length; i++) {
-           for (int j = 0; j < weightLayout[i].length; j++) {
-               sb.append(tacticalLayout[i][j] ? "x" : "_");
-               // sb.append(String.format("%.2f", tacticalLayout[i][j]));
-               sb.append(" ");
-           }
-           sb.append("\n");
+        return getTacticalLayoutRepresentation(this.tacticalLayout);
+    }
+
+    private static String getTacticalLayoutRepresentation(boolean [][] tacticalLayout) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < PITCH_SIZE_X; i++) {
+            for (int j = 0; j < PITCH_SIZE_Y; j++) {
+                sb.append(tacticalLayout[i][j] ? "x" : "_");
+                sb.append(" ");
+            }
+            sb.append("\n");
         }
         return sb.toString();
+    }
+
+    private static boolean [][] getIndividualPositionTacticalLayout(TacticalPosition tacticalPosition) {
+        boolean [][] tacticalLayout = new boolean[PITCH_SIZE_X][PITCH_SIZE_Y];
+        tacticalLayout[tacticalPosition.getX()][tacticalPosition.getY()] = true;
+        return tacticalLayout;
+    }
+
+    public static String getTacticalLayoutByPosition(TacticalPosition tacticalPosition) {
+        return getTacticalLayoutRepresentation(getIndividualPositionTacticalLayout(tacticalPosition));
     }
 
     // TODO commenting-out solution of the wrong problem; to be removed after feature completed

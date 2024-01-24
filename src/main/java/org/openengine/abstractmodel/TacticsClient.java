@@ -18,5 +18,9 @@ public class TacticsClient {
 
         System.out.println("4-2-3-1");
         System.out.println(tactic_4_2_3_1);
+
+        System.out.println();
+        System.out.println("Individual position");
+        System.out.println(Tactic.getTacticalLayoutByPosition(TacticalPosition.F_C));
     }
 }
