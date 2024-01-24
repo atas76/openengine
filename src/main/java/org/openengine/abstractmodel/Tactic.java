@@ -6,8 +6,10 @@ public class Tactic {
     private static final int PITCH_SIZE_Y = 7;
 
     private final TacticalPosition [] positions = new TacticalPosition[10];
-    private boolean [][] tacticalLayout = new boolean[5][7];
-    private TacticalRegionHeatmap [][] weightLayout = new TacticalRegionHeatmap[PITCH_SIZE_X][PITCH_SIZE_Y];
+    private boolean [][] tacticalLayout = new boolean[PITCH_SIZE_X][PITCH_SIZE_Y];
+    private TacticalRegionHeatmap [][] heatmapRepresentation = new TacticalRegionHeatmap[PITCH_SIZE_X][PITCH_SIZE_Y];
+
+    private double [][] weightlayout = new double[PITCH_SIZE_X][PITCH_SIZE_Y];
 
     public Tactic(TacticalPosition [] positions) {
         for (int i = 0; i < 10; i++) {
@@ -21,6 +23,22 @@ public class Tactic {
         return getTacticalLayoutRepresentation(this.tacticalLayout);
     }
 
+    public static String getWeightLayoutRepresentationByPosition(TacticalPosition tacticalPosition) {
+        return getWeightLayoutRepresentation(getWeightLayoutByPosition(tacticalPosition));
+    }
+
+    private static String getWeightLayoutRepresentation(double [][] weightLayout) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < PITCH_SIZE_X; i++) {
+            for (int j = 0; j < PITCH_SIZE_Y; j++) {
+                sb.append(String.format("%.2f", weightLayout[i][j]));
+                sb.append(" ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
     private static String getTacticalLayoutRepresentation(boolean [][] tacticalLayout) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < PITCH_SIZE_X; i++) {
@@ -31,6 +49,14 @@ public class Tactic {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    private static double [][] getWeightLayoutByPosition(TacticalPosition tacticalPosition) {
+        double [][] weightLayout = new double[PITCH_SIZE_X][PITCH_SIZE_Y];
+
+        weightLayout[tacticalPosition.getX()][tacticalPosition.getY()] = 1.0;
+
+        return weightLayout;
     }
 
     private static boolean [][] getIndividualPositionTacticalLayout(TacticalPosition tacticalPosition) {

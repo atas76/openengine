@@ -20,7 +20,10 @@ public class TacticsClient {
         System.out.println(tactic_4_2_3_1);
 
         System.out.println();
-        System.out.println("Individual position");
-        System.out.println(Tactic.getTacticalLayoutByPosition(TacticalPosition.F_C));
+        System.out.println("Right back position");
+        System.out.println(Tactic.getTacticalLayoutByPosition(TacticalPosition.D_R));
+
+        System.out.println();
+        System.out.println(Tactic.getWeightLayoutRepresentationByPosition(TacticalPosition.D_R));
     }
 }
