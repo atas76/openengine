@@ -77,7 +77,7 @@ L: 19:45 Goalkeeper -> Buildup:Dw
 L: 19:51 Buildup:Dw -> Buildup:Dh
 L: 20:09 Buildup:Dh -> Attack:A
 L: 20:28 Attack:A -> GoalAttempt:A
-L: 20:29 GoalAttempt:A -> Corner; xG = 0.03
+L: 20:29 GoalAttempt:A -> Block => Corner; xG = 0.03
 L: 21:11 => 21:16 Corner -> ThrowIn:AM
 L: 21:47 ThrowIn:AM -> Attack:Bw
 L: 21:50 Attack:Bw -> GoalAttempt:B12
@@ -291,7 +291,7 @@ T: 72:08 Buildup:DMw -> Goalkeeper
 T: 72:20 Goalkeeper -> Buildup:Dh
 T: 72:23 Buildup:Dh -> Attack:A
 T: 72:34 Attack:A -> GoalAttempt:B22
-T: 72:35 GoalAttempt:B22 -> Save; xG = 0.05
+T: 72:35 GoalAttempt:B22 -> Save => !Goalkeeper; xG = 0.05
 L: 73:41 Goalkeeper -> Buildup:D
 L: 73:45 => 73:59 Buildup:D -> !GoalKick
 #! BREAK
