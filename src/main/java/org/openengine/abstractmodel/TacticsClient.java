@@ -19,8 +19,18 @@ public class TacticsClient {
         System.out.println("4-2-3-1");
         System.out.println(tactic_4_2_3_1);
 
-        System.out.println();
         displayLayoutsByPosition("Right back", TacticalPosition.D_R);
+        displayLayoutsByPosition("Left back", TacticalPosition.D_L);
+        displayLayoutsByPosition("Centre right back", TacticalPosition.D_CR);
+        displayLayoutsByPosition("Centre left back", TacticalPosition.D_CL);
+
+        displayLayoutsByPosition("Right midfielder", TacticalPosition.M_R);
+        displayLayoutsByPosition("Left midfielder", TacticalPosition.M_L);
+        displayLayoutsByPosition("Centre right midfielder" , TacticalPosition.M_CR);
+        displayLayoutsByPosition("Centre left midfielder", TacticalPosition.M_CL);
+
+        displayLayoutsByPosition("Centre right forward", TacticalPosition.F_CR);
+        displayLayoutsByPosition("Centre left forward", TacticalPosition.F_CL);
     }
 
     private static void displayLayoutsByPosition(String positionLabel, TacticalPosition tacticalPosition) {
