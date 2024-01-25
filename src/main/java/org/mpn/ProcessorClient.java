@@ -3,8 +3,7 @@ package org.mpn;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.mpn.State.GOAL;
-import static org.mpn.State.GOAL_ATTEMPT;
+import static org.mpn.State.*;
 
 public class ProcessorClient {
 
@@ -108,6 +107,21 @@ public class ProcessorClient {
         System.out.println("Tottenham outcome states with goalkeeper possession: " +
                 outcomePitchPositionGK.getStateTransitionsByTeam("T").size());
 
-        
+
+        System.out.println();
+        Dataset tottenhamOpenPlaySaves = liverpoolOpenPlayGoalAttempts.getStateTransitionsByEndState(SAVE);
+        Dataset liverpoolOpenPlaySaves = tottenhamOpenPlayGoalAttempts.getStateTransitionsByEndState(SAVE);
+        System.out.println("Open play saves: Liverpool - Tottenham " +
+                liverpoolOpenPlaySaves.size() + " - " + tottenhamOpenPlaySaves.size());
+        Dataset liverpoolCornersFromGoalAttempts =
+                liverpoolOpenPlayGoalAttempts.getStateTransitionsByGoalAttemptOutcome(CORNER);
+        Dataset tottenhamCornersFromGoalAttempts =
+                tottenhamOpenPlayGoalAttempts.getStateTransitionsByGoalAttemptOutcome(CORNER);
+        System.out.println("Corners from goal attempts: Liverpool - Tottenham " +
+                liverpoolCornersFromGoalAttempts.size() + " - " + tottenhamCornersFromGoalAttempts.size());
+        Dataset liverpoolCornersSaves = tottenhamOpenPlaySaves.getStateTransitionsByGoalAttemptOutcome(CORNER);
+        Dataset tottenhamCornersSaves = liverpoolOpenPlaySaves.getStateTransitionsByGoalAttemptOutcome(CORNER);
+        System.out.println("Corners from saves: Liverpool - Tottenham " +
+                liverpoolCornersSaves.size() + " - " + tottenhamCornersSaves.size());
     }
 }

@@ -121,6 +121,15 @@ public class Dataset {
         return new Dataset(listStateTransitionsByEndState(endState));
     }
 
+    public List<Statement> listStateTransitionsByGoalAttemptOutcome(State goalAttemptOutcome) {
+        return getStateTransitionsList().stream()
+                .filter(s -> goalAttemptOutcome.equals(s.getGoalAttemptOutcome())).toList();
+    }
+
+    public Dataset getStateTransitionsByGoalAttemptOutcome(State goalAttemptOutcome) {
+        return new Dataset(listStateTransitionsByGoalAttemptOutcome(goalAttemptOutcome));
+    }
+
     public List<Statement> listStateTransitionsByInitialPitchPosition(PitchPosition pitchPosition) {
         return getStateTransitionsList().stream()
                 .filter(s -> pitchPosition.equals(s.getInitialPitchPosition())).toList();
