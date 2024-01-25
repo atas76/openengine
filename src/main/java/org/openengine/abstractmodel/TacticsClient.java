@@ -20,10 +20,14 @@ public class TacticsClient {
         System.out.println(tactic_4_2_3_1);
 
         System.out.println();
-        System.out.println("Right back");
-        System.out.println(Tactic.getTacticalLayoutByPosition(TacticalPosition.D_R));
+        displayLayoutsByPosition("Right back", TacticalPosition.D_R);
+    }
 
+    private static void displayLayoutsByPosition(String positionLabel, TacticalPosition tacticalPosition) {
+        System.out.println();
+        System.out.println(positionLabel);
+        System.out.println(Tactic.getTacticalLayoutByPosition(tacticalPosition));
         System.out.println("Weight layout");
-        System.out.println(Tactic.getWeightLayoutRepresentationByPosition(TacticalPosition.D_R));
+        System.out.println(Tactic.getWeightLayoutRepresentationByPosition(tacticalPosition));
     }
 }
