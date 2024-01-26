@@ -148,6 +148,14 @@ public class Dataset {
         return new Dataset(listStateTransitionsByOutcomePitchPosition(pitchPosition));
     }
 
+    public List<Statement> listPossessionChanges() {
+        return getStateTransitionsList().stream().filter(s -> !s.isPossessionRetained()).toList();
+    }
+
+    public Dataset getPossessionChanges() {
+        return new Dataset(listPossessionChanges());
+    }
+
     public int [] getBallPossession() {
         int homeTeamSeconds = listStateTransitionsByTeam(this.homeTeam).stream().mapToInt(Statement::getDuration).sum();
         int awayTeamSeconds = listStateTransitionsByTeam(this.awayTeam).stream().mapToInt(Statement::getDuration).sum();

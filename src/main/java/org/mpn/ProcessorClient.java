@@ -123,5 +123,11 @@ public class ProcessorClient {
         Dataset tottenhamCornersSaves = liverpoolOpenPlaySaves.getStateTransitionsByGoalAttemptOutcome(CORNER);
         System.out.println("Corners from saves: Liverpool - Tottenham " +
                 liverpoolCornersSaves.size() + " - " + tottenhamCornersSaves.size());
+
+        System.out.println();
+        Dataset liverpoolPossessionLosses = dataset.getStateTransitionsByTeam("L").getPossessionChanges();
+        Dataset tottenhamPossessionLosses = dataset.getStateTransitionsByTeam("T").getPossessionChanges();
+        System.out.println("Possession losses: Liverpool - Tottenham "
+                + liverpoolPossessionLosses.size() + " - " + tottenhamPossessionLosses.size());
     }
 }
