@@ -31,6 +31,20 @@ public class TacticsClient {
 
         displayLayoutsByPosition("Centre right forward", TacticalPosition.F_CR);
         displayLayoutsByPosition("Centre left forward", TacticalPosition.F_CL);
+
+        displayLayoutsByPosition("Midfielder right centre", TacticalPosition.M_RC);
+        displayLayoutsByPosition("Central midfielder", TacticalPosition.M_C);
+        displayLayoutsByPosition("Midfielder left centre", TacticalPosition.M_LC);
+
+        displayLayoutsByPosition("Forward right centre", TacticalPosition.F_RC);
+        displayLayoutsByPosition("Forward centre", TacticalPosition.F_C);
+        displayLayoutsByPosition("Forward left centre", TacticalPosition.F_LC);
+
+        displayLayoutsByPosition("Right winger", TacticalPosition.AM_R);
+        displayLayoutsByPosition("Attacking midfielder central", TacticalPosition.AM_C);
+        displayLayoutsByPosition("Left winger", TacticalPosition.AM_L);
+        displayLayoutsByPosition("Striker", TacticalPosition.F_C);
+
     }
 
     private static void displayLayoutsByPosition(String positionLabel, TacticalPosition tacticalPosition) {
