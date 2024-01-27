@@ -30,12 +30,6 @@ public class ProcessorClient {
         System.out.println("Tottenham sample value: " + stateTransitionsT.get(0).getTeamKey());
         System.out.println();
 
-        /*
-        dataset.getStateTransitions()
-                .forEach(stateTransition ->
-                        System.out.println(stateTransition.getStartTime() + ": " + stateTransition.getDuration()));
-         */
-
         List<Statement> longPhases = dataset.listByDurationGreaterOrEqual(5);
         System.out.println("Number of long phases: " + longPhases.size());
         System.out.println("Long phase example: " + longPhases.get(38).getDuration());
@@ -97,16 +91,24 @@ public class ProcessorClient {
         System.out.println("Tottenham initial states in Bw: " +
                 initialPitchPositionA.getStateTransitionsByTeam("T").size());
 
-        // TODO Expand on example to take into account possession change, when filtering by it is implemented
         System.out.println();
-        Dataset outcomePitchPositionGK = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.GK);
-        System.out.println("Number of state transitions with goalkeeper possession as outcome: " +
-                outcomePitchPositionGK.size());
-        System.out.println("Liverpool outcome states with goalkeeper possession: " +
-                outcomePitchPositionGK.getStateTransitionsByTeam("L").size());
-        System.out.println("Tottenham outcome states with goalkeeper possession: " +
-                outcomePitchPositionGK.getStateTransitionsByTeam("T").size());
+        Dataset outcomePitchPositionBw = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.Bw);
+        System.out.println("Number of state transitions with 'Bw' outcome pitch position: " +
+                outcomePitchPositionBw.size());
+        System.out.println("Liverpool outcome states with 'Bw' outcome pitch position: " +
+                outcomePitchPositionBw.getStateTransitionsByTeam("L").size());
+        System.out.println("Tottenham outcome states with 'Bw' outcome pitch position: " +
+                outcomePitchPositionBw.getStateTransitionsByTeam("T").size());
 
+        System.out.println();
+        Dataset liverpoolPossessionLossBw = outcomePitchPositionBw.getStateTransitionsByTeam("L")
+                .getPossessionChanges();
+        Dataset tottenhamPossessionLossBw = outcomePitchPositionBw.getStateTransitionsByTeam("T")
+                .getPossessionChanges();
+        System.out.println("Liverpool outcome states with possession loss in 'Bw': " +
+                liverpoolPossessionLossBw.getStateTransitionsByTeam("L").size());
+        System.out.println("Tottenham outcome states with possession loss in 'Bw': " +
+                tottenhamPossessionLossBw.getStateTransitionsByTeam("T").size());
 
         System.out.println();
         Dataset tottenhamOpenPlaySaves = liverpoolOpenPlayGoalAttempts.getStateTransitionsByEndState(SAVE);
@@ -129,5 +131,10 @@ public class ProcessorClient {
         Dataset tottenhamPossessionLosses = dataset.getStateTransitionsByTeam("T").getPossessionChanges();
         System.out.println("Possession losses: Liverpool - Tottenham "
                 + liverpoolPossessionLosses.size() + " - " + tottenhamPossessionLosses.size());
+    }
+
+    private static void debug(List<Statement> stateTransitions) {
+        stateTransitions.forEach(stateTransition ->
+                System.out.println(stateTransition.getStartTime() + ": " + stateTransition.getDuration()));
     }
 }
