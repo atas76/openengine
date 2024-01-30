@@ -8,16 +8,22 @@ public class TacticsClient {
 
         System.out.println("4-4-2");
         System.out.println(tactic_4_4_2);
+        System.out.println();
+        System.out.println(tactic_4_4_2.getWeightLayoutRepresentation());
 
         System.out.println();
 
         System.out.println("4-3-3");
         System.out.println(tactic_4_3_3);
+        System.out.println();
+        System.out.println(tactic_4_3_3.getWeightLayoutRepresentation());
 
         System.out.println();
 
         System.out.println("4-2-3-1");
         System.out.println(tactic_4_2_3_1);
+        System.out.println();
+        System.out.println(tactic_4_2_3_1.getWeightLayoutRepresentation());
 
         displayLayoutsByPosition("Right back", TacticalPosition.D_R);
         displayLayoutsByPosition("Left back", TacticalPosition.D_L);
