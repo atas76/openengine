@@ -1,0 +1,81 @@
+[
+  {
+    "team" :  "L",
+    "formation" : "4-3-3",
+    "players" : [
+      {
+        "position" : "D R",
+        "profile": [
+          {
+            "xG" : 0.02,
+            "outcome": "OffTarget"
+          }
+        ]
+      },
+      {
+        "position" : "D L",
+        "profile": [
+          {
+            "xG" : 0.03,
+            "xGoT" : 0.06,
+            "outcome" : "Save => Corner"
+          }
+        ]
+      },
+      {
+        "position" : "M RC",
+        "profile" : [
+          {
+            "xG" : 0.03,
+            "outcome" : "Block => Attack:F RC"
+          }
+        ]
+      },
+      {
+        "position" :  "F RC",
+        "profile": [
+          {
+            "xG" : 0.03,
+            "outcome": "Block => Corner"
+          },
+          {
+            "xG" : 0.04,
+            "outcome": "OffTarget"
+          },
+          {
+            "xG" : 0.03,
+            "outcome": "OffTarget"
+          },
+          {
+            "xG" : 0.02,
+            "outcome": "Block => Corner"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "team" :  "T",
+    "formation": "4-2-3-1",
+    "players" : [
+      {
+        "position" :  "M CR",
+        "profile": [
+          {
+            "xG": 0.03,
+            "outcome": "OffTarget"
+          }
+        ]
+      },
+      {
+        "position" : "AM R",
+        "profile": [
+          {
+            "xG": 0.04,
+            "outcome": "OffTarget"
+          }
+        ]
+      }
+    ]
+  }
+]
