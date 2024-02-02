@@ -3,7 +3,19 @@ These are notes on the evolution of various notations which were developed for t
 In general, the common elements in all these notations are used to describe transitions, whose sequence defines the 'match flow'.
 These common elements are: actions, phases, pitch positions, tactical positions.
 Each notation captures a subset of these elements with different syntax, depending on the approach to be taken at a specific time.
-As the simulator and related ideas involved, different notations were tried.
+As the simulator and related ideas evolved, different notations were tried.
+
+* Actions: player actions, such as pass, shoot, etc.
+* Phases: match phases. Although developed independently, and with different terminology and categorization, see also: https://www.youtube.com/watch?v=1W4bRAKfMeM
+* Pitch positions: Should be kind of obvious (most of them). Each value corresponds to pitch area coordinates. As the notations evolved, their terminology has become clearer.
+* Tactical position: The player's tactical position according to the team's formation
+
+## TODO
+
+* Map notation elements to each notation
+* Write a bit about current state of development regarding the notations currently used
+* Write a bit about the rationale behind these notations, in relation to existing event data
+* Editing
 
 # fgn (11/19 - 04/20)
 
