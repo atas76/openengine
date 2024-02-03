@@ -539,7 +539,7 @@
 52:54 DMw:Fr->Move => Mw
 52:55 Mw->Long => !D CR @ DMd:HD >> !F CR @ Apd
 :phase attacking_transition L
-53:05 Apd->Shoot => D CL @ Dp:B >>> M CL @ A
+53:05 Apd->Shoot => D CL @ Dp:B >>> M LC @ A
 53:12 A->Pass => M CR @ Ad
 53:13 Ad->Pass:FT => M C @ AM
 :phase attacking_possession L
