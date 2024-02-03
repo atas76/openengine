@@ -12,7 +12,7 @@ As the simulator and related ideas evolved, different notations were tried.
 
 ## TODO
 
-* Map notation elements to each notation
+
 * Write a bit about current state of development regarding the notations currently used
 * Write a bit about the rationale behind these notations, in relation to existing event data
 * Editing
@@ -21,14 +21,20 @@ As the simulator and related ideas evolved, different notations were tried.
 
 Transitions between pitch positions with actions. ETN initially was supposed to be a simpler version of this.
 
+Elements: actions, pitch positions
+
 # fgs - Game Simple notation (05/20 - 06/20)
 
-More like a simplified successor to FGN.
+More like a simplified successor to FGN, in terms of syntax
+
+Elements: actions, pitch positions
 
 # ftn - Flow Tracking Notation (07/20 - 05/22)
 
 Let's define 'flow' a sequence of transitions between pitch positions or phases.
 This format is structured as records of pitch positions transitions with corresponding actions within 'phase blocks', which are supposed to add context.
+
+Elements: actions, phases, pitch positions
 
 # etn - Easy tracking notation mapping (04/21 - 05/23)
 
@@ -48,10 +54,18 @@ It evolved to be reused between different project approaches.
 
 * 2.0: Add pitch positions
 
+Elements:
+    
+* 0.0.x: actions, pitch positions, phases
+* 1.0: phases
+* 2.0: phases, pitch positions
+
 # ttn - Tactical Tracking Notation (11/21 - 05/23)
 
-The first attempt to include tactical positions in transitions.
+The first attempt to include tactical positions in state transitions.
 Since we need to use tactics as input to the simulator, this is an important element, but also the most complex.
+
+Elements: actions, pitch positions, phases, tactical positions
 
 # fmx - Flow matrix 2.0 (01/23 - 05/23)
 
@@ -68,6 +82,8 @@ Unnecessarily complicated. When hardcoding seemed more efficient than automating
 Maps transitions between tactical positions, where actions are passes. Meant for defining passing networks as input data to the simulator.
 Could be a useful approach, but probably will be integrated in more comprehensive approaches.
 
+Elements: actions (passes), phases, tactical positions
+
 # mpn - Match Phase Notation (11/23 - )
 
 The current format used. This is basically the same idea as ETN, recording match phase transitions explicitly and quite more intuitively.
@@ -75,3 +91,5 @@ The current format used. This is basically the same idea as ETN, recording match
 The 2.0 format is enhanced with pitch positions (important!).
 
 Also, the mappings between initial phase and their transition outcomes are generated automatically within the MPN project.
+
+Elements: phases, pitch positions 
