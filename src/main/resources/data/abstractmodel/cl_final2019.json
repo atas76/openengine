@@ -31,7 +31,7 @@
         "profile": [
           {
             "xG" : 0.05,
-            "outcome" : "Block => Rebound:A"
+            "outcome" : "Block => Rebound:F C @ A"
           }
         ]
       },
@@ -40,7 +40,7 @@
         "profile" : [
           {
             "xG" : 0.03,
-            "outcome" : "Block => Rebound:A"
+            "outcome" : "Block => Rebound:F C @ A"
           },
           {
             "xG" : 0.03,
@@ -87,7 +87,7 @@
           },
           {
             "xG" : 0.11,
-            "outcome": "Block => Rebound:A"
+            "outcome": "Block => Rebound:M CL @ A"
           }
         ]
       },
@@ -148,7 +148,7 @@
           },
           {
             "xG": 0.03,
-            "outcome": "Block => Rebound:Aw"
+            "outcome": "Block => Rebound:D R @ Aw"
           },
           {
             "xG": 0.05,
@@ -162,7 +162,7 @@
         "profile": [
           {
             "xG": 0.12,
-            "outcome": "Block => Rebound:DMw"
+            "outcome": "Block => Rebound:D CL @ DMw"
           },
           {
             "xG": 0.05,
@@ -190,7 +190,7 @@
           {
             "xG": 0.03,
             "xGoT": 0.05,
-            "outcome": "Save => Rebound:Aw"
+            "outcome": "Save => Rebound:D L @ Ah"
           },
           {
             "xG": 0.05,
