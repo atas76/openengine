@@ -10,10 +10,54 @@ As the simulator and related ideas evolved, different notations were tried.
 * Pitch positions: Should be kind of obvious (most of them). Each value corresponds to pitch area coordinates. As the notations evolved, their terminology has become clearer.
 * Tactical position: The player's tactical position according to the team's formation
 
+## Current status
+
+At this stage, there are two approaches I am exploring: a data-oriented one and one less reliant on data.
+
+The general idea behind the simulator is to be a processor of input data with minimal logic ('interventions') on its 
+own. One example of this is the handling of penalty kicks, and scoring in general. Using the data as they are with no 
+interventions, and using the current data set, only Liverpool would score goals and 50% of that would be with penalties.
+One intervention would be to award penalties based on their probability to be awarded in all matches and not in that
+match alone. Another intervention would be to take into account the xG of each goal attempt and calculate whether it is
+successful or not. These as I said, would be interventions, which would account for the low amount of data, but also
+it's being proactive over the input data. Ideally, with enough (or a lot of) data these interventions would be 
+redundant.
+
+Using a data oriented approach removes the burden of writing complicated logic, and exploring all the possible scenarios
+in our code. While recognizing patterns in a football match would be easier than, say, categorizing images, a 'perfect'
+simulation would still be difficult to write from scratch. And in any case you need the data to have plausible and
+realistic results. The approach is similar to deep learning, where the model is trained on input data, with its actual
+'logic' (as in actual programming logic) being agnostic to the problem at hand. In this project, the idea is to make
+the data work for us, and allowing only for obvious interventions, which would compensate for the inadequacies of using
+a strict data-oriented approach. Not that interventions are bad in themselves. If we could program all this from scratch 
+without needing to be backed by data our life would be easier. Except that we can't (or we can't 'easily').
+
+Based on the above discussion, we have two complementary approaches which would need to be balanced: data processing
+and interventions. The data oriented approach has been the dominant one so far. Even with a small sample of data and 
+suitable interventions it can yield plausible and varying results, as demonstrated in the 'legacy' openfootie project: 
+https://github.com/atas76/openfootie. However, there are some additional disadvantages in the data oriented approach, 
+into which I won't go into detail at this point. Another approach I am currently trying is that of minimal usage of data 
+as a starting point (the two approaches will converge eventually as we would still need to be based on data with minimal 
+or zero interventions). The latest approach is also better for taking tactics into account, but creating an 'average 
+pitch control' model for each formation as a starting point. I will also not go into detail at this point, as it would 
+be out of scope, and it's a work in progress.
+
+This has been a long introduction to the actual topic of what data formats are currently being used:
+
+* MPN
+
+The match phase notation feeds state transitions into the program, in the form of transitions between match phases.
+This will be augmented with more accurate data, as the match engine evolves based on this approach.
+
+* Attacking Profiles
+
+This is for the 'Abstract Model' approach. As this approach builds on an average pitch control model (which can be just 
+calculated), the additional data we need would be the xG and the probability of goal attempts, and this kind of data
+is stored in Attacking Profiles. If this is not clear at this point, don't worry. I will write documentation on this,
+once it is completed. However, the contents of the attacking profiles file should be fairly self-explanatory.
+
 ## TODO
 
-
-* Write a bit about current state of development regarding the notations currently used
 * Write a bit about the rationale behind these notations, in relation to existing event data
 * Editing
 
