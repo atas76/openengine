@@ -121,8 +121,8 @@
             },
             {
               "xG": 0.1,
-              "outcome": "Block",
-              "pitch area": "B11 => !Clearance:F RC @ Dh >>> F C:Pvt @ AMh",
+              "outcome": "Block => !Clearance:F RC @ Dh >>> F C:Pvt @ AMh",
+              "pitch area": "B11",
               "minute": 46
             }
           ]
