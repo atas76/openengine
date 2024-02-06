@@ -1,0 +1,133 @@
+{
+  "competition": "PL",
+  "date": "2024-02-04",
+  "profiles": [
+    {
+      "team": "Arsenal",
+      "formation": "4-3-3",
+      "players" : [
+        {
+          "position": "D CL",
+          "profile": [
+            {
+              "xG": 0.06,
+              "xGoT": 0.12,
+              "outcome": "Save => !Goalkeeper",
+              "pitch area": "A",
+              "minute": 38
+            }
+          ]
+        },
+        {
+          "position": "M RC",
+          "profile": [
+            {
+              "xG": 0.14,
+              "outcome": "Block => !Rebound:F RC @ DMw",
+              "pitch area": "B20",
+              "minute": 21
+            }
+          ]
+        },
+        {
+          "position": "M C",
+          "profile": [
+            {
+              "xG": 0.04,
+              "outcome": "Block => !Offside:F C @ B10",
+              "pitch area": "A",
+              "minute": 39
+            }
+          ]
+        },
+        {
+          "position": "F RC",
+          "profile": [
+            {
+              "xG": 0.73,
+              "outcome": "OffTarget",
+              "pitch area": "B10",
+              "minute": 11
+            },
+            {
+              "xG": 0.44,
+              "xGoT": 0.3,
+              "outcome": "Goal",
+              "pitch area": "B10",
+              "minute": 14
+            }
+          ]
+        },
+        {
+          "position": "F C",
+          "profile": [
+            {
+              "xG": 0.55,
+              "xGoT": 0.35,
+              "outcome": "Save => Rebound:F RC @ B10",
+              "pitch area": "B20",
+              "minute": 14
+            }
+          ]
+        },
+        {
+          "position": "F LC",
+          "profile": [
+            {
+              "xG": 0.08,
+              "outcome": "Block => !Clearance:D R:Hd @ B10 >>> !F RC @ DMh",
+              "pitch area": "B10",
+              "minute": 45,
+              "additional_time": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "team": "Liverpool",
+      "formation": "4-3-3",
+      "players" : [
+        {
+          "position": "D CL",
+          "profile": [
+            {
+              "xG": 0.04,
+              "outcome": "OffTarget",
+              "pitch area": "B10",
+              "minute": 29
+            }
+          ]
+        },
+        {
+          "position": "F RC",
+          "profile": [
+            {
+              "xG": 0.05,
+              "outcome": "OffTarget",
+              "pitch area": "Ah",
+              "minute": 13
+            }
+          ]
+        },
+        {
+          "position": "F LC",
+          "profile": [
+            {
+              "xG": 0.02,
+              "outcome": "Block => Rebound:D L @ Ah",
+              "pitch area": "B12",
+              "minute": 24
+            },
+            {
+              "xG": 0.1,
+              "outcome": "Block",
+              "pitch area": "B11 => !Clearance:F RC @ Dh >>> F C:Pvt @ AMh",
+              "minute": 46
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
