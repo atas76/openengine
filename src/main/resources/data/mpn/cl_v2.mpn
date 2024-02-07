@@ -340,8 +340,7 @@ T: 82:05 GoalKick -> FastBreak:DMw
 T: 82:09 FastBreak:DMw -> Possession:Mw
 T: 82:16 Possession:Mw -> Attack:Aw
 T: 82:36 => 82:40 Attack:Aw -> Foul:Bw
-T: 84:05 FreeKick:Bw -> GoalAttempt:Bw
-T: 84:05 GoalAttempt:Bw -> Save => Corner; xG = 0.05
+T: 84:05 GAFreeKick:Bw -> Save => Corner; xG = 0.05
 T: 84:37 => 84:38 Corner -> !Offside:B00
 #! BREAK
 T: 85:19 Goalkeeper -> !Goalkeeper

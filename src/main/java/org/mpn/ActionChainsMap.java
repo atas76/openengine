@@ -24,4 +24,8 @@ public class ActionChainsMap {
             System.out.println();
         }));
     }
+
+    public Dataset getMappingsByState(State state) {
+        return new Dataset(map.get(state));
+    }
 }

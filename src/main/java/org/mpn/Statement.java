@@ -1,11 +1,12 @@
 package org.mpn;
 
 import org.mpn.exceptions.UnknownStateException;
+import org.openengine.mpn.MatchPhaseTransition;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Statement implements ProcessUnit {
+public class Statement implements ProcessUnit, MatchPhaseTransition {
 
     public enum ParameterName {
         xG, defaultEndState;
@@ -59,6 +60,14 @@ public class Statement implements ProcessUnit {
         this.outcomePitchPosition = outcomePitchPosition;
         this.retainPossession = keepPossession;
         this.goalAttemptOutcome = goalAttemptOutcome;
+    }
+
+    @Override
+    public String toString() {
+        return teamKey + ": " + initialState + " -> "
+                + (this.isPossessionChanged() ? "!" : "")
+                + endState
+                + (this.goalAttemptOutcome != null ? " => " + this.goalAttemptOutcome : "");
     }
 
     public void setEndTime(Time endTime) {
@@ -122,5 +131,9 @@ public class Statement implements ProcessUnit {
 
     public boolean isPossessionRetained() {
         return this.retainPossession;
+    }
+
+    public boolean isPossessionChanged() {
+        return !this.retainPossession;
     }
 }

@@ -5,6 +5,7 @@ import org.mpn.exceptions.UnknownStateException;
 public enum State {
     KICK_OFF,
     FREEKICK,
+    GOAL_ATTEMPT_FREEKICK,
     GOAL_KICK,
     FOUL,
     OFFSIDE,
@@ -35,6 +36,7 @@ public enum State {
         return switch (name) {
             case "KickOff" -> KICK_OFF;
             case "FreeKick" -> FREEKICK;
+            case "GAFreeKick" -> GOAL_ATTEMPT_FREEKICK;
             case "GoalKick" -> GOAL_KICK;
             case "Foul" -> FOUL;
             case "Offside" -> OFFSIDE;

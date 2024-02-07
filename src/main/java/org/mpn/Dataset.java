@@ -2,6 +2,7 @@ package org.mpn;
 
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -10,6 +11,7 @@ public class Dataset {
     private final List<? extends ProcessUnit> data;
     private String homeTeam;
     private String awayTeam;
+    private Random rnd = new Random();
 
     public Dataset(String datasource) {
         this(new Processor().process(Paths.get(datasource)));
@@ -28,6 +30,10 @@ public class Dataset {
         this(data);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
+    }
+
+    public Statement getAny() {
+        return (Statement) data.get(rnd.nextInt(data.size()));
     }
 
     private void setEndTimesFromContext() {
