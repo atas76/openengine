@@ -56,9 +56,28 @@ calculated), the additional data we need would be the xG and the probability of 
 is stored in Attacking Profiles. If this is not clear at this point, don't worry. I will write documentation on this,
 once it is completed. However, the contents of the attacking profiles file should be fairly self-explanatory.
 
+## Event data
+
+The data created and used in this project can be classified as 'event data', but with a twist: while in actual event 
+data there are coordinates which show the exact player position on the pitch, I am taking a more simplistic approach 
+where I designate pitch areas in place of actual coordinates. For the needs of this simulation, I think this is a good 
+enough and even suitable approach as the simulation itself does not have accuracy as its priority at this stage. In any 
+of its forms and possible incarnations throughout its development, we would only need the teams' relative strengths in 
+each area on the pitch at each moment in time, and designating the suitable pitch areas in the form of a custom 
+'coordinate system' is more than enough for that.
+
+Another side effect of this approach is human-readability. While event data from various providers are accurate
+and used in producing analytics and even reconstructing the game itself visually, they are not very
+intuitive for being read by a human, especially regarding their usage of coordinates. Not that they cannot be 
+transformed easily to be human-readable, and also maybe there is no need for that, as what may be more important 
+are the analytics and visual representations produced. In any case, human-readability being an asset or not, 
+the notations in this project are, I think, intuitive enough, if someone gets familiarized, so they can follow the 
+progression of the match by reading their text as a script. This would allow for manual scanning of the event - or even 
+more importantly - tracking data, that could quickly identify patterns in the data that couldn't be identified in 
+advance easily from traditional event data or without watching the match.
+
 ## TODO
 
-* Write a bit about the rationale behind these notations, in relation to existing event data
 * Editing
 
 # fgn (11/19 - 04/20)
