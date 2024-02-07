@@ -15,6 +15,12 @@
               "outcome": "Save => !Goalkeeper",
               "pitch area": "A",
               "minute": 38
+            },
+            {
+              "xG": 0.09,
+              "outcome": "OffTarget",
+              "pitch area": "B10",
+              "minute": 56
             }
           ]
         },
@@ -26,6 +32,12 @@
               "outcome": "Block => !Rebound:F RC @ DMw",
               "pitch area": "B20",
               "minute": 21
+            },
+            {
+              "xG": 0.05,
+              "outcome": "Block => Corner",
+              "pitch area": "B21",
+              "minute": 52
             }
           ]
         },
@@ -55,6 +67,12 @@
               "outcome": "Goal",
               "pitch area": "B10",
               "minute": 14
+            },
+            {
+              "xG": 0.02,
+              "outcome": "Block => Corner",
+              "pitch area": "Ah",
+              "minute": 61
             }
           ]
         },
@@ -67,6 +85,12 @@
               "outcome": "Save => Rebound:F RC @ B10",
               "pitch area": "B20",
               "minute": 14
+            },
+            {
+              "xG": 0.31,
+              "outcome": "OffTarget",
+              "pitch area": "B00",
+              "minute": 61
             }
           ]
         },
@@ -79,6 +103,13 @@
               "pitch area": "B10",
               "minute": 45,
               "additional_time": 1
+            },
+            {
+              "xG": 0.75,
+              "xGoT": 0.13,
+              "outcome": "Goal",
+              "pitch area": "B22",
+              "minute": 67
             }
           ]
         }
@@ -96,6 +127,28 @@
               "outcome": "OffTarget",
               "pitch area": "B10",
               "minute": 29
+            }
+          ]
+        },
+        {
+          "position": "M C",
+          "profile": [
+            {
+              "xG": 0.02,
+              "outcome": "OffTarget",
+              "pitch area": "AM",
+              "minute": 46
+            }
+          ]
+        },
+        {
+          "position": "M LC",
+          "profile": [
+            {
+              "xG": 0.04,
+              "outcome": "OffTarget",
+              "pitch area": "B22",
+              "minute": 48
             }
           ]
         },
@@ -124,6 +177,13 @@
               "outcome": "Block => !Clearance:F RC @ Dh >>> F C:Pvt @ AMh",
               "pitch area": "B11",
               "minute": 46
+            },
+            {
+              "xG": 0.04,
+              "xGoT": 0.02,
+              "outcome": "Save => !Goalkeeper",
+              "pitch area": "B22",
+              "minute": 62
             }
           ]
         }
