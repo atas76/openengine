@@ -25,6 +25,18 @@
           ]
         },
         {
+          "position": "D L",
+          "profile": [
+            {
+              "xG": 0.06,
+              "xGoT": 0.12,
+              "outcome": "Save => !Goalkeeper",
+              "pitch area": "B10",
+              "minute": 84
+            }
+          ]
+        },
+        {
           "position": "M RC",
           "profile": [
             {
@@ -110,6 +122,14 @@
               "outcome": "Goal",
               "pitch area": "B22",
               "minute": 67
+            },
+            {
+              "xG": 0.04,
+              "xGoT": 0.04,
+              "outcome": "Goal",
+              "pitch area": "B02",
+              "minute": 90,
+              "additional_time": 2
             }
           ]
         }
@@ -138,6 +158,18 @@
               "outcome": "OffTarget",
               "pitch area": "AM",
               "minute": 46
+            },
+            {
+              "xG": 0.02,
+              "outcome": "OffTarget",
+              "pitch area": "AM",
+              "minute": 69
+            },
+            {
+              "xG": 0.03,
+              "outcome": "OffTarget",
+              "pitch area": "A",
+              "minute": 77
             }
           ]
         },
@@ -160,6 +192,12 @@
               "outcome": "OffTarget",
               "pitch area": "Ah",
               "minute": 13
+            },
+            {
+              "xG": 0.02,
+              "outcome": "OffTarget",
+              "pitch area": "B02",
+              "minute": 84
             }
           ]
         },
