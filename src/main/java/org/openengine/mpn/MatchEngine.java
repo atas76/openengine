@@ -63,26 +63,33 @@ public class MatchEngine {
         };
     }
 
+    private boolean isGoalAttemptSuccessful(Double xG) {
+        return rnd.nextDouble() <= xG;
+    }
+
     private MatchPhaseTransition updateMatchState(MatchPhaseTransition phaseTransition) {
         currentTime += phaseTransition.getDuration();
         if (Set.of(State.GOAL_ATTEMPT, State.PENALTY, State.GOAL_ATTEMPT_FREEKICK)
                 .contains(phaseTransition.getInitialState())) {
-            State goalAttemptOutcome = (phaseTransition.getGoalAttemptOutcome() != null)
-                    ? phaseTransition.getGoalAttemptOutcome()
-                    : phaseTransition.getEndState(); // TODO replace with dynamic calculation
-            if (goalAttemptOutcome == State.GOAL) {
+            if (isGoalAttemptSuccessful(phaseTransition.getxG())) {
                 displayGoal();
                 possessionTeam.score();
                 changePossession();
                 return getKickOffPhaseTransition();
             } else {
-                State outcomeState = phaseTransition.getEndState();
-                if (phaseTransition.getEndState() == State.OFF_TARGET) {
+                State outcomeState = phaseTransition.getGoalAttemptOutcome() != null
+                        ? phaseTransition.getGoalAttemptOutcome()
+                        : phaseTransition.getEndState();
+                if (outcomeState == State.OFF_TARGET) {
                     changePossession();
-                } else {
-                    outcomeState = phaseTransition.getGoalAttemptOutcome();
+                } else if (outcomeState == State.GOAL) {
+                    // possession does not change for current default state
+                    // TODO take into account possession changes in a more sophisticated implementation
+                    outcomeState = phaseTransition.getDefaultEndState();
+                } else { // 'else' block probably redundant, but good to play it safe, especially for future changes
+                    updatePossession(phaseTransition.isPossessionChanged());
                 }
-                updatePossession(phaseTransition.isPossessionChanged());
+                System.out.println("Goal outcome state : " + outcomeState);
                 Dataset potentialTransitions =
                         possessionTeam.getActionsByState(mapSetPieces(outcomeState));
                 return potentialTransitions.getAny();
@@ -103,11 +110,17 @@ public class MatchEngine {
     }
 
     private void displayGoal() {
-        System.out.println(possessionTeam + ": GOAL");
+        System.out.println(possessionTeam + ": SCORED");
+    }
+
+    private void displayScore() {
+        System.out.println(this.homeTeam + " - " + this.awayTeam + " "
+                + this.homeTeam.getGoalsScored() + " - " + this.awayTeam.getGoalsScored());
     }
 
     public void displayMatchState() {
         System.out.println(Util.convertForTimer(currentTime) + ": " + possessionTeam);
+        displayScore();
         System.out.println();
     }
 

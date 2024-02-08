@@ -9,4 +9,6 @@ public interface MatchPhaseTransition {
     int getDuration();
     State getGoalAttemptOutcome();
     boolean isPossessionChanged();
+    Double getxG();
+    State getDefaultEndState();
 }

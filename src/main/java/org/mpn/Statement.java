@@ -129,6 +129,14 @@ public class Statement implements ProcessUnit, MatchPhaseTransition {
         return this.parameters;
     }
 
+    public Double getxG() {
+        return this.parameters.xG();
+    }
+
+    public State getDefaultEndState() {
+        return this.parameters.defaultEndState();
+    }
+
     public boolean isPossessionRetained() {
         return this.retainPossession;
     }
