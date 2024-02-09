@@ -41,17 +41,47 @@ public class MatchEngine {
 
         tossCoin();
 
-        MatchPhaseTransition currentPhaseTransition = getKickOffPhaseTransition();
-        System.out.println(currentPhaseTransition);
+        System.out.println();
+        System.out.println("*** FIRST HALF ***");
 
-        while (currentTime < DURATION) {
+        MatchPhaseTransition kickOffPhaseTransition = getKickOffPhaseTransition();
+        displayMatchInfo(kickOffPhaseTransition);
+
+        playTimePeriod(DURATION, kickOffPhaseTransition);
+
+        System.out.println("End of first half");
+
+        this.possessionTeam = this.initialKickOffTeam == this.homeTeam ? this.awayTeam : this.homeTeam;
+
+        System.out.println();
+
+        System.out.println("*** SECOND HALF ***");
+
+        kickOffPhaseTransition = getKickOffPhaseTransition();
+        displayMatchInfo(kickOffPhaseTransition);
+
+        currentTime = DURATION; // Reset timer for 2nd half
+        playTimePeriod(DURATION * 2, kickOffPhaseTransition);
+    }
+
+    private void displayMatchInfo(MatchPhaseTransition currentPhaseTransition) {
+        System.out.println();
+        displayMatchState();
+        System.out.println(currentPhaseTransition);
+    }
+
+    private void playTimePeriod(int duration, MatchPhaseTransition currentPhaseTransition) {
+        while (currentTime < duration) {
             assert currentPhaseTransition != null;
             Dataset potentialTransitions =
                     possessionTeam.getActionsByState(mapSetPieces(currentPhaseTransition.getEndState()));
             currentPhaseTransition = potentialTransitions.getAny();
-            displayMatchState();
-            System.out.println(currentPhaseTransition);
-            currentPhaseTransition = updateMatchState(currentPhaseTransition);
+            displayMatchInfo(currentPhaseTransition);
+            MatchPhaseTransition updatedPhaseTransition = updateMatchState(currentPhaseTransition);
+            if (updatedPhaseTransition != currentPhaseTransition) {
+                displayMatchInfo(updatedPhaseTransition);
+            }
+            currentPhaseTransition = updatedPhaseTransition;
         }
     }
 
@@ -89,7 +119,7 @@ public class MatchEngine {
                 } else { // 'else' block probably redundant, but good to play it safe, especially for future changes
                     updatePossession(phaseTransition.isPossessionChanged());
                 }
-                System.out.println("Goal outcome state : " + outcomeState);
+                System.out.println("Goal outcome state: " + outcomeState);
                 Dataset potentialTransitions =
                         possessionTeam.getActionsByState(mapSetPieces(outcomeState));
                 return potentialTransitions.getAny();
@@ -121,7 +151,6 @@ public class MatchEngine {
     public void displayMatchState() {
         System.out.println(Util.convertForTimer(currentTime) + ": " + possessionTeam);
         displayScore();
-        System.out.println();
     }
 
     private MatchPhaseTransition getKickOffPhaseTransition() {
