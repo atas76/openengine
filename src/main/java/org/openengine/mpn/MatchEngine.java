@@ -122,7 +122,7 @@ public class MatchEngine {
                 System.out.println("Goal outcome state: " + outcomeState);
                 Dataset potentialTransitions =
                         possessionTeam.getActionsByState(mapSetPieces(outcomeState));
-                return potentialTransitions.getAny();
+                return updateMatchState(potentialTransitions.getAny());
             }
         }
         updatePossession(phaseTransition.isPossessionChanged());
