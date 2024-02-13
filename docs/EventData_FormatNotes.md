@@ -59,8 +59,8 @@ calculated), the additional data we need would be the xG and the probability of 
 is stored in Attacking Profiles. If this is not clear at this point, don't worry. I will write documentation on this,
 once it is completed. However, the contents of the attacking profiles file should be fairly self-explanatory.
 
-*UPDATE*: there is an even better and more inclusive approach to this (with evaluating more kinds of actions), however
-I will reveal it once that part of the project is finalized. The more important is that I came across the data model I need for this, so
+**UPDATE**: there is an even better and more inclusive approach to this (with evaluating more kinds of actions), however
+I will reveal it once that part of the project is finalized. More importantly, I came across the data model I need for this, so
 attacking profiles are redundant at this point, but the idea is similar, although much more generic.
 
 # Event data
@@ -90,7 +90,7 @@ summarize the project's history, it was also useful starting this document with 
 eventually became the main part of this document, while the present section serves more as an appendix.
 
 So, these are the notations you will find in datasets of this project. The only one that matters currently is the 'mpn' one,
-but the other ones are also useful for getting the idea of this project's evolution, while some of the ideas and concepts
+but the other ones are also useful for getting an idea of this project's evolution, while some of the ideas and concepts
 behind them may or will re-surface in the future.
 
 ## fgn (11/19 - 04/20)
@@ -115,7 +115,7 @@ Elements: actions, phases, pitch positions
 ## etn - Easy tracking notation (04/21 - 05/23)
 
 Started as recording transitions between pitch positions with corresponding actions and within 'match phase blocks', and as a simplified version of FTN.
-The idea during last stages was to capture transitions between phases.
+The idea during the last stages was to capture transitions between phases.
 It evolved to be reused between different project approaches.
 
 * 0.0.1: Meant for a 'minimal' implementation
