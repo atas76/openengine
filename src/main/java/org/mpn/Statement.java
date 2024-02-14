@@ -137,6 +137,11 @@ public class Statement implements ProcessUnit, MatchPhaseTransition {
         return this.parameters.defaultEndState();
     }
 
+    @Override
+    public boolean isGoal() {
+        return this.endState == State.GOAL || this.goalAttemptOutcome == State.GOAL;
+    }
+
     public boolean isPossessionRetained() {
         return this.retainPossession;
     }
