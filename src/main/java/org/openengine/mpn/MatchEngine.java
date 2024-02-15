@@ -102,13 +102,16 @@ public class MatchEngine {
 
     private void playTimePeriodClean(int duration) {
         MatchPhaseTransition currentTransition = getKickOffPhaseTransition();
-        displayMatchInfo(currentTransition);
-        updateMatchStateClean(currentTransition);
+        postProcessTransition(currentTransition);
         while (currentTime < duration) {
             currentTransition = processTransition(currentTransition);
-            displayMatchInfo(currentTransition);
-            updateMatchStateClean(currentTransition);
+            postProcessTransition(currentTransition);
         }
+    }
+
+    private void postProcessTransition(MatchPhaseTransition currentTransition) {
+        displayMatchInfo(currentTransition);
+        updateMatchStateClean(currentTransition);
     }
 
     private void updateMatchStateClean(MatchPhaseTransition phaseTransition) {
