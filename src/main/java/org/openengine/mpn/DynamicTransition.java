@@ -11,11 +11,10 @@ public class DynamicTransition implements MatchPhaseTransition {
     private boolean possessionChanged;
     private Double xG;
     private State defaultEndState;
-    private boolean goalScored;
     private String team;
 
     public DynamicTransition(String team, State initialState, State endState, int duration, State goalAttemptOutcome,
-                             boolean possessionChanged, Double xG, State defaultEndState, boolean goalScored) {
+                             boolean possessionChanged, Double xG, State defaultEndState) {
         this.team = team;
         this.initialState = initialState;
         this.endState = endState;
@@ -24,7 +23,6 @@ public class DynamicTransition implements MatchPhaseTransition {
         this.possessionChanged = possessionChanged;
         this.xG = xG;
         this.defaultEndState = defaultEndState;
-        this.goalScored = goalScored;
     }
 
     @Override
@@ -60,11 +58,6 @@ public class DynamicTransition implements MatchPhaseTransition {
     @Override
     public State getDefaultEndState() {
         return this.defaultEndState;
-    }
-
-    @Override
-    public boolean isGoal() {
-        return this.goalScored;
     }
 
     @Override

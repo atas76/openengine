@@ -66,7 +66,8 @@ public class MatchEngine {
     }
 
     private void displayEvents(MatchPhaseTransition currentPhaseTransition) {
-        if (currentPhaseTransition.isGoal() && currentPhaseTransition.getInitialState() == State.GOAL_ATTEMPT_OUTCOME) {
+        if (currentPhaseTransition.getEndState() == State.GOAL
+                && currentPhaseTransition.getInitialState() == State.GOAL_ATTEMPT_OUTCOME) {
             displayGoal();
         }
     }
@@ -86,7 +87,8 @@ public class MatchEngine {
     }
 
     private void updateMatchState(MatchPhaseTransition phaseTransition) {
-        if (State.GOAL_ATTEMPT_OUTCOME == phaseTransition.getInitialState() && phaseTransition.isGoal()) {
+        if (State.GOAL_ATTEMPT_OUTCOME == phaseTransition.getInitialState()
+                && State.GOAL == phaseTransition.getEndState()) {
             possessionTeam.score();
         } else {
             currentTime += phaseTransition.getDuration();
@@ -101,33 +103,33 @@ public class MatchEngine {
                 .contains(transition.getInitialState())) {
             if (isGoalAttemptSuccessful(transition.getxG())) {
                 return new DynamicTransition( transition.getTeamKey(),
-                        State.GOAL_ATTEMPT_OUTCOME, transition.getEndState(),
+                        State.GOAL_ATTEMPT_OUTCOME, State.GOAL,
                         transition.getDuration(), transition.getGoalAttemptOutcome(), true,
-                        transition.getxG(), transition.getDefaultEndState(), true);
+                        transition.getxG(), transition.getDefaultEndState());
             } else {
                 State outcomeState = transition.getGoalAttemptOutcome() != null
                         ? transition.getGoalAttemptOutcome()
                         : transition.getEndState();
                 if (outcomeState == State.OFF_TARGET) {
+                    // TODO copy constructor maybe? OTOH, we want to be tightly-bound to the MPN 'Statement'
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, State.OFF_TARGET,
                             transition.getDuration(), transition.getGoalAttemptOutcome(), true,
-                            transition.getxG(), transition.getDefaultEndState(), false);
+                            transition.getxG(), transition.getDefaultEndState());
                 } else if (outcomeState == State.GOAL) {
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, transition.getDefaultEndState(),
                             transition.getDuration(), transition.getDefaultEndState(), false,
-                            transition.getxG(), transition.getDefaultEndState(), false);
+                            transition.getxG(), transition.getDefaultEndState());
                 } else {
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, outcomeState,
                             transition.getDuration(), transition.getGoalAttemptOutcome(),
-                            transition.isPossessionChanged(), transition.getxG(), transition.getDefaultEndState(),
-                            false);
+                            transition.isPossessionChanged(), transition.getxG(), transition.getDefaultEndState());
                 }
             }
         }
-        if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && transition.isGoal()) {
+        if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && State.GOAL == transition.getEndState()) {
             return getKickOffPhaseTransition();
         }
         return possessionTeam.getActionsByState(mapSetPieces(transition.getEndState())).getAny();
