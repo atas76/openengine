@@ -37,35 +37,6 @@ public class MatchEngine {
                 + homeTeam.getGoalsScored() + " - " + awayTeam.getGoalsScored());
     }
 
-    private void startOld() {
-
-        tossCoin();
-
-        System.out.println();
-        System.out.println("*** FIRST HALF ***");
-
-        MatchPhaseTransition kickOffPhaseTransition = getKickOffPhaseTransition();
-        displayMatchInfo(kickOffPhaseTransition);
-
-        playTimePeriod(DURATION, kickOffPhaseTransition);
-        // playTimePeriodClean(DURATION);
-
-        System.out.println("End of first half");
-
-        this.possessionTeam = this.initialKickOffTeam == this.homeTeam ? this.awayTeam : this.homeTeam;
-
-        System.out.println();
-
-        System.out.println("*** SECOND HALF ***");
-
-        kickOffPhaseTransition = getKickOffPhaseTransition();
-        displayMatchInfo(kickOffPhaseTransition);
-
-        currentTime = DURATION; // Reset timer for 2nd half
-        playTimePeriod(DURATION * 2, kickOffPhaseTransition);
-        // playTimePeriodClean(DURATION * 2);
-    }
-
     private void start() {
 
         tossCoin();
@@ -111,16 +82,15 @@ public class MatchEngine {
 
     private void postProcessTransition(MatchPhaseTransition currentTransition) {
         displayMatchInfo(currentTransition);
-        updateMatchStateClean(currentTransition);
+        updateMatchState(currentTransition);
     }
 
-    private void updateMatchStateClean(MatchPhaseTransition phaseTransition) {
+    private void updateMatchState(MatchPhaseTransition phaseTransition) {
         if (State.GOAL_ATTEMPT_OUTCOME == phaseTransition.getInitialState() && phaseTransition.isGoal()) {
             possessionTeam.score();
         } else {
             currentTime += phaseTransition.getDuration();
         }
-        // TODO Possession is flipped back on goal attempts -> exclude goal attempts from possession updates?
         if (phaseTransition.getInitialState() != State.GOAL_ATTEMPT) {
             updatePossession(phaseTransition.isPossessionChanged());
         }
@@ -158,12 +128,7 @@ public class MatchEngine {
             }
         }
         if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && transition.isGoal()) {
-            // if (transition.isGoal()) {
-                return getKickOffPhaseTransition();
-            // } else {
-            //    return possessionTeam.getActionsByState(mapSetPieces(transition.getEndState())).getAny();
-            // }
-
+            return getKickOffPhaseTransition();
         }
         return possessionTeam.getActionsByState(mapSetPieces(transition.getEndState())).getAny();
     }
@@ -176,62 +141,8 @@ public class MatchEngine {
         };
     }
 
-    private void playTimePeriod(int duration, MatchPhaseTransition currentPhaseTransition) {
-        while (currentTime < duration) {
-            assert currentPhaseTransition != null;
-            // Process transition
-            Dataset potentialTransitions =
-                    possessionTeam.getActionsByState(mapSetPieces(currentPhaseTransition.getEndState()));
-            currentPhaseTransition = potentialTransitions.getAny();
-            // Display state
-            displayMatchInfo(currentPhaseTransition);
-            // Update state
-            MatchPhaseTransition updatedPhaseTransition = updateMatchState(currentPhaseTransition);
-            // Display state
-            if (updatedPhaseTransition != currentPhaseTransition) {
-                displayMatchInfo(updatedPhaseTransition);
-            }
-            currentPhaseTransition = updatedPhaseTransition;
-        }
-    }
-
     private boolean isGoalAttemptSuccessful(Double xG) {
         return rnd.nextDouble() <= xG;
-    }
-
-    private MatchPhaseTransition updateMatchState(MatchPhaseTransition phaseTransition) {
-        currentTime += phaseTransition.getDuration(); // Update state
-        if (Set.of(State.GOAL_ATTEMPT, State.PENALTY, State.GOAL_ATTEMPT_FREEKICK)
-                .contains(phaseTransition.getInitialState())) {
-            if (isGoalAttemptSuccessful(phaseTransition.getxG())) {
-                displayGoal(); // Display event
-                possessionTeam.score(); // Update state
-                changePossession(); // Update state
-                return getKickOffPhaseTransition(); // Process transition
-            } else {
-                // Process transition
-                State outcomeState = phaseTransition.getGoalAttemptOutcome() != null
-                        ? phaseTransition.getGoalAttemptOutcome()
-                        : phaseTransition.getEndState();
-                if (outcomeState == State.OFF_TARGET) { // Update state & Process transition
-                    changePossession();
-                } else if (outcomeState == State.GOAL) { // Update state & Process transition
-                    // possession does not change for current default state
-                    // TODO take into account possession changes in a more sophisticated implementation
-                    outcomeState = phaseTransition.getDefaultEndState();
-                } else { // 'else' block probably redundant, but good to play it safe, especially for future changes
-                    updatePossession(phaseTransition.isPossessionChanged()); // Update state
-                }
-                System.out.println("Goal outcome state: " + outcomeState); // Display event
-                // Process transition
-                Dataset potentialTransitions =
-                        possessionTeam.getActionsByState(mapSetPieces(outcomeState));
-                // Process transition & Update state
-                return updateMatchState(potentialTransitions.getAny());
-            }
-        }
-        updatePossession(phaseTransition.isPossessionChanged());
-        return phaseTransition;
     }
 
     private void updatePossession(boolean possessionChanged) {
