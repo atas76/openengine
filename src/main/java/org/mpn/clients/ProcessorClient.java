@@ -1,4 +1,6 @@
-package org.mpn;
+package org.mpn.clients;
+
+import org.mpn.*;
 
 import java.nio.file.Paths;
 import java.util.List;
@@ -83,21 +85,21 @@ public class ProcessorClient {
         );
 
         System.out.println();
-        Dataset initialPitchPositionA = dataset.getStateTransitionsByInitialPitchPosition(PitchPosition.Bw);
-        System.out.println("Number of state transitions with 'Bw' initial pitch position: " +
+        Dataset initialPitchPositionA = dataset.getStateTransitionsByInitialPitchPosition(PitchPosition.ABw);
+        System.out.println("Number of state transitions with 'ABw' initial pitch position: " +
                 initialPitchPositionA.size());
-        System.out.println("Liverpool initial states in Bw: " +
+        System.out.println("Liverpool initial states in ABw: " +
                 initialPitchPositionA.getStateTransitionsByTeam("L").size());
-        System.out.println("Tottenham initial states in Bw: " +
+        System.out.println("Tottenham initial states in ABw: " +
                 initialPitchPositionA.getStateTransitionsByTeam("T").size());
 
         System.out.println();
-        Dataset outcomePitchPositionBw = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.Bw);
-        System.out.println("Number of state transitions with 'Bw' outcome pitch position: " +
+        Dataset outcomePitchPositionBw = dataset.getStateTransitionsByOutcomePitchPosition(PitchPosition.ABw);
+        System.out.println("Number of state transitions with 'ABw' outcome pitch position: " +
                 outcomePitchPositionBw.size());
-        System.out.println("Liverpool outcome states with 'Bw' outcome pitch position: " +
+        System.out.println("Liverpool outcome states with 'ABw' outcome pitch position: " +
                 outcomePitchPositionBw.getStateTransitionsByTeam("L").size());
-        System.out.println("Tottenham outcome states with 'Bw' outcome pitch position: " +
+        System.out.println("Tottenham outcome states with 'ABw' outcome pitch position: " +
                 outcomePitchPositionBw.getStateTransitionsByTeam("T").size());
 
         System.out.println();
