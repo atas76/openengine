@@ -1,4 +1,8 @@
-package org.mpn;
+package org.mpn.clients;
+
+import org.mpn.Dataset;
+import org.mpn.MatchModel;
+import org.mpn.Processable;
 
 public class MatchModelClient {
     public static void main(String[] args) {
