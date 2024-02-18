@@ -111,7 +111,7 @@ public class MatchEngine {
                         ? transition.getGoalAttemptOutcome()
                         : transition.getEndState();
                 if (outcomeState == State.OFF_TARGET) {
-                    // TODO copy constructor maybe? OTOH, we want to be tightly-bound to the MPN 'Statement'
+                    // TODO copy constructor maybe? OTOH, we would be tightly-bound to the MPN 'Statement'
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, State.OFF_TARGET,
                             transition.getDuration(), transition.getGoalAttemptOutcome(), true,
