@@ -32,6 +32,12 @@ public class ProcessorClient {
         System.out.println("Tottenham sample value: " + stateTransitionsT.get(0).getTeamKey());
         System.out.println();
 
+        List<Statement> attacks = dataset.listStateTransitionsByInitialState(ATTACK);
+        List<Statement> counterAttacks = dataset.listStateTransitionsByInitialState(COUNTER_ATTACK);
+
+        System.out.println("Number of attacking phases: " + (attacks.size() + counterAttacks.size()));
+        System.out.println();
+
         List<Statement> longPhases = dataset.listByDurationGreaterOrEqual(5);
         System.out.println("Number of long phases: " + longPhases.size());
         System.out.println("Long phase example: " + longPhases.get(38).getDuration());
