@@ -44,7 +44,7 @@ public class MatchEngine {
         System.out.println();
         System.out.println("*** FIRST HALF ***");
 
-        playTimePeriodClean(DURATION);
+        playTimePeriod(DURATION);
 
         System.out.println("End of first half");
 
@@ -55,7 +55,7 @@ public class MatchEngine {
         System.out.println("*** SECOND HALF ***");
 
         currentTime = DURATION; // Reset timer for 2nd half
-        playTimePeriodClean(DURATION * 2);
+        playTimePeriod(DURATION * 2);
     }
 
     private void displayMatchInfo(MatchPhaseTransition currentPhaseTransition) {
@@ -72,16 +72,16 @@ public class MatchEngine {
         }
     }
 
-    private void playTimePeriodClean(int duration) {
+    private void playTimePeriod(int duration) {
         MatchPhaseTransition currentTransition = getKickOffPhaseTransition();
-        postProcessTransition(currentTransition);
+        processTransition(currentTransition);
         while (currentTime < duration) {
-            currentTransition = processTransition(currentTransition);
-            postProcessTransition(currentTransition);
+            currentTransition = getNextTransition(currentTransition);
+            processTransition(currentTransition);
         }
     }
 
-    private void postProcessTransition(MatchPhaseTransition currentTransition) {
+    private void processTransition(MatchPhaseTransition currentTransition) {
         displayMatchInfo(currentTransition);
         updateMatchState(currentTransition);
     }
@@ -98,7 +98,16 @@ public class MatchEngine {
         }
     }
 
-    private MatchPhaseTransition processTransition(MatchPhaseTransition transition) {
+    private final double PENALTY_AWARD_COEFFICIENT = 0.00525;
+
+    // Leaving it here for helping with testing
+    // private final double PENALTY_AWARD_COEFFICIENT = 0.0525;
+
+    // TODO Leaving it as it is for now until injury time implementation
+    private final int PENALTY_DURATION = 0;
+    private final double PENALTY_XG = 0.79;
+
+    private MatchPhaseTransition getNextTransition(MatchPhaseTransition transition) {
         if (Set.of(State.GOAL_ATTEMPT, State.PENALTY, State.GOAL_ATTEMPT_FREEKICK)
                 .contains(transition.getInitialState())) {
             if (isGoalAttemptSuccessful(transition.getxG())) {
@@ -127,6 +136,15 @@ public class MatchEngine {
                             transition.getDuration(), transition.getGoalAttemptOutcome(),
                             transition.isPossessionChanged(), transition.getxG(), transition.getDefaultEndState());
                 }
+            }
+        }
+        if (Set.of(State.ATTACK, State.COUNTER_ATTACK).contains(transition.getInitialState())) {
+            if (rnd.nextDouble() < PENALTY_AWARD_COEFFICIENT) { // penalty awarded
+                // TODO calculate lost penalties outcomes
+                // TODO goal durations (kick-off time)
+                System.out.println("Penalty awarded");
+                return new DynamicTransition(transition.getTeamKey(), State.PENALTY, State.GOAL, PENALTY_DURATION,
+                        State.CORNER, false, PENALTY_XG, State.CORNER);
             }
         }
         if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && State.GOAL == transition.getEndState()) {
