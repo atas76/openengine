@@ -120,7 +120,6 @@ public class MatchEngine {
                         ? transition.getGoalAttemptOutcome()
                         : transition.getEndState();
                 if (outcomeState == State.OFF_TARGET) {
-                    // TODO copy constructor maybe? OTOH, we would be tightly-bound to the MPN 'Statement'
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, State.OFF_TARGET,
                             transition.getDuration(), transition.getGoalAttemptOutcome(), true,
@@ -141,7 +140,6 @@ public class MatchEngine {
         if (Set.of(State.ATTACK, State.COUNTER_ATTACK).contains(transition.getInitialState())) {
             if (rnd.nextDouble() < PENALTY_AWARD_COEFFICIENT) { // penalty awarded
                 // TODO calculate lost penalties outcomes
-                // TODO goal durations (kick-off time)
                 System.out.println("Penalty awarded");
                 return new DynamicTransition(transition.getTeamKey(), State.PENALTY, State.GOAL, PENALTY_DURATION,
                         State.CORNER, false, PENALTY_XG, State.CORNER);
