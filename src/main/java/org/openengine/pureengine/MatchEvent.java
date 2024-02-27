@@ -12,4 +12,8 @@ public class MatchEvent {
         this.period = period;
     }
 
+    @Override
+    public String toString() {
+        return this.period + "': " + this.eventType + " " + this.teamName;
+    }
 }
