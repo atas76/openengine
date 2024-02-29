@@ -27,7 +27,7 @@ public class MatchEngine {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        MatchEngine matchEngine = new MatchEngine(new Team("Red"), new Team("Blue"));
+        MatchEngine matchEngine = new MatchEngine(new Team("Red", 9), new Team("Blue", 4));
         matchEngine.play();
     }
 
@@ -63,14 +63,30 @@ public class MatchEngine {
     }
 
     private void simulateScoring() {
-        double xG = MATCH_xG / PERIODS;
+        double homeMatchxG = MATCH_xG;
+        double awayMatchxG = MATCH_xG;
+        int skillDifference = homeTeam.getSkill() - awayTeam.getSkill();
+
+        if (skillDifference > 0) {
+            homeMatchxG = MATCH_xG + skillDifference * (MATCH_xG / 4);
+            awayMatchxG = MATCH_xG - (MATCH_xG / 10) * skillDifference;
+        }
+        if (skillDifference < 0) {
+            awayMatchxG = MATCH_xG - skillDifference * (MATCH_xG / 4);
+            homeMatchxG = MATCH_xG + (MATCH_xG / 10) * skillDifference;
+        }
+
+        System.out.println("Home match xG: " + homeMatchxG / 2);
+        System.out.println("Away match xG: " + awayMatchxG / 2);
+        System.out.println();
+
         for (int i = 0; i < PERIODS; i++) {
             if (rnd.nextDouble() <= TEAM_BIAS) {
                 match.addPossession(true);
-                simulateTeamScoring(homeTeam, i, xG);
+                simulateTeamScoring(homeTeam, i, homeMatchxG / PERIODS);
             } else {
                 match.addPossession(false);
-                simulateTeamScoring(awayTeam, i, xG);
+                simulateTeamScoring(awayTeam, i, awayMatchxG / PERIODS);
             }
         }
     }
