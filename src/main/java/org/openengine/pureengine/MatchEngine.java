@@ -76,9 +76,11 @@ public class MatchEngine {
             homeMatchxG = MATCH_xG + (MATCH_xG / 10) * skillDifference;
         }
 
+        /*
         System.out.println("Home match xG: " + homeMatchxG / 2);
         System.out.println("Away match xG: " + awayMatchxG / 2);
         System.out.println();
+         */
 
         for (int i = 0; i < PERIODS; i++) {
             if (rnd.nextDouble() <= TEAM_BIAS) {
