@@ -2,25 +2,29 @@ package org.openengine.pureengine.domain;
 
 import org.openengine.pureengine.Team;
 
-import java.util.List;
+import java.util.Map;
 
 public class TeamRepository {
-    public static final List<Team> team = List.of(
-            new Team("Coventry", 5),
-            new Team("Maidstone", 1),
-            new Team("Bournemouth", 7),
-            new Team("Leicester", 5),
-            new Team("Blackburn", 5),
-            new Team("Newcastle", 8),
-            new Team("Luton", 6),
-            new Team("Manchester City", 10),
-            new Team("Chelsea", 7),
-            new Team("Leeds", 5),
-            new Team("Nottingham Forest", 6),
-            new Team("Manchester United", 8),
-            new Team("Wolves", 7),
-            new Team("Brighton", 8),
-            new Team("Liverpool", 10),
-            new Team("Southampton", 5)
+    private static final Map<String, Team> teams = Map.ofEntries(
+            Map.entry("Coventry", new Team("Coventry City", 5)),
+            Map.entry("Maidstone", new Team("Maidstone United", 1)),
+            Map.entry("Bournemouth", new Team("Bournemouth", 7)),
+            Map.entry("Leicester", new Team("Leicester City", 5)),
+            Map.entry("Blackburn", new Team("Blackburn Rovers", 5)),
+            Map.entry("Newcastle", new Team("Newcastle United", 8)),
+            Map.entry("Luton", new Team("Luton Town", 6)),
+            Map.entry("Manchester City", new Team("Manchester City", 10)),
+            Map.entry("Chelsea", new Team("Chelsea", 7)),
+            Map.entry("Leeds", new Team("Leeds United", 5)),
+            Map.entry("Nottingham Forest", new Team("Nottingham Forest", 6)),
+            Map.entry("Manchester United", new Team("Manchester United", 8)),
+            Map.entry("Wolves", new Team("Wolverhampton Wanderers", 7)),
+            Map.entry("Brighton", new Team("Brighton & Hove Albion", 8)),
+            Map.entry("Liverpool", new Team("Liverpool", 10)),
+            Map.entry("Southampton", new Team("Southampton", 5))
     );
+
+    public static Team getTeam(String name) {
+        return teams.get(name);
+    }
 }

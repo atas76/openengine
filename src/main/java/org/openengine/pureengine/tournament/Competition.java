@@ -21,4 +21,12 @@ public class Competition {
         System.out.println("Stages: ");
         rounds.forEach(round -> System.out.println(round.getName()));
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getStartingRoundName() {
+        return rounds.get(0).getName();
+    }
 }
