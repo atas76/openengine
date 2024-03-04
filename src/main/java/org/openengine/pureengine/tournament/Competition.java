@@ -6,11 +6,11 @@ import java.util.List;
 public class Competition {
 
     private String name;
-    private List<KnockoutRound> rounds = new ArrayList<>();
+    private List<CompetitionRound> rounds = new ArrayList<>();
 
     public Competition(String name, List<String> roundNames) {
         this.name = name;
-        roundNames.forEach(roundName -> rounds.add(new KnockoutRound(roundName)));
+        roundNames.forEach(roundName -> rounds.add(new CompetitionRound(roundName)));
     }
 
     public void displayName() {
@@ -28,5 +28,9 @@ public class Competition {
 
     public String getStartingRoundName() {
         return rounds.get(0).getName();
+    }
+
+    public List<CompetitionRound> getRounds() {
+        return rounds;
     }
 }

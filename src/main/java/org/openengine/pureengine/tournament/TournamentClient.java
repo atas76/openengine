@@ -7,5 +7,8 @@ public class TournamentClient {
         tournament.displayHeader();
         System.out.println();
         tournament.displayParticipants();
+
+        System.out.println();
+        tournament.play();
     }
 }
