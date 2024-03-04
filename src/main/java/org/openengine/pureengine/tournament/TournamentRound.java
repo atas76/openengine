@@ -19,11 +19,14 @@ public class TournamentRound {
     }
 
     public void play() {
-        if (participants.isEmpty()) {
-            System.out.println("No participants in this round");
-        }
-
         draw();
+        System.out.println(this.competitionRound.getName() + " fixtures:");
+        displayFixtures();
+
+        System.out.println();
+
+        playFixtures();
+        System.out.println(this.competitionRound.getName() + " results:");
         displayFixtures();
     }
 
@@ -37,7 +40,10 @@ public class TournamentRound {
     }
 
     public void displayFixtures() {
-        System.out.println(this.competitionRound.getName() + " fixtures:");
         this.fixtures.forEach(System.out::println);
     }
-}
+
+    public void playFixtures() {
+        fixtures.forEach(Fixture::play);
+    }
+ }

@@ -64,7 +64,7 @@ public class MatchEngine {
         match.displayStats();
     }
 
-    private void simulateScoring() {
+    public void simulateScoring() {
         double homeMatchxG = MATCH_xG;
         double awayMatchxG = MATCH_xG;
         int skillDifference = homeTeam.getSkill() - awayTeam.getSkill();
