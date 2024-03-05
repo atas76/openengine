@@ -9,6 +9,7 @@ public class MatchEngine {
     private static final double SEED_xG = 0.75;
     private static final double MATCH_xG = 3.0;
     private static final int PERIODS = 90;
+    private static final int EXTRA_TIME_PERIODS = 30;
     /*
      This is technically the 'home team' 'possession bias', but I didn't want to name it as such explicitly because:
         1. It is a more abstract and generic bias used for mainly for testing, and didn't want to get it confused with
@@ -64,7 +65,7 @@ public class MatchEngine {
         match.displayStats();
     }
 
-    public void simulateScoring() {
+    public void simulateScoring(TieBreaker tieBreaker) {
         double homeMatchxG = MATCH_xG;
         double awayMatchxG = MATCH_xG;
         int skillDifference = homeTeam.getSkill() - awayTeam.getSkill();
@@ -93,6 +94,16 @@ public class MatchEngine {
                 simulateTeamScoring(awayTeam, i, awayMatchxG / PERIODS);
             }
         }
+
+        if (homeTeam.getGoalsScored() == awayTeam.getGoalsScored() && tieBreaker != TieBreaker.NONE) {
+            if (tieBreaker == TieBreaker.RANDOM) {
+                match.decideWinner();
+            }
+        }
+    }
+
+    public void simulateScoring() {
+        simulateScoring(TieBreaker.NONE);
     }
 
     private void simulateTeamScoring(Team team, int i, double xG) {
@@ -106,5 +117,9 @@ public class MatchEngine {
         while(rnd.nextDouble() <= SEED_xG / (team.getGoalsScored() + 1)) {
             team.score();
         }
+    }
+
+    public Match getMatch() {
+        return match;
     }
 }

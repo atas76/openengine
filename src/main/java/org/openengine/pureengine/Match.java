@@ -2,11 +2,16 @@ package org.openengine.pureengine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Match {
 
     private Team homeTeam;
     private Team awayTeam;
+
+    private Team winningTeam;
+
+    private static Random rnd = new Random();
 
     private List<MatchEvent> events = new ArrayList<>();
     private Stats stats;
@@ -32,5 +37,19 @@ public class Match {
 
     public void displayStats() {
         stats.display();
+    }
+
+    public void decideWinner() {
+        this.winningTeam = rnd.nextBoolean() ? this.homeTeam : this.awayTeam;
+    }
+
+    public Team getWinningTeam() {
+        if (this.homeTeam.getGoalsScored() > this.awayTeam.getGoalsScored()) {
+            this.winningTeam = this.homeTeam;
+        } else if (this.awayTeam.getGoalsScored() > this.homeTeam.getGoalsScored()) {
+            this.winningTeam = this.awayTeam;
+        }
+
+        return winningTeam;
     }
 }
