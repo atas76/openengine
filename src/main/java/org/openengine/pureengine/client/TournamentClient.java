@@ -1,4 +1,7 @@
-package org.openengine.pureengine.tournament;
+package org.openengine.pureengine.client;
+
+import org.openengine.pureengine.tournament.Tournament;
+import org.openengine.pureengine.tournament.TournamentRepository;
 
 public class TournamentClient {
     public static void main(String[] args) {

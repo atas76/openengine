@@ -1,4 +1,7 @@
-package org.openengine.pureengine.tournament;
+package org.openengine.pureengine.client;
+
+import org.openengine.pureengine.tournament.Competition;
+import org.openengine.pureengine.tournament.CompetitionRepository;
 
 public class CompetitionClient {
 

@@ -29,11 +29,6 @@ public class MatchEngine {
         this.match = new Match(homeTeam, awayTeam);
     }
 
-    public static void main(String[] args) throws InterruptedException {
-        MatchEngine matchEngine = new MatchEngine(new Team("Red", 9), new Team("Blue", 4));
-        matchEngine.play();
-    }
-
     public void play() throws InterruptedException {
         simulateScoring();
         reproduceGame();
