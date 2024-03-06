@@ -1,8 +1,6 @@
 package org.openengine.pureengine;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Match {
 
@@ -15,11 +13,18 @@ public class Match {
 
     private List<MatchEvent> events = new ArrayList<>();
     private Stats stats;
+    private Map<Team, Integer> goalsScored = new HashMap<>();
 
     public Match(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
+        this.goalsScored.put(this.homeTeam, 0);
+        this.goalsScored.put(this.awayTeam, 0);
         this.stats = new Stats(homeTeam, awayTeam);
+    }
+
+    public void score(Team team) {
+        this.goalsScored.put(team, this.goalsScored.get(team) + 1);
     }
 
     public void addPossession(boolean isHomeTeam) {
@@ -44,12 +49,28 @@ public class Match {
     }
 
     public Team getWinningTeam() {
-        if (this.homeTeam.getGoalsScored() > this.awayTeam.getGoalsScored()) {
+        if (this.goalsScored.get(this.homeTeam) > this.goalsScored.get(this.awayTeam)) {
             this.winningTeam = this.homeTeam;
-        } else if (this.awayTeam.getGoalsScored() > this.homeTeam.getGoalsScored()) {
+        } else if (this.goalsScored.get(this.awayTeam) > this.goalsScored.get(this.homeTeam)) {
             this.winningTeam = this.awayTeam;
         }
 
         return winningTeam;
+    }
+
+    public Team getHomeTeam() {
+        return homeTeam;
+    }
+
+    public Team getAwayTeam() {
+        return awayTeam;
+    }
+
+    public int getHomeGoalsScored() {
+        return this.goalsScored.get(this.homeTeam);
+    }
+
+    public int getAwayGoalsScored() {
+        return this.goalsScored.get(this.awayTeam);
     }
 }

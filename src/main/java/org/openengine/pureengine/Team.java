@@ -1,8 +1,9 @@
 package org.openengine.pureengine;
 
+import java.util.Objects;
+
 public class Team {
     private String name;
-    private int goalsScored;
 
     private int skill;
 
@@ -19,15 +20,20 @@ public class Team {
         return name;
     }
 
-    public int getGoalsScored() {
-        return goalsScored;
-    }
-
     public int getSkill() {
         return skill;
     }
 
-    public void score() {
-        goalsScored++;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Team team = (Team) o;
+        return Objects.equals(name, team.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

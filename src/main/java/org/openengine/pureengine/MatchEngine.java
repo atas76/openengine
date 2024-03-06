@@ -57,7 +57,7 @@ public class MatchEngine {
     private void displayScore() {
         System.out.println(homeTeam.getName() + " - " + awayTeam.getName()
                 + " "
-                + homeTeam.getGoalsScored() + " - " + awayTeam.getGoalsScored());
+                + match.getHomeGoalsScored() + " - " + match.getAwayGoalsScored());
     }
 
     private void displayStats() {
@@ -95,7 +95,7 @@ public class MatchEngine {
             }
         }
 
-        if (homeTeam.getGoalsScored() == awayTeam.getGoalsScored() && tieBreaker != TieBreaker.NONE) {
+        if (match.getHomeGoalsScored() == match.getAwayGoalsScored() && tieBreaker != TieBreaker.NONE) {
             if (tieBreaker == TieBreaker.RANDOM) {
                 match.decideWinner();
             }
@@ -108,14 +108,8 @@ public class MatchEngine {
 
     private void simulateTeamScoring(Team team, int i, double xG) {
         if (rnd.nextDouble() <= xG) {
-            team.score();
+            match.score(team);
             match.addEvent(new MatchEvent(team.getName(), MatchEventType.GOAL, i + 1));
-        }
-    }
-
-    private static void simulateScoringProgressiveReduction(Team team) {
-        while(rnd.nextDouble() <= SEED_xG / (team.getGoalsScored() + 1)) {
-            team.score();
         }
     }
 
