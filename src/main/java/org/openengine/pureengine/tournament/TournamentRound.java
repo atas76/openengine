@@ -20,13 +20,15 @@ public class TournamentRound {
 
     public void play() {
         draw();
-        System.out.println(this.competitionRound.getName() + " fixtures:");
+        System.out.println(participants.size() > 2
+                ? this.competitionRound.getName() + " fixtures:"
+                : this.competitionRound.getName() + ":");
         displayFixtures();
 
         System.out.println();
 
         playFixtures();
-        System.out.println(this.competitionRound.getName() + " results:");
+        System.out.println(participants.size() > 2 ? this.competitionRound.getName() + " results: " : "Result:");
         displayFixtures();
     }
 
@@ -45,5 +47,9 @@ public class TournamentRound {
 
     public void playFixtures() {
         fixtures.forEach(Fixture::play);
+    }
+
+    public List<Team> getQualifiedTeams() {
+        return this.fixtures.stream().map(Fixture::getWinningTeam).toList();
     }
  }

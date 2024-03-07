@@ -21,6 +21,10 @@ public class Fixture {
         this.played = true;
     }
 
+    public Team getWinningTeam() {
+        return winningTeam;
+    }
+
     @Override
     public String toString() {
         Match matchDetails = matchEngine.getMatch();

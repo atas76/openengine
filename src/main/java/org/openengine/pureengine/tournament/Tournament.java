@@ -31,5 +31,15 @@ public class Tournament {
     public void play() {
         TournamentRound currentRound = this.rounds.get(0);
         currentRound.play();
+        List<Team> qualifiedTeams = currentRound.getQualifiedTeams();
+        for (int i = 1; i < competition.getRounds().size(); i++) {
+            rounds.add(new TournamentRound(competition.getRounds().get(i), qualifiedTeams));
+            currentRound = this.rounds.get(i);
+            System.out.println();
+            currentRound.play();
+            qualifiedTeams = currentRound.getQualifiedTeams();
+        }
+        System.out.println();
+        System.out.println(competition.getName() +  " " + year +  " winner: " + qualifiedTeams.get(0).getName());
     }
 }
