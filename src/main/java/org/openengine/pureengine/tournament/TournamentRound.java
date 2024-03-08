@@ -19,17 +19,27 @@ public class TournamentRound {
     }
 
     public void play() {
-        draw();
-        System.out.println(participants.size() > 2
-                ? this.competitionRound.getName() + " fixtures:"
-                : this.competitionRound.getName() + ":");
-        displayFixtures();
+        play(false);
+    }
 
-        System.out.println();
+    public void play(boolean silentMode) {
+
+        draw();
+
+        if (!silentMode) {
+            System.out.println(participants.size() > 2
+                    ? this.competitionRound.getName() + " fixtures:"
+                    : this.competitionRound.getName() + ":");
+            displayFixtures();
+            System.out.println();
+        }
 
         playFixtures();
-        System.out.println(participants.size() > 2 ? this.competitionRound.getName() + " results: " : "Result:");
-        displayFixtures();
+
+        if (!silentMode) {
+            System.out.println(participants.size() > 2 ? this.competitionRound.getName() + " results: " : "Result:");
+            displayFixtures();
+        }
     }
 
     public void draw() {

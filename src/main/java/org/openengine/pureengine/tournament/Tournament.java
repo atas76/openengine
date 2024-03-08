@@ -11,6 +11,11 @@ public class Tournament {
     private List<Team> participants;
     private Competition competition;
     private List<TournamentRound> rounds = new ArrayList<>();
+    private Team winner;
+
+    public Tournament(Tournament tournament) {
+        this(tournament.year, tournament.participants, tournament.competition);
+    }
 
     public Tournament(long year, List<Team> participants, Competition competition) {
         this.year = year;
@@ -29,17 +34,28 @@ public class Tournament {
     }
 
     public void play() {
+        play(false);
+    }
+
+    public void play(boolean silentMode) {
         TournamentRound currentRound = this.rounds.get(0);
-        currentRound.play();
+        currentRound.play(silentMode);
         List<Team> qualifiedTeams = currentRound.getQualifiedTeams();
         for (int i = 1; i < competition.getRounds().size(); i++) {
             rounds.add(new TournamentRound(competition.getRounds().get(i), qualifiedTeams));
             currentRound = this.rounds.get(i);
-            System.out.println();
-            currentRound.play();
+            if (!silentMode) System.out.println();
+            currentRound.play(silentMode);
             qualifiedTeams = currentRound.getQualifiedTeams();
         }
-        System.out.println();
-        System.out.println(competition.getName() +  " " + year +  " winner: " + qualifiedTeams.get(0).getName());
+        this.winner = qualifiedTeams.get(0);
+        if (!silentMode) {
+            System.out.println();
+            System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getName());
+        }
+    }
+
+    public Team getWinner() {
+        return winner;
     }
 }
