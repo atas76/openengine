@@ -14,6 +14,7 @@ public class Match {
     private List<MatchEvent> events = new ArrayList<>();
     private Stats stats;
     private Map<Team, Integer> goalsScored = new HashMap<>();
+    private Map<Team, Integer> goalsScoredNormalTime;
 
     public Match(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
@@ -33,6 +34,12 @@ public class Match {
 
     public void addEvent(MatchEvent matchEvent) {
         events.add(matchEvent);
+    }
+
+    public void endNormalTime() {
+        this.goalsScoredNormalTime =
+                Map.of(this.homeTeam, this.goalsScored.get(this.homeTeam),
+                        this.awayTeam, this.goalsScored.get(this.awayTeam));
     }
 
 
@@ -72,5 +79,17 @@ public class Match {
 
     public int getAwayGoalsScored() {
         return this.goalsScored.get(this.awayTeam);
+    }
+
+    public int getHomeGoalsScoredNormalTime() {
+        return this.goalsScoredNormalTime.get(this.homeTeam);
+    }
+
+    public int getAwayGoalsScoredNormalTime() {
+        return this.goalsScoredNormalTime.get(this.awayTeam);
+    }
+
+    public boolean isExtraTimePlayed() {
+        return this.goalsScoredNormalTime != null;
     }
 }

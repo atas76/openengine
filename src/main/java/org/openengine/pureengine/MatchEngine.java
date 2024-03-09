@@ -30,7 +30,7 @@ public class MatchEngine {
     }
 
     public void play() throws InterruptedException {
-        simulateScoring();
+        simulateMatch();
         reproduceGame();
         displayScore();
         displayStats();
@@ -60,7 +60,7 @@ public class MatchEngine {
         match.displayStats();
     }
 
-    public void simulateScoring(TieBreaker tieBreaker) {
+    public void simulateMatch(TieBreaker tieBreaker) {
         double homeMatchxG = MATCH_xG;
         double awayMatchxG = MATCH_xG;
         int skillDifference = homeTeam.getSkill() - awayTeam.getSkill();
@@ -80,25 +80,40 @@ public class MatchEngine {
             System.out.println();
         }
 
-        for (int i = 0; i < PERIODS; i++) {
-            if (rnd.nextDouble() <= TEAM_BIAS) {
-                match.addPossession(true);
-                simulateTeamScoring(homeTeam, i, homeMatchxG / PERIODS);
-            } else {
-                match.addPossession(false);
-                simulateTeamScoring(awayTeam, i, awayMatchxG / PERIODS);
-            }
-        }
+        simulateMatchFlow(homeMatchxG, awayMatchxG, PERIODS);
 
         if (match.getHomeGoalsScored() == match.getAwayGoalsScored() && tieBreaker != TieBreaker.NONE) {
             if (tieBreaker == TieBreaker.RANDOM) {
                 match.decideWinner();
+            } else if (tieBreaker == TieBreaker.EXTRA_TIME) {
+                match.endNormalTime();
+                final double EXTRA_TIME_RATIO = (double) EXTRA_TIME_PERIODS / PERIODS;
+                simulateMatchFlow(homeMatchxG * EXTRA_TIME_RATIO, awayMatchxG * EXTRA_TIME_RATIO,
+                        EXTRA_TIME_PERIODS);
+                if (match.getHomeGoalsScored() == match.getAwayGoalsScored()) {
+                    match.decideWinner();
+                }
             }
         }
     }
 
-    public void simulateScoring() {
-        simulateScoring(TieBreaker.NONE);
+    private void simulateMatchFlow(double homeMatchxG, double awayMatchxG, int duration) {
+        final double intervalHomexG = homeMatchxG / duration;
+        final double intervalAwayxG = awayMatchxG / duration;
+
+        for (int i = 0; i < duration; i++) {
+            if (rnd.nextDouble() <= TEAM_BIAS) {
+                match.addPossession(true);
+                simulateTeamScoring(homeTeam, i, intervalHomexG);
+            } else {
+                match.addPossession(false);
+                simulateTeamScoring(awayTeam, i, intervalAwayxG);
+            }
+        }
+    }
+
+    public void simulateMatch() {
+        simulateMatch(TieBreaker.NONE);
     }
 
     private void simulateTeamScoring(Team team, int i, double xG) {
