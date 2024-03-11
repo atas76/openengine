@@ -8,6 +8,7 @@ public class Match {
     private Team awayTeam;
 
     private Team winningTeam;
+    private Team losingTeam;
 
     private static Random rnd = new Random();
 
@@ -53,6 +54,7 @@ public class Match {
 
     public void decideWinner() {
         this.winningTeam = rnd.nextBoolean() ? this.homeTeam : this.awayTeam;
+        this.losingTeam = this.homeTeam.equals(this.winningTeam) ? this.awayTeam : this.homeTeam;
     }
 
     public Team getWinningTeam() {
@@ -63,6 +65,16 @@ public class Match {
         }
 
         return winningTeam;
+    }
+
+    public Team getLosingTeam() {
+        if (this.goalsScored.get(this.homeTeam) < this.goalsScored.get(this.awayTeam)) {
+            this.losingTeam = this.homeTeam;
+        } else if (this.goalsScored.get(this.awayTeam) < this.goalsScored.get(this.homeTeam)) {
+            this.losingTeam = this.awayTeam;
+        }
+
+        return losingTeam;
     }
 
     public Team getHomeTeam() {

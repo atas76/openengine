@@ -12,6 +12,7 @@ public class Tournament {
     private Competition competition;
     private List<TournamentRound> rounds = new ArrayList<>();
     private Team winner;
+    private Team runnerUp;
 
     public Tournament(Tournament tournament) {
         this(tournament.year, tournament.participants, tournament.competition);
@@ -49,13 +50,19 @@ public class Tournament {
             qualifiedTeams = currentRound.getQualifiedTeams();
         }
         this.winner = qualifiedTeams.get(0);
+        this.runnerUp = currentRound.getNonQualifiedTeams().get(0);
         if (!silentMode) {
             System.out.println();
             System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getName());
+            System.out.println("Runner up: " + this.runnerUp.getName());
         }
     }
 
     public Team getWinner() {
         return winner;
+    }
+
+    public Team getRunnerUp() {
+        return runnerUp;
     }
 }

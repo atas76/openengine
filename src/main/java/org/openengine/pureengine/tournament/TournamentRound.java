@@ -62,4 +62,8 @@ public class TournamentRound {
     public List<Team> getQualifiedTeams() {
         return this.fixtures.stream().map(Fixture::getWinningTeam).toList();
     }
+
+    public List<Team> getNonQualifiedTeams() {
+        return this.fixtures.stream().map(Fixture::getLosingTeam).toList();
+    }
  }
