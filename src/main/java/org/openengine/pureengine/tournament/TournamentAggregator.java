@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
-
-import java.util.*;
-
 public class TournamentAggregator {
 
     private final static int REPETITIONS = 10_000;
@@ -15,6 +12,11 @@ public class TournamentAggregator {
     private Tournament tournament;
 
     private Map<String, Integer> winners = new HashMap<>();
+    private Map<String, Integer> runnerUps = new HashMap<>();
+
+    private Map<String, Integer> finalParticipants = new HashMap<>();
+
+    private Map<String, Integer> historicalCoefficient = new HashMap<>();
 
     public TournamentAggregator(Tournament tournament) {
         this.tournament = tournament;
@@ -29,18 +31,35 @@ public class TournamentAggregator {
             Tournament tournament = new Tournament(this.tournament);
             tournament.play(true);
             this.winners.merge(tournament.getWinner().getName(), 1, Integer::sum);
+            this.historicalCoefficient.merge(tournament.getWinner().getName(), 2, Integer::sum);
+            this.runnerUps.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
+            this.historicalCoefficient.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
+            this.finalParticipants.merge(tournament.getWinner().getName(), 1, Integer::sum);
+            this.finalParticipants.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
         }
     }
 
     public void displayResults() {
-        Map<String, Integer> winsRanking = this.winners.entrySet().stream()
+        displayRanking(this.winners, "Winners");
+        displayRanking(this.runnerUps, "Runner ups");
+        displayRanking(this.finalParticipants, "Final participants");
+        displayRanking(this.historicalCoefficient, "Historical coefficient");
+    }
+
+    private void displayRanking(Map<String, Integer> map, String label) {
+        Map<String, Integer> ranking = getSortedMap(map);
+        System.out.println(label + ": ");
+        ranking.forEach((key, value) -> System.out.println(key + ": " + value));
+        System.out.println();
+    }
+
+    private LinkedHashMap<String, Integer> getSortedMap(Map<String, Integer> map) {
+        return map.entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,
                         (oldValue, newValue) -> oldValue,
                         LinkedHashMap::new));
-        System.out.println("Wins: ");
-        winsRanking.forEach((key, value) -> System.out.println(key + ": " + value));
     }
 }
