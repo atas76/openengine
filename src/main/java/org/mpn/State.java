@@ -29,8 +29,10 @@ public enum State {
     GOAL_ATTEMPT_OUTCOME,
     OFF_TARGET,
     BLOCK,
+    POST,
     SAVE,
-    LONG_BALL
+    LONG_BALL,
+    ATTACKING_ENCROACHMENT
     ;
 
     public static State createFromName(String name) throws UnknownStateException {
@@ -60,8 +62,10 @@ public enum State {
             case "GoalAttempt" -> GOAL_ATTEMPT;
             case "OffTarget" -> OFF_TARGET;
             case "Block" -> BLOCK;
+            case "Post" -> POST;
             case "Save" -> SAVE;
             case "LongBall" -> LONG_BALL;
+            case "AttackingEncroachment" -> ATTACKING_ENCROACHMENT;
             default -> throw new UnknownStateException();
         };
     }
