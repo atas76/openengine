@@ -14,6 +14,9 @@ public class PenaltyShootOut {
     private int homeGoalsScored;
     private int awayGoalsScored;
 
+    private int homeTeamPenaltiesTaken;
+    private int awayTeamPenaltiesTaken;
+
     public PenaltyShootOut(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -25,8 +28,17 @@ public class PenaltyShootOut {
 
     public void execute(boolean silentMode) {
         for (int i = 0; i < PENALTIES_NUM; i++) {
+            if (!isTeamInShootOut(this.homeTeam)) break;
+            if (!silentMode) displayPenalty(this.homeTeam);
             shootPenalty(this.homeTeam, silentMode);
+            this.homeTeamPenaltiesTaken++;
+            if (!isTeamInShootOut(this.homeTeam)) break;
+
+            if (!isTeamInShootOut(this.awayTeam)) break;
+            if (!silentMode) displayPenalty(this.awayTeam);
             shootPenalty(this.awayTeam, silentMode);
+            this.awayTeamPenaltiesTaken++;
+            if (!isTeamInShootOut(this.awayTeam)) break;
         }
         if (!silentMode) {
             System.out.println("Final score:");
@@ -34,10 +46,31 @@ public class PenaltyShootOut {
         }
     }
 
+    private boolean isTeamInShootOut(Team team) {
+        int penaltiesTaken = team.equals(this.homeTeam) ? this.homeTeamPenaltiesTaken : this.awayTeamPenaltiesTaken;
+        int scoreDifference = team.equals(this.homeTeam) ?
+                this.homeGoalsScored - this.awayGoalsScored : this.awayGoalsScored - this.homeGoalsScored;
+        return PENALTIES_NUM - penaltiesTaken >= -scoreDifference;
+    }
+
+    private String getOrdinalSuffix(int ordinal) {
+        return switch (ordinal) {
+          case 0 -> "st";
+          case 1 -> "nd";
+          case 2 -> "rd";
+          default -> "th";
+        };
+    }
+
     private void displayScore() {
         System.out.println(homeTeam.getName() + " - " + awayTeam.getName() + " " +
                 this.homeGoalsScored + " - " + this.awayGoalsScored);
         System.out.println();
+    }
+
+    private void displayPenalty(Team team) {
+        int penaltiesTaken = team.equals(this.homeTeam) ? this.homeTeamPenaltiesTaken : this.awayTeamPenaltiesTaken;
+        System.out.println(team.getName() + " " + (penaltiesTaken + 1) + getOrdinalSuffix(penaltiesTaken) + " penalty");
     }
 
     private void shootPenalty(Team team, boolean silentMode) {
