@@ -36,4 +36,80 @@ public class PenaltyShotsTests {
         assertEquals(0.27, statement.getParameters().xG(), 0.0);
         assertEquals(State.OFF_TARGET, statement.getParameters().defaultEndState());
     }
+
+    @Test
+    public void testPenaltyPostDefensiveRebound() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Post => !Transition:Dw");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.POST, statement.getEndState());
+        assertEquals(State.TRANSITION, statement.getGoalAttemptOutcome());
+        assertEquals(PitchPosition.Dw, statement.getOutcomePitchPosition());
+        assertTrue(statement.isPossessionChanged());
+    }
+
+    @Test
+    public void testPenaltyPostCorner() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Post => Corner");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.POST, statement.getEndState());
+        assertEquals(State.CORNER, statement.getGoalAttemptOutcome());
+    }
+
+    @Test
+    public void testPenaltySaveCorner() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Save => Corner");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.CORNER, statement.getGoalAttemptOutcome());
+    }
+
+    @Test
+    public void testPenaltyPostGoalAttemptAfterRebound() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Post => GoalAttempt:AB11; xG = 0.04, default = OffTarget");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.POST, statement.getEndState());
+        assertEquals(State.GOAL_ATTEMPT, statement.getGoalAttemptOutcome());
+        assertEquals(PitchPosition.AB11, statement.getOutcomePitchPosition());
+        assertEquals(0.04, statement.getParameters().xG(), 0.0);
+        assertEquals(State.OFF_TARGET, statement.getParameters().defaultEndState());
+    }
+
+    @Test
+    public void testPenaltyShotOffTarget() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> OffTarget");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.OFF_TARGET, statement.getEndState());
+    }
+
+    @Test
+    public void testPenaltyShotAttackingEncroachment() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Post => AttackingEncroachment");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.POST, statement.getEndState());
+        assertEquals(State.ATTACKING_ENCROACHMENT, statement.getGoalAttemptOutcome());
+    }
 }
