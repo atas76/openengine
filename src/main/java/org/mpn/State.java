@@ -32,7 +32,8 @@ public enum State {
     POST,
     SAVE,
     LONG_BALL,
-    ATTACKING_ENCROACHMENT
+    ATTACKING_ENCROACHMENT,
+    DEFENSIVE_ENCROACHMENT
     ;
 
     public static State createFromName(String name) throws UnknownStateException {
@@ -66,6 +67,7 @@ public enum State {
             case "Save" -> SAVE;
             case "LongBall" -> LONG_BALL;
             case "AttackingEncroachment" -> ATTACKING_ENCROACHMENT;
+            case "DefensiveEncroachment" -> DEFENSIVE_ENCROACHMENT;
             default -> throw new UnknownStateException();
         };
     }
