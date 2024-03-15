@@ -6,4 +6,11 @@ X: 00:00 Penalty -> Post => GoalAttempt:AB11; xG = 0.04, default = OffTarget
 X: 00:00 Penalty -> OffTarget
 X: 00:00 Penalty -> Save => Corner
 X: 00:00 Penalty -> Post => GoalAttempt:AB00; xG = 0.57, default = Corner
-X: 00:00 Penalty -> Post => Attacking_Encroachment
+X: 00:00 Penalty -> Post => AttackingEncroachment
+X: 00:00 Penalty -> Save => !Goalkeeper
+X: 00:00 Penalty -> OffTarget
+X: 00:00 Penalty -> Post => !Transition:Dw
+X: 00:00 Penalty -> Save => Corner
+X: 00:00 Penalty -> Save => GoalAttempt:AB10; xG = 0.5, default = Corner
+X: 00:00 Penalty -> Save => DefensiveEncroachment
+X: 00:00 Penalty -> Save => GoalAttempt:AB20; xG = 0.03, default = !Goalkeeper
