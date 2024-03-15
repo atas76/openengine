@@ -112,4 +112,16 @@ public class PenaltyShotsTests {
         assertEquals(State.POST, statement.getEndState());
         assertEquals(State.ATTACKING_ENCROACHMENT, statement.getGoalAttemptOutcome());
     }
+
+    @Test
+    public void testPenaltyShotDefensiveEncroachment() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Save => DefensiveEncroachment");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.DEFENSIVE_ENCROACHMENT, statement.getGoalAttemptOutcome());
+    }
 }
