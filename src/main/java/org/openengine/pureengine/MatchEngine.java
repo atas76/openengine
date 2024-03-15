@@ -93,6 +93,17 @@ public class MatchEngine {
                 if (match.getHomeGoalsScored() == match.getAwayGoalsScored()) {
                     match.decideWinner();
                 }
+            } else if (tieBreaker == TieBreaker.EXTRA_TIME_PENALTIES) {
+                match.endNormalTime();
+                final double EXTRA_TIME_RATIO = (double) EXTRA_TIME_PERIODS / PERIODS;
+                simulateMatchFlow(homeMatchxG * EXTRA_TIME_RATIO, awayMatchxG * EXTRA_TIME_RATIO,
+                        EXTRA_TIME_PERIODS);
+                if (match.getHomeGoalsScored() == match.getAwayGoalsScored()) {
+                    PenaltyShootOut penaltyShootOut = new PenaltyShootOut(this.homeTeam, this.awayTeam);
+                    penaltyShootOut.execute(true);
+                    match.addPenaltyShootOutScore(penaltyShootOut.getHomeGoalsScored(),
+                            penaltyShootOut.getAwayGoalsScored());
+                }
             }
         }
     }

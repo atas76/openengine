@@ -10,7 +10,7 @@ public class Fixture {
     private boolean played;
     private Team winningTeam;
     private Team losingTeam;
-    private static final TieBreaker TIE_BREAKER = EXTRA_TIME;
+    private static final TieBreaker TIE_BREAKER = EXTRA_TIME_PENALTIES;
 
     public Fixture(Team homeTeam, Team awayTeam) {
         this.matchEngine = new MatchEngine(homeTeam, awayTeam);
@@ -52,6 +52,21 @@ public class Fixture {
                 fullScore = teams + " " + score;
                 if (matchDetails.getHomeGoalsScored() == matchDetails.getAwayGoalsScored()) {
                     fullScore += winningTeam;
+                }
+            } else if (TIE_BREAKER == EXTRA_TIME_PENALTIES && matchDetails.isExtraTimePlayed()) {
+                if (matchDetails.isExtraTimePlayed()) {
+                    String normalTimeScore = matchDetails.getHomeGoalsScoredNormalTime()
+                            + " - "
+                            + matchDetails.getAwayGoalsScoredNormalTime();
+                    score = normalTimeScore + ", " + score + " (AET)";
+                    fullScore = teams + " " + score;
+                    if (matchDetails.getHomeGoalsScored() == matchDetails.getAwayGoalsScored()) {
+                        fullScore += ", "
+                                + matchDetails.getHomePenaltyShootOutGoals()
+                                + " - "
+                                + matchDetails.getAwayPenaltyShootOutGoals()
+                                + " (pens)";
+                    }
                 }
             }
             return fullScore;

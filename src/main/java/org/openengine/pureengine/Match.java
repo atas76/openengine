@@ -16,6 +16,7 @@ public class Match {
     private Stats stats;
     private Map<Team, Integer> goalsScored = new HashMap<>();
     private Map<Team, Integer> goalsScoredNormalTime;
+    private Map<Team, Integer> goalsScoredPenaltyShootOut = new HashMap<>();
 
     public Match(Team homeTeam, Team awayTeam) {
         this.homeTeam = homeTeam;
@@ -27,6 +28,11 @@ public class Match {
 
     public void score(Team team) {
         this.goalsScored.put(team, this.goalsScored.get(team) + 1);
+    }
+
+    public void addPenaltyShootOutScore(int homeTeamGoals, int awayTeamGoals) {
+        this.goalsScoredPenaltyShootOut.put(this.homeTeam, homeTeamGoals);
+        this.goalsScoredPenaltyShootOut.put(this.awayTeam, awayTeamGoals);
     }
 
     public void addPossession(boolean isHomeTeam) {
@@ -62,6 +68,12 @@ public class Match {
             this.winningTeam = this.homeTeam;
         } else if (this.goalsScored.get(this.awayTeam) > this.goalsScored.get(this.homeTeam)) {
             this.winningTeam = this.awayTeam;
+        } else {
+            if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) > this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
+                this.winningTeam = this.homeTeam;
+            } else if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) < this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
+                this.winningTeam = this.awayTeam;
+            }
         }
 
         return winningTeam;
@@ -72,6 +84,12 @@ public class Match {
             this.losingTeam = this.homeTeam;
         } else if (this.goalsScored.get(this.awayTeam) < this.goalsScored.get(this.homeTeam)) {
             this.losingTeam = this.awayTeam;
+        } else {
+            if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) > this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
+                this.losingTeam = this.awayTeam;
+            } else if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) < this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
+                this.winningTeam = this.homeTeam;
+            }
         }
 
         return losingTeam;
@@ -99,6 +117,14 @@ public class Match {
 
     public int getAwayGoalsScoredNormalTime() {
         return this.goalsScoredNormalTime.get(this.awayTeam);
+    }
+
+    public int getHomePenaltyShootOutGoals() {
+        return this.goalsScoredPenaltyShootOut.get(this.homeTeam);
+    }
+
+    public int getAwayPenaltyShootOutGoals() {
+        return this.goalsScoredPenaltyShootOut.get(this.awayTeam);
     }
 
     public boolean isExtraTimePlayed() {
