@@ -40,10 +40,22 @@ public class PenaltyShootOut {
             this.awayTeamPenaltiesTaken++;
             if (!isTeamInShootOut(this.awayTeam)) break;
         }
+        while (homeGoalsScored == awayGoalsScored) {
+            executePenaltyShotRound(silentMode);
+        }
         if (!silentMode) {
             System.out.println("Final score:");
             displayScore();
         }
+    }
+
+    private void executePenaltyShotRound(boolean silentMode) {
+        if (!silentMode) displayPenalty(this.homeTeam);
+        shootPenalty(this.homeTeam, silentMode);
+        this.homeTeamPenaltiesTaken++;
+        if (!silentMode) displayPenalty(this.awayTeam);
+        shootPenalty(this.awayTeam, silentMode);
+        this.awayTeamPenaltiesTaken++;
     }
 
     private boolean isTeamInShootOut(Team team) {
