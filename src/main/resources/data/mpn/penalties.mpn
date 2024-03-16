@@ -6,6 +6,8 @@ X: 00:00 Penalty -> Post => GoalAttempt:AB11; xG = 0.04, default = OffTarget
 X: 00:00 Penalty -> OffTarget
 X: 00:00 Penalty -> Save => Corner
 X: 00:00 Penalty -> Post => GoalAttempt:AB00; xG = 0.57, default = Corner
+X: 00:00 Penalty -> OffTarget
+X: 00:00 Penalty -> Save => !Goalkeeper
 X: 00:00 Penalty -> Post => AttackingEncroachment
 X: 00:00 Penalty -> Save => !Goalkeeper
 X: 00:00 Penalty -> OffTarget
@@ -14,3 +16,16 @@ X: 00:00 Penalty -> Save => Corner
 X: 00:00 Penalty -> Save => GoalAttempt:AB10; xG = 0.5, default = Corner
 X: 00:00 Penalty -> Save => DefensiveEncroachment
 X: 00:00 Penalty -> Save => GoalAttempt:AB20; xG = 0.03, default = !Goalkeeper
+X: 00:00 Penalty -> Save => GoalAttempt:AB11; xG = 0.16, default = OffTarget
+X: 00:00 Penalty -> Save => Attack:ABw
+X: 00:00 Penalty -> Save => GoalAttempt:AB00; xG = 0.78, default = Corner
+X: 00:00 Penalty -> Save => Corner
+X: 00:00 Penalty -> Save => GoalAttempt:AB11; xG = 0.27, default = Corner
+X: 00:00 Penalty -> Save => !Transition:DB02
+X: 00:00 Penalty -> Save => GoalAttempt:AB00; xG = 0.31, default = !Goalkeeper
+X: 00:00 Penalty -> Save => GoalAttempt:AB00; xG = 0.63, default = Corner
+X: 00:00 Penalty -> Save => !Goalkeeper
+X: 00:00 Penalty -> Save => !Goalkeeper
+X: 00:00 Penalty -> Save => !Transition:DB02
+X: 00:00 Penalty -> Save => ThrowIn:ABw
+X: 00:00 Penalty -> Save => Attack:ABw
