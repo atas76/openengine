@@ -88,7 +88,7 @@ public class Match {
             if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) > this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
                 this.losingTeam = this.awayTeam;
             } else if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) < this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
-                this.winningTeam = this.homeTeam;
+                this.losingTeam = this.homeTeam;
             }
         }
 
