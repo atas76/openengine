@@ -52,6 +52,32 @@ public class PenaltyShotsTests {
     }
 
     @Test
+    public void testPenaltyAttackingRebound() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Save => Attack:ABw");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.ATTACK, statement.getGoalAttemptOutcome());
+        assertEquals(PitchPosition.ABw, statement.getOutcomePitchPosition());
+    }
+
+    @Test
+    public void testPenaltyAttackingThrowIn() throws Exception {
+        Parser parser = new Parser();
+
+        Statement statement =
+                parser.parse("X: 00:00 Penalty -> Save => ThrowIn:ABw");
+
+        assertEquals(State.PENALTY, statement.getInitialState());
+        assertEquals(State.SAVE, statement.getEndState());
+        assertEquals(State.THROW_IN, statement.getGoalAttemptOutcome());
+        assertEquals(PitchPosition.ABw, statement.getOutcomePitchPosition());
+    }
+
+    @Test
     public void testPenaltyPostCorner() throws Exception {
         Parser parser = new Parser();
 
