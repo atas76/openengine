@@ -176,7 +176,7 @@ public class Dataset {
         return data.size();
     }
 
-    private List<? extends ProcessUnit> getByProcessUnitType(Class<? extends ProcessUnit> clazz) {
+    protected List<? extends ProcessUnit> getByProcessUnitType(Class<? extends ProcessUnit> clazz) {
         return data.stream().filter(clazz::isInstance).toList();
     }
 }
