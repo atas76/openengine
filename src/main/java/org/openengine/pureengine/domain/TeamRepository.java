@@ -2,27 +2,45 @@ package org.openengine.pureengine.domain;
 
 import org.openengine.pureengine.Team;
 
-import java.util.Map;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class TeamRepository {
-    private static final Map<String, Team> teams = Map.ofEntries(
-            Map.entry("Coventry", new Team("Coventry City", 5)),
-            Map.entry("Maidstone", new Team("Maidstone United", 1)),
-            Map.entry("Bournemouth", new Team("Bournemouth", 7)),
-            Map.entry("Leicester", new Team("Leicester City", 5)),
-            Map.entry("Blackburn", new Team("Blackburn Rovers", 5)),
-            Map.entry("Newcastle", new Team("Newcastle United", 8)),
-            Map.entry("Luton", new Team("Luton Town", 6)),
-            Map.entry("Manchester City", new Team("Manchester City", 10)),
-            Map.entry("Chelsea", new Team("Chelsea", 7)),
-            Map.entry("Leeds", new Team("Leeds United", 5)),
-            Map.entry("Nottingham Forest", new Team("Nottingham Forest", 6)),
-            Map.entry("Manchester United", new Team("Manchester United", 8)),
-            Map.entry("Wolves", new Team("Wolverhampton Wanderers", 7)),
-            Map.entry("Brighton", new Team("Brighton & Hove Albion", 8)),
-            Map.entry("Liverpool", new Team("Liverpool", 10)),
-            Map.entry("Southampton", new Team("Southampton", 5))
-    );
+
+    private static final String datasource = CommonUtil.DOMAIN_ROOT + "/team.csv";
+
+    private static Map<String, Team> teams;
+
+    static {
+        loadData();
+    }
+
+    public static void loadData() {
+        teams = new HashMap<>();
+        try (var records = Files.lines(Paths.get(datasource))) {
+            records.forEach(record -> {
+                try {
+                    if (!record.startsWith("#")) {
+                        String [] csvRecord = CommonUtil.parseCsv(record);
+                        teams.put(csvRecord[0], new Team(csvRecord[1], Integer.parseInt(csvRecord[2])));
+                    }
+                } catch (Exception e) {
+                    System.out.println(record);
+                    throw new RuntimeException(e);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Set<String> getEntries() {
+        Set<String> entries = new HashSet<>();
+        teams.forEach((k, v) -> entries.add(k + ": " + v.toString()));
+        return entries;
+    }
 
     public static Team getTeam(String name) {
         return teams.get(name);
