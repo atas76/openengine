@@ -19,8 +19,22 @@ public class PenaltiesDataProcessorClient {
 
         System.out.println("Raw dataset size: " + dataset.size());
 
+        System.out.println();
         System.out.println("Number of penalty saves: " + dataset.getGoalkeeperSavesList().size());
-        System.out.println("Number of hits at post: " + dataset.getPostHits().size());
-        System.out.println("Number of off-target shots: " + dataset.getOffTargetShots().size());
+        System.out.println("Number of hits at post: " + dataset.getPostHitsList().size());
+        System.out.println("Number of off-target shots: " + dataset.getOffTargetShotsList().size());
+
+        System.out.println();
+        System.out.println("Number of shots ending in goalkeeper possession: "
+                + dataset.getGoalkeeperPossessionSaveList().size());
+        System.out.println("Number of goal attempts after penalty shots: "
+                + dataset.getGoalAttemptsAfterShotsList().size());
+        System.out.println("Number of attacking rebounds: " + dataset.getAttackingReboundsList().size());
+        System.out.println("Number of defensive rebounds: " + dataset.getDefensiveReboundsList().size());
+        System.out.println("Number of corners: " + dataset.getCornersList().size());
+        System.out.println("Number of attacking encroachments: " + dataset.getAttackingEncroachmentsList().size());
+        System.out.println("Number of defensive encroachments: " + dataset.getDefensiveEncroachmentsList().size());
+        System.out.println("Number of off-target shots: " + dataset.getOffTargetShotsList().size());
+        System.out.println("Number of throw-ins: " + dataset.getThrowInsList().size());
     }
 }
