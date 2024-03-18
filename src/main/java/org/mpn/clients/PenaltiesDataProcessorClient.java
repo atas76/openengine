@@ -18,5 +18,9 @@ public class PenaltiesDataProcessorClient {
         PenaltiesDataset dataset = new PenaltiesDataset(data);
 
         System.out.println("Raw dataset size: " + dataset.size());
+
+        System.out.println("Number of penalty saves: " + dataset.getGoalkeeperSavesList().size());
+        System.out.println("Number of hits at post: " + dataset.getPostHits().size());
+        System.out.println("Number of off-target shots: " + dataset.getOffTargetShots().size());
     }
 }
