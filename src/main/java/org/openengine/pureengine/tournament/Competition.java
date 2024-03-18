@@ -8,9 +8,9 @@ public class Competition {
     private String name;
     private List<CompetitionRound> rounds = new ArrayList<>();
 
-    public Competition(String name, List<String> roundNames) {
+    public Competition(String name, List<CompetitionRound> rounds) {
         this.name = name;
-        roundNames.forEach(roundName -> rounds.add(new CompetitionRound(roundName)));
+        this.rounds.addAll(rounds);
     }
 
     public void displayName() {

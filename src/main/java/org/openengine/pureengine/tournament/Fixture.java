@@ -12,12 +12,19 @@ public class Fixture {
     private Team losingTeam;
     private static final TieBreaker TIE_BREAKER = EXTRA_TIME_PENALTIES;
 
+    private boolean homeAdvantage;
+
     public Fixture(Team homeTeam, Team awayTeam) {
+        this(homeTeam, awayTeam, false);
+    }
+
+    public Fixture(Team homeTeam, Team awayTeam, boolean homeAdvantage) {
         this.matchEngine = new MatchEngine(homeTeam, awayTeam);
+        this.homeAdvantage = homeAdvantage;
     }
 
     public void play() {
-        matchEngine.simulateMatch(TIE_BREAKER);
+        matchEngine.simulateMatch(TIE_BREAKER, this.homeAdvantage);
         this.winningTeam = matchEngine.getMatch().getWinningTeam();
         this.losingTeam = matchEngine.getMatch().getLosingTeam();
         this.played = true;
@@ -36,6 +43,7 @@ public class Fixture {
         Match matchDetails = matchEngine.getMatch();
 
         String teams = matchDetails.getHomeTeam().getName() + " - " + matchDetails.getAwayTeam().getName();
+        String venue = homeAdvantage ? "" : " (N)";
         String score = matchDetails.getHomeGoalsScored() + " - " + matchDetails.getAwayGoalsScored();
         String winningTeam = this.winningTeam != null ? ", " +  this.winningTeam.getName() + " wins": "";
         String fullScore = teams + " " + score;
@@ -71,7 +79,7 @@ public class Fixture {
             }
             return fullScore;
         } else {
-            return teams;
+            return teams + venue;
         }
     }
 }

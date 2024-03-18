@@ -60,7 +60,7 @@ public class MatchEngine {
         match.displayStats();
     }
 
-    public void simulateMatch(TieBreaker tieBreaker) {
+    public void simulateMatch(TieBreaker tieBreaker, boolean homeAdvantage) {
         double homeMatchxG = MATCH_xG;
         double awayMatchxG = MATCH_xG;
         int skillDifference = homeTeam.getSkill() - awayTeam.getSkill();
@@ -72,6 +72,11 @@ public class MatchEngine {
         if (skillDifference < 0) {
             awayMatchxG = MATCH_xG - skillDifference * (MATCH_xG / 4);
             homeMatchxG = MATCH_xG + (MATCH_xG / 10) * skillDifference;
+        }
+
+        if (homeAdvantage) {
+            homeMatchxG *= 1.1;
+            awayMatchxG *= 0.9;
         }
 
         if (Debug.DISPLAY_MATCH_xG) {
@@ -124,7 +129,7 @@ public class MatchEngine {
     }
 
     public void simulateMatch() {
-        simulateMatch(TieBreaker.NONE);
+        simulateMatch(TieBreaker.NONE, false);
     }
 
     private void simulateTeamScoring(Team team, int i, double xG) {
