@@ -1,9 +1,6 @@
 package org.openengine.mpn;
 
-import org.mpn.Dataset;
-import org.mpn.MatchModel;
-import org.mpn.Processable;
-import org.mpn.State;
+import org.mpn.*;
 import org.openengine.openfootie.util.Util;
 
 import java.util.Random;
@@ -20,6 +17,8 @@ public class MatchEngine {
     private Team initialKickOffTeam;
     private Team possessionTeam;
 
+    private PenaltiesDataset penaltiesDataset;
+
     private Random rnd = new Random();
 
     public static void main(String[] args) {
@@ -29,7 +28,8 @@ public class MatchEngine {
         Team homeTeam = new Team("Liverpool", model.getHomeTeamActionChainMappings());
         Team awayTeam = new Team("Tottenham", model.getAwayTeamActionChainMappings());
 
-        MatchEngine matchEngine = new MatchEngine(homeTeam, awayTeam);
+        MatchEngine matchEngine = new MatchEngine(homeTeam, awayTeam,
+                Processable.loadPenaltiesData("src/main/resources/data/mpn/penalties_incremental.mpn")); // File used in 'dev mode'
         matchEngine.start();
 
         System.out.println();
@@ -99,8 +99,7 @@ public class MatchEngine {
     }
 
     private final double PENALTY_AWARD_COEFFICIENT = 0.00525;
-
-    // Leaving it here for helping with testing
+    // For testing
     // private final double PENALTY_AWARD_COEFFICIENT = 0.0525;
 
     // TODO Leaving it as it is for now until injury time implementation
@@ -139,10 +138,11 @@ public class MatchEngine {
         }
         if (Set.of(State.ATTACK, State.COUNTER_ATTACK).contains(transition.getInitialState())) {
             if (rnd.nextDouble() < PENALTY_AWARD_COEFFICIENT) { // penalty awarded
-                // TODO calculate lost penalties outcomes
                 System.out.println("Penalty awarded");
-                return new DynamicTransition(transition.getTeamKey(), State.PENALTY, State.GOAL, PENALTY_DURATION,
-                        State.CORNER, false, PENALTY_XG, State.CORNER);
+                Statement penaltyStatement = this.penaltiesDataset.getAny();
+                return new DynamicTransition(transition.getTeamKey(), State.PENALTY, penaltyStatement.getEndState(), PENALTY_DURATION,
+                        penaltyStatement.getGoalAttemptOutcome(), false, PENALTY_XG,
+                        penaltyStatement.getDefaultEndState());
             }
         }
         if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && State.GOAL == transition.getEndState()) {
@@ -196,6 +196,11 @@ public class MatchEngine {
         boolean homeTeamKicksOff = rnd.nextBoolean();
         initialKickOffTeam = homeTeamKicksOff ? homeTeam : awayTeam;
         possessionTeam = initialKickOffTeam;
+    }
+
+    public MatchEngine(Team homeTeam, Team awayTeam, PenaltiesDataset penaltiesDataset) {
+        this(homeTeam, awayTeam);
+        this.penaltiesDataset = penaltiesDataset;
     }
 
     public MatchEngine(Team homeTeam, Team awayTeam) {
