@@ -18,6 +18,8 @@ public class TournamentAggregator {
 
     private Map<String, Integer> historicalCoefficient = new HashMap<>();
 
+    private double averageWinnerSkillRating;
+
     public TournamentAggregator(Tournament tournament) {
         this.tournament = tournament;
     }
@@ -27,9 +29,11 @@ public class TournamentAggregator {
     }
 
     public void execute(int repetitions) {
+        long winnerSkillRatingSum = 0;
         for (int i = 0; i < REPETITIONS; i++) {
             Tournament tournament = new Tournament(this.tournament);
             tournament.play(true);
+            winnerSkillRatingSum += tournament.getWinner().getSkill();
             this.winners.merge(tournament.getWinner().getName(), 1, Integer::sum);
             this.historicalCoefficient.merge(tournament.getWinner().getName(), 2, Integer::sum);
             this.runnerUps.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
@@ -37,6 +41,7 @@ public class TournamentAggregator {
             this.finalParticipants.merge(tournament.getWinner().getName(), 1, Integer::sum);
             this.finalParticipants.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
         }
+        this.averageWinnerSkillRating = winnerSkillRatingSum / (double) REPETITIONS;
     }
 
     public void displayResults() {
@@ -44,6 +49,7 @@ public class TournamentAggregator {
         displayRanking(this.runnerUps, "Runner ups");
         displayRanking(this.finalParticipants, "Final participants");
         displayRanking(this.historicalCoefficient, "Historical coefficient");
+        System.out.println("Average winner skill rating: " + this.averageWinnerSkillRating);
     }
 
     private void displayRanking(Map<String, Integer> map, String label) {
