@@ -68,7 +68,7 @@ public class Match {
             this.winningTeam = this.homeTeam;
         } else if (this.goalsScored.get(this.awayTeam) > this.goalsScored.get(this.homeTeam)) {
             this.winningTeam = this.awayTeam;
-        } else {
+        } else if (!this.goalsScoredPenaltyShootOut.isEmpty()) {
             if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) > this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
                 this.winningTeam = this.homeTeam;
             } else if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) < this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
@@ -84,7 +84,7 @@ public class Match {
             this.losingTeam = this.homeTeam;
         } else if (this.goalsScored.get(this.awayTeam) < this.goalsScored.get(this.homeTeam)) {
             this.losingTeam = this.awayTeam;
-        } else {
+        } else if (!this.goalsScoredPenaltyShootOut.isEmpty()) {
             if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) > this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
                 this.losingTeam = this.awayTeam;
             } else if (this.goalsScoredPenaltyShootOut.get(this.homeTeam) < this.goalsScoredPenaltyShootOut.get(this.awayTeam)) {
