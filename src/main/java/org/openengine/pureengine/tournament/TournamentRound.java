@@ -47,7 +47,9 @@ public class TournamentRound {
         Collections.shuffle(pool);
 
         for (int i = 0; i < pool.size(); i += 2) {
-            this.fixtures.add(new Fixture(pool.get(i), pool.get(i + 1), competitionRound.isHomeAdvantage()));
+            this.fixtures.add(new Fixture(pool.get(i), pool.get(i + 1),
+                    competitionRound.hasHomeAdvantage(),
+                    competitionRound.getTieBreaker()));
         }
     }
 

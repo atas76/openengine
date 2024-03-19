@@ -10,21 +10,22 @@ public class Fixture {
     private boolean played;
     private Team winningTeam;
     private Team losingTeam;
-    private static final TieBreaker TIE_BREAKER = EXTRA_TIME_PENALTIES;
+    private TieBreaker tieBreaker = EXTRA_TIME_PENALTIES;
 
     private boolean homeAdvantage;
-
-    public Fixture(Team homeTeam, Team awayTeam) {
-        this(homeTeam, awayTeam, false);
-    }
 
     public Fixture(Team homeTeam, Team awayTeam, boolean homeAdvantage) {
         this.matchEngine = new MatchEngine(homeTeam, awayTeam);
         this.homeAdvantage = homeAdvantage;
     }
 
+    public Fixture(Team homeTeam, Team awayTeam, boolean homeAdvantage, TieBreaker tieBreaker) {
+        this(homeTeam, awayTeam, homeAdvantage);
+        this.tieBreaker = tieBreaker;
+    }
+
     public void play() {
-        matchEngine.simulateMatch(TIE_BREAKER, this.homeAdvantage);
+        matchEngine.simulateMatch(tieBreaker, this.homeAdvantage);
         this.winningTeam = matchEngine.getMatch().getWinningTeam();
         this.losingTeam = matchEngine.getMatch().getLosingTeam();
         this.played = true;
@@ -50,9 +51,9 @@ public class Fixture {
 
         if (this.played) {
             if (matchDetails.getHomeGoalsScored() == matchDetails.getAwayGoalsScored()
-                    && TIE_BREAKER == RANDOM) {
+                    && tieBreaker == RANDOM) {
                 fullScore += winningTeam;
-            } else if (TIE_BREAKER == EXTRA_TIME && matchDetails.isExtraTimePlayed()) {
+            } else if (tieBreaker == EXTRA_TIME && matchDetails.isExtraTimePlayed()) {
                 String normalTimeScore = matchDetails.getHomeGoalsScoredNormalTime()
                         + " - "
                         + matchDetails.getAwayGoalsScoredNormalTime();
@@ -61,7 +62,7 @@ public class Fixture {
                 if (matchDetails.getHomeGoalsScored() == matchDetails.getAwayGoalsScored()) {
                     fullScore += winningTeam;
                 }
-            } else if (TIE_BREAKER == EXTRA_TIME_PENALTIES && matchDetails.isExtraTimePlayed()) {
+            } else if (tieBreaker == EXTRA_TIME_PENALTIES && matchDetails.isExtraTimePlayed()) {
                 if (matchDetails.isExtraTimePlayed()) {
                     String normalTimeScore = matchDetails.getHomeGoalsScoredNormalTime()
                             + " - "
