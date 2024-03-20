@@ -1,5 +1,6 @@
 package org.openengine.pureengine.tournament;
 
+import org.openengine.pureengine.domain.CompetitionRepository;
 import org.openengine.pureengine.domain.TeamRepository;
 
 import java.util.List;

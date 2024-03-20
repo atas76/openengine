@@ -1,7 +1,7 @@
 package org.openengine.pureengine.client;
 
-import org.openengine.pureengine.tournament.Competition;
-import org.openengine.pureengine.tournament.CompetitionRepository;
+import org.openengine.pureengine.domain.Competition;
+import org.openengine.pureengine.domain.CompetitionRepository;
 
 public class CompetitionRepositoryClient {
 
