@@ -78,6 +78,11 @@ public class Statement implements ProcessUnit, MatchPhaseTransition {
         return teamKey;
     }
 
+    @Override
+    public Double getNextGoalProbability() {
+        return null;
+    }
+
     public Time getStartTime() {
         return this.startTime;
     }

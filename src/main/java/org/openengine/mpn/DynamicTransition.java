@@ -1,8 +1,11 @@
 package org.openengine.mpn;
 
+import org.mpn.PitchPosition;
 import org.mpn.State;
 
 public class DynamicTransition implements MatchPhaseTransition {
+
+    record NextTransition(double xG, PitchPosition pitchPosition) {}
 
     private State initialState;
     private State endState;
@@ -12,6 +15,8 @@ public class DynamicTransition implements MatchPhaseTransition {
     private Double xG;
     private State defaultEndState;
     private String team;
+
+    private NextTransition nextTransition;
 
     public DynamicTransition(String team, State initialState, State endState, int duration, State goalAttemptOutcome,
                              boolean possessionChanged, Double xG, State defaultEndState) {
@@ -23,6 +28,12 @@ public class DynamicTransition implements MatchPhaseTransition {
         this.possessionChanged = possessionChanged;
         this.xG = xG;
         this.defaultEndState = defaultEndState;
+    }
+
+    public DynamicTransition(String team, State initialState, State endState, int duration, State goalAttemptOutcome,
+                             boolean possessionChanged, Double xG, State defaultEndState, NextTransition nextTransition) {
+        this(team, initialState, endState, duration, goalAttemptOutcome, possessionChanged, xG, defaultEndState);
+        this.nextTransition = nextTransition;
     }
 
     @Override
@@ -58,6 +69,11 @@ public class DynamicTransition implements MatchPhaseTransition {
     @Override
     public State getDefaultEndState() {
         return this.defaultEndState;
+    }
+
+    @Override
+    public Double getNextGoalProbability() {
+        return this.nextTransition.xG();
     }
 
     @Override

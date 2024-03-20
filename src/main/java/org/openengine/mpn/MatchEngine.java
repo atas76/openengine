@@ -128,6 +128,12 @@ public class MatchEngine {
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, transition.getDefaultEndState(),
                             transition.getDuration(), transition.getDefaultEndState(), false,
                             transition.getxG(), transition.getDefaultEndState());
+                } else if (outcomeState == State.GOAL_ATTEMPT) {
+                    return new DynamicTransition(
+                            transition.getTeamKey(), State.GOAL_ATTEMPT, outcomeState,
+                            transition.getDuration(), transition.getDefaultEndState(),
+                            transition.isPossessionChanged(), transition.getNextGoalProbability(),
+                            transition.getDefaultEndState());
                 } else {
                     return new DynamicTransition(
                             transition.getTeamKey(), State.GOAL_ATTEMPT_OUTCOME, outcomeState,
@@ -140,9 +146,17 @@ public class MatchEngine {
             if (rnd.nextDouble() < PENALTY_AWARD_COEFFICIENT) { // penalty awarded
                 System.out.println("Penalty awarded");
                 Statement penaltyStatement = this.penaltiesDataset.getAny();
-                return new DynamicTransition(transition.getTeamKey(), State.PENALTY, penaltyStatement.getEndState(), PENALTY_DURATION,
-                        penaltyStatement.getGoalAttemptOutcome(), false, PENALTY_XG,
+                if (penaltyStatement.getGoalAttemptOutcome().equals(State.GOAL_ATTEMPT)) {
+                    return new DynamicTransition(transition.getTeamKey(), State.PENALTY, penaltyStatement.getEndState(),
+                            PENALTY_DURATION, penaltyStatement.getGoalAttemptOutcome(), false, PENALTY_XG,
+                            penaltyStatement.getDefaultEndState(),
+                            new DynamicTransition.NextTransition(penaltyStatement.getxG(),
+                                    penaltyStatement.getOutcomePitchPosition()));
+                } else {
+                    return new DynamicTransition(transition.getTeamKey(), State.PENALTY, penaltyStatement.getEndState(),
+                        PENALTY_DURATION, penaltyStatement.getGoalAttemptOutcome(), false, PENALTY_XG,
                         penaltyStatement.getDefaultEndState());
+                }
             }
         }
         if (State.GOAL_ATTEMPT_OUTCOME == transition.getInitialState() && State.GOAL == transition.getEndState()) {

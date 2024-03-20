@@ -12,4 +12,5 @@ public interface MatchPhaseTransition {
     Double getxG();
     State getDefaultEndState();
     String getTeamKey();
+    Double getNextGoalProbability();
 }
