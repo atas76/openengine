@@ -4,6 +4,7 @@ CREATE TABLE CompetitionRound(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
     home_advantage BOOLEAN,
+    tie_breaker TEXT,
     competition_id INTEGER FOREIGN_KEY REFERENCES Competition);
 CREATE TABLE Tournament(
     id INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -1,0 +1,5 @@
+# name:text, home_advantage:boolean, tie_breaker, competition_id:integer **
+5th round,true,EXTRA_TIME_PENALTIES,1
+Quarter final,true,EXTRA_TIME_PENALTIES,1
+Semi final,false,EXTRA_TIME_PENALTIES,1
+Final,false,EXTRA_TIME_PENALTIES,1
