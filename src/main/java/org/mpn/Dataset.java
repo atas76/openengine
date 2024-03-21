@@ -32,6 +32,10 @@ public class Dataset {
         this.awayTeam = awayTeam;
     }
 
+    public List<? extends ProcessUnit> getData() {
+        return this.data;
+    }
+
     public Statement getAny() {
         return (Statement) data.get(rnd.nextInt(data.size()));
     }
