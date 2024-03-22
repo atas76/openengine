@@ -1,4 +1,4 @@
-CREATE TABLE Team(name TEXT PRIMARY KEY, full_name TEXT UNIQUE, SKILL INTEGER);
+CREATE TABLE Team(team_name TEXT PRIMARY KEY, full_name TEXT UNIQUE, SKILL INTEGER);
 CREATE TABLE Competition(id INTEGER PRIMARY KEY, name TEXT, country TEXT);
 CREATE TABLE CompetitionRound(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -12,12 +12,12 @@ CREATE TABLE Tournament(
     year INTEGER);
 CREATE TABLE TournamentParticipation(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    team_id INTEGER FOREIGN_KEY REFERENCES Team,
+    team_key INTEGER FOREIGN_KEY REFERENCES Team(team_name),
     tournament_id FOREIGN_KEY REFERENCES Tournament);
 CREATE TABLE TournamentReplayHistory(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     tournament_id INTEGER FOREIGN_KEY REFERENCES Tournament,
-    team_full_name TEXT FOREIGN_KEY REFERENCES team(full_name),
+    team_full_name TEXT FOREIGN_KEY REFERENCES Team(full_name),
     wins INTEGER,
     finals_participations INTEGER,
     historical_coefficient INTEGER);
