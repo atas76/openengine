@@ -14,7 +14,10 @@ public class Match {
     }
 
     public void display() {
-        this.matchEvents.getData().forEach(record -> System.out.println(getCommentary(record)));
+        this.matchEvents.getData().forEach(record -> {
+            String commentary = getCommentary(record);
+            if (!commentary.isBlank()) System.out.println(commentary);
+        });
     }
 
     private String getCommentary(ProcessUnit record) {
@@ -23,22 +26,31 @@ public class Match {
 
         if (record instanceof Statement statement) {
             String initialState = MatchCommentary.stateMappings.get(statement.getInitialState());
-            if (initialState != null) {
-                commentary.append(statement.getStartTime().toString());
-                commentary.append(" ");
-                commentary.append(initialState);
-                commentary.append(" for ");
-                commentary.append(teamNameMappings.get(statement.getTeamKey()));
-            }
-            /*
+            String teamName = teamNameMappings.get(statement.getTeamKey());
             switch (statement.getInitialState()) {
-                case State.KICK_OFF -> commentary.append(MatchCommentary.stateMappings.get())
+                case KICK_OFF ->  {
+                    commentary.append(statement.getStartTime().toString());
+                    commentary.append(" ");
+                    commentary.append(initialState);
+                    commentary.append(" for ");
+
+                    commentary.append(teamName);
+                }
+                case POSSESSION -> {
+                    commentary.append(statement.getStartTime().toString());
+                    commentary.append(" ");
+                    commentary.append(teamName);
+                    commentary.append(" have possession at pitch position ");
+                    commentary.append(statement.getInitialPitchPosition());
+                    commentary.append(" (");
+                    commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));
+                    commentary.append(")");
+                }
             }
-             */
         } else if (record instanceof Directive) {
 
         }
 
-        return commentary.isEmpty() ? record.toString() : commentary.toString();
+        return commentary.toString();
     }
 }
