@@ -27,20 +27,25 @@ public class Match {
         if (record instanceof Statement statement) {
             String initialState = MatchCommentary.stateMappings.get(statement.getInitialState());
             String teamName = teamNameMappings.get(statement.getTeamKey());
+            commentary.append(statement.getStartTime().toString());
+            commentary.append(" ");
             switch (statement.getInitialState()) {
                 case KICK_OFF ->  {
-                    commentary.append(statement.getStartTime().toString());
-                    commentary.append(" ");
                     commentary.append(initialState);
                     commentary.append(" for ");
-
                     commentary.append(teamName);
                 }
                 case POSSESSION -> {
-                    commentary.append(statement.getStartTime().toString());
-                    commentary.append(" ");
                     commentary.append(teamName);
                     commentary.append(" have possession at pitch position ");
+                    commentary.append(statement.getInitialPitchPosition());
+                    commentary.append(" (");
+                    commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));
+                    commentary.append(")");
+                }
+                case ATTACK -> {
+                    commentary.append(teamName);
+                    commentary.append(" attacking from pitch position ");
                     commentary.append(statement.getInitialPitchPosition());
                     commentary.append(" (");
                     commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));

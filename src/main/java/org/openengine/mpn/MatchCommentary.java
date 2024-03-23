@@ -12,7 +12,9 @@ public class MatchCommentary {
             Map.entry(State.POSSESSION, "Possession"));
 
     public static Map<PitchPosition, String> pitchPositionMappings = Map.ofEntries(
-            Map.entry(PitchPosition.DM, "their own half"));
+            Map.entry(PitchPosition.DM, "their own half"),
+            Map.entry(PitchPosition.AB22, "penalty box corner")
+    );
 
     public static void main(String[] args) {
         Match match = new Match();
