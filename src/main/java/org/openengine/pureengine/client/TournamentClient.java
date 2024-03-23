@@ -3,15 +3,23 @@ package org.openengine.pureengine.client;
 import org.openengine.pureengine.tournament.Tournament;
 import org.openengine.pureengine.tournament.TournamentRepository;
 
+import java.util.List;
+
 public class TournamentClient {
     public static void main(String[] args) {
-        Tournament tournament = TournamentRepository.ENGLISH_FA_CUP_2024;
 
-        tournament.displayHeader();
-        System.out.println();
-        tournament.displayParticipants();
+        List<Tournament> tournamentHistory = List.of(
+                TournamentRepository.ENGLISH_FA_CUP_2023,
+                TournamentRepository.ENGLISH_FA_CUP_2024);
 
-        System.out.println();
-        tournament.play();
+        tournamentHistory.forEach(tournament -> {
+            tournament.displayHeader();
+            System.out.println();
+            tournament.displayParticipants();
+
+            System.out.println();
+            tournament.play();
+            System.out.println();
+        });
     }
 }
