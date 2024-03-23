@@ -36,7 +36,7 @@ L: 10:51 Goalkeeper -> Buildup:Dh
 L: 11:05 => 11:12 Buildup:Dh -> !ThrowIn:DM
 T: 11:34 => 11:40 ThrowIn:DM -> Foul:AMw
 T: 12:11 FreeKick:AMw -> Attack:Ah
-T: 12:12 => 12:19 Attack -> ThrowIn:DM
+T: 12:12 => 12:19 Attack:Ah -> ThrowIn:DM
 #! BREAK
 T: 12:33 Buildup:GK -> Pressing:GK
 T: 12:54 Pressing:GK -> Transition:Mw
@@ -268,8 +268,8 @@ L: 65:47 Pressing:GK -> CounterAttack:Mh
 L: 65:55 => 66:06 CounterAttack:Mh -> Corner
 L: 66:35 => 66:39 Corner -> ThrowIn:AB
 L: 66:51 => 66:54 ThrowIn:AB -> ThrowIn:AB
-L: 66:59 ThrowIn:AB -> Attack
-L: 67:01 => 67:06 Attack -> !GoalKick
+L: 66:59 ThrowIn:AB -> Attack:AB
+L: 67:01 => 67:06 Attack:AB -> !GoalKick
 T: 67:18 => 67:32 GoalKick -> !ThrowIn:D
 L: 67:51 ThrowIn:D -> Attack:AB20
 L: 68:08 Attack:AB20 -> GoalAttempt:AB20
