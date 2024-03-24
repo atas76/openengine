@@ -59,7 +59,7 @@ public class Match {
                 commentary.append(" ");
                 switch (statement.getEndState()) {
                     case PENALTY -> {
-                        commentary.append("Penalty awarded to ");
+                        commentary.append("Penalty kick for ");
                         commentary.append(teamName);
                     }
                 }
