@@ -87,6 +87,10 @@ public class Statement implements ProcessUnit, MatchPhaseTransition {
         return this.startTime;
     }
 
+    public Time getEndTime() {
+        return endTime;
+    }
+
     public int getMinutes() {
         return startTime.minutes();
     }

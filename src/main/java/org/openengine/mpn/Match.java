@@ -52,6 +52,18 @@ public class Match {
                     commentary.append(")");
                 }
             }
+            if (statement.getEndTime() != null
+                    && statement.getEndTime().getAbsoluteTime() > statement.getStartTime().getAbsoluteTime()) {
+                commentary.append("\n");
+                commentary.append(statement.getEndTime().toString());
+                commentary.append(" ");
+                switch (statement.getEndState()) {
+                    case PENALTY -> {
+                        commentary.append("Penalty awarded to ");
+                        commentary.append(teamName);
+                    }
+                }
+            }
         } else if (record instanceof Directive) {
 
         }
