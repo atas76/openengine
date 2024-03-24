@@ -10,7 +10,7 @@ public class Match {
     private Map<String, String> teamNameMappings = Map.of("L", "Liverpool", "T", "Tottenham");
 
     public Match() {
-        this.matchEvents = Processable.loadData();
+        this.matchEvents = Processable.loadData(false);
     }
 
     public void display() {
@@ -50,10 +50,12 @@ public class Match {
                     commentary.append(" (");
                     commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));
                     commentary.append(")");
+                } case PENALTY -> {
+                    commentary.append(teamName);
+                    commentary.append(" player takes the penalty...");
                 }
             }
-            if (statement.getEndTime() != null
-                    && statement.getEndTime().getAbsoluteTime() > statement.getStartTime().getAbsoluteTime()) {
+            if (statement.getEndTime() != null) {
                 commentary.append("\n");
                 commentary.append(statement.getEndTime().toString());
                 commentary.append(" ");
@@ -63,6 +65,13 @@ public class Match {
                         commentary.append(teamName);
                     }
                 }
+            }
+            if (statement.getEndState().equals(State.GOAL)) {
+                commentary.append("\n");
+                commentary.append(statement.getStartTime().toString());
+                commentary.append(" ");
+                commentary.append(teamName);
+                commentary.append(" score!");
             }
         } else if (record instanceof Directive) {
 
