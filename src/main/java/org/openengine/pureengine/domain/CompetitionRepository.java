@@ -18,10 +18,18 @@ public class CompetitionRepository {
     private static CompetitionDTO competitionDtoFACup;
     private static List<CompetitionRoundDTO> competitionRoundsDtoFACup;
 
+    public static final Competition ENGLISH_FA_CUP;
+
     static {
         loadData();
         competitionDtoFACup = competitions.get(FA_CUP_COMPETITION_ID);
         competitionRoundsDtoFACup = CompetitionRoundRepository.getCompetitionRounds(FA_CUP_COMPETITION_ID);
+        ENGLISH_FA_CUP = new Competition(
+                competitionDtoFACup.getCountryDemonym() + " " + competitionDtoFACup.getName(),
+                competitionRoundsDtoFACup.stream().map(competitionRoundDTO ->
+                        new CompetitionRound(competitionRoundDTO.getName(),
+                                competitionRoundDTO.getHomeAdvantage(),
+                                TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
     }
 
     public static void loadData() {
@@ -43,25 +51,4 @@ public class CompetitionRepository {
             e.printStackTrace();
         }
     }
-
-    public static final Competition ENGLISH_FA_CUP = // Modelling only later stages
-            new Competition(
-                    competitionDtoFACup.getCountryDemonym() + " " + competitionDtoFACup.getName(),
-                    List.of(
-                        new CompetitionRound(
-                                competitionRoundsDtoFACup.get(0).getName(),
-                                competitionRoundsDtoFACup.get(0).getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundsDtoFACup.get(0).getTieBreaker())),
-                        new CompetitionRound(
-                                competitionRoundsDtoFACup.get(1).getName(),
-                                competitionRoundsDtoFACup.get(1).getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundsDtoFACup.get(1).getTieBreaker())),
-                        new CompetitionRound(
-                                competitionRoundsDtoFACup.get(2).getName(),
-                                competitionRoundsDtoFACup.get(2).getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundsDtoFACup.get(2).getTieBreaker())),
-                        new CompetitionRound(
-                                competitionRoundsDtoFACup.get(3).getName(),
-                                competitionRoundsDtoFACup.get(3).getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundsDtoFACup.get(3).getTieBreaker()))));
 }
