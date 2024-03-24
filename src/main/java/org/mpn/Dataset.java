@@ -21,9 +21,13 @@ public class Dataset {
         this(new Processor().process(Paths.get(datasource)), homeTeam, awayTeam);
     }
 
-    public Dataset(List<? extends ProcessUnit> data) {
+    public Dataset(List<? extends ProcessUnit> data, boolean preprocessedData) {
         this.data = data;
-        setEndTimesFromContext();
+        if (preprocessedData) setEndTimesFromContext();
+    }
+
+    public Dataset(List<? extends ProcessUnit> data) {
+        this(data, true);
     }
 
     public Dataset(List<? extends ProcessUnit> data, String homeTeam, String awayTeam) {
