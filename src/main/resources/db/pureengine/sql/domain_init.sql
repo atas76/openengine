@@ -8,7 +8,7 @@ CREATE TABLE CompetitionRound(
     competition_id INTEGER FOREIGN_KEY REFERENCES Competition);
 CREATE TABLE Tournament(
     id INTEGER PRIMARY KEY,
-    competition_id INTEGER FOREIGN KEY REFERENCES Competition,
+    competition_id INTEGER FOREIGN_KEY REFERENCES Competition,
     year INTEGER);
 CREATE TABLE TournamentParticipation(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
