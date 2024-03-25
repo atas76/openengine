@@ -1,7 +1,7 @@
 package org.openengine.pureengine.client;
 
 import org.openengine.pureengine.tournament.TournamentAggregator;
-import org.openengine.pureengine.tournament.TournamentRepository;
+import org.openengine.pureengine.domain.repository.TournamentRepository;
 
 public class TournamentAggregatorClient {
 

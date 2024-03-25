@@ -1,7 +1,8 @@
-package org.openengine.pureengine.tournament;
+package org.openengine.pureengine.domain.repository;
 
 import org.openengine.pureengine.Team;
 import org.openengine.pureengine.domain.*;
+import org.openengine.pureengine.domain.model.Tournament;
 
 import java.io.IOException;
 import java.nio.file.Files;

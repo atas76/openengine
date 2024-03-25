@@ -1,4 +1,6 @@
-package org.openengine.pureengine.domain;
+package org.openengine.pureengine.domain.repository;
+
+import org.openengine.pureengine.domain.CommonUtil;
 
 import java.io.IOException;
 import java.nio.file.Files;
