@@ -74,7 +74,7 @@ public class Match {
                 commentary.append(" score!");
             }
         } else if (record instanceof Directive) {
-
+            System.out.println("----- " + record + " -----");
         }
 
         return commentary.toString();
