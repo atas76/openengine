@@ -26,6 +26,7 @@ public class Match {
 
         if (record instanceof Statement statement) {
             String initialState = MatchCommentary.stateMappings.get(statement.getInitialState());
+            PitchPosition initialPitchPosition = statement.getInitialPitchPosition();
             String teamName = teamNameMappings.get(statement.getTeamKey());
             commentary.append(statement.getStartTime().toString());
             commentary.append(" ");
@@ -38,21 +39,22 @@ public class Match {
                 case POSSESSION -> {
                     commentary.append(teamName);
                     commentary.append(" have possession at pitch position ");
-                    commentary.append(statement.getInitialPitchPosition());
-                    commentary.append(" (");
-                    commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));
-                    commentary.append(")");
+                    commentary.append(initialPitchPosition);
+                    attachPitchPositionDescription(initialPitchPosition, commentary);
                 }
                 case ATTACK -> {
                     commentary.append(teamName);
                     commentary.append(" attacking from pitch position ");
-                    commentary.append(statement.getInitialPitchPosition());
-                    commentary.append(" (");
-                    commentary.append(MatchCommentary.pitchPositionMappings.get(statement.getInitialPitchPosition()));
-                    commentary.append(")");
+                    commentary.append(initialPitchPosition);
+                    attachPitchPositionDescription(initialPitchPosition, commentary);
                 } case PENALTY -> {
                     commentary.append(teamName);
                     commentary.append(" player takes the penalty...");
+                } case THROW_IN -> {
+                    commentary.append(teamName);
+                    commentary.append(" from pitch position ");
+                    commentary.append(initialPitchPosition);
+                    attachPitchPositionDescription(initialPitchPosition, commentary);
                 }
             }
             if (statement.getEndTime() != null) {
@@ -78,5 +80,11 @@ public class Match {
         }
 
         return commentary.toString();
+    }
+
+    private static void attachPitchPositionDescription(PitchPosition pitchPosition, StringBuilder commentary) {
+        commentary.append(" (");
+        commentary.append(MatchCommentary.pitchPositionMappings.get(pitchPosition));
+        commentary.append(")");
     }
 }
