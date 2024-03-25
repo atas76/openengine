@@ -36,6 +36,17 @@ public class CompetitionRepository {
                                 TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
     }
 
+    public static Competition getCompetition(int competitionId) {
+        CompetitionDTO competitionDTO = competitions.get(competitionId);
+        List<CompetitionRoundDTO> competitionRoundDTOs = CompetitionRoundRepository.getCompetitionRounds(competitionId);
+        return new Competition(
+                competitionDTO.getCountryDemonym() + " " + competitionDTO.getName(),
+                competitionRoundDTOs.stream().map(competitionRoundDTO ->
+                        new CompetitionRound(competitionRoundDTO.getName(),
+                                competitionRoundDTO.getHomeAdvantage(),
+                                TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
+    }
+
     public static void loadData() {
         competitions = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {
