@@ -27,6 +27,7 @@ public class Match {
         if (record instanceof Statement statement) {
             String initialState = MatchCommentary.stateMappings.get(statement.getInitialState());
             PitchPosition initialPitchPosition = statement.getInitialPitchPosition();
+            PitchPosition outcomePitchPosition = statement.getOutcomePitchPosition();
             String teamName = teamNameMappings.get(statement.getTeamKey());
             commentary.append(statement.getStartTime().toString());
             commentary.append(" ");
@@ -52,7 +53,7 @@ public class Match {
                     commentary.append(" player takes the penalty...");
                 } case THROW_IN -> {
                     commentary.append(teamName);
-                    commentary.append(" from pitch position ");
+                    commentary.append(" throw-in from pitch position ");
                     commentary.append(initialPitchPosition);
                     attachPitchPositionDescription(initialPitchPosition, commentary);
                 }
@@ -75,6 +76,11 @@ public class Match {
                 commentary.append(teamName);
                 commentary.append(" score!");
             }
+            if (statement.isPossessionChanged()) {
+                commentary.append(": possession lost at pitch position ");
+                commentary.append(outcomePitchPosition);
+                attachPitchPositionDescription(outcomePitchPosition, commentary);
+            }
         } else if (record instanceof Directive) {
             System.out.println("----- " + record + " -----");
         }
@@ -83,6 +89,7 @@ public class Match {
     }
 
     private static void attachPitchPositionDescription(PitchPosition pitchPosition, StringBuilder commentary) {
+        if (pitchPosition == null) return;
         commentary.append(" (");
         commentary.append(MatchCommentary.pitchPositionMappings.get(pitchPosition));
         commentary.append(")");
