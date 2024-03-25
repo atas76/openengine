@@ -1,5 +1,7 @@
 package org.openengine.pureengine.tournament;
 
+import org.openengine.pureengine.domain.model.Tournament;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.LinkedHashMap;

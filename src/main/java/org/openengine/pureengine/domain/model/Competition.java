@@ -1,6 +1,4 @@
-package org.openengine.pureengine.domain;
-
-import org.openengine.pureengine.tournament.CompetitionRound;
+package org.openengine.pureengine.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;

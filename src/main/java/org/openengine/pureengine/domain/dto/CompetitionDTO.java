@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain;
+package org.openengine.pureengine.domain.dto;
 
 public class CompetitionDTO {
 

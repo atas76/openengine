@@ -1,7 +1,11 @@
-package org.openengine.pureengine.domain;
+package org.openengine.pureengine.domain.repository;
 
 import org.openengine.pureengine.TieBreaker;
-import org.openengine.pureengine.tournament.CompetitionRound;
+import org.openengine.pureengine.domain.*;
+import org.openengine.pureengine.domain.dto.CompetitionDTO;
+import org.openengine.pureengine.domain.dto.CompetitionRoundDTO;
+import org.openengine.pureengine.domain.model.Competition;
+import org.openengine.pureengine.domain.model.CompetitionRound;
 
 import java.io.IOException;
 import java.nio.file.Files;

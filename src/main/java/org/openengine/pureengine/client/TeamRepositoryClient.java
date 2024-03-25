@@ -1,6 +1,6 @@
 package org.openengine.pureengine.client;
 
-import org.openengine.pureengine.domain.TeamRepository;
+import org.openengine.pureengine.domain.repository.TeamRepository;
 
 public class TeamRepositoryClient {
 

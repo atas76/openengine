@@ -1,4 +1,4 @@
-package org.openengine.pureengine.tournament;
+package org.openengine.pureengine.domain.model;
 
 import org.openengine.pureengine.TieBreaker;
 
