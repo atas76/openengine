@@ -56,6 +56,9 @@ public class Match {
                     commentary.append(" throw-in from pitch position ");
                     commentary.append(initialPitchPosition);
                     attachPitchPositionDescription(initialPitchPosition, commentary);
+                } case TRANSITION -> {
+                    commentary.append(teamName);
+                    commentary.append(" in transition");
                 }
             }
             if (statement.getEndTime() != null) {
