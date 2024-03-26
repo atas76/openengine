@@ -78,6 +78,8 @@ public class Match {
                 commentary.append(" ");
                 commentary.append(teamName);
                 commentary.append(" score!");
+            } else if (statement.getEndState().equals(State.GOALKEEPER) && !statement.isPossessionChanged()) {
+                commentary.append("...ball back to the goalkeeper");
             }
             if (statement.isPossessionChanged()) {
                 commentary.append(": possession lost at pitch position ");
