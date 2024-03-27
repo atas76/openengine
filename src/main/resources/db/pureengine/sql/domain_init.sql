@@ -1,5 +1,5 @@
 CREATE TABLE Team(team_name TEXT PRIMARY KEY, full_name TEXT, skill INTEGER);
-CREATE TABLE Competition(id INTEGER PRIMARY KEY, name TEXT, country TEXT);
+CREATE TABLE Competition(id INTEGER PRIMARY KEY, name TEXT, country TEXT, country_demonym TEXT);
 CREATE TABLE CompetitionRound(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,
