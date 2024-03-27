@@ -59,6 +59,11 @@ public class Match {
                 } case TRANSITION -> {
                     commentary.append(teamName);
                     commentary.append(" in transition");
+                } case GOALKEEPER -> {
+                    commentary.append(teamName);
+                    switch (statement.getEndState()) {
+                        case BUILDUP -> commentary.append(" building up from their defence");
+                    }
                 }
             }
             if (statement.getEndTime() != null) {
