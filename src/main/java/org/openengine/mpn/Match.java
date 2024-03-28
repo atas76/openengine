@@ -59,11 +59,22 @@ public class Match {
                 } case TRANSITION -> {
                     commentary.append(teamName);
                     commentary.append(" in transition");
-                } case GOALKEEPER -> {
+                }
+                case GOALKEEPER -> {
                     commentary.append(teamName);
-                    switch (statement.getEndState()) {
-                        case BUILDUP -> commentary.append(" building up from their defence");
-                    }
+                    commentary.append(" ");
+                    commentary.append("goalkeeper resumes the ball in play");
+                }
+                case BUILDUP -> {
+                    commentary.append(teamName);
+                    commentary.append(" building up from their defence");
+                }
+                case PRESSING -> {
+                    commentary.append(teamName);
+                    commentary.append(" under pressure");
+                    commentary.append(" from pitch position ");
+                    commentary.append(initialPitchPosition);
+                    attachPitchPositionDescription(initialPitchPosition, commentary);
                 }
             }
             if (statement.getEndTime() != null) {
