@@ -59,6 +59,9 @@ public class Match {
                 } case TRANSITION -> {
                     commentary.append(teamName);
                     commentary.append(" in transition");
+                    if (statement.getEndState() == State.POSSESSION && statement.isPossessionRetained()) {
+                        commentary.append("...and they hold up the play");
+                    }
                 }
                 case GOALKEEPER -> {
                     commentary.append(teamName);
