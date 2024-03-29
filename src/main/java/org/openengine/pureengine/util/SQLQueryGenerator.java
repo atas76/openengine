@@ -14,7 +14,36 @@ public class SQLQueryGenerator {
         // teamInitStatements(CommonUtil.DOMAIN_ROOT + "/team.csv").forEach(System.out::println);
         // competitionInitStatements(CommonUtil.DOMAIN_ROOT + "/competition.csv").forEach(System.out::println);
         // competitionRoundInitStatements(CommonUtil.DOMAIN_ROOT + "/competition_round.csv").forEach(System.out::println);
-        tournamentInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament.csv").forEach(System.out::println);
+        // tournamentInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament.csv").forEach(System.out::println);
+        tournamentParticipationInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv").forEach(System.out::println);
+    }
+
+    public static List<String> tournamentParticipationInitStatements(String datasource) {
+        List<String> sqlStatements = new ArrayList<>();
+
+        try (var records = Files.lines(Paths.get(datasource))) {
+            records.forEach(record -> {
+                try {
+                    if (!record.startsWith("#")) {
+                        String [] csvRecord = CommonUtil.parseCsv(record);
+                        String query = "INSERT INTO TournamentParticipation(team_key, tournament_id) "
+                                + "VALUES("
+                                + "'" + csvRecord[0] + "'"
+                                + ","
+                                + csvRecord[1]
+                                + ");";
+                        sqlStatements.add(query);
+                    }
+                } catch (Exception e) {
+                    System.out.println(record);
+                    throw new RuntimeException(e);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return sqlStatements;
     }
 
     public static List<String> tournamentInitStatements(String datasource) {
