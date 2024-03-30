@@ -89,6 +89,10 @@ public class Match {
                         commentary.append("Penalty kick for ");
                         commentary.append(teamName);
                     }
+                    case CORNER -> {
+                        commentary.append(teamName);
+                        commentary.append(" win the corner");
+                    }
                 }
             }
             if (statement.getEndState().equals(State.GOAL)) {
