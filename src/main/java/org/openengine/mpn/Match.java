@@ -78,6 +78,14 @@ public class Match {
                     commentary.append(" from pitch position ");
                     commentary.append(initialPitchPosition);
                     attachPitchPositionDescription(initialPitchPosition, commentary);
+                } case CORNER -> {
+                    commentary.append(teamName);
+                    commentary.append(" take the corner...");
+                    if (statement.getEndState() == State.POSSESSION && statement.isPossessionRetained()) {
+                       if (outcomePitchPosition == PitchPosition.GD) {
+                           commentary.append("ball back to the goalkeeper (away from their area)");
+                       }
+                    }
                 }
             }
             if (statement.getEndTime() != null) {
