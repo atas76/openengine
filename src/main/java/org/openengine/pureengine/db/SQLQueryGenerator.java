@@ -24,6 +24,22 @@ public class SQLQueryGenerator {
                 .forEach(System.out::println);
     }
 
+    public static List<String> getInitStatements() {
+
+        List<String> initStatements = new ArrayList<>();
+
+        initStatements.addAll(teamInitStatements(CommonUtil.DOMAIN_ROOT + "/team.csv"));
+        initStatements.addAll(competitionInitStatements(CommonUtil.DOMAIN_ROOT + "/competition.csv"));
+        initStatements.addAll(
+                competitionRoundInitStatements(CommonUtil.DOMAIN_ROOT + "/competition_round.csv"));
+        initStatements.addAll(tournamentInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament.csv"));
+        initStatements.addAll(
+                tournamentParticipationInitStatements(
+                        CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv"));
+
+        return initStatements;
+    }
+
     public static List<String> tournamentParticipationInitStatements(String datasource) {
         List<String> sqlStatements = new ArrayList<>();
 
