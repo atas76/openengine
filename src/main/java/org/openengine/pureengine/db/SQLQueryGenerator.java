@@ -1,4 +1,4 @@
-package org.openengine.pureengine.util;
+package org.openengine.pureengine.db;
 
 import org.openengine.pureengine.domain.CommonUtil;
 
@@ -11,11 +11,17 @@ import java.util.List;
 public class SQLQueryGenerator {
 
     public static void main(String[] args) {
-        // teamInitStatements(CommonUtil.DOMAIN_ROOT + "/team.csv").forEach(System.out::println);
-        // competitionInitStatements(CommonUtil.DOMAIN_ROOT + "/competition.csv").forEach(System.out::println);
-        // competitionRoundInitStatements(CommonUtil.DOMAIN_ROOT + "/competition_round.csv").forEach(System.out::println);
-        // tournamentInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament.csv").forEach(System.out::println);
-        tournamentParticipationInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv").forEach(System.out::println);
+        teamInitStatements(CommonUtil.DOMAIN_ROOT + "/team.csv").forEach(System.out::println);
+        System.out.println("--");
+        competitionInitStatements(CommonUtil.DOMAIN_ROOT + "/competition.csv").forEach(System.out::println);
+        System.out.println("--");
+        competitionRoundInitStatements(CommonUtil.DOMAIN_ROOT + "/competition_round.csv")
+                .forEach(System.out::println);
+        System.out.println("--");
+        tournamentInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament.csv").forEach(System.out::println);
+        System.out.println("--");
+        tournamentParticipationInitStatements(CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv")
+                .forEach(System.out::println);
     }
 
     public static List<String> tournamentParticipationInitStatements(String datasource) {
