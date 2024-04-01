@@ -74,7 +74,12 @@ public class Match {
                 }
                 case BUILDUP -> {
                     commentary.append(teamName);
-                    commentary.append(" building up from their defence");
+                    commentary.append(" building up from their ");
+                    if (initialPitchPosition == PitchPosition.GK) {
+                        commentary.append("goalkeeper");
+                    } else {
+                        commentary.append("defence");
+                    }
                 }
                 case PRESSING -> {
                     commentary.append(teamName);
