@@ -1,7 +1,7 @@
 package org.openengine.pureengine.domain.repository;
 
 import org.openengine.pureengine.TieBreaker;
-import org.openengine.pureengine.domain.*;
+import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionDTO;
 import org.openengine.pureengine.domain.dto.CompetitionRoundDTO;
 import org.openengine.pureengine.domain.model.Competition;
@@ -10,35 +10,23 @@ import org.openengine.pureengine.domain.model.CompetitionRound;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class CompetitionRepository {
-
-    public static final int FA_CUP_COMPETITION_ID = 1;
-
-    private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition.csv";
+public class CompetitionRepositoryFileImpl implements Repository<Competition> {
 
     private static Map<Integer, CompetitionDTO> competitions;
-    private static CompetitionDTO competitionDtoFACup;
-    private static List<CompetitionRoundDTO> competitionRoundsDtoFACup;
+    private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition.csv";
 
-    public static final Competition ENGLISH_FA_CUP;
-
-    static {
+    public CompetitionRepositoryFileImpl() {
         loadData();
-        competitionDtoFACup = competitions.get(FA_CUP_COMPETITION_ID);
-        competitionRoundsDtoFACup = CompetitionRoundRepository.getCompetitionRounds(FA_CUP_COMPETITION_ID);
-        ENGLISH_FA_CUP = new Competition(
-                competitionDtoFACup.getCountryDemonym() + " " + competitionDtoFACup.getName(),
-                competitionRoundsDtoFACup.stream().map(competitionRoundDTO ->
-                        new CompetitionRound(competitionRoundDTO.getName(),
-                                competitionRoundDTO.getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
     }
 
-    public static Competition getCompetition(int competitionId) {
-        CompetitionDTO competitionDTO = competitions.get(competitionId);
-        List<CompetitionRoundDTO> competitionRoundDTOs = CompetitionRoundRepository.getCompetitionRounds(competitionId);
+    @Override
+    public Competition findById(int id) {
+        CompetitionDTO competitionDTO = competitions.get(id);
+        List<CompetitionRoundDTO> competitionRoundDTOs = CompetitionRoundRepository.getCompetitionRounds(id);
         return new Competition(
                 competitionDTO.getCountryDemonym() + " " + competitionDTO.getName(),
                 competitionRoundDTOs.stream().map(competitionRoundDTO ->
@@ -47,7 +35,8 @@ public class CompetitionRepository {
                                 TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
     }
 
-    public static void loadData() {
+    @Override
+    public void loadData() {
         competitions = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {
             records.forEach(record -> {
