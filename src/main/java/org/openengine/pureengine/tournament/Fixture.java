@@ -43,10 +43,10 @@ public class Fixture {
     public String toString() {
         Match matchDetails = matchEngine.getMatch();
 
-        String teams = matchDetails.getHomeTeam().getName() + " - " + matchDetails.getAwayTeam().getName();
+        String teams = matchDetails.getHomeTeam().getFullName() + " - " + matchDetails.getAwayTeam().getFullName();
         String venue = homeAdvantage ? "" : " (N)";
         String score = matchDetails.getHomeGoalsScored() + " - " + matchDetails.getAwayGoalsScored();
-        String winningTeam = this.winningTeam != null ? ", " +  this.winningTeam.getName() + " wins": "";
+        String winningTeam = this.winningTeam != null ? ", " +  this.winningTeam.getFullName() + " wins": "";
         String fullScore = teams + " " + score;
 
         if (this.played) {

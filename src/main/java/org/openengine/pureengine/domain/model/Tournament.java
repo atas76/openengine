@@ -31,7 +31,7 @@ public class Tournament {
 
     public void displayParticipants() {
         System.out.println("Participants " + "(" + competition.getStartingRoundName() + "): ");
-        participants.forEach(participant -> System.out.println(participant.getName()));
+        participants.forEach(participant -> System.out.println(participant.getFullName()));
     }
 
     public void play() {
@@ -53,8 +53,8 @@ public class Tournament {
         this.runnerUp = currentRound.getNonQualifiedTeams().get(0);
         if (!silentMode) {
             System.out.println();
-            System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getName());
-            System.out.println("Runner up: " + this.runnerUp.getName());
+            System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getFullName());
+            System.out.println("Runner up: " + this.runnerUp.getFullName());
         }
     }
 

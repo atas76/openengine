@@ -50,7 +50,7 @@ public class MatchEngine {
     }
 
     private void displayScore() {
-        System.out.println(homeTeam.getName() + " - " + awayTeam.getName()
+        System.out.println(homeTeam.getFullName() + " - " + awayTeam.getFullName()
                 + " "
                 + match.getHomeGoalsScored() + " - " + match.getAwayGoalsScored());
     }
@@ -135,7 +135,7 @@ public class MatchEngine {
     private void simulateTeamScoring(Team team, int i, double xG) {
         if (rnd.nextDouble() <= xG) {
             match.score(team);
-            match.addEvent(new MatchEvent(team.getName(), MatchEventType.GOAL, i + 1));
+            match.addEvent(new MatchEvent(team.getFullName(), MatchEventType.GOAL, i + 1));
         }
     }
 

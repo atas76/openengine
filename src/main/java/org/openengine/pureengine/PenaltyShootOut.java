@@ -75,14 +75,14 @@ public class PenaltyShootOut {
     }
 
     private void displayScore() {
-        System.out.println(homeTeam.getName() + " - " + awayTeam.getName() + " " +
+        System.out.println(homeTeam.getFullName() + " - " + awayTeam.getFullName() + " " +
                 this.homeGoalsScored + " - " + this.awayGoalsScored);
         System.out.println();
     }
 
     private void displayPenalty(Team team) {
         int penaltiesTaken = team.equals(this.homeTeam) ? this.homeTeamPenaltiesTaken : this.awayTeamPenaltiesTaken;
-        System.out.println(team.getName() + " " + (penaltiesTaken + 1) + getOrdinalSuffix(penaltiesTaken) + " penalty");
+        System.out.println(team.getFullName() + " " + (penaltiesTaken + 1) + getOrdinalSuffix(penaltiesTaken) + " penalty");
     }
 
     private void shootPenalty(Team team, boolean silentMode) {
@@ -98,7 +98,7 @@ public class PenaltyShootOut {
             }
         }
         if (!silentMode) {
-            System.out.println(team.getName() + (teamScored ? " score!" : " miss!"));
+            System.out.println(team.getFullName() + (teamScored ? " score!" : " miss!"));
             displayScore();
         }
     }

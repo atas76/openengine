@@ -36,12 +36,12 @@ public class TournamentAggregator {
             Tournament tournament = new Tournament(this.tournament);
             tournament.play(true);
             winnerSkillRatingSum += tournament.getWinner().getSkill();
-            this.winners.merge(tournament.getWinner().getName(), 1, Integer::sum);
-            this.historicalCoefficient.merge(tournament.getWinner().getName(), 2, Integer::sum);
-            this.runnerUps.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
-            this.historicalCoefficient.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
-            this.finalParticipants.merge(tournament.getWinner().getName(), 1, Integer::sum);
-            this.finalParticipants.merge(tournament.getRunnerUp().getName(), 1, Integer::sum);
+            this.winners.merge(tournament.getWinner().getFullName(), 1, Integer::sum);
+            this.historicalCoefficient.merge(tournament.getWinner().getFullName(), 2, Integer::sum);
+            this.runnerUps.merge(tournament.getRunnerUp().getFullName(), 1, Integer::sum);
+            this.historicalCoefficient.merge(tournament.getRunnerUp().getFullName(), 1, Integer::sum);
+            this.finalParticipants.merge(tournament.getWinner().getFullName(), 1, Integer::sum);
+            this.finalParticipants.merge(tournament.getRunnerUp().getFullName(), 1, Integer::sum);
         }
         this.averageWinnerSkillRating = winnerSkillRatingSum / (double) REPETITIONS;
     }

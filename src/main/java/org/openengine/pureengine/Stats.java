@@ -26,7 +26,7 @@ public class Stats {
         int totalPossession = this.homeTeamStats.getPossession() + awayTeamStats.getPossession();
         double homeTeamPossession = (double) this.homeTeamStats.getPossession() * 100 / totalPossession;
         double awayTeamPossession = (double) this.awayTeamStats.getPossession() * 100 / totalPossession;
-        System.out.println(this.homeTeam.getName() + " - " + this.awayTeam.getName() + " "
+        System.out.println(this.homeTeam.getFullName() + " - " + this.awayTeam.getFullName() + " "
                 + Math.round(homeTeamPossession) + "%" + " - " + Math.round(awayTeamPossession) + "%");
     }
 }
