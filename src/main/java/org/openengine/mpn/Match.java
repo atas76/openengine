@@ -83,7 +83,7 @@ public class Match {
                     commentary.append(" take the corner...");
                     if (statement.getEndState() == State.POSSESSION && statement.isPossessionRetained()) {
                        if (outcomePitchPosition == PitchPosition.GD) {
-                           commentary.append("ball back to the goalkeeper (away from their area)");
+                           commentary.append("ball back to the goalkeeper (outside the penalty area)");
                        }
                     }
                 }
