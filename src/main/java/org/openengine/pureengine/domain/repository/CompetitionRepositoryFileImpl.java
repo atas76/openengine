@@ -10,6 +10,7 @@ import org.openengine.pureengine.domain.model.CompetitionRound;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,11 @@ public class CompetitionRepositoryFileImpl implements Repository<Competition> {
     }
 
     @Override
+    public Collection<Competition> findAll() {
+        return competitions.keySet().stream().map(this::findById).toList();
+    }
+
+    @Override
     public Competition findById(int id) {
         CompetitionDTO competitionDTO = competitions.get(id);
         List<CompetitionRoundDTO> competitionRoundDTOs = CompetitionRoundRepository.getCompetitionRounds(id);
@@ -33,6 +39,11 @@ public class CompetitionRepositoryFileImpl implements Repository<Competition> {
                         new CompetitionRound(competitionRoundDTO.getName(),
                                 competitionRoundDTO.getHomeAdvantage(),
                                 TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
+    }
+
+    @Override
+    public Competition findByName(String name) {
+        throw new IllegalArgumentException("Not supported");
     }
 
     @Override
