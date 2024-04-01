@@ -1,4 +1,4 @@
-package org.openengine.pureengine.client;
+package org.openengine.pureengine.client.entity.competition;
 
 import org.openengine.pureengine.domain.repository.TeamRepository;
 
