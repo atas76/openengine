@@ -39,9 +39,13 @@ public class Match {
                 }
                 case POSSESSION -> {
                     commentary.append(teamName);
-                    commentary.append(" have possession at pitch position ");
-                    commentary.append(initialPitchPosition);
-                    attachPitchPositionDescription(initialPitchPosition, commentary);
+                    if (initialPitchPosition != PitchPosition.GD) {
+                        commentary.append(" have possession at pitch position ");
+                        commentary.append(initialPitchPosition);
+                        attachPitchPositionDescription(initialPitchPosition, commentary);
+                    } else {
+                        commentary.append(" goalkeeper has the ball outside the penalty area");
+                    }
                 }
                 case ATTACK -> {
                     commentary.append(teamName);
