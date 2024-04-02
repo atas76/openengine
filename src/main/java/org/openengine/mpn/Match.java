@@ -110,6 +110,12 @@ public class Match {
                         commentary.append(teamName);
                         commentary.append(" win the corner");
                     }
+                    case THROW_IN -> {
+                        commentary.append(teamName);
+                        commentary.append(" win a throw-in from position ");
+                        commentary.append(outcomePitchPosition);
+                        attachPitchPositionDescription(outcomePitchPosition, commentary);
+                    }
                 }
             }
             if (statement.getEndState().equals(State.GOAL)) {

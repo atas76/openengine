@@ -17,6 +17,7 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DB22, "penalty box corner"),
             Map.entry(PitchPosition.AB22, "penalty box corner"),
             Map.entry(PitchPosition.Mh, "attacking half, half space"),
+            Map.entry(PitchPosition.AM, "attacking third"),
             Map.entry(PitchPosition.AMh, "attacking third, half space"),
             Map.entry(PitchPosition.Ah, "shooting range, half space")
     );
