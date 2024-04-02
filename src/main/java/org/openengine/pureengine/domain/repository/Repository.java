@@ -6,6 +6,8 @@ public interface Repository<T> {
 
     T findById(int id);
 
+    Collection<T> findByReferenceId(int id);
+
     T findByName(String name);
     Collection<T> findAll();
     void loadData();

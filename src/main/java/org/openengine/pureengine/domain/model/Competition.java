@@ -1,6 +1,7 @@
 package org.openengine.pureengine.domain.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Competition {
@@ -8,7 +9,7 @@ public class Competition {
     private String name;
     private List<CompetitionRound> rounds = new ArrayList<>();
 
-    public Competition(String name, List<CompetitionRound> rounds) {
+    public Competition(String name, Collection<CompetitionRound> rounds) {
         this.name = name;
         this.rounds.addAll(rounds);
     }

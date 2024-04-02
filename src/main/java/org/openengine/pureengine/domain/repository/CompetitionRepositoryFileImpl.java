@@ -1,9 +1,7 @@
 package org.openengine.pureengine.domain.repository;
 
-import org.openengine.pureengine.TieBreaker;
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionDTO;
-import org.openengine.pureengine.domain.dto.CompetitionRoundDTO;
 import org.openengine.pureengine.domain.model.Competition;
 import org.openengine.pureengine.domain.model.CompetitionRound;
 
@@ -12,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CompetitionRepositoryFileImpl implements Repository<Competition> {
@@ -32,13 +29,14 @@ public class CompetitionRepositoryFileImpl implements Repository<Competition> {
     @Override
     public Competition findById(int id) {
         CompetitionDTO competitionDTO = competitions.get(id);
-        List<CompetitionRoundDTO> competitionRoundDTOs = CompetitionRoundRepository.getCompetitionRounds(id);
-        return new Competition(
-                competitionDTO.getCountryDemonym() + " " + competitionDTO.getName(),
-                competitionRoundDTOs.stream().map(competitionRoundDTO ->
-                        new CompetitionRound(competitionRoundDTO.getName(),
-                                competitionRoundDTO.getHomeAdvantage(),
-                                TieBreaker.valueOf(competitionRoundDTO.getTieBreaker()))).toList());
+        Collection<CompetitionRound> competitionRounds = new CompetitionRoundRepositoryFileImpl().findByReferenceId(id);
+        return new Competition(competitionDTO.getCountryDemonym() + " " + competitionDTO.getName(),
+                competitionRounds);
+    }
+
+    @Override
+    public Collection<Competition> findByReferenceId(int id) {
+        throw new IllegalArgumentException("Not applicable");
     }
 
     @Override

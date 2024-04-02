@@ -24,6 +24,11 @@ public class TeamRepositoryFileImpl implements Repository<Team> {
     }
 
     @Override
+    public Collection<Team> findByReferenceId(int id) {
+        throw new IllegalArgumentException("Not applicable");
+    }
+
+    @Override
     public Team findByName(String name) {
         return teams.get(name);
     }
