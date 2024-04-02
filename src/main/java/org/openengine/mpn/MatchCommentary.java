@@ -16,7 +16,8 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DMh, "their own half"),
             Map.entry(PitchPosition.DB22, "penalty box corner"),
             Map.entry(PitchPosition.AB22, "penalty box corner"),
-            Map.entry(PitchPosition.Mh, "attacking half, half space")
+            Map.entry(PitchPosition.Mh, "attacking half, half space"),
+            Map.entry(PitchPosition.AMh, "attacking third, half space")
     );
 
     public static void main(String[] args) {
