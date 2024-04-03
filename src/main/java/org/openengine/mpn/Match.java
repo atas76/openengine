@@ -4,6 +4,8 @@ import org.mpn.*;
 
 import java.util.Map;
 
+import static org.mpn.PitchPosition.GK;
+
 public class Match {
 
     private Dataset matchEvents;
@@ -75,7 +77,7 @@ public class Match {
                 case BUILDUP -> {
                     commentary.append(teamName);
                     commentary.append(" building up from their ");
-                    if (initialPitchPosition == PitchPosition.GK) {
+                    if (initialPitchPosition == GK) {
                         commentary.append("goalkeeper");
                     } else {
                         commentary.append("defence");
@@ -128,9 +130,13 @@ public class Match {
                 commentary.append("...ball back to the goalkeeper");
             }
             if (statement.isPossessionChanged()) {
-                commentary.append(": possession lost at pitch position ");
-                commentary.append(outcomePitchPosition);
-                attachPitchPositionDescription(outcomePitchPosition, commentary);
+                if (outcomePitchPosition == GK) {
+                    commentary.append(": ball falls to opponent goalkeeper");
+                } else {
+                    commentary.append(": possession lost at pitch position ");
+                    commentary.append(outcomePitchPosition);
+                    attachPitchPositionDescription(outcomePitchPosition, commentary);
+                }
             }
         } else if (record instanceof Directive) {
             System.out.println("----- " + record + " -----");
