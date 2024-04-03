@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class TournamentRepository {
 
-    private static final int FA_CUP_2024_TOURNAMENT_ID = 1;
-    private static final int FA_CUP_2023_TOURNAMENT_ID = 2;
+    public static final int FA_CUP_2024_TOURNAMENT_ID = 1;
+    public static final int FA_CUP_2023_TOURNAMENT_ID = 2;
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament.csv";
 
