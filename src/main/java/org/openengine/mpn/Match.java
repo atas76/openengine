@@ -113,10 +113,15 @@ public class Match {
                         commentary.append(" win the corner");
                     }
                     case THROW_IN -> {
-                        commentary.append(teamName);
-                        commentary.append(" win a throw-in from position ");
-                        commentary.append(outcomePitchPosition);
-                        attachPitchPositionDescription(outcomePitchPosition, commentary);
+                        if (statement.isPossessionRetained()) {
+                            commentary.append(teamName);
+                            commentary.append(" win a throw-in from position ");
+                            commentary.append(outcomePitchPosition);
+                            attachPitchPositionDescription(outcomePitchPosition, commentary);
+                        } else {
+                            commentary.append(teamName);
+                            commentary.append(" concede a throw-in");
+                        }
                     }
                 }
             }
@@ -129,7 +134,7 @@ public class Match {
             } else if (statement.getEndState().equals(State.GOALKEEPER) && !statement.isPossessionChanged()) {
                 commentary.append("...ball back to the goalkeeper");
             }
-            if (statement.isPossessionChanged()) {
+            if (statement.isPossessionChanged() && statement.getEndTime() == null) {
                 if (outcomePitchPosition == GK) {
                     commentary.append(": ball falls to opponent goalkeeper");
                 } else {
