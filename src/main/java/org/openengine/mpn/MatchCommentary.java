@@ -23,6 +23,10 @@ public class MatchCommentary {
             Map.entry(PitchPosition.Ah, "shooting range, half space")
     );
 
+    public static Map<PitchPosition, String> throwInPositionMappings = Map.ofEntries(
+        Map.entry(PitchPosition.A, "near the height of the penalty box")
+    );
+
     public static void main(String[] args) {
         Match match = new Match();
         match.display();

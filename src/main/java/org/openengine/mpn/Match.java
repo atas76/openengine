@@ -61,7 +61,7 @@ public class Match {
                     commentary.append(teamName);
                     commentary.append(" throw-in from pitch position ");
                     commentary.append(initialPitchPosition);
-                    attachPitchPositionDescription(initialPitchPosition, commentary);
+                    attachThrowInPositionDescription(initialPitchPosition, commentary);
                 } case TRANSITION -> {
                     commentary.append(teamName);
                     commentary.append(" in transition");
@@ -94,7 +94,7 @@ public class Match {
                     commentary.append(" take the corner...");
                     if (statement.getEndState() == State.POSSESSION && statement.isPossessionRetained()) {
                        if (outcomePitchPosition == PitchPosition.GD) {
-                           commentary.append("ball back to the goalkeeper (outside the penalty area)");
+                           commentary.append("ball back to their goalkeeper (outside the penalty area)");
                        }
                     }
                 }
@@ -154,6 +154,15 @@ public class Match {
         if (pitchPosition == null) return;
         commentary.append(" (");
         commentary.append(MatchCommentary.pitchPositionMappings.get(pitchPosition));
+        commentary.append(")");
+    }
+
+    private static void attachThrowInPositionDescription(PitchPosition pitchPosition, StringBuilder commentary) {
+        if (pitchPosition == null) return;
+        commentary.append(" (");
+        String pitchPositionCommentary = MatchCommentary.throwInPositionMappings.get(pitchPosition);
+        commentary.append(pitchPositionCommentary != null ?
+                pitchPositionCommentary : MatchCommentary.pitchPositionMappings.get(pitchPosition));
         commentary.append(")");
     }
 }
