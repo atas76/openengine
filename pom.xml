@@ -47,26 +47,26 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.8</version> <!-- Update to the latest version -->
+            <version>5.3.27</version> <!-- Update to the latest version -->
         </dependency>
 
         <!-- Spring Beans & Core (required by spring-context) -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
-            <version>5.3.8</version>
+            <version>5.3.20</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>5.3.8</version>
+            <version>5.3.27</version>
         </dependency>
 
         <!-- Spring Expression Language (SpEL), also required by spring-context -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-expression</artifactId>
-            <version>5.3.8</version>
+            <version>5.3.27</version>
         </dependency>
 
     </dependencies>
