@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.3.8</version> <!-- Update to the latest version -->
+            <version>5.3.19</version> <!-- Update to the latest version -->
         </dependency>
 
         <!-- Spring Beans & Core (required by spring-context) -->
