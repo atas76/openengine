@@ -140,7 +140,7 @@ public class Match {
                 } else {
                     commentary.append(": possession lost at pitch position ");
                     commentary.append(outcomePitchPosition);
-                    attachPitchPositionDescription(outcomePitchPosition, commentary);
+                    attachPossessionChangePitchPositionDescription(outcomePitchPosition, commentary);
                 }
             }
         } else if (record instanceof Directive) {
@@ -161,6 +161,16 @@ public class Match {
         if (pitchPosition == null) return;
         commentary.append(" (");
         String pitchPositionCommentary = MatchCommentary.throwInPositionMappings.get(pitchPosition);
+        commentary.append(pitchPositionCommentary != null ?
+                pitchPositionCommentary : MatchCommentary.pitchPositionMappings.get(pitchPosition));
+        commentary.append(")");
+    }
+
+    private static void attachPossessionChangePitchPositionDescription(PitchPosition pitchPosition,
+                                                                       StringBuilder commentary) {
+        if (pitchPosition == null) return;
+        commentary.append(" (");
+        String pitchPositionCommentary = MatchCommentary.possessionChangePitchPositionMappings.get(pitchPosition);
         commentary.append(pitchPositionCommentary != null ?
                 pitchPositionCommentary : MatchCommentary.pitchPositionMappings.get(pitchPosition));
         commentary.append(")");
