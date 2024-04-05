@@ -20,7 +20,7 @@ public class TeamRepositoryFileImpl implements Repository<Team> {
 
     @Override
     public Team findById(int id) {
-        throw new IllegalArgumentException("Not supported");
+        throw new IllegalArgumentException("Not applicable");
     }
 
     @Override
