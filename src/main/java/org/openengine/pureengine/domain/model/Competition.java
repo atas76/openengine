@@ -7,7 +7,16 @@ import java.util.List;
 public class Competition {
 
     private String name;
+    private String country;
+    private String countryDemonym;
+
     private List<CompetitionRound> rounds = new ArrayList<>();
+
+    public Competition(String name, String country, String countryDemonym) {
+        this.name = name;
+        this.country = country;
+        this.countryDemonym = countryDemonym;
+    }
 
     public Competition(String name, Collection<CompetitionRound> rounds) {
         this.name = name;
@@ -33,5 +42,18 @@ public class Competition {
 
     public List<CompetitionRound> getRounds() {
         return rounds;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public String getCountryDemonym() {
+        return countryDemonym;
+    }
+
+    @Override
+    public String toString() {
+        return this.countryDemonym + " " + this.name + " (" + this.country + ")";
     }
 }
