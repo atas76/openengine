@@ -108,6 +108,10 @@ public class Match {
                         case OFF_TARGET -> commentary.append("...off target");
                     }
                 }
+                case GOAL_KICK -> {
+                    commentary.append(teamName);
+                    commentary.append(" take the goal kick");
+                }
             }
             if (statement.getEndTime() != null) {
                 commentary.append("\n");
