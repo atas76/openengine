@@ -141,6 +141,12 @@ public class Match {
                             commentary.append(" concede a throw-in");
                         }
                     }
+                    case FOUL -> {
+                        commentary.append(teamName);
+                        commentary.append(" win a foul at pitch position ");
+                        commentary.append(outcomePitchPosition);
+                        attachPitchPositionDescription(outcomePitchPosition, commentary);
+                    }
                 }
             }
             if (statement.getEndState().equals(State.GOAL)) {
