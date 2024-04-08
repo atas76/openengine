@@ -6,11 +6,18 @@ import java.util.List;
 
 public class Competition {
 
+    private int id;
+
     private String name;
     private String country;
     private String countryDemonym;
 
     private List<CompetitionRound> rounds = new ArrayList<>();
+
+    public Competition(int id, String name, String country, String countryDemonym) {
+        this(name, country, countryDemonym);
+        this.id = id;
+    }
 
     public Competition(String name, String country, String countryDemonym) {
         this.name = name;
@@ -32,6 +39,14 @@ public class Competition {
         rounds.forEach(round -> System.out.println(round.getName()));
     }
 
+    public void setRoundDetails(List<CompetitionRound> rounds) {
+        this.rounds = rounds;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,7 +55,7 @@ public class Competition {
         return rounds.get(0).getName();
     }
 
-    public List<CompetitionRound> getRounds() {
+    public List<CompetitionRound> getRoundDetails() {
         return rounds;
     }
 

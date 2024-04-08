@@ -33,4 +33,10 @@ public class CompetitionRound {
     public TieBreaker getTieBreaker() {
         return this.tieBreaker;
     }
+
+    @Override
+    public String toString() {
+        return this.name + " (" + (this.homeAdvantage ? "home advantage" : "neutral venue") + ", tie breaker: "
+                + tieBreaker + ")";
+    }
 }

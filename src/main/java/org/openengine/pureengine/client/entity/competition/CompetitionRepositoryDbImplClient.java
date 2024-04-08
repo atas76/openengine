@@ -20,6 +20,11 @@ public class CompetitionRepositoryDbImplClient {
             Competition faCup = competitionRepository.findByName("FA Cup");
             System.out.println(faCup);
 
+            System.out.println();
+            System.out.println("FA Cup rounds:");
+            faCup.getRoundDetails().forEach(System.out::println);
+            System.out.println();
+
             Collection<Competition> competitions = competitionRepository.findAll();
             competitions.forEach(System.out::println);
         }
