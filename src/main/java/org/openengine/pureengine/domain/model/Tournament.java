@@ -22,7 +22,7 @@ public class Tournament {
         this.year = year;
         this.participants = participants;
         this.competition = competition;
-        rounds.add(new TournamentRound(competition.getRounds().get(0), participants));
+        rounds.add(new TournamentRound(competition.getRoundDetails().get(0), participants));
     }
 
     public void displayHeader() {
@@ -42,8 +42,8 @@ public class Tournament {
         TournamentRound currentRound = this.rounds.get(0);
         currentRound.play(silentMode);
         List<Team> qualifiedTeams = currentRound.getQualifiedTeams();
-        for (int i = 1; i < competition.getRounds().size(); i++) {
-            rounds.add(new TournamentRound(competition.getRounds().get(i), qualifiedTeams));
+        for (int i = 1; i < competition.getRoundDetails().size(); i++) {
+            rounds.add(new TournamentRound(competition.getRoundDetails().get(i), qualifiedTeams));
             currentRound = this.rounds.get(i);
             if (!silentMode) System.out.println();
             currentRound.play(silentMode);
