@@ -85,10 +85,14 @@ public class Match {
                 }
                 case PRESSING -> {
                     commentary.append(teamName);
-                    commentary.append(" under pressure");
-                    commentary.append(" from pitch position ");
-                    commentary.append(initialPitchPosition);
-                    attachPitchPositionDescription(initialPitchPosition, commentary);
+                    if (initialPitchPosition != GK) {
+                        commentary.append(" under pressure");
+                        commentary.append(" from pitch position ");
+                        commentary.append(initialPitchPosition);
+                        attachPitchPositionDescription(initialPitchPosition, commentary);
+                    } else {
+                        commentary.append(" goalkeeper under pressure");
+                    }
                 }
                 case CORNER -> {
                     commentary.append(teamName);
