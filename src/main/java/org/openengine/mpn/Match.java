@@ -151,6 +151,11 @@ public class Match {
                         commentary.append(outcomePitchPosition);
                         attachPitchPositionDescription(outcomePitchPosition, commentary);
                     }
+                    case GOAL_KICK -> {
+                        if (!statement.isPossessionRetained()) {
+                            commentary.append("Ball out for a goal kick");
+                        }
+                    }
                 }
             }
             if (statement.getEndState().equals(State.GOAL)) {
