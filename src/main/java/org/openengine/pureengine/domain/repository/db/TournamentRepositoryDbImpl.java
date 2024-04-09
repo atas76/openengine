@@ -49,7 +49,7 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
 
     @Override
     public void loadData() {
-
+        throw new IllegalArgumentException("Not applicable");
     }
 
     private Tournament loadData(Tournament tournament) {
