@@ -24,7 +24,8 @@ public class MatchCommentary {
             Map.entry(PitchPosition.A, "outside penalty box"),
             Map.entry(PitchPosition.Ah, "shooting range, half space"),
             Map.entry(PitchPosition.Aw, "wings, near penalty area"),
-            Map.entry(PitchPosition.AB, "wide, at penalty box height")
+            Map.entry(PitchPosition.AB, "wide, at penalty box height"),
+            Map.entry(PitchPosition.ABw, "wide, off the penalty box")
     );
 
     public static Map<PitchPosition, String> throwInPositionMappings = Map.ofEntries(
