@@ -116,6 +116,10 @@ public class Match {
                     commentary.append(teamName);
                     commentary.append(" take the goal kick");
                 }
+                case FREEKICK -> {
+                    commentary.append(teamName);
+                    commentary.append(" take the free kick");
+                }
             }
             if (statement.getEndTime() != null) {
                 commentary.append("\n");
