@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.openengine.pureengine.domain.repository.db.CompetitionRepositoryDbImpl;
 import org.openengine.pureengine.domain.repository.db.CompetitionRoundRepositoryDbImpl;
 import org.openengine.pureengine.domain.repository.db.TeamRepositoryDbImpl;
+import org.openengine.pureengine.domain.repository.db.TournamentRepositoryDbImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,5 +41,11 @@ public class SQLiteConfig {
     @Bean
     public CompetitionRoundRepositoryDbImpl competitionRoundRepositoryDbImpl(JdbcTemplate jdbcTemplate) {
         return new CompetitionRoundRepositoryDbImpl(jdbcTemplate);
+    }
+
+    @Bean
+    public TournamentRepositoryDbImpl tournamentRepositoryDbImpl(JdbcTemplate jdbcTemplate,
+                                                                 CompetitionRepositoryDbImpl competitionRepository) {
+        return new TournamentRepositoryDbImpl(jdbcTemplate, competitionRepository);
     }
 }

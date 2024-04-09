@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Tournament {
 
+    private int competitionId;
     private int year;
     private List<Team> participants;
     private Competition competition;
@@ -16,6 +17,11 @@ public class Tournament {
 
     public Tournament(Tournament tournament) {
         this(tournament.year, tournament.participants, tournament.competition);
+    }
+
+    public Tournament(int competitionId, int year) {
+        this.competitionId = competitionId;
+        this.year = year;
     }
 
     public Tournament(int year, List<Team> participants, Competition competition) {
@@ -58,11 +64,24 @@ public class Tournament {
         }
     }
 
+    public void setCompetition(Competition competition) {
+        this.competition = competition;
+    }
+
     public Team getWinner() {
         return winner;
     }
 
     public Team getRunnerUp() {
         return runnerUp;
+    }
+
+    public int getCompetitionId() {
+        return competitionId;
+    }
+
+    @Override
+    public String toString() {
+        return this.competition + " " + this.year;
     }
 }
