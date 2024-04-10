@@ -39,6 +39,7 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DB22, "opponent's penalty box corner"),
             Map.entry(PitchPosition.AB22, "opponent's penalty box corner"),
             Map.entry(PitchPosition.Mh, "opponent's attacking half, half space"),
+            Map.entry(PitchPosition.Mw, "opponent's attacking half, wide"),
             Map.entry(PitchPosition.AM, "opponent's attacking third"),
             Map.entry(PitchPosition.AMh, "opponent's attacking third, half space"),
             Map.entry(PitchPosition.Ah, "opponent's shooting range, half space"),
