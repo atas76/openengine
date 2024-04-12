@@ -13,8 +13,15 @@ public class TournamentRepositoryDbImplClient {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SQLiteConfig.class)) {
             TournamentRepositoryDbImpl tournamentRepositoryDb = context.getBean(TournamentRepositoryDbImpl.class);
 
-            System.out.println(tournamentRepositoryDb.findById(1));
-            System.out.println(tournamentRepositoryDb.findById(2));
+            Tournament tournament1 = tournamentRepositoryDb.findById(1);
+            System.out.println(tournament1);
+            tournament1.displayParticipants();
+
+
+            Tournament tournament2 = tournamentRepositoryDb.findById(2);
+            System.out.println();
+            System.out.println(tournament2);
+            tournament2.displayParticipants();
             System.out.println();
 
             Collection<Tournament> tournaments = tournamentRepositoryDb.findAll();

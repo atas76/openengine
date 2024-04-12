@@ -1,6 +1,5 @@
 package org.openengine.pureengine.domain.repository;
 
-import org.openengine.pureengine.client.entity.competition.TournamentParticipationFileImplRepository;
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.model.Tournament;
 
@@ -53,7 +52,7 @@ public class TournamentRepositoryFileImpl implements Repository<Tournament> {
                         int competitionId = Integer.parseInt(csvRecord[1]);
                         int year = Integer.parseInt(csvRecord[2]);
                         tournaments.put(tournamentId, new Tournament(year,
-                                new TournamentParticipationFileImplRepository().findByReferenceId(tournamentId).stream()
+                                new TournamentParticipationRepositoryFileImpl().findByReferenceId(tournamentId).stream()
                                         .map(teamName -> new TeamRepositoryFileImpl().findByName(teamName)).toList(),
                                 new CompetitionRepositoryFileImpl().findById(competitionId)));
                     }

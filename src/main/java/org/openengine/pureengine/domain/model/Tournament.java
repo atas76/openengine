@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Tournament {
 
+    private int id;
     private int competitionId;
     private int year;
     private List<Team> participants;
@@ -22,6 +23,11 @@ public class Tournament {
     public Tournament(int competitionId, int year) {
         this.competitionId = competitionId;
         this.year = year;
+    }
+
+    public Tournament(int id, int competitionId, int year) {
+        this(competitionId, year);
+        this.id = id;
     }
 
     public Tournament(int year, List<Team> participants, Competition competition) {
@@ -64,8 +70,13 @@ public class Tournament {
         }
     }
 
-    public void setCompetition(Competition competition) {
+    public void loadCompetition(Competition competition) {
         this.competition = competition;
+        rounds.add(new TournamentRound(competition.getRoundDetails().get(0), participants));
+    }
+
+    public void loadParticipants(List<Team> teams) {
+        this.participants = teams;
     }
 
     public Team getWinner() {
@@ -78,6 +89,10 @@ public class Tournament {
 
     public int getCompetitionId() {
         return competitionId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override

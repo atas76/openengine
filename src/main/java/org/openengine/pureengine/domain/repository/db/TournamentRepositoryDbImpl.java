@@ -16,15 +16,22 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
 
     private JdbcTemplate jdbcTemplate;
     private CompetitionRepositoryDbImpl competitionRepository;
+    private TournamentParticipationRepositoryDbImpl tournamentParticipationRepository;
+    private TeamRepositoryDbImpl teamRepository;
 
-    public TournamentRepositoryDbImpl(JdbcTemplate jdbcTemplate, CompetitionRepositoryDbImpl competitionRepository) {
+    public TournamentRepositoryDbImpl(JdbcTemplate jdbcTemplate,
+                                      CompetitionRepositoryDbImpl competitionRepository,
+                                      TournamentParticipationRepositoryDbImpl tournamentParticipationRepository,
+                                      TeamRepositoryDbImpl teamRepository) {
         this.jdbcTemplate = jdbcTemplate;
         this.competitionRepository = competitionRepository;
+        this.tournamentParticipationRepository = tournamentParticipationRepository;
+        this.teamRepository = teamRepository;
     }
 
     @Override
     public Tournament findById(int id) {
-        String sql = "SELECT competition_id, year from Tournament where id = ?";
+        String sql = "SELECT id, competition_id, year from Tournament where id = ?";
         Tournament tournament = jdbcTemplate.queryForObject(sql, new TournamentRowMapper(), id);
         assert tournament != null;
         return loadData(tournament);
@@ -42,7 +49,7 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
 
     @Override
     public Collection<Tournament> findAll() {
-        String sql = "SELECT competition_id, year from Tournament";
+        String sql = "SELECT id, competition_id, year from Tournament";
         List<Tournament> tournaments = jdbcTemplate.query(sql, new TournamentRowMapper());
         return tournaments.stream().map(this::loadData).toList();
     }
@@ -54,8 +61,12 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
 
     private Tournament loadData(Tournament tournament) {
         Competition competition = competitionRepository.findById(tournament.getCompetitionId());
-        tournament.setCompetition(competition);
-        // TODO load tournament participants
+        Collection<String> tournamentParticipations =
+                tournamentParticipationRepository.findByReferenceId(tournament.getId());
+
+        tournament.loadParticipants(tournamentParticipations.stream().map(teamRepository::findByName).toList());
+        tournament.loadCompetition(competition);
+
         return tournament;
     }
 
@@ -63,7 +74,10 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
 
         @Override
         public Tournament mapRow(ResultSet rs, int rowNum) throws SQLException {
-            return new Tournament(rs.getInt("competition_id"), rs.getInt("year"));
+            return new Tournament(
+                    rs.getInt("id"),
+                    rs.getInt("competition_id"),
+                    rs.getInt("year"));
         }
     }
 }

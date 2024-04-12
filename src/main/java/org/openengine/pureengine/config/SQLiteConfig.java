@@ -2,10 +2,7 @@ package org.openengine.pureengine.config;
 
 import javax.sql.DataSource;
 
-import org.openengine.pureengine.domain.repository.db.CompetitionRepositoryDbImpl;
-import org.openengine.pureengine.domain.repository.db.CompetitionRoundRepositoryDbImpl;
-import org.openengine.pureengine.domain.repository.db.TeamRepositoryDbImpl;
-import org.openengine.pureengine.domain.repository.db.TournamentRepositoryDbImpl;
+import org.openengine.pureengine.domain.repository.db.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -44,8 +41,18 @@ public class SQLiteConfig {
     }
 
     @Bean
-    public TournamentRepositoryDbImpl tournamentRepositoryDbImpl(JdbcTemplate jdbcTemplate,
-                                                                 CompetitionRepositoryDbImpl competitionRepository) {
-        return new TournamentRepositoryDbImpl(jdbcTemplate, competitionRepository);
+    public TournamentRepositoryDbImpl tournamentRepositoryDbImpl(
+            JdbcTemplate jdbcTemplate,
+            CompetitionRepositoryDbImpl competitionRepository,
+            TournamentParticipationRepositoryDbImpl tournamentParticipationRepository,
+            TeamRepositoryDbImpl teamRepository) {
+
+        return new TournamentRepositoryDbImpl(jdbcTemplate,
+                competitionRepository, tournamentParticipationRepository, teamRepository);
+    }
+
+    @Bean
+    public TournamentParticipationRepositoryDbImpl tournamentParticipationRepositoryDb(JdbcTemplate jdbcTemplate) {
+        return new TournamentParticipationRepositoryDbImpl(jdbcTemplate);
     }
 }

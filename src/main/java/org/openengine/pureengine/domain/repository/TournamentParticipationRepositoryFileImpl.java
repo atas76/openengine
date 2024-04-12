@@ -1,20 +1,19 @@
-package org.openengine.pureengine.client.entity.competition;
+package org.openengine.pureengine.domain.repository;
 
 import org.openengine.pureengine.domain.CommonUtil;
-import org.openengine.pureengine.domain.repository.Repository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class TournamentParticipationFileImplRepository implements Repository<String> {
+public class TournamentParticipationRepositoryFileImpl implements Repository<String> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv";
 
     private static Map<Integer, List<String>> tournamentParticipationMap;
 
-    public TournamentParticipationFileImplRepository() {
+    public TournamentParticipationRepositoryFileImpl() {
         loadData();
     }
 
