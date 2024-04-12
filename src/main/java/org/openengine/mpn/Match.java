@@ -141,7 +141,7 @@ public class Match {
                     case THROW_IN -> {
                         if (statement.isPossessionRetained()) {
                             commentary.append(teamName);
-                            commentary.append(" win a throw-in in pitch position ");
+                            commentary.append(" win a throw-in at pitch position ");
                             commentary.append(outcomePitchPosition);
                             attachPitchPositionDescription(outcomePitchPosition, commentary);
                         } else {
