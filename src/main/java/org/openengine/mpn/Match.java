@@ -175,9 +175,13 @@ public class Match {
                 if (outcomePitchPosition == GK) {
                     commentary.append(": ball falls to opponent goalkeeper");
                 } else {
-                    commentary.append(": possession lost at pitch position ");
-                    commentary.append(outcomePitchPosition);
-                    attachPossessionChangePitchPositionDescription(outcomePitchPosition, commentary);
+                    if (statement.getEndState().equals(State.GOALKEEPER)) {
+                        commentary.append("...opponent goalkeeper takes hold of the ball");
+                    } else {
+                        commentary.append(": possession lost at pitch position ");
+                        commentary.append(outcomePitchPosition);
+                        attachPossessionChangePitchPositionDescription(outcomePitchPosition, commentary);
+                    }
                 }
             }
         } else if (record instanceof Directive) {
