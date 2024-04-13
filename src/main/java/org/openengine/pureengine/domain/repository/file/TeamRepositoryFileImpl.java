@@ -20,11 +20,6 @@ public class TeamRepositoryFileImpl implements LoadableRepository<Team> {
     }
 
     @Override
-    public Team findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<Team> findByReferenceId(int id) {
         throw new IllegalArgumentException("Not applicable");
     }

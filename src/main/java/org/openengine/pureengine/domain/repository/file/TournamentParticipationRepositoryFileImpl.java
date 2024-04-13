@@ -19,11 +19,6 @@ public class TournamentParticipationRepositoryFileImpl implements LoadableReposi
     }
 
     @Override
-    public String findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<String> findByReferenceId(int id) {
         return tournamentParticipationMap.get(id);
     }

@@ -21,12 +21,6 @@ public class TeamRepositoryDbImpl implements org.openengine.pureengine.domain.re
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
-    @Override
-    public Team findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     @Override
     public Collection<Team> findByReferenceId(int id) {
         throw new IllegalArgumentException("Not applicable");

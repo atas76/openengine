@@ -1,6 +1,7 @@
 package org.openengine.pureengine.domain.repository.db;
 
 import org.openengine.pureengine.domain.model.Competition;
+import org.openengine.pureengine.domain.repository.IdentifiableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -13,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public class CompetitionRepositoryDbImpl implements org.openengine.pureengine.domain.repository.Repository<Competition> {
+public class CompetitionRepositoryDbImpl implements IdentifiableRepository<Competition> {
 
     private final JdbcTemplate jdbcTemplate;
     private final CompetitionRoundRepositoryDbImpl competitionRoundRepository;

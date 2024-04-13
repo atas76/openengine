@@ -22,11 +22,6 @@ public class CompetitionRoundRepositoryFileImpl implements LoadableRepository<Co
     }
 
     @Override
-    public CompetitionRound findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<CompetitionRound> findByReferenceId(int id) {
         return competitionRounds.get(id).stream().map(dto -> new CompetitionRound(dto.getName(),
                 dto.getHomeAdvantage(),

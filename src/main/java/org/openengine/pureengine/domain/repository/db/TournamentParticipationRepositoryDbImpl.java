@@ -19,11 +19,6 @@ public class TournamentParticipationRepositoryDbImpl implements
     }
 
     @Override
-    public String findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<String> findByReferenceId(int id) {
         String sql = "SELECT team_key from TournamentParticipation where tournament_id = ?";
         return jdbcTemplate.query(sql, new TournamentParticipationRowMapper(), id);

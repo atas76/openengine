@@ -4,6 +4,7 @@ import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionDTO;
 import org.openengine.pureengine.domain.model.Competition;
 import org.openengine.pureengine.domain.model.CompetitionRound;
+import org.openengine.pureengine.domain.repository.IdentifiableRepository;
 import org.openengine.pureengine.domain.repository.LoadableRepository;
 
 import java.io.IOException;
@@ -13,7 +14,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CompetitionRepositoryFileImpl implements LoadableRepository<Competition> {
+public class CompetitionRepositoryFileImpl
+        implements LoadableRepository<Competition>, IdentifiableRepository<Competition> {
 
     private static Map<Integer, CompetitionDTO> competitions;
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition.csv";

@@ -12,17 +12,12 @@ import java.util.Collection;
 
 @Repository
 public class CompetitionRoundRepositoryDbImpl
-        implements org.openengine.pureengine.domain.repository.Repository<CompetitionRound>  {
+        implements org.openengine.pureengine.domain.repository.Repository<CompetitionRound> {
 
     private final JdbcTemplate jdbcTemplate;
 
     public CompetitionRoundRepositoryDbImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    @Override
-    public CompetitionRound findById(int id) {
-        throw new IllegalArgumentException("Not applicable");
     }
 
     @Override

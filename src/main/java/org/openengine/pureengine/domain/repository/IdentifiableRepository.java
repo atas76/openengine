@@ -2,15 +2,8 @@ package org.openengine.pureengine.domain.repository;
 
 import java.util.Collection;
 
-public interface Repository<T> {
+public interface IdentifiableRepository<T> extends Repository<T> {
 
-
-
-    Collection<T> findByReferenceId(int id);
-
-    T findByName(String name);
-
+    T findById(int id);
     Collection<T> findAll();
-
-
 }
