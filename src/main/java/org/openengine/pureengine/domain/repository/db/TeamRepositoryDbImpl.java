@@ -2,6 +2,7 @@ package org.openengine.pureengine.domain.repository.db;
 
 import org.openengine.pureengine.Team;
 
+import org.openengine.pureengine.domain.repository.RetrievableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 @Repository
-public class TeamRepositoryDbImpl implements org.openengine.pureengine.domain.repository.Repository<Team> {
+public class TeamRepositoryDbImpl implements RetrievableRepository<Team> {
 
     private final JdbcTemplate jdbcTemplate;
 

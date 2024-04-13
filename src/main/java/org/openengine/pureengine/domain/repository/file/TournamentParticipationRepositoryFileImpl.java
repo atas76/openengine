@@ -31,11 +31,6 @@ public class TournamentParticipationRepositoryFileImpl
     }
 
     @Override
-    public Collection<String> findAll() {
-        throw new IllegalArgumentException("Not supported");
-    }
-
-    @Override
     public void loadData() {
         tournamentParticipationMap = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {

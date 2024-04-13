@@ -6,7 +6,6 @@ public interface Repository<T> {
 
     T findByName(String name);
 
-    Collection<T> findAll();
 
 
 }

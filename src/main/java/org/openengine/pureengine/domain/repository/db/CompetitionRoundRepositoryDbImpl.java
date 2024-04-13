@@ -31,11 +31,6 @@ public class CompetitionRoundRepositoryDbImpl implements ReferencableRepository<
         throw new IllegalArgumentException("Not supported");
     }
 
-    @Override
-    public Collection<CompetitionRound> findAll() {
-        throw new IllegalArgumentException("Not supported");
-    }
-
     public static class CompetitionRoundRowMapper implements RowMapper<CompetitionRound> {
 
         @Override

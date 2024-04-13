@@ -29,11 +29,6 @@ public class TournamentParticipationRepositoryDbImpl implements ReferencableRepo
         throw new IllegalArgumentException("Not applicable");
     }
 
-    @Override
-    public Collection<String> findAll() {
-        throw new IllegalArgumentException("Not supported");
-    }
-
     public static class TournamentParticipationRowMapper implements RowMapper<String> {
 
         @Override
