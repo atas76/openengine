@@ -24,11 +24,6 @@ public class TournamentParticipationRepositoryDbImpl implements ReferencableRepo
         return jdbcTemplate.query(sql, new TournamentParticipationRowMapper(), id);
     }
 
-    @Override
-    public String findByName(String name) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     public static class TournamentParticipationRowMapper implements RowMapper<String> {
 
         @Override

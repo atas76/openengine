@@ -26,11 +26,6 @@ public class TournamentParticipationRepositoryFileImpl
     }
 
     @Override
-    public String findByName(String name) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public void loadData() {
         tournamentParticipationMap = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {

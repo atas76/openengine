@@ -31,11 +31,6 @@ public class CompetitionRoundRepositoryFileImpl implements
     }
 
     @Override
-    public CompetitionRound findByName(String name) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public void loadData() {
         competitionRounds = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {

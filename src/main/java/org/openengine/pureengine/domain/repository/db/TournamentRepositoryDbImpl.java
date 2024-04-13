@@ -39,11 +39,6 @@ public class TournamentRepositoryDbImpl implements IdentifiableRepository<Tourna
     }
 
     @Override
-    public Tournament findByName(String name) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<Tournament> findAll() {
         String sql = "SELECT id, competition_id, year from Tournament";
         List<Tournament> tournaments = jdbcTemplate.query(sql, new TournamentRowMapper());

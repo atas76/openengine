@@ -26,11 +26,6 @@ public class CompetitionRoundRepositoryDbImpl implements ReferencableRepository<
         return jdbcTemplate.query(sql, new CompetitionRoundRowMapper(), id);
     }
 
-    @Override
-    public CompetitionRound findByName(String name) {
-        throw new IllegalArgumentException("Not supported");
-    }
-
     public static class CompetitionRoundRowMapper implements RowMapper<CompetitionRound> {
 
         @Override

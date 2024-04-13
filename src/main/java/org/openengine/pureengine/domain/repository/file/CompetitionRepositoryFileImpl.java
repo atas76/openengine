@@ -38,11 +38,6 @@ public class CompetitionRepositoryFileImpl
     }
 
     @Override
-    public Competition findByName(String name) {
-        throw new IllegalArgumentException("Not supported");
-    }
-
-    @Override
     public void loadData() {
         competitions = new HashMap<>();
         try (var records = Files.lines(Paths.get(datasource))) {

@@ -29,11 +29,6 @@ public class TournamentRepositoryFileImpl
     }
 
     @Override
-    public Tournament findByName(String name) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Collection<Tournament> findAll() {
         return tournaments.values();
     }
