@@ -4,6 +4,7 @@ import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionDTO;
 import org.openengine.pureengine.domain.model.Competition;
 import org.openengine.pureengine.domain.model.CompetitionRound;
+import org.openengine.pureengine.domain.repository.LoadableRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;

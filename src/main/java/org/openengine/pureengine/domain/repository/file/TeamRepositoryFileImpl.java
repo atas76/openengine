@@ -2,6 +2,7 @@ package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.Team;
 import org.openengine.pureengine.domain.CommonUtil;
+import org.openengine.pureengine.domain.repository.LoadableRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
