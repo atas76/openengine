@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.model.Tournament;
@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TournamentRepositoryFileImpl implements Repository<Tournament> {
+public class TournamentRepositoryFileImpl implements LoadableRepository<Tournament> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament.csv";
 

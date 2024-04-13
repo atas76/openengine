@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.TieBreaker;
 import org.openengine.pureengine.domain.CommonUtil;
@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class CompetitionRoundRepositoryFileImpl implements Repository<CompetitionRound> {
+public class CompetitionRoundRepositoryFileImpl implements LoadableRepository<CompetitionRound> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition_round.csv";
 

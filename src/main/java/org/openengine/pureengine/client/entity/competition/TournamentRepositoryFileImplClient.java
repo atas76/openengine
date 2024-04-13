@@ -1,7 +1,7 @@
 package org.openengine.pureengine.client.entity.competition;
 
 import org.openengine.pureengine.domain.model.Tournament;
-import org.openengine.pureengine.domain.repository.TournamentRepositoryFileImpl;
+import org.openengine.pureengine.domain.repository.file.TournamentRepositoryFileImpl;
 
 import java.util.List;
 

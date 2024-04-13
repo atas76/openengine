@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.Team;
 import org.openengine.pureengine.domain.CommonUtil;
@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class TeamRepositoryFileImpl implements Repository<Team> {
+public class TeamRepositoryFileImpl implements LoadableRepository<Team> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/team.csv";
 

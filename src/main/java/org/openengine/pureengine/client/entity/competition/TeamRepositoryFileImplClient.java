@@ -2,7 +2,7 @@ package org.openengine.pureengine.client.entity.competition;
 
 import org.openengine.pureengine.Team;
 import org.openengine.pureengine.domain.repository.Repository;
-import org.openengine.pureengine.domain.repository.TeamRepositoryFileImpl;
+import org.openengine.pureengine.domain.repository.file.TeamRepositoryFileImpl;
 
 public class TeamRepositoryFileImplClient {
 

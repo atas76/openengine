@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.domain.CommonUtil;
 
@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class TournamentParticipationRepositoryFileImpl implements Repository<String> {
+public class TournamentParticipationRepositoryFileImpl implements LoadableRepository<String> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv";
 

@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionDTO;
@@ -12,7 +12,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CompetitionRepositoryFileImpl implements Repository<Competition> {
+public class CompetitionRepositoryFileImpl implements LoadableRepository<Competition> {
 
     private static Map<Integer, CompetitionDTO> competitions;
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition.csv";
