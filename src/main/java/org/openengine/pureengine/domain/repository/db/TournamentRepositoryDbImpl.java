@@ -39,11 +39,6 @@ public class TournamentRepositoryDbImpl implements IdentifiableRepository<Tourna
     }
 
     @Override
-    public Collection<Tournament> findByReferenceId(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Tournament findByName(String name) {
         throw new IllegalArgumentException("Not applicable");
     }

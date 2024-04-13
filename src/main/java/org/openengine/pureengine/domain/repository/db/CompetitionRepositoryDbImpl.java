@@ -35,11 +35,6 @@ public class CompetitionRepositoryDbImpl implements IdentifiableRepository<Compe
     }
 
     @Override
-    public Collection<Competition> findByReferenceId(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Competition findByName(String name) {
         String sql = "SELECT * FROM Competition WHERE name = ?";
         Competition competition = jdbcTemplate.queryForObject(sql, new CompetitionRowMapper(), name);

@@ -2,6 +2,7 @@ package org.openengine.pureengine.domain.repository.db;
 
 import org.openengine.pureengine.TieBreaker;
 import org.openengine.pureengine.domain.model.CompetitionRound;
+import org.openengine.pureengine.domain.repository.ReferencableRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -11,8 +12,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 @Repository
-public class CompetitionRoundRepositoryDbImpl
-        implements org.openengine.pureengine.domain.repository.Repository<CompetitionRound> {
+public class CompetitionRoundRepositoryDbImpl implements ReferencableRepository<CompetitionRound> {
 
     private final JdbcTemplate jdbcTemplate;
 

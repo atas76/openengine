@@ -2,13 +2,15 @@ package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.repository.LoadableRepository;
+import org.openengine.pureengine.domain.repository.ReferencableRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class TournamentParticipationRepositoryFileImpl implements LoadableRepository<String> {
+public class TournamentParticipationRepositoryFileImpl
+        implements LoadableRepository<String>, ReferencableRepository<String> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament_participation.csv";
 

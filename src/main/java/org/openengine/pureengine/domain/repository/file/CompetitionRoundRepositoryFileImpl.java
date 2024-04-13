@@ -5,13 +5,15 @@ import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionRoundDTO;
 import org.openengine.pureengine.domain.model.CompetitionRound;
 import org.openengine.pureengine.domain.repository.LoadableRepository;
+import org.openengine.pureengine.domain.repository.ReferencableRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class CompetitionRoundRepositoryFileImpl implements LoadableRepository<CompetitionRound> {
+public class CompetitionRoundRepositoryFileImpl implements
+        LoadableRepository<CompetitionRound>, ReferencableRepository<CompetitionRound> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/competition_round.csv";
 

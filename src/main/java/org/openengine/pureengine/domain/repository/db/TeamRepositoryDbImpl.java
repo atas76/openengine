@@ -22,11 +22,6 @@ public class TeamRepositoryDbImpl implements org.openengine.pureengine.domain.re
     }
 
     @Override
-    public Collection<Team> findByReferenceId(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Team findByName(String name) {
         String sql = "SELECT * FROM Team WHERE team_name = ?";
         return jdbcTemplate.queryForObject(sql, new TeamRowMapper(), name);

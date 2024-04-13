@@ -2,6 +2,7 @@ package org.openengine.pureengine.domain.repository.file;
 
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.model.Tournament;
+import org.openengine.pureengine.domain.repository.IdentifiableRepository;
 import org.openengine.pureengine.domain.repository.LoadableRepository;
 
 import java.io.IOException;
@@ -11,7 +12,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TournamentRepositoryFileImpl implements LoadableRepository<Tournament> {
+public class TournamentRepositoryFileImpl
+        implements LoadableRepository<Tournament>, IdentifiableRepository<Tournament> {
 
     private static final String datasource = CommonUtil.DOMAIN_ROOT + "/tournament.csv";
 
@@ -24,11 +26,6 @@ public class TournamentRepositoryFileImpl implements LoadableRepository<Tourname
     @Override
     public Tournament findById(int id) {
         return tournaments.get(id);
-    }
-
-    @Override
-    public Collection<Tournament> findByReferenceId(int id) {
-        throw new IllegalArgumentException("Not applicable");
     }
 
     @Override

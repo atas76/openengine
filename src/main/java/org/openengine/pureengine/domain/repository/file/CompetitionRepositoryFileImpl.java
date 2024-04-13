@@ -38,11 +38,6 @@ public class CompetitionRepositoryFileImpl
     }
 
     @Override
-    public Collection<Competition> findByReferenceId(int id) {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
-    @Override
     public Competition findByName(String name) {
         throw new IllegalArgumentException("Not supported");
     }

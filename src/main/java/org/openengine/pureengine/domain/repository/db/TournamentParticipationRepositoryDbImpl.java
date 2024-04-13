@@ -1,5 +1,6 @@
 package org.openengine.pureengine.domain.repository.db;
 
+import org.openengine.pureengine.domain.repository.ReferencableRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -9,8 +10,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 @Repository
-public class TournamentParticipationRepositoryDbImpl implements
-        org.openengine.pureengine.domain.repository.Repository<String> {
+public class TournamentParticipationRepositoryDbImpl implements ReferencableRepository<String> {
 
     private JdbcTemplate jdbcTemplate;
 
