@@ -1,7 +1,7 @@
 package org.openengine.pureengine.client.entity.competition;
 
 import org.openengine.pureengine.domain.model.Competition;
-import org.openengine.pureengine.domain.repository.CompetitionRepository;
+import org.openengine.pureengine.domain.repository.hardcoded.CompetitionRepository;
 
 public class CompetitionRepositoryClient {
 

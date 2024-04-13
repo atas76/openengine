@@ -1,4 +1,4 @@
-package org.openengine.pureengine.domain.repository;
+package org.openengine.pureengine.domain.repository.hardcoded;
 
 import org.openengine.pureengine.domain.CommonUtil;
 import org.openengine.pureengine.domain.dto.CompetitionRoundDTO;

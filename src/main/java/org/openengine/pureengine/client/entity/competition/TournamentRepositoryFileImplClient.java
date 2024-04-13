@@ -5,8 +5,8 @@ import org.openengine.pureengine.domain.repository.file.TournamentRepositoryFile
 
 import java.util.List;
 
-import static org.openengine.pureengine.domain.repository.TournamentRepository.FA_CUP_2023_TOURNAMENT_ID;
-import static org.openengine.pureengine.domain.repository.TournamentRepository.FA_CUP_2024_TOURNAMENT_ID;
+import static org.openengine.pureengine.domain.repository.hardcoded.TournamentRepository.FA_CUP_2023_TOURNAMENT_ID;
+import static org.openengine.pureengine.domain.repository.hardcoded.TournamentRepository.FA_CUP_2024_TOURNAMENT_ID;
 
 public class TournamentRepositoryFileImplClient {
 

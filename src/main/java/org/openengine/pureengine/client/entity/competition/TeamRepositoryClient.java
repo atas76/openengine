@@ -1,6 +1,6 @@
 package org.openengine.pureengine.client.entity.competition;
 
-import org.openengine.pureengine.domain.repository.TeamRepository;
+import org.openengine.pureengine.domain.repository.hardcoded.TeamRepository;
 
 public class TeamRepositoryClient {
 
