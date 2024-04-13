@@ -41,11 +41,6 @@ public class CompetitionRoundRepositoryDbImpl
         throw new IllegalArgumentException("Not supported");
     }
 
-    @Override
-    public void loadData() {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     public static class CompetitionRoundRowMapper implements RowMapper<CompetitionRound> {
 
         @Override

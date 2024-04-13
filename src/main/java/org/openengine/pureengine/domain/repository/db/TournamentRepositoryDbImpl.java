@@ -54,11 +54,6 @@ public class TournamentRepositoryDbImpl implements org.openengine.pureengine.dom
         return tournaments.stream().map(this::loadData).toList();
     }
 
-    @Override
-    public void loadData() {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     private Tournament loadData(Tournament tournament) {
         Competition competition = competitionRepository.findById(tournament.getCompetitionId());
         Collection<String> tournamentParticipations =

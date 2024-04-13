@@ -43,11 +43,6 @@ public class TeamRepositoryDbImpl implements org.openengine.pureengine.domain.re
         return jdbcTemplate.query("SELECT team_name, full_name, skill FROM Team", new TeamRowMapper());
     }
 
-    @Override
-    public void loadData() {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     public static class TeamRowMapper implements RowMapper<Team> {
         @Override
         public Team mapRow(ResultSet rs, int rowNum) throws SQLException {

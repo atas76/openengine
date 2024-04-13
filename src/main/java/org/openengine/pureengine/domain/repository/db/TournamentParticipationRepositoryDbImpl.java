@@ -39,11 +39,6 @@ public class TournamentParticipationRepositoryDbImpl implements
         throw new IllegalArgumentException("Not supported");
     }
 
-    @Override
-    public void loadData() {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     public static class TournamentParticipationRowMapper implements RowMapper<String> {
 
         @Override

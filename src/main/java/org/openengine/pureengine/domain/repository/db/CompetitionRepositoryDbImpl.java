@@ -53,11 +53,6 @@ public class CompetitionRepositoryDbImpl implements org.openengine.pureengine.do
         return competitions.stream().map(this::loadData).toList();
     }
 
-    @Override
-    public void loadData() {
-        throw new IllegalArgumentException("Not applicable");
-    }
-
     private Competition loadData(Competition competition) {
         competition.setRoundDetails(new ArrayList<>(competitionRoundRepository.findByReferenceId(competition.getId())));
         return competition;
