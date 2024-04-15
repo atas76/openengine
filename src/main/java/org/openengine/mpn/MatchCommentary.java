@@ -18,6 +18,7 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DMh, "their own half"),
             Map.entry(PitchPosition.DMw, "their own half, wing"),
             Map.entry(PitchPosition.DB22, "penalty box corner"),
+            Map.entry(PitchPosition.AB12, "penalty box diagonally to the goal"),
             Map.entry(PitchPosition.AB22, "penalty box corner"),
             Map.entry(PitchPosition.Mh, "attacking half, half space"),
             Map.entry(PitchPosition.AM, "attacking third"),
