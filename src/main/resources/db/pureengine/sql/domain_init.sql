@@ -14,6 +14,12 @@ CREATE TABLE TournamentParticipation(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     team_key INTEGER FOREIGN_KEY REFERENCES Team(team_name),
     tournament_id FOREIGN_KEY REFERENCES Tournament);
+CREATE TABLE TournamentHistory(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tournament_id INTEGER FOREIGN_KEY REFERENCES Tournament,
+    winner TEXT FOREIGN_KEY REFERENCES Team,
+    runner_up TEXT FOREIGN_KEY REFERENCES Team
+);
 CREATE TABLE TournamentReplayHistory(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     tournament_id INTEGER FOREIGN_KEY REFERENCES Tournament,
