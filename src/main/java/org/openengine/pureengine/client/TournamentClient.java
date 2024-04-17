@@ -2,7 +2,10 @@ package org.openengine.pureengine.client;
 
 import org.openengine.pureengine.config.SQLiteConfig;
 import org.openengine.pureengine.domain.model.Tournament;
+import org.openengine.pureengine.domain.model.TournamentHistory;
 import org.openengine.pureengine.domain.repository.RetrievableRepository;
+import org.openengine.pureengine.domain.repository.WriteableRepository;
+import org.openengine.pureengine.domain.repository.db.TournamentHistoryRepositoryDbImpl;
 import org.openengine.pureengine.domain.repository.db.TournamentRepositoryDbImpl;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -15,17 +18,20 @@ public class TournamentClient {
     public static void main(String[] args) {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SQLiteConfig.class)) {
             RetrievableRepository<Tournament> tournamentRepository = context.getBean(TournamentRepositoryDbImpl.class);
+            WriteableRepository<TournamentHistory> tournamentHistoryRepository =
+                    context.getBean(TournamentHistoryRepositoryDbImpl.class);
             Collection<Tournament> tournaments = tournamentRepository.findAll();
-            List<Tournament> tournamentHistory = new ArrayList<>(tournaments);
-            tournamentHistory.sort(Comparator.comparingInt(Tournament::getId).reversed());
+            List<Tournament> competitionHistory = new ArrayList<>(tournaments);
+            competitionHistory.sort(Comparator.comparingInt(Tournament::getId).reversed());
 
-            tournamentHistory.forEach(tournament -> {
+            competitionHistory.forEach(tournament -> {
                 tournament.displayHeader();
                 System.out.println();
                 tournament.displayParticipants();
 
                 System.out.println();
-                tournament.play();
+                TournamentHistory tournamentHistoryRecord = tournament.play();
+                tournamentHistoryRepository.save(tournamentHistoryRecord);
                 System.out.println();
             });
         }

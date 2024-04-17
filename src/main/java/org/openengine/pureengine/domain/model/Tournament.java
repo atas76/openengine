@@ -46,11 +46,11 @@ public class Tournament {
         participants.forEach(participant -> System.out.println(participant.getFullName()));
     }
 
-    public void play() {
-        play(false);
+    public TournamentHistory play() {
+        return play(false);
     }
 
-    public void play(boolean silentMode) {
+    public TournamentHistory play(boolean silentMode) {
         TournamentRound currentRound = this.rounds.get(0);
         currentRound.play(silentMode);
         List<Team> qualifiedTeams = currentRound.getQualifiedTeams();
@@ -68,6 +68,7 @@ public class Tournament {
             System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getFullName());
             System.out.println("Runner up: " + this.runnerUp.getFullName());
         }
+        return new TournamentHistory(this.id, this.winner.getName(), this.runnerUp.getName());
     }
 
     public void loadCompetition(Competition competition) {

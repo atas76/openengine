@@ -23,6 +23,10 @@ public class Team {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public String getFullName() {
         return fullName;
     }
