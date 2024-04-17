@@ -157,9 +157,15 @@ public class Match {
                     }
                     case FOUL -> {
                         commentary.append(teamName);
-                        commentary.append(" win a foul at pitch position ");
-                        commentary.append(outcomePitchPosition);
-                        attachPitchPositionDescription(outcomePitchPosition, commentary);
+                        if (!statement.isPossessionChanged()) {
+                            commentary.append(" win a foul at pitch position ");
+                            commentary.append(outcomePitchPosition);
+                            attachPitchPositionDescription(outcomePitchPosition, commentary);
+                        } else {
+                            commentary.append(" concede an offensive foul at pitch position ");
+                            commentary.append(outcomePitchPosition);
+                            attachPossessionChangePitchPositionDescription(outcomePitchPosition, commentary);
+                        }
                     }
                     case GOAL_KICK -> {
                         if (!statement.isPossessionRetained()) {
