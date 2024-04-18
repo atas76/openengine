@@ -60,4 +60,9 @@ public class SQLiteConfig {
     public TournamentHistoryRepositoryDbImpl tournamentHistoryRepositoryDb(JdbcTemplate jdbcTemplate) {
         return new TournamentHistoryRepositoryDbImpl(jdbcTemplate);
     }
+
+    @Bean
+    public TournamentReplayHistoryDbImpl tournamentReplayHistoryRepositoryDb(JdbcTemplate jdbcTemplate) {
+        return new TournamentReplayHistoryDbImpl(jdbcTemplate);
+    }
 }

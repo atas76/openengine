@@ -68,7 +68,7 @@ public class Tournament {
             System.out.println(competition.getName() +  " " + year +  " winner: " + this.winner.getFullName());
             System.out.println("Runner up: " + this.runnerUp.getFullName());
         }
-        return new TournamentHistory(this.id, this.winner.getName(), this.runnerUp.getName());
+        return new TournamentHistory(this.id, this.winner.getFullName(), this.runnerUp.getFullName());
     }
 
     public void loadCompetition(Competition competition) {
