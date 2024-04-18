@@ -172,6 +172,12 @@ public class Match {
                             commentary.append("Ball out for a goal kick");
                         }
                     }
+                    case OFFSIDE -> {
+                        if (statement.isPossessionChanged()) {
+                            commentary.append(teamName);
+                            commentary.append(" are offside");
+                        }
+                    }
                 }
             }
             if (statement.getEndState().equals(State.GOAL)) {
