@@ -124,7 +124,9 @@ public class Match {
                 }
                 case FREEKICK -> {
                     commentary.append(teamName);
-                    commentary.append(" take the free kick");
+                    commentary.append(" take the free kick from position ");
+                    commentary.append(initialPitchPosition);
+                    attachPitchPositionDescription(initialPitchPosition, commentary);
                 }
                 case COUNTER_ATTACK -> {
                     commentary.append("Counter attack for ");
