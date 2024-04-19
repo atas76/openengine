@@ -112,7 +112,7 @@ L: 30:10 => 30:13 Transition:D -> !ThrowIn:AM
 T: 30:21 => 30:28 ThrowIn:AM -> ThrowIn:DM
 T: 30:31 ThrowIn:DM -> Buildup:GK
 T: 30:34 Buildup:GK -> Pressing:GK
-T: 30:47 Pressing -> !Transition:AMh
+T: 30:47 Pressing:GK -> !Transition:AMh
 L: 30:59 => 31:10 Transition:AMh -> !Offside:Dh
 T: 31:13 FreeKick:Dh -> Buildup:Dh
 T: 31:15 Buildup:Dh -> Pressing:GK
