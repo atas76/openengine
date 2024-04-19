@@ -14,6 +14,7 @@ public class MatchCommentary {
     public static Map<PitchPosition, String> pitchPositionMappings = Map.ofEntries(
             Map.entry(PitchPosition.DBw, "defensive third, wide off penalty box"),
             Map.entry(PitchPosition.D, "defensive third"),
+            Map.entry(PitchPosition.Dh, "defensive third"),
             Map.entry(PitchPosition.Dw, "defensive third, wing"),
             Map.entry(PitchPosition.DM, "their own half"),
             Map.entry(PitchPosition.DMh, "their own half"),
