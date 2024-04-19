@@ -1,10 +1,9 @@
 package org.openengine.pureengine.tournament;
 
 import org.openengine.pureengine.domain.model.Tournament;
+import org.openengine.pureengine.domain.model.TournamentHistory;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.LinkedHashMap;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class TournamentAggregator {
@@ -30,11 +29,12 @@ public class TournamentAggregator {
         execute(REPETITIONS);
     }
 
-    public void execute(int repetitions) {
+    public List<TournamentHistory> execute(int repetitions) {
+        List<TournamentHistory> tournamentHistoryRepetitions = new ArrayList<>();
         long winnerSkillRatingSum = 0;
-        for (int i = 0; i < REPETITIONS; i++) {
+        for (int i = 0; i < repetitions; i++) {
             Tournament tournament = new Tournament(this.tournament);
-            tournament.play(true);
+            tournamentHistoryRepetitions.add(tournament.play(true));
             winnerSkillRatingSum += tournament.getWinner().getSkill();
             this.winners.merge(tournament.getWinner().getFullName(), 1, Integer::sum);
             this.historicalCoefficient.merge(tournament.getWinner().getFullName(), 2, Integer::sum);
@@ -43,7 +43,8 @@ public class TournamentAggregator {
             this.finalParticipants.merge(tournament.getWinner().getFullName(), 1, Integer::sum);
             this.finalParticipants.merge(tournament.getRunnerUp().getFullName(), 1, Integer::sum);
         }
-        this.averageWinnerSkillRating = winnerSkillRatingSum / (double) REPETITIONS;
+        this.averageWinnerSkillRating = winnerSkillRatingSum / (double) repetitions;
+        return tournamentHistoryRepetitions;
     }
 
     public void displayResults() {

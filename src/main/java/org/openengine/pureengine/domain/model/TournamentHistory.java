@@ -23,4 +23,9 @@ public class TournamentHistory {
     public String getRunnerUp() {
         return runnerUp;
     }
+
+    @Override
+    public String toString() {
+        return this.winner + " - " + this.runnerUp;
+    }
 }
