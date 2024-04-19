@@ -38,6 +38,7 @@ public class MatchCommentary {
     );
 
     public static Map<PitchPosition, String> possessionChangePitchPositionMappings = Map.ofEntries(
+            Map.entry(PitchPosition.D, "opponent's defensive third"),
             Map.entry(PitchPosition.DM, "opponent's half"),
             Map.entry(PitchPosition.DMh, "opponent's half"),
             Map.entry(PitchPosition.DMw, "opponent's half, wing"),
