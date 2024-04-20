@@ -50,7 +50,8 @@ public class MatchCommentary {
             Map.entry(PitchPosition.Mw, "opponent's attacking half, wide"),
             Map.entry(PitchPosition.AM, "opponent's attacking third"),
             Map.entry(PitchPosition.AMh, "opponent's attacking third, half space"),
-            Map.entry(PitchPosition.Ah, "opponent's shooting range, half space")
+            Map.entry(PitchPosition.Ah, "opponent's shooting range, half space"),
+            Map.entry(PitchPosition.Aw, "opponent's attacking wing, near penalty area")
     );
 
     public static void main(String[] args) {
