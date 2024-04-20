@@ -18,6 +18,7 @@ public class Tournament {
 
     public Tournament(Tournament tournament) {
         this(tournament.year, tournament.participants, tournament.competition);
+        this.id = tournament.id;
     }
 
     public Tournament(int competitionId, int year) {

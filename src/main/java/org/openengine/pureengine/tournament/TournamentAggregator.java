@@ -55,6 +55,23 @@ public class TournamentAggregator {
         System.out.println("Average winner skill rating: " + this.averageWinnerSkillRating);
     }
 
+    public int getWins(String team) {
+        Integer wins = this.winners.get(team);
+        return wins != null ? wins : 0;
+    }
+
+    public int getFinalParticipations(String team) {
+        return this.finalParticipants.get(team);
+    }
+
+    public int getHistoricalCoefficient(String team) {
+        return this.historicalCoefficient.get(team);
+    }
+
+    public Set<String> getRankedTeams() {
+        return historicalCoefficient.keySet();
+    }
+
     private void displayRanking(Map<String, Integer> map, String label) {
         Map<String, Integer> ranking = getSortedMap(map);
         System.out.println(label + ": ");
