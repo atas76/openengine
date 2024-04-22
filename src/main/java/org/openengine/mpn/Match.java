@@ -114,6 +114,12 @@ public class Match {
                             commentary.append(". Attempt is blocked...");
                             switch (statement.getGoalAttemptOutcome()) {
                                 case CORNER -> commentary.append("corner.");
+                                case ATTACK -> {
+                                    commentary.append(teamName);
+                                    commentary.append(" on the rebound at pitch position ");
+                                    commentary.append(outcomePitchPosition);
+                                    attachPitchPositionDescription(outcomePitchPosition, commentary);
+                                }
                             }
                         }
                         case SAVE -> {
