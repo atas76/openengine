@@ -116,6 +116,12 @@ public class Match {
                                 case CORNER -> commentary.append("corner.");
                             }
                         }
+                        case SAVE -> {
+                            commentary.append("...saved by the goalkeeper.");
+                            switch (statement.getGoalAttemptOutcome()) {
+                                case CORNER -> commentary.append(" Corner.");
+                            }
+                        }
                     }
                 }
                 case GOAL_KICK -> {
