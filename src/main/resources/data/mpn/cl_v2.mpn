@@ -178,7 +178,7 @@ L: 45:43 GoalKick -> !Transition:DMw
 T: 45:55 Transition:DMw -> Pressing:DB22
 T: 45:59 Pressing:DB22 -> Buildup:DMw
 T: 46:05 Buildup:DMw -> !Transition:DM
-L: 46:11 => 45:14 Transition:DM -> !ThrowIn:AM
+L: 46:11 => 46:14 Transition:DM -> !ThrowIn:AM
 T: 46:20 ThrowIn:AM -> Possession:DM
 T: 46:26 Possession:DM -> Attack:Aw
 T: 46:41 => 46:52 Attack:Aw -> ThrowIn:AM
