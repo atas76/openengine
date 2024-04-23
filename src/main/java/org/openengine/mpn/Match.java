@@ -87,7 +87,7 @@ public class Match {
                     commentary.append(teamName);
                     if (initialPitchPosition != GK) {
                         commentary.append(" under pressure");
-                        commentary.append(" from pitch position ");
+                        commentary.append(" in pitch position ");
                         commentary.append(initialPitchPosition);
                         attachPitchPositionDescription(initialPitchPosition, commentary);
                     } else {
