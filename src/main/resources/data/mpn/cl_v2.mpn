@@ -200,7 +200,7 @@ T: 48:07 => 48:33 Pressing:GK -> !ThrowIn:M
 L: 48:53 => 49:00 ThrowIn:M -> ThrowIn:AM
 L: 49:05 => 49:10 ThrowIn:AM -> !ThrowIn:DM
 T: 49:26 => 49:31 ThrowIn:DM -> Foul:AM
-T: 50:01 FreeKick:AM -> !Offside:D
+T: 50:01 => 50:07 FreeKick:AM -> !Offside:D
 #! BREAK
 L: 50:48 ThrowIn:M -> !Transition:DMw
 L: 51:02 Transition:DMw -> !Transition:Dw
