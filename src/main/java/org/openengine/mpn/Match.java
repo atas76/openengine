@@ -120,6 +120,7 @@ public class Match {
                                     commentary.append(outcomePitchPosition);
                                     attachPitchPositionDescription(outcomePitchPosition, commentary);
                                 }
+                                case GOALKEEPER -> commentary.append("goalkeeper has the ball");
                             }
                         }
                         case SAVE -> {
@@ -203,7 +204,9 @@ public class Match {
             } else if (statement.getEndState().equals(State.GOALKEEPER) && !statement.isPossessionChanged()) {
                 commentary.append("...ball back to the goalkeeper");
             }
-            if (statement.isPossessionChanged() && statement.getEndTime() == null) {
+            if (statement.isPossessionChanged()
+                    && statement.getEndTime() == null
+                    && statement.getInitialState() != State.GOAL_ATTEMPT) {
                 if (outcomePitchPosition == GK) {
                     commentary.append(": ball falls to opponent goalkeeper");
                 } else {
