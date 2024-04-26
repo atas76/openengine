@@ -233,7 +233,7 @@ T: 56:56 GoalAttempt:Ah -> Block => Corner; xG = 0.03
 T: 57:15 Corner -> GoalAttempt:AB11
 T: 57:18 GoalAttempt:AB11 -> OffTarget; xG = 0.03
 #! BREAK
-L: 58:02 => 58:06 Pressing -> !ThrowIn:DM
+L: 58:02 => 58:06 Pressing:GK -> !ThrowIn:DM
 T: 58:11 ThrowIn:DM -> Possession:DMh
 T: 58:13 Possession:DMh -> Pressing:GK
 T: 58:20 Pressing:GK -> Transition:DMh
