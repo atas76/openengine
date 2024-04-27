@@ -4,6 +4,7 @@ import org.mpn.*;
 
 import java.util.Map;
 
+import static org.mpn.PitchPosition.GD;
 import static org.mpn.PitchPosition.GK;
 
 public class Match {
@@ -41,7 +42,7 @@ public class Match {
                 }
                 case POSSESSION -> {
                     commentary.append(teamName);
-                    if (initialPitchPosition != PitchPosition.GD) {
+                    if (initialPitchPosition != GD) {
                         commentary.append(" have possession at pitch position ");
                         commentary.append(initialPitchPosition);
                         attachPitchPositionDescription(initialPitchPosition, commentary);
@@ -77,7 +78,7 @@ public class Match {
                 case BUILDUP -> {
                     commentary.append(teamName);
                     commentary.append(" building up from their ");
-                    if (initialPitchPosition == GK) {
+                    if (initialPitchPosition == GK ||initialPitchPosition == GD) {
                         commentary.append("goalkeeper");
                     } else {
                         commentary.append("defence");
@@ -98,7 +99,7 @@ public class Match {
                     commentary.append(teamName);
                     commentary.append(" take the corner...");
                     if (statement.getEndState() == State.POSSESSION && statement.isPossessionRetained()) {
-                       if (outcomePitchPosition == PitchPosition.GD) {
+                       if (outcomePitchPosition == GD) {
                            commentary.append("ball back to their goalkeeper (outside the penalty area)");
                        }
                     }
