@@ -48,6 +48,7 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DM, "opponent's half"),
             Map.entry(PitchPosition.DMh, "opponent's half"),
             Map.entry(PitchPosition.DMw, "opponent's half, wing"),
+            Map.entry(PitchPosition.DB10, "opponent's penalty box, between penalty spot and goal area"),
             Map.entry(PitchPosition.DB22, "opponent's penalty box corner"),
             Map.entry(PitchPosition.M, "opponent's attacking half, centre"),
             Map.entry(PitchPosition.Mh, "opponent's attacking half, half space"),
