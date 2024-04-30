@@ -146,6 +146,10 @@ public class Match {
                     commentary.append("Counter attack for ");
                     commentary.append(teamName);
                 }
+                case FAST_BREAK -> {
+                    commentary.append(teamName);
+                    commentary.append(" on the fast break!");
+                }
             }
             if (statement.getEndTime() != null) {
                 commentary.append("\n");
