@@ -21,6 +21,7 @@ public class MatchCommentary {
             Map.entry(PitchPosition.DMw, "their own half, wing"),
             Map.entry(PitchPosition.DB20, "penalty box, between penalty spot and penalty area line"),
             Map.entry(PitchPosition.DB22, "penalty box corner"),
+            Map.entry(PitchPosition.AB02, "off goal area, wing"),
             Map.entry(PitchPosition.AB11, "penalty box diagonally near the goal"),
             Map.entry(PitchPosition.AB12, "penalty box diagonally to the goal"),
             Map.entry(PitchPosition.AB20, "penalty box, between penalty spot and penalty area line"),
