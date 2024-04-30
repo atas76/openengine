@@ -317,8 +317,8 @@ L: 77:11 ThrowIn:M -> !Transition:Dw
 T: 77:15 Transition:Dw -> Possession:Mh
 T: 77:35 Possession:Mh -> Buildup:GK
 T: 77:51 Buildup:GK -> Attack:ABw
-T: 78:18 Attack:ABw -> GoalAttempt
-T: 78:19 GoalAttempt -> OffTarget; xG = 0.08
+T: 78:18 Attack:ABw -> GoalAttempt:AB10
+T: 78:19 GoalAttempt:AB10 -> OffTarget; xG = 0.08
 #! BREAK
 T: 78:56 Transition:Mh -> !Transition:D
 L: 79:04 Transition:D  -> CounterAttack:M
