@@ -109,24 +109,7 @@ public class Match {
                     commentary.append(" goal attempt from pitch position ");
                     commentary.append(initialPitchPosition);
                     attachPitchPositionDescription(initialPitchPosition, commentary);
-                    switch (statement.getEndState()) {
-                        case OFF_TARGET -> commentary.append("...off target");
-                        case BLOCK -> {
-                            commentary.append(". Attempt is blocked...");
-                            switch (statement.getGoalAttemptOutcome()) {
-                                case CORNER -> commentary.append("corner.");
-                                case ATTACK, POSSESSION -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
-                                case GOALKEEPER -> commentary.append("goalkeeper has the ball");
-                            }
-                        }
-                        case SAVE -> {
-                            commentary.append("...saved by the goalkeeper. ");
-                            switch (statement.getGoalAttemptOutcome()) {
-                                case CORNER -> commentary.append(" Corner.");
-                                case ATTACK -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
-                            }
-                        }
-                    }
+                    appendGoalAttemptOutcomeCommentary(statement, commentary, teamName, outcomePitchPosition);
                 }
                 case GOAL_KICK -> {
                     commentary.append(teamName);
@@ -137,6 +120,11 @@ public class Match {
                     commentary.append(" take the free kick from position ");
                     commentary.append(initialPitchPosition);
                     attachPitchPositionDescription(initialPitchPosition, commentary);
+                }
+                case GOAL_ATTEMPT_FREEKICK -> {
+                    commentary.append(teamName);
+                    commentary.append(" goal attempt from the free kick");
+                    appendGoalAttemptOutcomeCommentary(statement, commentary, teamName, outcomePitchPosition);
                 }
                 case COUNTER_ATTACK -> {
                     commentary.append("Counter attack for ");
@@ -225,6 +213,28 @@ public class Match {
         }
 
         return commentary.toString();
+    }
+
+    private static void appendGoalAttemptOutcomeCommentary(
+            Statement statement, StringBuilder commentary, String teamName, PitchPosition outcomePitchPosition) {
+        switch (statement.getEndState()) {
+            case OFF_TARGET -> commentary.append("...off target");
+            case BLOCK -> {
+                commentary.append(". Attempt is blocked...");
+                switch (statement.getGoalAttemptOutcome()) {
+                    case CORNER -> commentary.append("corner.");
+                    case ATTACK, POSSESSION -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
+                    case GOALKEEPER -> commentary.append("goalkeeper has the ball");
+                }
+            }
+            case SAVE -> {
+                commentary.append("...saved by the goalkeeper. ");
+                switch (statement.getGoalAttemptOutcome()) {
+                    case CORNER -> commentary.append("Corner.");
+                    case ATTACK -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
+                }
+            }
+        }
     }
 
     private static void appendReboundCommentary(StringBuilder commentary, String teamName, PitchPosition outcomePitchPosition) {
