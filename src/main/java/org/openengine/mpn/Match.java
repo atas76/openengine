@@ -115,19 +115,15 @@ public class Match {
                             commentary.append(". Attempt is blocked...");
                             switch (statement.getGoalAttemptOutcome()) {
                                 case CORNER -> commentary.append("corner.");
-                                case ATTACK, POSSESSION -> {
-                                    commentary.append(teamName);
-                                    commentary.append(" on the rebound at pitch position ");
-                                    commentary.append(outcomePitchPosition);
-                                    attachPitchPositionDescription(outcomePitchPosition, commentary);
-                                }
+                                case ATTACK, POSSESSION -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
                                 case GOALKEEPER -> commentary.append("goalkeeper has the ball");
                             }
                         }
                         case SAVE -> {
-                            commentary.append("...saved by the goalkeeper.");
+                            commentary.append("...saved by the goalkeeper. ");
                             switch (statement.getGoalAttemptOutcome()) {
                                 case CORNER -> commentary.append(" Corner.");
+                                case ATTACK -> appendReboundCommentary(commentary, teamName, outcomePitchPosition);
                             }
                         }
                     }
@@ -229,6 +225,13 @@ public class Match {
         }
 
         return commentary.toString();
+    }
+
+    private static void appendReboundCommentary(StringBuilder commentary, String teamName, PitchPosition outcomePitchPosition) {
+        commentary.append(teamName);
+        commentary.append(" on the rebound at pitch position ");
+        commentary.append(outcomePitchPosition);
+        attachPitchPositionDescription(outcomePitchPosition, commentary);
     }
 
     private static void attachPitchPositionDescription(PitchPosition pitchPosition, StringBuilder commentary) {
