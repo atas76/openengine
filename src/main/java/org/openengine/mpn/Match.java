@@ -132,7 +132,7 @@ public class Match {
                 }
                 case FAST_BREAK -> {
                     commentary.append(teamName);
-                    commentary.append(" on the fast break!");
+                    commentary.append(" on the fast break");
                 }
             }
             if (statement.getEndTime() != null) {
