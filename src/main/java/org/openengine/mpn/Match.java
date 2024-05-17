@@ -198,6 +198,8 @@ public class Match {
                     && statement.getInitialState() != State.GOAL_ATTEMPT) {
                 if (outcomePitchPosition == GK) {
                     commentary.append(": ball falls to opponent goalkeeper");
+                } else if (outcomePitchPosition == GD) {
+                    commentary.append(": ball to the opponent goalkeeper outside their area");
                 } else {
                     if (statement.getEndState().equals(State.GOALKEEPER)) {
                         commentary.append("...opponent goalkeeper takes hold of the ball");
