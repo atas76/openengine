@@ -318,7 +318,7 @@ T: 77:15 Transition:Dw -> Possession:Mh
 T: 77:35 Possession:Mh -> Buildup:GK
 T: 77:51 Buildup:GK -> Attack:ABw
 T: 78:18 Attack:ABw -> GoalAttempt:AB10
-T: 78:19 GoalAttempt:AB10 -> OffTarget; xG = 0.08
+T: 78:19 GoalAttempt:AB10 -> OffTarget; xG = 0.08    # !!!
 #! BREAK
 T: 78:56 Transition:Mh -> !Transition:D
 L: 79:04 Transition:D  -> CounterAttack:M
@@ -341,7 +341,7 @@ T: 82:05 GoalKick -> FastBreak:DMw
 T: 82:09 FastBreak:DMw -> Possession:Mw
 T: 82:16 Possession:Mw -> Attack:Aw
 T: 82:36 => 82:40 Attack:Aw -> Foul:ABw
-T: 84:05 GAFreeKick:ABw -> Save => Corner; xG = 0.05
+T: 84:05 GAFreeKick:ABw -> Save => Corner; xG = 0.05    # !!!
 T: 84:37 => 84:38 Corner -> !Offside:AB00
 #! BREAK
 T: 85:19 Goalkeeper -> !Goalkeeper
@@ -365,14 +365,14 @@ T: 91:15 => 91:25 Possession:DMh -> Corner
 T: 91:43 Corner -> Attack:Aw
 T: 91:49 Attack:Aw -> GoalAttempt:Ah
 T: 91:52 GoalAttempt:Ah -> Save => !Goalkeeper; xG = 0.04
-L: 91:52 Goalkeeper -> !Transition:M
+L: 92:09 Goalkeeper -> !Transition:M
 T: 92:17 Transition:M -> Attack:Ah
 T: 92:20 Attack:Ah -> GoalAttempt:AB21
 T: 92:23 GoalAttempt:AB21 -> Save => Corner; xG = 0.04
 T: 92:42 Corner -> Attack:AM
 T: 92:49 Attack:AM -> GoalAttempt:AB21
-T: 92:52 GoalAttempt -> Save => !Goalkeeper; xG = 0.03
-L: 92:52 Goalkeeper -> !Goalkeeper
+T: 92:52 GoalAttempt:AB21 -> Save => !Goalkeeper; xG = 0.03
+L: 93:13 Goalkeeper -> !Goalkeeper
 T: 93:18 Goalkeeper -> Buildup:Dw
 T: 93:21 => 93:33 Buildup:Dw -> ThrowIn:DM
 #! BREAK
