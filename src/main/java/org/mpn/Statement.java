@@ -67,7 +67,8 @@ public class Statement implements ProcessUnit, MatchPhaseTransition {
         return teamKey + ": " + initialState + " -> "
                 + (this.isPossessionChanged() ? "!" : "")
                 + endState
-                + (this.goalAttemptOutcome != null ? " => " + this.goalAttemptOutcome : "");
+                + (this.goalAttemptOutcome != null ? " => " + this.goalAttemptOutcome : "")
+                + ", Duration: " + this.getDuration();
     }
 
     public void setEndTime(Time endTime) {

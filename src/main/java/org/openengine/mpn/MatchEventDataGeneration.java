@@ -1,15 +1,19 @@
 package org.openengine.mpn;
 
-import org.mpn.Dataset;
-import org.mpn.MatchModel;
-import org.mpn.Processable;
+import org.mpn.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class MatchEventDataGeneration {
 
+    private static final int DURATION = 60 * 45; // duration in seconds
+
     private Dataset seedMatchEvents;
     private Dataset generatedMatchEvents;
+
+    private List<ProcessUnit> matchEventsBuffer = new ArrayList<>();
 
     private Random rnd = new Random();
 
@@ -33,7 +37,8 @@ public class MatchEventDataGeneration {
     }
 
     public void out() {
-        System.out.println(possessionTeam);
+        this.generatedMatchEvents = new Dataset(matchEventsBuffer, true);
+        this.generatedMatchEvents.getData().forEach(System.out::println);
     }
 
     public void generate() {
@@ -41,6 +46,28 @@ public class MatchEventDataGeneration {
         // refactoring of the start() method of MatchEngine class
 
         tossCoin();
+        playTimePeriod(DURATION);
+    }
+
+    private void registerTransition(MatchPhaseTransition transition) {
+        this.matchEventsBuffer.add((Statement) transition);
+    }
+
+    private void playTimePeriod(int duration) {
+        MatchPhaseTransition currentTransition = getKickOffPhaseTransition();
+        registerTransition(currentTransition);
+        // processTransition(currentTransition);
+        /*
+        while (currentTime < duration) {
+            currentTransition = getNextTransition(currentTransition);
+            processTransition(currentTransition);
+        }
+         */
+    }
+
+    private MatchPhaseTransition getKickOffPhaseTransition() {
+        Dataset potentialTransitions = possessionTeam.getActionsByState(State.KICK_OFF);
+        return potentialTransitions.getAny();
     }
 
     private void tossCoin() {
