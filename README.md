@@ -5,7 +5,11 @@ This should be the final attempt (of many) in creating an open source football m
 
 I will do my best to incorporate as many potential approaches possible in an incremental fashion. Starting simple without any particular expectations will do the trick in making this project the "final" edition of something that I decided to pursue as early as 2003. The most conceptually representative project in this repository is openfootie. I will be doing some archaeology from time to time for either code or 'ideas' reuse. Some of these projects might also be resurrected. But in all fairness, I should have a definitive edition just for purity's sake: an open source football match engine, "pluggable" to host applications, with the latter being a big feature/added bonus than the raison d'être. 
 
-The motto of this engine shall be this: don't fake output. There should be consistency in how the input (players as "agents", carrying the AI and relative attribute values, along with the team tactics) produces the output (whether that would be a 3D representation of the football match or just a plain score). Making this input - output mapping as realistic as possible should be the ultimate goal. But whatever abstraction we apply, the underlying concept should be that of consistency. 
+The motto of this engine shall be this: don't fake output. There should be consistency in how the input (players as "agents", carrying the AI and relative attribute values, along with the team tactics) produces the output (whether that would be a 3D representation of the football match or just a plain score). Making this input - output mapping as realistic as possible should be the ultimate goal. But whatever abstraction we apply, the underlying concept should be that of consistency.
+
+## Latest update
+
+After a while, I am resuming this project, but in a private repository this time. My goal at this time is that there will be less experiments, and I will be, in turn, more productive. When it looks at least like an MVP, I will start making my updates public. I hope that it will soon take the shape I am imagining. Because I already thought of a name.
 
 ## Update
 
